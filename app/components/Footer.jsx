@@ -77,19 +77,19 @@ const Footer = () => {
           </span>
           <div className="flex items-center mt-1 space-x-3">
             <Link href="" target="blank">
-              <YoutubeImage className="w-8 h-8" />
+              <YoutubeImage className="w-[32px]" />
             </Link>
             <Link href="" target="blank">
-              <TwitterIcon className="w-8 h-8" />
+              <TwitterIcon className="w-[32px]" />
             </Link>
             <Link href="https://github.com/med134" target="blank">
-              <GithubIcon className="w-8 h-8" />
+              <GithubIcon className="w-[32px]" />
             </Link>
             <Link
               href="https://www.linkedin.com/in/mohammed-dakir/"
               target="blank"
             >
-              <LinkedInIcon className="w-8 h-8" />
+              <LinkedInIcon className="w-[32px]" />
             </Link>
           </div>
           <p className="mt-4 text-sm text-gray-500">

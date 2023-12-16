@@ -2,8 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import AuthProvider from "./components/AuthProvider";
-
+import { ClerkProvider } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Software Mastery-Insider Dev Guides-Blogs | medCode",
@@ -13,14 +12,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className} suppressHydrationWarning={true}>
-        <AuthProvider> 
-        <NavBar />
-        {children}
-        <Footer/>
-        </AuthProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className} suppressHydrationWarning={true}>
+          <NavBar />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
