@@ -198,14 +198,6 @@ const NavBar = () => {
                 className=""
                 toggle={handleClick}
               />
-              {session.status === "authenticated" && (
-                <button
-                  className="text-medium mt-2 text-light dark:text-dark font-semibold "
-                  onClick={signOut}
-                >
-                  Logout
-                </button>
-              )}
             </nav>
 
             <nav className="flex items-center justify-center flex-wrap mt-2">
