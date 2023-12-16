@@ -6,6 +6,7 @@ import { GithubIcon, LinkedInIcon, SunIcon, MoonIcon } from "./Icons";
 import logo from "@/public/images/logo3.png";
 import useThemeSwitcher from "./hooks/useThemeSwitcher";
 import Image from "next/image";
+import { signOut, useSession } from "next-auth/react";
 import { Lalezar } from "next/font/google";
 import { Limelight } from "next/font/google";
 const lalezar = Lalezar({
@@ -129,6 +130,7 @@ const NavBar = () => {
               className="mx-4 uppercase"
               target="_blank"
             />
+            {session.status === "authenticated" && <ProfileDown />}
             <button
               onClick={() => setMode(mode === "light" ? "dark" : "light")}
               className={`w-8 h-8 ml-8 flex items-center justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 
@@ -196,6 +198,14 @@ const NavBar = () => {
                 className=""
                 toggle={handleClick}
               />
+              {session.status === "authenticated" && (
+                <button
+                  className="text-medium mt-2 text-light dark:text-dark font-semibold "
+                  onClick={signOut}
+                >
+                  Logout
+                </button>
+              )}
             </nav>
 
             <nav className="flex items-center justify-center flex-wrap mt-2">
