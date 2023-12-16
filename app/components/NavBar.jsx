@@ -8,8 +8,7 @@ import useThemeSwitcher from "./hooks/useThemeSwitcher";
 import Image from "next/image";
 import { Lalezar } from "next/font/google";
 import { Limelight } from "next/font/google";
-import { useUser } from "@clerk/nextjs";
-import { UserButton } from "@clerk/nextjs";
+
 const lalezar = Lalezar({
   subsets: ["latin"],
   variables: "-lalezar",
@@ -60,8 +59,6 @@ const CustomMobileLink = ({ href, title, className = "" }) => {
 const NavBar = () => {
   const [mode, setMode] = useThemeSwitcher();
   const [isOpen, setIsOpen] = useState(false);
-  const { user, isLoaded, firstName } = useUser();
-  console.log(firstName);
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -133,11 +130,7 @@ const NavBar = () => {
               className="mx-4 uppercase"
               target="_blank"
             />
-            {isLoaded && user && (
-              <>
-                <UserButton afterSignOutUrl="/" className="w-12 h-12" />
-              </>
-            )}
+          
             <button
               onClick={() => setMode(mode === "light" ? "dark" : "light")}
               className={`w-8 h-8 ml-8 flex items-center justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 

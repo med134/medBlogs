@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from 'next/link';
 async function getData() {
-  const res = await fetch(`https://www.medcode.dev/api/posts`, {
+  const res = await fetch(`http://localhost:3000/api/posts`, {
     cache: "no-store",
   });
   if (!res.ok) {

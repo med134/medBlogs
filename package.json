@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.28.1",
     "framer-motion": "^10.16.16",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.3",
