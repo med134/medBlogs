@@ -54,6 +54,7 @@ const Card = ({ posts, loading }) => {
                     className="w-8 h-8 rounded-full"
                     width={300}
                     height={300}
+                    priority
                   />
                   <p className="text-sm text-gray-500 ml-2 dark:text-light uppercase">
                     {item?.username}

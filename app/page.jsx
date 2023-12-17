@@ -1,11 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Youtube from "./components/Youtube";
-import Crypto from "./components/Crytpo";
 import { AiTwotoneSound } from "react-icons/ai";
 import Card from "./components/Hero";
 import { YoutubeImage } from "./components/Icons";
-import YouTubeSubscribe from "./components/YoutubeSubscribe";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -68,6 +66,7 @@ export default function Home() {
                 src="https://i.ibb.co/rHvLvvr/Untitled.png"
                 width={400}
                 height={400}
+                priority
                 alt="photo-templates"
                 className="w-full rounded transform scale-100 perspective-[1040px] rotate-y-[-11deg] rotate-x-[2deg] rotate-[2deg] md:transform-none md:mb-3 md:w-full object-cover"
               />
@@ -76,7 +75,7 @@ export default function Home() {
         </div>
       </div>
       <div className="main-content bg-light gap-6 px-12 py-4 md:block md:px-3 md:py-2 dark:bg-dark">
-        <div className="md:p-10">
+      {/*   <div className="md:p-10">
           <span className="flex justify-start items-center text-2xl dark:text-light underline font-bold mb-4 text-gray-800 font-lexend rounded-lg sm:text-sm xl:text:sm">
             <YoutubeImage />
             <p className="ml-2 ">
@@ -85,9 +84,9 @@ export default function Home() {
             </p>
           </span>
           <Youtube />
-        </div>
+        </div> */}
 
-        <div className="mt-20 md:p-10 md:mt-4">
+       {/*  <div className="mt-20 md:p-10 md:mt-4">
           <div className="block justify-start items-start md:block p-4 bg-white h-28 mb-6 dark:bg-dark rounded overflow-hidden shadow-lg border-2">
             <Link
               href="https://www.youtube.com/@VivaCode99"
@@ -101,7 +100,7 @@ export default function Home() {
             <YouTubeSubscribe />
           </div>
           <Crypto />
-        </div>
+        </div> */}
       </div>
     </div>
   );
