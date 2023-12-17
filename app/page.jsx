@@ -4,6 +4,8 @@ import Card from "./components/Hero";
 import Link from "next/link";
 import Image from "next/image";
 import CategoryList from "./components/HeaderCategory";
+import Aside from "./components/Aside";
+import Search from "./components/Search";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -19,6 +21,8 @@ export default function Home() {
     }, [])
   return (
     <div>
+      <Aside />
+      <Search getSearchResult={(result) => setPosts(result)} />
       <div className="bg-light pt-8 dark:bg-dark">
         <CategoryList />
       </div>
