@@ -1,9 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Youtube from "./components/Youtube";
-import { AiTwotoneSound } from "react-icons/ai";
 import Card from "./components/Hero";
-import { YoutubeImage } from "./components/Icons";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -24,7 +21,6 @@ export default function Home() {
         {/* <CategoryList /> */}
       </div>
       <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-8 py-2">
-        <AiTwotoneSound className="dark:text-light" />
         <p className="ml-2 sm:text-xl ">Recent Articles</p>
       </span>{" "}
       <div className="main-content bg-light dark:bg-dark gap-6 px-12 py-4 md:block xs:px-5 xs:gap-1">
@@ -38,7 +34,6 @@ export default function Home() {
           <div className="flex justify-between items-center dark:bg-dark md:flex-col-reverse md:items-start">
             <div className="w-1/2 lg:p-0 p-7 dark:bg-dark md:w-full xs:p-2">
               <span className="text-2xl font-bold flex justify-start items-center text-gray-800 dark:text-light sm:text-xl">
-                <AiTwotoneSound />
                 <p className="ml-2 ">Templates & Components</p>
               </span>{" "}
               <h1 className="text-4xl text-gray-900 font-bold leading-tight mb-5 sm:text-sm capitalize dark:text-light lg:text-xl">

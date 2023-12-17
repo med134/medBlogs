@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaRegCalendarAlt } from "react-icons/fa";
 import BlogLoading from "./BlogLoading";
 
 const Card = ({ posts, loading }) => {
@@ -26,7 +25,6 @@ const Card = ({ posts, loading }) => {
             >
               <div className="text-start w-1/2 lg:w-full xs:p-2">
                 <span className="flex justify-start items-center py-2 dark:text-light">
-                  <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
                   <span className="ml-2 font-semibold dark:text-light xs:text-sm">
                     {FormatDate(item?.createdAt.slice(0, 10))}
                   </span>
