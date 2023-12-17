@@ -1,21 +1,30 @@
 "use client";
-import useSWR from "swr";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Skeleton from "./Skeleton ";
 
 const Cat = () => {
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, mutate, isLoading } = useSWR(`/api/categories`, fetcher);
+  const [cat, setCat] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    fetch("/api/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        setCat(data);
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <>
       <span className="font-os text-lg font-bold py-3 dark:text-light">
         Categories
       </span>
-      {isLoading ? (
+      {loading ? (
         <Skeleton />
       ) : (
-        data?.map((item) => (
+        cat?.map((item) => (
           <ul key={item._id} className="inline-flex items-start">
             <li className="flex mx-1">
               <Link

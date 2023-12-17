@@ -1,12 +1,12 @@
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
 import SidBar from "@/app/components/SidBar";
 import "react-quill/dist/quill.snow.css";
-import Comments from "@/app/components/comments/comments";
+import { FaRegCalendarAlt } from "react-icons/fa";
+
 
 async function getData(id) {
-  const res = await fetch(`http://localhost:3000/api/articles/${id}`, {
+  const res = await fetch(`https://www.medcode.dev/api/articles/${id}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -65,7 +65,7 @@ const BlogPage = async ({ params }) => {
       <div className="flex flex-wrap justify-around dark:bg-dark">
         <div className="w-full px-4 mb-1 sm:text-sm sm:mb-2 dark:text-light dark:bg-dark">
           <div className="flex justify-start items-center dark:bg-dark">
-            {/* <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" /> */}
+            <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" /> 
             <span className="ml-2 font-semibold">
               {FormatDate(blog?.createdAt.slice(0, 10))}
             </span>
@@ -78,6 +78,7 @@ const BlogPage = async ({ params }) => {
             className="w-full object-cover rounded mt-2"
             width={500}
             height={500}
+            priority
           />
           <span className="flex underline font-bold justify-start items-start py-6 ml-2 mt-1 font-bolder">
             {blog.tags}
@@ -88,7 +89,7 @@ const BlogPage = async ({ params }) => {
               dangerouslySetInnerHTML={{ __html: content }}
             ></div>
           </div>
-          <Comments postSlug={id} />
+          {/* <Comments postSlug={id} /> */}
         </div>
       </div>
       <div className="sm:w-full sm:p-6">
@@ -96,6 +97,7 @@ const BlogPage = async ({ params }) => {
           <Image
             alt="author image"
             width={300}
+            priority
             height={300}
             src="https://i.ibb.co/WVDZRxF/bussiness-man.png"
             className="w-24 h-24  object-cover rounded-full"
