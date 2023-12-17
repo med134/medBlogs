@@ -1,10 +1,10 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import { IoEyeSharp } from "react-icons/io5";
+/* import { IoEyeSharp } from "react-icons/io5";
+ */
 import Link from "next/link";
 import axios from "axios";
-import { YoutubeImage } from "./Icons";
 import Loading from "../loading";
 
 const Youtube =  () => {
@@ -102,7 +102,7 @@ const Youtube =  () => {
                         {video?.publishedAt.slice(0, 10)}
                       </span>
                       <span className="flex justify-end items-center">
-                        <IoEyeSharp className="w-4 h-4 text-gray-700 dark:text-light" />
+                        {/* <IoEyeSharp className="w-4 h-4 text-gray-700 dark:text-light" /> */}
                         <p className="ml-1 text-bold dark:text-light">{video.views}</p>
                       </span>
                     </div>
