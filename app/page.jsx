@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Card from "./components/Hero";
 import Link from "next/link";
 import Image from "next/image";
+import CategoryList from "./components/HeaderCategory";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -19,7 +20,7 @@ export default function Home() {
   return (
     <div>
       <div className="bg-light pt-8 dark:bg-dark">
-        {/* <CategoryList /> */}
+        <CategoryList />
       </div>
       <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-8 py-2">
         <p className="ml-2 sm:text-xl ">Recent Articles</p>

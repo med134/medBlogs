@@ -1,21 +1,20 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const getCategory = async () => {
-  const res = await fetch("https://www.medcode.dev/api/categories", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-
-  return res.json();
-};
-
-const CategoryList = async () => {
-  const category = await getCategory();
+const CategoryList = () => {
+  const [category, setCategory] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    fetch("https://www.medcode.dev/api/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategory(data);
+        setLoading(false);
+      });
+  }, []);
   return (
     <div className="grid bg-light dark:bg-dark grid-cols-6 mt-24 gap-2 px-12 lg:flex lg:justify-evenly lg:flex-wrap lg:px-8 xs:flex">
       {category?.map((item, index) =>
