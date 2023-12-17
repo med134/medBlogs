@@ -1,15 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../images/logo.png";
+import logo from "@/public/images/logo.png";
 import { AiFillYoutube } from "react-icons/ai";
-import { motion } from "framer-motion";
-import {
-  TwitterIcon,
-  GithubIcon,
-  LinkedInIcon,
-} from "./Icons";
-import {BsInstagram } from "react-icons/bs";
+import { TwitterIcon, GithubIcon, LinkedInIcon } from "./Icons";
+import { BsInstagram } from "react-icons/bs";
 const Footer = () => {
   return (
     <div className="p-12 bg-white first:font-lexend xs:p-8 dark:bg-dark dark:text-light">
@@ -84,16 +79,14 @@ const Footer = () => {
             Social Media
           </span>
           <div className="flex items-center mt-1 space-x-3">
-            <motion.a
+            <Link
               href="https://www.youtube.com/@VivaCode99"
               target={"_blank"}
               className="w-6 mx-3 sm:mx-1"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
             >
               <AiFillYoutube size={34} className="fill-red-600" />
-            </motion.a>
-            <motion.a
+            </Link>
+            <Link
               href="https://twitter.com/SimoDakir5"
               target={"_blank"}
               whileHover={{ y: -2 }}
@@ -101,34 +94,28 @@ const Footer = () => {
               className="w-6 ml-4 sm:mx-1"
             >
               <TwitterIcon />
-            </motion.a>
-            <motion.a
+            </Link>
+            <Link
               href="https://www.instagram.com/med_dakir/"
               target={"_blank"}
               className="w-6 mx-3"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
             >
               <BsInstagram size={24} className="fill-pink-600" />
-            </motion.a>
-            <motion.a
+            </Link>
+            <Link
               href="https://github.com/med134"
               target={"_blank"}
               className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
             >
               <GithubIcon fontSize={26} />
-            </motion.a>
-            <motion.a
+            </Link>
+            <Link
               href="https://www.linkedin.com/in/mohammed-dakir/"
               target={"_blank"}
               className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
             >
-              <LinkedInIcon fontSize={26}/>
-            </motion.a>
+              <LinkedInIcon fontSize={26} />
+            </Link>
           </div>
           <p className="mt-4 text-sm text-gray-500">
             Follow me on My Social media accounts for new projects and news
