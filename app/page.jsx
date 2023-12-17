@@ -13,7 +13,7 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-      fetch('https://www.medcode.dev/api/articles')
+      fetch('http://localhost:3000/api/articles')
         .then((res) => res.json())
         .then((data) => {
           setPosts(data)

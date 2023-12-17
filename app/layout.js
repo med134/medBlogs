@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import NavBar from "./components/NavBar.jsx";
 import Footer from "./components/Footer";
+import SecondNavBar from "./components/SecondBar";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Software Mastery-Insider Dev Guides-Blogs | medCode",
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
-        <NavBar />
+        <SecondNavBar />
         {children}
         <Footer/>
       </body>
