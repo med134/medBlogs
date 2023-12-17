@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "./components/Hero";
 import Link from "next/link";
-import Youtube from "./components/Youtube";
-import { YoutubeImage } from "./components/Icons";
 import Image from "next/image";
 
 export default function Home() {
@@ -73,7 +71,7 @@ export default function Home() {
         </div>
       </div>
       <div className="main-content bg-light gap-6 px-12 py-4 md:block md:px-3 md:py-2 dark:bg-dark">
-       <div className="md:p-10">
+       {/* <div className="md:p-10">
           <span className="flex justify-start items-center text-2xl dark:text-light underline font-bold mb-4 text-gray-800 font-lexend rounded-lg sm:text-sm xl:text:sm">
             <YoutubeImage />
             <p className="ml-2 ">
@@ -82,7 +80,7 @@ export default function Home() {
             </p>
           </span>
           <Youtube />
-        </div> 
+        </div>  */}
 
        {/*  <div className="mt-20 md:p-10 md:mt-4">
           <div className="block justify-start items-start md:block p-4 bg-white h-28 mb-6 dark:bg-dark rounded overflow-hidden shadow-lg border-2">
