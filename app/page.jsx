@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import CategoryList from "./components/HeaderCategory";
 import Aside from "./components/Aside";
+import { AiTwotoneSound } from "react-icons/ai";
 import Search from "./components/Search";
 import SideBar from "./components/SideBar";
 
@@ -28,6 +29,7 @@ export default function Home() {
         <CategoryList />
       </div>
       <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-8 py-2">
+      <AiTwotoneSound className="dark:text-light" />
         <p className="ml-2 sm:text-xl ">Recent Articles</p>
       </span>{" "}
       <div className="main-content bg-light dark:bg-dark gap-6 px-12 py-4 md:block xs:px-5 xs:gap-1">
