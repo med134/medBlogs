@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
 import Link from "next/link";
@@ -12,7 +12,7 @@ const Youtube =  () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    const fetchSeoData = async () => {
+    const fetchSeoData = () => {
       setLoading(true);
       const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC1dm-Rczjp52egzJTL__s8A&maxResults=100&key=AIzaSyAuEMjkPWP_APLS7wgW4mLQiGF3W9y7bkE`;
       axios
