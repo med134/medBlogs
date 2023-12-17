@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import { GithubIcon, LinkedInIcon, SunIcon, MoonIcon } from "./Icons";
+import { GithubIcon, LinkedInIcon, SunIcon, MoonIcon} from "./Icons";
 import med from "@/public/images/logo3.png";
 import logo from "@/public/images/logo.png";
 import { AiFillYoutube } from "react-icons/ai";
@@ -63,219 +63,213 @@ const NavBar = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <>
-      <header
-        className="w-full px-28 py-6 font-medium flex items-center justify-between sticky top-0 2xl:px-20
+    <header
+      className="w-full px-28 py-6 font-medium flex items-center justify-between sticky top-0 2xl:px-20
     dark:text-light bg-white dark:font-lexend dark:bg-dark shadow-sm z-10 lg:px-16 md:px-12 sm:px-8 xs:w-full
     "
+    >
+      <button
+        className="flex-col justify-between items-center hidden ml-[100%] lg:flex"
+        onClick={handleClick}
       >
-        <button
-          className="flex-col justify-between items-center hidden ml-[100%] lg:flex"
-          onClick={handleClick}
-        >
-          <div className="flex-col">
-            <span
-              className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm  ${
-                isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
-              }`}
-            ></span>
-            <span
-              className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${
-                isOpen ? "opacity-0" : "opacity-100"
-              } `}
-            ></span>
-            <span
-              className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
-                isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
-              } `}
-            ></span>
-          </div>
-        </button>
+        <div className="flex-col">
+          <span
+            className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm  ${
+              isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
+            }`}
+          ></span>
+          <span
+            className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${
+              isOpen ? "opacity-0" : "opacity-100"
+            } `}
+          ></span>
+          <span
+            className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
+              isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
+            } `}
+          ></span>
+        </div>
+      </button>
 
-        <div className="w-full flex justify-between font-semibold lg:hidden">
-          <Link href='/' className="flex items-center justify-between flex-wrap cursor-pointer">
-            <Image
-              src={med}
-              alt="logo"
-              className="object-cover w-14 h-14"
-              width={300}
-              height={300}
+      <div className="w-full flex justify-between font-semibold lg:hidden">
+        <Link
+          href="/"
+          className="flex items-center justify-between flex-wrap cursor-pointer"
+        >
+          <Image
+            src={med}
+            alt="logo"
+            className="object-cover w-14 h-14"
+            width={300}
+            height={300}
+          />
+          <span
+            className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light`}
+          >
+            medCode
+          </span>
+        </Link>
+        <nav className="flex items-center justify-between flex-wrap">
+          <CustomLink
+            href="/projects"
+            title="projects"
+            className="mx-4 uppercase"
+            target="_blank"
+          />
+          <CustomLink
+            href="/templates"
+            title="Templates"
+            className="mx-4 uppercase"
+            target="_blank"
+          />
+          <CustomLink
+            href="/books"
+            title="Books"
+            className="mx-4 uppercase"
+            target="_blank"
+          />
+          <CustomLink
+            href="/about"
+            title="Portfolio"
+            className="mx-4 uppercase"
+            target="_blank"
+          />
+          <CustomLink
+            href="/dashboard"
+            title="Dashboard"
+            className="mx-4 uppercase"
+            target="_blank"
+          />
+
+          <button
+            onClick={() => setMode(mode === "light" ? "dark" : "light")}
+            className={`w-8 h-8 ml-8 flex items-center justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 
+    ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
+    `}
+          >
+            {mode === "light" ? (
+              <SunIcon className={"fill-dark"} />
+            ) : (
+              <MoonIcon
+                className={
+                  "fill-dark transition-all duration-75 ease-linear delay-75 animate-spin"
+                }
+              />
+            )}
+          </button>
+        </nav>
+      </div>
+
+      {isOpen ? (
+        <div
+          
+          className="min-w-[60vw] sm:min-w-[70vw] sm:h-min flex flex-col justify-between z-30 items-center fixed top-[50%] sm:top-[42%] xs:top-[45%] left-2/4 -translate-x-1/2 -translate-y-1/2
+    bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
+    "
+        >
+          <nav className="flex items-center flex-col justify-center z-50">
+            <div className="flex items-center justify-center xs:w-full mb-1">
+              <Image
+                src={logo}
+                alt="logo_website"
+                className="w-20 dark:bg-white dark:rounded-xl dark:p-1"
+              />
+              <div className="block mt-2">
+                <p className="font-Yeseva text-3xl text-light dark:text-dark">
+                  edCode
+                </p>
+                <h2 className="text-xs tracking-widest text-light dark:text-dark">
+                  blog for programmers
+                </h2>
+              </div>
+            </div>
+            <div className="line bg-gray-600 w-full h-1"></div>
+            <CustomMobileLink
+              href="/"
+              title="Home"
+              className=""
+              toggle={handleClick}
             />
-            <span className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light`}>medCode</span>
-          </Link>
-          <nav className="flex items-center justify-between flex-wrap">
-            <CustomLink
-              href="/projects"
-              title="projects"
-              className="mx-4 uppercase"
-              target="_blank"
-            />
-            <CustomLink
-              href="/templates"
-              title="Templates"
-              className="mx-4 uppercase"
-              target="_blank"
-            />
-            <CustomLink
-              href="/books"
-              title="Books"
-              className="mx-4 uppercase"
-              target="_blank"
-            />
-            <CustomLink
+            <CustomMobileLink
               href="/about"
               title="Portfolio"
-              className="mx-4 uppercase"
-              target="_blank"
+              className="books"
+              toggle={handleClick}
             />
-            <CustomLink
+            <CustomMobileLink
+              href="/projects"
+              title="Projects"
+              className="projects"
+              toggle={handleClick}
+            />
+
+            <CustomMobileLink
+              href="/templates"
+              title="Template"
+              className="templates"
+              toggle={handleClick}
+            />
+            <CustomMobileLink
+              href="/books"
+              title="books"
+              className="books"
+              toggle={handleClick}
+            />
+
+            <CustomMobileLink
               href="/dashboard"
               title="Dashboard"
-              className="mx-4 uppercase"
-              target="_blank"
+              className=""
+              toggle={handleClick}
             />
-           
+          </nav>
+
+          <nav className="flex items-center justify-center flex-wrap mt-2">
+            <Link
+              href="https://www.linkedin.com/in/mohammed-dakir/"
+              target={"_blank"}
+              className="w-6 ml-4 sm:mx-1"
+            >
+              <LinkedInIcon />
+            </Link>
+            <Link
+              href="https://www.youtube.com/@VivaCode99"
+              target={"_blank"}
+              className="w-6 mx-3 sm:mx-1"
+            >
+              <AiFillYoutube size={34} className="fill-red-600" />
+            </Link>
+            <Link
+              href="https://www.instagram.com/med_dakir/"
+              target={"_blank"}
+              className="w-6 mx-3"
+            >
+         
+            </Link>
+            <Link
+              href="https://github.com/med134"
+              target={"_blank"}
+              className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1"
+            >
+              <GithubIcon />
+            </Link>
+
             <button
               onClick={() => setMode(mode === "light" ? "dark" : "light")}
-              className={`w-8 h-8 ml-8 flex items-center justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 
+              className={`w-8 h-8 ml-3 flex items-center transition-all hover:scale-75 justify-center rounded-full p-1
     ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
     `}
             >
               {mode === "light" ? (
                 <SunIcon className={"fill-dark"} />
               ) : (
-                <MoonIcon
-                  className={
-                    "fill-dark transition-all duration-75 ease-linear delay-75 animate-spin"
-                  }
-                />
+                <MoonIcon className={"fill-dark"} />
               )}
             </button>
           </nav>
         </div>
-
-        {isOpen ? (
-          <motion.div
-            initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="min-w-[60vw] sm:min-w-[70vw] sm:h-min flex flex-col justify-between z-30 items-center fixed top-[50%] sm:top-[42%] xs:top-[45%] left-2/4 -translate-x-1/2 -translate-y-1/2
-    bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
-    "
-          >
-            <nav className="flex items-center flex-col justify-center z-50">
-              <div className="flex items-center justify-center xs:w-full mb-1">
-                <Image
-                  src={logo}
-                  alt="logo_website"
-                  className="w-20 dark:bg-white dark:rounded-xl dark:p-1"
-                />
-                <div className="block mt-2">
-                  <h2 className="font-Yeseva text-3xl text-light dark:text-dark">
-                    edCode
-                  </h2>
-                  <p className="text-xs tracking-widest text-light dark:text-dark">
-                    blog for programmers
-                  </p>
-                </div>
-              </div>
-              <div className="line bg-gray-600 w-full h-1"></div>
-              <CustomMobileLink
-                href="/"
-                title="Home"
-                className=""
-                toggle={handleClick}
-              />
-              <CustomMobileLink
-                href="/about"
-                title="Portfolio"
-                className="books"
-                toggle={handleClick}
-              />
-              <CustomMobileLink
-                href="/projects"
-                title="Projects"
-                className="projects"
-                toggle={handleClick}
-              />
-
-              <CustomMobileLink
-                href="/templates"
-                title="Template"
-                className="templates"
-                toggle={handleClick}
-              />
-              <CustomMobileLink
-                href="/books"
-                title="books"
-                className="books"
-                toggle={handleClick}
-              />
-
-              <CustomMobileLink
-                href="/dashboard"
-                title="Dashboard"
-                className=""
-                toggle={handleClick}
-              />
-            
-            </nav>
-
-            <nav className="flex items-center justify-center flex-wrap mt-2">
-              <motion.a
-                href="https://www.linkedin.com/in/mohammed-dakir/"
-                target={"_blank"}
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-6 ml-4 sm:mx-1"
-              >
-                <LinkedInIcon />
-              </motion.a>
-              <motion.a
-                href="https://www.youtube.com/@VivaCode99"
-                target={"_blank"}
-                className="w-6 mx-3 sm:mx-1"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <AiFillYoutube size={34} className="fill-red-600" />
-              </motion.a>
-              <motion.a
-                href="https://www.instagram.com/med_dakir/"
-                target={"_blank"}
-                className="w-6 mx-3"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <BsInstagram size={24} className="fill-pink-600" />
-              </motion.a>
-              <motion.a
-                href="https://github.com/med134"
-                target={"_blank"}
-                className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <GithubIcon />
-              </motion.a>
-
-              <button
-                onClick={() => setMode(mode === "light" ? "dark" : "light")}
-                className={`w-8 h-8 ml-3 flex items-center transition-all hover:scale-75 justify-center rounded-full p-1
-    ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
-    `}
-              >
-                {mode === "light" ? (
-                  <SunIcon className={"fill-dark"} />
-                ) : (
-                  <MoonIcon className={"fill-dark"} />
-                )}
-              </button>
-            </nav>
-          </motion.div>
-        ) : null}
-      </header>
-      
-    </>
+      ) : null}
+    </header>
   );
 };
 

@@ -66,7 +66,6 @@ const Footer = () => {
               href="https://www.google.com/maps"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Our address"
               title="Our address"
               className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
@@ -89,8 +88,6 @@ const Footer = () => {
             <Link
               href="https://twitter.com/SimoDakir5"
               target={"_blank"}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
               className="w-6 ml-4 sm:mx-1"
             >
               <TwitterIcon />

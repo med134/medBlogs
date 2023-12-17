@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import BlogLoading from "./BlogLoading";
 
-const Card = async ({ posts, loading }) => {
+const Card = ({ posts, loading }) => {
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(
