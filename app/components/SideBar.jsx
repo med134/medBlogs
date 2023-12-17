@@ -1,32 +1,22 @@
-import React from "react";
+"use client";
+import React,{useState,useEffect} from "react";
 import Link from "next/link";
-import BlogLoading from "./BlogLoading";
-import { getDevTo } from "./FetchData";
 
-const SideBar = async () => {
-  const post = await getDevTo();
-
-  /* const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.01,
-  });
-
-  const childVariants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: { opacity: 1, x: 0 },
-  };
-  const parentVariants = {
-    visible: {
-      transition: {
-        when: "beforeChildren", // Stagger children animation before parent
-        staggerChildren: 0.5,
-        delay: 2, // Delay between each child
-      },
-    },
-  }; */
+const SideBar = () => {
+  const [dev, setDev] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    fetch("https://dev.to/api/articles?username=med_code")
+      .then((res) => res.json())
+      .then((data) => {
+        setDev(data);
+        setLoading(false);
+      });
+  }, []);
   return (
     <section>
-      {post?.map((item, index) =>
+      {dev?.map((item, index) =>
         index < 6 ? (
           <div
             key={item.id}

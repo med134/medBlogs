@@ -6,19 +6,20 @@ import Image from "next/image";
 import CategoryList from "./components/HeaderCategory";
 import Aside from "./components/Aside";
 import Search from "./components/Search";
+import SideBar from "./components/SideBar";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    setLoading(true)
-      fetch('https://www.medcode.dev/api/articles')
-        .then((res) => res.json())
-        .then((data) => {
-          setPosts(data)
-          setLoading(false)
-        })
-    }, [])
+    setLoading(true);
+    fetch("https://www.medcode.dev/api/articles")
+      .then((res) => res.json())
+      .then((data) => {
+        setPosts(data);
+        setLoading(false);
+      });
+  }, []);
   return (
     <div>
       <Aside />
@@ -33,7 +34,9 @@ export default function Home() {
         <div className="main">
           <Card posts={posts} loading={loading} />
         </div>
-        <div className="side">{/* side bar */}</div>
+        <div className="side">
+          <SideBar />
+        </div>
       </div>
       <div className="p-10 bg-gradient-to-r from-rose-50 to-slate-300 mt-16 dark:bg-gradient-to-r dark:from-[#1b1b1b] dark:to-[#1b1b1b] xs:p-3">
         <div className="container m-auto px-6 dark:bg-dark xs:px-2">
@@ -76,7 +79,7 @@ export default function Home() {
         </div>
       </div>
       <div className="main-content bg-light gap-6 px-12 py-4 md:block md:px-3 md:py-2 dark:bg-dark">
-       {/* <div className="md:p-10">
+        {/* <div className="md:p-10">
           <span className="flex justify-start items-center text-2xl dark:text-light underline font-bold mb-4 text-gray-800 font-lexend rounded-lg sm:text-sm xl:text:sm">
             <YoutubeImage />
             <p className="ml-2 ">
@@ -87,7 +90,7 @@ export default function Home() {
           <Youtube />
         </div>  */}
 
-       {/*  <div className="mt-20 md:p-10 md:mt-4">
+        {/*  <div className="mt-20 md:p-10 md:mt-4">
           <div className="block justify-start items-start md:block p-4 bg-white h-28 mb-6 dark:bg-dark rounded overflow-hidden shadow-lg border-2">
             <Link
               href="https://www.youtube.com/@VivaCode99"
