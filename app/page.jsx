@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./components/Hero";
 import Link from "next/link";
+import Crypto from "./components/Crytpo";
 import Image from "next/image";
 
 export default function Home() {
@@ -94,8 +95,8 @@ export default function Home() {
             </Link>
             <YouTubeSubscribe />
           </div>
-          <Crypto />
         </div> */}
+          <Crypto />
       </div>
     </div>
   );
