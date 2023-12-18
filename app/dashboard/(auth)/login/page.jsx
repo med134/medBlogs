@@ -1,28 +1,17 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
-import Loading from "@/app/loading";
 
 const Login = () => {
   const session = useSession();
-  const router = useRouter();
   console.log(session);
-/*   useEffect(() => {
-    if (session.status === "authenticated") {
-      router?.push("/dashboard/addTemplates");
-    } else if (session.status === "loading") {
-      <Loading />;
-    }
-  }); */
   return (
     <>
       <div className="flex min-h-0 w-full items-center justify-center bg-gray-100 p-28 lg:p-16 md:p-8 sm:p-4 sm:block">
         <div className="m-2 w-full rounded-2xl bg-gray-400 bg-cover bg-center text-white sm:hidden">
-          <img
+       {/*    <img
             height={400}
             width={400}
             className="w-full h-full object-fill rounded-2xl"
@@ -30,7 +19,7 @@ const Login = () => {
             src={
               "https://img.freepik.com/free-vector/organic-flat-blog-post-illustration-with-people_23-2148955260.jpg?w=740&t=st=1692306911~exp=1692307511~hmac=934f6612ddfadbc6609f4eb967ba1f967be7adb40fe57751209a33792fcabc86"
             }
-          />
+          /> */}
         </div>
         <div className="w-full sm:w-full">
           <div className="p-8 xs:p-4">
