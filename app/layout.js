@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
+import AuthProvider from "./components/authProvider/AuthProvider";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
@@ -80,9 +81,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
+        <AuthProvider> 
         <NavBar />
         {children}
         <Footer/>
+        </AuthProvider>
       </body>
     </html>
   );

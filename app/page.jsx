@@ -25,7 +25,7 @@ export default function Home() {
       });
   }, []);
   return (
-    <div>
+    <div className='dark:bg-dark'>
       <Aside />
       <Search getSearchResult={(result) => setPosts(result)} />
       <div className="bg-light pt-8 dark:bg-dark">
