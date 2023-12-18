@@ -5,11 +5,12 @@ import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const Register = () => {
   const session = useSession();
-   const router = useRouter();
- /*  useEffect(() => {
+  const router = useRouter();
+  /*  useEffect(() => {
     if (session.status === "authenticated") {
       router?.push("/dashboard/addTemplates");
     }
@@ -20,7 +21,16 @@ const Register = () => {
       <div className="flex h-screen w-full items-center justify-center bg-gray-100">
         <div className="flex w-full max-w-3xl overflow-hidden rounded-lg bg-white shadow-lg sm:flex">
           <div className="m-2 w-full rounded-2xl bg-gray-400 bg-cover bg-center text-white sm:w-2/5 sm:hidden">
-            {/* Image */}
+            <Image
+              height={500}
+              width={500}
+              priority
+              className="w-full h-full object-fill rounded-2xl"
+              alt="image_blog"
+              src={
+                "https://i.ibb.co/9VFgfg0/organic-flat-blog-post-illustration.jpg"
+              }
+            />
           </div>
           <div className="w-full sm:w-full sm:p-8">
             <div className="p-8">

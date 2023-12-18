@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import Image from "next/image";
 
 const Login = () => {
   const session = useSession();
@@ -11,15 +12,16 @@ const Login = () => {
     <>
       <div className="flex min-h-0 w-full items-center justify-center bg-gray-100 p-28 lg:p-16 md:p-8 sm:p-4 sm:block">
         <div className="m-2 w-full rounded-2xl bg-gray-400 bg-cover bg-center text-white sm:hidden">
-       {/*    <img
-            height={400}
-            width={400}
+          <Image
+            height={500}
+            width={500}
             className="w-full h-full object-fill rounded-2xl"
             alt="image_blog"
+            priority
             src={
-              "https://img.freepik.com/free-vector/organic-flat-blog-post-illustration-with-people_23-2148955260.jpg?w=740&t=st=1692306911~exp=1692307511~hmac=934f6612ddfadbc6609f4eb967ba1f967be7adb40fe57751209a33792fcabc86"
+              "https://i.ibb.co/9VFgfg0/organic-flat-blog-post-illustration.jpg"
             }
-          /> */}
+          />
         </div>
         <div className="w-full sm:w-full">
           <div className="p-8 xs:p-4">
@@ -27,8 +29,9 @@ const Login = () => {
             <p className="mt-2 mb-5 text-base leading-tight text-gray-600">
               Create an account in{" "}
               <span className="font-bold text-blue-500 text-xl">
-                MedCode Community ! 
-              </span> to publish blogs.
+                MedCode Community !
+              </span>{" "}
+              to publish blogs.
             </p>
 
             <button
