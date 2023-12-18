@@ -2,28 +2,30 @@ import React from "react";
 
 const BlogLoading = () => {
   return (
-    <div className="animate-pulse block-item shadow-md w-full mx-auto mt-8">
-      <div className="bg-slate-500 h-6 rounded-t-3xl" />
-      <div className="py-4 px-6">
-        <div className="flex items-center space-x-2">
-          <div className="h-7 w-7 bg-slate-500 rounded-full" />
-          <div className="h-3 bg-slate-500 rounded-full w-1/3" />
+    <div className="p-4 flex justify-between shadow-lg rounded-lg shadow-gray-500 items-center space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center">
+      <div className="w-full">
+        <div className="h-4 py-3 bg-gray-500 rounded-full dark:bg-gray-700 w-44 mb-4" />
+        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 mb-2.5 w-80" />
+        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 mb-2.5 w-80" />
+        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700  mb-2.5 w-72" />
+        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700  mb-2.5 w-72" />
+        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 w-72 mb-3" />
+        <div className="flex justify-start items-center">
+          <div className="rounded-full bg-gray-500 h-8 w-8" />
+          <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 w-32 ml-2" />
         </div>
-        <div className="my-6">
-          <div className="h-5 bg-slate-500 rounded-full w-3/4" />
-          <div className="my-4">
-            <div className="h-3 my-2bg-slate-500 rounded-full w-full" />
-            <div className="h-3 my-2 bg-slate-500 rounded-full w-5/6" />
-            <div className="h-3 my-2 bg-slate-500 rounded-full w-4/6" />
-            <div className="h-3 my-2 bg-slate-500 rounded-full w-5/6" />
-            <div className="h-3 my-2 bg-slate-500 rounded-full w-3/6" />
-            <div className="h-3 my-2 bg-slate-500 rounded-full w-2/6" />
-          </div>
-        </div>
-        <div className="my-4">
-          <div className="h-11 bg-slate-500 rounded-lg w-full" />
-          <div className="h-3 my-4 mx-auto bg-slate-500 rounded-full w-1/2" />
-        </div>
+        <div className=" bg-gray-500 rounded-md dark:bg-gray-700 w-20 h-6 mt-3" />
+      </div>
+      <div className="flex items-center justify-center w-full h-52 bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
+        <svg
+          className="w-10 h-10 text-gray-500 dark:text-gray-600"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 18"
+        >
+          <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+        </svg>
       </div>
     </div>
   );

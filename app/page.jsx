@@ -17,7 +17,10 @@ export default function Home() {
     fetch("https://www.medcode.dev/api/articles")
       .then((res) => res.json())
       .then((data) => {
-        setPosts(data);
+        const sortedPosts = data?.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+        setPosts(sortedPosts);
         setLoading(false);
       });
   }, []);
@@ -29,7 +32,7 @@ export default function Home() {
         <CategoryList />
       </div>
       <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-8 py-2">
-      <AiTwotoneSound className="dark:text-light" />
+        <AiTwotoneSound className="dark:text-light" />
         <p className="ml-2 sm:text-xl ">Recent Articles</p>
       </span>{" "}
       <div className="main-content bg-light dark:bg-dark gap-6 px-12 py-4 md:block xs:px-5 xs:gap-1">
@@ -91,6 +94,7 @@ export default function Home() {
           </span>
           <Youtube />
         </div>  */}
+        
 
         {/*  <div className="mt-20 md:p-10 md:mt-4">
           <div className="block justify-start items-start md:block p-4 bg-white h-28 mb-6 dark:bg-dark rounded overflow-hidden shadow-lg border-2">
