@@ -94,7 +94,6 @@ export default function Home() {
           </span>
           <Youtube />
         </div>  */}
-        
 
         {/*  <div className="mt-20 md:p-10 md:mt-4">
           <div className="block justify-start items-start md:block p-4 bg-white h-28 mb-6 dark:bg-dark rounded overflow-hidden shadow-lg border-2">

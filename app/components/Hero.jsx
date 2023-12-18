@@ -14,7 +14,7 @@ const Card = ({ posts, loading }) => {
     return formattedDate;
   };
   return (
-    <div>
+    <div className="sm:mb-3">
       {loading ? (
         <BlogLoading />
       ) : posts.length > 0 ? (
