@@ -9,6 +9,7 @@ import useThemeSwitcher from "./hooks/useThemeSwitcher";
 import Image from "next/image";
 import { Lalezar } from "next/font/google";
 import { Limelight } from "next/font/google";
+import { BsInstagram } from "react-icons/bs";
 const lalezar = Lalezar({
   subsets: ["latin"],
   variables: "-lalezar",
@@ -244,7 +245,7 @@ const NavBar = () => {
               target={"_blank"}
               className="w-6 mx-3"
             >
-         
+             <BsInstagram size={24} className="fill-pink-700" />
             </Link>
             <Link
               href="https://github.com/med134"
