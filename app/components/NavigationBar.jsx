@@ -49,12 +49,12 @@ const NavigationBar = () => {
         >
           Added Templates & components
         </Link>
-        <Link
+      {/*   <Link
           className="inline-block w-auto min-w-[250px] px-6 py-4 text-white transition-all bg-gray-700 dark:bg-white dark:text-gray-800 rounded-md shadow-xl sm:w-auto hover:bg-gray-900 hover:text-white shadow-slate-300 dark:shadow-slate-700 hover:shadow-2xl hover:shadow-slate-400 hover:-translate-y-px onfocus:font-extrabold"
           href="/dashboard/addArticles"
         >
           Added Articles & blogs
-        </Link>
+        </Link> */}
       </div>
     </Layout>
   );
