@@ -111,7 +111,7 @@ const AddNewPost = () => {
                     alt="image_post"
                     width={350}
                     height={80}
-                    property
+                    
                   />
                 </div>
                 <div className="inline-flex justify-between items-center">
