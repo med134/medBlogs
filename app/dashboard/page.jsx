@@ -1,9 +1,10 @@
 
 import React from "react";
+import NavigationBar from "../components/NavigationBar";
 export default function DashBoard() {
   return (
     <div>
-      <h1>dashboard</h1>
+      <NavigationBar/>
     </div>
   );
 }
