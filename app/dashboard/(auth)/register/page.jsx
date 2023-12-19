@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
@@ -9,12 +8,6 @@ import Image from "next/image";
 
 const Register = () => {
   const session = useSession();
-  const router = useRouter();
-  useEffect(() => {
-    if (session.status === "authenticated") {
-      router?.push("/dashboard/addTemplates");
-    }
-  });
 
   return (
     <>

@@ -2,19 +2,10 @@
 import Link from "next/link";
 import React from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import Layout from "./Layout";
-import { useEffect } from "react";
-
 
 const NavigationBar = () => {
   const session = useSession();
-  const router = useRouter();
-  useEffect(() => {
-    if (session.status === "unauthenticated") {
-      router?.push("/dashboard/login");
-    }
-  });
 
   return (
     <Layout className="mx-auto flex p-16 bg-white py-2 w-full text-center flex-col rounded-3xl px-4 sm:px-0 sm:p-1 sm:py-0">
