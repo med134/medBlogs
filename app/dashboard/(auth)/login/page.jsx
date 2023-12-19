@@ -1,20 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 const Login = () => {
   const session = useSession();
-  const router = useRouter();
   console.log(session);
-  useEffect(() => {
-    if (session.status === "authenticated") {
-      router?.push("/dashboard/addTemplates");
-    }
-  });
+  if (session.status === "authenticated") {
+    redirect("/dashboard/addTemplates");
+  }
   return (
     <>
       <div className="flex min-h-0 w-full items-center justify-center bg-gray-100 p-28 lg:p-16 md:p-8 sm:p-4 sm:block">

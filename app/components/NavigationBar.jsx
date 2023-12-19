@@ -1,11 +1,18 @@
 "use client";
 import Link from "next/link";
-import React from "react";
-import { useSession } from "next-auth/react";
+import React, { useEffect } from "react";
 import Layout from "./Layout";
+import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const NavigationBar = () => {
   const session = useSession();
+  console.log(session);
+  if (session.status === "authenticated") {
+    redirect("/dashboard/addTemplates");
+  } else if (session.status === "unauthenticated") {
+    redirect("/dashboard/login");
+  }
 
   return (
     <Layout className="mx-auto flex p-16 bg-white py-2 w-full text-center flex-col rounded-3xl px-4 sm:px-0 sm:p-1 sm:py-0">

@@ -2,12 +2,11 @@
 import React from "react";
 import Loading from "../loading";
 import useSWR from "swr";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 
 const AddNewPost = () => {
-  const route = useRouter();
   const handleDelete = async (id) => {
     try {
       await fetch(`/api/posts/${id}`, {
@@ -53,12 +52,8 @@ const AddNewPost = () => {
     fetcher
   );
 
-  if (session.status === "loading") {
-    return <Loading />;
-  }
-
   if (session.status === "unauthenticated") {
-    route?.push("/dashboard/login");
+    redirect("/dashboard/login");
   }
 
   return (
@@ -105,13 +100,13 @@ const AddNewPost = () => {
             data?.map((post) => (
               <div key={post._id}>
                 <div className="">
-                  <Image
-                    className="rounded-md object-cover"
+                <Image
                     src={post.image}
-                    alt="image_post"
-                    width={350}
-                    height={80}
-                    
+                    alt="image post"
+                    className="w-32 h-32 rounded-md"
+                    width={300}
+                    height={300}
+                    priority
                   />
                 </div>
                 <div className="inline-flex justify-between items-center">

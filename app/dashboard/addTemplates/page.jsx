@@ -1,6 +1,5 @@
 import React from "react";
 import AddNewPost from "@/app/components/AddNewPost";
-import NavigationBar from "@/app/components/NavigationBar";
 export const metadata = {
   title: "Dashboard Add templates & components | medCode",
   description: `Elevate Your Web Development with Free Tailwind CSS Templates & Components & code source Our meticulously designed frontend dashboard`,
@@ -44,8 +43,7 @@ export const metadata = {
 export default function Page() {
   return (
     <div className="w-full h-auto p-8 py-8 md:py-2 sm:p-2 sm:py-2">
-      <NavigationBar/>
-     <AddNewPost /> 
+      <AddNewPost />
     </div>
   );
 }

@@ -177,6 +177,7 @@ const NavBar = () => {
                 src={logo}
                 alt="logo_website"
                 className="w-20 dark:bg-white dark:rounded-xl dark:p-1"
+                priority
               />
               <div className="block mt-2">
                 <p className="font-Yeseva text-3xl text-light dark:text-dark">
