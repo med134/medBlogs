@@ -1,10 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Loading from "../loading";
 import "highlight.js/styles/a11y-dark.min.css";
-import useSWR from "swr";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { useQuill } from "react-quilljs";
 import "react-quill/dist/quill.snow.css";
 import hljs from "highlight.js";
@@ -84,7 +80,7 @@ const AddNewArticle = () => {
   const handleJobs = (event) => {
     setSelectedJobs(event.target.value);
   };
-  const route = useRouter();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
@@ -110,26 +106,12 @@ const AddNewArticle = () => {
           job,
         }),
       });
-      mutate();
+      /* mutate(); */
       e.target.reset();
     } catch (err) {
       console.log(err);
     }
   };
-
-  const session = useSession();
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, error, isLoading, mutate } = useSWR(
-    `/api/articles?username=${session?.data?.user.name}`,
-    fetcher
-  );
-  if (session.status === "loading") {
-    return <Loading />;
-  }
-  if (session.status === "unauthenticated") {
-    route?.push("/dashboard/login");
-  }
-
   return (
     <div className="inline-block p-8 py-8 sm:p-2 sm:py-2">
       <div className="p-8 block justify-between items-center md:inline-block sm:items-center">

@@ -10,7 +10,7 @@ const Login = () => {
   const session = useSession();
   console.log(session);
   if (session.status === "authenticated") {
-    redirect("/dashboard/addTemplates");
+    redirect("/dashboard");
   }
   return (
     <>
