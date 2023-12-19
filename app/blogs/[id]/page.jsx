@@ -3,7 +3,7 @@ import Image from "next/image";
 import SidBar from "@/app/components/SidBar";
 import "react-quill/dist/quill.snow.css";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import Comments from "@/app/module/Comments";
+import Comments from "@/app/components/comments/comments";
 
 
 async function getData(id) {
