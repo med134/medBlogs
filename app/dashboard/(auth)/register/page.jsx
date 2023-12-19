@@ -10,11 +10,11 @@ import Image from "next/image";
 const Register = () => {
   const session = useSession();
   const router = useRouter();
-  /*  useEffect(() => {
+  useEffect(() => {
     if (session.status === "authenticated") {
       router?.push("/dashboard/addTemplates");
     }
-  }); */
+  });
 
   return (
     <>
