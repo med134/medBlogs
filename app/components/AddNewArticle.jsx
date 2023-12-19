@@ -106,7 +106,7 @@ const AddNewArticle = () => {
           job,
         }),
       });
-      /* mutate(); */
+      mutate();
       e.target.reset();
     } catch (err) {
       console.log(err);
@@ -172,7 +172,7 @@ const AddNewArticle = () => {
           </div>
 
           <div ref={quillRef} style={{ height: 400, marginLeft: 4 }} />
-          <button className="rounded-md font-semibold py-2 w-full bg-violet-600 text-light ml-4 mt-5 hover:bg-purple-400">
+          <button type='submit' className="rounded-md font-semibold py-2 w-full bg-violet-600 text-light ml-4 mt-5 hover:bg-purple-400">
             Post Now
           </button>
         </form>
