@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tiptap/pm": "^2.1.13",
+    "@tiptap/react": "^2.1.13",
+    "@tiptap/starter-kit": "^2.1.13",
     "axios": "^1.6.2",
+    "bcryptjs": "^2.4.3",
     "classnames": "^2.3.2",
     "framer-motion": "^10.16.16",
     "highlight.js": "^11.9.0",

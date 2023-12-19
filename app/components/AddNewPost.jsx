@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
+import AlertBar from "./AlertBar";
 
 const AddNewPost = () => {
   const session = useSession();
@@ -41,6 +42,9 @@ const AddNewPost = () => {
           username: session.data.user.name,
         }),
       });
+      <div>
+        <AlertBar />
+      </div>;
       mutate();
       e.target.reset();
     } catch (err) {
@@ -57,7 +61,7 @@ const AddNewPost = () => {
     <div className="inline-block p-8 py-4 sm:p-2 sm:py-2 md:p-2 md:py-2 lg:p-2 lg:py-2 dark:bg-dark">
       <div className="w-full flex justify-start items-center px-10">
         <Link href="/dashboard">
-          <FaArrowLeft  className="text-2xl text-gray-700 hover:text-slate-400 dark:text-light"/>{" "} 
+          <FaArrowLeft className="text-2xl text-gray-700 hover:text-slate-400 dark:text-light" />{" "}
         </Link>
         <h1 className="text-gray-700 text-3xl lg:text-2xl dark:text-light font-bold ml-[30%] xs:text-[16px] md:ml-[20%] xs:ml-4">
           Create a Templates & Component
