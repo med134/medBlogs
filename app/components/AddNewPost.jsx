@@ -1,13 +1,14 @@
 "use client";
 import React from "react";
-import Loading from "../loading";
-import useSWR from "swr";
 import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 
 const AddNewPost = () => {
-  const handleDelete = async (id) => {
+  const session = useSession();
+  if (session.status === "unauthenticated") {
+    redirect("/dashboard/login");
+  }
+  /*   const handleDelete = async (id) => {
     try {
       await fetch(`/api/posts/${id}`, {
         method: "DELETE",
@@ -16,7 +17,7 @@ const AddNewPost = () => {
     } catch (err) {
       console.log(err);
     }
-  };
+  }; */
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
@@ -45,17 +46,11 @@ const AddNewPost = () => {
     }
   };
 
-  const session = useSession();
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  /* const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, isLoading, mutate } = useSWR(
     `/api/posts?username=${session?.data?.user.name}`,
     fetcher
-  );
-
-  if (session.status === "unauthenticated") {
-    redirect("/dashboard/login");
-  }
-
+  ); */
   return (
     <div className="inline-block p-8 py-8 sm:p-2 sm:py-2 md:p-2 md:py-2 lg:p-2 lg:py-2">
       <div className="p-8 flex justify-between md:inline-block sm:items-center sm:p-1">
@@ -93,14 +88,14 @@ const AddNewPost = () => {
             Post Now
           </button>
         </form>
-        <div className="w-full p-6 rounded-lg sm:p-2 items-start">
+        {/* <div className="w-full p-6 rounded-lg sm:p-2 items-start">
           {isLoading ? (
             <Loading />
           ) : (
             data?.map((post) => (
               <div key={post._id}>
                 <div className="">
-                <Image
+                  <Image
                     src={post.image}
                     alt="image post"
                     className="w-32 h-32 rounded-md"
@@ -123,7 +118,7 @@ const AddNewPost = () => {
               </div>
             ))
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );
