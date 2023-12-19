@@ -8,10 +8,6 @@ import { signOut } from "next-auth/react";
 const ProfileDown = () => {
   const session = useSession();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const MyLoader = ({ src }) => {
-    const session = useSession();
-    return `${session?.data?.user.image}`;
-  };
 
   const toggleDropdown = () => {
     setIsDropdownOpen((prevState) => !prevState);
@@ -25,9 +21,8 @@ const ProfileDown = () => {
           onClick={toggleDropdown}
         >
           <Image
-            loader={MyLoader}
-            width={6}
-            height={6}
+            width={32}
+            height={32}
             src={session?.data?.user.image}
             alt="photo_profile"
             className="w-10 h-10 rounded-[50%] cursor-pointer"
