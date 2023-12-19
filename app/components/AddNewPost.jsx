@@ -2,6 +2,8 @@
 import React from "react";
 import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { FaArrowLeft } from "react-icons/fa";
+import Link from "next/link";
 
 const AddNewPost = () => {
   const session = useSession();
@@ -52,7 +54,15 @@ const AddNewPost = () => {
     fetcher
   ); */
   return (
-    <div className="inline-block p-8 py-8 sm:p-2 sm:py-2 md:p-2 md:py-2 lg:p-2 lg:py-2">
+    <div className="inline-block p-8 py-4 sm:p-2 sm:py-2 md:p-2 md:py-2 lg:p-2 lg:py-2">
+      <div className="w-full flex justify-start items-center px-10">
+        <Link href="/dashboard">
+          <FaArrowLeft  className="text-2xl text-gray-700 hover:text-slate-400"/>{" "}
+        </Link>
+        <h1 className="text-gray-700 text-3xl lg:text-2xl font-bold ml-[30%] xs:text-[16px] md:ml-[20%] xs:ml-4">
+          Create a Templates & Component
+        </h1>
+      </div>
       <div className="p-8 flex justify-between md:inline-block sm:items-center sm:p-1">
         <form className="p-4 text-left text-gray-700" onSubmit={handleSubmit}>
           <input
