@@ -1,13 +1,38 @@
 "use client";
 import React, { useState } from "react";
+import { redirect } from "next/navigation";
 import "highlight.js/styles/a11y-dark.min.css";
+import useSWR from 'swr';
+import { useSession } from "next-auth/react";
+import { useQuill } from "react-quilljs";
 import "react-quill/dist/quill.snow.css";
-import ReactQuill from "react-quill";
+import hljs from "highlight.js";
 
 const AddNewArticle = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
-  const [editorHtml, setEditorHtml] = useState("");
+  const session=useSession();
+  if (session.status === "unauthenticated") {
+    redirect("/dashboard/login");
+  }
+  const ex = undefined;
+  const text = ex || "";
+  hljs.configure({
+    languages: [
+      "javascript",
+      "ruby",
+      "python",
+      "rust",
+      "java",
+      "html",
+      "css",
+      "C",
+      "C#",
+    ],
+  });
+  const theme = "snow";
+  const placeholder = "write your content...";
+
   const modules = {
     toolbar: [
       ["blockquote", "code-block"],
@@ -26,18 +51,47 @@ const AddNewArticle = () => {
       [{ size: ["small", false, "large", "huge"] }],
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
     ],
+    syntax: {
+      highlight: (text) => hljs.highlightAuto(text).value,
+    },
   };
-  const handleChange = (html) => {
-    setEditorHtml(html);
-  };
-
+  const formats = [
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "code-block",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "video",
+    "align",
+    "color",
+    "background",
+  ];
+  const { quill, quillRef } = useQuill({
+    theme,
+    modules,
+    formats,
+    placeholder,
+  });
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
   };
   const handleJobs = (event) => {
     setSelectedJobs(event.target.value);
   };
-
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data, error, isLoading, mutate } = useSWR(
+    `/api/articles?username=${session?.data?.user.name}`,
+    fetcher
+  );
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
@@ -46,7 +100,7 @@ const AddNewArticle = () => {
     const description = e.target[3].value;
     const category = selectedOption;
     const job = selectedJobs;
-    const content = editorHtml;
+    const content = quill.root.innerHTML;
 
     try {
       await fetch("/api/articles", {
@@ -128,16 +182,8 @@ const AddNewArticle = () => {
             </select>
           </div>
 
-          <ReactQuill
-            theme="snow"
-            value={editorHtml}
-            onChange={handleChange}
-            modules={modules}
-          />
-          <button
-            type="submit"
-            className="rounded-md font-semibold py-2 w-full bg-violet-600 text-light ml-4 mt-5 hover:bg-purple-400"
-          >
+          <div ref={quillRef} style={{ height: 400, marginLeft: 4 }} />
+          <button type="submit" className="rounded-md font-semibold py-2 w-full bg-violet-600 text-light ml-4 mt-5 hover:bg-purple-400">
             Post Now
           </button>
         </form>
