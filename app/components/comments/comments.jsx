@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import Link from "next/link";
 import styles from "./comments.module.css";
@@ -13,7 +12,7 @@ const Comments = ({ postSlug }) => {
   const session = useSession();
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, mutate, isLoading } = useSWR(
-    `/api/comments?blogId=${postSlug}`,
+    `https://www.medcode.dev/api/comments?blogId=${postSlug}`,
     fetcher
   );
   const [comment, setComment] = useState("");
@@ -32,11 +31,6 @@ const Comments = ({ postSlug }) => {
     mutate();
     e.target.reset();
   };
-  const MyLoader = ({ src }) => {
-    const session = useSession();
-    return `${session?.data?.user.image}`;
-  };
-
   return (
     <div className="w-full bg-white rounded-lg border p-2 dark:bg-dark">
       <span className="font-bold text-xl py-2 dark:text-light">Comments</span>
@@ -45,17 +39,13 @@ const Comments = ({ postSlug }) => {
           className={`${styles.write} dark:bg-dark dark:text-light`}
           onSubmit={handleSubmit}
         >
-          <Image
-            loader={MyLoader}
-            src={
-              session?.data?.user?.image
-                ? session.data.user.image
-                : `https://i.ibb.co/p1dMcP9/man.png`
-            }
-            alt=""
-            width={50}
-            height={50}
-            className={styles.image}
+           <Image
+            width={10}
+            height={10}
+            priority
+            src={session?.data?.user.image}
+            alt="photo_profile"
+            className="w-10 h-10 rounded-[50%] cursor-pointer"
           />
           <input
             placeholder="write a comment..."
