@@ -3,6 +3,7 @@ import Image from "next/image";
 import SidBar from "@/app/components/SidBar";
 import "react-quill/dist/quill.snow.css";
 import { FaRegCalendarAlt } from "react-icons/fa";
+import Comments from "@/app/module/Comments";
 
 
 async function getData(id) {
@@ -89,7 +90,7 @@ const BlogPage = async ({ params }) => {
               dangerouslySetInnerHTML={{ __html: content }}
             ></div>
           </div>
-          {/* <Comments postSlug={id} /> */}
+          <Comments postSlug={id} /> 
         </div>
       </div>
       <div className="sm:w-full sm:p-6">

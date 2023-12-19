@@ -14,7 +14,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetch("https://www.medcode.dev/api/articles")
+    fetch("http://localhost:3000/api/articles")
       .then((res) => res.json())
       .then((data) => {
         const sortedPosts = data?.sort(
