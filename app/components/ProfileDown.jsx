@@ -13,7 +13,7 @@ const ProfileDown = () => {
     setIsDropdownOpen((prevState) => !prevState);
   };
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left z-50">
       <div>
         <button
           type="button"
@@ -21,8 +21,8 @@ const ProfileDown = () => {
           onClick={toggleDropdown}
         >
           <Image
-            width={10}
-            height={10}
+            width={50}
+            height={50}
             priority
             src={session?.data?.user.image}
             alt="photo_profile"
