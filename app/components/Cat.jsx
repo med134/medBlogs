@@ -18,14 +18,11 @@ const Cat = () => {
 
   return (
     <>
-      <span className="font-os text-lg font-bold py-3 dark:text-light">
-        Categories
-      </span>
       {loading ? (
         <Skeleton />
       ) : (
         cat?.map((item) => (
-          <ul key={item._id} className="inline-flex items-start">
+          <ul key={item._id} className="inline-flex items-start ml-2">
             <li className="flex mx-1">
               <Link
                 className="p-2 px-3 border-red-500 mb-1 rounded font-medium hover:bg-transparent hover:border-red-600 border bg-red-400/25 dark:bg-purple text-red-800 dark:text-light"

@@ -19,7 +19,10 @@ const SidBar = async () => {
   return (
     <div className="mt-3">
       <aside className="w-full rounded-lg border-2 py-2 border-red-600 mb-6 p-2 mt-4 max-w-sm mx-auto dark:border-light">
-        <Cat/>
+        <span className="text-lg font-bold py-3 dark:text-light">
+          Categories
+        </span>
+        <Cat />
       </aside>
       <span className="text-xl text-gray-800 font-semibold mt-7 sm:w-full sm:mb-4 sm:text-xl sm:mt-1 dark:text-light">
         More titles From{" "}

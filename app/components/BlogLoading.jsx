@@ -2,8 +2,8 @@ import React from "react";
 
 const BlogLoading = () => {
   return (
-    <div className="p-4 flex justify-between shadow-lg rounded-lg shadow-gray-500 items-center space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:block md:items-center">
-      <div className="w-full">
+    <div className="p-4 flex justify-between shadow-lg rounded-lg shadow-gray-500 items-center space-y-8 animate-pulse  md:space-x-1 md:space-y-2 md:flex-wrap-reverse md:items-start">
+      <div className="w-full md:mt-3">
         <div className="h-4 py-3 bg-gray-500 rounded-full dark:bg-gray-700 w-44 mb-4" />
         <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 mb-2.5 w-80" />
         <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 mb-2.5 w-80" />
@@ -14,9 +14,9 @@ const BlogLoading = () => {
           <div className="rounded-full bg-gray-500 h-8 w-8" />
           <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 w-32 ml-2" />
         </div>
-        <div className=" bg-gray-500 rounded-md dark:bg-gray-700 w-20 h-6 mt-3" />
+        <div className=" bg-gray-500 rounded-md dark:bg-gray-900 w-20 h-6 mt-3" />
       </div>
-      <div className="flex items-center justify-center w-full h-52 bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
+      <div className="flex items-center justify-center w-full h-52 bg-gray-300 rounded dark:bg-gray-700 md:mb-2">
         <svg
           className="w-10 h-10 text-gray-500 dark:text-gray-600"
           aria-hidden="true"

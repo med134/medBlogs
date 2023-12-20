@@ -3,43 +3,45 @@ import Link from "next/link";
 import styles from "./comments.module.css";
 import Image from "next/image";
 import useSWR from "swr";
-import Loading from "@/app/loading";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import Loading from "@/app/Loading";
 
 const Comments = ({ postSlug }) => {
-  const { status } = useSession();
   const session = useSession();
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, mutate, isLoading } = useSWR(
-    `https://www.medcode.dev/api/comments?blogId=${postSlug}`,
+    `/api/comments?blogId=${postSlug}`,
     fetcher
   );
   const [comment, setComment] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    await fetch("/api/comments", {
-      method: "POST",
-      body: JSON.stringify({
-        blogId: postSlug,
-        username: session?.data?.user?.name,
-        imageUser: session?.data?.user?.image,
-        comment,
-      }),
-    });
-    mutate();
-    e.target.reset();
+    try {
+      await fetch("/api/comments", {
+        method: "POST",
+        body: JSON.stringify({
+          blogId: postSlug,
+          username: session?.data?.user?.name,
+          imageUser: session?.data?.user?.image,
+          comment,
+        }),
+      });
+      mutate();
+      e.target.reset();
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="w-full bg-white rounded-lg border p-2 dark:bg-dark">
       <span className="font-bold text-xl py-2 dark:text-light">Comments</span>
-      {status === "authenticated" ? (
+      {session.status === "authenticated" ? (
         <form
           className={`${styles.write} dark:bg-dark dark:text-light`}
           onSubmit={handleSubmit}
         >
-           <Image
+          <Image
             width={10}
             height={10}
             priority
@@ -76,9 +78,9 @@ const Comments = ({ postSlug }) => {
             >
               <div className={styles.user}>
                 <div className="flex justify-center items-center">
-                  <img
+                  <Image
                     src={item?.imageUser}
-                    alt=""
+                    alt="useImage"
                     width={50}
                     height={50}
                     priority
