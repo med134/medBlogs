@@ -51,7 +51,6 @@ export default function Home() {
                 <p className="ml-2 ">Templates & Components</p>
               </span>{" "}
               <h1 className="text-4xl text-gray-900 font-bold leading-tight mb-5 sm:text-sm capitalize dark:text-light lg:text-xl">
-                {" "}
                 Software Mastery:Professional Free Tailwind Components &
                 Templates
               </h1>

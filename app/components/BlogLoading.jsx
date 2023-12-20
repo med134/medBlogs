@@ -2,14 +2,14 @@ import React from "react";
 
 const BlogLoading = () => {
   return (
-    <div className="p-4 flex justify-between shadow-lg rounded-lg shadow-gray-500 items-center space-y-8 animate-pulse  md:space-x-1 md:space-y-2 md:flex-wrap-reverse md:items-start">
+    <div className="p-4 flex justify-between shadow-lg rounded-lg shadow-gray-500 items-center space-y-8 animate-pulse  md:space-x-1 md:space-y-2 md:flex-wrap-reverse md:items-start md:mb-6">
       <div className="w-full md:mt-3">
         <div className="h-4 py-3 bg-gray-500 rounded-full dark:bg-gray-700 w-44 mb-4" />
-        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 mb-2.5 w-80" />
-        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 mb-2.5 w-80" />
-        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700  mb-2.5 w-72" />
-        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700  mb-2.5 w-72" />
-        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 w-72 mb-3" />
+        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 mb-2.5 w-80 xl:w-64 lg:w-28" />
+        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 mb-2.5 w-80 xl:w-64 lg:w-28" />
+        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700  mb-2.5 w-72 xl:w-52" />
+        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700  mb-2.5 w-72 xl:w-52" />
+        <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 w-72 mb-3 xl:w-44" />
         <div className="flex justify-start items-center">
           <div className="rounded-full bg-gray-500 h-8 w-8" />
           <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 w-32 ml-2" />

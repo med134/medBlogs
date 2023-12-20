@@ -34,7 +34,7 @@ const SideBar = () => {
           index < 6 ? (
             <div
               key={item.id}
-              className="border border-gray-200 border-b-red-600 rounded-lg shadow-lg mb-3"
+              className="border border-gray-200 border-b-slate-600 rounded-lg shadow-lg mb-3"
             >
               <div className="flex item-start p-3">
                 <Image

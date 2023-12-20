@@ -2,33 +2,46 @@ import React from "react";
 import { FaReact } from "react-icons/fa6";
 import Link from "next/link";
 import { IoMenu } from "react-icons/io5";
+import logo from "@/public/images/logo3.png";
+import Image from "next/image";
 
 const Aside = () => {
   return (
-    <aside className="fixed z-30 rounded-xl">
+    <section className="fixed z-30 rounded-xl">
       <input
         type="checkbox"
         className="peer hidden px-6 dark:text-light"
         id="sidebar-open"
       />
       <label
-        className="peer-checked:rounded-full peer-checked:p-2 peer-checked:right-6 peer-checked:text-dark peer-checked:bg-white dark:peer-checked:bg-dark absolute top-6 z-20 mx-2 cursor-pointer"
+        className="peer-checked:rounded-full peer-checked:ml-0 peer-checked:p-2 peer-checked:right-6 peer-checked:text-dark peer-checked:bg-white dark:peer-checked:bg-dark absolute top-8 z-20 cursor-pointer"
         htmlFor="sidebar-open"
         aria-label="Categories"
       >
-        <IoMenu className='w-8 h-8 dark:text-light' />
+        <IoMenu className="w-8 h-8 dark:text-light" />
       </label>
       <nav
         aria-label="Sidebar Navigation"
         className="peer-checked:w-64 rounded-tr-3xl left-0 z-10 flex h-screen w-0 flex-col overflow-hidden bg-gradient-to-r from-slate-100 via-gray-300 to-slate-200 text-white transition-all md:h-screen md:w-0 lg:w-0"
       >
         <div className="bg-slate-800 mt-5 py-4 pl-10 md:mt-10 rounded-md">
-          <span className="">
-            <span className="mr-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-800 align-bottom text-2xl font-bold">
-              M
-            </span>
-            <span className="text-xl">edcode</span>
+          <span className="flex justify-start items-center">
+            <Image src={logo} className="rounded full w-10 h-10" />
+            <p className="text-xl ml-2">Medcode</p>
           </span>
+        </div>
+        <div className="flex justify-start items-center p-2 px-8">
+          <img
+            src="https://source.unsplash.com/100x100/?portrait"
+            alt=""
+            className="w-12 h-12 rounded-full dark:bg-gray-500"
+          />
+          <div className="ml-3">
+            <p className="text-sm font-semibold text-gray-800">Leroy Jenkins</p>
+            <span className="space-x-1 text-xs text-gray-400">
+              View profile
+            </span>
+          </div>
         </div>
         <ul className="mt-4 space-y-2 md:mt-20 xs:mt-2">
           <li className="relative">
@@ -239,7 +252,7 @@ const Aside = () => {
           </li>
         </ul>
       </nav>
-    </aside>
+    </section>
   );
 };
 
