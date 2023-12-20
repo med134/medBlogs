@@ -126,7 +126,7 @@ const AddNewArticle = () => {
     }
   };
   return (
-    <div className="inline-block p-8 py-8 sm:p-2 sm:py-2">
+    <div className="inline-block p-8 py-8 sm:p-2 sm:py-2 dark:bg-dark">
       <div className="w-full flex justify-start items-center px-10">
         <Link href="/dashboard">
           <FaArrowLeft className="text-2xl text-gray-700 hover:text-slate-400 dark:text-light" />{" "}

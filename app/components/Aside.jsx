@@ -30,7 +30,7 @@ const Aside = () => {
             <span className="text-xl">edcode</span>
           </span>
         </div>
-        <ul className="mt-4 space-y-2 md:mt-20">
+        <ul className="mt-4 space-y-2 md:mt-20 xs:mt-2">
           <li className="relative">
             <button className="focus:bg-slate-600 hover:bg-slate-600 hover:text-light flex w-full space-x-2 rounded-md px-10 py-2 text-gray-800 focus:outline-none">
               <span>
