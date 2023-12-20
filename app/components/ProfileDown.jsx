@@ -14,10 +14,10 @@ const ProfileDown = () => {
   };
   return (
     <div className="relative inline-block text-left z-50">
-      <div>
+      <div className="z-50">
         <button
           type="button"
-          className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
+          className="flex text-sm border-2 border-transparent z-50 rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
           onClick={toggleDropdown}
         >
           <Image
@@ -31,7 +31,7 @@ const ProfileDown = () => {
         </button>
       </div>
       {isDropdownOpen && (
-        <div className="origin-top-right absolute right-2 mt-2 rounded-md shadow-lg">
+        <div className="origin-top-right absolute right-2 mt-2 rounded-md shadow-lg z-50">
           <div className="py-1 bg-white rounded-md shadow-xs">
             <button
               onClick={signOut}

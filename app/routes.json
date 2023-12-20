@@ -1,0 +1,31 @@
+[
+    {
+      "name": "home",
+      "url": "/"
+    },
+    {
+      "name": "about",
+      "url": "/about"
+    },
+    {
+      "name": "projects",
+      "url": "/projects"
+    },
+    {
+      "name": "blogs",
+      "url": "/blogs"
+    },
+    {
+      "name": "category",
+      "url":"/category"
+    },
+    {
+      "name": "templates",
+      "url": "/templates"
+    },
+    {
+      "name": "dashboard",
+      "url": "/dashboard"
+    }
+  ]
+  

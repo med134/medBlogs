@@ -32,11 +32,9 @@ async function getPosts(cat) {
 
   return sortedPosts;
 }
-
 export async function generateMetadata({ params }) {
   const post = await getPosts(params.cat);
   const heading = `Blogs About ${params.cat}`;
-
   return {
     title: heading,
     description: `Explore a treasure trove of insightful programming articles and engaging blogs about ${params.cat} Discover expert-written content covering languages, frameworks`,
@@ -57,7 +55,7 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `/category/${params.cat}`,
       languages: {
-        "en-Us": `/en-us/category/${params.cat}`,
+        "en-US": `en-US/category/${params.cat}`,
       },
       types: {
         "application/rss+xml": "https://www.medcode.dev/rss",

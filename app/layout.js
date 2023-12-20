@@ -3,10 +3,11 @@ import "./globals.css";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import AuthProvider from "./components/authProvider/AuthProvider";
+import GoogleAnalytic from "./components/GoogleAnalytic";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
-  title: "Software Mastery-Insider Dev Guides-Blogs | medCode",
+  title:"Software Mastery-Insider Dev Guides-Blogs | medCode",
   description: `Learning programming is accessible for beginners through free software programming
   courses These courses introduce essential best programming languages`,
   generator: "Next.js",
@@ -65,26 +66,26 @@ export const metadata = {
   verification: {
     google: "cFXi6ELWEfl4UY9OE5i_S5QFU3LbUvdxGgW6RQgHWw",
   },
-  alternates: {
+  /* alternates: {
     canonical: "/",
     languages: {
-      'en-US': '/en-US',
-      'de-DE': '/de-DE',
+      "en-US": "/en-US",
     },
     types: {
       "application/rss+xml": "https://medcode.dev/rss",
     },
-  },
+  }, */
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <GoogleAnalytic />
       <body className={inter.className} suppressHydrationWarning={true}>
-        <AuthProvider> 
-        <NavBar />
-        {children}
-        <Footer/>
+        <AuthProvider>
+          <NavBar />
+          {children}
+          <Footer />
         </AuthProvider>
       </body>
     </html>

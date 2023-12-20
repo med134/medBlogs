@@ -11,7 +11,7 @@ import profilePic from "@/public/images/med.jpg";
 /* import HomeComponent from "../components/HomeComponent";
  */
 export const metadata = {
-  title: "medCode | About us & Resume & Experience",
+  title: "About us & Resume & Experience | medCode ",
   description: `Welcome to My Web Developer Portfolio UX Designer Here, you'll find a showcase of my career and educational as a web developer also some of my skills`,
   keywords: ["resume", "Experience", "learning"],
   alternates: {
