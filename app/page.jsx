@@ -8,6 +8,7 @@ import Aside from "./components/Aside";
 import { AiTwotoneSound } from "react-icons/ai";
 import Search from "./components/Search";
 import SideBar from "./components/SideBar";
+import CardX from "./components/FirstView";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -25,10 +26,15 @@ export default function Home() {
       });
   }, []);
   return (
-    <div className='dark:bg-dark'>
+    <div className="dark:bg-dark">
       <Aside />
       <Search getSearchResult={(result) => setPosts(result)} />
-      <div className="bg-light pt-8 dark:bg-dark">
+      <div className="bg-light pt-10 dark:bg-dark">
+       <CardX posts={posts} loading={loading} />
+        <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-2 py-2">
+          <AiTwotoneSound className="dark:text-light" />
+          <p className="ml-2 sm:text-2xl font-extrabold ">Categories</p>
+        </span>{" "}
         <CategoryList />
       </div>
       <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-8 py-2">

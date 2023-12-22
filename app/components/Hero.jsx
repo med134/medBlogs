@@ -5,6 +5,7 @@ import BlogLoading from "./BlogLoading";
 import { FaRegCalendarAlt } from "react-icons/fa";
 
 const Card = ({ posts, loading }) => {
+  console.log("come from Hero", posts);
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(
@@ -19,7 +20,7 @@ const Card = ({ posts, loading }) => {
         <BlogLoading />
       ) : posts.length > 0 ? (
         posts?.map((item, index) =>
-          index < 5 ? (
+          index > 0 && index < 6 ? (
             <section
               key={item._id}
               className="p-2 w-full mb-3 flex justify-evenly px-8 bg-white items-start border border-gray-500 rounded-xl dark:bg-dark dark:border-light lg:flex-wrap-reverse lg:justify-start lg:items-start lg:px-3 xs:px-1"
