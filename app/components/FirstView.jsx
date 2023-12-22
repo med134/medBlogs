@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import BlogLoading from "./BlogLoading";
 import { FaRegCalendarAlt } from "react-icons/fa";
+import HeroLoading from "./HeroLoading";
 
 const Card = ({ posts, loading }) => {
   console.log("come from Hero", posts);
@@ -17,7 +17,7 @@ const Card = ({ posts, loading }) => {
   return (
     <div className="sm:mb-3 p-16 dark:bg-dark md:p-6 md:mt-3">
       {loading ? (
-        <BlogLoading />
+        <HeroLoading />
       ) : (
         posts?.map((item, index) =>
           index < 1 ? (
