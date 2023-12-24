@@ -5,7 +5,6 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import HeroLoading from "./HeroLoading";
 
 const Card = ({ posts, loading }) => {
-  console.log("come from Hero", posts);
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(
@@ -21,8 +20,11 @@ const Card = ({ posts, loading }) => {
       ) : (
         posts?.map((item, index) =>
           index < 1 ? (
-            <div className="flex justify-between items-center relative dark:bg-dark rounded-lg bg-gray-100 shadow-md p-8 md:flex-wrap-reverse md:p-4 md:mt-4 xs:mt-0">
-              <div className="xl:w-[900px] md:w-full">
+            <div
+              key={item._id}
+              className="flex justify-between items-center relative dark:bg-dark rounded-lg bg-gray-100 shadow-md p-8 md:flex-wrap-reverse md:p-4 md:mt-4 xs:mt-0"
+            >
+              <div className="xl:w-[900px] md:w-full p-2">
                 <span className="flex justify-start items-center py-2 dark:text-light">
                   <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
                   <span className="ml-2 font-semibold dark:text-light xs:text-sm">

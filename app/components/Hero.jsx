@@ -5,7 +5,6 @@ import BlogLoading from "./BlogLoading";
 import { FaRegCalendarAlt } from "react-icons/fa";
 
 const Card = ({ posts, loading }) => {
-  console.log("come from Hero", posts);
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(
