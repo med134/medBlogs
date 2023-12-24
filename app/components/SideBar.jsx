@@ -17,13 +17,10 @@ const SideBar = () => {
         setLoading(false);
       });
   }, []);
-  const FormatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "en-US",
-      options
-    );
-    return formattedDate;
+  const formatDate = (timestamp) => {
+    const options = { month: 'long', day: 'numeric' };
+    const date = new Date(timestamp);
+    return date.toLocaleDateString('en-US', options);
   };
   return (
     <section>
@@ -32,42 +29,45 @@ const SideBar = () => {
       ) : (
         dev?.map((item, index) =>
           index < 6 ? (
-            <div
-              key={item.id}
-              className="border border-gray-200 border-b-slate-600 rounded-lg shadow-lg mb-3"
-            >
-              <div className="flex item-start p-3">
-                <Image
-                  className="w-28 h-28 rounded-lg object-cover"
+            <article className="flex bg-white transition hover:shadow-xl mb-8">
+              <div className="rotate-180 p-2 [writing-mode:_vertical-lr]">
+                <time
+                  dateTime="2022-10-10"
+                  className="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
+                >
+                  <span>2023</span>
+                  <span className="w-px flex-1 bg-gray-900/10" />
+                  <span>{formatDate(item?.published_timestamp)}</span>
+                </time>
+              </div>
+              <div className="hidden sm:block sm:basis-56">
+                <img
+                  alt="Guitar"
                   src={item.cover_image}
-                  alt="image-articles"
-                  priority
-                  width={300}
-                  height={300}
+                  className="aspect-square h-full w-full object-cover"
                 />
-                <div className="ml-3 overflow-hidden">
-                  <Link href={item.url} target="blank">
-                    <span
-                      className="bg-gradient-to-r text-gray-800 text-xl font-semibold from-red-300 to-red-600 bg-[length:0px_10px] bg-left-bottom
-      bg-no-repeat
-      transition-[background-size]
-      duration-500
-      hover:bg-[length:100%_3px]
-      group-hover:bg-[length:100%_10px]
-      dark:from-red-800 dark:to-purple-900 dark:text-light xs:text-sm "
-                    >
+              </div>
+              <div className="flex flex-1 flex-col justify-between">
+                <div className="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
+                  <a href="#">
+                    <h3 className="font-bold uppercase text-gray-900">
                       {item.title}
-                    </span>
-                  </Link>
-                  <span className="flex justify-start items-center dark:text-light">
-                    <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light mt-1" />
-                    <p className="max-w-xs text-sm text-gray-500 mt-3 ml-2 dark:text-light">
-                      {FormatDate(item?.published_timestamp.slice(0, 10))}
-                    </p>
-                  </span>
+                    </h3>
+                  </a>
+                  <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-700">
+                    {item.description}
+                  </p>
+                </div>
+                <div className="sm:flex sm:items-end sm:justify-end">
+                  <a
+                    href="#"
+                    className="block bg-slate-300 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-slate-400"
+                  >
+                    Read Blog
+                  </a>
                 </div>
               </div>
-            </div>
+            </article>
           ) : null
         )
       )}

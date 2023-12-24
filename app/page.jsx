@@ -10,6 +10,9 @@ import Search from "./components/Search";
 import SideBar from "./components/SideBar";
 import CardX from "./components/FirstView";
 import Slider from "./components/TwoSlider";
+import YouTubeSubscribe from "./components/YoutubeSubscribe";
+import { YoutubeImage } from "./components/Icons";
+import Youtube from "./components/Youtube";
 
 
 export default function Home() {
@@ -89,7 +92,7 @@ export default function Home() {
         <Slider />
       </div>
       <div className="main-content bg-light gap-6 px-12 py-4 md:block md:px-3 md:py-2 dark:bg-dark">
-        {/* <div className="md:p-10">
+         <div className="md:p-10">
           <span className="flex justify-start items-center text-2xl dark:text-light underline font-bold mb-4 text-gray-800 font-lexend rounded-lg sm:text-sm xl:text:sm">
             <YoutubeImage />
             <p className="ml-2 ">
@@ -112,8 +115,8 @@ export default function Home() {
             </Link>
             <YouTubeSubscribe />
           </div>
-          <Crypto />
-        </div> */}
+          
+        </div> 
       </div>
     </div>
   );
