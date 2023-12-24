@@ -18,9 +18,9 @@ const SideBar = () => {
       });
   }, []);
   const formatDate = (timestamp) => {
-    const options = { month: 'long', day: 'numeric' };
+    const options = { month: "long", day: "numeric" };
     const date = new Date(timestamp);
-    return date.toLocaleDateString('en-US', options);
+    return date.toLocaleDateString("en-US", options);
   };
   return (
     <section>
@@ -59,12 +59,13 @@ const SideBar = () => {
                   </p>
                 </div>
                 <div className="sm:flex sm:items-end sm:justify-end">
-                  <a
-                    href="#"
+                  <Link
+                    href={item.url}
+                    target="blank"
                     className="block bg-slate-300 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-slate-400"
                   >
                     Read Blog
-                  </a>
+                  </Link>
                 </div>
               </div>
             </article>

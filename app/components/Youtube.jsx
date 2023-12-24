@@ -1,8 +1,4 @@
-"use client";
-/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-/* import { IoEyeSharp } from "react-icons/io5";
- */
 import Link from "next/link";
 import axios from "axios";
 import Loading from "../loading";
