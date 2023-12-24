@@ -85,7 +85,7 @@ const Slider = () => {
                       width={300}
                       height={300}
                       src={slide.image}
-                      className="h-56 w-full object-cover xs:object-contain xs:h-auto"
+                      className="h-56 w-full object-cover xs:object-contain"
                     />
                     <div className="bg-white p-4 sm:p-6">
                       <span className="flex justify-start items-center py-2 dark:text-light">

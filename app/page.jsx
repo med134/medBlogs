@@ -34,13 +34,13 @@ export default function Home() {
       <Search getSearchResult={(result) => setPosts(result)} />
       <div className="bg-light pt-10 dark:bg-dark">
         <CardX posts={posts} loading={loading} />
-        <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-2 py-2">
+        <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-2 py-2 xs:px-8">
           <AiTwotoneSound className="dark:text-light" />
           <p className="ml-2 sm:text-xl ">Categories</p>
         </span>{" "}
         <CategoryList />
       </div>
-      <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-8 py-2">
+      <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-8 py-2 xs:px-8">
         <AiTwotoneSound className="dark:text-light" />
         <p className="ml-2 sm:text-xl ">Recent Articles</p>
       </span>{" "}
@@ -52,13 +52,13 @@ export default function Home() {
           <SideBar />
         </div>
       </div>
-      <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-8 py-2">
+      <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 xs:px-8 pt-8 py-2 xs:pt-1">
         <AiTwotoneSound className="dark:text-light" />
         <p className="ml-2 sm:text-xl ">Recent Templates</p>
       </span>{" "}
-      <div className="grid grid-cols-2 p-2 md:block bg-light mt-1 dark:bg-gradient-to-r dark:from-[#1b1b1b] dark:to-[#1b1b1b] xs:p-3">
-        <div className="ltr:sm:text-left rtl:sm:text-right px-8 py-10 dark:text-light">
-          <h2 className="text-4xl lg:text-2xl font-bold py-4 tracking-tight text-gray-900 sm:text-4xl dark:text-light">
+      <div className="grid grid-cols-2 p-2 md:block bg-light mt-1 xs:mt-0 dark:bg-gradient-to-r dark:from-[#1b1b1b] dark:to-[#1b1b1b] xs:p-3">
+        <div className="ltr:sm:text-left rtl:sm:text-right px-8 py-10 xs:py-0 xs:px-4 dark:text-light xs:mb-4">
+          <h2 className="text-4xl lg:text-2xl font-bold py-4 xs:py-1 tracking-tight text-gray-900 sm:text-4xl dark:text-light">
             Software Mastery:Professional Free Tailwind Components & Templates
           </h2>
           <p className="mt-4 text-gray-700 dark:text-light">
