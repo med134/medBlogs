@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getLocalStorage, setLocalStorage } from "../utils/Helper";
 import { useEffect, useState } from "react";
 export default function CookieBanner() {
-  const [cookieConsent, setCookieConsent] = useState(false);
+  const [cookieConsent, setCookieConsent] = useState(0);
   useEffect(() => {
     const storedCookieConsent = getLocalStorage("cookie_consent", null);
     setCookieConsent(storedCookieConsent);
@@ -69,7 +69,7 @@ export default function CookieBanner() {
           <div className="flex flex-col justify-around mt-4 lg:mt-0 ltr:lg:pl-14 rtl:lg:pr-14">
             <div className="flex-1 gap-2  items-center flex my-0">
               <button
-                onClick={() => setCookieConsent(false)}
+                onClick={() => setCookieConsent(0)}
                 className="flex-1 lg:flex-none ltr:mr-2 rtl:ml-2 flex justify-center items-center text-center cursor-pointer px-2 md:px-4 py-2 border border-transparent text-xs leading-4 font-black"
                 style={{
                   backgroundColor: "rgba(89, 79, 253, 0.2)",
@@ -80,7 +80,7 @@ export default function CookieBanner() {
                 <span>Custom permissions</span>
               </button>
               <button
-                onClick={() => setCookieConsent(true)}
+                onClick={() => setCookieConsent(1)}
                 className="flex-1 lg:flex-none flex justify-center items-center text-center cursor-pointer px-2 md:px-4 py-2 border border-transparent text-xs leading-4 font-black"
                 style={{
                   backgroundColor: "rgb(89, 79, 253)",
