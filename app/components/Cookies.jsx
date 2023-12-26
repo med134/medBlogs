@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getLocalStorage, setLocalStorage } from "../utils/Helper";
 import { useEffect, useState } from "react";
 export default function CookieBanner() {
-  const [cookieConsent, setCookieConsent] = useState(0);
+  const [cookieConsent, setCookieConsent] = useState(false);
   useEffect(() => {
     const storedCookieConsent = getLocalStorage("cookie_consent", null);
     setCookieConsent(storedCookieConsent);
@@ -19,79 +19,35 @@ export default function CookieBanner() {
     console.log("Cookie Consent: ", cookieConsent);
   }, [cookieConsent]);
   return (
-    <div className={`${cookieConsent != null ? "hidden" : "flex"} fixed w-full bottom-2 left-56 max-w-sm  bg-slate-50 px-4 py-2 shadow-md transition-all duration-500 ease-in-out`}>
-      <div className={`flex flex-col px-0 ltr:lg:pl-10 rtl:lg:pr-10`}>
-        <div className="w-full flex justify-between items-center">
-          <p
-            className="text-md md:text-lg font-semibold m-0"
-            style={{ color: "rgb(89, 79, 253)" }}
+    <div
+      className={`fixed inset-x-0 bottom-0 z-10  ${cookieConsent != null ? "hidden" : "flex"} flex-col justify-between gap-x-8 gap-y-4 bg-white p-6 ring-1 ring-gray-900/10 md:flex-row md:items-center lg:px-8`}
+    >
+      <p class="max-w-4xl text-sm leading-6 text-gray-900">
+        This website uses cookies to enhance your browsing experience, analyze
+        site traffic, and serve better user experiences. By continuing to use
+        this site, you consent to our use of cookies. Learn more in our{" "}
+        <Link className="font-semibold text-teal-600" href="/cookie_privacy">
+          cookie policy
+        </Link>
+        .
+      </p>
+
+      <div className="flex gap-2">
+        <div className="mr-16 flex flex-none items-center gap-x-5">
+          <button
+            onClick={() => setCookieConsent(true)}
+            type="button"
+            className="rounded-md bg-gray-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
           >
-            Your Cookie Preferences
-          </p>
-        </div>
-        <div className="flex flex-col gap-2 items-stretch ltr:lg:pr-10 rtl:lg:pl-10">
-          <div className="flex-1">
-            <p
-              className="my-1 text-xs md:text-sm"
-              style={{ color: "rgb(0, 0, 0)" }}
-            >
-              By clicking “Accept all,” you agree to the storing of cookies on
-              your device for functional, analytics, and advertising purposes.
-            </p>
-            <div className="flex text-center text-[9px] mt-2 gap-2">
-              <span className="ltr:mr-4 ltr:last:mr-0 rtl:ml-4 rtl:last:ml-0">
-                <Link
-                  href="https://www.termsfeed.com/live/7dd5b916-11dd-4c0c-a1bd-cafb07faf7ac"
-                  target="_blank"
-                  className="no-underline cursor-pointer shrink-0"
-                  style={{
-                    color: "rgb(89, 79, 253)",
-                    borderBottom: "1px solid rgb(89, 79, 253)",
-                  }}
-                >
-                  Privacy policy
-                </Link>
-              </span>
-              <span className="ltr:mr-4 ltr:last:mr-0 rtl:ml-4 rtl:last:ml-0">
-                <Link
-                  href="/cookie_policy"
-                  className="no-underline cursor-pointer shrink-0"
-                  style={{
-                    color: "rgb(89, 79, 253)",
-                    borderBottom: "1px solid rgb(89, 79, 253)",
-                  }}
-                >
-                  Cookie policy
-                </Link>
-              </span>
-            </div>
-          </div>
-          <div className="flex flex-col justify-around mt-4 lg:mt-0 ltr:lg:pl-14 rtl:lg:pr-14">
-            <div className="flex-1 gap-2  items-center flex my-0">
-              <button
-                onClick={() => setCookieConsent(0)}
-                className="flex-1 lg:flex-none ltr:mr-2 rtl:ml-2 flex justify-center items-center text-center cursor-pointer px-2 md:px-4 py-2 border border-transparent text-xs leading-4 font-black"
-                style={{
-                  backgroundColor: "rgba(89, 79, 253, 0.2)",
-                  color: "rgb(89, 79, 253)",
-                  borderRadius: "0.375rem",
-                }}
-              >
-                <span>Custom permissions</span>
-              </button>
-              <button
-                onClick={() => setCookieConsent(1)}
-                className="flex-1 lg:flex-none flex justify-center items-center text-center cursor-pointer px-2 md:px-4 py-2 border border-transparent text-xs leading-4 font-black"
-                style={{
-                  backgroundColor: "rgb(89, 79, 253)",
-                  color: "rgb(255, 255, 255)",
-                  borderRadius: "0.375rem",
-                }}
-              >
-                <span>Accept all</span>
-              </button>
-            </div>
-          </div>
+            Accept all 🍪
+          </button>
+          <button
+            onClick={() => setCookieConsent(false)}
+            type="button"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Reject all
+          </button>
         </div>
       </div>
     </div>
