@@ -58,9 +58,9 @@ export default function Home() {
       </span>{" "}
       <div className="grid grid-cols-2 p-2 md:block bg-light mt-1 xs:mt-0 dark:bg-gradient-to-r dark:from-[#1b1b1b] dark:to-[#1b1b1b] xs:p-3">
         <div className="ltr:sm:text-left rtl:sm:text-right px-8 py-10 xs:py-0 xs:px-4 dark:text-light xs:mb-4">
-          <h2 className="text-4xl lg:text-2xl font-bold py-4 xs:py-1 tracking-tight text-gray-900 sm:text-4xl dark:text-light">
+          <h1 className="text-4xl lg:text-2xl font-bold py-4 xs:py-1 tracking-tight text-gray-900 sm:text-4xl dark:text-light">
             Software Mastery:Professional Free Tailwind Components & Templates
-          </h2>
+          </h1>
           <p className="mt-4 text-gray-700 dark:text-light">
             With MedCode blogs Templates Tailwind you can optimized the
             customization process to save your team time when building websites.

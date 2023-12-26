@@ -8,7 +8,7 @@ import CookieBanner from "./components/Cookies";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
-  title: "Software Mastery-Insider Dev Guides-Blogs | medCode",
+  title: "Software Mastery-Insider Dev | medCode",
   description: `Learning programming is accessible for beginners through free software programming
   courses These courses introduce essential best programming languages`,
   generator: "Next.js",
