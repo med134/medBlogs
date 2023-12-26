@@ -20,7 +20,7 @@ export default function CookieBanner() {
   }, [cookieConsent]);
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-20  ${cookieConsent != null ? "hidden" : "flex"} flex-col justify-between gap-x-8 gap-y-4 bg-white p-6 ring-1 ring-gray-900/10 md:flex-row md:items-center lg:px-8`}
+      className={`fixed inset-x-0 bottom-0 z-20  ${cookieConsent != null ? "hidden" : "flex"} flex-col justify-between gap-x-8 gap-y-4 bg-white p-6 ring-1 ring-gray-900/10 md:flex-row md:items-center lg:px-8 xs:block`}
     >
       <p class="max-w-4xl text-sm leading-6 text-gray-900">
         This website uses cookies to enhance your browsing experience, analyze
