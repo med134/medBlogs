@@ -28,7 +28,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="dark:bg-dark bg-light">
+    <section className="dark:bg-dark bg-light">
       <Aside />
       <Search getSearchResult={(result) => setPosts(result)} />
       <div className="bg-light pt-10 dark:bg-dark">
@@ -113,6 +113,6 @@ export default function Home() {
           </div>
         </div>  */}
       </div>
-    </div>
+    </section>
   );
 }

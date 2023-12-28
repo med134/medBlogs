@@ -5,6 +5,7 @@ import Image from "next/image";
 
 const CategoryList = () => {
   const [category, setCategory] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     fetch("https://www.medcode.dev/api/categories")
