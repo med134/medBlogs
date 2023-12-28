@@ -2,11 +2,9 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { AiTwotoneSound } from "react-icons/ai";
 
 const CategoryList = () => {
   const [category, setCategory] = useState([]);
-  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     fetch("https://www.medcode.dev/api/categories")

@@ -49,19 +49,19 @@ const Slider = () => {
           onClick={goToNextSlide}
           aria-label="Previous slide"
           id="keen-slider-previous-desktop"
-          class="rounded-full border border-rose-600 p-3 text-rose-600 transition hover:bg-rose-600 hover:text-white"
+          className="rounded-full border border-rose-600 p-3 text-rose-600 transition hover:bg-rose-600 hover:text-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
-            class="h-5 w-5 rtl:rotate-180"
+            className="h-5 w-5 rtl:rotate-180"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M15.75 19.5L8.25 12l7.5-7.5"
             />
           </svg>
@@ -79,12 +79,13 @@ const Slider = () => {
                 }`}
               >
                 <div className="p-8 rounded-lg shadow-md xs:p-2">
-                  <article className="overflow-hidden h-[450px] xs:h-auto bg-white rounded-lg shadow transition hover:shadow-lg">
+                  <div className="overflow-hidden h-[450px] xs:h-auto bg-white rounded-lg shadow transition hover:shadow-lg">
                     <Image
                       alt="template"
                       width={300}
                       height={300}
                       src={slide.image}
+                      loading="lazy"
                       className="h-56 w-full object-cover xs:object-contain xs:h-44"
                     />
                     <div className="bg-white p-4 sm:p-4">
@@ -103,7 +104,7 @@ const Slider = () => {
                         {slide.description}
                       </p>
                     </div>
-                  </article>
+                  </div>
                 </div>
               </div>
             ))
@@ -113,10 +114,10 @@ const Slider = () => {
           aria-label="Next slide"
           onClick={goToPreviousSlide}
           id="keen-slider-next-desktop"
-          class="rounded-full border border-rose-600 p-3 text-rose-600 transition hover:bg-rose-600 hover:text-white"
+          className="rounded-full border border-rose-600 p-3 text-rose-600 transition hover:bg-rose-600 hover:text-white"
         >
           <svg
-            class="h-5 w-5 rtl:rotate-180"
+            className="h-5 w-5 rtl:rotate-180"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -124,9 +125,9 @@ const Slider = () => {
           >
             <path
               d="M9 5l7 7-7 7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
             />
           </svg>
         </button>

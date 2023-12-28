@@ -1,8 +1,8 @@
 import React from "react";
-import AddNewArticle from "@/app/components/AddNewArticle";
+import AddNewPost from "@/app/components/AddNewPost";
 export const metadata = {
-  title: "Dashboard Add Blogs | medCode",
-  description: `Elevate Your Web Development with Free Blogs & Articles & code source Our meticulously designed frontend dashboard templates and components`,
+  title: "Dashboard Add templates & components | medCode",
+  description: `Elevate Your Web Development with Free Tailwind CSS Templates & Components & code source Our meticulously designed frontend dashboard`,
   keywords: [
     "Web Development",
     "tailwind css free components",
@@ -31,21 +31,19 @@ export const metadata = {
     "Code Snippets",
   ],
   alternates: {
-    canonical: `/dashboard/add_articles`,
+    canonical: `/dashboard/add-templates`,
     languages: {
-      "en-Us": `/en-us/dashboard/add_articles`,
+      "en-Us": `/en-us/dashboard/add-templates`,
     },
     types: {
       "application/rss+xml": "https://www.medcode.dev/rss",
     },
   },
 };
-const Page = () => {
+export default function Page() {
   return (
-    <div className="dark:bg-dark">
-      <AddNewArticle />
+    <div className="w-full h-auto p-8 py-8 md:py-2 sm:p-2 sm:py-2 dark:bg-dark">
+      <AddNewPost />
     </div>
   );
-};
-
-export default Page;
+}

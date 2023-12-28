@@ -2,13 +2,14 @@ import React from "react";
 import styles from "./categoryList.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import PageNotFound from "@/app/PageNotFound";
 const getData = async () => {
   const res = await fetch("https://www.medcode.dev/api/categories", {
     cache: "no-store",
   });
 
   if (!res.ok) {
-    throw new Error("Failed");
+    return <PageNotFound />;
   }
 
   return res.json();
@@ -34,7 +35,7 @@ const CategoryList = async () => {
                 alt={`${item.label} category`}
                 width={300}
                 height={300}
-                className='w-8 h-8 rounded-full'
+                className="w-8 h-8 rounded-full"
               />
             )}
             {item.label}

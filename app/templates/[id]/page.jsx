@@ -3,13 +3,14 @@ import Link from "next/link";
 import { BsArrowLeftCircleFill, BsArrowsFullscreen } from "react-icons/bs";
 import ClipBoard from "@/app/components/ClipBorad";
 import Image from "next/image";
+import PageNotFound from "@/app/PageNotFound";
 
 async function getData(id) {
   const res = await fetch(`https://medcode.dev/api/posts/${id}`, {
     cache: "no-store",
   });
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    return <PageNotFound />;
   }
   return res.json();
 }
@@ -18,7 +19,7 @@ async function getTemplates() {
     cache: "no-store",
   });
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    return <PageNotFound />;
   }
   return res.json();
 }
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `/templates/${params.id}`,
       languages: {
-        "en-US":`en-US/templates${params.id}`,
+        "en-US": `en-US/templates${params.id}`,
       },
       types: {
         "application/rss+xml": "https://www.medcode.dev/rss",

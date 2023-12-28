@@ -17,7 +17,7 @@ const Card = ({ posts, loading }) => {
     <div className="sm:mb-3">
       {loading ? (
         <BlogLoading />
-      ) : posts.length > 0 ? (
+      ) : (
         posts?.map((item, index) =>
           index > 0 && index < 6 ? (
             <section
@@ -50,11 +50,11 @@ const Card = ({ posts, loading }) => {
                 <div className="flex items-center justify-start py-3">
                   <Image
                     src="https://i.ibb.co/mSjZwpw/download.png"
-                    alt="userImage"
+                    alt="user_Image"
                     className="w-8 h-8 rounded-full"
-                    width={300}
-                    height={300}
-                    priority
+                    width={32}
+                    height={32}
+                    loading="lazy"
                   />
                   <p className="text-sm text-gray-500 ml-2 dark:text-light uppercase">
                     {item?.username}
@@ -74,7 +74,7 @@ const Card = ({ posts, loading }) => {
               <div className="">
                 <Image
                   src={item?.image}
-                  alt="blog image"
+                  alt={item.title}
                   width={400}
                   height={400}
                   priority
@@ -84,19 +84,8 @@ const Card = ({ posts, loading }) => {
             </section>
           ) : null
         )
-      ) : (
-        <div className="relative m-4">
-          <button className="absolute py-1 px-3 -left-8 -top-2 -rotate-[10deg] border border-black black_border bg-[#7e22ce] text-white font-bold">
-            Opps!
-          </button>
-          <div className="purple_border p-8 border border-black dark:border-light">
-            <span className="font-mono text-purple-700 font-bold text-xl">
-              Your keywords not match please enter another keywords and try
-              again...!
-            </span>
-          </div>
-        </div>
       )}
+
       {posts.length > 0 && (
         <Link href="/category/all" className="flex justify-center items-center">
           <span className="text-center text-xl sm:text-sm text-gray-700 dark:text-light hover:bg-blue-950 rounded-md hover:text-light border border-gray-600 px-20 py-1 w-full dark:border-light">

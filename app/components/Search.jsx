@@ -1,15 +1,19 @@
 "use client";
 import React, { useState } from "react";
+import AlertBar from "./AlertBar";
 const Search = ({ getSearchResult }) => {
   const [query, setQuery] = useState("");
   const handleSearch = async (e) => {
     e.preventDefault();
     const res = await fetch(
-      `https://www.medcode.dev/api/articles/search?query=${query}`,
+      `http://localhost:3000/api/articles/search?query=${query}`,
       {
         cache: "no-store",
       }
     );
+    if (!res.ok) {
+      return alert("No results found");
+    }
     const posts = await res.json();
     getSearchResult(posts);
   };

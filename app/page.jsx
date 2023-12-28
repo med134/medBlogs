@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "./components/Hero";
 import Link from "next/link";
-import Image from "next/image";
 import CategoryList from "./components/HeaderCategory";
 import Aside from "./components/Aside";
 import { AiTwotoneSound } from "react-icons/ai";

@@ -81,8 +81,9 @@ const Card = ({ posts, loading }) => {
               </div>
               <div className="w-full">
                 <Image
-                  alt="Laptop"
+                  alt={item.title}
                   width={500}
+                  priority
                   height={500}
                   src={item.image}
                   className="w-full h-80 rounded-xl object-cover xl:object-contain"

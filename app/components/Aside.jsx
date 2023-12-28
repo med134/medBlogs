@@ -26,7 +26,14 @@ const Aside = () => {
       >
         <div className="bg-slate-800 mt-5 py-4 pl-10 md:mt-10 rounded-md">
           <span className="flex justify-start items-center">
-            <Image src={logo} className="rounded full w-10 h-10"alt='logo website'/>
+            <Image
+              src={logo}
+              width={32}
+              height={32}
+              priority
+              className="rounded full w-10 h-10"
+              alt="logo website"
+            />
             <p className="text-xl ml-2">Medcode</p>
           </span>
         </div>

@@ -3,13 +3,14 @@ import Link from "next/link";
 import TransitionEffect from "../components/TransitionEffect";
 import { BgTemplates } from "../components/Icons";
 import Image from "next/image";
+import PageNotFound from "@/app/PageNotFound";
 
 async function getData() {
   const res = await fetch(`https://www.medcode.dev/api/posts`, {
     cache: "no-store",
   });
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    return <PageNotFound />;
   }
   return res.json();
 }
@@ -44,9 +45,7 @@ export const metadata = {
     "Learning Resources",
     "Code Snippets",
   ],
-  authors: [
-    { name: "med dakir" },
-  ],
+  authors: [{ name: "med dakir" }],
   colorScheme: "light",
   creator: "Med Dakir",
   publisher: "Med Dakir",
@@ -56,7 +55,7 @@ export const metadata = {
   alternates: {
     canonical: `/templates`,
     languages: {
-      "en-Us":`/en-us/templates`,
+      "en-Us": `/en-us/templates`,
     },
     types: {
       "application/rss+xml": "https://www.medcode.dev/rss",
@@ -77,7 +76,7 @@ export const metadata = {
 };
 const page = async () => {
   const data = await getData();
-  console.log(data)
+  console.log(data);
   return (
     <>
       <TransitionEffect />
@@ -95,16 +94,25 @@ const page = async () => {
 
             <div className="flex mt-8 px-10 sm:text-xs sm:px-4">
               <ul className="inline-flex bg-purple-400 py-4 text-light font-lexend rounded-xl px-10 sm:px-4">
-                <Link target="_blank" href="https://www.medcode.dev/category/react">
+                <Link
+                  target="_blank"
+                  href="https://www.medcode.dev/category/react"
+                >
                   {" "}
                   <li className="cursor-pointer hover:underline">React js</li>
                 </Link>
-                <Link target="_blank" href="https://www.medcode.dev/category/nextjs">
+                <Link
+                  target="_blank"
+                  href="https://www.medcode.dev/category/nextjs"
+                >
                   <li className="ml-4 cursor-pointer hover:underline">
                     Next js
                   </li>
                 </Link>
-                <Link target="_blank" href="https://www.medcode.dev/category/tools">
+                <Link
+                  target="_blank"
+                  href="https://www.medcode.dev/category/tools"
+                >
                   {" "}
                   <li className="ml-4 cursor-pointer hover:underline">
                     Tailwind css
@@ -135,38 +143,40 @@ const page = async () => {
         </div>
       </div>
       <article className="grid grid-cols-3 gap-6 p-16 xl:gap-4 xl:p-8 lg:grid-cols-2 lg:gap-6 lg:p-10 sm:flex flex-wrap dark:bg-dark">
-        {data?.slice()
-        .reverse().map((item) => (
-          <div
-            key={item._id}
-            className="max-w-sm rounded overflow-hidden shadow-lg"
-          >
-            <Image
-              className="w-full h-44"
-              src={item.image}
-              alt="templates image"
-              priority
-              width={500}
-              height={300}
-            />
-            <div className="px-6 py-2">
-              <Link
-                href={`/templates/${item._id}`}
-                className="font-bold text-xl mb-2 mt-2 text-purple-600 hover:underline"
-              >
-                {item.title}
-              </Link>
-              <p className={`text-gray-700 text-sm mt-2 dark:text-light`}>
-                {item.description}
-              </p>
+        {data
+          ?.slice()
+          .reverse()
+          .map((item) => (
+            <div
+              key={item._id}
+              className="max-w-sm rounded overflow-hidden shadow-lg"
+            >
+              <Image
+                className="w-full h-44"
+                src={item.image}
+                alt="templates image"
+                priority
+                width={500}
+                height={300}
+              />
+              <div className="px-6 py-2">
+                <Link
+                  href={`/templates/${item._id}`}
+                  className="font-bold text-xl mb-2 mt-2 text-purple-600 hover:underline"
+                >
+                  {item.title}
+                </Link>
+                <p className={`text-gray-700 text-sm mt-2 dark:text-light`}>
+                  {item.description}
+                </p>
+              </div>
+              <div className="pt-1 pb-3 flex justify-between px-4 p-6">
+                <span className="bg-gray-200 rounded-full text-sm p-1 py-1 px-2 font-semibold text-gray-700 ">
+                  {item.category}
+                </span>
+              </div>
             </div>
-            <div className="pt-1 pb-3 flex justify-between px-4 p-6">
-              <span className="bg-gray-200 rounded-full text-sm p-1 py-1 px-2 font-semibold text-gray-700 ">
-                {item.category}
-              </span>
-            </div>
-          </div>
-        ))}
+          ))}
       </article>
     </>
   );

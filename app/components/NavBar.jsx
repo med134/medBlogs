@@ -13,15 +13,12 @@ import ProfileDown from "./ProfileDown";
 import { Limelight } from "next/font/google";
 import { BsInstagram } from "react-icons/bs";
 import { useSession } from "next-auth/react";
-const lalezar = Lalezar({
-  subsets: ["latin"],
-  variables: "-lalezar",
-  weight: "400",
-});
+
 const limelight = Limelight({
   subsets: ["latin"],
   variables: "-limelight",
   weight: "400",
+  display: "swap",
 });
 const CustomLink = ({ href, title, className = "" }) => {
   return (
@@ -127,7 +124,7 @@ const NavBar = () => {
             className="mx-4 uppercase"
             target="_blank"
           />
-       {/*    <CustomLink
+          {/*    <CustomLink
             href="/books"
             title="Books"
             className="mx-4 uppercase"
@@ -214,7 +211,7 @@ const NavBar = () => {
               className="templates"
               toggle={handleClick}
             />
-           {/*  <CustomMobileLink
+            {/*  <CustomMobileLink
               href="/books"
               title="books"
               className="books"
@@ -229,13 +226,13 @@ const NavBar = () => {
             />
           </nav>
           {session.status === "authenticated" && (
-                <button
-                  className="text-medium mt-2 text-light dark:text-dark font-semibold "
-                  onClick={signOut}
-                >
-                  Logout
-                </button>
-              )}
+            <button
+              className="text-medium mt-2 text-light dark:text-dark font-semibold "
+              onClick={signOut}
+            >
+              Logout
+            </button>
+          )}
 
           <nav className="flex items-center justify-center flex-wrap mt-2">
             <Link

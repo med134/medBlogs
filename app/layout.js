@@ -5,7 +5,10 @@ import NavBar from "./components/NavBar";
 import AuthProvider from "./components/authProvider/AuthProvider";
 import GoogleAnalytic from "./components/GoogleAnalytic";
 import CookieBanner from "./components/Cookies";
-const inter = Inter({ subsets: ["latin"] });
+export const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
   title: "Software Mastery-Insider Dev | medCode",
@@ -86,7 +89,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <NavBar />
           {children}
-          <CookieBanner/>
+          <CookieBanner />
           <Footer />
         </AuthProvider>
       </body>
