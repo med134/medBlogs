@@ -10,7 +10,7 @@ const ClipBoard = ({ data }) => {
   const [empty, setEmpty] = useState(data.code);
 
   return (
-    <div className={`${!empty && "hidden"}`}>
+    <div className={`${!empty && "hidden"} w-full`}>
       <div className="max-w-2xl bg-gray-600 rounded-md overflow-x-auto">
         <div className="flex justify-between px-4 text-white items-center">
           <p className="text-sm">code source</p>
@@ -50,7 +50,7 @@ const ClipBoard = ({ data }) => {
         </div>
 
         <SyntaxHighlighter
-          className="h-auto"
+          className="h-auto w-full"
           language="jsx"
           style={dracula}
           customStyle={{

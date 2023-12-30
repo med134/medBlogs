@@ -57,7 +57,7 @@ const TemplateId = async ({ params }) => {
 
   return (
     <>
-      <div className="showTemp p-16 gap-8 dark:bg-dark md:inline-block xs:p-2">
+      <div className="showTemp p-12 gap-6 dark:bg-dark lg:block xs:p-2 md:p-4">
         <div className="preview px-6">
           <Link
             href="/templates"
@@ -88,7 +88,7 @@ const TemplateId = async ({ params }) => {
           </div>
           <div className="w-full mb-4 xs:w-[350px] xs:mb-4">
             <Image
-              alt="preview"
+              alt={data.title}
               priority
               src={data.image}
               className="h-full w-full border rounded-lg shadow-xl xs:w-[350px]"
@@ -113,7 +113,7 @@ const TemplateId = async ({ params }) => {
                 >
                   <Image
                     src={item.image}
-                    alt="template_image"
+                    alt={item.title}
                     className="mb-2"
                     priority
                     width={300}

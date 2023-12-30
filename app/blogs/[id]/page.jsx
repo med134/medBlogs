@@ -97,9 +97,9 @@ const BlogPage = async ({ params }) => {
         <div className="flex items-center w-full max-w-sm mx-auto gap-4 mt-24 sm:mt-4 border-2 p-3 border-red-500 dark:border-light rounded-md">
           <Image
             alt="author image"
-            width={44}
+            width={52}
             loading="lazy"
-            height={400}
+            height={52}
             src="https://i.ibb.co/WVDZRxF/bussiness-man.png"
             className="w-24 h-24  object-cover rounded-full"
           />

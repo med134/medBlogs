@@ -79,7 +79,7 @@ const Slider = () => {
                 }`}
               >
                 <div className="p-8 rounded-lg shadow-md xs:p-2">
-                  <div className="overflow-hidden h-[450px] xs:h-auto bg-white rounded-lg shadow transition hover:shadow-lg">
+                  <div className="overflow-hidden h-[400px] xs:h-auto bg-white rounded-lg shadow transition hover:shadow-lg">
                     <Image
                       alt="template"
                       width={300}

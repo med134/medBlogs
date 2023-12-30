@@ -9,7 +9,8 @@ import Search from "./components/Search";
 import SideBar from "./components/SideBar";
 import CardX from "./components/FirstView";
 import Slider from "./components/TwoSlider";
-
+import Article from "./components/Article";
+import StackOverFlow from "./components/StackOverFlow";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -87,32 +88,16 @@ export default function Home() {
         </div>
         <Slider />
       </div>
-      <div className="main-content bg-light gap-6 px-12 py-4 md:block md:px-3 md:py-2 dark:bg-dark">
-        {/* <div className="md:p-10">
-          <span className="flex justify-start items-center text-2xl dark:text-light underline font-bold mb-4 text-gray-800 font-lexend rounded-lg sm:text-sm xl:text:sm">
-            <YoutubeImage />
-            <p className="ml-2 ">
-              {" "}
-              Youtube Shorts for Components with code source
-            </p>
+      <span className="text-2xl  dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 xs:px-8 pt-8 py-2 xs:pt-1">
+        <AiTwotoneSound className="dark:text-light" />
+        <p className="ml-2 sm:text-xl underline xs:text-sm">
+          Lates Answers on{" "}
+          <span className="text-2xl text-orange-400 font-semibold xs:text-xl">
+            StackOverFlow
           </span>
-          <Youtube />
-        </div>
-        <div className="mt-20 md:p-10 md:mt-4">
-          <div className="block justify-start items-start md:block p-4 bg-white h-28 mb-6 dark:bg-dark rounded overflow-hidden shadow-lg border-2">
-            <Link
-              href="https://www.youtube.com/@VivaCode99"
-              className="inline-flex items-center py-1 dark:text-light px-4 mb-3 bg-red-500 hover:bg-red-600 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 text-white rounded-md transition duration-300"
-            >
-              <svg className="w-8 h-8 fill-current mr-2" viewBox="0 0 24 24">
-                <path d="M21.9 5.9c-.2-.7-.7-1.2-1.4-1.4C18.3 4 12 4 12 4s-6.3 0-8.5.5c-.7.2-1.2.7-1.4 1.4C2 8.1 2 12 2 12s0 3.9.5 5.1c.2.7.7 1.2 1.4 1.4 2.2.5 8.5.5 8.5.5s6.3 0 8.5-.5c.7-.2 1.2-.7 1.4-1.4.5-1.2.5-5.1.5-5.1s0-3.9-.5-5.1zM9.5 15.5V8.5l6.5 3z" />
-              </svg>
-              <span>Subscribe Now</span>
-            </Link>
-            <YouTubeSubscribe />
-          </div>
-        </div>  */}
-      </div>
+        </p>
+      </span>{" "}
+      <StackOverFlow />
     </section>
   );
 }
