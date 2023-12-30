@@ -27,8 +27,8 @@ const SideBar = () => {
         <SideBarLoading />
       ) : (
         dev?.map((item, index) =>
-          index < 6 ? (
-            <section className="flex bg-white transition hover:shadow-xl mb-8">
+          index < 8 ? (
+            <section key={item.id} className="flex bg-white transition hover:shadow-xl mb-8">
               <div className="rotate-180 p-2 [writing-mode:_vertical-lr]">
                 <div className="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900">
                   <span>2023</span>

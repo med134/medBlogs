@@ -17,15 +17,12 @@ const StackOverFlow = () => {
         throw new Error("Failed to fetch data");
       }
       const data = await res.json();
-      console.log("question", data.items);
       setAsk(data.items);
     };
     fetchSeoData();
   }, []);
   const convertDate = (timestamp) => {
-    const date = new Date(timestamp * 1000); // Convert seconds to milliseconds
-
-    // Array of weekday names
+    const date = new Date(timestamp * 1000);
     const weekdays = [
       "Sunday",
       "Monday",
