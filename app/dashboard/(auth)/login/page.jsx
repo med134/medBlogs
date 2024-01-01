@@ -74,7 +74,7 @@ const Login = () => {
               <p className="text-sm text-gray-600">
                 Dont have an account ?
                 <Link
-                  href="/dashboard/register"
+                  href="/dashboard/login"
                   className="font-bold text-blue-600 no-underline hover:text-blue-400"
                 >
                   Sign Up

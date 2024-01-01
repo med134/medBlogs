@@ -1,5 +1,6 @@
 import React from "react";
 import NavigationBar from "../components/NavigationBar";
+import TransitionEffect from "../components/TransitionEffect";
 export const metadata = {
   title: "Dashboard | medCode ",
   description: `Empower your online presence with a dashboard for effortless blog management. Seamlessly create, edit, and publish captivating content that engages your audience`,
@@ -22,8 +23,11 @@ export const metadata = {
 };
 export default function DashBoard() {
   return (
-    <div className="p-12 dark:bg-dark">
-      <NavigationBar />
-    </div>
+    <>
+      <TransitionEffect />{" "}
+      <div className="p-12 dark:bg-dark">
+        <NavigationBar />
+      </div>
+    </>
   );
 }
