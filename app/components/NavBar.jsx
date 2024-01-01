@@ -7,7 +7,6 @@ import logo from "@/public/images/logo.png";
 import { AiFillYoutube } from "react-icons/ai";
 import useThemeSwitcher from "./hooks/useThemeSwitcher";
 import Image from "next/image";
-import { Lalezar } from "next/font/google";
 import { signOut } from "next-auth/react";
 import ProfileDown from "./ProfileDown";
 import { Limelight } from "next/font/google";

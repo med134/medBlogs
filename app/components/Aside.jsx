@@ -1,11 +1,15 @@
+"use client";
 import React from "react";
 import { FaReact } from "react-icons/fa6";
 import Link from "next/link";
 import { IoMenu } from "react-icons/io5";
 import logo from "@/public/images/logo3.png";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 const Aside = () => {
+  const session = useSession();
+  console.log(session)
   return (
     <section className="fixed z-30 rounded-xl">
       <input
@@ -28,9 +32,9 @@ const Aside = () => {
           <span className="flex justify-start items-center">
             <Image
               src={logo}
-              width={32}
-              height={32}
-              priority
+              width={50}
+              height={50}
+              loading="lazy"
               className="rounded full w-10 h-10"
               alt="logo website"
             />
@@ -38,15 +42,38 @@ const Aside = () => {
           </span>
         </div>
         <div className="flex justify-start items-center p-2 px-8">
-          <img
-            src="https://source.unsplash.com/100x100/?portrait"
-            alt=""
+          <Image
+            src={
+              session.status === "authenticated"
+                ? session.data?.user.image
+                : "https://i.ibb.co/WVDZRxF/bussiness-man.png"
+            }
+            width={50}
+            height={50}
+            alt="user image"
+            loading="lazy"
             className="w-12 h-12 rounded-full dark:bg-gray-500"
           />
           <div className="ml-3">
-            <p className="text-sm font-semibold text-gray-800">Leroy Jenkins</p>
-            <span className="space-x-1 text-xs text-gray-400">
-              View profile
+            <span className="space-x-1 text-xs font-semibold text-gray-900">
+              {session.status === "authenticated" ? (
+                <div className="">
+                  <p className="py-1">Hi ,{session.data?.user.name.split(' ')[0]}</p>
+                  <Link
+                    href="/dashboard"
+                    className="text-sm font-semibold hover:text-slate-700 hover:underline"
+                  >
+                    Go to publish
+                  </Link>
+                </div>
+              ) : (
+                <Link
+                  href={"/dashboard/login"}
+                  className="text-sm font-semibold hover:text-blue-500 hover:underline"
+                >
+                  Sign In
+                </Link>
+              )}
             </span>
           </div>
         </div>
