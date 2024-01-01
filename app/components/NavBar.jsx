@@ -233,7 +233,7 @@ const NavBar = () => {
               <LinkedInIcon />
             </Link>
             <Link
-              href="https://www.youtube.com/@VivaCode99"
+              href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
               target={"_blank"}
               className="w-6 mx-3 sm:mx-1"
             >

@@ -79,18 +79,11 @@ const Footer = () => {
           </span>
           <div className="flex items-center mt-1 space-x-3">
             <Link
-              href="https://www.youtube.com/@VivaCode99"
+              href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
               target={"_blank"}
               className="w-6 mx-3 sm:mx-1"
             >
               <AiFillYoutube size={34} className="fill-red-600" />
-            </Link>
-            <Link
-              href="https://twitter.com/SimoDakir5"
-              target={"_blank"}
-              className="w-6 ml-4 sm:mx-1"
-            >
-              <TwitterIcon />
             </Link>
             <Link
               href="https://www.instagram.com/med_dakir/"
