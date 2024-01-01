@@ -113,7 +113,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="pt-5 text-center pb-10 border-t border-gray-600 py-4 lg:flex-row ">
-        <p className="text-sm text-gray-600">
+        <div className="text-sm text-gray-600">
           © Copyright 2023{" "}
           <Link
             href="https://www.medcode.dev/about"
@@ -122,8 +122,15 @@ const Footer = () => {
           >
             MED DAKIR
           </Link>
-          . All rights reserved.
-        </p>
+          . All rights reserved./
+          <Link
+            href="https://www.medcode.dev/cookies"
+            target="_blank"
+            className="text-sm font-bold underline"
+          >
+            privacy policy
+          </Link>
+        </div>
       </div>
     </div>
   );

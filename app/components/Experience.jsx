@@ -59,7 +59,7 @@ const Experience = () => {
           <Details
             position="Software Engineer"
             company="DGPC(tech Departmen))"
-            companyLink="https://vetement-pro.ma/ar/%d8%a7%d9%84%d8%b5%d9%81%d8%ad%d8%a9-%d8%a7%d9%84%d8%b1%d8%a6%d9%8a%d8%b3%d9%8a%d8%a9/"
+            companyLink="https://www.9rayti.com/ecole/ecole-nationale-protection-civile-casablanca"
             time="2020-Present"
             address="RABAT View, MAR"
             work="Worked on a team responsible for developing new features for systems fire safety and more features help  the team in productivity"

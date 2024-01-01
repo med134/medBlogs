@@ -1,12 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import AlertBar from "./AlertBar";
 const Search = ({ getSearchResult }) => {
   const [query, setQuery] = useState("");
   const handleSearch = async (e) => {
     e.preventDefault();
     const res = await fetch(
-      `http://localhost:3000/api/articles/search?query=${query}`,
+      `https://www.medcode.dev/api/articles/search?query=${query}`,
       {
         cache: "no-store",
       }
@@ -18,7 +17,7 @@ const Search = ({ getSearchResult }) => {
     getSearchResult(posts);
   };
   return (
-    <header className="fixed flex w-full z-20 flex-col items-center bg-white dark:bg-dark px-4 py-4 shadow sm:flex-row md:h-20">
+    <header className="absolute flex w-full z-20 flex-col items-center bg-white dark:bg-dark px-4 py-4 shadow sm:flex-row md:h-20">
       <div className="flex w-full flex-col justify-between overflow-hidden transition-all sm:max-h-full sm:flex-row sm:items-center">
         <form
           onSubmit={handleSearch}

@@ -9,7 +9,6 @@ import { useSession } from "next-auth/react";
 
 const Aside = () => {
   const session = useSession();
-  console.log(session)
   return (
     <section className="fixed z-30 rounded-xl">
       <input
