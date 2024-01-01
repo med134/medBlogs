@@ -26,12 +26,11 @@ export default function Home() {
       throw new Error("Failed to fetch data");
     }
     const data = await res.json();
-    console.log(data.items);
     setQuestion(data.items);
   };
   useEffect(() => {
     setLoading(true);
-    fetch("https://www.medcode.dev/api/articles")
+    fetch("/api/articles")
       .then((res) => res.json())
       .then((data) => {
         const sortedPosts = data?.sort(
@@ -126,7 +125,7 @@ export default function Home() {
       <span className="text-2xl  dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 xs:px-8 pt-8 py-2 xs:pt-1">
         <AiTwotoneSound className="dark:text-light" />
         <p className="ml-2 sm:text-xl underline xs:text-sm">
-          Lates Answers on{" "}
+          Latest Answers on{" "}
           <span className="text-2xl text-orange-400 font-semibold xs:text-xl">
             StackOverFlow
           </span>
@@ -134,10 +133,10 @@ export default function Home() {
       </span>{" "}
       <section className="grid grid-cols-3 p-12 gap-4 lg:flex flex-wrap lg:gap-8">
         {questions.map((question, index) =>
-          index <= 5 ? (
+          index <= 8 ? (
             <article
               key={question.accepted_answer_id}
-              className="rounded-xl border-1 border-orange-400 bg-white"
+              className="rounded-xl border-1 border-orange-400 bg-white dark:bg-dark dark:border"
             >
               <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8 xs:p-2">
                 <Image
@@ -150,7 +149,7 @@ export default function Home() {
                 />
 
                 <div>
-                  <h3 className="font-medium sm:text-lg">
+                  <h3 className="font-medium sm:text-lg dark:text-light">
                     <Link
                       href={question?.link}
                       target="blank"
@@ -179,6 +178,7 @@ export default function Home() {
                           xmlSpace="preserve"
                           width="16px"
                           height="16px"
+                          className="dark:fill-light"
                         >
                           <g id="SVGRepo_bgCarrier" strokeWidth={10} />
                           <g
@@ -226,7 +226,7 @@ export default function Home() {
                           </g>
                         </svg>
 
-                        <p className="text-xs ml-1 text-gray-900 font-semibold">
+                        <p className="text-xs ml-1 text-gray-900 font-semibold dark:text-light">
                           {question.answer_count}
                         </p>
                       </div>

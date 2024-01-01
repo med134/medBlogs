@@ -28,12 +28,12 @@ const SideBar = () => {
       ) : (
         dev?.map((item, index) =>
           index < 8 ? (
-            <section key={item.id} className="flex bg-white transition hover:shadow-xl mb-8">
+            <section key={item.id} className="flex bg-white transition dark:border dark:bg-dark hover:shadow-xl mb-8">
               <div className="rotate-180 p-2 [writing-mode:_vertical-lr]">
                 <div className="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900">
-                  <span>2023</span>
-                  <span className="w-px flex-1 bg-gray-900/10" />
-                  <span>{formatDate(item?.published_timestamp)}</span>
+                  <span className="dark:text-light">2023</span>
+                  <span className="w-px flex-1 bg-gray-900/10 dark:bg-light" />
+                  <span className="dark:text-light">{formatDate(item?.published_timestamp)}</span>
                 </div>
               </div>
               <div className="hidden sm:block sm:basis-56">
@@ -49,11 +49,11 @@ const SideBar = () => {
               <div className="flex flex-1 flex-col justify-between">
                 <div className="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
                   <Link href={item.url} target="blank">
-                    <h3 className="font-bold uppercase text-gray-900">
+                    <h3 className="font-bold uppercase text-gray-900 dark:text-light">
                       {item.title}
                     </h3>
                   </Link>
-                  <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-700">
+                  <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-700 dark:text-light">
                     {item.description}
                   </p>
                 </div>

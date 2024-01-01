@@ -75,7 +75,7 @@ const BlogPage = async ({ params }) => {
           <span className="text-xl text-gray-600 py-3">{blog.description}</span>
           <Image
             src={blog.image}
-            alt="Featured Image"
+            alt={blog.title}
             className="w-full object-cover rounded mt-2"
             width={500}
             height={500}

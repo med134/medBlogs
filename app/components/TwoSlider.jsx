@@ -11,7 +11,7 @@ const Slider = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    fetch("https://www.medcode.dev/api/posts")
+    fetch("/api/posts")
       .then((res) => res.json())
       .then((data) => {
         const sortedPosts = data?.sort(
@@ -78,17 +78,17 @@ const Slider = () => {
                   index === currentIndex ? "block" : "hidden"
                 }`}
               >
-                <div className="p-8 rounded-lg shadow-md xs:p-2">
-                  <div className="overflow-hidden h-auto bg-white rounded-lg shadow transition hover:shadow-lg">
+                <div className="p-8 rounded-lg shadow-md xs:p-2 dark:border ">
+                  <div className="overflow-hidden h-auto bg-white rounded-lg shadow dark:border-light transition hover:shadow-lg">
                     <Image
-                      alt="template"
+                      alt={slide.title}
                       width={300}
                       height={300}
                       src={slide.image}
                       loading="lazy"
                       className="h-56 w-full object-cover xs:object-contain xs:h-44"
                     />
-                    <div className="bg-white p-4 sm:p-4">
+                    <div className="bg-white p-4 sm:p-4 dark:bg-dark">
                       <span className="flex justify-start items-center py-2 dark:text-light">
                         <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
                         <span className="ml-2 font-semibold dark:text-light xs:text-sm">
@@ -96,7 +96,7 @@ const Slider = () => {
                         </span>
                       </span>
                       <Link href={`/templates`}>
-                        <h3 className="mt-0.5 text-2xl text-dark font-extrabold xs:text-xl xs:font-bold">
+                        <h3 className="mt-0.5 text-2xl text-dark font-extrabold xs:text-xl xs:font-bold dark:text-light">
                           {slide.title}
                         </h3>
                       </Link>

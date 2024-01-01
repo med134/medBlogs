@@ -124,12 +124,7 @@ const NavBar = () => {
             className="mx-4 uppercase"
             target="_blank"
           />
-          {/*    <CustomLink
-            href="/books"
-            title="Books"
-            className="mx-4 uppercase"
-            target="_blank"
-          /> */}
+        
           <CustomLink
             href="/about"
             title="Portfolio"
@@ -211,12 +206,7 @@ const NavBar = () => {
               className="templates"
               toggle={handleClick}
             />
-            {/*  <CustomMobileLink
-              href="/books"
-              title="books"
-              className="books"
-              toggle={handleClick}
-            /> */}
+            
 
             <CustomMobileLink
               href="/dashboard"
