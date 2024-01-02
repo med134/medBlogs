@@ -15,7 +15,7 @@ const Card = ({ posts, loading }) => {
     return formattedDate;
   };
   return (
-    <div className="sm:mb-3 p-16 dark:bg-dark md:p-6 md:mt-3">
+    <div className="sm:mb-3 px-8 py-6 dark:bg-dark md:p-6 md:mt-3 xs:py-0 xs:p-3">
       {loading ? (
         <HeroLoading />
       ) : (
@@ -27,7 +27,7 @@ const Card = ({ posts, loading }) => {
               animate={{ x: 0, y: 0, opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <div className="flex justify-between items-center relative dark:bg-dark rounded-lg bg-gray-100 shadow-md p-8 md:flex-wrap-reverse md:p-4 md:mt-4 xs:mt-0">
+              <div className="flex justify-between items-center relative dark:bg-dark rounded-lg bg-gray-100 shadow-md p-8 md:flex-wrap-reverse md:p-4 md:mt-4 xs:mt-0 xs:p-1">
                 <div className="xl:w-[900px] md:w-full p-2">
                   <span className="flex justify-start items-center py-2 dark:text-light">
                     <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />

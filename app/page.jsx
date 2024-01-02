@@ -10,6 +10,7 @@ import SideBar from "./components/SideBar";
 import CardX from "./components/FirstView";
 import Slider from "./components/TwoSlider";
 import Image from "next/image";
+import SearchTwo from "./components/SearchTwo";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -64,9 +65,8 @@ export default function Home() {
 
   return (
     <section className="dark:bg-dark bg-light">
-      <Aside />
-      <Search getSearchResult={(result) => setPosts(result)} />
-      <div className="bg-light pt-10 dark:bg-dark">
+      <SearchTwo getSearchResult={(result) => setPosts(result)} />
+      <div className="bg-light dark:bg-dark">
         <CardX posts={posts} loading={loading} />
         <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-2 py-2 xs:px-8">
           <AiTwotoneSound className="dark:text-light" />

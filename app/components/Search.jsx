@@ -30,6 +30,7 @@ const Search = ({ getSearchResult }) => {
             name="search"
             className="h-12 w-full rounded-md border border-gray-100 bg-gray-100 dark:border-light dark:bg-dark dark:text-light py-4 pr-4 pl-12 shadow-sm outline-none focus:border-blue-950"
             placeholder="Search for anything"
+            list="suggestions-list" 
           />
           <button
             type="submit"
@@ -48,6 +49,8 @@ const Search = ({ getSearchResult }) => {
               />
             </svg>
           </button>
+        
+        
         </form>
       </div>
     </header>

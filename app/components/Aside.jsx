@@ -10,7 +10,7 @@ import { useSession } from "next-auth/react";
 const Aside = () => {
   const session = useSession();
   return (
-    <section className="fixed z-30 rounded-xl">
+    <section className="absolute z-30 rounded-xl">
       <input
         type="checkbox"
         className="peer hidden px-6 dark:text-light"

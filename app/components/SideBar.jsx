@@ -22,7 +22,7 @@ const SideBar = () => {
     return date.toLocaleDateString("en-US", options);
   };
   return (
-    <section>
+    <section className="xs:mt-3">
       {loading ? (
         <SideBarLoading />
       ) : (
@@ -36,7 +36,7 @@ const SideBar = () => {
                   <span className="dark:text-light">{formatDate(item?.published_timestamp)}</span>
                 </div>
               </div>
-              <div className="hidden sm:block sm:basis-56">
+              <div className="hidden">
                 <Image
                   alt="dev blog"
                   width={100}
