@@ -28,7 +28,7 @@ const NavigationBar = () => {
         and components designed to streamline your development process, saving
         you valuable time and effort.
       </p>
-      <div className="group flex items-center justify-center gap-5 mt-6 md:flex-row sm:flex-wrap sm:mt-3">
+      <div className="group flex items-center justify-center px-16 gap-5 mt-6 md:flex-row sm:flex-wrap sm:mt-3">
         <Link
           href="/dashboard/add-templates"
           className="inline-block w-full px-6 py-4 sm:py-3 text-white transition-all rounded-md shadow-xl sm:w-auto bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-b dark:shadow-indigo-900 shadow-indigo-200 hover:shadow-2xl hover:shadow-indigo-400 hover:-translate-y-px onfocus:font-extrabold xs:text-sm"

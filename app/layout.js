@@ -12,7 +12,7 @@ export const inter = Inter({
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
   title: "Software Mastery-Insider Dev | medCode",
-  description: `Learning programming is accessible for beginners through free software programming
+  description: `Coding blog for beginners Learning programming is accessible for beginners through free software programming
   courses These courses introduce essential best programming languages`,
   generator: "Next.js",
   applicationName: "MedCode",

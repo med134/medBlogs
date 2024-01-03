@@ -49,7 +49,7 @@ const Card = ({ posts, loading }) => {
                     </h1>
                   </Link>
                   <p className="mt-2 text-xl text-gray-500 py-4 xs:text-sm xs:mt-1">
-                    {item?.description}...
+                    {item?.description.slice(0,130)}...
                   </p>
                   <Link
                     href={`/category/${item.category}`}
