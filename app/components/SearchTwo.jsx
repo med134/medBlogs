@@ -32,7 +32,6 @@ const SearchTwo = ({ getSearchResult }) => {
       const regex = new RegExp(`${query}`, "gi");
       return post.title.match(regex);
     });
-
     setSug(filteredPosts);
     setQuery(query);
   };
@@ -57,7 +56,7 @@ const SearchTwo = ({ getSearchResult }) => {
     <>
       <form
         onSubmit={handleSearch}
-        className="inline-flex w-full px-6  mt-2 bg-light dark:bg-dark"
+        className="inline-flex w-full px-6 mt-2 bg-light dark:bg-dark relative"
       >
         <input
           type="text"
@@ -85,17 +84,19 @@ const SearchTwo = ({ getSearchResult }) => {
         </button>
       </form>
 
-      {sug.length > 0
-        ? sug.map((item, index) => (
+      {sug.length > 0 && (
+        <div className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md">
+          {sug.map((item, index) => (
             <div
               onClick={() => onSugHandler(item.title)}
               key={index}
-              className="px-10 py-2 cursor-pointer text-dark  dark:text-light dark:bg-dark bg-white hover:bg-slate-500 dark:hover:bg-slate-500"
+              className="px-6 py-2 cursor-pointer text-dark dark:text-light hover:bg-slate-500 dark:hover:bg-slate-500"
             >
               {item.title}
             </div>
-          ))
-        : null}
+          ))}
+        </div>
+      )}
     </>
   );
 };

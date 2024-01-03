@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "./Layout";
 const NavigationBar = () => {
   return (
-    <Layout className="mx-auto flex p-16 bg-white py-2 w-full text-center flex-col rounded-3xl px-4 sm:px-0 sm:p-1 sm:py-0">
+    <div className="text-center">
       <h1 className="mx-auto max-w-4xl space-x-2 py-4 dark:text-light font-title text-5xl font-bold tracking-normal xs:py-0 xs:w-full text-gray-800 sm:text-xl">
         Join to us and add your coding skills
         <span className="relative whitespace-nowrap text-purple-700">
@@ -28,21 +28,21 @@ const NavigationBar = () => {
         and components designed to streamline your development process, saving
         you valuable time and effort.
       </p>
-      <div className="group flex items-center justify-center gap-5 mt-6 md:flex-row sm:flex-wrap sm:mt-1">
+      <div className="group flex items-center justify-center gap-5 mt-6 md:flex-row sm:flex-wrap sm:mt-3">
         <Link
           href="/dashboard/add-templates"
-          className="inline-block w-auto min-w-[250px] px-6 py-4 sm:py-2 text-white transition-all rounded-md shadow-xl sm:w-auto bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-b dark:shadow-indigo-900 shadow-indigo-200 hover:shadow-2xl hover:shadow-indigo-400 hover:-translate-y-px onfocus:font-extrabold xs:text-sm"
+          className="inline-block w-full px-6 py-4 sm:py-3 text-white transition-all rounded-md shadow-xl sm:w-auto bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-b dark:shadow-indigo-900 shadow-indigo-200 hover:shadow-2xl hover:shadow-indigo-400 hover:-translate-y-px onfocus:font-extrabold xs:text-sm"
         >
           Added Templates & components
         </Link>
         <Link
-          className="inline-block w-auto min-w-[250px] px-6 py-4 text-white transition-all bg-gray-700 dark:bg-white dark:text-gray-800 rounded-md shadow-xl sm:w-auto hover:bg-gray-900 hover:text-white shadow-slate-300 dark:shadow-slate-700 hover:shadow-2xl hover:shadow-slate-400 hover:-translate-y-px onfocus:font-extrabold"
+          className="inline-block w-full  px-6 py-4 sm:py-3 text-white transition-all bg-gray-700 dark:bg-white dark:text-gray-800 rounded-md shadow-xl sm:w-auto hover:bg-gray-900 hover:text-white shadow-slate-300 dark:shadow-slate-700 hover:shadow-2xl hover:shadow-slate-400 hover:-translate-y-px onfocus:font-extrabold"
           href="/dashboard/add-articles"
         >
           Added Articles & blogs
         </Link>
       </div>
-    </Layout>
+    </div>
   );
 };
 
