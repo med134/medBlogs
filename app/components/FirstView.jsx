@@ -18,6 +18,16 @@ const Card = ({ posts, loading }) => {
     <div className="sm:mb-3 px-8 py-6 dark:bg-dark md:p-6 md:mt-3 xs:py-0 xs:p-3">
       {loading ? (
         <HeroLoading />
+      ) : posts.length === 0 ? (
+        <div className="relative m-16">
+          <button className="absolute py-1 px-3 -left-8 -top-2 -rotate-[10deg] border border-black black_border bg-slate-400 text-white font-bold">
+            WARNING!
+          </button>
+          <div className="purple_border p-8 border border-dark dark:border-light dark:text-light">
+            <span className="font-mono text-yellow-500 font-bold text-xl">warning: </span>
+            your search "words" did not match any results we have , please write another words and try again
+          </div>
+        </div>
       ) : (
         posts?.map((item, index) =>
           index < 1 ? (
@@ -49,7 +59,7 @@ const Card = ({ posts, loading }) => {
                     </h1>
                   </Link>
                   <p className="mt-2 text-xl text-gray-500 py-4 xs:text-sm xs:mt-1">
-                    {item?.description.slice(0,130)}...
+                    {item?.description.slice(0, 130)}...
                   </p>
                   <Link
                     href={`/category/${item.category}`}
