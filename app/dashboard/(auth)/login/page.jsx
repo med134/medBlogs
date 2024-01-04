@@ -14,7 +14,7 @@ const Login = () => {
   }
   return (
     <>
-      <div className="flex min-h-0 w-full items-center justify-center bg-gray-100 p-28 lg:p-16 md:p-8 sm:p-4 sm:block">
+      <div className="flex min-h-0 w-full items-center justify-center bg-light dark:bg-dark p-28 lg:p-16 md:p-8 sm:p-4 sm:block">
         <div className="m-2 w-full rounded-2xl bg-gray-400 bg-cover bg-center text-white sm:hidden">
           <Image
             height={500}
@@ -29,8 +29,10 @@ const Login = () => {
         </div>
         <div className="w-full sm:w-full">
           <div className="p-8 xs:p-4">
-            <h1 className="text-3xl font-black text-slate-700">Sign In</h1>
-            <p className="mt-2 mb-5 text-base leading-tight text-gray-600">
+            <h1 className="text-3xl font-black text-slate-700 dark:text-light">
+              Sign In
+            </h1>
+            <p className="mt-2 mb-5 text-base leading-tight text-gray-600 dark:text-light">
               Create an account in{" "}
               <span className="font-bold text-blue-500 text-xl">
                 MedCode Community !
@@ -44,8 +46,8 @@ const Login = () => {
               }}
               className="w-full mt-4 text-center px-6 py-2 border flex justify-center items-center gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
             >
-              <FcGoogle className="h-6 w-6" />
-              <span>Login with Google</span>
+              <FcGoogle className="h-6 w-6 " />
+              <span className="dark:text-light">Login with Google</span>
             </button>
             <button
               onClick={() => {
@@ -71,7 +73,7 @@ const Login = () => {
             </button>
 
             <div className="mt-4 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-light">
                 Dont have an account ?
                 <Link
                   href="/dashboard/login"
