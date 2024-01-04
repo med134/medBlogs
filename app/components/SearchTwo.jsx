@@ -56,13 +56,13 @@ const SearchTwo = ({ getSearchResult}) => {
     <>
       <form
         onSubmit={handleSearch}
-        className="inline-flex w-full px-6 mt-2 bg-light dark:bg-dark relative"
+        className="inline-flex w-full px-2 mt-2 bg-light dark:bg-dark relative"
       >
         <input
           type="text"
           value={query}
           onChange={(e) => onChangeHandle(e.target.value)}
-          className="h-12 w-full rounded-md border border-gray-100 bg-white dark:border-light dark:bg-dark dark:text-light py-4 pr-4 pl-12 shadow-sm outline-none focus:border-blue-950"
+          className="h-12 w-full rounded-md border border-gray-100 bg-white dark:border-light dark:bg-dark dark:text-light py-4 pl-12 shadow-sm outline-none focus:border-blue-950"
           placeholder="Search for anything"
         />
         <button
@@ -90,7 +90,7 @@ const SearchTwo = ({ getSearchResult}) => {
             <li
               onClick={() => onSugHandler(item.title)}
               key={index}
-              className="px-6 py-1 cursor-pointer text-dark border mb-2 dark:text-light hover:bg-slate-500 dark:hover:bg-slate-500"
+              className="px-2 py-1 cursor-pointer text-dark border mb-2 dark:text-light hover:bg-slate-500 dark:hover:bg-slate-500"
             >
               {item.title}
             </li>
