@@ -4,7 +4,7 @@ import Layout from "./Layout";
 const NavigationBar = () => {
   return (
     <div className="text-center">
-      <h1 className="mx-auto max-w-4xl space-x-2 py-4 dark:text-light font-title text-5xl font-bold tracking-normal xs:py-0 xs:w-full text-gray-800 sm:text-xl">
+      <h1 className="mx-auto max-w-4xl space-x-2 py-4 dark:text-light font-title text-5xl font-bold tracking-normal xs:py-0 xs:w-full text-gray-800 sm:text-2xl">
         Join to us and add your coding skills
         <span className="relative whitespace-nowrap text-purple-700">
           <svg
@@ -18,9 +18,9 @@ const NavigationBar = () => {
           <span className="relative ml-3">MedCode</span>
         </span>
       </h1>
-      <span className="text-2xl font-bold tracking-tight text-gray-800 sm:text-5xl md:text-2xl font-title xs:text-sm">
+      <span className="text-2xl font-bold tracking-tight text-gray-800 sm:text-5xl md:text-2xl font-title xs:text-xl">
         <span className="block space-x-3 dark:text-light">Free Templates & Components</span>
-        <span className="block pt-2 space-x-3 dark:text-light">New Articles & blogs</span>
+        <span className="block pt-2 sm:pt-0 space-x-3 dark:text-light">New Articles & blogs</span>
       </span>
       <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-xs xs:mt-3 dark:text-light">
         Discover a wealth of resources for your programming and technology

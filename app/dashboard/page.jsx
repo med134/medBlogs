@@ -25,7 +25,7 @@ export default function DashBoard() {
   return (
     <>
       <TransitionEffect />{" "}
-      <div className="p-12 dark:bg-dark">
+      <div className="p-12 dark:bg-dark sm:p-4">
         <NavigationBar />
       </div>
     </>
