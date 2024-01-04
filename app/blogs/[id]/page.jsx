@@ -4,7 +4,7 @@ import SidBar from "@/app/components/SidBar";
 import "react-quill/dist/quill.snow.css";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import Comments from "@/app/components/comments/comments";
-
+import ShareButtons from "@/app/components/ShareButtons";
 
 async function getData(id) {
   const res = await fetch(`https://www.medcode.dev/api/articles/${id}`, {
@@ -66,7 +66,7 @@ const BlogPage = async ({ params }) => {
       <div className="flex flex-wrap justify-around dark:bg-dark">
         <div className="w-full px-4 mb-1 sm:text-sm sm:mb-2 dark:text-light dark:bg-dark">
           <div className="flex justify-start items-center dark:bg-dark">
-            <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" /> 
+            <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
             <span className="ml-2 font-semibold">
               {FormatDate(blog?.createdAt.slice(0, 10))}
             </span>
@@ -90,7 +90,8 @@ const BlogPage = async ({ params }) => {
               dangerouslySetInnerHTML={{ __html: content }}
             ></div>
           </div>
-          <Comments postSlug={id} /> 
+          <ShareButtons url={`https://www.medcode.dev/blogs/${id}`} />
+          <Comments postSlug={id} />
         </div>
       </div>
       <div className="sm:w-full sm:p-6">
@@ -110,9 +111,9 @@ const BlogPage = async ({ params }) => {
             <span className="text-gray-600 dark:text-gray-200 font-bold uppercase">
               {blog?.username}
             </span>
-              <span className="text-xs text-gray-600 dark:text-light">
-                {blog?.job}
-              </span>
+            <span className="text-xs text-gray-600 dark:text-light">
+              {blog?.job}
+            </span>
             <a
               href={`mailto:${blog?.email}`}
               className="text-xs text-gray-500 dark:text-light hover:text-blue-600 hover:underline"
