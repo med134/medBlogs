@@ -84,7 +84,7 @@ const Youtube =  () => {
                   </Link>
                   <div className="flex flex-col flex-1 p-6">
                     <Link
-                      href="https://www.youtube.com/@VivaCode99"
+                      href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
                       target="blank"
                       className="text-xs font-semibold text-gray-700 uppercase hover:underline dark:text-emerald-400"
                     >

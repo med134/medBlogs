@@ -37,7 +37,7 @@ const Crypto = () => {
       <span className="text-xl font-semibold mb-8 text-gray-800 font-lexend rounded-lg sm:text-sm xl:text:sm dark:text-light">
         Best Hardware Wallets-Crypto Prices (USD)
       </span>
-      <div className="bg-white rounded-md mt-4 border border-b-red-500 mb-6 dark:bg-dark dark:border-light">
+      <div className="bg-light rounded-md mt-4 border border-b-red-500 mb-6 dark:bg-dark dark:border-light">
         {loading ? (
           <Loading />
         ) : (
