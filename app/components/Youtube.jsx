@@ -1,9 +1,10 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import Loading from "../loading";
 
-const Youtube =  () => {
+const Youtube = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -61,7 +62,6 @@ const Youtube =  () => {
   return (
     <>
       <div className="grid grid-cols-3 gap-3 xl:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-2 sm:block">
-        
         {loading ? (
           <Loading />
         ) : (
@@ -99,7 +99,9 @@ const Youtube =  () => {
                       </span>
                       <span className="flex justify-end items-center">
                         {/* <IoEyeSharp className="w-4 h-4 text-gray-700 dark:text-light" /> */}
-                        <p className="ml-1 text-bold dark:text-light">{video.views}</p>
+                        <p className="ml-1 text-bold dark:text-light">
+                          {video.views}
+                        </p>
                       </span>
                     </div>
                   </div>
