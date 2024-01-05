@@ -11,7 +11,6 @@ import Image from "next/image";
 import SearchTwo from "./components/SearchTwo";
 import Youtube from "./components/Youtube";
 import Crypto from "./components/Crytpo";
-import { YoutubeIcon } from "./components/Icons";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -149,9 +148,9 @@ export default function Home() {
       </div>
       <div className="grid grid-cols-3 gap-4 lg:grid-cols-4 lg:gap-8 px-16 py-8">
         <div className="col-span-2 rounded-lg lg:col-span-2">
-          <Youtube />
+          {/* <Youtube /> */}
         </div>
-        <div className="col-span-1 h-32 rounded-lg">
+        <div className="col-span-1 h-full rounded-lg">
           <Crypto />
         </div>
       </div>
