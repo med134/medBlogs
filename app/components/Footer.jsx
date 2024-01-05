@@ -114,7 +114,7 @@ const Footer = () => {
       </div>
       <div className="pt-5 text-center pb-10 border-t border-gray-600 py-4 lg:flex-row ">
         <div className="text-sm text-gray-600">
-          © Copyright 2023{" "}
+          © Copyright 2024{" "}
           <Link
             href="https://www.medcode.dev/about"
             target="_blank"

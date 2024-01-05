@@ -1,8 +1,8 @@
 "use client";
-/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Loading from "../loading";
+import Image from "next/image";
 
 const Crypto = () => {
   const [news, setNews] = useState();
@@ -23,6 +23,7 @@ const Crypto = () => {
       try {
         const response = await fetch(url, options);
         const result = await response.json();
+        console.log(result);
         setNews(result.data.coins);
       } catch (error) {
         console.error(error);
@@ -37,7 +38,7 @@ const Crypto = () => {
       <span className="text-xl font-semibold mb-8 text-gray-800 font-lexend rounded-lg sm:text-sm xl:text:sm dark:text-light">
         Best Hardware Wallets-Crypto Prices (USD)
       </span>
-      <div className="bg-light rounded-md mt-4 border border-b-red-500 mb-6 dark:bg-dark dark:border-light">
+      <div className="bg-white rounded-md mt-4 border border-b-red-500 mb-6 dark:bg-dark dark:border-light">
         {loading ? (
           <Loading />
         ) : (
@@ -60,7 +61,10 @@ const Crypto = () => {
                     <span className="px-3 text-xl font-bold sm:text-sm xl:px-1 xl:text-xs dark:text-light">
                       {index + 1}
                     </span>
-                    <img
+                    <Image
+                      loading="lazy"
+                      width={100}
+                      height={100}
                       className="rounded-[50%] w-8 h-8 xs:w-6 xs:h-6"
                       src={post.iconUrl}
                       alt="crypto_icons"

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Loading from "../Loading";
+import Image from "next/image";
 const Youtube = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -64,7 +65,7 @@ const Youtube = () => {
         ) : (
           news?.map(
             (video, index) =>
-              index < 6 && (
+              index < 3 && (
                 <article
                   key={video.id}
                   className="flex flex-col w-full dark:bg-dark bg-white border-2 border-red-600 rounded-md sm:mb-2"
@@ -73,8 +74,11 @@ const Youtube = () => {
                     href={`https://www.youtube.com/shorts/${video.id}`}
                     target="blank"
                   >
-                    <img
+                    <Image
                       alt={video.title}
+                      width={200}
+                      height={300}
+                      loading="lazy"
                       className="object-cover w-full h-52 dark:bg-gray-500"
                       src={video.thumbnail}
                     />
@@ -95,7 +99,6 @@ const Youtube = () => {
                         {video?.publishedAt.slice(0, 10)}
                       </span>
                       <span className="flex justify-end items-center">
-                        {/* <IoEyeSharp className="w-4 h-4 text-gray-700 dark:text-light" /> */}
                         <p className="ml-1 text-bold dark:text-light">
                           {video.views}
                         </p>
@@ -107,6 +110,17 @@ const Youtube = () => {
           )
         )}
       </div>
+      {news.length > 0 && (
+        <Link
+          href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
+          target="blank"
+          className="flex justify-center items-center"
+        >
+          <span className="text-center text-xl sm:text-sm text-gray-700 dark:text-light hover:bg-red-600 rounded-md hover:text-light border border-gray-600 px-20 py-1 w-full dark:border-light">
+            show moore...
+          </span>
+        </Link>
+      )}
     </>
   );
 };
