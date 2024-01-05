@@ -147,7 +147,7 @@ export default function Home() {
       </div>
       <div className="grid grid-cols-3 gap-4 lg:grid-cols-4 lg:gap-8 px-16 py-8">
         <div className="col-span-2 rounded-lg lg:col-span-2">
-           <Youtube />
+          <Youtube/>
         </div>
         <div className="col-span-1 h-full rounded-lg">
           {/* <Crypto /> */}

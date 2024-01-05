@@ -1,62 +1,59 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import axios from "axios";
-import Loading from "../loading";
-
+import Loading from "../Loading";
 const Youtube = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    const fetchSeoData = () => {
-      setLoading(true);
-      const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC1dm-Rczjp52egzJTL__s8A&maxResults=100&key=AIzaSyAuEMjkPWP_APLS7wgW4mLQiGF3W9y7bkE`;
-      axios
-        .get(url)
-        .then((response) => {
-          if (response.data.items) {
-            const videoIds = response.data.items.map(
-              (video) => video.id.videoId
-            );
-            const videoStatsUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoIds.join(
-              ","
-            )}&key=AIzaSyAuEMjkPWP_APLS7wgW4mLQiGF3W9y7bkE`;
+    const fetchData = async () => {
+      try {
+        setLoading(true);
 
-            axios
-              .get(videoStatsUrl)
-              .then((statsResponse) => {
-                if (statsResponse.data.items) {
-                  const videoData = response.data.items.map((video, index) => {
-                    const statistics =
-                      statsResponse.data.items[index]?.statistics;
-                    return {
-                      id: video.id.videoId,
-                      channelTitle: video.snippet.channelTitle,
-                      title: video.snippet.title,
-                      channelTitle: video.snippet.channelTitle,
-                      thumbnail: video.snippet.thumbnails.high.url,
-                      publishedAt: video.snippet.publishedAt,
-                      views: statistics ? statistics.viewCount : 0,
-                    };
-                  });
-                  const sortedVideos = videoData.sort(
-                    (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
-                  );
-                  setNews(sortedVideos);
-                  setLoading(false);
-                }
-              })
-              .catch((error) => {
-                console.error("Error fetching video statistics:", error);
-              });
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC1dm-Rczjp52egzJTL__s8A&maxResults=100&key=AIzaSyAuEMjkPWP_APLS7wgW4mLQiGF3W9y7bkE`
+        );
+
+        const data = await response.json();
+
+        if (data.items) {
+          const videoIds = data.items.map((video) => video.id.videoId);
+          const videoStatsUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoIds.join(
+            ","
+          )}&key=AIzaSyAuEMjkPWP_APLS7wgW4mLQiGF3W9y7bkE`;
+
+          const statsResponse = await fetch(videoStatsUrl);
+          const statsData = await statsResponse.json();
+
+          if (statsData.items) {
+            const videoData = data.items.map((video, index) => {
+              const statistics = statsData.items[index]?.statistics;
+              return {
+                id: video.id.videoId,
+                channelTitle: video.snippet.channelTitle,
+                title: video.snippet.title,
+                thumbnail: video.snippet.thumbnails.high.url,
+                publishedAt: video.snippet.publishedAt,
+                views: statistics ? statistics.viewCount : 0,
+              };
+            });
+
+            const sortedVideos = videoData.sort(
+              (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+            );
+
+            setNews(sortedVideos);
+            setLoading(false);
           }
-        })
-        .catch((error) => {
-          console.error("Error fetching videos:", error);
-        });
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
     };
-    fetchSeoData();
+
+    fetchData();
   }, []);
 
   return (
