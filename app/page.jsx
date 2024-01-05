@@ -10,7 +10,6 @@ import Slider from "./components/TwoSlider";
 import Image from "next/image";
 import SearchTwo from "./components/SearchTwo";
 import Youtube from "./components/Youtube";
-import Crypto from "./components/Crytpo";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -148,10 +147,10 @@ export default function Home() {
       </div>
       <div className="grid grid-cols-3 gap-4 lg:grid-cols-4 lg:gap-8 px-16 py-8">
         <div className="col-span-2 rounded-lg lg:col-span-2">
-          {/* <Youtube /> */}
+           <Youtube />
         </div>
         <div className="col-span-1 h-full rounded-lg">
-          <Crypto />
+          {/* <Crypto /> */}
         </div>
       </div>
       <span className="text-2xl  dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 xs:px-8 pt-8 py-2 xs:pt-1">
