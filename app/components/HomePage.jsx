@@ -5,8 +5,7 @@ import SearchTwo from "./SearchTwo";
 import FirstView from "./FirstView";
 import CategoryList from "./HeaderCategory";
 import { AiTwotoneSound } from "react-icons/ai";
-import SideBar from "./SideBar";
-import Crypto from "./Crytpo";
+import Youtube from "./Youtube";
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -41,7 +40,7 @@ export default function HomePage() {
           <Card posts={posts} loading={loading} />
         </div>
         <div className="side">
-          <Crypto/>
+         <Youtube/>
         </div>
       </div>
     </section>
