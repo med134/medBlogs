@@ -5,7 +5,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import HeroLoading from "./HeroLoading";
 import { motion } from "framer-motion";
 
-const Card = ({ posts, loading }) => {
+const FirstView = ({ posts, loading }) => {
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(
@@ -24,8 +24,11 @@ const Card = ({ posts, loading }) => {
             WARNING!
           </button>
           <div className="purple_border p-8 border border-dark dark:border-light dark:text-light">
-            <span className="font-mono text-yellow-500 font-bold text-xl">warning: </span>
-            your search "words" did not match any results we have , please write another words and try again
+            <span className="font-mono text-yellow-500 font-bold text-xl">
+              warning:{" "}
+            </span>
+            your search "words" did not match any results we have , please write
+            another words and try again
           </div>
         </div>
       ) : (
@@ -62,6 +65,7 @@ const Card = ({ posts, loading }) => {
                     {item?.description.slice(0, 130)}...
                   </p>
                   <Link
+                    rel="preload"
                     href={`/category/${item.category}`}
                     className="flex justify-start items-center"
                   >
@@ -74,8 +78,7 @@ const Card = ({ posts, loading }) => {
                       href={`/blogs/${item._id}`}
                       className="text-sm font-medium dark:text-light"
                     >
-                      {" "}
-                      Read more...{" "}
+                      Read more...
                     </Link>
                     <svg
                       className="group-hover:translate-x-2 ml-3 h-5 w-5 transition-all"
@@ -112,4 +115,4 @@ const Card = ({ posts, loading }) => {
   );
 };
 
-export default Card;
+export default FirstView;

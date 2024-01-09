@@ -1,17 +1,20 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 import AlertBar from "./AlertBar";
+import useSWR from "swr";
+import Loading from "../Loading";
+import Image from "next/image";
 
 const AddNewPost = () => {
   const session = useSession();
   if (session.status === "unauthenticated") {
     redirect("/dashboard/login");
   }
-  /*   const handleDelete = async (id) => {
+  const handleDelete = async (id) => {
     try {
       await fetch(`/api/posts/${id}`, {
         method: "DELETE",
@@ -20,7 +23,8 @@ const AddNewPost = () => {
     } catch (err) {
       console.log(err);
     }
-  }; */
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
@@ -52,14 +56,14 @@ const AddNewPost = () => {
     }
   };
 
-  /* const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, isLoading, mutate } = useSWR(
     `/api/posts?username=${session?.data?.user.name}`,
     fetcher
-  ); */
+  );
   return (
     <div className="inline-block p-8 py-4 sm:p-2 sm:py-2 md:p-2 md:py-2 lg:p-2 lg:py-2 dark:bg-dark">
-      <div className="w-full flex justify-start items-center px-10">
+      <div className="w-full flex justify-start items-center px-4">
         <Link href="/dashboard">
           <FaArrowLeft className="text-2xl text-gray-700 hover:text-slate-400 dark:text-light" />{" "}
         </Link>
@@ -102,7 +106,7 @@ const AddNewPost = () => {
             Post Now
           </button>
         </form>
-        {/* <div className="w-full p-6 rounded-lg sm:p-2 items-start">
+        <div className="w-full p-6 rounded-lg sm:p-2 items-start">
           {isLoading ? (
             <Loading />
           ) : (
@@ -128,11 +132,17 @@ const AddNewPost = () => {
                   >
                     delete
                   </span>
+                  <span
+                    onClick={() => handleSubmitEdit(post._id)}
+                    className="p-1 bg-red-400 text-light text-center m-3 font-semibold rounded-md cursor-pointer hover:bg-red-500 bottom-1"
+                  >
+                    edit
+                  </span>
                 </div>
               </div>
             ))
           )}
-        </div> */}
+        </div>
       </div>
     </div>
   );

@@ -9,6 +9,15 @@ export async function getDevTo() {
   }
   return res.json();
 }
+export async function getStack() {
+  const res = await fetch(`https://api.stackexchange.com/2.3/questions?todate=1703894400&site=stackoverflow&sort=votes&order=desc`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    return notFound();
+  }
+  return res.json();
+}
 export async function getAll() {
   const res = await fetch(`https://www.medcode.dev/api/posts`, {
     cache: "no-store",

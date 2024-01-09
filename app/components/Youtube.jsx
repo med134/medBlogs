@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Loading from "../Loading";
 import Image from "next/image";
+import YoutubeSkeleton from "./YoutubeSkeleton";
 const Youtube = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -61,7 +61,7 @@ const Youtube = () => {
     <>
       <div className="grid grid-cols-3 gap-3 xl:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-2 sm:block">
         {loading ? (
-          <Loading />
+          <YoutubeSkeleton />
         ) : (
           news?.map(
             (video, index) =>

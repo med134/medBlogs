@@ -29,7 +29,7 @@ const SidBar = async () => {
         <span className="text-2xl text-red-500 sm:text-xl">MedCode...</span>{" "}
       </span>
       {dev?.map((item, index) =>
-        index < 7 ? (
+        index < 10 ? (
           <div
             key={item._id}
             className="mt-6 bg-white shadow-md p-5 px-6 sm:mt-1 sm:px-3 sm:mb-3 sm:p-4 border border-b-red-500 dark:bg-dark "

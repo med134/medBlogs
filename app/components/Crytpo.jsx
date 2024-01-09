@@ -23,7 +23,6 @@ const Crypto = () => {
       try {
         const response = await fetch(url, options);
         const result = await response.json();
-        console.log(result);
         setNews(result.data.coins);
       } catch (error) {
         console.error(error);

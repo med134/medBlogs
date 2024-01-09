@@ -1,23 +1,30 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const getData = async () => {
-  const res = await fetch(
-    "https://api.stackexchange.com/2.3/questions?todate=1703894400&site=stackoverflow&sort=votes&order=desc",
-    { next: { revalidate: 3600 } }
-  );
-
-  if (!res.ok) {
-    throw new Error("Something went wrong");
-  }
-
-  return res.json();
-};
-const StackOverFlow = async () => {
-  const ask = await getData();
+const Question = () => {
+  const [questions, setQuestion] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const fetchSeoData = async () => {
+    const res = await fetch(
+      `https://api.stackexchange.com/2.3/questions?todate=1703894400&site=stackoverflow&sort=votes&order=desc`,
+      {
+        cache: "no-store",
+      }
+    );
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    const data = await res.json();
+    setQuestion(data.items);
+  };
+  useEffect(() => {
+    fetchSeoData();
+  }, []);
   const convertDate = (timestamp) => {
     const date = new Date(timestamp * 1000);
+
     const weekdays = [
       "Sunday",
       "Monday",
@@ -36,12 +43,12 @@ const StackOverFlow = async () => {
     return formattedDate;
   };
   return (
-    <section className="grid grid-cols-3 p-12 gap-4 lg:flex flex-wrap lg:gap-8">
-      {ask?.map((question, index) =>
-        index <= 5 ? (
+    <section className="grid grid-cols-3 p-10 gap-4 lg:flex flex-wrap lg:gap-8">
+      {questions.map((question, index) =>
+        index <= 8 ? (
           <article
             key={question.accepted_answer_id}
-            className="rounded-xl border-1 border-orange-400 bg-white"
+            className="rounded-xl border-1 border-orange-400 bg-white dark:bg-dark dark:border"
           >
             <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8 xs:p-2">
               <Image
@@ -54,7 +61,7 @@ const StackOverFlow = async () => {
               />
 
               <div>
-                <h3 className="font-medium sm:text-lg">
+                <h3 className="font-medium sm:text-lg dark:text-light">
                   <Link
                     href={question?.link}
                     target="blank"
@@ -64,7 +71,7 @@ const StackOverFlow = async () => {
                     {question?.title}
                   </Link>
                 </h3>
-                {ask.tags?.map((tag) => {
+                {questions.tags?.map((tag) => {
                   <p className="line-clamp-2 text-sm text-gray-700">{tag}</p>;
                 })}
                 <div className="mt-2">
@@ -83,6 +90,7 @@ const StackOverFlow = async () => {
                         xmlSpace="preserve"
                         width="16px"
                         height="16px"
+                        className="dark:fill-light"
                       >
                         <g id="SVGRepo_bgCarrier" strokeWidth={10} />
                         <g
@@ -125,7 +133,7 @@ const StackOverFlow = async () => {
                         </g>
                       </svg>
 
-                      <p className="text-xs ml-1 text-gray-900 font-semibold">
+                      <p className="text-xs ml-1 text-gray-900 font-semibold dark:text-light">
                         {question.answer_count}
                       </p>
                     </div>
@@ -162,5 +170,4 @@ const StackOverFlow = async () => {
     </section>
   );
 };
-
-export default StackOverFlow;
+export default Question;

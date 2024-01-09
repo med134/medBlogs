@@ -62,7 +62,7 @@ const BlogPage = async ({ params }) => {
   };
 
   return (
-    <section className="containerBlog  gap-6 p-16 mx-auto mt-2 lg:block sm:p-2 dark:bg-dark">
+    <section className="containerBlog w-full gap-6 p-16 mt-2 lg:block sm:p-2 dark:bg-dark">
       <div className="flex flex-wrap justify-around dark:bg-dark">
         <div className="w-full px-4 mb-1 sm:text-sm sm:mb-2 dark:text-light dark:bg-dark">
           <div className="flex justify-start items-center dark:bg-dark">
