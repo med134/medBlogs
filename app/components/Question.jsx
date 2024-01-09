@@ -5,7 +5,6 @@ import Image from "next/image";
 
 const Question = () => {
   const [questions, setQuestion] = useState([]);
-  const [loading, setLoading] = useState(false);
   const fetchSeoData = async () => {
     const res = await fetch(
       `https://api.stackexchange.com/2.3/questions?todate=1703894400&site=stackoverflow&sort=votes&order=desc`,

@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { FaRegCalendarAlt } from "react-icons/fa";
 
 const getData = async () => {
@@ -81,9 +80,9 @@ const Easy = async () => {
                     </span>
                   </span>
                   <Link href={`/templates/${item._id}`}>
-                    <h1 className="text-3xl font-bold text-dark dark:text-light hover:underline xs:text-xl">
+                    <h2 className="text-3xl font-bold text-dark dark:text-light hover:underline xs:text-xl">
                       {item.title}
-                    </h1>
+                    </h2>
                   </Link>
                   <p className="dark:text-light text-gray-700 xs:text-sm">
                     {item.description}
