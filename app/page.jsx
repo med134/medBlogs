@@ -3,7 +3,6 @@ import Link from "next/link";
 import { AiTwotoneSound } from "react-icons/ai";
 import Youtube from "./components/Youtube";
 import HomePage from "./components/HomePage";
-import Crypto from "./components/Crytpo";
 import Question from "./components/Question";
 import Easy from "./components/EsayTemplates";
 
@@ -45,7 +44,7 @@ export default function Home() {
           <Youtube />
         </div>
         <div className="col-span-1 h-full rounded-lg">
-          <Crypto />
+          
         </div>
       </div>
       <span className="text-2xl  dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 xs:px-8 pt-8 py-2 xs:pt-1">
