@@ -77,7 +77,7 @@ const Card = ({ posts, loading }) => {
                   alt={item.title}
                   width={400}
                   height={400}
-                  className="object-cover rounded-xl max-w-xl xl:w-64 sm:w-80 h-52 border border-gray-500"
+                  className="object-cover rounded-xl max-w-xl xl:w-64 xs:w-full h-52 border border-gray-500"
                 />
               </div>
             </section>
