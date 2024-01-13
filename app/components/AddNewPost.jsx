@@ -16,13 +16,16 @@ const AddNewPost = () => {
   }
 
   const handleDelete = async (id) => {
-    try {
-      await fetch(`/api/posts/${id}`, {
-        method: "DELETE",
-      });
-      mutate();
-    } catch (err) {
-      console.log(err);
+    const confirmed = confirm("Are you sure you want to delete...?");
+    if (confirmed) {
+      try {
+        await fetch(`/api/posts/${id}`, {
+          method: "DELETE",
+        });
+        mutate();
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
