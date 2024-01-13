@@ -22,3 +22,14 @@ export const DELETE = async (request, { params }) => {
     return new NextResponse("Error database", { status: 500 });
   }
 };
+export const PUT = async (request, { params }) => {
+  const { id } = params;
+  const body = await request.json();
+  try {
+    await connect();
+    await Article.findByIdAndUpdate(id, body);
+    return new NextResponse("article updated", { status: 200 });
+  } catch (err) {
+    return new NextResponse("Error database", { status: 500 });
+  }
+};

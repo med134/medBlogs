@@ -84,6 +84,16 @@ const Card = ({ posts, loading }) => {
           ) : null
         )
       )}
+          {posts.length > 0 && (
+        <Link
+          href="/category/all"
+          className="flex justify-center items-center"
+        >
+          <span className="text-center text-xl sm:text-sm text-gray-700 dark:text-light hover:bg-slate-600 rounded-md hover:text-light border border-gray-600 px-20 py-1 w-full dark:border-light">
+            show moore...
+          </span>
+        </Link>
+      )}
     </>
   );
 };

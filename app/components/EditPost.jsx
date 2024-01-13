@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import Loading from "../Loading";
+import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 import { redirect } from "next/navigation";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -64,7 +64,7 @@ export default function EditPost({
   return (
     <>
       {loading ? (
-        <Loading />
+        <SkeletonLoadingForm />
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <label

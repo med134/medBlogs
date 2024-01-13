@@ -6,7 +6,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 import AlertBar from "./AlertBar";
 import useSWR from "swr";
-import Loading from "../Loading";
+import SliderSkelton from "./SliderSkelton";
 import Image from "next/image";
 
 const AddNewPost = () => {
@@ -120,7 +120,7 @@ const AddNewPost = () => {
             your posts
           </span>
           {isLoading ? (
-            <Loading />
+            <SliderSkelton />
           ) : (
             posts?.map((post) => (
               <div

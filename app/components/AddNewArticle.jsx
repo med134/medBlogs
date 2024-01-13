@@ -4,11 +4,14 @@ import { FaArrowLeft } from "react-icons/fa";
 import { redirect } from "next/navigation";
 import "highlight.js/styles/a11y-dark.min.css";
 import useSWR from "swr";
+import Image from 'next/image';
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useQuill } from "react-quilljs";
 import "react-quill/dist/quill.snow.css";
 import hljs from "highlight.js";
+import SliderSkelton from "./SliderSkelton";
+
 
 const AddNewArticle = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -17,6 +20,19 @@ const AddNewArticle = () => {
   if (session.status === "unauthenticated") {
     redirect("/dashboard/login");
   }
+  const handleDelete = async (id) => {
+    const confirmed = confirm("Are you sure you want to delete...?");
+    if (confirmed) {
+      try {
+        await fetch(`/api/articles/${id}`, {
+          method: "DELETE",
+        });
+        mutate();
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   const ex = undefined;
   const text = ex || "";
   hljs.configure({
@@ -90,10 +106,12 @@ const AddNewArticle = () => {
     setSelectedJobs(event.target.value);
   };
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, error, isLoading, mutate } = useSWR(
-    `/api/articles?username=${session?.data?.user.name}`,
-    fetcher
-  );
+  const {
+    data: articles,
+    error,
+    isLoading,
+    mutate,
+  } = useSWR(`/api/articles?username=${session?.data?.user.name}`, fetcher);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
@@ -135,8 +153,8 @@ const AddNewArticle = () => {
           Start to Create Your Article
         </h1>
       </div>
-      <div className="p-8 block justify-between items-center md:inline-block sm:items-center">
-        <form className="p-4 text-left text-gray-700" onSubmit={handleSubmit}>
+      <div className="p-8 grid grid-cols-3 gap-4 md:inline-block sm:items-center">
+        <form className="p-4 text-left col-span-2 text-gray-700" onSubmit={handleSubmit}>
           <input
             required
             type="text"
@@ -200,6 +218,46 @@ const AddNewArticle = () => {
             Post Now
           </button>
         </form>
+        <div className='col-span-1'>
+        {isLoading ? (
+            <SliderSkelton />
+          ) : (
+            articles?.map((post) => (
+              <div
+                key={post._id}
+                className="mb-4 max-w-sm rounded overflow-hidden shadow-lg mt-4"
+              >
+                <Image
+                  width={300}
+                  height={300}
+                  loading="lazy"
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-32 object-cover"
+                />
+
+                <div className="px-6 py-4">
+                  <div className="font-bold text-xl mb-2">{post.title}</div>
+                </div>
+
+                <div className="flex justify-between items-center px-6 py-2">
+                  <button
+                    onClick={() => handleDelete(post._id)}
+                    className="text-red-500 cursor-pointer hover:underline font-semibold"
+                  >
+                    Delete
+                  </button>
+                  <Link
+                    href={`/dashboard/edit-articles/${post._id}`}
+                    className="text-blue-500 cursor-pointer hover:underline font-semibold"
+                  >
+                    Edit
+                  </Link>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );
