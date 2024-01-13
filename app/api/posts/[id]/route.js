@@ -22,25 +22,15 @@ export const DELETE = async (request, { params }) => {
     return new NextResponse("Error database", { status: 500 });
   }
 };
-
-export async function PUT(request, { params }) {
+export const PUT = async (request, { params }) => {
   const { id } = params;
-  const {
-    newTitle: title,
-    newDescription: description,
-    newImage: image,
-    newLink: link,
-    newCategory: category,
-    newCode: code,
-  } = await request.json();
-  await connect();
-  await Posts.findByIdAndUpdate(id, {
-    title,
-    description,
-    image,
-    link,
-    category,
-    code,
-  });
-  return NextResponse.json({ message: "Post updated" }, { status: 200 });
-}
+  const body = await request.json();
+  try {
+    await connect();
+    await Posts.findByIdAndUpdate(id, body);
+    return new NextResponse("post updated", { status: 200 });
+  } catch (err) {
+    return new NextResponse("Error database", { status: 500 });
+  }
+};
+

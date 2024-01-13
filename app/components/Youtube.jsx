@@ -60,7 +60,7 @@ const Youtube = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-3 xl:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-2 sm:block">
+      <div className="grid grid-cols-1 gap-3 p-2 sm:block">
         <span className="flex justify-start items-center sm:mb-2">
           <p className="text-xl font-semibold text-dark dark:text-light">Youtube Shorts</p>
           <YoutubeIcons className={"ml-2"} />

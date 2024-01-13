@@ -58,7 +58,7 @@ const TemplateId = async ({ params }) => {
   return (
     <>
       <div className="showTemp p-12 gap-6 dark:bg-dark lg:block xs:p-2 md:p-4">
-        <div className="preview px-6">
+        <div className="preview px-6 max-w-full">
           <Link
             href="/templates"
             className="group inline-flex justify-around rounded-md bg-purple-500 mb-3 p-2 px-4 py-2 xs:mt-4 text-white transition sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-indigo-200"
@@ -95,10 +95,10 @@ const TemplateId = async ({ params }) => {
               width={500}
               height={500}
             />
-            <div className="p-2 mt-6 w-full xs:mt-6">
-              <ClipBoard data={data} />
-            </div>
           </div>
+            <div className="p-2 mt-6 w-full xs:mt-6">
+              <ClipBoard data={data.code} />
+            </div>
         </div>
         <div className="pays w-full p-6 mb-16">
           <h4 className="text-xl font-medium text-purple-400 mb-2 underline px-2">

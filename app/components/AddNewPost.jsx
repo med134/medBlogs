@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { FaArrowLeft } from "react-icons/fa";
@@ -14,6 +14,7 @@ const AddNewPost = () => {
   if (session.status === "unauthenticated") {
     redirect("/dashboard/login");
   }
+
   const handleDelete = async (id) => {
     try {
       await fetch(`/api/posts/${id}`, {
@@ -55,12 +56,14 @@ const AddNewPost = () => {
       console.log(err);
     }
   };
-
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, error, isLoading, mutate } = useSWR(
-    `/api/posts?username=${session?.data?.user.name}`,
-    fetcher
-  );
+  const {
+    data: posts,
+    error,
+    isLoading,
+    mutate,
+  } = useSWR(`/api/posts?username=${session?.data?.user.name}`, fetcher);
+
   return (
     <div className="inline-block p-8 py-4 sm:p-2 sm:py-2 md:p-2 md:py-2 lg:p-2 lg:py-2 dark:bg-dark">
       <div className="w-full flex justify-start items-center px-4">
@@ -71,8 +74,11 @@ const AddNewPost = () => {
           Create a Templates & Component
         </h1>
       </div>
-      <div className="p-8 flex justify-between md:inline-block sm:items-center sm:p-1 dark:bg-dark">
-        <form className="p-4 text-left text-gray-700" onSubmit={handleSubmit}>
+      <div className="p-4 grid grid-cols-3 gap-4 md:inline-block sm:items-center sm:p-1 dark:bg-dark">
+        <form
+          className="p-4 text-left text-gray-700 col-span-2"
+          onSubmit={handleSubmit}
+        >
           <input
             type="text"
             placeholder="Title"
@@ -106,38 +112,44 @@ const AddNewPost = () => {
             Post Now
           </button>
         </form>
-        <div className="w-full p-6 rounded-lg sm:p-2 items-start">
+        <div className="">
+          <span className="mb-4 text-center underline font-semibold text-2xl text-dark dark:text-light">
+            your posts
+          </span>
           {isLoading ? (
             <Loading />
           ) : (
-            data?.map((post) => (
-              <div key={post._id}>
-                <div className="">
-                  <Image
-                    src={post.image}
-                    alt="image post"
-                    className="w-32 h-32 rounded-md"
-                    width={300}
-                    height={300}
-                    priority
-                  />
+            posts?.map((post) => (
+              <div
+                key={post._id}
+                className="mb-4 max-w-sm rounded overflow-hidden shadow-lg mt-4"
+              >
+                <Image
+                  width={300}
+                  height={300}
+                  loading="lazy"
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-32 object-cover"
+                />
+
+                <div className="px-6 py-4">
+                  <div className="font-bold text-xl mb-2">{post.title}</div>
                 </div>
-                <div className="inline-flex justify-between items-center">
-                  <h2 className="text-xl p-3 px-2 sm:text-sm font-lexend py-3">
-                    {post.title}
-                  </h2>
-                  <span
+
+                <div className="flex justify-between items-center px-6 py-2">
+                  <button
                     onClick={() => handleDelete(post._id)}
-                    className="p-1 bg-red-400 text-light text-center m-3 font-semibold rounded-md cursor-pointer hover:bg-red-500 bottom-1"
+                    className="text-red-500 cursor-pointer hover:underline font-semibold"
                   >
-                    delete
-                  </span>
-                  <span
-                    onClick={() => handleSubmitEdit(post._id)}
-                    className="p-1 bg-red-400 text-light text-center m-3 font-semibold rounded-md cursor-pointer hover:bg-red-500 bottom-1"
+                    Delete
+                  </button>
+                  <Link
+                    href={`/dashboard/edit-post/${post._id}`}
+                    className="text-blue-500 cursor-pointer hover:underline font-semibold"
                   >
-                    edit
-                  </span>
+                    Edit
+                  </Link>
                 </div>
               </div>
             ))

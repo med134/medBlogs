@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { isValidElementType } from "react-is";
 const ClipBoard = ({ data }) => {
   const [copy, setCopy] = useState(false);
-  const [empty, setEmpty] = useState(data.code);
+  const [empty, setEmpty] = useState(data);
 
   return (
     <div className={`${!empty && "hidden"} w-full`}>
@@ -50,17 +50,17 @@ const ClipBoard = ({ data }) => {
         </div>
 
         <SyntaxHighlighter
-          className="h-auto w-full"
+          className="h-auto w-full p-8"
           language="jsx"
           style={dracula}
           customStyle={{
             padding: "20px",
-            width: "screen",
+            width: "100%",
             height: "auto",
             borderRadius: "10px",
           }}
         >
-          {data.code}
+          {data}
         </SyntaxHighlighter>
       </div>
     </div>
