@@ -48,7 +48,7 @@ const Easy = async () => {
             With MedCode blogs Templates Tailwind you can optimized the
             customization process to save your team time when building websites.
           </p>
-          <Link href="/templates" className="mt-4">
+          <Link href="/templates" className="mt-4" aria-current="page">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"

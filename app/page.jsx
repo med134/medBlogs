@@ -27,7 +27,7 @@ export default function Home() {
         <AiTwotoneSound className="dark:text-light" />
         <p className="ml-2 sm:text-xl underline xs:text-sm">
           Latest Answers on{" "}
-          <span className="text-2xl text-[#FFA500] font-semibold xs:text-xl">
+          <span className="text-2xl text-orange-500 font-semibold xs:text-xl">
             StackOverFlow
           </span>
         </p>

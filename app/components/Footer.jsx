@@ -86,41 +86,48 @@ const Footer = () => {
               href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
               target={"_blank"}
               rel="noopener noreferrer"
-              aria-labelledby="Our channel youtube"
+              onBlur={"Visit our Instagram profile"}
+              aria-labelledby="Visit our YouTube channel"
               name="Our channel youtube"
-              className="w-6 mx-3 sm:mx-1"
+              className="w-6 mx-3 sm:mx-1 focus:outline-none focus:ring focus:border-red-600"
             >
-              <AiFillYoutube size={34} className="fill-red-600 hover:scale-y-150" />
+              <AiFillYoutube
+                size={34}
+                className="fill-red-600 hover:scale-y-150"
+              />
             </a>
             <a
               href="https://www.instagram.com/med_dakir/"
               target={"_blank"}
-              className="w-6 mx-3"
               rel="noopener noreferrer"
               aria-labelledby="Our instagram"
-              name="Our instagram"
+              onBlur={"Visit our Instagram profile"}
+              name="Visit our Instagram profile"
+              className="w-6 mx-3 text-pink-600 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
             >
-              <BsInstagram size={24} className="fill-pink-600 hover:scale-y-150" />
+              <BsInstagram size={24} className="hover:scale-y-150" />
             </a>
             <a
               href="https://github.com/med134"
               target={"_blank"}
               rel="noopener noreferrer"
+              onBlur={"Visit our Instagram profile"}
               name="Our github account"
-              aria-labelledby="Our github account"
-              className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1"
+              aria-labelledby="Visit our GitHub account"
+              className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1 focus:outline-none focus:ring focus:border-light focus:bg-light"
             >
-              <GithubIcon fontSize={26} className={"hover:scale-y-150"} />
+              <GithubIcon fontSize={26} className="hover:scale-y-150" />
             </a>
             <a
               href="https://www.linkedin.com/in/mohammed-dakir/"
               target={"_blank"}
               rel="noopener noreferrer"
+              onBlur={"Visit our Instagram profile"}
               name="Our Linkedin"
-              aria-labelledby="Our Linkedin"
-              className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1"
+              aria-labelledby="Visit our LinkedIn profile"
+              className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1 focus:outline-none focus:ring focus:border-light focus:bg-light"
             >
-              <LinkedInIcon fontSize={26} className={"hover:scale-y-150"} />
+              <LinkedInIcon fontSize={26} className="hover:scale-y-150" />
             </a>
           </div>
           <p className="mt-4 text-sm text-gray-500">
