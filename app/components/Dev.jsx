@@ -37,9 +37,9 @@ const Dev = async () => {
                 <Image
                   className="w-full"
                   src={item.cover_image}
-                  alt="Sunset in the mountains"
-                  width={300}
-                  height={300}
+                  alt={item.title}
+                  width={500}
+                  height={500}
                   loading="lazy"
                 />
                 <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
@@ -58,7 +58,7 @@ const Dev = async () => {
               >
                 {item.title}
               </Link>
-              <p className="text-gray-500 text-sm dark:text-light">
+              <p className="text-gray-800 text-sm dark:text-light">
                 {item.description}
               </p>
             </div>

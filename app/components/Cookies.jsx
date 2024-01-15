@@ -30,7 +30,7 @@ export default function CookieBanner() {
         This website uses cookies to enhance your browsing experience, analyze
         site traffic, and serve better user experiences. By continuing to use
         this site, you consent to our use of cookies. Learn more in our{" "}
-        <Link className="font-semibold text-teal-600" href="/cookies">
+        <Link className="font-semibold text-[#8A2BE2]" href="/cookies">
           cookie policy
         </Link>
       </p>

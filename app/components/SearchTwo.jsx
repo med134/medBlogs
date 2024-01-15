@@ -60,6 +60,8 @@ const SearchTwo = ({ getSearchResult}) => {
       >
         <input
           type="text"
+          name="search-input"
+          aria-labelledby="search-input"
           value={query}
           onChange={(e) => onChangeHandle(e.target.value)}
           className="h-12 w-full rounded-md border border-gray-100 bg-white dark:border-light dark:bg-dark dark:text-light py-4 pl-12 shadow-sm outline-none focus:border-blue-950"
@@ -67,6 +69,9 @@ const SearchTwo = ({ getSearchResult}) => {
         />
         <button
           type="submit"
+          name='search-button'
+          title='search-button'
+          aria-labelledby="search-button"
           className="inset-y-0 right-0 hover:text-dark bg-dark flex items-center px-4 text-gray-700 border border-gray-100 rounded-r-md hover:bg-gray-200 focus:outline-none"
         >
           <svg

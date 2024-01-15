@@ -72,6 +72,10 @@ const NavBar = () => {
       <button
         className="flex-col justify-between items-center hidden ml-[100%] lg:flex"
         onClick={handleClick}
+        name="menu-button"
+        aria-label="menu"
+        role="button"
+        id="button"
       >
         <div className="flex-col">
           <span
@@ -123,7 +127,7 @@ const NavBar = () => {
             className="mx-4 uppercase"
             target="_blank"
           />
-        
+
           <CustomLink
             href="/about"
             title="Portfolio"
@@ -138,6 +142,8 @@ const NavBar = () => {
           />
           {session.status === "authenticated" && <ProfileDown />}
           <button
+            name="theme-button"
+            aria-label="change-theme"
             onClick={() => setMode(mode === "light" ? "dark" : "light")}
             className={`w-8 h-8 ml-8 flex items-center justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 
     ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
@@ -205,7 +211,6 @@ const NavBar = () => {
               className="templates"
               toggle={handleClick}
             />
-            
 
             <CustomMobileLink
               href="/dashboard"
@@ -216,6 +221,8 @@ const NavBar = () => {
           </nav>
           {session.status === "authenticated" && (
             <button
+              name="log-button"
+              aria-label="login/logOut"
               className="text-medium mt-2 text-light dark:text-dark font-semibold "
               onClick={signOut}
             >
@@ -254,6 +261,8 @@ const NavBar = () => {
             </Link>
 
             <button
+              name="theme-button"
+              aria-label="theme"
               onClick={() => setMode(mode === "light" ? "dark" : "light")}
               className={`w-8 h-8 ml-3 flex items-center transition-all hover:scale-75 justify-center rounded-full p-1
     ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}

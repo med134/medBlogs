@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import YoutubeSkeleton from "./YoutubeSkeleton";
 import { YoutubeIcons } from "./Icons";
+import SliderSkelton from "./SliderSkelton";
 const Youtube = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -66,7 +66,7 @@ const Youtube = () => {
           <YoutubeIcons className={"ml-2"} />
         </span>
         {loading ? (
-          <YoutubeSkeleton />
+          <SliderSkelton />
         ) : (
           news?.map(
             (video, index) =>

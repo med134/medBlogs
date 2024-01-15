@@ -1,9 +1,8 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/images/logo.png";
 import { AiFillYoutube } from "react-icons/ai";
-import { TwitterIcon, GithubIcon, LinkedInIcon } from "./Icons";
+import { GithubIcon, LinkedInIcon } from "./Icons";
 import { BsInstagram } from "react-icons/bs";
 const Footer = () => {
   return (
@@ -11,13 +10,13 @@ const Footer = () => {
       <div className="ourFooter gap-6 md:flex md:flex-wrap pb-6">
         <div className="brand sm:col-span-2">
           <div
-            aria-label="Go home"
-            title="Company"
+            aria-labelledby="medCode Blog"
             className="inline-flex items-center"
+            role="presentation"
           >
             <Image
               src={logo}
-              alt="logo_website"
+              alt="medCode blogs & articles"
               className="w-20 dark:bg-white dark:rounded-xl dark:p-1"
             />
             <div className="block mt-2">
@@ -42,20 +41,24 @@ const Footer = () => {
             <p className="mr-1 text-gray-800 dark:text-gray-400">Phone:</p>
             <a
               href="tel:+212600462196"
-              aria-label="Our phone"
-              title="Our phone"
-              className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
+              aria-labelledby="Our phone"
+              rel="noopener noreferrer"
+              name="Our phone"
+              className="transition-colors hover:text-purple-800 hover:font-semibold duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
               +212600462196
             </a>
           </div>
           <div className="flex">
-            <p className="mr-1 text-gray-800 dark:text-gray-400">Email:</p>
+            <label className="mr-1 text-gray-800 dark:text-gray-400">
+              Email:
+            </label>
             <a
               href="mailto:info@lorem.mail"
-              aria-label="Our email"
-              title="Our email"
-              className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
+              aria-labelledby="Our email"
+              rel="noopener noreferrer"
+              name="Our email"
+              className="transition-colors hover:text-purple-800 hover:font-semibold duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
               med@vivacode.dev
             </a>
@@ -66,8 +69,9 @@ const Footer = () => {
               href="https://www.google.com/maps"
               target="_blank"
               rel="noopener noreferrer"
-              title="Our address"
-              className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
+              name="Our address"
+              aria-labelledby="Our address"
+              className="transition-colors hover:text-purple-800 hover:font-semibold duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
               312 Lovely Street, NY
             </a>
@@ -78,34 +82,46 @@ const Footer = () => {
             Social Media
           </span>
           <div className="flex items-center mt-1 space-x-3">
-            <Link
+            <a
               href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
               target={"_blank"}
+              rel="noopener noreferrer"
+              aria-labelledby="Our channel youtube"
+              name="Our channel youtube"
               className="w-6 mx-3 sm:mx-1"
             >
-              <AiFillYoutube size={34} className="fill-red-600" />
-            </Link>
-            <Link
+              <AiFillYoutube size={34} className="fill-red-600 hover:scale-y-150" />
+            </a>
+            <a
               href="https://www.instagram.com/med_dakir/"
               target={"_blank"}
               className="w-6 mx-3"
+              rel="noopener noreferrer"
+              aria-labelledby="Our instagram"
+              name="Our instagram"
             >
-              <BsInstagram size={24} className="fill-pink-600" />
-            </Link>
-            <Link
+              <BsInstagram size={24} className="fill-pink-600 hover:scale-y-150" />
+            </a>
+            <a
               href="https://github.com/med134"
               target={"_blank"}
+              rel="noopener noreferrer"
+              name="Our github account"
+              aria-labelledby="Our github account"
               className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1"
             >
-              <GithubIcon fontSize={26} />
-            </Link>
-            <Link
+              <GithubIcon fontSize={26} className={"hover:scale-y-150"} />
+            </a>
+            <a
               href="https://www.linkedin.com/in/mohammed-dakir/"
               target={"_blank"}
+              rel="noopener noreferrer"
+              name="Our Linkedin"
+              aria-labelledby="Our Linkedin"
               className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1"
             >
-              <LinkedInIcon fontSize={26} />
-            </Link>
+              <LinkedInIcon fontSize={26} className={"hover:scale-y-150"} />
+            </a>
           </div>
           <p className="mt-4 text-sm text-gray-500">
             Follow me on My Social media accounts for new projects and news
@@ -126,7 +142,7 @@ const Footer = () => {
           <Link
             href="https://www.medcode.dev/cookies"
             target="_blank"
-            className="text-sm font-bold underline"
+            className="text-sm font-bold underline hover:text-purple-800 hover:font-semibold"
           >
             privacy policy
           </Link>

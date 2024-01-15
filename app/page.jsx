@@ -3,8 +3,8 @@ import { AiTwotoneSound } from "react-icons/ai";
 import HomePage from "./components/HomePage";
 import Question from "./components/Question";
 import Easy from "./components/EsayTemplates";
-import Image from "next/image";
 import Dev from "./components/Dev";
+import { DevIcon } from "./components/Icons";
 
 export default function Home() {
   return (
@@ -19,14 +19,7 @@ export default function Home() {
         <AiTwotoneSound className="dark:text-light" />
         <div className="ml-2 sm:text-xl xs:text-sm flex justify-start items-center">
           <p className="underline">Dev Community Blogs & Articles</p>
-          <Image
-            src="https://i.ibb.co/GPVWBCN/dev-community-icon.png"
-            width={100}
-            height={100}
-            alt="dev community blog & articles"
-            loading="lazy"
-            className="w-8 h-8 rounded-lg ml-2"
-          />
+           <DevIcon/>
         </div>
       </div>
       <Dev />
@@ -34,7 +27,7 @@ export default function Home() {
         <AiTwotoneSound className="dark:text-light" />
         <p className="ml-2 sm:text-xl underline xs:text-sm">
           Latest Answers on{" "}
-          <span className="text-2xl text-orange-400 font-semibold xs:text-xl">
+          <span className="text-2xl text-[#FFA500] font-semibold xs:text-xl">
             StackOverFlow
           </span>
         </p>
