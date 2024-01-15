@@ -112,7 +112,7 @@ const ShareButtons = ({ url }) => {
             </svg>
           </button>
         </PinterestShareButton>
-        <EmailShareButton url={url} className="ml-2 xs:ml-0">
+        <EmailShareButton url={url} className="ml-2 xs:ml-2">
           <button
             type="button"
             data-te-ripple-init

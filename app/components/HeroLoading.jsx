@@ -1,9 +1,7 @@
 export default function HeroLoading() {
   return (
-    <div
-      className="flex justify-between items-start space-y-8 p-6 animate-pulse md:space-y-0 md:space-x-8 md:flex-wrap-reverse xs-space-x-0 xs:p-2 xs:mt-2"
-    >
-      <div className="w-full mt-4 p-6">
+    <div className="flex justify-between items-start space-y-8 p-6 animate-pulse md:space-y-0 md:space-x-8 md:flex-wrap-reverse xs-space-x-0 xs:p-2 xs:mt-2">
+      <div className="w-full mt-4 p-6 xs:p-2">
         <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4" />
         <div className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-82 mb-8" />
         <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5" />
@@ -12,7 +10,7 @@ export default function HeroLoading() {
         <div className="h-6 bg-gray-200 rounded-md dark:bg-gray-700 max-w-[300px]" />
         <div className="h-8 bg-gray-200 mt-4 rounded-sm dark:bg-gray-700 w-28" />
       </div>
-      <div className="flex items-center justify-center p-6 w-full h-56 bg-gray-300 rounded dark:bg-gray-700">
+      <div className="flex items-center justify-center p-6 w-full xs:w-72 h-56 bg-gray-300 rounded dark:bg-gray-700">
         <svg
           className="w-10 h-10 text-gray-700 dark:text-gray-100"
           aria-hidden="true"

@@ -63,9 +63,9 @@ const Card = ({ posts, loading }) => {
                   <p className="text-sm text-gray-500 ml-2 dark:text-light">MOHAMMED DAKIR</p>
                 </div>
                 <div>
-                  <Link href="/" className="flex justify-start items-center">
+                  <Link href={`/category/${item.category}`} className="flex justify-start items-center">
                     <span className="bg-light p-1 ml-2 px-1 text-gray-800 rounded-md font-semibold hover:bg-slate-800 hover:text-white transition-transform duration-75 ease-out">
-                      #{item.tags}
+                     {item.category} {item.tags}
                     </span>
                   </Link>
                 </div>

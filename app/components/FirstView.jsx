@@ -15,11 +15,11 @@ const FirstView = ({ posts, loading }) => {
     return formattedDate;
   };
   return (
-    <div className="sm:mb-3 px-8 py-6 dark:bg-dark md:p-6 md:mt-3 xs:py-0 xs:p-3">
+    <div className="sm:mb-3 px-8 py-6 dark:bg-dark md:p-6 md:mt-3 xs:pt-0 xs:py-0 xs:p-0">
       {loading ? (
         <HeroLoading />
       ) : posts.length === 0 ? (
-        <div className="relative m-16">
+        <div className="relative m-16 sm:m-3">
           <button className="absolute py-1 px-3 -left-8 -top-2 -rotate-[10deg] border border-black black_border bg-slate-400 text-white font-bold">
             WARNING!
           </button>
@@ -40,7 +40,7 @@ const FirstView = ({ posts, loading }) => {
               animate={{ x: 0, y: 0, opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <div className="flex justify-between items-center relative dark:bg-dark rounded-lg bg-gray-100 shadow-md p-8 md:flex-wrap-reverse md:p-4 md:mt-4 xs:mt-0 xs:p-1">
+              <div className="flex justify-between items-center relative dark:bg-dark rounded-lg bg-gray-100 shadow-md xs:shadow-none p-8 md:flex-wrap-reverse md:p-4 md:mt-4 xs:mt-0 xs:p-3">
                 <div className="xl:w-[900px] md:w-full p-2">
                   <span className="flex justify-start items-center py-2 dark:text-light">
                     <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
@@ -61,7 +61,7 @@ const FirstView = ({ posts, loading }) => {
                       {item.title}
                     </span>
                   </Link>
-                  <p className="mt-2 text-xl text-gray-500 py-4 xs:text-sm xs:mt-1">
+                  <p className="mt-2 text-xl text-gray-500 py-4 xs:text-sm xs:mt-1 xs:py-2">
                     {item?.description.slice(0, 130)}...
                   </p>
                   <Link
@@ -103,7 +103,7 @@ const FirstView = ({ posts, loading }) => {
                     priority
                     height={500}
                     src={item.image}
-                    className="w-full h-80 rounded-xl object-cover xl:object-contain"
+                    className="w-full h-80 rounded-xl object-cover xl:object-contain xs:h-56"
                   />
                 </div>
               </div>
