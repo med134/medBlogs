@@ -1,10 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import NotFoundModel from "./NotFoundModel";
 
-const SearchTwo = ({ getSearchResult}) => {
+const SearchTwo = ({ getSearchResult }) => {
   const [posts, setPosts] = useState([]);
   const [sug, setSug] = useState([]);
   const [query, setQuery] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleSearch = async () => {
@@ -39,6 +41,9 @@ const SearchTwo = ({ getSearchResult}) => {
     setQuery(query);
     setSug([]);
   };
+  const closeNotFoundModal = () => {
+    setIsModalOpen(false);
+  };
   const handleSearch = async (e) => {
     e.preventDefault();
     const res = await fetch(`/api/articles/search?query=${query}`, {
@@ -47,9 +52,17 @@ const SearchTwo = ({ getSearchResult}) => {
     if (!res.ok) {
       return alert("No results found");
     }
-    const posts = await res.json();
-    getSearchResult(posts);
-    setSug([]);
+    const searchResult = await res.json();
+
+    if (searchResult.length === 0) {
+      setIsModalOpen(true);
+      getSearchResult([]);
+    } else {
+      setIsModalOpen(false);
+      getSearchResult(searchResult);
+      setSug([]);
+      setQuery("");
+    }
   };
 
   return (
@@ -69,8 +82,8 @@ const SearchTwo = ({ getSearchResult}) => {
         />
         <button
           type="submit"
-          name='search-button'
-          title='search-button'
+          name="search-button"
+          title="search-button"
           aria-labelledby="search-button"
           className="inset-y-0 right-0 hover:text-dark bg-dark flex items-center px-4 text-gray-700 border border-gray-100 rounded-r-md hover:bg-gray-200 focus:outline-none"
         >
@@ -102,6 +115,7 @@ const SearchTwo = ({ getSearchResult}) => {
           ))}
         </ul>
       )}
+      {isModalOpen && <NotFoundModel onClose={closeNotFoundModal} />}
     </>
   );
 };

@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/images/logo.png";
@@ -86,7 +87,7 @@ const Footer = () => {
               href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
               target={"_blank"}
               rel="noopener noreferrer"
-              onBlur={"Visit our Instagram profile"}
+              onBlur={() => console.log("Visit our youtube channel")}
               aria-labelledby="Visit our YouTube channel"
               name="Our channel youtube"
               className="w-6 mx-3 sm:mx-1 focus:outline-none focus:ring focus:border-red-600"
@@ -101,7 +102,7 @@ const Footer = () => {
               target={"_blank"}
               rel="noopener noreferrer"
               aria-labelledby="Our instagram"
-              onBlur={"Visit our Instagram profile"}
+              onBlur={() => console.log("Visit our Instagram profile")}
               name="Visit our Instagram profile"
               className="w-6 mx-3 text-pink-600 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
             >
@@ -111,7 +112,7 @@ const Footer = () => {
               href="https://github.com/med134"
               target={"_blank"}
               rel="noopener noreferrer"
-              onBlur={"Visit our Instagram profile"}
+              onBlur={() => console.log("Visit our github profile")}
               name="Our github account"
               aria-labelledby="Visit our GitHub account"
               className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1 focus:outline-none focus:ring focus:border-light focus:bg-light"
@@ -122,7 +123,7 @@ const Footer = () => {
               href="https://www.linkedin.com/in/mohammed-dakir/"
               target={"_blank"}
               rel="noopener noreferrer"
-              onBlur={"Visit our Instagram profile"}
+              onBlur={() => console.log("Visit our LinkedIn profile")}
               name="Our Linkedin"
               aria-labelledby="Visit our LinkedIn profile"
               className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1 focus:outline-none focus:ring focus:border-light focus:bg-light"

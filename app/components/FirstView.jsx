@@ -18,19 +18,6 @@ const FirstView = ({ posts, loading }) => {
     <div className="sm:mb-3 px-8 py-6 dark:bg-dark md:p-6 md:mt-3 xs:pt-0 xs:py-0 xs:p-0">
       {loading ? (
         <HeroLoading />
-      ) : posts.length === 0 ? (
-        <div className="relative m-16 sm:m-3">
-          <span className="absolute py-1 px-3 -left-8 -top-2 -rotate-[10deg] border border-black black_border bg-slate-400 text-white font-bold">
-            WARNING!
-          </span>
-          <div className="purple_border p-8 border border-dark dark:border-light dark:text-light">
-            <span className="font-mono text-yellow-500 font-bold text-xl">
-              warning:{" "}
-            </span>
-            your search "words" did not match any results we have , please write
-            another words and try again
-          </div>
-        </div>
       ) : (
         posts?.map((item, index) =>
           index < 1 ? (
@@ -65,7 +52,7 @@ const FirstView = ({ posts, loading }) => {
                       {item.title}
                     </span>
                   </Link>
-                  <p className="mt-2 text-xl text-gray-500 py-4 xs:text-sm xs:mt-1 xs:py-2">
+                  <p className="mt-2 text-xl text-gray-700 py-4 xs:text-sm xs:mt-1 xs:py-2">
                     {item?.description.slice(0, 130)}...
                   </p>
                   <Link
@@ -77,33 +64,13 @@ const FirstView = ({ posts, loading }) => {
                       {item.category} {item.tags}
                     </span>
                   </Link>
-                  <button
-                    name="read-blog"
-                    aria-label="read article"
-                    className="group flex items-center dark:border dark:border-light dark:from-[#1b1b1b] dark:to-[#1b1b1b] px-3 py-2 mt-3 xs:mt-1 hover:underline rounded-md bg-gradient-to-r from-slate-300 to-slate-400 text-white transition sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-indigo-200"
+                  <Link
+                    aria-current="page"
+                    href={`/blogs/${item._id}`}
+                    className="inline-flex items-center mt-4 first-line:mt-4 mr-2  justify-center rounded-md dark:text-dark bg-sky-800 px-8 py-2 text-center text-white duration-150 md:mb-4 hover:translate-y-1 hover:bg-sky-500 dark:bg-light"
                   >
-                    <Link
-                      href={`/blogs/${item._id}`}
-                      aria-current="page"
-                      className="text-sm font-medium dark:text-light"
-                    >
-                      Read more...
-                    </Link>
-                    <svg
-                      className="group-hover:translate-x-2 ml-3 h-5 w-5 transition-all"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </button>
+                    <span>Read more...</span>
+                  </Link>
                 </div>
                 <div className="w-full">
                   <Image

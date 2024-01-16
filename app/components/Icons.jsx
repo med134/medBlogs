@@ -39,7 +39,6 @@ export const LinkedInIcon = ({ className, ...rest }) => (
   </svg>
 );
 
-
 export const GoogleIcon = ({ className, ...rest }) => {
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +64,6 @@ export const GoogleIcon = ({ className, ...rest }) => {
     />
   </svg>;
 };
-
 
 export const YoutubeIcon = ({ className, ...reset }) => {
   <svg
@@ -564,7 +562,7 @@ export const YoutubeIcons = ({ className }) => {
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 461.001 461.001"
-      xmlspace="preserve"
+      xmlSpace="preserve"
       fill="#dc2626"
       className="ml-2"
     >
@@ -604,6 +602,42 @@ export const DevIcon = ({ className }) => {
         className="cls-1"
         d="M46.94,57.77a10.77,10.77,0,0,1-3.12,7.95,11,11,0,0,1-8.14,3.09H24.86V30.17h11a10.67,10.67,0,0,1,11,11V57.77Zm-6.9,0V41.21a3.57,3.57,0,0,0-1.39-3.09,4.5,4.5,0,0,0-2.75-1H31.76V61.91H35.9a4.58,4.58,0,0,0,2.75-1A3.66,3.66,0,0,0,40,57.77Zm29.23,11H54.78A4.72,4.72,0,0,1,50,64V35a4.72,4.72,0,0,1,4.83-4.83H69.27v6.9H56.84v9h7.59v6.9H56.84v9H69.26v6.9Zm17.5,0c-2.31,0-4.14-1.61-5.53-4.83l-9-33.81h7.6l6.9,26.55,6.9-26.55h7.58L92.28,64q-2.06,4.83-5.51,4.83Z"
       />
+    </svg>
+  );
+};
+
+export const NotFoundIcon = ({ className }) => {
+  return (
+    <svg
+      width="32px"
+      height="32px"
+      viewBox="0 0 14 14"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="#ec0909"
+      stroke="#ec0909"
+      strokeWidth="0.00014"
+      className={`${className} flex justify-center items-center`}
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <g id="SVGRepo_iconCarrier">
+        <path d="M7 14A7 7 0 1 1 7 0a7 7 0 0 1 0 14z" />
+        <path
+          d="M7 13A6 6 0 1 0 7 1a6 6 0 0 0 0 12z"
+          fill="#FFF"
+          style={{ fill: "var(--svg-status-bg, #fff)" }}
+          fillRule="nonzero"
+        />
+        <path
+          d="M8.16 7.184c.519-.37.904-.857 1.07-1.477.384-1.427-.619-2.897-2.246-2.897-.732 0-1.327.26-1.766.692a2.163 2.163 0 0 0-.509.743.75.75 0 0 0 1.4.54.78.78 0 0 1 .16-.213c.168-.165.39-.262.715-.262.597 0 .936.496.798 1.007-.067.249-.235.462-.492.644-.231.165-.47.264-.601.3a.75.75 0 0 0-.556.724v1.421a.75.75 0 0 0 1.5 0v-.909c.168-.082.346-.185.526-.313z"
+          fillRule="nonzero"
+        />
+        <ellipse cx="6.889" cy="10.634" rx={1} ry={1} />
+      </g>
     </svg>
   );
 };
