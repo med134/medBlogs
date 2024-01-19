@@ -1,6 +1,6 @@
 export default function manifest() {
   return {
-    name: "medCode blogs & portfolio",
+    name: "MedCode Dev blog & Articles",
     short_name: "MedCode",
     description: `Learning programming is accessible for beginners through free software programming`,
     start_url: "/",

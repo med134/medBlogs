@@ -11,11 +11,11 @@ export const inter = Inter({
 });
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
-  title: "Software Mastery-Insider Dev | medCode",
-  description: `Coding blog for beginners Learning programming is accessible for beginners through free software programming
-  courses These courses introduce essential best programming languages`,
+  title: "Best Programming Blogs and templates for Programmers| medCode",
+  description: `Coding blog for beginners and expert programmes Learning programming is accessible for beginners through free software programming
+  courses javascript HTML CSS React.js Next.js Vue.js Angular.js`,
   generator: "Next.js",
-  applicationName: "MedCode",
+  applicationName: "MedCode Dev blog & Articles",
   referrer: "origin-when-cross-origin",
   keywords: [
     "programming",
