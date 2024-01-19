@@ -79,7 +79,7 @@ const FirstView = ({ posts, loading }) => {
                     priority
                     height={500}
                     src={item.image}
-                    className="w-full h-80 rounded-xl object-cover xl:object-contain xs:h-56"
+                    className="w-full h-80 rounded-xl object-contain xl:object-contain xs:h-56"
                   />
                 </div>
               </div>

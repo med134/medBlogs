@@ -62,8 +62,8 @@ const BlogPage = async ({ params }) => {
   };
 
   return (
-    <section className="containerBlog w-full gap-6 p-16 mt-2 lg:block sm:p-2 dark:bg-dark">
-      <div className="flex flex-wrap justify-around dark:bg-dark">
+    <section className="w-full grid grid-cols-6 gap-4 p-10 mt-2 lg:block dark:bg-dark xl:p-8 xl:gap-3 sm:p-4 xs:p-2">
+      <div className="col-span-4 flex flex-wrap justify-around dark:bg-dark">
         <div className="w-full px-4 mb-1 sm:text-sm sm:mb-2 dark:text-light dark:bg-dark">
           <div className="flex justify-start items-center dark:bg-dark">
             <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
@@ -72,7 +72,9 @@ const BlogPage = async ({ params }) => {
             </span>
           </div>
           <h1 className="text-4xl font-bold py-2 sm:text-xl">{blog.title}</h1>
-          <span className="text-xl text-gray-600 py-3">{blog.description}</span>
+          <span className="text-xl text-gray-600 py-3 xs:text-sm">
+            {blog.description}
+          </span>
           <Image
             src={blog.image}
             alt={blog.title}
@@ -81,20 +83,20 @@ const BlogPage = async ({ params }) => {
             height={500}
             priority
           />
-          <span className="flex underline font-bold justify-start items-start py-6 ml-2 mt-1 font-bolder">
+          <span className="flex underline font-bold justify-start items-start py-6 xs:py-2 ml-2 mt-1 font-bolder">
             {blog.tags}
           </span>
           <div className="ql-snow">
             <div
               className="ql-editor"
               dangerouslySetInnerHTML={{ __html: content }}
-            ></div>
+            />
           </div>
           <ShareButtons url={`https://www.medcode.dev/blogs/${id}`} />
           <Comments postSlug={id} />
         </div>
       </div>
-      <div className="sm:w-full sm:p-6">
+      <div className="sm:w-full col-span-2 sm:p-6">
         <div className="flex items-center w-full max-w-sm mx-auto gap-4 mt-24 sm:mt-4 border-2 p-3 border-red-500 dark:border-light rounded-md">
           <Image
             alt="author image"

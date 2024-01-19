@@ -6,7 +6,7 @@ export const GET = async (request, { params }) => {
   const { id } = params;
   try {
     await connect();
-    const post = await Posts.findById(id);
+    const post = await Posts.findOne(id);
     return new NextResponse(JSON.stringify(post), { status: 200 });
   } catch (err) {
     return new NextResponse("Error database", { status: 500 });
@@ -33,4 +33,3 @@ export const PUT = async (request, { params }) => {
     return new NextResponse("Error database", { status: 500 });
   }
 };
-

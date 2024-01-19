@@ -8,17 +8,27 @@ import Skills from "../components/Skills";
 import Education from "../components/Education";
 import React from "react";
 import profilePic from "@/public/images/med.jpg";
-/* import HomeComponent from "../components/HomeComponent";
- */
+
 export const metadata = {
   title: "About us & Resume & Experience | medCode ",
   description: `Welcome to My Web Developer Portfolio UX Designer Here, you'll find a showcase of my career and educational as a web developer also some of my skills`,
-  keywords: ["resume", "Experience", "learning"],
+  keywords: ["resume", "Experience", "learning","coding","projects"],
   alternates: {
     canonical: `/about`,
     languages: {
       en: `/en/about`,
     },
+  }, 
+  openGraph: {
+    title: "medCode|Portfolio",
+    description: `Welcome to My Web Developer Portfolio UX Designer Here, you'll find a showcase of my career and educational as a web developer also some of my skills`,
+    images: [
+      {
+        url: "/public/images/med.jpg",
+        width: "400",
+        height: "300",
+      },
+    ],
   },
 };
 
@@ -26,7 +36,6 @@ const Page = () => {
   return (
     <>
       <TransitionEffect />
-      {/* <HomeComponent /> */}
       <main className="flex w-full flex-col items-center justify-center dark:text-light">
         <Layout className="pt-16 xs:p-10">
           <AnimatedText

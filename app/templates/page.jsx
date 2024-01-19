@@ -98,7 +98,6 @@ const page = async () => {
                   target="_blank"
                   href="https://www.medcode.dev/category/react"
                 >
-                  {" "}
                   <li className="cursor-pointer hover:underline">React js</li>
                 </Link>
                 <Link
@@ -119,12 +118,18 @@ const page = async () => {
                   </li>
                 </Link>
 
-                <Link target="_blank" href="https://getbootstrap.com/">
+                <a
+                  target="_blank"
+                  href="https://getbootstrap.com/"
+                  aria-labelledby="Visit Site Bootstrap official"
+                  rel="noopener noreferrer"
+                  name="Bootstrap"
+                >
                   {" "}
                   <li className="ml-4 cursor-pointer hover:underline">
                     Bootstrap
                   </li>
-                </Link>
+                </a>
               </ul>
             </div>
           </div>

@@ -24,7 +24,7 @@ export const metadata = {
 export default function DashBoard() {
   return (
     <>
-      <TransitionEffect />{" "}
+      <TransitionEffect />
       <div className="p-12 dark:bg-dark sm:p-4 col-auto">
         <NavigationBar />
       </div>
