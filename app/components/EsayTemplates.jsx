@@ -48,19 +48,12 @@ const Easy = async () => {
             With MedCode blogs Templates Tailwind you can optimized the
             customization process to save your team time when building websites.
           </p>
-          <Link href="/templates" className="mt-4" aria-current="page">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="w-7 h-7 text-white opacity-100 hover:scale-x-50"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+          <Link
+            href="/templates"
+            className="mt-4 font-bold underline text-light hover:scale-75"
+            aria-current="page"
+          >
+            See More...
           </Link>
         </div>
       </div>
@@ -92,7 +85,7 @@ const Easy = async () => {
                     href={`/templates/${item._id}`}
                     className="inline-flex items-center dark:text-emerald-400 py-2 space-x-2 text-sm hover:text-emerald-400"
                   >
-                    <span>Read more</span>
+                    <span>View Template...</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"

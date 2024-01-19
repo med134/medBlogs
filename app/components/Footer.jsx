@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/images/logo.png";
@@ -88,7 +88,7 @@ const Footer = () => {
               target={"_blank"}
               rel="noopener noreferrer"
               onBlur={() => console.log("Visit our youtube channel")}
-              aria-labelledby="Visit our YouTube channel"
+              aria-label=""
               name="Our channel youtube"
               className="w-6 mx-3 sm:mx-1 focus:outline-none focus:ring focus:border-red-600"
             >
@@ -101,7 +101,7 @@ const Footer = () => {
               href="https://www.instagram.com/med_dakir/"
               target={"_blank"}
               rel="noopener noreferrer"
-              aria-labelledby="Our instagram"
+              aria-label=""
               onBlur={() => console.log("Visit our Instagram profile")}
               name="Visit our Instagram profile"
               className="w-6 mx-3 text-pink-600 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
@@ -114,7 +114,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               onBlur={() => console.log("Visit our github profile")}
               name="Our github account"
-              aria-labelledby="Visit our GitHub account"
+              aria-label=""
               className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1 focus:outline-none focus:ring focus:border-light focus:bg-light"
             >
               <GithubIcon fontSize={26} className="hover:scale-y-150" />
@@ -125,7 +125,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               onBlur={() => console.log("Visit our LinkedIn profile")}
               name="Our Linkedin"
-              aria-labelledby="Visit our LinkedIn profile"
+              aria-label=""
               className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1 focus:outline-none focus:ring focus:border-light focus:bg-light"
             >
               <LinkedInIcon fontSize={26} className="hover:scale-y-150" />
