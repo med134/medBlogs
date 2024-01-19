@@ -80,60 +80,68 @@ const Footer = () => {
         </div>
         <div className="social">
           <span className="text-base font-bold tracking-wide text-gray-900 dark:text-gray-400">
-            Social Media
+            Follow on Social Media
           </span>
-          <div className="flex items-center mt-1 space-x-3">
-            <a
-              href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
-              target={"_blank"}
-              rel="noopener noreferrer"
-              onBlur={() => console.log("Visit our youtube channel")}
-              aria-label=""
-              name="Our channel youtube"
-              className="w-6 mx-3 sm:mx-1 focus:outline-none focus:ring focus:border-red-600"
-            >
-              <AiFillYoutube
-                size={34}
-                className="fill-red-600 hover:scale-y-150"
-              />
-            </a>
-            <a
-              href="https://www.instagram.com/med_dakir/"
-              target={"_blank"}
-              rel="noopener noreferrer"
-              aria-label=""
-              onBlur={() => console.log("Visit our Instagram profile")}
-              name="Visit our Instagram profile"
-              className="w-6 mx-3 text-pink-600 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
-            >
-              <BsInstagram size={24} className="hover:scale-y-150" />
-            </a>
-            <a
-              href="https://github.com/med134"
-              target={"_blank"}
-              rel="noopener noreferrer"
-              onBlur={() => console.log("Visit our github profile")}
-              name="Our github account"
-              aria-label=""
-              className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1 focus:outline-none focus:ring focus:border-light focus:bg-light"
-            >
-              <GithubIcon fontSize={26} className="hover:scale-y-150" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/mohammed-dakir/"
-              target={"_blank"}
-              rel="noopener noreferrer"
-              onBlur={() => console.log("Visit our LinkedIn profile")}
-              name="Our Linkedin"
-              aria-label=""
-              className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1 focus:outline-none focus:ring focus:border-light focus:bg-light"
-            >
-              <LinkedInIcon fontSize={26} className="hover:scale-y-150" />
-            </a>
+          <div className="flex justify-start items-start space-x-3 mt-2">
+            <div>
+              <a
+                href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
+                target={"_blank"}
+                rel="noopener noreferrer"
+                onBlur={() => console.log("Visit our youtube channel")}
+                aria-label="Visit our youtube channel"
+                name="Our channel youtube"
+                className="w-auto flex mb-4 justify-start transition hover:translate-x-2 items-center mx-3 sm:mx-1 focus:outline-none focus:ring focus:border-red-600"
+              >
+                <AiFillYoutube
+                  size={34}
+                  className="fill-red-600"
+                />
+                <span className="ml-1 font-semibold text-xs">youtube</span>
+              </a>
+              <a
+                href="https://www.instagram.com/med_dakir/"
+                target={"_blank"}
+                rel="noopener noreferrer"
+                aria-label="Visit our Instagram profile"
+                onBlur={() => console.log("Visit our Instagram profile")}
+                name="Visit our Instagram profile"
+                className="w-auto mx-3 flex justify-start items-center text-pink-600 transition hover:translate-x-2 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
+              >
+                <BsInstagram size={26} className="" />
+                <span className="text-dark font-semibold text-xs ml-1">
+                  Instagram
+                </span>
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://github.com/med134"
+                target={"_blank"}
+                rel="noopener noreferrer"
+                onBlur={() => console.log("Visit our github profile")}
+                name="Our github account"
+                aria-label="Visit our github profile"
+                className="w-auto mb-5 flex justify-start items-center transition hover:translate-x-2  dark:bg-dark sm:mx-1 focus:outline-none focus:ring  "
+              >
+                <GithubIcon fontSize={28} className="" />
+                <span className="ml-1 font-semibold text-xs">Github</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/mohammed-dakir/"
+                target={"_blank"}
+                rel="noopener noreferrer"
+                onBlur={() => console.log("Visit our LinkedIn profile")}
+                name="Our Linkedin"
+                aria-label="Visit our LinkedIn profile"
+                className="w-auto mx-3  flex justify-start items-center transition hover:translate-x-2  dark:bg-dark sm:mx-1 focus:outline-none focus:ring "
+              >
+                <LinkedInIcon fontSize={26} className="" />
+                <span className="ml-1 font-semibold text-xs">Linkedin</span>
+              </a>
+            </div>
           </div>
-          <p className="mt-4 text-sm text-gray-500">
-            Follow me on My Social media accounts for new projects and news
-          </p>
+          
         </div>
       </div>
       <div className="pt-5 text-center pb-10 border-t border-gray-600 py-4 lg:flex-row ">

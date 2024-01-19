@@ -7,7 +7,7 @@ export const GithubIcon = ({ className, ...rest }) => (
     height="1em"
     viewBox="0 0 512 512"
     {...rest}
-    className={`w-full h-auto ${className}`}
+    className={`w-auto h-auto ${className}`}
   >
     <path fill="none" d="M0 0h512v512H0z" />
     <path
@@ -24,7 +24,7 @@ export const LinkedInIcon = ({ className, ...rest }) => (
     height="1em"
     viewBox="0 0 256 256"
     {...rest}
-    className={`w-full h-auto ${className}`}
+    className={`w-auto h-auto ${className}`}
     aria-labelledby="Our account linkedin"
   >
     <path fill="none" d="M0 0h256v256H0z" />
