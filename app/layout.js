@@ -45,9 +45,8 @@ export const metadata = {
     { name: "medCode", url: "https://www.medcode.dev/" },
   ],
   category: "technology",
-  colorScheme: "light",
+  colorScheme: "#f5f5f5",
   creator: "Med Dakir",
-  publisher: "Med Dakir",
   formatDetection: {
     email: "med@vivacode.dev",
     address: "312 Lovely Street, NY",

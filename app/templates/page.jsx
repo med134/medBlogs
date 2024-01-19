@@ -10,7 +10,7 @@ async function getData() {
     cache: "no-store",
   });
   if (!res.ok) {
-    return <PageNotFound />;
+    return <PageNotFound />
   }
   return res.json();
 }
@@ -46,9 +46,8 @@ export const metadata = {
     "Code Snippets",
   ],
   authors: [{ name: "med dakir" }],
-  colorScheme: "light",
+  colorScheme: "#f5f5f5",
   creator: "Med Dakir",
-  publisher: "Med Dakir",
   generator: "Next.js",
   applicationName: "MedCode",
   referrer: "origin-when-cross-origin",

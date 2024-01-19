@@ -3,10 +3,10 @@ import connect from "@/app/utils/ConnectDB";
 import Posts from "@/app/module/Post";
 
 export const GET = async (request, { params }) => {
-  const { id } = params;
+  const id = params.id;
   try {
     await connect();
-    const post = await Posts.findOne(id);
+    const post = await Posts.findById(id);
     return new NextResponse(JSON.stringify(post), { status: 200 });
   } catch (err) {
     return new NextResponse("Error database", { status: 500 });
