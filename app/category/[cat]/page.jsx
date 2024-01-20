@@ -49,9 +49,7 @@ export async function generateMetadata({ params }) {
       "money",
       "easy",
     ],
-    authors: [
-      { name: "med dakir" },
-    ],
+    authors: [{ name: "med dakir" }],
     alternates: {
       canonical: `/category/${params.cat}`,
       languages: {
@@ -95,14 +93,11 @@ const Card = async ({ params }) => {
       : `All Blogs About ${params.cat}`;
   return (
     <Layout className="py-4 px-16 p-8 xl:px-8 xl:p-6">
-      <h1 className="px-10 text-red-600 sm:text-xl sm:px-1 text-3xl font-outFit font-bold uppercase mt-4 md:px-4">
-        {myTitle}
-      </h1>
-      <div className="px-2 xs:px-1">
-        <h2 className="px-10 py-8 mt-2 text-red-500 font-bold text-xl sm:text-sm xs:py-2 xs:mt-0 xs:px-1">
-          Popular Categories
-        </h2>
-        <div className="grid grid-cols-7 mt-4 gap-2 px-16 lg:flex lg:justify-start lg:items-start md:px-4 lg:flex-wrap lg:px-8 xs:flex xs:px-2 xs:justify-start">
+      <div className="px-2 xs:px-1 py-8">
+        <h1 className="px-4 text-red-600 sm:text-xl sm:px-1 text-3xl font-outFit font-bold uppercase mt-4 md:px-4">
+          #{myTitle}
+        </h1>
+        <div className="grid grid-cols-7 mt-10 gap-2 px-4 lg:flex lg:justify-start lg:items-start md:px-4 lg:flex-wrap lg:px-8 xs:flex xs:px-2 xs:justify-start">
           {category?.map((item) => (
             <Link
               className={`${styles.category} xs:shrink w-8 h-8 dark:text-light xs:bg-red-800 xs:text-light `}
@@ -112,7 +107,8 @@ const Card = async ({ params }) => {
               {item.image && (
                 <Image
                   src={item.image}
-                  alt=""
+                  alt={item.label}
+                  loading="lazy"
                   width={32}
                   height={32}
                   className={"w-8 h-8 rounded-full xs:hidden"}
@@ -134,11 +130,12 @@ const Card = async ({ params }) => {
               className="hover:no-underline focus:no-underline dark:bg-gray-900"
             >
               <Image
-                width={300}
-                height={300}
+                width={500}
+                height={500}
                 className="object-cover w-full rounded h-44 dark:bg-gray-500 md:object-fill"
                 src={item.image}
-                alt="blog_image"
+                alt={item.title}
+                loading="lazy"
               />
               <div className="p-6 space-y-2 block">
                 <p className="text-red-600 font-bold tex-sm">

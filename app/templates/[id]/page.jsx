@@ -6,7 +6,7 @@ import Image from "next/image";
 import PageNotFound from "@/app/PageNotFound";
 
 async function getData(id) {
-  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+  const res = await fetch(`https://www.medcode.dev/api/posts/${id}`, {
     cache: "no-store",
   });
   if (!res.ok) {
