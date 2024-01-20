@@ -89,7 +89,7 @@ const TemplateId = async ({ params }) => {
           <div className="w-full mb-4 xs:w-[350px] xs:mb-4">
             <Image
               alt={data.title}
-              priority
+              loading="lazy"
               src={data.image}
               className="h-full w-full border rounded-lg shadow-xl xs:w-[350px]"
               width={500}

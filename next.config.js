@@ -35,6 +35,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "i.stack.imgur.com",
       },
+      {
+        protocol: "https",
+        hostname: "media.dev.to",
+      },
     ],
     minimumCacheTTL: 1500000,
   },

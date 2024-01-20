@@ -10,10 +10,7 @@ const getData = async () => {
     throw new Error("Failed");
   }
   const templates = await res.json();
-  const sortedPosts = templates?.sort(
-    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-  );
-  return sortedPosts;
+  return templates;
 };
 
 const Easy = async () => {
