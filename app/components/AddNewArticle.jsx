@@ -17,6 +17,7 @@ const AddNewArticle = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const session = useSession();
+  console.log(session.data.user.name)
   if (session.status === "unauthenticated") {
     redirect("/dashboard/login");
   }
@@ -111,7 +112,7 @@ const AddNewArticle = () => {
     error,
     isLoading,
     mutate,
-  } = useSWR(`/api/articles?username=${session?.data?.user.name}`, fetcher);
+  } = useSWR(`/api/articles?username=${session?.data?.user?.name}`, fetcher);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;

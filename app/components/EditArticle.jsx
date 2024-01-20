@@ -119,7 +119,7 @@ export default function EditArticle({
           category,
           content,
           username: session.data.user.name,
-          username: session.data.user.email,
+          email: session.data.user.email,
           job,
         }),
       });
