@@ -17,7 +17,6 @@ const AddNewArticle = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const session = useSession();
-  console.log(session.data.user.name)
   if (session.status === "unauthenticated") {
     redirect("/dashboard/login");
   }
