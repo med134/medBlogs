@@ -11,9 +11,6 @@ import Image from "next/image";
 
 const AddNewPost = () => {
   const session = useSession();
-  if (session.status === "unauthenticated") {
-    redirect("/dashboard/login");
-  }
 
   const handleDelete = async (id) => {
     const confirmed = confirm("Are you sure you want to delete...?");

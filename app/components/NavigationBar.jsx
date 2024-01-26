@@ -1,7 +1,15 @@
+"use client";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
-import Layout from "./Layout";
+import React, { useEffect } from "react";
+import { redirect } from "next/navigation";
 const NavigationBar = () => {
+  const session = useSession();
+/*   useEffect(() => {
+    if (session.status === "unauthenticated") {
+      redirect("/dashboard/login");
+    }
+  }); */
   return (
     <div className="text-center">
       <h1 className="mx-auto max-w-4xl space-x-2 py-4 dark:text-light font-title text-5xl font-bold tracking-normal xs:py-0 xs:w-full text-gray-800 sm:text-2xl">
@@ -19,8 +27,12 @@ const NavigationBar = () => {
         </span>
       </h1>
       <span className="text-2xl font-bold tracking-tight text-gray-800 sm:text-5xl md:text-2xl font-title xs:text-xl">
-        <span className="block space-x-3 dark:text-light">Free Templates & Components</span>
-        <span className="block pt-2 sm:pt-0 space-x-3 dark:text-light">New Articles & blogs</span>
+        <span className="block space-x-3 dark:text-light">
+          Free Templates & Components
+        </span>
+        <span className="block pt-2 sm:pt-0 space-x-3 dark:text-light">
+          New Articles & blogs
+        </span>
       </span>
       <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-xs xs:mt-3 dark:text-light">
         Discover a wealth of resources for your programming and technology

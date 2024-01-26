@@ -1,14 +1,14 @@
 "use client";
-import React from "react";
-import { signIn, useSession } from "next-auth/react";
+import React, { useEffect } from "react";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
 const Login = () => {
   const session = useSession();
-  console.log(session);
   if (session.status === "authenticated") {
     redirect("/dashboard");
   }

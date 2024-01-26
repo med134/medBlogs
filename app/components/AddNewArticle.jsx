@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-import { redirect } from "next/navigation";
 import "highlight.js/styles/a11y-dark.min.css";
 import useSWR from "swr";
-import Image from 'next/image';
+import Image from "next/image";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useQuill } from "react-quilljs";
@@ -12,14 +11,11 @@ import "react-quill/dist/quill.snow.css";
 import hljs from "highlight.js";
 import SliderSkelton from "./SliderSkelton";
 
-
 const AddNewArticle = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const session = useSession();
-  if (session.status === "unauthenticated") {
-    redirect("/dashboard/login");
-  }
+ 
   const handleDelete = async (id) => {
     const confirmed = confirm("Are you sure you want to delete...?");
     if (confirmed) {
@@ -146,7 +142,7 @@ const AddNewArticle = () => {
   return (
     <div className="inline-block p-8 py-8 sm:p-2 sm:py-2 dark:bg-dark">
       <div className="w-full flex justify-start items-center px-10">
-        <Link href="/dashboard" role="button" name='back' aria-current="page">
+        <Link href="/dashboard" role="button" name="back" aria-current="page">
           <FaArrowLeft className="text-2xl text-gray-700 hover:text-slate-400 dark:text-light" />{" "}
         </Link>
         <h1 className="text-gray-700 text-3xl lg:text-2xl dark:text-light font-bold ml-[30%] xs:text-[16px] md:ml-[20%] xs:ml-4">
@@ -154,7 +150,10 @@ const AddNewArticle = () => {
         </h1>
       </div>
       <div className="p-8 grid grid-cols-3 gap-4 md:inline-block sm:items-center">
-        <form className="p-4 text-left col-span-2 text-gray-700" onSubmit={handleSubmit}>
+        <form
+          className="p-4 text-left col-span-2 text-gray-700"
+          onSubmit={handleSubmit}
+        >
           <input
             required
             type="text"
@@ -218,8 +217,8 @@ const AddNewArticle = () => {
             Post Now
           </button>
         </form>
-        <div className='col-span-1'>
-        {isLoading ? (
+        <div className="col-span-1">
+          {isLoading ? (
             <SliderSkelton />
           ) : (
             articles?.map((post) => (
