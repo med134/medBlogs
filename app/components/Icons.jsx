@@ -3,8 +3,8 @@ import * as React from "react";
 export const GithubIcon = ({ className, ...rest }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="1em"
-    height="1em"
+    width="24px"
+    height="24px"
     viewBox="0 0 512 512"
     {...rest}
     className={`w-auto h-auto ${className}`}
@@ -20,8 +20,8 @@ export const GithubIcon = ({ className, ...rest }) => (
 export const LinkedInIcon = ({ className, ...rest }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="1em"
-    height="1em"
+    width="24px"
+    height="24px"
     viewBox="0 0 256 256"
     {...rest}
     className={`w-auto h-auto ${className}`}

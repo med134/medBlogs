@@ -4,7 +4,9 @@ import HomePage from "./components/HomePage";
 import Question from "./components/Question";
 import Easy from "./components/EsayTemplates";
 import Dev from "./components/Dev";
+import CategoryList from "./components/HeaderCategory";
 import { DevIcon } from "./components/Icons";
+import FirstView from "./components/FirstView";
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
   title: "Best Programming Blogs & templates for Programmers|medCode",
@@ -78,6 +80,12 @@ export const metadata = {
 export default function Home() {
   return (
     <section className="dark:bg-dark bg-light">
+      <FirstView />
+      <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-2 py-2 xs:px-8">
+        <AiTwotoneSound className="dark:text-light" />
+        <p className="ml-2 sm:text-xl ">Categories</p>
+      </span>{" "}
+      <CategoryList />
       <HomePage />
       <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 xs:px-8 pt-8 py-2 xs:pt-1">
         <AiTwotoneSound className="dark:text-light" />

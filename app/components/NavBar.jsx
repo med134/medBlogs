@@ -12,6 +12,7 @@ import ProfileDown from "./ProfileDown";
 import { Limelight } from "next/font/google";
 import { BsInstagram } from "react-icons/bs";
 import { useSession } from "next-auth/react";
+import SearchTwo from "./SearchTwo";
 
 const limelight = Limelight({
   subsets: ["latin"],
@@ -65,38 +66,37 @@ const NavBar = () => {
   };
   return (
     <header
-      className="w-full px-28 py-6 font-medium flex items-center justify-between sticky top-0 2xl:px-20
+      className="w-full px-1 py-6 font-medium flex items-center justify-start sticky top-0 xl:px-10
     dark:text-light bg-white dark:font-lexend dark:bg-dark shadow-sm z-10 lg:px-16 md:px-12 sm:px-8 xs:w-full
     "
     >
       <button
-        className="flex-col justify-between items-center hidden ml-[100%] lg:flex"
+        data-collapse-toggle="navbar-search"
         onClick={handleClick}
-        name="menu-button"
-        aria-label="menu"
-        role="button"
-        id="button"
+        type="button"
+        className="items-center hidden lg:inline-flex ml-[98%] p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-search"
+        aria-expanded="false"
       >
-        <div className="flex-col">
-          <span
-            className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm  ${
-              isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
-            }`}
-          ></span>
-          <span
-            className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${
-              isOpen ? "opacity-0" : "opacity-100"
-            } `}
-          ></span>
-          <span
-            className={`bg-dark dark:bg-light block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
-              isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
-            } `}
-          ></span>
-        </div>
+        <span className="sr-only">Open main menu</span>
+        <svg
+          className="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
       </button>
 
-      <div className="w-full flex justify-between font-semibold lg:hidden">
+      <div className="w-full px-16 flex justify-stretch items-center font-semibold xl:px-8 lg:hidden">
         <Link
           href="/"
           className="flex items-center justify-between flex-wrap cursor-pointer"
@@ -109,12 +109,12 @@ const NavBar = () => {
             height={300}
           />
           <span
-            className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light`}
+            className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light xl:hidden`}
           >
             medCode
           </span>
         </Link>
-        <nav className="flex items-center justify-between flex-wrap">
+        <nav className="flex items-center justify-stretch ml-24 xl:ml-16">
           <CustomLink
             href="/projects"
             title="projects"
@@ -134,34 +134,43 @@ const NavBar = () => {
             className="mx-4 uppercase"
             target="_blank"
           />
-          <CustomLink
-            href="/dashboard"
-            title="Dashboard"
-            className="mx-4 uppercase"
-            target="_blank"
-          />
-          {session.status === "authenticated" && <ProfileDown />}
-          <button
-            name="theme-button"
-            aria-label="change-theme"
-            onClick={() => setMode(mode === "light" ? "dark" : "light")}
-            className={`w-8 h-8 ml-8 flex items-center justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 
+          {session.status === "authenticated" ? (
+            <CustomLink
+              href="/dashboard"
+              title="Dashboard"
+              className="mx-4 uppercase"
+              target="_blank"
+            />
+          ) : (
+            <CustomLink
+              href="/dashboard/login"
+              title="Login"
+              className="mx-4 uppercase"
+              target="_blank"
+            />
+          )}
+        </nav>
+        {session.status === "authenticated" && <ProfileDown />}
+      </div>
+        <SearchTwo />
+      <button
+        name="theme-button"
+        aria-label="change-theme"
+        onClick={() => setMode(mode === "light" ? "dark" : "light")}
+        className={`w-8 h-8 flex items-center lg:hidden mr-10 xl:mr-0 justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 
     ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
     `}
-          >
-            {mode === "light" ? (
-              <SunIcon className={"fill-dark"} />
-            ) : (
-              <MoonIcon
-                className={
-                  "fill-dark transition-all duration-75 ease-linear delay-75 animate-spin"
-                }
-              />
-            )}
-          </button>
-        </nav>
-      </div>
-
+      >
+        {mode === "light" ? (
+          <SunIcon className={"fill-dark"} />
+        ) : (
+          <MoonIcon
+            className={
+              "fill-dark transition-all duration-75 ease-linear delay-75 animate-spin"
+            }
+          />
+        )}
+      </button>
       {isOpen ? (
         <div
           className="min-w-[60vw] sm:min-w-[70vw] sm:h-min flex flex-col justify-between z-30 items-center fixed top-[50%] sm:top-[42%] xs:top-[45%] left-2/4 -translate-x-1/2 -translate-y-1/2
@@ -211,13 +220,21 @@ const NavBar = () => {
               className="templates"
               toggle={handleClick}
             />
-
-            <CustomMobileLink
-              href="/dashboard"
-              title="Dashboard"
-              className=""
-              toggle={handleClick}
-            />
+            {session.status === "authenticated" ? (
+              <CustomMobileLink
+                href="/dashboard"
+                title="Dashboard"
+                className=""
+                toggle={handleClick}
+              />
+            ) : (
+              <CustomMobileLink
+                href="/dashboard/login"
+                title="Login"
+                className=""
+                toggle={handleClick}
+              />
+            )}
           </nav>
           {session.status === "authenticated" && (
             <button
