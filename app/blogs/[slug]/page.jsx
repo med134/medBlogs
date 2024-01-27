@@ -6,8 +6,8 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import Comments from "@/app/components/comments/comments";
 import ShareButtons from "@/app/components/ShareButtons";
 
-async function getData(id) {
-  const res = await fetch(`https://www.medcode.dev/api/articles/${id}`, {
+async function getData(slug) {
+  const res = await fetch(`https://www.medcode.dev/api/articles/${slug}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -48,8 +48,8 @@ export async function generateMetadata({ params }) {
   };
 }
 const BlogPage = async ({ params }) => {
-  const { id } = params;
-  const blog = await getData(id);
+  const { slug } = params;
+  const blog = await getData(slug);
   const content = blog.content;
 
   const FormatDate = (dateString) => {
@@ -83,9 +83,9 @@ const BlogPage = async ({ params }) => {
             height={500}
             priority
           />
-          <span className="flex underline font-bold justify-start items-start py-6 xs:py-2 ml-2 mt-1 font-bolder">
+          <h2 className="flex underline font-bold justify-start items-start py-6 xs:py-2 ml-2 mt-1 font-bolder">
             {blog.tags}
-          </span>
+          </h2>
           <div className="ql-snow">
             <div
               className="ql-editor"

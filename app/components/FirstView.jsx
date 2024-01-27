@@ -73,7 +73,7 @@ const FirstView = async () => {
               </Link>
               <Link
                 aria-current="page"
-                href={`/blogs/${item._id}`}
+                href={`/blogs/${item.slug}`}
                 className="inline-flex items-center mt-4 first-line:mt-4 mr-2  justify-center rounded-md dark:text-dark bg-sky-800 px-8 py-2 text-center text-white duration-150 md:mb-4 hover:translate-y-1 hover:bg-sky-500 dark:bg-light"
               >
                 <span>Read more...</span>

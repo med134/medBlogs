@@ -15,7 +15,7 @@ const AddNewArticle = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const session = useSession();
- 
+
   const handleDelete = async (id) => {
     const confirmed = confirm("Are you sure you want to delete...?");
     if (confirmed) {
@@ -114,6 +114,7 @@ const AddNewArticle = () => {
     const tags = e.target[1].value;
     const image = e.target[2].value;
     const description = e.target[3].value;
+    const slug = e.target[4].value;
     const category = selectedOption;
     const job = selectedJobs;
     const content = quill.root.innerHTML;
@@ -127,6 +128,7 @@ const AddNewArticle = () => {
           image,
           category,
           description,
+          slug,
           content,
           username: session.data.user.name,
           email: session.data.user.email,
@@ -174,6 +176,11 @@ const AddNewArticle = () => {
           <input
             type="text"
             placeholder="description"
+            className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
+          />
+          <input
+            type="text"
+            placeholder="slug"
             className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
           />
           <div className="">
