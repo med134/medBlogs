@@ -12,6 +12,7 @@ export default function EditArticle({
   id,
   title,
   description,
+  slug,
   tags,
   category,
   content,
@@ -23,6 +24,7 @@ export default function EditArticle({
   const [newDescription, setNewDescription] = useState(description);
   const [newTags, setNewTags] = useState(tags);
   const [newCategory, setNewCategory] = useState(category);
+  const [newSlug, setNewSlug] = useState(slug);
   const [newJob, setNewJob] = useState(job);
   const [newContent, setNewContent] = useState(content);
   const [loading, setLoading] = useState(false);
@@ -116,6 +118,7 @@ export default function EditArticle({
           tags,
           image,
           description,
+          slug,
           category,
           content,
           username: session.data.user.name,
@@ -128,6 +131,7 @@ export default function EditArticle({
       setNewImage("");
       setNewDescription("");
       setNewTags("");
+      setNewSlug("");
       setNewContent("");
       setLoading(false);
       redirect("/dashboard/add-templates");
@@ -169,6 +173,20 @@ export default function EditArticle({
             className="border border-slate-500 px-8 py-2 rounded-lg"
             type="text"
             placeholder="Topic Description"
+          />
+            <label
+            className="text-gray-600 font-bold mb-1 dark:text-light"
+            htmlFor="newDescription"
+          >
+            slug
+          </label>
+          <input
+            onChange={(e) => setNewSlug(e.target.value)}
+            value={newSlug}
+            id="newDescription"
+            className="border border-slate-500 px-8 py-2 rounded-lg"
+            type="text"
+            placeholder="topic slug"
           />
           <label
             className="text-gray-600 font-bold mb-1 dark:text-light"
@@ -242,12 +260,9 @@ export default function EditArticle({
             className="text-gray-600 font-bold mb-1 dark:text-light"
             htmlFor="newCode"
           >
-            Code
+            content
           </label>
-          <div
-            ref={quillRef}
-            style={{ height: 400, marginLeft: 4 }}
-          />
+          <div ref={quillRef} style={{ height: 400, marginLeft: 4 }} />
           <button
             type="submit"
             className="bg-slate-600 font-bold text-white py-3 px-6 w-fit hover:bg-slate-400 rounded-lg"

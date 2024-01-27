@@ -16,17 +16,15 @@ async function getData(slug) {
   return res.json();
 }
 export async function generateMetadata({ params }) {
-  const post = await getData(params.id);
-  const publicAt = new Date(post?.createdAt).toISOString();
+  const post = await getData(params.slug);
   return {
     title: post?.title,
     description: post?.description,
     keywords: post?.tags,
-    publishedTime: publicAt,
     alternates: {
-      canonical: `/blogs/${params.id}`,
+      canonical: `/blogs/${params.slug}`,
       languages: {
-        "en-US": `en-US/blogs${params.id}`,
+        "en-US": `en-US/blogs${params.slug}`,
       },
       types: {
         "application/rss+xml": "https://www.medcode.dev/rss",
@@ -92,8 +90,8 @@ const BlogPage = async ({ params }) => {
               dangerouslySetInnerHTML={{ __html: content }}
             />
           </div>
-          <ShareButtons url={`https://www.medcode.dev/blogs/${id}`} />
-          <Comments postSlug={id} />
+          <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
+          <Comments postSlug={blog._id} />
         </div>
       </div>
       <div className="sm:w-full col-span-2 sm:p-6">

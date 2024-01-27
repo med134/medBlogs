@@ -13,21 +13,21 @@ export const GET = async (request, { params }) => {
   }
 };
 export const DELETE = async (request, { params }) => {
-  const { id } = params;
+  const { slug } = params;
   try {
     await connect();
-    await Article.findByIdAndDelete(id);
+    await Article.findByIdAndDelete({ slug });
     return new NextResponse("post deleted", { status: 200 });
   } catch (err) {
     return new NextResponse("Error database", { status: 500 });
   }
 };
 export const PUT = async (request, { params }) => {
-  const { id } = params;
+  const { slug } = params;
   const body = await request.json();
   try {
     await connect();
-    await Article.findByIdAndUpdate(id, body);
+    await Article.findByIdAndUpdate(slug, body);
     return new NextResponse("article updated", { status: 200 });
   } catch (err) {
     return new NextResponse("Error database", { status: 500 });

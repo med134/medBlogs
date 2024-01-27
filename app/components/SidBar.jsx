@@ -43,7 +43,7 @@ const SidBar = async () => {
               </p>
             </p>
             <Link
-              href={`/blogs/${item._id}`}
+              href={`/blogs/${item.slug}`}
               className="font-semibold text-rose-500 transition duration-100 hover:text-rose-600 hover:underline active:text-rose-700"
             >
               Read more...

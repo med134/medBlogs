@@ -26,6 +26,7 @@ const Edit = async ({ params }) => {
         id={id}
         title={data.title}
         description={data.description}
+        slug={data?.slug}
         image={data.image}
         tags={data.tags}
         job={data.job}

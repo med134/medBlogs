@@ -126,7 +126,7 @@ const Card = async ({ params }) => {
             className="bg-white shadow-lg dark:shadow-white rounded-md lg:block md:mb-6 lg:w-full sm:w-full dark:bg-dark dark:border-light"
           >
             <Link
-              href={`https://www.medcode.dev/blogs/${item._id}`}
+              href={`/blogs/${item.slug}`}
               className="hover:no-underline focus:no-underline dark:bg-gray-900"
             >
               <Image

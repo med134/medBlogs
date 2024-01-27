@@ -248,13 +248,13 @@ const AddNewArticle = () => {
 
                 <div className="flex justify-between items-center px-6 py-2">
                   <button
-                    onClick={() => handleDelete(post._id)}
+                    onClick={() => handleDelete(post.slug)}
                     className="text-red-500 cursor-pointer hover:underline font-semibold"
                   >
                     Delete
                   </button>
                   <Link
-                    href={`/dashboard/edit-articles/${post._id}`}
+                    href={`/dashboard/edit-articles/${post.slug}`}
                     className="text-blue-500 cursor-pointer hover:underline font-semibold"
                   >
                     Edit

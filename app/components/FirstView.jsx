@@ -43,7 +43,7 @@ const FirstView = async () => {
                 </span>
               </span>
               <Link
-                href={`/blogs/${item._id}`}
+                href={`/blogs/${item.slug}`}
                 aria-current="page"
                 rel="preload"
               >
