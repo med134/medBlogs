@@ -47,7 +47,7 @@ const FirstView = async () => {
                 aria-current="page"
                 rel="preload"
               >
-                <span
+                <h1
                   className="bg-gradient-to-r text-4xl xl:text-3xl font-extrabold from-red-300 to-red-600 bg-[length:0px_10px] bg-left-bottom
       bg-no-repeat
       transition-[background-size]
@@ -57,7 +57,7 @@ const FirstView = async () => {
       dark:from-red-800 dark:to-purple-900 dark:text-light xs:text-xl"
                 >
                   {item.title}
-                </span>
+                </h1>
               </Link>
               <p className="mt-2 text-xl text-gray-700 py-4 xs:text-sm xs:mt-1 xs:py-2">
                 {item?.description.slice(0, 130)}...

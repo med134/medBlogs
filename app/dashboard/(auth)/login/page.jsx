@@ -1,11 +1,12 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import TransitionEffect from "@/app/components/TransitionEffect";
 
 const Login = () => {
   const session = useSession();
@@ -14,13 +15,14 @@ const Login = () => {
   }
   return (
     <>
+      <TransitionEffect />
       <div className="flex min-h-0 w-full items-center justify-center bg-light dark:bg-dark p-28 lg:p-16 md:p-8 sm:p-4 sm:block">
         <div className="m-2 w-full rounded-2xl bg-gray-400 bg-cover bg-center text-white sm:hidden">
           <Image
             height={500}
             width={500}
             className="w-full h-full object-fill rounded-2xl"
-            alt="image_blog"
+            alt="image_login"
             priority
             src={
               "https://i.ibb.co/9VFgfg0/organic-flat-blog-post-illustration.jpg"

@@ -38,9 +38,9 @@ const Easy = async () => {
       >
         <div className="absolute inset-0 bg-black opacity-50 rounded-md"></div>
         <div className="flex flex-col items-center p-8 py-12 text-center relative z-10">
-          <h1 className="py-4 text-5xl font-bold text-white opacity-100 md:text-3xl sm:2xl">
+          <h2 className="py-4 text-5xl font-bold text-white opacity-100 md:text-3xl sm:2xl">
             Software Mastery:Professional Free Tailwind Components & Templates
-          </h1>
+          </h2>
           <p className="text-white opacity-100 md:text-sm">
             With MedCode blogs Templates Tailwind you can optimized the
             customization process to save your team time when building websites.
@@ -70,9 +70,9 @@ const Easy = async () => {
                     </span>
                   </span>
                   <Link href={`/templates/${item._id}`}>
-                    <h2 className="text-3xl font-bold text-dark dark:text-light hover:underline xs:text-xl">
+                    <h3 className="text-3xl font-bold text-dark dark:text-light hover:underline xs:text-xl">
                       {item.title}
-                    </h2>
+                    </h3>
                   </Link>
                   <p className="dark:text-light text-gray-700 xs:text-sm">
                     {item.description}
