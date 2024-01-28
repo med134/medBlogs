@@ -5,8 +5,8 @@ import ClipBoard from "@/app/components/ClipBorad";
 import Image from "next/image";
 import PageNotFound from "@/app/PageNotFound";
 
-async function getData(id) {
-  const res = await fetch(`https://www.medcode.dev/api/posts/${id}`, {
+async function getData(slug) {
+  const res = await fetch(`https://www.medcode.dev/api/posts/${slug}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -24,14 +24,14 @@ async function getTemplates() {
   return res.json();
 }
 export async function generateMetadata({ params }) {
-  const post = await getData(params.id);
+  const post = await getData(params.slug);
   return {
     title: post.title,
     description: post.description,
     alternates: {
-      canonical: `/templates/${params.id}`,
+      canonical: `/templates/${params.slug}`,
       languages: {
-        "en-US": `en-US/templates${params.id}`,
+        "en-US": `en-US/templates${params.slug}`,
       },
       types: {
         "application/rss+xml": "https://www.medcode.dev/rss",
@@ -52,8 +52,8 @@ export async function generateMetadata({ params }) {
 }
 const TemplateId = async ({ params }) => {
   const templates = await getTemplates();
-  const { id } = params;
-  const data = await getData(id);
+  const { slug } = params;
+  const data = await getData(slug);
 
   return (
     <>
@@ -96,39 +96,36 @@ const TemplateId = async ({ params }) => {
               height={500}
             />
           </div>
-            <div className="p-2 mt-6 w-full xs:mt-6">
-              <ClipBoard data={data.code} />
-            </div>
+          <div className="p-2 mt-6 w-full xs:mt-6">
+            <ClipBoard data={data.code} />
+          </div>
         </div>
         <div className="pays w-full p-6 mb-16">
           <h4 className="text-xl font-medium text-purple-400 mb-2 underline px-2">
             Recent Templates:
           </h4>
-          {templates.map(
-            (item) =>
-              item._id != params.id && (
-                <div
-                  key={item._id}
-                  className="py-6 border shadow-md rounded-md mb-4 p-4"
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    className="mb-2"
-                    priority
-                    width={300}
-                    height={300}
-                  />
-                  <Link
-                    href={`/templates/${item._id}`}
-                    className="font-semibold mb-2 text-gray-600 hover:text-gray-400 hover:underline dark:text-light"
-                  >
-                    {item.title}
-                  </Link>
-                  <h6 className="text-xs text-purple-400">{item.category}</h6>
-                </div>
-              )
-          )}
+          {templates.map((item) => (
+            <div
+              key={item._id}
+              className="py-6 border shadow-md rounded-md mb-4 p-4"
+            >
+              <Image
+                src={item.image}
+                alt={item.title}
+                className="mb-2"
+                priority
+                width={300}
+                height={300}
+              />
+              <Link
+                href={`/templates/${item.slug}`}
+                className="font-semibold mb-2 text-gray-600 hover:text-gray-400 hover:underline dark:text-light"
+              >
+                {item.title}
+              </Link>
+              <h6 className="text-xs text-purple-400">{item.category}</h6>
+            </div>
+          ))}
         </div>
       </div>
     </>
