@@ -25,6 +25,7 @@ async function getTemplates() {
 }
 export async function generateMetadata({ params }) {
   const post = await getData(params.slug);
+  console.log(params.slug)
   return {
     title: post.title,
     description: post.description,
@@ -104,7 +105,7 @@ const TemplateId = async ({ params }) => {
           <h4 className="text-xl font-medium text-purple-400 mb-2 underline px-2">
             Recent Templates:
           </h4>
-          {templates.map((item) => (
+          {templates?.map((item) => (
             <div
               key={item._id}
               className="py-6 border shadow-md rounded-md mb-4 p-4"
