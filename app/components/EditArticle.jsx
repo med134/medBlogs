@@ -105,13 +105,14 @@ export default function EditArticle({
     const description = newDescription;
     const image = newImage;
     const tags = newTags;
+    const slug = newSlug;
     const category = newCategory;
     const job = newJob;
     const content = quill.root.innerHTML;
 
     try {
       setLoading(true);
-      await fetch(`https://www.medcode.dev/api/articles/${id}`, {
+      await fetch(`https://www.medcode.dev/api/articles/${slug}`, {
         method: "PUT",
         body: JSON.stringify({
           title,
@@ -174,7 +175,7 @@ export default function EditArticle({
             type="text"
             placeholder="Topic Description"
           />
-            <label
+          <label
             className="text-gray-600 font-bold mb-1 dark:text-light"
             htmlFor="newDescription"
           >

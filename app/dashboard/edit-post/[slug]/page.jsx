@@ -1,10 +1,10 @@
 import React from "react";
 import Layout from "@/app/components/Layout";
 import PageNotFound from "@/app/PageNotFound";
-import EditArticle from "@/app/components/EditArticle";
+import EditPost from "@/app/components/EditPost";
 
-async function getData(id) {
-  const res = await fetch(`https://medcode.dev/api/articles/${id}`, {
+async function getData(slug) {
+  const res = await fetch(`https://medcode.dev/api/posts/${slug}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -14,24 +14,22 @@ async function getData(id) {
 }
 
 const Edit = async ({ params }) => {
-  const { id } = params;
-  const data = await getData(id);
+  const { slug } = params;
+  const data = await getData(slug);
 
   return (
     <Layout className="p-16 lg:p-8 md:p-8 sm:p-8 xs:p-6">
       <h1 className="text-center text-2xl text-gray-800 font-semibold dark:text-light">
-        Edit Your Article & Submit
+        Edit Your Post & Submit
       </h1>
-      <EditArticle
-        id={id}
+      <EditPost
+        slug={slug}
         title={data.title}
         description={data.description}
-        slug={data?.slug}
         image={data.image}
-        tags={data.tags}
-        job={data.job}
+        link={data.link}
         category={data.category}
-        content={data.content}
+        code={data.code}
       />
     </Layout>
   );

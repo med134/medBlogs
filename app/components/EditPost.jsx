@@ -11,12 +11,14 @@ export default function EditPost({
   title,
   description,
   category,
+  slug,
   code,
   link,
   image,
 }) {
   const [newTitle, setNewTitle] = useState(title);
   const [newImage, setNewImage] = useState(image);
+  const [newSlug, setNewSlug] = useState(slug);
   const [newDescription, setNewDescription] = useState(description);
   const [newLink, setNewLink] = useState(link);
   const [newCategory, setNewCategory] = useState(category);
@@ -29,17 +31,19 @@ export default function EditPost({
     const title = newTitle;
     const description = newDescription;
     const image = newImage;
+    const slug = newSlug;
     const link = newLink;
     const category = newCategory;
     const code = newCode;
     console.log(newTitle);
     try {
       setLoading(true);
-      await fetch(`https://www.medcode.dev/api/posts/${id}`, {
+      await fetch(`https://www.medcode.dev/api/posts/${slug}`, {
         method: "PUT",
         body: JSON.stringify({
           title,
           description,
+          slug,
           image,
           link,
           category,
@@ -50,6 +54,7 @@ export default function EditPost({
 
       setNewTitle("");
       setNewImage("");
+      setNewSlug("");
       setNewDescription("");
       setNewLink("");
       setNewCategory("");
@@ -108,6 +113,20 @@ export default function EditPost({
             className="border border-slate-500 px-8 py-2 rounded-lg"
             type="text"
             placeholder="Topic Image"
+          />
+          <label
+            className="text-gray-600 font-bold mb-1 dark:text-light"
+            htmlFor="newSlug"
+          >
+            Slug
+          </label>
+          <input
+            onChange={(e) => setNewSlug(e.target.value)}
+            value={newSlug}
+            id="newSlug"
+            className="border border-slate-500 px-8 py-2 rounded-lg"
+            type="text"
+            placeholder="Topic Slug"
           />
           <label
             className="text-gray-600 font-bold mb-1 dark:text-light"

@@ -108,6 +108,7 @@ const AddNewArticle = () => {
     isLoading,
     mutate,
   } = useSWR(`/api/articles?username=${session?.data?.user?.name}`, fetcher);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
@@ -163,6 +164,7 @@ const AddNewArticle = () => {
             className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring sm:px-2"
           />
           <input
+            required
             type="text"
             placeholder="tags"
             className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
@@ -174,11 +176,13 @@ const AddNewArticle = () => {
             className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
           />
           <input
+            required
             type="text"
             placeholder="description"
             className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
           />
           <input
+            required
             type="text"
             placeholder="slug"
             className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"

@@ -25,7 +25,7 @@ async function getTemplates() {
 }
 export async function generateMetadata({ params }) {
   const post = await getData(params.slug);
-  console.log(params.slug)
+
   return {
     title: post.title,
     description: post.description,
@@ -77,7 +77,7 @@ const TemplateId = async ({ params }) => {
           </p>
           <div className="">
             <Link
-              href={data.link}
+              href={data?.link}
               target="_blank"
               className={`flex w-48 mb-2 cursor-pointer select-none items-center justify-center rounded-md bg-purple-500 text-sm px-6 py-1 text-light`}
             >
@@ -119,12 +119,12 @@ const TemplateId = async ({ params }) => {
                 height={300}
               />
               <Link
-                href={`/templates/${item.slug}`}
+                href={`/templates/${item?.slug}`}
                 className="font-semibold mb-2 text-gray-600 hover:text-gray-400 hover:underline dark:text-light"
               >
                 {item.title}
               </Link>
-              <h6 className="text-xs text-purple-400">{item.category}</h6>
+              <h6 className="text-xs text-purple-400">{item?.category}</h6>
             </div>
           ))}
         </div>

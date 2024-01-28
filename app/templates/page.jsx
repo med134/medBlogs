@@ -47,9 +47,6 @@ export const metadata = {
   ],
   authors: [{ name: "med dakir" }],
   colorScheme: "#f5f5f5",
-  creator: "Med Dakir",
-  generator: "Next.js",
-  applicationName: "MedCode",
   referrer: "origin-when-cross-origin",
   alternates: {
     canonical: `/templates`,
@@ -75,7 +72,6 @@ export const metadata = {
 };
 const page = async () => {
   const data = await getData();
-  console.log(data);
   return (
     <>
       <TransitionEffect />
