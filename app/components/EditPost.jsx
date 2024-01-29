@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -185,13 +186,20 @@ export default function EditPost({
               }}
             />
           </div>
-
-          <button
-            type="submit"
-            className="bg-slate-600 font-bold text-white py-3 px-6 w-fit hover:bg-slate-400 rounded-lg"
-          >
-            Update Post
-          </button>
+          <div className="flex justify-items-start items-center">
+            <button
+              type="submit"
+              className="bg-slate-600 font-bold text-white py-3 px-6 w-fit hover:bg-slate-400 rounded-lg"
+            >
+              Update Post
+            </button>
+            <Link
+              href="/dashboard/add-templates"
+              className="bg-slate-600 ml-3 font-bold text-white py-3 px-6 w-fit hover:bg-slate-400 rounded-lg"
+            >
+              Cancel
+            </Link>
+          </div>
         </form>
       )}
     </>

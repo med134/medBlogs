@@ -5,6 +5,7 @@ import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 import { redirect } from "next/navigation";
 import "highlight.js/styles/a11y-dark.min.css";
 import { useQuill } from "react-quilljs";
+import Link from 'next/link'
 import "react-quill/dist/quill.snow.css";
 import hljs from "highlight.js";
 
@@ -263,12 +264,16 @@ export default function EditArticle({
             content
           </label>
           <div ref={quillRef} style={{ height: 400, marginLeft: 4 }} />
+          <div className="flex justify-start items-center"> 
           <button
             type="submit"
             className="bg-slate-600 font-bold text-white py-3 px-6 w-fit hover:bg-slate-400 rounded-lg"
           >
             Update Article
           </button>
+          <Link href='/dashboard/add-articles' className="bg-slate-600 ml-3 font-bold text-white py-3 px-6 w-fit hover:bg-slate-400 rounded-lg">
+            Cancel
+          </Link></div>
         </form>
       )}
     </>

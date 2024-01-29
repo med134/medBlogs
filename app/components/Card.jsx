@@ -10,7 +10,7 @@ const Card = ({ posts, loading }) => {
         <BlogLoading />
       ) : (
         posts?.map((item, index) =>
-          index < 6 ? (
+          index < 7 && index > 0 ? (
             <section
               key={item._id}
               className="w-auto p-4 flex justify-between bg-white items-start mb-3 border border-gray-500 dark:bg-dark  rounded-xl sm:flex-col-reverse"
@@ -50,7 +50,7 @@ const Card = ({ posts, loading }) => {
                   </span>
                 </Link>
                 <p className="text-sm text-gray-700 py-3 dark:text-light">
-                  {item.description.slice(0,160)}...
+                  {item.description.slice(0, 160)}...
                 </p>
                 <div className="flex items-center justify-start py-3">
                   <Image
