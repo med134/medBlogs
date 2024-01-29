@@ -3,8 +3,8 @@ import Layout from "@/app/components/Layout";
 import PageNotFound from "@/app/PageNotFound";
 import EditPost from "@/app/components/EditPost";
 
-async function getData(id) {
-  const res = await fetch(`https://medcode.dev/api/posts/${id}`, {
+async function getData(slug) {
+  const res = await fetch(`https://medcode.dev/api/posts/${slug}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -14,8 +14,8 @@ async function getData(id) {
 }
 
 const Edit = async ({ params }) => {
-  const { id } = params;
-  const data = await getData(id);
+  const { slug } = params;
+  const data = await getData(slug);
 
   return (
     <Layout className="p-16 lg:p-8 md:p-8 sm:p-8 xs:p-6">
@@ -23,7 +23,7 @@ const Edit = async ({ params }) => {
         Edit Your Post & Submit
       </h1>
       <EditPost
-        id={id}
+        slug={slug}
         title={data.title}
         description={data.description}
         image={data.image}

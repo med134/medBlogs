@@ -145,11 +145,9 @@ const AddNewPost = () => {
                   alt={post.title}
                   className="w-full h-32 object-cover"
                 />
-
                 <div className="px-6 py-4">
                   <div className="font-bold text-xl mb-2">{post.title}</div>
                 </div>
-
                 <div className="flex justify-between items-center px-6 py-2">
                   <button
                     onClick={() => handleDelete(post.slug)}

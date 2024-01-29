@@ -28,7 +28,6 @@ export default function EditArticle({
   const [newContent, setNewContent] = useState(content);
   const [loading, setLoading] = useState(false);
   const session = useSession();
-  console.log(slug)
 
   hljs.configure({
     languages: [

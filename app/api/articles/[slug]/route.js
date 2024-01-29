@@ -16,7 +16,7 @@ export const DELETE = async (request, { params }) => {
   const { slug } = params;
   try {
     await connect();
-    await Article.findByIdAndDelete({ slug });
+    await Article.findOneAndDelete({ slug });
     return new NextResponse("post deleted", { status: 200 });
   } catch (err) {
     return new NextResponse("Error database", { status: 500 });
@@ -27,7 +27,7 @@ export const PUT = async (request, { params }) => {
   const body = await request.json();
   try {
     await connect();
-    await Article.findByIdAndUpdate({slug}, body);
+    await Article.findOneAndUpdate({slug}, body);
     return new NextResponse("article updated", { status: 200 });
   } catch (err) {
     return new NextResponse("Error database", { status: 500 });
