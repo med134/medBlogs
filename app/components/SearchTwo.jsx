@@ -62,7 +62,7 @@ const SearchTwo = () => {
       setIsModalOpen(false);
       setSug([]);
       setQuery("");
-      const firstResultId = searchResult[0]._id;
+      const firstResultId = searchResult[0].slug;
       router.push(`/blogs/${firstResultId}`);
     }
   };
