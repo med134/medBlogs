@@ -69,7 +69,7 @@ const Easy = async () => {
                       {FormatDate(item?.createdAt)}
                     </span>
                   </span>
-                  <Link href={`/templates/${item._id}`}>
+                  <Link href={`/templates/${item.slug}`}>
                     <h3 className="text-3xl font-bold text-dark dark:text-light hover:underline xs:text-xl">
                       {item.title}
                     </h3>
@@ -79,7 +79,7 @@ const Easy = async () => {
                   </p>
                   <Link
                     rel="noopener noreferrer"
-                    href={`/templates/${item._id}`}
+                    href={`/templates/${item.slug}`}
                     className="inline-flex items-center dark:text-emerald-400 py-2 space-x-2 text-sm hover:text-emerald-400"
                   >
                     <span>View Template...</span>
