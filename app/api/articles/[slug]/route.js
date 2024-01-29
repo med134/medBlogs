@@ -27,7 +27,7 @@ export const PUT = async (request, { params }) => {
   const body = await request.json();
   try {
     await connect();
-    await Article.findByIdAndUpdate(slug, body);
+    await Article.findByIdAndUpdate({slug}, body);
     return new NextResponse("article updated", { status: 200 });
   } catch (err) {
     return new NextResponse("Error database", { status: 500 });

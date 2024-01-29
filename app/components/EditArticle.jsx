@@ -9,7 +9,6 @@ import "react-quill/dist/quill.snow.css";
 import hljs from "highlight.js";
 
 export default function EditArticle({
-  id,
   title,
   description,
   slug,
@@ -29,6 +28,7 @@ export default function EditArticle({
   const [newContent, setNewContent] = useState(content);
   const [loading, setLoading] = useState(false);
   const session = useSession();
+  console.log(slug)
 
   hljs.configure({
     languages: [
@@ -177,14 +177,14 @@ export default function EditArticle({
           />
           <label
             className="text-gray-600 font-bold mb-1 dark:text-light"
-            htmlFor="newDescription"
+            htmlFor="newSlug"
           >
             slug
           </label>
           <input
             onChange={(e) => setNewSlug(e.target.value)}
             value={newSlug}
-            id="newDescription"
+            id="newSlug"
             className="border border-slate-500 px-8 py-2 rounded-lg"
             type="text"
             placeholder="topic slug"
@@ -212,10 +212,10 @@ export default function EditArticle({
           <input
             onChange={(e) => setNewTags(e.target.value)}
             value={newTags}
-            id="newLink"
+            id="newTags"
             className="border border-slate-500 px-8 py-2 rounded-lg"
             type="text"
-            placeholder="Topic Link preview"
+            placeholder="Topic tags"
           />
           <label
             className="text-gray-600 font-bold mb-1 dark:text-light"

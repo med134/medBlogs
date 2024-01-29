@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { required } from "yargs";
 const { Schema } = mongoose;
 const postSchema = new Schema(
   {

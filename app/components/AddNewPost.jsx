@@ -12,11 +12,11 @@ import Image from "next/image";
 const AddNewPost = () => {
   const session = useSession();
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (slug) => {
     const confirmed = confirm("Are you sure you want to delete...?");
     if (confirmed) {
       try {
-        await fetch(`/api/posts/${id}`, {
+        await fetch(`/api/posts/${slug}`, {
           method: "DELETE",
         });
         mutate();
@@ -30,16 +30,18 @@ const AddNewPost = () => {
     e.preventDefault();
     const title = e.target[0].value;
     const description = e.target[1].value;
-    const image = e.target[2].value;
-    const link = e.target[3].value;
-    const category = e.target[4].value;
-    const code = e.target[5].value;
+    const slug = e.target[2].value;
+    const image = e.target[3].value;
+    const link = e.target[4].value;
+    const category = e.target[5].value;
+    const code = e.target[6].value;
     try {
       await fetch("/api/posts", {
         method: "POST",
         body: JSON.stringify({
           title,
           description,
+          slug,
           image,
           link,
           category,
@@ -80,26 +82,37 @@ const AddNewPost = () => {
           onSubmit={handleSubmit}
         >
           <input
+            required
             type="text"
             placeholder="Title"
             className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring sm:px-2"
           />
           <input
+            required
             type="text"
-            placeholder="Desc"
+            placeholder="Description"
             className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
           />
           <input
+            required
+            type="text"
+            placeholder="slug"
+            className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
+          />
+          <input
+            required
             type="text"
             placeholder="Image"
             className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
           />
           <input
+            required
             type="text"
             placeholder="Link"
             className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
           />
           <input
+            required
             type="text"
             placeholder="category"
             className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
@@ -139,13 +152,13 @@ const AddNewPost = () => {
 
                 <div className="flex justify-between items-center px-6 py-2">
                   <button
-                    onClick={() => handleDelete(post._id)}
+                    onClick={() => handleDelete(post.slug)}
                     className="text-red-500 cursor-pointer hover:underline font-semibold"
                   >
                     Delete
                   </button>
                   <Link
-                    href={`/dashboard/edit-post/${post._id}`}
+                    href={`/dashboard/edit-post/${post.slug}`}
                     className="text-blue-500 cursor-pointer hover:underline font-semibold"
                   >
                     Edit
