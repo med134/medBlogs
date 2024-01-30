@@ -10,14 +10,14 @@ async function getData() {
     cache: "no-store",
   });
   if (!res.ok) {
-    return <PageNotFound />
+    return <PageNotFound />;
   }
   return res.json();
 }
 
 export const metadata = {
   title: `10+ Free Templates & Components Resources Examples`,
-  description: `Browse through MedCode collection of free frontend templates and components for tailwind css and bootstrap with full free code source and developments kits`,
+  description: `Browse through MedCode collection of free frontend templates and components  with advanced frameworks such as React.js, Next.js, Vue.js with full free code source and developments kits`,
   keywords: [
     "Web Development",
     "tailwind css free components",
@@ -45,9 +45,6 @@ export const metadata = {
     "Learning Resources",
     "Code Snippets",
   ],
-  authors: [{ name: "med dakir" }],
-  colorScheme: "#f5f5f5",
-  referrer: "origin-when-cross-origin",
   alternates: {
     canonical: `/templates`,
     languages: {
@@ -59,8 +56,7 @@ export const metadata = {
   },
   openGraph: {
     title: "medCode free templates & components",
-    description: `Browse through MedCode collection of free templates and components for tailwind css and bootstrap
-      with full free code source`,
+    description: `Browse through MedCode collection of free frontend templates and components  with advanced frameworks such as React.js, Next.js, Vue.js with full free code source and developments kits`,
     images: [
       {
         url: "https://i.ibb.co/rHvLvvr/Untitled.png",

@@ -36,9 +36,9 @@ const CategoryList = () => {
               href={`/category/${item?.value}`}
               className="absolute xs:relative xs:block inset-0 opacity-0 xs:opacity-100 group-hover:opacity-100 flex-wrap items-center justify-center transition-opacity duration-300 ease-in-out bg-black bg-opacity-75 xs:bg-transparent text-light"
             >
-              <h5 className="text-sm font-semibold text-center mt-10 xs:mt-0 md:text-sm">
+              <h2 className="text-sm font-semibold text-center mt-10 xs:mt-0 md:text-sm">
                 {item?.label}
-              </h5>
+              </h2>
             </Link>
           </div>
         ) : null

@@ -12,8 +12,8 @@ export const inter = Inter({
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
   title: "Best Programming Blogs & templates for Programmers|medCode",
-  description: `Coding blog for beginners and expert programmes Learning programming is accessible for beginners through free software programming
-  courses javascript HTML CSS React.js Next.js Vue.js Angular.js`,
+  description: `Discover the coding universe through our blog, where programming becomes accessible to beginners and expertise developers,
+  Explore free components & templates with advanced frameworks such as React.js, Next.js, Vue.js`,
   generator: "Next.js",
   applicationName: "MedCode Dev blog & Articles",
   referrer: "origin-when-cross-origin",

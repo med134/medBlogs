@@ -54,7 +54,7 @@ const Dev = async () => {
                 target="blank"
                 className="font-medium text-2xl hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2 dark:text-light"
               >
-                {item.title}
+                <h6>{item.title}</h6>
               </Link>
               <p className="text-gray-800 text-sm dark:text-light">
                 {item.description}
