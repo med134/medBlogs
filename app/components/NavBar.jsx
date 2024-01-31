@@ -12,6 +12,7 @@ import ProfileDown from "./ProfileDown";
 import { Limelight } from "next/font/google";
 import { BsInstagram } from "react-icons/bs";
 import { useSession } from "next-auth/react";
+import { FiX } from "react-icons/fi";
 import SearchTwo from "./SearchTwo";
 
 const limelight = Limelight({
@@ -70,31 +71,67 @@ const NavBar = () => {
     dark:text-light bg-white dark:font-lexend dark:bg-dark shadow-sm z-10 lg:px-16 md:px-12 sm:px-8 xs:w-full
     "
     >
-      <button
-        data-collapse-toggle="navbar-search"
-        onClick={handleClick}
-        type="button"
-        className="items-center hidden lg:inline-flex ml-[98%] p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        aria-controls="navbar-search"
-        aria-expanded="false"
-      >
-        <span className="sr-only">Open main menu</span>
-        <svg
-          className="w-5 h-5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 17 14"
+      <div className="items-center hidden lg:inline-flex ml-[94%] p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg  dark:text-gray-400 ">
+        <button
+          type="button"
+          data-collapse-toggle="navbar-search"
+          onClick={handleClick}
+          className="hover:bg-gray-100 rounded-lg focus:outline-none p-2 focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M1 1h15M1 7h15M1 13h15"
-          />
-        </svg>
-      </button>
+          <svg
+            width="24px"
+            height="24px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+            <g
+              id="SVGRepo_tracerCarrier"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M16.6725 16.6412L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                stroke="#000000"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </g>
+          </svg>
+        </button>
+        <button
+          data-collapse-toggle="navbar-search"
+          onClick={handleClick}
+          type="button"
+          className="hover:bg-gray-100 ml-2 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="navbar-search"
+          aria-expanded="false"
+        >
+          <span className="sr-only">Open main menu</span>
+          {isOpen ? (
+            <FiX className="w-6 h-6"/>
+          ) : (
+            <svg
+              className="w-5 h-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          )}
+        </button>
+      </div>
 
       <div className="w-full px-16 flex justify-stretch items-center font-semibold xl:px-8 lg:hidden">
         <Link
@@ -152,7 +189,7 @@ const NavBar = () => {
         </nav>
         {session.status === "authenticated" && <ProfileDown />}
         <SearchTwo />
-       </div>
+      </div>
       <button
         name="theme-button"
         aria-label="change-theme"
