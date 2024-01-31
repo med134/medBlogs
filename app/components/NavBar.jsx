@@ -60,7 +60,6 @@ const CustomMobileLink = ({ href, title, className = "" }) => {
 
 const NavBar = () => {
   const [mode, setMode] = useThemeSwitcher("light");
-
   const [isOpen, setIsOpen] = useState(false);
   const session = useSession();
   const handleClick = () => {
