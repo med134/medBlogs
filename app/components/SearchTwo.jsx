@@ -8,6 +8,7 @@ const SearchTwo = () => {
   const [sug, setSug] = useState([]);
   const [query, setQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -55,7 +56,6 @@ const SearchTwo = () => {
       return alert("No results found");
     }
     const searchResult = await res.json();
-
     if (searchResult.length === 0) {
       setIsModalOpen(true);
     } else {
@@ -105,12 +105,12 @@ const SearchTwo = () => {
       </form>
 
       {sug.length > 0 && (
-        <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md max-h-96 overflow-y-auto right-44 w-44 xs:w-60 xs:right-24 top-16 scroll-m-0 absolute lg:z-50 ">
+        <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md max-h-96 overflow-y-auto right-44 w-44 top-16 scroll-m-0 absolute z-40 lg:top-36 lg:w-64 lg:h-64 lg:bg-gray-800">
           {sug.map((item, index) => (
             <li
               onClick={() => onSugHandler(item.title)}
               key={index}
-              className="px-2 py-1 cursor-pointer text-dark border mb-2 dark:text-light hover:bg-slate-500 dark:hover:bg-slate-500"
+              className="px-2 py-1 cursor-pointer text-dark border mb-2 dark:text-light hover:bg-slate-500 dark:hover:bg-slate-500 lg:text-light"
             >
               {item.title}
             </li>
