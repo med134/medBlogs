@@ -60,6 +60,7 @@ const CustomMobileLink = ({ href, title, className = "" }) => {
 
 const NavBar = () => {
   const [mode, setMode] = useThemeSwitcher("light");
+
   const [isOpen, setIsOpen] = useState(false);
   const session = useSession();
   const handleClick = () => {
@@ -76,7 +77,7 @@ const NavBar = () => {
           type="button"
           data-collapse-toggle="navbar-search"
           onClick={handleClick}
-          className="hover:bg-gray-100 rounded-lg focus:outline-none p-2 focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          className="hover:bg-gray-100 dark:text-light rounded-lg focus:outline-none p-2 focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         >
           <svg
             width="24px"
@@ -84,6 +85,7 @@ const NavBar = () => {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="dark:text-light"
           >
             <g id="SVGRepo_bgCarrier" strokeWidth={0} />
             <g
