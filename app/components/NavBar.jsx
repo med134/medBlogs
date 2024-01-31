@@ -151,8 +151,8 @@ const NavBar = () => {
           )}
         </nav>
         {session.status === "authenticated" && <ProfileDown />}
-      </div>
         <SearchTwo />
+       </div>
       <button
         name="theme-button"
         aria-label="change-theme"
@@ -177,7 +177,7 @@ const NavBar = () => {
     bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
     "
         >
-          <nav className="flex items-center flex-col justify-center z-50">
+          <nav className="flex items-center flex-col justify-center z-40">
             <div className="flex items-center justify-center xs:w-full mb-1">
               <Image
                 src={logo}
@@ -194,6 +194,7 @@ const NavBar = () => {
                 </h2>
               </div>
             </div>
+            <SearchTwo />
             <div className="line bg-gray-600 w-full h-1"></div>
             <CustomMobileLink
               href="/"

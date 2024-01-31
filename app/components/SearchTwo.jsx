@@ -71,7 +71,7 @@ const SearchTwo = () => {
     <>
       <form
         onSubmit={handleSearch}
-        className="inline-flex w-44 h-12 mt-1 absolute right-44 xl:right-36 "
+        className="inline-flex w-44 h-12 mt-1 absolute right-44 xl:right-36 lg:relative lg:left-0"
       >
         <input
           type="text"
@@ -79,7 +79,7 @@ const SearchTwo = () => {
           aria-labelledby="search-input"
           value={query}
           onChange={(e) => onChangeHandle(e.target.value)}
-          className="h-10 w-44 rounded-md border border-gray-100 bg-white dark:border-light dark:bg-dark dark:text-light py-4 pl-2 shadow-sm outline-none focus:border-blue-950"
+          className="h-10 w-44 rounded-md border border-gray-100 bg-white dark:border-light lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium shadow-sm outline-none focus:border-light lg:text-light"
           placeholder="Search for Articles"
         />
         <button
@@ -87,7 +87,7 @@ const SearchTwo = () => {
           name="search-button"
           title="search-button"
           aria-labelledby="search-button"
-          className="inset-y-0 right-0 w-12 h-10 hover:text-dark bg-dark flex items-center px-4 text-gray-700 border border-gray-100 rounded-r-md hover:bg-gray-200 focus:outline-none"
+          className="inset-y-0 right-0 w-12 h-10  hover:text-dark lg:bg-transparent lg:border lg:border-b-light bg-dark flex items-center px-4 text-gray-700 border border-gray-100 rounded-r-md hover:bg-gray-200 lg:hover:bg-none focus:outline-none lg:border-none"
         >
           <svg
             className="h-6 w-6 text-light hover:text-dark"
@@ -105,7 +105,7 @@ const SearchTwo = () => {
       </form>
 
       {sug.length > 0 && (
-        <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md max-h-96 overflow-y-auto right-44 w-44 xs:w-60 xs:right-24 top-16 scroll-m-0 absolute ">
+        <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md max-h-96 overflow-y-auto right-44 w-44 xs:w-60 xs:right-24 top-16 scroll-m-0 absolute lg:z-50 ">
           {sug.map((item, index) => (
             <li
               onClick={() => onSugHandler(item.title)}
