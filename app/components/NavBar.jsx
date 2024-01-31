@@ -72,7 +72,7 @@ const NavBar = () => {
     dark:text-light bg-white dark:font-lexend dark:bg-dark shadow-sm z-10 lg:px-16 md:px-12 sm:px-8 xs:w-full
     "
     >
-      <div className="items-center hidden lg:inline-flex ml-[94%] p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg  dark:text-gray-400 ">
+      <div className="items-center hidden lg:inline-flex ml-[94%] xs:ml-[85%] p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg  dark:text-gray-400 ">
         <button
           type="button"
           data-collapse-toggle="navbar-search"
