@@ -105,7 +105,7 @@ const SearchTwo = () => {
       </form>
 
       {sug.length > 0 && (
-        <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md max-h-96 overflow-y-auto right-44 w-44 top-16 scroll-m-0 absolute z-40 lg:top-36 lg:w-64 lg:h-64 lg:bg-gray-800 xs:right-5">
+        <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md max-h-96 overflow-y-auto right-44 w-44 top-16 scroll-m-0 absolute z-40 lg:top-36 lg:right-32 lg:w-[270px] lg:h-64 lg:bg-gray-800 xs:right-0">
           {sug.map((item, index) => (
             <li
               onClick={() => onSugHandler(item.title)}
