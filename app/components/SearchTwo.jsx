@@ -71,7 +71,7 @@ const SearchTwo = () => {
     <>
       <form
         onSubmit={handleSearch}
-        className="inline-flex w-44 h-12 mt-1 absolute right-44 xl:right-36 lg:relative lg:left-0"
+        className="inline-flex w-44 h-12 mt-1 absolute right-44 xl:right-36 lg:relative lg:left-0 xs:right-12"
       >
         <input
           type="text"
@@ -105,7 +105,7 @@ const SearchTwo = () => {
       </form>
 
       {sug.length > 0 && (
-        <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md max-h-96 overflow-y-auto right-44 w-44 top-16 scroll-m-0 absolute z-40 lg:top-36 lg:w-64 lg:h-64 lg:bg-gray-800">
+        <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md max-h-96 overflow-y-auto right-44 w-44 top-16 scroll-m-0 absolute z-40 lg:top-36 lg:w-64 lg:h-64 lg:bg-gray-800 xs:right-5">
           {sug.map((item, index) => (
             <li
               onClick={() => onSugHandler(item.title)}
