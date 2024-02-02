@@ -7,6 +7,7 @@ import Dev from "./components/Dev";
 import CategoryList from "./components/HeaderCategory";
 import { DevIcon } from "./components/Icons";
 import FirstView from "./components/FirstView";
+import TransitionEffect from "./components/TransitionEffect";
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
   title: "Best Programming Blogs & templates for Programmers|medCode",
@@ -57,7 +58,7 @@ export const metadata = {
     url: "https://medcode.dev",
     images: [
       {
-        url: "https://i.ibb.co/7C7bbTZ/Frame-1.png",
+        url: "https://i.ibb.co/CsLw60W/blog-tutorials.png",
         width: "400",
         height: "300",
       },
@@ -79,6 +80,8 @@ export const metadata = {
 };
 export default function Home() {
   return (
+    <> 
+    <TransitionEffect/>
     <section className="dark:bg-dark bg-light">
       <FirstView />
       <span className="text-2xl underline dark:text-light bg-light dark:bg-dark font-bold flex justify-start items-center text-gray-800 font-slab px-12 pt-2 py-2 xs:px-8">
@@ -106,5 +109,6 @@ export default function Home() {
       </span>
       <Question />
     </section>
+    </>
   );
 }
