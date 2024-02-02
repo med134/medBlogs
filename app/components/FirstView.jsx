@@ -56,7 +56,7 @@ const FirstView = async () => {
       group-hover:bg-[length:100%_10px]
       dark:from-red-800 dark:to-purple-900 dark:text-light xs:text-xl"
                 >
-                  {item.title}
+                  {item.title}.
                 </h1>
               </Link>
               <p className="mt-2 text-xl text-gray-500 py-4 xs:text-sm xs:mt-1 xs:py-2">

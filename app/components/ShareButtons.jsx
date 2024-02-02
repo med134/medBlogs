@@ -17,7 +17,11 @@ const ShareButtons = ({ url }) => {
         Share on Social media
       </span>
       <div className="ml-3 sm:mt-2">
-        <FacebookShareButton url={url} className="">
+        <FacebookShareButton
+          url={url}
+          aria-label="Share on Facebook"
+          className=""
+        >
           <span
             className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#1877f2" }}
@@ -32,7 +36,12 @@ const ShareButtons = ({ url }) => {
             </svg>
           </span>
         </FacebookShareButton>
-        <LinkedinShareButton url={url} className="ml-2">
+
+        <LinkedinShareButton
+          aria-label="Share on Linkedin"
+          url={url}
+          className="ml-2"
+        >
           <span
             className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#0077b5" }}
@@ -47,7 +56,11 @@ const ShareButtons = ({ url }) => {
             </svg>
           </span>
         </LinkedinShareButton>
-        <WhatsappShareButton url={url} className="ml-2">
+        <WhatsappShareButton
+          aria-label="Share on WhatsApp"
+          url={url}
+          className="ml-2"
+        >
           <span
             className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#128c7e" }}
@@ -62,7 +75,11 @@ const ShareButtons = ({ url }) => {
             </svg>
           </span>
         </WhatsappShareButton>
-        <RedditShareButton url={url} className="ml-2">
+        <RedditShareButton
+          aria-label="Share on Reddit"
+          url={url}
+          className="ml-2"
+        >
           <span
             className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#ff4500" }}
@@ -78,7 +95,11 @@ const ShareButtons = ({ url }) => {
             </svg>
           </span>
         </RedditShareButton>
-        <PinterestShareButton url={url} className="ml-2">
+        <PinterestShareButton
+          aria-label="Share on Pinterest"
+          url={url}
+          className="ml-2"
+        >
           <span
             className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#e60023" }}
@@ -97,7 +118,11 @@ const ShareButtons = ({ url }) => {
             </svg>
           </span>
         </PinterestShareButton>
-        <EmailShareButton url={url} className="ml-2 xs:ml-2">
+        <EmailShareButton
+          aria-label="Share on Email"
+          url={url}
+          className="ml-2 xs:ml-2"
+        >
           <span
             className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#ea4335" }}
@@ -116,7 +141,11 @@ const ShareButtons = ({ url }) => {
             </svg>
           </span>
         </EmailShareButton>
-        <TelegramShareButton url={url} className="ml-2">
+        <TelegramShareButton
+          aria-label="Share on telegram"
+          url={url}
+          className="ml-2"
+        >
           <span
             className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#0088cc" }}

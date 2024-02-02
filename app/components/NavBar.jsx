@@ -74,10 +74,15 @@ const NavBar = () => {
       <div className="items-center hidden lg:inline-flex ml-[94%] xs:ml-[85%] p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg  dark:text-gray-400 ">
         <button
           type="button"
+          id="bt-search"
+          aria-label="search-button-label"
           data-collapse-toggle="navbar-search"
           onClick={handleClick}
           className="hover:bg-gray-100 dark:text-light rounded-lg focus:outline-none p-2 focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         >
+          <span id="search-button-label" className="sr-only">
+            Search Button
+          </span>
           <svg
             width="24px"
             height="24px"
@@ -105,15 +110,16 @@ const NavBar = () => {
         </button>
         <button
           data-collapse-toggle="navbar-search"
+          aria-labelledby="menu-button"
           onClick={handleClick}
           type="button"
           className="hover:bg-gray-100 ml-2 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-search"
+          aria-controls="menu-search"
           aria-expanded="false"
         >
           <span className="sr-only">Open main menu</span>
           {isOpen ? (
-            <FiX className="w-6 h-6"/>
+            <FiX className="w-6 h-6" />
           ) : (
             <svg
               className="w-5 h-5"

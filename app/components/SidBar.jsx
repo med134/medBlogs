@@ -34,7 +34,7 @@ const SidBar = async () => {
             key={item._id}
             className="mt-6 bg-white shadow-md p-5 px-6 sm:mt-1 sm:px-3 sm:mb-3 sm:p-4 border border-b-red-500 dark:bg-dark "
           >
-            <h3 className="text-xl font-semibold text-gray-800 dark:text-light">
+            <h3 className="text-xl font-bold text-gray-950 dark:text-light">
               {item.title}
             </h3>
             <p className="mt-1 text-sm mb-2 text-gray-500">
@@ -44,7 +44,7 @@ const SidBar = async () => {
             </p>
             <Link
               href={`/blogs/${item.slug}`}
-              className="font-semibold text-rose-500 transition duration-100 hover:text-rose-600 hover:underline active:text-rose-700"
+              className="font-semibold text-rose-800 transition duration-100 hover:text-rose-600 hover:underline active:text-rose-700"
             >
               Read more...
             </Link>
