@@ -84,44 +84,40 @@ const page = async () => {
             </p>
 
             <div className="flex mt-8 px-10 sm:text-xs sm:px-4">
-              <ul className="inline-flex bg-purple-400 py-4 text-light font-lexend rounded-xl px-10 sm:px-4">
+              <div className="inline-flex bg-purple-900 py-4 text-light font-lexend rounded-xl px-10 sm:px-4">
                 <Link
                   target="_blank"
                   href="https://www.medcode.dev/category/react"
+                  className="font-bold cursor-pointer hover:underline"
                 >
-                  <li className="cursor-pointer hover:underline">React js</li>
+                  React js
                 </Link>
                 <Link
                   target="_blank"
                   href="https://www.medcode.dev/category/nextjs"
+                  className="ml-4 font-bold  cursor-pointer hover:underline"
                 >
-                  <li className="ml-4 cursor-pointer hover:underline">
-                    Next js
-                  </li>
+                  Next js
                 </Link>
                 <Link
                   target="_blank"
                   href="https://www.medcode.dev/category/tools"
+                  className="ml-4 font-bold  cursor-pointer hover:underline"
                 >
-                  {" "}
-                  <li className="ml-4 cursor-pointer hover:underline">
-                    Tailwind css
-                  </li>
+                  Tailwind css
                 </Link>
 
                 <a
                   target="_blank"
                   href="https://getbootstrap.com/"
-                  aria-labelledby="Visit Site Bootstrap official"
+                  aria-label="Visit Site Bootstrap official"
                   rel="noopener noreferrer"
                   name="Bootstrap"
+                  className="ml-4 font-bold cursor-pointer hover:underline"
                 >
-                  {" "}
-                  <li className="ml-4 cursor-pointer hover:underline">
-                    Bootstrap
-                  </li>
+                  Bootstrap
                 </a>
-              </ul>
+              </div>
             </div>
           </div>
           <div className="pointer-events-none absolute right-0 bottom-0 w-4/5 text-white opacity-50">

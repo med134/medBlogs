@@ -59,7 +59,7 @@ const FirstView = async () => {
                   {item.title}.
                 </h1>
               </Link>
-              <p className="mt-2 text-xl text-gray-500 py-4 xs:text-sm xs:mt-1 xs:py-2">
+              <p className="mt-2 text-xl text-gray-850 py-4 xs:text-sm xs:mt-1 xs:py-2">
                 {item?.description.slice(0, 130)}...
               </p>
               <Link
