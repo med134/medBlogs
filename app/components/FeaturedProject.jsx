@@ -53,10 +53,10 @@ export const FeaturedProject = ({ type, title, summary, img, link, github }) => 
             {summary}
           </p>
           <div className="mt-2 flex items-center">
-            <Link href={github} target="_blank" className="w-10">
+            <a href={github} target="_blank" className="w-10" aria-label="see project on github">
               {" "}
               <GithubIcon />
-            </Link>
+            </a>
             <Link
               href={link}
               target="_blank"
