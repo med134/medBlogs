@@ -98,9 +98,9 @@ const BlogPage = async ({ params }) => {
         <div className="flex items-center w-full max-w-sm mx-auto gap-4 mt-24 sm:mt-4 border-2 p-3 border-red-500 dark:border-light rounded-md">
           <Image
             alt="author image"
-            width={52}
+            width={200}
             loading="lazy"
-            height={52}
+            height={200}
             src="https://i.ibb.co/WVDZRxF/bussiness-man.png"
             className="w-24 h-24  object-cover rounded-full"
           />
@@ -118,7 +118,7 @@ const BlogPage = async ({ params }) => {
               href={`mailto:${blog?.email}`}
               className="text-xs text-gray-500 dark:text-light hover:text-blue-600 hover:underline"
             >
-              {(blog.email = !null ? blog.email : "unknown")}
+              {blog.email}
             </a>
           </div>
         </div>
