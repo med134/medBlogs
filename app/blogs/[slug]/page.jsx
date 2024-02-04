@@ -71,7 +71,7 @@ const BlogPage = async ({ params }) => {
           </div>
           <h1 className="text-4xl font-bold py-2 sm:text-xl">{blog.title}</h1>
           <span className="text-xl text-gray-600 py-3 xs:text-sm">
-            {blog.description.slice(0,200)}
+            {blog.description.slice(0, 200)}...
           </span>
           <Image
             src={blog.image}

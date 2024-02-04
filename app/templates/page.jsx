@@ -95,25 +95,24 @@ const page = async () => {
                 <Link
                   target="_blank"
                   href="https://www.medcode.dev/category/nextjs"
-                  className="ml-4 font-bold  cursor-pointer hover:underline"
+                  className="ml-4 xs:ml-2 font-bold  cursor-pointer hover:underline"
                 >
                   Next js
                 </Link>
                 <Link
                   target="_blank"
                   href="https://www.medcode.dev/category/tools"
-                  className="ml-4 font-bold  cursor-pointer hover:underline"
+                  className="ml-4 font-bold xs:ml-2 cursor-pointer hover:underline"
                 >
                   Tailwind css
                 </Link>
-
                 <a
                   target="_blank"
                   href="https://getbootstrap.com/"
                   aria-label="Visit Site Bootstrap official"
                   rel="noopener noreferrer"
                   name="Bootstrap"
-                  className="ml-4 font-bold cursor-pointer hover:underline"
+                  className="ml-4 font-bold cursor-pointer hover:underline xs:ml-2"
                 >
                   Bootstrap
                 </a>
