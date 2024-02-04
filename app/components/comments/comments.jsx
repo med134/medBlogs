@@ -42,9 +42,9 @@ const Comments = ({ postSlug }) => {
           onSubmit={handleSubmit}
         >
           <Image
-            width={10}
-            height={10}
-            priority
+            width={100}
+            height={100}
+            loading="lazy"
             src={session?.data?.user.image}
             alt="photo_profile"
             className="w-10 h-10 rounded-[50%] cursor-pointer"
@@ -81,9 +81,9 @@ const Comments = ({ postSlug }) => {
                   <Image
                     src={item?.imageUser}
                     alt="useImage"
-                    width={50}
-                    height={50}
-                    priority
+                    width={100}
+                    height={100}
+                    loading="lazy"
                     className="w-8 h-8 rounded-full"
                   />
                   <div className="block ml-2">
