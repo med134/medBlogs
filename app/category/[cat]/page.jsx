@@ -49,7 +49,10 @@ export async function generateMetadata({ params }) {
       "money",
       "easy",
     ],
-    authors: [{ name: "med dakir" }],
+    robots: {
+      index: true,
+      follow: true,
+    },
     alternates: {
       canonical: `/category/${params.cat}`,
       languages: {

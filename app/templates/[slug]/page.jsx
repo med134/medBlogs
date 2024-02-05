@@ -29,6 +29,10 @@ export async function generateMetadata({ params }) {
   return {
     title: post.title,
     description: post.description,
+    robots: {
+      index: true,
+      follow: true,
+    },
     alternates: {
       canonical: `/templates/${params.slug}`,
       languages: {

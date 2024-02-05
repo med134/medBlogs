@@ -35,6 +35,10 @@ export const metadata = {
     "Problem Solving",
     "Code Snippets",
   ],
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: `/projects`,
     languages: {

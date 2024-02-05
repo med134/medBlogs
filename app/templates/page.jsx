@@ -45,6 +45,10 @@ export const metadata = {
     "Learning Resources",
     "Code Snippets",
   ],
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: `/templates`,
     languages: {

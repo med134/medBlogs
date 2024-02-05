@@ -66,7 +66,7 @@ export const metadata = {
     type: "website",
   },
   verification: {
-    google: "cFXi6ELWEfl4UY9OE5i_S5QFU3LbUvdxGgW6RQgHWw",
+    googleSiteVerification: "-cFXi6ELWEfl4UY9OE5i_S5QFU3LbUvdxGgW6RQgHWw",
   },
   alternates: {
     canonical: "/",
