@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Cat from "./Cat";
 async function getArticles() {
   const res = await fetch(`https://www.medcode.dev/api/articles`, {
@@ -14,7 +15,7 @@ async function getArticles() {
   );
   return sortedPosts;
 }
-const SidBar = async () => {
+const SidBar = async ({ slug }) => {
   const dev = await getArticles();
   return (
     <div className="mt-3">
@@ -24,30 +25,41 @@ const SidBar = async () => {
         </span>
         <Cat />
       </aside>
-      <span className="text-xl text-gray-800 font-semibold mt-7 sm:w-full sm:mb-4 sm:text-xl sm:mt-1 dark:text-light">
+      <span className="text-xl text-gray-800 font-semibold mt-7 mb-3 sm:w-full sm:mb-4 sm:text-xl sm:mt-1 dark:text-light">
         More titles From{" "}
         <span className="text-2xl text-red-500 sm:text-xl">MedCode...</span>{" "}
       </span>
       {dev?.map((item, index) =>
-        index < 14 ? (
-          <div
-            key={item._id}
-            className="mt-6 bg-white shadow-md p-5 px-6 sm:mt-1 sm:px-3 sm:mb-3 sm:p-4 border border-b-red-500 dark:bg-dark "
-          >
-            <h3 className="text-xl font-bold text-gray-950 dark:text-light">
-              {item.title}
-            </h3>
-            <p className="mt-1 text-sm mb-2 text-gray-500">
-              <p className="mt-1 text-sm underline text-gray-900 font-semibold dark:text-light">
-                {item.tags}
-              </p>
-            </p>
-            <Link
-              href={`/blogs/${item.slug}`}
-              className="font-semibold text-rose-800 transition duration-100 hover:text-rose-600 hover:underline active:text-rose-700"
-            >
-              Read more...
-            </Link>
+        index < 14 && item.slug != slug ? (
+          <div className=" bg-white rounded-xl shadow-md overflow-hidden mb-4">
+            <div className="flex justify-start items-center xs:flex-col">
+              <Image
+                className="h-44 rounded-full w-44 object-contain sm:w-full sm:rounded-none"
+                src={item.image}
+                alt={item.title}
+                width={200}
+                height={200}
+                loading="lazy"
+              />
+
+              <div className="p-2 ml-2">
+                <Link
+                  href={`/category/${item.category}`}
+                  className="uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+                >
+                  {item.category}
+                </Link>
+                <Link
+                  href={`/blog/${item.slug}`}
+                  className="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+                >
+                  {item.title}
+                </Link>
+                <p className="text-xs font-semibold mt-2 text-gray-700">
+                  {item.tags}
+                </p>
+              </div>
+            </div>
           </div>
         ) : null
       )}

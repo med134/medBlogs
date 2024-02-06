@@ -97,8 +97,8 @@ const TemplateId = async ({ params }) => {
               loading="lazy"
               src={data.image}
               className="h-full w-full border rounded-lg shadow-xl xs:w-[350px]"
-              width={500}
-              height={500}
+              width={600}
+              height={600}
             />
           </div>
           <div className="p-2 mt-6 w-full xs:mt-6">

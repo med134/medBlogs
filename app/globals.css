@@ -206,4 +206,20 @@
   display: grid;
   grid-template-columns: 1fr 400px;
 }
-
+.category-task-bar {
+  background: rgb(148, 148, 148);
+  background: linear-gradient(
+    90deg,
+    rgba(148, 148, 148, 1) 0%,
+    rgba(192, 201, 217, 1) 87%
+  );
+  animation: loop 1s linear infinite;
+}
+@keyframes loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

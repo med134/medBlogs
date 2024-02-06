@@ -126,7 +126,7 @@ const BlogPage = async ({ params }) => {
             </a>
           </div>
         </div>
-        <SidBar />
+        <SidBar slug={slug} />
       </div>
     </section>
   );

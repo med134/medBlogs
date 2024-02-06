@@ -44,6 +44,7 @@ export const metadata = {
     { name: "med dakir" },
     { name: "medCode", url: "https://www.medcode.dev/" },
   ],
+
   category: "technology",
   creator: "Med Dakir",
   formatDetection: {
@@ -66,7 +67,8 @@ export const metadata = {
     type: "website",
   },
   verification: {
-    googleSiteVerification: "-cFXi6ELWEfl4UY9OE5i_S5QFU3LbUvdxGgW6RQgHWw",
+    googleSiteVerification:
+      "google-site-verification=-cFXi6ELWEfl4UY9OE5i_S5QFU3LbUvdxGgW6RQgHWw",
   },
   alternates: {
     canonical: "/",
