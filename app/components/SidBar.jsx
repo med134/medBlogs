@@ -50,7 +50,7 @@ const SidBar = async ({ slug }) => {
                   {item.category}
                 </Link>
                 <Link
-                  href={`/blog/${item.slug}`}
+                  href={`/blogs/${item.slug}`}
                   className="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
                 >
                   {item.title}
