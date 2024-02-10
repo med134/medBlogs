@@ -113,15 +113,15 @@ const TemplateId = async ({ params }) => {
             {templates?.map((item) => (
               <div
                 key={item._id}
-                className="py-6 border shadow-md rounded-md mb-4 p-4 w-72"
+                className="py-6 border shadow-md rounded-md mb-4 p-4 w-72 xs:w-full"
               >
                 <Image
                   src={item.image}
                   alt={item.title}
                   className="mb-2"
                   priority
-                  width={300}
-                  height={300}
+                  width={400}
+                  height={400}
                 />
                 <Link
                   href={`/templates/${item?.slug}`}
