@@ -261,7 +261,7 @@ const NavBar = () => {
 
             <CustomMobileLink
               href="/templates"
-              title="Template"
+              title="Templates"
               className="templates"
               toggle={handleClick}
             />

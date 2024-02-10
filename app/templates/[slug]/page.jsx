@@ -63,7 +63,7 @@ const TemplateId = async ({ params }) => {
   return (
     <>
       <div className="grid grid-cols-4 p-12 gap-6 dark:bg-dark xl:block xs:p-2 md:p-4">
-        <div className="px-6 col-span-3">
+        <div className="px-6 col-span-3 xs:px-1">
           <Link
             href="/templates"
             className="group inline-flex justify-around rounded-md bg-purple-500 mb-3 p-2 px-4 py-2 xs:mt-4 text-white transition sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-indigo-200"
@@ -105,7 +105,7 @@ const TemplateId = async ({ params }) => {
             <ClipBoard data={data.code} />
           </div>
         </div>
-        <div className="col-span-1 w-full p-6 mb-16">
+        <div className="col-span-1 w-full p-6 mb-16 xs:p-2">
           <h4 className="text-xl font-medium text-purple-400 mb-2 underline px-2">
             Recent Templates:
           </h4>
