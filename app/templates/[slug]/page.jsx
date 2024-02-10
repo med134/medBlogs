@@ -62,8 +62,8 @@ const TemplateId = async ({ params }) => {
 
   return (
     <>
-      <div className="showTemp p-12 gap-6 dark:bg-dark lg:block xs:p-2 md:p-4">
-        <div className="preview px-6 max-w-full">
+      <div className="grid grid-cols-4 p-12 gap-6 dark:bg-dark xl:block xs:p-2 md:p-4">
+        <div className="px-6 col-span-3">
           <Link
             href="/templates"
             className="group inline-flex justify-around rounded-md bg-purple-500 mb-3 p-2 px-4 py-2 xs:mt-4 text-white transition sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-indigo-200"
@@ -105,32 +105,34 @@ const TemplateId = async ({ params }) => {
             <ClipBoard data={data.code} />
           </div>
         </div>
-        <div className="pays w-full p-6 mb-16">
+        <div className="col-span-1 w-full p-6 mb-16">
           <h4 className="text-xl font-medium text-purple-400 mb-2 underline px-2">
             Recent Templates:
           </h4>
-          {templates?.map((item) => (
-            <div
-              key={item._id}
-              className="py-6 border shadow-md rounded-md mb-4 p-4"
-            >
-              <Image
-                src={item.image}
-                alt={item.title}
-                className="mb-2"
-                priority
-                width={300}
-                height={300}
-              />
-              <Link
-                href={`/templates/${item?.slug}`}
-                className="font-semibold mb-2 text-gray-600 hover:text-gray-400 hover:underline dark:text-light"
+          <div className="flex flex-wrap justify-between items-center">
+            {templates?.map((item) => (
+              <div
+                key={item._id}
+                className="py-6 border shadow-md rounded-md mb-4 p-4 w-72"
               >
-                {item.title}
-              </Link>
-              <h6 className="text-xs text-purple-400">{item?.category}</h6>
-            </div>
-          ))}
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  className="mb-2"
+                  priority
+                  width={300}
+                  height={300}
+                />
+                <Link
+                  href={`/templates/${item?.slug}`}
+                  className="font-semibold mb-2 text-gray-600 hover:text-gray-400 hover:underline dark:text-light"
+                >
+                  {item.title}
+                </Link>
+                <h6 className="text-xs text-purple-400">{item?.category}</h6>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>
