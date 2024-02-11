@@ -92,8 +92,8 @@ const Card = async ({ params }) => {
   };
   const myTitle =
     params.cat === "all"
-      ? `All Blogs & Articles`
-      : `All Blogs About ${params.cat}`;
+      ? `All Articles`
+      : `All Articles About ${params.cat}`;
   return (
     <Layout className="py-4 px-16 p-8 xl:px-8 xl:p-6">
       <div className="px-2 xs:px-1 py-8">
