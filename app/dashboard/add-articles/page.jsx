@@ -42,7 +42,7 @@ export const metadata = {
 };
 const Page = () => {
   return (
-    <div className="dark:bg-dark">
+    <div className="dark:bg-dark pt-[120px] md:pt-[80px] sm:pt-8">
       <AddNewArticle />
     </div>
   );

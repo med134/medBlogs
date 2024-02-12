@@ -3,7 +3,7 @@ import React from "react";
 
 const NavigationBar = () => {
   return (
-    <div className="text-center">
+    <div className="text-center pt-[120px] md:pt-[80px] sm:pt-8">
       <h1 className="mx-auto max-w-4xl space-x-2 py-4 dark:text-light font-title text-5xl font-bold tracking-normal xs:py-0 xs:w-full text-gray-800 sm:text-2xl">
         Join to us and add your coding skills
         <span className="relative whitespace-nowrap text-purple-700">
