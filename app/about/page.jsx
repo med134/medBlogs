@@ -12,13 +12,13 @@ import profilePic from "@/public/images/med.jpg";
 export const metadata = {
   title: "About us & Resume & Experience | medCode ",
   description: `Welcome to My Web Developer Portfolio UX Designer Here, you'll find a showcase of my career and educational as a web developer also some of my skills`,
-  keywords: ["resume", "Experience", "learning","coding","projects"],
+  keywords: ["resume", "Experience", "learning", "coding", "projects"],
   alternates: {
     canonical: `/about`,
     languages: {
       en: `/en/about`,
     },
-  }, 
+  },
   openGraph: {
     title: "medCode|Portfolio",
     description: `Welcome to My Web Developer Portfolio UX Designer Here, you'll find a showcase of my career and educational as a web developer also some of my skills`,
@@ -36,8 +36,8 @@ const Page = () => {
   return (
     <>
       <TransitionEffect />
-      <main className="flex w-full flex-col items-center justify-center dark:text-light">
-        <Layout className="pt-16 xs:p-10">
+      <main className="flex w-full flex-col items-center bg-light justify-center dark:text-light pt-24 lg:pt-10 md:pt-6 sm:pt-4">
+        <Layout className="xs:p-10">
           <AnimatedText
             text="Passion Fuels Purpose!"
             className="mb-16 !leading-tight lg:!text-7xl sm:!text-6xl xs:text-xl sm:mb-8"

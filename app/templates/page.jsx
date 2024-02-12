@@ -75,7 +75,7 @@ const page = async () => {
   return (
     <>
       <TransitionEffect />
-      <div className="bg-white dark:bg-dark dark:text-light">
+      <div className="bg-white dark:bg-dark dark:text-light pt-[100px]">
         <div className="p-16 my-auto w-full py-20 bg-indigo-600 px-6 leading-4 xs:p-8 xs:py-6 shadow-lg xl:w-screen dark:bg-dark dark:text-light ">
           <div className="w-full">
             <h1 className="mb-3 font-lexend text-3xl px-10 text-white xs:text-xl xs:px-4">

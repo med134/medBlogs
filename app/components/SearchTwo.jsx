@@ -71,7 +71,7 @@ const SearchTwo = () => {
     <>
       <form
         onSubmit={handleSearch}
-        className="inline-flex w-44 h-12 mt-1 absolute right-44 xl:right-36 lg:relative lg:left-0 xs:mr-5"
+        className="inline-flex w-56 h-12 mt-1 absolute right-44 xl:right-32 lg:relative lg:left-0 xs:mr-5"
       >
         <input
           type="text"
@@ -79,7 +79,7 @@ const SearchTwo = () => {
           aria-labelledby="search-input"
           value={query}
           onChange={(e) => onChangeHandle(e.target.value)}
-          className="h-10 w-44 rounded-md border border-gray-100 bg-white dark:border-light lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium shadow-sm outline-none focus:border-light lg:text-light"
+          className="h-10 w-56 border border-gray-100 bg-white dark:border-light lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium shadow-sm outline-none focus:border-light lg:text-light"
           placeholder="Search for Articles"
         />
         <button
@@ -87,25 +87,26 @@ const SearchTwo = () => {
           name="search-button"
           title="search-button"
           aria-labelledby="search-button"
-          className="inset-y-0 right-0 w-12 h-10  hover:text-dark lg:bg-transparent lg:border lg:border-b-light bg-dark flex items-center px-4 text-gray-700 border border-gray-100 rounded-r-md hover:bg-gray-200 lg:hover:bg-none focus:outline-none lg:border-none"
+          className="inline-flex h-10 items-center gap-2 bg-[#075985] text-white text-lg font-semibold py-1 px-4 rounded-r-md"
         >
           <svg
-            className="h-6 w-6 text-light hover:text-dark"
-            fill="currentColor"
-            viewBox="0 0 20 20"
+            className="text-gray-200 h-5 w-5 p-0 fill-current hover:text-gray-600"
             xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            version="1.1"
+            x="0px"
+            y="0px"
+            viewBox="0 0 56.966 56.966"
+            style={{ enableBackground: "new 0 0 56.966 56.966" }}
+            xmlSpace="preserve"
           >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M14.795 13.408l5.204 5.204a1 1 0 01-1.414 1.414l-5.204-5.204a7.5 7.5 0 111.414-1.414zM8.5 14A5.5 5.5 0 103 8.5 5.506 5.506 0 008.5 14z"
-            />
+            <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
           </svg>
         </button>
       </form>
 
       {sug.length > 0 && (
-        <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md max-h-96 overflow-y-auto right-44 w-44 top-16 scroll-m-0 absolute z-40 lg:top-36 lg:right-32 lg:w-[270px] lg:h-64 lg:bg-gray-800 xs:right-0">
+        <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md max-h-96 overflow-y-auto right-44 w-56 top-16 scroll-m-0 absolute z-40 lg:top-36 lg:right-32 lg:w-[270px] lg:h-64 lg:bg-gray-800 xs:right-0">
           {sug.map((item, index) => (
             <li
               onClick={() => onSugHandler(item.title)}

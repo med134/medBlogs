@@ -91,11 +91,9 @@ const Card = async ({ params }) => {
     return formattedDate;
   };
   const myTitle =
-    params.cat === "all"
-      ? `All Articles`
-      : `All Articles About ${params.cat}`;
+    params.cat === "all" ? `All Articles` : `All Articles About ${params.cat}`;
   return (
-    <Layout className="py-4 px-16 p-8 xl:px-8 xl:p-6">
+    <Layout className="py-4 px-16 p-8 xl:px-8 xl:p-6 pt-24 xl:pt-24 lg:pt-12 xs:pt-10">
       <div className="px-2 xs:px-1 py-8">
         <h1 className="px-4 text-red-600 sm:text-xl sm:px-1 text-3xl font-outFit font-bold uppercase mt-4 md:px-4">
           #{myTitle}

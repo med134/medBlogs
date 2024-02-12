@@ -8,7 +8,7 @@ const FramerImage = motion(Image);
 export const Project = ({ title, type, img, link, github }) => {
   return (
     <article
-      className="w-full flex flex-col items-center justify-center rounded-2xl 
+      className="w-full flex flex-col items-center justify-center rounded-2xl
       border border-solid border-dark bg-light p-6 relative dark:bg-dark dark:border-light xs:p-4
       "
     >

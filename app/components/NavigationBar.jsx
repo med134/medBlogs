@@ -1,15 +1,7 @@
-"use client";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
-import React, { useEffect } from "react";
-import { redirect } from "next/navigation";
+import React from "react";
+
 const NavigationBar = () => {
-  const session = useSession();
-/*   useEffect(() => {
-    if (session.status === "unauthenticated") {
-      redirect("/dashboard/login");
-    }
-  }); */
   return (
     <div className="text-center">
       <h1 className="mx-auto max-w-4xl space-x-2 py-4 dark:text-light font-title text-5xl font-bold tracking-normal xs:py-0 xs:w-full text-gray-800 sm:text-2xl">

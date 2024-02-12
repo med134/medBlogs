@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GithubIcon, LinkedInIcon, SunIcon, MoonIcon } from "./Icons";
 import med from "@/public/images/logo3.png";
 import logo from "@/public/images/logo.png";
@@ -65,11 +65,24 @@ const NavBar = () => {
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+  const [sticky, setSticky] = useState(false);
+  const handleStickyNavbar = () => {
+    if (window.scrollY >= 80) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleStickyNavbar);
+  });
   return (
     <header
-      className="w-full px-1 py-6 font-medium flex items-center justify-start sticky top-0 xl:px-10
-    dark:text-light bg-white dark:font-lexend dark:bg-dark shadow-sm z-10 lg:px-16 md:px-12 sm:px-8 xs:w-full
-    "
+      className={`header py-6 z-40 flex w-full items-center bg-transparent xl:px-10 ${
+        sticky
+          ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
+          : "absolute"
+      }`}
     >
       <div className="items-center hidden lg:inline-flex ml-[94%] xs:ml-[85%] p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg  dark:text-gray-400 ">
         <button
@@ -158,38 +171,38 @@ const NavBar = () => {
             medCode
           </span>
         </Link>
-        <nav className="flex items-center justify-stretch ml-24 xl:ml-16">
+        <nav className="flex items-center justify-stretch ml-24 xl:ml-16 ">
           <CustomLink
             href="/projects"
             title="projects"
-            className="mx-4 uppercase"
+            className="mx-4 uppercase dark:text-light"
             target="_blank"
           />
           <CustomLink
             href="/templates"
             title="Templates"
-            className="mx-4 uppercase"
+            className="mx-4 uppercase dark:text-light"
             target="_blank"
           />
 
           <CustomLink
             href="/about"
             title="Portfolio"
-            className="mx-4 uppercase"
+            className="mx-4 uppercase dark:text-light"
             target="_blank"
           />
           {session.status === "authenticated" ? (
             <CustomLink
               href="/dashboard"
               title="Dashboard"
-              className="mx-4 uppercase"
+              className="mx-4 uppercase dark:text-light"
               target="_blank"
             />
           ) : (
             <CustomLink
               href="/dashboard/login"
               title="Login"
-              className="mx-4 uppercase"
+              className="mx-4 uppercase dark:text-light"
               target="_blank"
             />
           )}

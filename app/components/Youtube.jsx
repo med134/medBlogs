@@ -62,7 +62,9 @@ const Youtube = () => {
     <>
       <div className="grid grid-cols-1 gap-3 p-2 sm:block">
         <span className="flex justify-start items-center sm:mb-2">
-          <p className="text-xl font-semibold text-dark dark:text-light">Youtube Shorts</p>
+          <p className="text-xl font-semibold text-dark dark:text-light">
+            Youtube Shorts
+          </p>
           <YoutubeIcons className={"ml-2"} />
         </span>
         {loading ? (
@@ -73,7 +75,7 @@ const Youtube = () => {
               index < 3 && (
                 <article
                   key={video.id}
-                  className="flex flex-col w-full dark:bg-dark bg-white border-2 border-red-600 rounded-md sm:mb-2"
+                  className="flex flex-col w-full dark:bg-dark bg-light border-2 border-red-600 rounded-md sm:mb-2"
                 >
                   <Link
                     href={`https://www.youtube.com/shorts/${video.id}`}

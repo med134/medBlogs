@@ -16,7 +16,7 @@ const Login = () => {
   return (
     <>
       <TransitionEffect />
-      <div className="flex min-h-0 w-full items-center justify-center bg-light dark:bg-dark p-28 lg:p-16 md:p-8 sm:p-4 sm:block">
+      <div className="flex min-h-0 w-full items-center justify-center bg-light dark:bg-dark p-28 pt-32 lg:p-16 md:p-8 sm:p-4 sm:block">
         <div className="m-2 w-full rounded-2xl bg-gray-400 bg-cover bg-center text-white sm:hidden">
           <Image
             height={500}

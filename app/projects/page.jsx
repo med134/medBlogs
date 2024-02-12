@@ -42,7 +42,7 @@ export const metadata = {
   alternates: {
     canonical: `/projects`,
     languages: {
-      "en-Us":`/en-us/projects`,
+      "en-Us": `/en-us/projects`,
     },
     types: {
       "application/rss+xml": "https://www.medcode.dev/rss",
@@ -65,7 +65,7 @@ const page = async () => {
   return (
     <>
       <TransitionEffect />
-      <main className="w-full mb-16 flex flex-col items-center justify-center dark:text-light">
+      <main className="w-full mb-16 flex flex-col items-center justify-center bg-light pt-[100px] dark:text-light">
         <Layout className="pt-16 xs:pt-8 xs:p-8">
           <AnimatedText
             text="Imagination Trumps Knowledge!"
