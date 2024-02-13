@@ -26,8 +26,11 @@ const Easy = async () => {
   };
 
   return (
-    <section id="templates" className="bg-light dark:bg-dark">
-      <span className="text-2xl underline dark:text-light font-bold flex justify-start items-center text-gray-800 font-slab px-12 xs:px-8 pt-8 py-2 xs:pt-1">
+    <section
+      id="templates"
+      className="bg-light dark:bg-dark"
+    >
+      <span className="text-2xl underline dark:text-light font-bold flex justify-start items-center text-gray-800 font-slab px-12 xs:px-8 pt-16 py-2 xs:pt-1">
         <AiTwotoneSound className="dark:text-light" />
         <p className="ml-2 sm:text-xl ">Recent Templates & components</p>
       </span>

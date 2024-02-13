@@ -62,7 +62,7 @@ const TemplateId = async ({ params }) => {
 
   return (
     <>
-      <div className="grid grid-cols-4 p-12 gap-6 pt-[160px] dark:bg-dark xl:block xs:p-2 md:p-4">
+      <div className="grid grid-cols-4 p-12 gap-6 pt-[160px] xs:pt-24 dark:bg-dark xl:block xs:p-2 md:p-4">
         <div className="px-6 col-span-3 xs:px-1">
           <Link
             href="/templates"

@@ -25,75 +25,65 @@ const Dev = async () => {
     return date.toLocaleDateString("en-US", options);
   };
   return (
-    <section className="">
-      <div className="text-2xl flex justify-start items-center w-full  dark:text-light bg-light dark:bg-dark font-bold text-gray-800 font-slab px-12 xs:px-8 pt-8 py-2 xs:pt-1">
+    <section className="pt-16 md:pt-8 xs:pt-3 dark:bg-dark">
+      <div className="text-2xl flex justify-start items-center w-full  dark:text-light bg-white dark:bg-dark font-bold text-gray-800 font-slab px-12 xs:px-8 pt-8 py-2 xs:pt-1">
         <AiTwotoneSound className="dark:text-light" />
         <div className="ml-2 sm:text-xl xs:text-sm flex justify-start items-center">
           <h5 className="underline">Dev Community Blogs & Articles</h5>
           <DevIcon />
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-10 lg:grid-cols-3 lg:gap-4 px-10 py-8 lg:px-8 md:flex md:flex-wrap sm:px-2">
+      <div className="grid grid-cols-3 gap-10 lg:grid-cols-3 lg:gap-4 px-16 py-8 lg:px-8 md:flex md:flex-wrap sm:px-2">
         {dev?.map((item, index) =>
           index < 6 ? (
-            <div
-              key={item.id}
-              className="rounded overflow-hidden shadow-lg flex flex-col dark:border dark:border-light"
-            >
-              <Link href={item.url} target="blank" />
-              <div className="relative">
-                <Link href={item.url} target="blank">
-                  <Image
-                    className="w-full"
-                    src={item.cover_image}
-                    alt={item.title}
-                    width={500}
-                    height={500}
-                    priority
-                  />
-                  <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
-                </Link>
-                <div className="text-xs absolute top-0 right-0 bg-indigo-600 px-4 py-2 text-white mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
+            <div className="wow fadeInUp relative overflow-hidden rounded-md bg-light shadow-lg dark:bg-dark dark:border dark:border-light">
+              <div href="/" className="relative block h-[160px] w-full">
+                <span className="absolute top-6 right-6 z-20 inline-flex items-center justify-center rounded-full bg-blue-500 py-2 px-4 text-sm font-semibold capitalize text-white">
                   {item.tag_list[0]}
-                </div>
+                </span>
+                <Image src={item.cover_image} alt="image" fill />
               </div>
-              <div className="px-6 py-1 mb-auto">
-                <Link
-                  href={item.url}
-                  target="blank"
-                  className="font-medium text-2xl hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2 dark:text-light"
-                >
-                  <h6>{item.title}</h6>
-                </Link>
-                <p className="text-gray-800 text-sm dark:text-light">
+              <div className="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+                <h3>
+                  <Link
+                    href="/"
+                    className="mb-1 block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl"
+                  >
+                    {item.title}
+                  </Link>
+                </h3>
+                <p className="mb-6 border-b border-body-color dark:text-light border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10">
                   {item.description}
                 </p>
-              </div>
-              <div className="px-6 py-1 flex flex-row items-center justify-between">
-                <span className="flex justify-start items-center py-2 dark:text-light">
-                  <FaRegCalendarAlt className="w-4 h-4 text-gray-800 dark:text-light" />
-                  <span className="dark:text-light text-sm ml-1">
-                    {formatDate(item?.published_timestamp)}
-                  </span>
-                </span>
-                <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-                  <svg
-                    className="h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                    ></path>
-                  </svg>
-                  <span className="ml-1 dark:text-light">
-                    {item.public_reactions_count} Comments
-                  </span>
-                </span>
+                <div className="flex items-center">
+                  <div className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5">
+                    <div className="mr-4">
+                      <div className="relative h-10 w-10 overflow-hidden rounded-full">
+                        <Image
+                          src={item.user.profile_image}
+                          alt="author"
+                          fill
+                        />
+                      </div>
+                    </div>
+                    <div className="w-full">
+                      <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+                        By {item.user[0]}
+                      </h4>
+                      <p className="text-xs text-body-color dark:text-light">
+                        medcode
+                      </p>
+                    </div>
+                  </div>
+                  <div className="inline-block">
+                    <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+                      Date
+                    </h4>
+                    <p className="text-xs text-body-color dark:text-light">
+                      {item.readable_publish_date}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           ) : null

@@ -36,7 +36,7 @@ const CategoryList = async () => {
   return (
     <section
       id="category"
-      className="relative bg-gradient-to-r from-blue-300 to-slate-400 dark:from-gray-800 dark:bg-dark text-white py-14 sm:py-6"
+      className="relative bg-gradient-to-r from-blue-50 to-slate-100 dark:from-gray-800 dark:bg-dark text-white py-14 sm:py-6"
     >
       <SVGBackground />
       <span className="text-4xl font-bold flex justify-center pt-8 sm:pt-4 dark:text-light items-center text-gray-800 text-center">
