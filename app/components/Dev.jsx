@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaRegCalendarAlt } from "react-icons/fa";
 import { AiTwotoneSound } from "react-icons/ai";
 import { DevIcon } from "./Icons";
 const getData = async () => {
@@ -19,11 +18,6 @@ const getData = async () => {
 };
 const Dev = async () => {
   const dev = await getData();
-  const formatDate = (timestamp) => {
-    const options = { month: "long", day: "numeric" };
-    const date = new Date(timestamp);
-    return date.toLocaleDateString("en-US", options);
-  };
   return (
     <section className="pt-16 md:pt-8 xs:pt-3 dark:bg-dark">
       <div className="text-2xl flex justify-start items-center w-full  dark:text-light bg-white dark:bg-dark font-bold text-gray-800 font-slab px-12 xs:px-8 pt-8 py-2 xs:pt-1">
@@ -41,13 +35,14 @@ const Dev = async () => {
                 <span className="absolute top-6 right-6 z-20 inline-flex items-center justify-center rounded-full bg-blue-500 py-2 px-4 text-sm font-semibold capitalize text-white">
                   {item.tag_list[0]}
                 </span>
-                <Image src={item.cover_image} alt="image" fill />
+                <Image src={item.cover_image} alt={item.title} fill />
               </div>
               <div className="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
                 <h3>
                   <Link
-                    href="/"
-                    className="mb-1 block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl"
+                    href={item.url}
+                    target="blank"
+                    className="mb-1 block text-xl font-bold text-black hover:text-[#075985] dark:text-white dark:hover:text-primary sm:text-2xl"
                   >
                     {item.title}
                   </Link>
