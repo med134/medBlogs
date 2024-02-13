@@ -38,13 +38,13 @@ const Card = ({ posts, loading }) => {
                 </span>
                 <Link href={`/blogs/${item.slug}`}>
                   <span
-                    className="bg-gradient-to-r text-2xl font-semibold from-red-300 to-red-600 bg-[length:0px_10px] bg-left-bottom
+                    className="bg-gradient-to-r text-2xl font-semibold from-[#075985] to-[#075755] bg-[length:0px_10px] bg-left-bottom
       bg-no-repeat
       transition-[background-size]
       duration-500
       hover:bg-[length:100%_3px]
       group-hover:bg-[length:100%_10px]
-      dark:from-red-800 dark:to-purple-900 dark:text-light"
+      dark:from-[#075985] dark:to-[#075965] dark:text-light"
                   >
                     {item.title}
                   </span>
