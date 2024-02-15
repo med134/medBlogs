@@ -49,6 +49,7 @@ module.exports = {
         primaryDark: "#58E6D9", // 80,230,217
         borderColor: "#7d49d1",
         headerBg: "#f5f5f5",
+        mainColor: "#075985",
       },
       screens: {
         "2xl": { max: "1535px" },

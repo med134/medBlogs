@@ -73,7 +73,7 @@ const BlogPage = async ({ params }) => {
               {FormatDate(blog?.createdAt.slice(0, 10))}
             </span>
           </div>
-          <h1 className="text-4xl font-bold py-2 sm:text-xl">{blog.title}</h1>
+          <h1 className="text-4xl font-bold py-2 sm:text-xl text-mainColor">{blog.title}</h1>
           <span className="text-xl text-gray-600 py-3 xs:text-sm">
             {blog.description.slice(0, 200)}...
           </span>
@@ -99,7 +99,7 @@ const BlogPage = async ({ params }) => {
         </div>
       </div>
       <div className="sm:w-full col-span-2 sm:p-6">
-        <div className="flex items-center w-full max-w-sm mx-auto gap-4 mt-24 sm:mt-4 border-2 p-3 border-red-500 dark:border-light rounded-md">
+        <div className="flex items-center w-full max-w-sm mx-auto gap-4 mt-24 sm:mt-4 border-2 p-3 border-mainColor dark:border-light rounded-md">
           <Image
             alt="author image"
             width={200}
@@ -126,7 +126,7 @@ const BlogPage = async ({ params }) => {
             </a>
           </div>
         </div>
-        <SidBar slug={slug} />
+        <SidBar slug={slug} category={blog.category} />
       </div>
     </section>
   );

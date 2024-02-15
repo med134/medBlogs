@@ -55,14 +55,14 @@ const Comments = ({ postSlug }) => {
             className="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 sm:h-12 py-2 px-4 sm:px-1 font-medium placeholder-gray-700 focus:outline-none focus:bg-white dark:bg-dark dark:text-light"
             onChange={(e) => setComment(e.target.value)}
           />
-          <button className="text-xl sm:text-sm bg-red-500 text-light px-4 py-4 rounded-lg font-semibold p-4">
+          <button className="text-xl sm:text-sm bg-mainColor text-light px-4 py-4 rounded-lg font-semibold p-4">
             Post
           </button>
         </form>
       ) : (
         <Link
           href="/dashboard/login"
-          className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+          className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-mainColor hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
         >
           Login to write a comment
         </Link>

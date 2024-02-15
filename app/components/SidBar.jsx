@@ -15,22 +15,24 @@ async function getArticles() {
   );
   return sortedPosts;
 }
-const SidBar = async ({ slug }) => {
+const SidBar = async ({ slug, category }) => {
   const dev = await getArticles();
   return (
     <div className="mt-3">
-      <aside className="w-full rounded-lg border-2 py-2 border-red-600 mb-6 p-2 mt-4 max-w-sm mx-auto dark:border-light">
+      <aside className="w-full rounded-lg border-2 py-2 border-mainColor mb-6 p-2 mt-4 max-w-sm mx-auto dark:border-light">
         <span className="text-lg font-bold py-3 dark:text-light">
           Categories
         </span>
         <Cat />
       </aside>
       <span className="text-xl text-gray-800 font-semibold mt-7 mb-3 sm:w-full sm:mb-4 sm:text-xl sm:mt-1 dark:text-light">
-        More titles From{" "}
-        <span className="text-2xl text-red-500 sm:text-xl">MedCode...</span>{" "}
+        More titles about
+        <span className="text-2xl ml-2 uppercase text-mainColor sm:text-xl">
+          {category}
+        </span>
       </span>
-      {dev?.map((item, index) =>
-        index < 14 && item.slug != slug ? (
+      {dev?.map((item) =>
+        item.category === category && item.slug != slug ? (
           <div className=" bg-white rounded-xl shadow-md overflow-hidden mb-4">
             <div className="flex justify-start items-center xs:flex-col">
               <Image
@@ -45,7 +47,7 @@ const SidBar = async ({ slug }) => {
               <div className="p-2 ml-2">
                 <Link
                   href={`/category/${item.category}`}
-                  className="uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+                  className="uppercase tracking-wide text-sm text-mainColor font-semibold"
                 >
                   {item.category}
                 </Link>
