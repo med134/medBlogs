@@ -157,7 +157,7 @@ const page = async () => {
               <div className="px-6 py-2">
                 <Link
                   href={`/templates/${item.slug}`}
-                  className="font-bold text-xl mb-2 mt-2 text-purple-600 hover:underline"
+                  className="font-bold text-xl mb-2 mt-2 text-tailwindColor hover:underline"
                 >
                   {item.title}
                 </Link>

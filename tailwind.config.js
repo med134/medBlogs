@@ -50,6 +50,7 @@ module.exports = {
         borderColor: "#7d49d1",
         headerBg: "#f5f5f5",
         mainColor: "#075985",
+        tailwindColor: "#4f46e5",
       },
       screens: {
         "2xl": { max: "1535px" },
