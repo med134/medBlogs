@@ -26,7 +26,7 @@ const SidBar = async ({ slug, category }) => {
         <Cat />
       </aside>
       <span className="text-xl text-gray-800 font-semibold mt-7 mb-3 sm:w-full sm:mb-4 sm:text-xl sm:mt-1 dark:text-light">
-        More titles about
+        More Related Posts About
         <span className="text-2xl ml-2 uppercase text-mainColor sm:text-xl">
           {category}
         </span>
