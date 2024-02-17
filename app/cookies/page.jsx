@@ -1,7 +1,7 @@
 import Link from "next/link";
 export default function Privacy() {
   return (
-    <article className="container mx-auto px-8 py-8">
+    <article className="container mx-auto px-8 py-8 pt-[120px] xl:pt-44 xs:pt-24">
       <div>
         <h1 className="text-3xl font-bold mb-4">
           Privacy Policy of www.medcode.dev
