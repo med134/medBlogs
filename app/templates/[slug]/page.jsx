@@ -66,13 +66,13 @@ const TemplateId = async ({ params }) => {
         <div className="px-6 col-span-3 xs:px-1">
           <Link
             href="/templates"
-            className="group inline-flex justify-around rounded-md bg-purple-500 mb-3 p-2 px-4 py-2 xs:mt-4 text-white transition sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-indigo-200"
+            className="group inline-flex justify-around rounded-md bg-mainColor mb-3 p-2 px-4 py-2 xs:mt-4 text-white transition sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-indigo-200"
           >
             <BsArrowLeftCircleFill className="ml-3 group-hover:-translate-x-3 group-hover:transition-all " />
             <span className="text-sm mr-3 px-3"> Back to templates </span>
           </Link>
           <p className="px-2 text-gray-500 dark:text-light">{data.category}</p>
-          <h1 className="text-3xl font-serif px-2 font-semibold text-borderColor py-1 xs:text-xl">
+          <h1 className="text-3xl font-serif px-2 font-semibold text-mainColor py-1 xs:text-xl">
             {data.title}
           </h1>
           <p className="px-2 py-2 text-sm text-gray-700 dark:text-light">
@@ -83,7 +83,7 @@ const TemplateId = async ({ params }) => {
             <Link
               href={data?.link}
               target="_blank"
-              className={`flex w-48 mb-2 cursor-pointer select-none items-center justify-center rounded-md bg-purple-500 text-sm px-6 py-1 text-light`}
+              className={`flex w-48 mb-2 cursor-pointer select-none items-center justify-center rounded-md bg-mainColor text-sm px-6 py-1 text-light`}
             >
               <span className="flex w-full items-center justify-between rounded py-1 text-center font-semibold">
                 Full Screen
@@ -106,7 +106,7 @@ const TemplateId = async ({ params }) => {
           </div>
         </div>
         <div className="col-span-1 w-full p-6 mb-16 xs:p-2">
-          <h4 className="text-xl font-medium text-purple-400 mb-2 underline px-2">
+          <h4 className="text-xl font-medium text-mainColor mb-2 underline px-2">
             Recent Templates:
           </h4>
           <div className="flex flex-wrap justify-between items-center">
@@ -131,7 +131,7 @@ const TemplateId = async ({ params }) => {
                     >
                       {item.title}
                     </Link>
-                    <h6 className="text-xs text-purple-400">
+                    <h6 className="text-xs text-mainColor">
                       {item?.category}
                     </h6>
                   </div>
