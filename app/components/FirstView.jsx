@@ -30,7 +30,7 @@ const FirstView = async () => {
   return (
     <div
       id="home"
-      className="relative z-10 overflow-hidden pt-[70px] pb-1 md:pt-[80px] xl:pt-[100px] lg:pt-[60px] sm:pb-10 xs:pb-16 xl:pb-1 dark:bg-dark"
+      className="relative z-10 overflow-hidden pt-[70px] pb-1 md:pt-[80px] xl:pt-[100px] lg:pt-[60px] sm:pb-10 xs:pb-24 xl:pb-1 dark:bg-dark"
     >
       {posts?.map((item, index) =>
         index === 0 ? (
