@@ -110,28 +110,33 @@ const TemplateId = async ({ params }) => {
             Recent Templates:
           </h4>
           <div className="flex flex-wrap justify-between items-center">
-            {templates?.map((item) => (
-              <div
-                key={item._id}
-                className="py-6 border shadow-md rounded-md mb-4 p-4 w-72 xs:w-full"
-              >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  className="mb-2"
-                  priority
-                  width={400}
-                  height={400}
-                />
-                <Link
-                  href={`/templates/${item?.slug}`}
-                  className="font-semibold mb-2 text-gray-600 hover:text-gray-400 hover:underline dark:text-light"
-                >
-                  {item.title}
-                </Link>
-                <h6 className="text-xs text-purple-400">{item?.category}</h6>
-              </div>
-            ))}
+            {templates?.map(
+              (item) =>
+                item.slug != slug && (
+                  <div
+                    key={item._id}
+                    className="py-6 border shadow-md rounded-md mb-4 p-4 w-72 xs:w-full"
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      className="mb-2"
+                      priority
+                      width={400}
+                      height={400}
+                    />
+                    <Link
+                      href={`/templates/${item?.slug}`}
+                      className="font-semibold mb-2 text-gray-600 hover:text-gray-400 hover:underline dark:text-light"
+                    >
+                      {item.title}
+                    </Link>
+                    <h6 className="text-xs text-purple-400">
+                      {item?.category}
+                    </h6>
+                  </div>
+                )
+            )}
           </div>
         </div>
       </div>
