@@ -33,7 +33,7 @@ const FirstView = async () => {
       className="relative z-10 overflow-hidden pt-[90px] pb-20 md:pt-[100px] xl:pt-[140px] lg:pt-[80px] xl:pb-[160px] dark:bg-dark"
     >
       {posts?.map((item, index) =>
-        index === 4 ? (
+        index === 0 ? (
           <div
             key={item._id}
             className="flex justify-between items-center z-10 px-24 relative p-8 md:flex-wrap-reverse xl:px-16 md:p-4 md:mt-4 xs:mt-0 xs:p-3"
@@ -88,7 +88,7 @@ const FirstView = async () => {
                 width={800}
                 priority
                 height={800}
-                src="https://i.ibb.co/QCpsg9L/Development-amico.png"
+                src="https://i.ibb.co/sv229xx/Bitcoin-P2-P-bro.png"
                 className="w-full h-96 rounded-2xl opacity-100 object-contain xl:object-contain xs:h-56"
               />
             </div>

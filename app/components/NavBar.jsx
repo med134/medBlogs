@@ -201,7 +201,7 @@ const NavBar = () => {
           ) : (
             <CustomLink
               href="/dashboard/login"
-              title="Login"
+              title="Create Post"
               className="mx-4 uppercase dark:text-light"
               target="_blank"
             />
