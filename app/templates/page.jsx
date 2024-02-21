@@ -16,8 +16,8 @@ async function getData() {
 }
 
 export const metadata = {
-  title: `10+ Free Templates & Components Resources Examples`,
-  description: `Browse through MedCode collection of free frontend templates and components  with advanced frameworks such as React.js, Next.js, Vue.js with full free code source and developments kits`,
+  title: `Free Templates & Components Resources Examples`,
+  description: `Browse through MedCode collection of Free Templates & Components  with advanced frameworks such as React.js, Next.js, Vue.js with full free code source and developments kits`,
   keywords: [
     "Web Development",
     "tailwind css free components",
@@ -60,7 +60,7 @@ export const metadata = {
   },
   openGraph: {
     title: "medCode free templates & components",
-    description: `Browse through MedCode collection of free frontend templates and components  with advanced frameworks such as React.js, Next.js, Vue.js with full free code source and developments kits`,
+    description: `Browse through MedCode collection of Free Templates & Components  with advanced frameworks such as React.js, Next.js, Vue.js with full free code source and developments kits`,
     images: [
       {
         url: "https://i.ibb.co/rHvLvvr/Untitled.png",
@@ -88,7 +88,7 @@ const page = async () => {
             </p>
 
             <div className="flex mt-8 px-10 sm:text-xs sm:px-4">
-              <div className="inline-flex bg-purple-900 py-4 text-light font-lexend rounded-xl px-10 sm:px-4">
+              <div className="inline-flex bg-mainColor py-4 text-light font-lexend rounded-xl px-10 sm:px-4">
                 <Link
                   target="_blank"
                   href="https://www.medcode.dev/category/react"
@@ -129,10 +129,10 @@ const page = async () => {
         </div>
         <div className="p-6 px-16 dark:text-light xs:px-8 xs:p-2">
           <h2 className="text-3xl font-lexend mt-4 sm:text-2xl">
-            Latest components & projects & templates
+            Latest Templates & Components
           </h2>
           <h3 className="sm:text-sm mt-2">
-            The newest featured & responsive templates and full project with
+            The newest featured & responsive Templates & Components and full project with
             different frameworks.
           </h3>
         </div>
