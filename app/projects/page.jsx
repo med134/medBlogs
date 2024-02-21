@@ -1,6 +1,6 @@
 import React from "react";
 import project1 from "@/public/images/projects/project1.png";
-import project2 from "@/public/images/projects/project2.png";
+import project2 from "@/public/images/projects/startapImage.png";
 import project3 from "@/public/images/projects/project3.png";
 import project4 from "@/public/images/projects/project4.png";
 import project5 from "@/public/images/projects/project5.png";
@@ -74,22 +74,21 @@ const page = async () => {
           <div className="grid grid-cols-12 gap-24 gap-y-32 xl:gap-x-16 lg:gap-x-8 md:gap-y-24 sm:gap-x-0 xs:inline-block">
             <div className="col-span-12 xs:mb-4">
               <FeaturedProject
-                type="Website"
-                title="Next.js Blogging Website with Sanity"
-                summary="Discover a world of diverse voices as passionate bloggers share their unique experiences, knowledge, and creativity. From travel adventures to personal growth,
-                using Next.js with Sanity V3 and Tailwind css"
-                img={project3}
-                link="https://stote-ecommerce-nextjs-gezn.vercel.app/"
-                github="https://github.com/med134/blog-with-nextjs-sanity"
+                type="Website App"
+                title="Free Tailwind CSS + Next.js Starter Template"
+                summary="Tailwind CSS + Next.js Starter Template is designed and crafted for startup and SaaS business websites. This open-source starter template is free to use for personal and commercial project"
+                img={project2}
+                link="https://startup-jade.vercel.app/"
+                github="https://github.com/med134/startup"
               />
             </div>
             <div className="col-span-6 sm:col-span-12 xs:mb-4">
               <Project
-                type="Application Android"
-                title="BENGUERIR FOOD"
-                img={project2}
-                link="https://devdreaming.com/videos/create-nft-collection-website-reactjs"
-                github="https://github.com/med134/benguerir.food"
+                type="Website App"
+                title="Next.js Blogging Website with Sanity"
+                img={project3}
+                link="https://stote-ecommerce-nextjs-gezn.vercel.app/"
+                github="https://github.com/med134/blog-with-nextjs-sanity"
               />
             </div>
             <div className="col-span-6 sm:col-span-12 xs:mb-4">
