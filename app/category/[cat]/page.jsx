@@ -93,15 +93,15 @@ const Card = async ({ params }) => {
   const myTitle =
     params.cat === "all" ? `All Articles` : `All Articles About ${params.cat}`;
   return (
-    <Layout className="py-4 px-16 p-8 xl:px-8 xl:p-6 pt-24 xl:pt-24 lg:pt-12 xs:pt-10">
-      <div className="px-2 xs:px-1 py-8">
-        <h1 className="px-4 text-red-600 sm:text-xl sm:px-1 text-3xl font-outFit font-bold uppercase mt-4 md:px-4">
+    <Layout className="py-4 px-16 p-8 xl:px-8 xl:p-6 pt-24 xl:pt-24 lg:pt-6 md:px-6 xs:px-4 xs:pt-10">
+      <div className="px-2 xs:px-1 py-8 lg:py-5">
+        <h1 className="px-4 text-mainColor sm:text-xl sm:px-0 text-3xl font-outFit font-bold uppercase mt-4 lg:mt-2 md:px-4 xs:pt-6">
           #{myTitle}
         </h1>
-        <div className="grid grid-cols-7 mt-10 gap-2 px-4 lg:flex lg:justify-start lg:items-start md:px-4 lg:flex-wrap lg:px-8 xs:flex xs:px-2 xs:justify-start">
+        <div className="grid grid-cols-7 gap-4 pt-14 px-4 lg:grid-cols-5 lg:px-4 lg:gap-y-6 md:flex md:flex-wrap md:justify-items-start md:items-center xs:flex xs:px-2 xs:justify-start">
           {category?.map((item) => (
             <Link
-              className={`${styles.category} xs:shrink w-8 h-8 dark:text-light xs:bg-red-800 xs:text-light `}
+              className={`${styles.category} xs:shrink w-16 h-16 xl:w-10 xl:h-10 dark:text-light xs:bg-mainColor xs:text-light `}
               key={item._id}
               href={`/category/${item.value}`}
             >
@@ -110,9 +110,9 @@ const Card = async ({ params }) => {
                   src={item.image}
                   alt={item.label}
                   loading="lazy"
-                  width={32}
-                  height={32}
-                  className={"w-8 h-8 rounded-full xs:hidden"}
+                  width={300}
+                  height={300}
+                  className={"w-16 h-16 xl:w-10 xl:h-10 rounded-full xs:hidden"}
                 />
               )}
               {item.label}
@@ -139,7 +139,7 @@ const Card = async ({ params }) => {
                 loading="lazy"
               />
               <div className="p-6 space-y-2 block">
-                <p className="text-red-600 font-bold tex-sm">
+                <p className="text-mainColor font-bold tex-sm">
                   #{item.category}
                 </p>
                 <span

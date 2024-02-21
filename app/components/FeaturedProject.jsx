@@ -37,7 +37,7 @@ export const FeaturedProject = ({ type, title, summary, img, link, github }) => 
         </Link>
   
         <div className="w-1/2 flex flex-col items-start justify-between pl-6 lg:w-full lg:pl-0 lg:pt-6">
-          <span className="text-primary font-medium text-xl dark:text-primaryDark xs:text-base">
+          <span className="text-mainColor font-medium text-xl dark:text-primaryDark xs:text-base">
             {type}
           </span>
           <Link

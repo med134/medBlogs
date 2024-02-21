@@ -118,7 +118,7 @@ const page = async () => {
                 type="Featured Project"
                 title="Authentication with Next.js"
                 img={project7}
-                link="https://vercel.com/med134/auth-weith-nextjs"
+                link="https://auth-weith-nextjs.vercel.app/"
                 github="https://github.com/med134/auth-weith-nextjs"
               />
             </div>
