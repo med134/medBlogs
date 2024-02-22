@@ -59,13 +59,14 @@ const CustomMobileLink = ({ href, title, className = "" }) => {
 };
 
 const NavBar = () => {
-  const [mode, setMode] = useThemeSwitcher("light");
+  const [mode, setMode] = useThemeSwitcher("dark");
   const [isOpen, setIsOpen] = useState(false);
   const session = useSession();
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
   const [sticky, setSticky] = useState(false);
+  
   const handleStickyNavbar = () => {
     if (window.scrollY >= 80) {
       setSticky(true);
@@ -166,7 +167,9 @@ const NavBar = () => {
             height={300}
           />
           <span
-            className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light xl:hidden`}
+            className={`${
+              limelight.className
+            } text-3xl ml-2 text-dark dark:text-light xl:hidden`}
           >
             medCode
           </span>
@@ -208,7 +211,8 @@ const NavBar = () => {
           )}
         </nav>
         {session.status === "authenticated" && <ProfileDown />}
-        <SearchTwo />
+        {/* search bar */}
+        <SearchTwo/>
       </div>
       <button
         name="theme-button"

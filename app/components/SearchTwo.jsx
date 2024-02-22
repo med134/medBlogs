@@ -7,9 +7,9 @@ const SearchTwo = () => {
   const [posts, setPosts] = useState([]);
   const [sug, setSug] = useState([]);
   const [query, setQuery] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [modal, isModal] = useState(false);
   const router = useRouter();
+  console.log("modal", modal);
 
   useEffect(() => {
     const handleSearch = async () => {
@@ -44,7 +44,7 @@ const SearchTwo = () => {
     setSug([]);
   };
   const closeNotFoundModal = () => {
-    setIsModalOpen(false);
+    isModal(false);
   };
   // button click to search
   const handleSearch = async (e) => {
@@ -57,9 +57,9 @@ const SearchTwo = () => {
     }
     const searchResult = await res.json();
     if (searchResult.length === 0) {
-      setIsModalOpen(true);
+      isModal(true);
     } else {
-      setIsModalOpen(false);
+      isModal(false);
       setSug([]);
       setQuery("");
       const firstResultId = searchResult[0].slug;
@@ -87,7 +87,7 @@ const SearchTwo = () => {
           name="search-button"
           title="search-button"
           aria-labelledby="search-button"
-          className="inline-flex h-10 items-center gap-2 bg-[#075985] text-white text-lg font-semibold py-1 px-4 rounded-r-md xs:px-2 xs:border xs:border-transparent xs:border-b-white xs:bg-transparent"
+          className="inline-flex h-10 items-center gap-2 bg-mainColor text-white text-lg font-semibold py-1 px-4 rounded-r-md xs:px-2 xs:border xs:border-transparent xs:border-b-white xs:bg-transparent"
         >
           <svg
             className="text-gray-200 h-5 w-5 p-0 fill-current hover:text-gray-600"
@@ -118,7 +118,7 @@ const SearchTwo = () => {
           ))}
         </ul>
       )}
-      {isModalOpen && <NotFoundModel onClose={closeNotFoundModal} />}
+      {modal && <NotFoundModel onClose={closeNotFoundModal} />}
     </>
   );
 };
