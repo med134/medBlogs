@@ -45,11 +45,7 @@ const FirstView = async () => {
                   {FormatDate(item?.createdAt.slice(0, 10))}
                 </span>
               </span>
-              <Link
-                href={`/blogs/${item.slug}`}
-                aria-current="page"
-                rel="preload"
-              >
+              <Link href={`/blogs/${item.slug}`} aria-current="page">
                 <h1
                   className="bg-gradient-to-r py-3 space-y-4 text-4xl xl:text-3xl font-extrabold from-cyan-700 to-cyan-700 bg-[length:0px_10px] bg-left-bottom
       bg-no-repeat
@@ -85,8 +81,8 @@ const FirstView = async () => {
             <div className="w-full rounded-xl md:hidden">
               <Image
                 alt={item.title}
-                width={1200}
-                height={1200}
+                width={1000}
+                height={1000}
                 priority
                 src="https://i.ibb.co/T0bcKHX/block-chain-tech.png"
                 className="w-full rounded-2xl opacity-100 object-contain xl:object-contain xs:h-56"

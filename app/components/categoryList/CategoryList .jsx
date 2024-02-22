@@ -35,6 +35,7 @@ const CategoryList = async () => {
                 alt={`${item.label} category`}
                 width={300}
                 height={300}
+                loading="lazy"
                 className="w-8 h-8 rounded-full"
               />
             )}

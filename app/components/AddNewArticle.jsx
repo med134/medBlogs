@@ -69,6 +69,7 @@ const AddNewArticle = () => {
       highlight: (text) => hljs.highlightAuto(text).value,
     },
   };
+
   const formats = [
     "header",
     "font",

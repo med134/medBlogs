@@ -91,9 +91,12 @@ const Card = ({ posts, loading }) => {
         )
       )}
       {posts.length > 0 && (
-        <Link href="/category/all" className="flex justify-center items-center">
+        <Link
+          href="/category/all"
+          className="flex justify-center items-center xs:pb-6"
+        >
           <span className="text-center text-xl sm:text-sm text-gray-700 dark:text-light hover:bg-[#075985] rounded-md hover:text-light border border-gray-600 px-20 py-1 w-full dark:border-light">
-            show moore...
+            show moore articles...
           </span>
         </Link>
       )}

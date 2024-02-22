@@ -60,7 +60,7 @@ const Youtube = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-3 p-2 sm:block">
+      <div className="grid grid-cols-1 gap-3 p-2 sm:block xs:pt-4">
         <span className="flex justify-start items-center sm:mb-2">
           <p className="text-xl font-semibold text-dark dark:text-light">
             Youtube Shorts
@@ -121,10 +121,10 @@ const Youtube = () => {
         <Link
           href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
           target="blank"
-          className="flex justify-center items-center"
+          className="flex justify-center items-center xs:pb-6"
         >
           <span className="text-center text-xl sm:text-sm text-gray-700 dark:text-light hover:bg-red-600 rounded-md hover:text-light border border-gray-600 px-20 py-1 w-full dark:border-light">
-            show moore...
+            show moore reels...
           </span>
         </Link>
       )}

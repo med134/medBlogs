@@ -12,8 +12,7 @@ export const inter = Inter({
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
   title: "Best Programming Blogs & templates for Programmers|medCode",
-  description: `Discover the coding universe through our blog, where programming becomes accessible to beginners and expertise developers,
-  Explore free components & templates with advanced frameworks such as React.js, Next.js, Vue.js`,
+  description: `Welcome to MedCode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components & Templates for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
   generator: "Next.js",
   applicationName: "MedCode Dev blog & Articles",
   referrer: "origin-when-cross-origin",
@@ -53,9 +52,8 @@ export const metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "medCode web developer & freelance",
-    description: `Learning programming is accessible for beginners through free software programming
-    courses These courses introduce essential best programming languages`,
+    title: "Best Programming Blogs & templates for Programmers|medCode",
+    description: `Welcome to MedCode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components & Templates for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
     url: "https://medcode.dev",
     images: [
       {

@@ -9,7 +9,6 @@ const SearchTwo = () => {
   const [query, setQuery] = useState("");
   const [modal, isModal] = useState(false);
   const router = useRouter();
-  console.log("modal", modal);
 
   useEffect(() => {
     const handleSearch = async () => {

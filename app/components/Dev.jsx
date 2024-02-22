@@ -20,24 +20,31 @@ const Dev = async () => {
   const dev = await getData();
   return (
     <section className="pt-16 md:pt-8 xs:pt-3 dark:bg-dark">
-      <div className="text-2xl flex justify-start items-center w-full  dark:text-light bg-white dark:bg-dark font-bold text-gray-800 font-slab px-12 xs:px-8 pt-8 py-2 xs:pt-1">
+      <div className="text-2xl flex justify-start items-center w-full  dark:text-light bg-white dark:bg-dark font-bold text-gray-800 font-slab px-12 xs:px-4 pt-8 py-2 xs:pt-4">
         <AiTwotoneSound className="dark:text-light" />
-        <div className="ml-2 sm:text-xl xs:text-sm flex justify-start items-center">
-          <h5 className="underline">Dev Community Blogs & Articles</h5>
+        <div className="ml-2 sm:text-xl xs:text-xl flex justify-start items-center">
+          <h5 className="underline">Dev Community Articles</h5>
           <DevIcon />
         </div>
       </div>
       <div className="grid grid-cols-3 gap-10 lg:grid-cols-3 lg:gap-4 px-16 py-8 lg:px-8 md:flex md:flex-wrap sm:px-2">
         {dev?.map((item, index) =>
           index < 6 ? (
-            <div className="wow fadeInUp relative overflow-hidden rounded-md bg-light shadow-lg dark:bg-dark dark:border dark:border-light">
-              <div href="/" className="relative block h-[160px] w-full">
+            <div className="relative overflow-hidden rounded-md bg-light md:block shadow-lg dark:bg-dark dark:border dark:border-light">
+              <div className="relative block h-[160px] md:h-auto w-full">
                 <span className="absolute top-6 right-6 z-20 inline-flex items-center justify-center rounded-full bg-blue-500 py-2 px-4 text-sm font-semibold capitalize text-white">
                   {item.tag_list[0]}
                 </span>
-                <Image src={item.cover_image} alt={item.title} fill />
+                <Image
+                  src={item.cover_image}
+                  alt={item.title}
+                  width={500}
+                  height={420}
+                  loading="lazy"
+                  className="md:w-full"
+                />
               </div>
-              <div className="p-6 sm:p-8 md:py-8 md:px-6 lg:p-8 xl:py-8 xl:px-5 2xl:p-8">
+              <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:py-8 xl:px-5 2xl:p-8 xs:px-2">
                 <h3>
                   <Link
                     href={item.url}
@@ -56,8 +63,10 @@ const Dev = async () => {
                       <div className="relative h-10 w-10 overflow-hidden rounded-full">
                         <Image
                           src={item.user.profile_image}
-                          alt="author"
-                          fill
+                          alt={"user image"}
+                          width={200}
+                          height={200}
+                          loading="lazy"
                         />
                       </div>
                     </div>
