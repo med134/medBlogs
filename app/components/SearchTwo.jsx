@@ -78,7 +78,7 @@ const SearchTwo = () => {
           aria-labelledby="search-input"
           value={query}
           onChange={(e) => onChangeHandle(e.target.value)}
-          className="h-10 w-56 border border-gray-100 bg-white dark:border-light lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium shadow-sm outline-none focus:border-light lg:text-light xs:w-48"
+          className="h-10 w-56 border rounded-md border-gray-100 bg-white dark:border-light lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium shadow-sm outline-none focus:border-light lg:text-light xs:w-48"
           placeholder="Search for Articles"
         />
         <button
@@ -86,7 +86,7 @@ const SearchTwo = () => {
           name="search-button"
           title="search-button"
           aria-labelledby="search-button"
-          className="inline-flex h-10 items-center gap-2 bg-mainColor text-white text-lg font-semibold py-1 px-4 rounded-r-md xs:px-2 xs:border xs:border-transparent xs:border-b-white xs:bg-transparent"
+          className="inline-flex h-10 items-center gap-2 bg-mainColor text-white text-lg font-semibold py-1 px-4 rounded-md xs:px-2 xs:border xs:border-transparent xs:border-b-white lg:bg-transparent"
         >
           <svg
             className="text-gray-200 h-5 w-5 p-0 fill-current hover:text-gray-600"

@@ -14,6 +14,7 @@ import { BsInstagram } from "react-icons/bs";
 import { useSession } from "next-auth/react";
 import { FiX } from "react-icons/fi";
 import SearchTwo from "./SearchTwo";
+import MegaMenu from "./MegaMenu";
 
 const limelight = Limelight({
   subsets: ["latin"],
@@ -28,7 +29,7 @@ const CustomLink = ({ href, title, className = "" }) => {
       <span
         className={`
     h-[1px] inline-block
-    absolute left-0 -bottom-0.5 bg-[#075985]
+    absolute left-0 -bottom-0.5 bg-mainColor
     group-hover:w-full transition-[width] ease duration-300
     dark:bg-light`}
       >
@@ -66,7 +67,16 @@ const NavBar = () => {
     setIsOpen(!isOpen);
   };
   const [sticky, setSticky] = useState(false);
-  
+  const [dropdown, setDropDown] = useState(false);
+  console.log(dropdown);
+  const handelMenuDown = () => {
+    if (dropdown) {
+      setDropDown(false);
+    } else {
+      setDropDown(true);
+    }
+  };
+
   const handleStickyNavbar = () => {
     if (window.scrollY >= 80) {
       setSticky(true);
@@ -167,9 +177,7 @@ const NavBar = () => {
             height={300}
           />
           <span
-            className={`${
-              limelight.className
-            } text-3xl ml-2 text-dark dark:text-light xl:hidden`}
+            className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light xl:hidden`}
           >
             medCode
           </span>
@@ -188,12 +196,39 @@ const NavBar = () => {
             target="_blank"
           />
 
-          <CustomLink
-            href="/about"
-            title="Portfolio"
-            className="mx-4 uppercase dark:text-light"
-            target="_blank"
-          />
+          <button
+            onMouseEnter={handelMenuDown}
+            onMouseOver={() => setDropDown(true)}
+            onMouseOverCapture={() => setDropDown(true)}
+            className="mx-4 uppercase flex items-center justify-between text-gray-900 border-b border-gray-100 md:w-auto  md:hover:text-blue-600 md:p-0 dark:text-white"
+          >
+            Categories
+            <svg
+              className="w-2.5 h-2.5 ms-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 10 6"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="m1 1 4 4 4-4"
+              />
+            </svg>
+          </button>
+          {dropdown && (
+            <div
+              onMouseEnter={() => setDropDown(true)}
+              onMouseOver={() => setDropDown(true)}
+              onMouseLeave={() => setDropDown(false)}
+              className="absolute top-24 left-0 w-full h-60 transition-opacity duration-300 ease-in-out shadow-sm"
+            >
+              <MegaMenu />
+            </div>
+          )}
           {session.status === "authenticated" ? (
             <CustomLink
               href="/dashboard"
@@ -212,7 +247,7 @@ const NavBar = () => {
         </nav>
         {session.status === "authenticated" && <ProfileDown />}
         {/* search bar */}
-        <SearchTwo/>
+        <SearchTwo />
       </div>
       <button
         name="theme-button"
@@ -264,9 +299,9 @@ const NavBar = () => {
               toggle={handleClick}
             />
             <CustomMobileLink
-              href="/about"
-              title="Portfolio"
-              className="books"
+              href="/category/all"
+              title="Categories"
+              className="categories"
               toggle={handleClick}
             />
             <CustomMobileLink
