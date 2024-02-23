@@ -182,7 +182,7 @@ const NavBar = () => {
             medCode
           </span>
         </Link>
-        <nav className="flex items-center justify-stretch ml-24 xl:ml-16 ">
+        <nav className="flex items-center justify-stretch ml-16 xl:ml-16">
           <CustomLink
             href="/projects"
             title="projects"
@@ -200,7 +200,7 @@ const NavBar = () => {
             onMouseEnter={handelMenuDown}
             onMouseOver={() => setDropDown(true)}
             onMouseOverCapture={() => setDropDown(true)}
-            className="mx-4 uppercase flex items-center justify-between text-gray-900 border-b border-gray-100 md:w-auto  md:hover:text-blue-600 md:p-0 dark:text-white"
+            className="mx-4 uppercase flex items-center justify-between text-gray-900 hover:border-b border-black md:w-auto md:p-0 dark:text-white"
           >
             Categories
             <svg
@@ -224,7 +224,9 @@ const NavBar = () => {
               onMouseEnter={() => setDropDown(true)}
               onMouseOver={() => setDropDown(true)}
               onMouseLeave={() => setDropDown(false)}
-              className="absolute top-24 left-0 w-full h-60 transition-opacity duration-300 ease-in-out shadow-sm"
+              className={`opacity-0 ${
+                dropdown ? "opacity-100" : ""
+              } transition-opacity duration-300 ease-in-out absolute top-24 left-0 w-full h-60 shadow-sm`}
             >
               <MegaMenu />
             </div>
@@ -246,7 +248,6 @@ const NavBar = () => {
           )}
         </nav>
         {session.status === "authenticated" && <ProfileDown />}
-        {/* search bar */}
         <SearchTwo />
       </div>
       <button

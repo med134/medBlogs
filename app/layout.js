@@ -11,8 +11,8 @@ export const inter = Inter({
 });
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
-  title: "Best Programming Blogs & templates for Programmers|medCode",
-  description: `Welcome to MedCode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components & Templates for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
+  title: "Best Programming Blog & free components|medCode",
+  description: `Welcome to MedCode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
   generator: "Next.js",
   applicationName: "MedCode Dev blog & Articles",
   referrer: "origin-when-cross-origin",
@@ -52,8 +52,8 @@ export const metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Best Programming Blogs & templates for Programmers|medCode",
-    description: `Welcome to MedCode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components & Templates for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
+    title: "Best Programming Blog & components|medCode",
+    description: `Welcome to MedCode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
     url: "https://medcode.dev",
     images: [
       {

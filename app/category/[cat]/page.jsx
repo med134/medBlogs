@@ -101,7 +101,7 @@ const Card = async ({ params }) => {
         <div className="grid grid-cols-7 gap-4 pt-14 px-4 lg:grid-cols-5 lg:px-4 lg:gap-y-6 md:flex md:flex-wrap md:justify-items-start md:items-center xs:flex xs:px-2 xs:justify-start">
           {category?.map((item) => (
             <Link
-              className={`${styles.category} xs:shrink w-16 h-16 xl:w-10 xl:h-10 dark:text-light xs:bg-mainColor xs:text-light `}
+              className={`${styles.category} xs:shrink w-12 h-16 xl:w-12 xl:h-10 dark:text-light xs:bg-mainColor xs:text-light `}
               key={item._id}
               href={`/category/${item.value}`}
             >
@@ -112,7 +112,7 @@ const Card = async ({ params }) => {
                   loading="lazy"
                   width={300}
                   height={300}
-                  className={"w-16 h-16 xl:w-10 xl:h-10 rounded-full xs:hidden"}
+                  className={"w-12 h-12 xl:w-10 xl:h-10 rounded-full xs:hidden"}
                 />
               )}
               {item.label}
