@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="brand sm:col-span-2">
           <div
             aria-labelledby="medCode Blog"
-            className="inline-flex items-center"
+            className="inline-flex justify-between items-center"
             role="presentation"
           >
             <Image
@@ -27,10 +27,10 @@ const Footer = () => {
               <p className="text-xs tracking-widest">blog for programmers</p>
             </div>
           </div>
-          <div className="mt-6 lg:max-w-sm">
+          <div className="mt-6 w-auto lg:max-w-sm">
             <p className="text-sm text-gray-800 dark:text-light">
-              Explore the latest insights, tutorials,Projects, free code, and
-              expert advice on programming and software development{" "}
+              Explore the latest insights, articles,free components, and expert
+              advice on programming and software development
             </p>
           </div>
         </div>
@@ -93,10 +93,7 @@ const Footer = () => {
                 name="Our channel youtube"
                 className="w-auto flex mb-4 justify-start transition hover:translate-x-2 items-center mx-3 sm:mx-1 focus:outline-none focus:ring focus:border-red-600"
               >
-                <AiFillYoutube
-                  size={34}
-                  className="fill-red-600"
-                />
+                <AiFillYoutube size={34} className="fill-red-600" />
                 <span className="ml-1 font-semibold text-xs">youtube</span>
               </a>
               <a
@@ -141,7 +138,6 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          
         </div>
       </div>
       <div className="pt-5 text-center pb-10 border-t border-gray-600 py-4 lg:flex-row ">

@@ -84,7 +84,7 @@ const FirstView = async () => {
                 width={1000}
                 height={1000}
                 priority
-                src="https://i.ibb.co/T0bcKHX/block-chain-tech.png"
+                src="https://i.ibb.co/bmNXmtw/Artificial-intelligence-pana-1.png"
                 className="w-full rounded-2xl opacity-100 object-contain xl:object-contain xs:h-56"
               />
             </div>
