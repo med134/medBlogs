@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import "highlight.js/styles/a11y-dark.min.css";
 import useSWR from "swr";
@@ -65,6 +65,9 @@ const AddNewArticle = () => {
       [{ size: ["small", false, "large", "huge"] }],
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
     ],
+    clipboard: {
+      matchVisual: false,
+    },
     syntax: {
       highlight: (text) => hljs.highlightAuto(text).value,
     },

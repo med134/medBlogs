@@ -70,7 +70,7 @@ const SearchTwo = () => {
     <>
       <form
         onSubmit={handleSearch}
-        className="inline-flex w-56 h-12 mt-1 absolute right-44 xl:right-32 lg:relative lg:left-0"
+        className="inline-flex w-56 h-12 mt-1 absolute xl:w-48 right-44 xl:right-36 lg:relative lg:left-0"
       >
         <input
           type="text"

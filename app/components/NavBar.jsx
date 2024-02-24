@@ -68,7 +68,6 @@ const NavBar = () => {
   };
   const [sticky, setSticky] = useState(false);
   const [dropdown, setDropDown] = useState(false);
-  console.log(dropdown);
   const handelMenuDown = () => {
     if (dropdown) {
       setDropDown(false);
@@ -89,7 +88,7 @@ const NavBar = () => {
   });
   return (
     <header
-      className={`header py-6 z-40 flex w-full items-center bg-transparent xl:px-10 ${
+      className={`header py-6 z-40 flex w-full items-center bg-transparent xl:px-6 ${
         sticky
           ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
           : "absolute"

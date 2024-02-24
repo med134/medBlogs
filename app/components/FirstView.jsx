@@ -71,6 +71,7 @@ const FirstView = async () => {
                 </span>
               </Link>
               <Link
+                rel="preload"
                 aria-current="page"
                 href={`/blogs/${item.slug}`}
                 className="inline-flex py-3 items-center mt-8 first-line:mt-4 mr-2  justify-center rounded-md dark:text-dark bg-sky-800 px-16 text-center text-white duration-150 md:mb-4 hover:translate-y-1 hover:bg-sky-500 dark:bg-light"
