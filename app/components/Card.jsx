@@ -61,8 +61,8 @@ const Card = ({ posts, loading }) => {
                     height={24}
                     priority
                   />
-                  <p className="text-sm text-gray-500 ml-2 dark:text-light">
-                    MOHAMMED DAKIR
+                  <p className="text-sm font-semibold text-gray-800 ml-2 dark:text-light">
+                    {item.username}
                   </p>
                 </div>
                 <div>

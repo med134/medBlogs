@@ -23,7 +23,7 @@ const Dev = async () => {
       <div className="text-2xl flex justify-start items-center w-full  dark:text-light bg-white dark:bg-dark font-bold text-gray-800 font-slab px-12 xs:px-4 pt-8 py-2 xs:pt-4">
         <AiTwotoneSound className="dark:text-light" />
         <div className="ml-2 sm:text-xl xs:text-xl flex justify-start items-center">
-          <h5 className="underline">Dev Community Articles</h5>
+          <span className="underline">Dev Community Articles</span>
           <DevIcon />
         </div>
       </div>
@@ -45,7 +45,7 @@ const Dev = async () => {
                 />
               </div>
               <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:py-8 xl:px-5 2xl:p-8 xs:px-2">
-                <h3>
+                <h5>
                   <Link
                     href={item.url}
                     target="blank"
@@ -53,7 +53,7 @@ const Dev = async () => {
                   >
                     {item.title}
                   </Link>
-                </h3>
+                </h5>
                 <p className="mb-6 border-b border-body-color dark:text-light border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10">
                   {item.description}
                 </p>
@@ -71,18 +71,18 @@ const Dev = async () => {
                       </div>
                     </div>
                     <div className="w-full">
-                      <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+                      <span className="mb-1 text-sm font-medium text-dark dark:text-white">
                         By {item.user[0]}
-                      </h4>
+                      </span>
                       <p className="text-xs text-body-color dark:text-light">
                         medcode
                       </p>
                     </div>
                   </div>
                   <div className="inline-block">
-                    <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+                    <span className="mb-1 text-sm font-medium text-dark dark:text-white">
                       Date
-                    </h4>
+                    </span>
                     <p className="text-xs text-body-color dark:text-light">
                       {item.readable_publish_date}
                     </p>
