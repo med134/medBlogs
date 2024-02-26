@@ -12,10 +12,8 @@ import {
 
 const ShareButtons = ({ url }) => {
   return (
-    <div className="flex justify-start items-center mb-4 sm:block">
-      <span className="font-semibold text-xl text-dark dark:text-light sm:px-4 xs:mb-4">
-        Share on Social media
-      </span>
+    <div className="flex justify-end items-end pt-4 sm:block xs:pt-1">
+      <span className="font-semibold text-sm text-dark dark:text-light sm:px-4 xs:mb-4"></span>
       <div className="ml-3 sm:mt-2">
         <FacebookShareButton
           url={url}
@@ -23,7 +21,7 @@ const ShareButtons = ({ url }) => {
           className=""
         >
           <span
-            className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+            className="inline-block rounded-full px-2.5 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#1877f2" }}
           >
             <svg
@@ -43,7 +41,7 @@ const ShareButtons = ({ url }) => {
           className="ml-2"
         >
           <span
-            className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+            className="inline-block rounded-full px-2.5 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#0077b5" }}
           >
             <svg
@@ -62,7 +60,7 @@ const ShareButtons = ({ url }) => {
           className="ml-2"
         >
           <span
-            className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+            className="inline-block rounded-full px-2.5 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#128c7e" }}
           >
             <svg
@@ -81,7 +79,7 @@ const ShareButtons = ({ url }) => {
           className="ml-2"
         >
           <span
-            className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+            className="inline-block rounded-full px-2.5 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#ff4500" }}
           >
             <svg
@@ -101,7 +99,7 @@ const ShareButtons = ({ url }) => {
           className="ml-2"
         >
           <span
-            className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+            className="inline-block rounded-full px-2.5 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#e60023" }}
           >
             <svg
@@ -124,7 +122,7 @@ const ShareButtons = ({ url }) => {
           className="ml-2 xs:ml-2"
         >
           <span
-            className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+            className="inline-block rounded-full px-2.5 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#ea4335" }}
           >
             <svg
@@ -147,7 +145,7 @@ const ShareButtons = ({ url }) => {
           className="ml-2"
         >
           <span
-            className="mb-2 inline-block rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+            className="inline-block rounded-full px-2.5 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
             style={{ backgroundColor: "#0088cc" }}
           >
             <svg

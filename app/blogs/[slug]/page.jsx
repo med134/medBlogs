@@ -73,10 +73,13 @@ const BlogPage = async ({ params }) => {
               {FormatDate(blog?.createdAt.slice(0, 10))}
             </span>
           </div>
-          <h1 className="text-4xl font-bold py-2 sm:text-xl text-mainColor">{blog.title}</h1>
-          <span className="text-xl text-gray-600 py-3 xs:text-sm">
+          <h1 className="text-4xl font-bold py-6 sm:text-xl text-mainColor xs:py-1">
+            {blog.title}
+          </h1>
+          <span className="text-xl text-gray-600 py-3 xs:text-sm xs:py-1">
             {blog.description.slice(0, 200)}...
           </span>
+          <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
           <Image
             src={blog.image}
             alt={blog.title}
@@ -94,7 +97,6 @@ const BlogPage = async ({ params }) => {
               dangerouslySetInnerHTML={{ __html: content }}
             />
           </div>
-          <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
           <Comments postSlug={blog._id} />
         </div>
       </div>
