@@ -1,7 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
+import dynamic from "next/dynamic";
+const NavBar = dynamic(() => import("./components/NavBar"));
+const Footer = dynamic(() => import("./components/Footer"));
 import AuthProvider from "./components/authProvider/AuthProvider";
 import GoogleAnalytic from "./components/GoogleAnalytic";
 import CookieBanner from "./components/Cookies";

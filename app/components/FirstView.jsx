@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import icon from "/public/images/Artificial-intelligence-pana-1.png";
 import { FaRegCalendarAlt } from "react-icons/fa";
+
 async function getPost() {
   const res = await fetch("https://www.medcode.dev/api/articles", {
     cache: "no-store",
@@ -17,6 +19,7 @@ async function getPost() {
   );
   return sortedPosts;
 }
+
 const FirstView = async () => {
   const posts = await getPost();
   const FormatDate = (dateString) => {
@@ -82,10 +85,10 @@ const FirstView = async () => {
             <div className="w-full rounded-xl md:hidden">
               <Image
                 alt={item.title}
-                width={1000}
-                height={1000}
+                src={icon}
+                width={500}
+                height={500}
                 priority
-                src="https://i.ibb.co/bmNXmtw/Artificial-intelligence-pana-1.png"
                 className="w-full rounded-2xl opacity-100 object-contain xl:object-contain xs:h-56"
               />
             </div>

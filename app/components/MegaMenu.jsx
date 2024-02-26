@@ -57,7 +57,7 @@ const MegaMenu = () => {
               <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
             </svg>
             <Link
-              href="/category/react"
+              href="/category/nextjs"
               className="text-white bold border-b-2 border-blue-300 hover:text-blue-300"
             >
               Find out more...

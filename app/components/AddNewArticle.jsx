@@ -68,6 +68,9 @@ const AddNewArticle = () => {
     clipboard: {
       matchVisual: false,
     },
+    imageExtend: {
+      alt: true, // This enables alt text for images
+    },
     syntax: {
       highlight: (text) => hljs.highlightAuto(text).value,
     },
