@@ -34,7 +34,7 @@ async function getPosts(cat) {
 }
 export async function generateMetadata({ params }) {
   const post = await getPosts(params.cat);
-  const heading = `Blogs About ${params.cat}`;
+  const heading = `All Articles About ${params.cat}`;
   return {
     title: heading,
     description: `Explore a treasure trove of insightful programming articles and engaging blogs about ${params.cat} Discover expert-written content covering languages, frameworks`,
@@ -46,7 +46,8 @@ export async function generateMetadata({ params }) {
       "programming",
       "blogs",
       "learn",
-      "money",
+      "Next.js",
+      "JavaScript",
       "easy",
     ],
     robots: {
