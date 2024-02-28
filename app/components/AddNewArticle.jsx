@@ -65,12 +65,7 @@ const AddNewArticle = () => {
       [{ size: ["small", false, "large", "huge"] }],
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
     ],
-    clipboard: {
-      matchVisual: false,
-    },
-    imageExtend: {
-      alt: true, // This enables alt text for images
-    },
+  
     syntax: {
       highlight: (text) => hljs.highlightAuto(text).value,
     },
@@ -111,7 +106,6 @@ const AddNewArticle = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const {
     data: articles,
-    error,
     isLoading,
     mutate,
   } = useSWR(`/api/articles?username=${session?.data?.user?.name}`, fetcher);
