@@ -102,7 +102,7 @@ const TemplateId = async ({ params }) => {
         </div>
         <div className="p-2 mt-6 w-full h-full xs:mt-6">
           {/* <ClipBoard data={data.code} /> */}
-          <CodeEditor code2={data.code} />
+          {/* <CodeEditor code2={data.code} /> */}
         </div>
         <div className="w-full p-6 mb-16 xs:p-2">
           <span className="text-2xl font-semibold text-mainColor py-4 underline px-2 xs:mb-5 dark:text-light">
