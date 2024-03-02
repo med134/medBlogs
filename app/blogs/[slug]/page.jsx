@@ -76,7 +76,7 @@ const BlogPage = async ({ params }) => {
           <h1 className="text-4xl font-bold py-6 sm:text-xl text-mainColor xs:py-1">
             {blog.title}
           </h1>
-          <span className="text-xl text-gray-600 py-3 xs:text-sm xs:py-1">
+          <span className="text-xl text-gray-600 py-3 xs:text-sm xs:py-1 dark:text-light">
             {blog.description.slice(0, 200)}...
           </span>
           <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />

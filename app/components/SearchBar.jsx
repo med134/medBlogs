@@ -111,7 +111,7 @@ const SearchBar = () => {
                 height={200}
               />
               <li
-                onClick={() => onSugHandler(item.title)}next
+                onClick={() => onSugHandler(item.title)}
                 className="px-2 py-1 text-sm font-semibold cursor-pointer text-dark dark:text-light lg:text-light"
               >
                 {item.title}
