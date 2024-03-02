@@ -2,13 +2,14 @@
 import React, { useState, useRef } from "react";
 import AceEditor from "react-ace";
 
-import "ace-builds/src-noconflict/mode-javascript";
+import  "ace-builds/src-noconflict/ext-inline_autocomplete";
+import "ace-builds/src-noconflict/mode-html";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
 import { IoCopyOutline } from "react-icons/io5";
 import { MdFileDownloadDone } from "react-icons/md";
 import { FaTabletScreenButton } from "react-icons/fa6";
-import { FaMobileScreen } from "react-icons/fa6";
+import { FaMobileAlt } from "react-icons/fa";
 import { LuScreenShare } from "react-icons/lu";
 
 function CodeEditor({ code2 }) {
@@ -72,7 +73,10 @@ function CodeEditor({ code2 }) {
             onClick={() => handleScreenSizeChange("sm")}
           >
             <span className="md:hidden">SM</span>
-            <FaMobileScreen className="ml-1" />
+            <FaMobileAlt
+              className="ml-1"
+              aria-label="Mobile Screen"
+            />
           </button>
           <button
             className={`text-light ml-2 px-2 rounded-lg flex justify-center items-center border border-light py-1 ${
@@ -81,7 +85,7 @@ function CodeEditor({ code2 }) {
             onClick={() => handleScreenSizeChange("md")}
           >
             <span className="md:hidden">MD</span>
-            <FaTabletScreenButton className="ml-1" />
+            <FaTabletScreenButton className="ml-1" aria-label="medium screen" />
           </button>
           <button
             className={`text-light py-1 ml-2 px-2 rounded-lg flex justify-center items-center border border-light py-1${
@@ -90,7 +94,7 @@ function CodeEditor({ code2 }) {
             onClick={() => handleScreenSizeChange("lg")}
           >
             <span className="md:hidden">LG</span>
-            <LuScreenShare className="ml-1" />
+            <LuScreenShare className="ml-1" aria-label="Large Screen" />
           </button>
         </div>
         <div className="flex justify-center items-center">
@@ -98,7 +102,7 @@ function CodeEditor({ code2 }) {
             onClick={handleCopyClick}
             className="flex justify-center border border-light px-2 py-1 mr-3 items-center text-light bg-mainColor rounded-lg hover:bg-cyan-600 hover:text-light"
           >
-            <span className="md:hidden">{copy ? "Copied!" : "Copy code"}</span>
+            <span className="md:hidden">{copy ? "Copied!" : "Copy"}</span>
             {copy ? (
               <MdFileDownloadDone className="ml-1" />
             ) : (
@@ -121,7 +125,7 @@ function CodeEditor({ code2 }) {
               height="500px"
               width="100%"
               value={code}
-              mode="javascript"
+              mode="html"
               theme="monokai"
               fontSize="16px"
               highlightActiveLine={true}
