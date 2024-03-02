@@ -98,7 +98,10 @@ const SearchBar = () => {
       {sug.length > 0 && (
         <ul className="mt-2 w-1/2 bg-white dark:bg-dark shadow-lg rounded-md overflow-y-auto scroll-m-0 h-auto absolute z-40">
           {sug.map((item, index) => (
-            <div className="flex justify-start items-center px-4 mb-2 border hover:bg-slate-500 dark:hover:bg-slate-500">
+            <div
+              key={item._id}
+              className="flex justify-start items-center px-4 mb-2 border hover:bg-slate-500 dark:hover:bg-slate-500"
+            >
               <Image
                 src={item.image}
                 alt={item.title}
@@ -109,7 +112,6 @@ const SearchBar = () => {
               />
               <li
                 onClick={() => onSugHandler(item.title)}
-                key={index}
                 className="px-2 py-1 text-sm font-semibold cursor-pointer text-dark dark:text-light lg:text-light"
               >
                 {item.title}

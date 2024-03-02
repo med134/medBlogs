@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useRef } from "react";
 import AceEditor from "react-ace";
-import "ace-builds/src-noconflict/mode-html";
+
+import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
 import { IoCopyOutline } from "react-icons/io5";
@@ -39,17 +40,18 @@ function CodeEditor({ code2 }) {
 
   const handleScreenSizeChange = (size) => {
     setSelectedScreenSize(size);
-
     // Update code based on selected screen size
     let updatedCode = code2; // Default to the original code
     switch (size) {
       case "sm":
-        updatedCode = code2
-          .replace("grid", "block")
-          .replace("text-5xl", "text-xl");
+        updatedCode = updatedCode
+          .replace(/\bgrid\b/g, "block")
+          .replace(/\btext-5xl\b/g, "text-xl");
         break;
       case "md":
-        updatedCode = code2.replace("grid", "block");
+        updatedCode = updatedCode
+          .replace(/\bblock\b/g, "grid")
+          .replace(/\btext-xl\b/g, "text-5xl");
         break;
       default:
         break;
@@ -119,7 +121,7 @@ function CodeEditor({ code2 }) {
               height="500px"
               width="100%"
               value={code}
-              mode="html"
+              mode="javascript"
               theme="monokai"
               fontSize="16px"
               highlightActiveLine={true}
