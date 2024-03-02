@@ -76,7 +76,7 @@ const AddNewPost = () => {
           Create a Templates & Component
         </h1>
       </div>
-      <div className="p-4 grid grid-cols-3 gap-4 md:inline-block sm:items-center sm:p-1 dark:bg-dark">
+      <div className="p-4 grid grid-cols-3 gap-4 md:inline-block pt-16 sm:items-center sm:p-1 dark:bg-dark">
         <form
           className="p-4 text-left text-gray-700 col-span-2"
           onSubmit={handleSubmit}
@@ -126,8 +126,8 @@ const AddNewPost = () => {
           </button>
         </form>
         <div className="">
-          <span className="mb-4 text-center underline font-semibold text-2xl text-dark dark:text-light">
-            your posts
+          <span className="mb-4 underline text-center px-4 font-semibold text-xl text-dark dark:text-light">
+            your recent posts
           </span>
           {isLoading ? (
             <SliderSkelton />

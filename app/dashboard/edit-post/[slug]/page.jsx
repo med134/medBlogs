@@ -18,7 +18,7 @@ const Edit = async ({ params }) => {
   const data = await getData(slug);
 
   return (
-    <Layout className="p-16 lg:p-8 md:p-8 sm:p-8 xs:p-6 pt-[120px] md:pt-[80px] sm:pt-8">
+    <Layout className="p-16 lg:p-8 md:p-8 sm:p-8 xs:p-6 pt-[170px] md:pt-[80px] sm:pt-8">
       <h1 className="text-center text-2xl text-gray-800 font-semibold dark:text-light">
         Edit Your Post & Submit
       </h1>

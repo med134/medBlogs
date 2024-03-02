@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import TransitionEffect from "../components/TransitionEffect";
-import { BgTemplates } from "../components/Icons";
 import Image from "next/image";
 import PageNotFound from "@/app/PageNotFound";
+import SearchBar from "../components/SearchBar";
 
 async function getData() {
   const res = await fetch(`https://www.medcode.dev/api/posts`, {
@@ -75,65 +75,41 @@ const page = async () => {
   return (
     <>
       <TransitionEffect />
-      <div className="bg-white dark:bg-dark dark:text-light pt-[100px]">
-        <div className="p-16 my-auto w-full py-20 bg-indigo-600 px-6 leading-4 xs:p-8 xs:py-6 shadow-lg xl:w-screen dark:bg-dark dark:text-light ">
-          <div className="w-full">
-            <h1 className="mb-3 font-lexend text-3xl px-10 text-white xs:text-xl xs:px-4">
-              Free Templates & components with free code Sources
+      <div className="bg-white dark:bg-dark dark:text-light pt-[80px] xl:pt-[60px] lg:pt-[40px]">
+        <div className="grid grid-cols-2 p-16 mx-auto overflow-x-hidden lg:block lg:text-center xl:mt-5 sm:p-8">
+          <div className="lg:w-full pr-2 md:mb-14 py-14 md:py-0 lg:block lg:justify-center lg:items-center">
+            <h1 className="text-4xl font-bold text-mainColor xl:text-3xl lg:text-4xl xs:text-2xl dark:text-cyan-600">
+              <span className="block w-full">Free Templates & components </span>
+              with free code Sources
             </h1>
-            <p className="text-light text-xl px-10 xs:px-4 sm:text-sm">
+            <p className="py-2 text-lg text-gray-500 md:py-6 2xl:pr-5 xs:text-sm dark:text-light">
               Open source UI & UX components and templates to bootstrap your new
               apps, projects or landing sites, Crafting Unique Web Experiences:
               Explore My Portfolio and Free Templates & Components
             </p>
-
-            <div className="flex mt-8 px-10 sm:text-xs sm:px-4">
-              <div className="inline-flex bg-mainColor py-4 text-light font-lexend rounded-xl px-10 sm:px-4">
-                <Link
-                  target="_blank"
-                  href="https://www.medcode.dev/category/react"
-                  className="font-bold cursor-pointer hover:underline"
-                >
-                  React js
-                </Link>
-                <Link
-                  target="_blank"
-                  href="https://www.medcode.dev/category/nextjs"
-                  className="ml-4 xs:ml-2 font-bold  cursor-pointer hover:underline"
-                >
-                  Next js
-                </Link>
-                <Link
-                  target="_blank"
-                  href="https://www.medcode.dev/category/tools"
-                  className="ml-4 font-bold xs:ml-2 cursor-pointer hover:underline"
-                >
-                  Tailwind css
-                </Link>
-                <a
-                  target="_blank"
-                  href="https://getbootstrap.com/"
-                  aria-label="Visit Site Bootstrap official"
-                  rel="noopener noreferrer"
-                  name="Bootstrap"
-                  className="ml-4 font-bold cursor-pointer hover:underline xs:ml-2"
-                >
-                  Bootstrap
-                </a>
-              </div>
+            <div className="mt-2">
+              <SearchBar />
             </div>
           </div>
-          <div className="pointer-events-none absolute right-0 bottom-0 w-4/5 text-white opacity-50">
-            <BgTemplates />
+
+          <div className="pb-10 overflow-hidden md:p-10 lg:p-0 sm:pb-0 lg:hidden">
+            <Image
+              id="heroImg1"
+              className="transition-all ml-10 duration-300 ease-in-out hover:scale-105 lg:w-full sm:mx-auto sm:w-4/6 sm:pb-12 lg:pb-0"
+              src="https://i.ibb.co/GPXxP06/hero-img.png"
+              alt="Free Templates & components"
+              width="500"
+              height="488"
+            />
           </div>
         </div>
-        <div className="p-6 px-16 dark:text-light xs:px-8 xs:p-2">
-          <h2 className="text-3xl font-lexend mt-4 sm:text-2xl">
+        <div className="px-16 dark:text-light xs:px-8 xs:p-2">
+          <h2 className="text-3xl font-semibold mt-0 sm:text-2xl">
             Latest Templates & Components
           </h2>
           <h3 className="sm:text-sm mt-2">
-            The newest featured & responsive Templates & Components and full project with
-            different frameworks.
+            The newest featured & responsive Templates & Components and full
+            project with different frameworks.
           </h3>
         </div>
       </div>
@@ -144,7 +120,7 @@ const page = async () => {
           .map((item) => (
             <div
               key={item._id}
-              className="max-w-sm rounded overflow-hidden shadow-lg"
+              className="max-w-sm rounded overflow-hidden shadow-lg dark:shadow-light"
             >
               <Image
                 className="w-full h-44"
@@ -162,7 +138,7 @@ const page = async () => {
                   {item.title}
                 </Link>
                 <p className={`text-gray-700 text-sm mt-2 dark:text-light`}>
-                  {item.description}
+                  {item.description.slice(0, 70)}...
                 </p>
               </div>
               <div className="pt-1 pb-3 flex justify-between px-4 p-6">

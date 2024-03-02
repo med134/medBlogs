@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import "highlight.js/styles/a11y-dark.min.css";
 import useSWR from "swr";
@@ -228,6 +228,7 @@ const AddNewArticle = () => {
           >
             Post Now
           </button>
+         
         </form>
         <div className="col-span-1">
           {isLoading ? (

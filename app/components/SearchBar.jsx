@@ -4,17 +4,49 @@ import NotFoundModel from "./NotFoundModel";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const SearchTwo = () => {
+const SearchBar = () => {
   const [posts, setPosts] = useState([]);
   const [sug, setSug] = useState([]);
   const [query, setQuery] = useState("");
   const [modal, isModal] = useState(false);
   const router = useRouter();
+  const onSugHandler = (query) => {
+    setQuery(query);
+    setSug([]);
+  };
+  const onChangeHandle = (query) => {
+    const filteredPosts = posts.filter((post) => {
+      const regex = new RegExp(`${query}`, "gi");
+      return post.title.match(regex);
+    });
+    setSug(filteredPosts);
+    setQuery(query);
+    console.log(query);
+  };
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const res = await fetch(`/api/posts/search?query=${query}`, {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      return alert("No results found");
+    }
+    const searchResult = await res.json();
+    if (searchResult.length === 0) {
+      isModal(true);
+    } else {
+      isModal(false);
+      setSug([]);
+      setQuery("");
+      const firstResultId = searchResult[0].slug;
+      router.push(`/templates/${firstResultId}`);
+    }
+  };
 
   useEffect(() => {
     const handleSearch = async () => {
       try {
-        const res = await fetch(`/api/articles`, {
+        const res = await fetch(`/api/posts`, {
           cache: "no-store",
         });
 
@@ -30,64 +62,23 @@ const SearchTwo = () => {
     };
     handleSearch();
   }, []);
-
-  const onChangeHandle = (query) => {
-    const filteredPosts = posts.filter((post) => {
-      const regex = new RegExp(`${query}`, "gi");
-      return post.title.match(regex);
-    });
-    setSug(filteredPosts);
-    setQuery(query);
-  };
-  const onSugHandler = (query) => {
-    setQuery(query);
-    setSug([]);
-  };
-  const closeNotFoundModal = () => {
-    isModal(false);
-  };
-  // button click to search
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    const res = await fetch(`/api/articles/search?query=${query}`, {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      return alert("No results found");
-    }
-    const searchResult = await res.json();
-    if (searchResult.length === 0) {
-      isModal(true);
-    } else {
-      isModal(false);
-      setSug([]);
-      setQuery("");
-      const firstResultId = searchResult[0].slug;
-      router.push(`/blogs/${firstResultId}`);
-    }
-  };
-
   return (
     <>
       <form
         onSubmit={handleSearch}
-        className="inline-flex w-56 h-12 mt-1 absolute xl:w-48 right-44 xl:right-36 lg:relative lg:left-0"
+        className="mt-6 px-4 py-2 rounded-full max-w-2xl bg-gray-50 border flex focus-within:border-gray-300 lg:ml-12 xs:ml-2 xs:px-2 xs:py-1 dark:bg-dark dark:border-light dark:shadow-light"
       >
         <input
           type="text"
-          name="search-input"
-          aria-labelledby="search-input"
+          placeholder="Search for components & templates..."
           value={query}
           onChange={(e) => onChangeHandle(e.target.value)}
-          className="h-10 w-56 border rounded-md border-gray-100 bg-white dark:border-light lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium shadow-sm outline-none focus:border-light lg:text-light xs:w-48"
-          placeholder="Search for Articles"
+          className="bg-transparent w-full focus:outline-none font-semibold border-0 focus:ring-0 px-0 py-0"
+          name="topic"
         />
         <button
           type="submit"
-          name="search-button"
-          title="search-button"
-          aria-labelledby="search-button"
-          className="inline-flex h-10 items-center gap-2 bg-mainColor text-white text-lg font-semibold py-1 px-4 rounded-md xs:px-2 xs:border xs:border-transparent xs:border-b-white lg:bg-transparent"
+          className="flex flex-row items-center hover:bg-cyan-600 justify-center px-4 rounded-full border disabled:cursor-not-allowed disabled:opacity-50 transition ease-in-out duration-150 text-base bg-mainColor text-white font-medium tracking-wide border-transparent py-1 h-[38px]"
         >
           <svg
             className="text-gray-200 h-5 w-5 p-0 fill-current hover:text-gray-600"
@@ -104,23 +95,22 @@ const SearchTwo = () => {
           </svg>
         </button>
       </form>
-
       {sug.length > 0 && (
-        <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md overflow-y-auto right-32 w-72 top-16 scroll-m-0 h-64 absolute z-40 lg:top-36 lg:right-32 lg:w-[270px] lg:max-h-64 lg:bg-gray-800 xs:right-0">
+        <ul className="mt-2 w-1/2 bg-white dark:bg-dark shadow-lg rounded-md overflow-y-auto scroll-m-0 h-auto absolute z-40">
           {sug.map((item, index) => (
-            <div className="flex justify-start items-center mb-2 border hover:bg-slate-500 dark:hover:bg-slate-500">
+            <div className="flex justify-start items-center px-4 mb-2 border hover:bg-slate-500 dark:hover:bg-slate-500">
               <Image
                 src={item.image}
                 alt={item.title}
-                className="w-16 h-16 rounded-md object-contain"
+                className="w-16 h-16 rounded-md object-cover border"
                 loading="lazy"
-                width={300}
-                height={300}
+                width={200}
+                height={200}
               />
               <li
                 onClick={() => onSugHandler(item.title)}
                 key={index}
-                className="px-2 py-1 text-sm cursor-pointer text-dark dark:text-light lg:text-light"
+                className="px-2 py-1 text-sm font-semibold cursor-pointer text-dark dark:text-light lg:text-light"
               >
                 {item.title}
               </li>
@@ -128,9 +118,8 @@ const SearchTwo = () => {
           ))}
         </ul>
       )}
-      {modal && <NotFoundModel onClose={closeNotFoundModal} />}
     </>
   );
 };
 
-export default SearchTwo;
+export default SearchBar;
