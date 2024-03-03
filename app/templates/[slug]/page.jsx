@@ -68,7 +68,7 @@ const TemplateId = async ({ params }) => {
     <>
       <div className="p-12 pt-[40px] h-full xs:pt-6 dark:bg-dark xl:block md:p-4 xs:p-6">
         <div className="h-full flex justify-around items-center px-6 xs:px-1 lg:block">
-          <div className="information pt-24">
+          <div className="block justify-start information pt-24">
             <Link
               href="/templates"
               className="group inline-flex justify-around rounded-md bg-mainColor mb-3 p-2 px-4 py-2 xs:mt-4 text-white transition sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-indigo-200"
@@ -86,7 +86,41 @@ const TemplateId = async ({ params }) => {
               {" "}
               {data.description}
             </p>
-
+            <div className="flex justify-start items-start w-auto gap-4 p-2 underline rounded-md">
+              <Image
+                alt="author image"
+                width={200}
+                loading="lazy"
+                height={200}
+                src="https://i.ibb.co/WVDZRxF/bussiness-man.png"
+                className="w-10 h-10  object-cover rounded-full"
+              />
+              <div className="flex flex-col">
+                <span className="text-sm text-gray-700 dark:text-light">
+                  Author
+                </span>
+                <span className="text-gray-600 dark:text-gray-200 font-bold uppercase text-sm">
+                  {data?.username}
+                </span>
+                <a
+                  href={`mailto:${data?.email}`}
+                  className="text-xs text-gray-500 dark:text-light hover:text-blue-600 hover:underline"
+                >
+                  {data?.email}
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="blog">
+            <BlogAction />
+          </div>
+        </div>
+        <div className="p-2 mt-6 w-full h-full xs:mt-6">
+          <div className="flex justify-between items-center">
+            <ShareButtons
+              url={`https://www.medcode.dev/blogs/${slug}`}
+              className={"justify-start items-start mb-1"}
+            />
             <Link
               href={data?.link}
               target="_blank"
@@ -98,13 +132,6 @@ const TemplateId = async ({ params }) => {
               </span>
             </Link>
           </div>
-          <div className="blog">
-            <BlogAction />
-          </div>
-        </div>
-        <div className="p-2 mt-6 w-full h-full xs:mt-6">
-          {/* <ClipBoard data={data.code} /> */}
-          <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
           <CodeEditor code2={data.code} />
         </div>
         <div className="w-full p-6 mb-16 xs:p-2">

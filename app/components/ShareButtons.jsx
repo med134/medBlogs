@@ -10,9 +10,11 @@ import {
   EmailShareButton,
 } from "react-share";
 
-const ShareButtons = ({ url }) => {
+const ShareButtons = ({ url, className }) => {
   return (
-    <div className="flex justify-end items-end pt-4 sm:block xs:pt-1">
+    <div
+      className={`flex justify-end items-end pt-4 sm:block xs:pt-1 ${className}`}
+    >
       <span className="font-semibold text-sm text-dark dark:text-light sm:px-4 xs:mb-4"></span>
       <div className="ml-3 sm:mt-2">
         <FacebookShareButton
