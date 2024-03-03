@@ -51,8 +51,8 @@ function CodeEditor({ code2 }) {
         break;
       case "md":
         updatedCode = updatedCode
-          .replace(/\bblock\b/g, "grid")
-          .replace(/\btext-xl\b/g, "text-5xl");
+          .replace(/\bgrid\b/g, "block")
+          .replace(/\btext-4xl\b/g, "text-2xl");
         break;
       default:
         break;
