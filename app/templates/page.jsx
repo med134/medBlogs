@@ -95,6 +95,7 @@ const page = async () => {
           <div className="pb-10 overflow-hidden md:p-10 lg:p-0 sm:pb-0 lg:hidden">
             <Image
               id="heroImg1"
+              priority
               className="transition-all ml-10 duration-300 ease-in-out hover:scale-105 lg:w-full sm:mx-auto sm:w-4/6 sm:pb-12 lg:pb-0"
               src="https://i.ibb.co/GPXxP06/hero-img.png"
               alt="Free Templates & components"
