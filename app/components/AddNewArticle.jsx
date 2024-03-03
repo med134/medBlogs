@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useQuill } from "react-quilljs";
-import "react-quill/dist/quill.snow.css";
+import 'quill/dist/quill.snow.css';
 import hljs from "highlight.js";
 import SliderSkelton from "./SliderSkelton";
 

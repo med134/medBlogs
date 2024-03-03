@@ -8,7 +8,7 @@ export default function PageNotFound() {
             <span className="sr-only">Error</span>404
           </h2>
           <p className="text-2xl md:text-3xl dark:text-gray-400">
-            Sorry, we couldn't find this page.
+            Sorry, we couldnt find this page.
           </p>
           <Link
             href="/"

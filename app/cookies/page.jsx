@@ -53,12 +53,12 @@ export default function Privacy() {
         </p>
         <span className="font-semibold">Place</span>
         <p className="mb-4">
-          The Data is processed at the Owner's operating offices and in any
+          The Data is processed at the Owners operating offices and in any
           other places where the parties involved in the processing are located.
         </p>
         <p className="mb-2">
-          Depending on the User's location, data transfers may involve
-          transferring the User's Data to a country other than their own. To
+          Depending on the Users location, data transfers may involve
+          transferring the Users Data to a country other than their own. To
           find out more about the place of processing of such transferred Data,
           Users can check the section containing details about the processing of
           Personal Data
@@ -289,9 +289,9 @@ export default function Privacy() {
           section referred to collectively as “we”, “us”, “our”). This section
           applies to all Users (Users are referred to below, simply as “you”,
           “your”, “yours”), who are consumers residing in the state of
-          California, United States of America, according to the "California
-          Consumer Privacy Act of 2018" (the "CCPA"), as updated by the
-          "California Privacy Rights Act" (the "CPRA") and subsequent
+          California, United States of America, according to the California
+          Consumer Privacy Act of 2018 as updated by the
+          California Privacy Rights and subsequent
           regulations. For such consumers, this section supersedes any other
           possibly divergent or conflicting information contained in the privacy
           policy. This part of the document uses the term “personal information“
@@ -302,7 +302,7 @@ export default function Privacy() {
         </span>
         <p>
           In this section we summarize the categories of personal information
-          that we've collected, used, sold, or shared and the purposes thereof.
+          that weve collected, used, sold, or shared and the purposes thereof.
           You can read about these activities in detail in the section titled
           “Detailed information on the processing of Personal Data” within this
           document.
@@ -417,7 +417,7 @@ export default function Privacy() {
           The disclosure described above will be limited to the personal
           information collected or used over the past 12 months. If we deliver
           our response electronically, the information enclosed will be
-          "portable", i.e. delivered in an easily usable format to enable you to
+          portable, i.e. delivered in an easily usable format to enable you to
           transmit the information to another entity without hindrance —
           provided that this is technically feasible.
         </p>
@@ -527,7 +527,7 @@ export default function Privacy() {
           section applies to all Users (Users are referred to below, simply as
           “you”, “your”, “yours”), who are consumers residing in the
           Commonwealth of Virginia, according to the “Virginia Consumer Data
-          Protection Act" (the "VCDPA"), and, for such consumers, it supersedes
+          Protection Act and, for such consumers, it supersedes
           any other possibly divergent or conflicting information contained in
           the privacy policy. This part of the document uses the term “personal
           data” as defined in the VCDPA
@@ -537,7 +537,7 @@ export default function Privacy() {
         </span>
         <p>
           In this section, we summarize the categories of personal data that
-          we've processed and the purposes thereof. You can read about these
+          weve processed and the purposes thereof. You can read about these
           activities in detail in the section titled “Detailed information on
           the processing of Persona Data” within this document.
         </p>
@@ -646,12 +646,12 @@ export default function Privacy() {
           to collectively as “we”, “us”, “our”). This section applies to all
           Users (Users are referred to below, simply as “you”, “your”, “yours”),
           who are consumers residing in the State of Colorado, according to the
-          “Colorado Privacy Act" (the "CPA"), and, for such consumers, it
+          “Colorado Privacy Act (the CPA), and, for such consumers, it
           supersedes any other possibly divergent or conflicting information
           contained in the privacy policy. This part of the document uses the
           term “personal data” as defined in the CPA. Categories of personal
           data processed In this section, we summarize the categories of
-          personal data that we've processed and the purposes thereof. You can
+          personal data that weve processed and the purposes thereof. You can
           read about these activities in detail in the section titled “Detailed
           information on the processing of Persona Data” within this document.
           Categories of personal data we collect We have collected the following
@@ -666,18 +666,18 @@ export default function Privacy() {
           withdraw such consent at any time using the contact details provided
           in this document. How we use the data we collect: sharing of your
           personal data with third parties We do not share nor disclose your
-          personal data with third parties. For our purposes, the word "third
-          party" means "a natural or legal person, public authority, agency, or
+          personal data with third parties. For our purposes, the word third
+          party means a natural or legal person, public authority, agency, or
           body other than the consumer, controller, processor, or an affiliate
-          of the processor or the controller" as defined by the VCDPA. For our
-          purposes, the word "third party" means "a person, public authority,
+          of the processor or the controller as defined by the VCDPA. For our
+          purposes, the word third party means a person, public authority,
           agency, or body other than a consumer, controller, processor, or
-          affiliate of the processor or the controller." as defined by the CPA.
+          affiliate of the processor or the controller as defined by the CPA.
           Sale of your personal data We do not sell your personal data. In case
           we should decide to, we will inform you beforehand and will grant your
-          right to opt out of such sale. For our purposes, the word "sale",
-          "sell", or "sold" means "the exchange of personal data for monetary or
-          other valuable consideration by a controller to a third party" as
+          right to opt out of such sale. For our purposes, the word sale,
+          sell, or sold means the exchange of personal data for monetary or
+          other valuable consideration by a controller to a third party as
           defined by the CPA. Please note that according to the CPA, the
           disclosure of personal data to a processor that processes personal
           data on behalf of a controller does not constitute a sale. In
@@ -688,17 +688,17 @@ export default function Privacy() {
           not process your personal data for targeted advertising. If we decide
           to do so, we will inform you beforehand and will grant your right to
           opt out of the processing of your personal data for targeted
-          advertising. For our purposes, the word "targeted advertising" means
-          "displaying to a consumer an advertisement that is selected based on
-          personal data obtained or inferred over time from the consumer's
+          advertising. For our purposes, the word targeted advertising means
+          displaying to a consumer an advertisement that is selected based on
+          personal data obtained or inferred over time from the consumers
           activities across nonaffiliated websites, applications, or online
-          services to predict consumer preferences or interests" as defined by
+          services to predict consumer preferences or interests as defined by
           CPA. Please note that according to the CPA, targeted advertising does
           not include: “advertisements directed to a consumer in response to the
-          consumer's request for information or feedback; advertisements based
-          on activities within a controller's own websites or online
+          consumers request for information or feedback; advertisements based
+          on activities within a controllers own websites or online
           applications or any affiliated website or online application;
-          advertisements based on the context of a consumer's current search
+          advertisements based on the context of a consumers current search
           query, visit to an internet web site or online application; or
           processing personal data solely to measure or report advertising
           frequency, performance or reach”. Your privacy rights under the
@@ -766,13 +766,13 @@ export default function Privacy() {
           as “we”, “us”, “our”). This section applies o all Users (Users are
           referred to below, simply as “you”, “your”, “yours”), who are
           consumers residing in the State of Connecticut, according to “An Act
-          Concerning Personal Data Privacy and Online Monitoring " (also known
-          as "The Connecticut Data Privacy Act" or the “CTDPA"), and, for such
+          Concerning Personal Data Privacy and Online Monitoring (also known
+          as The Connecticut Data Privacy Act or the CTDPA), and, for such
           consumers, it supersedes any other possibly divergent or conflicting
           information contained in the privacy policy. This part of the document
           uses the term “personal data” as defined in the CTDPA. Categories of
           personal data processed In this section, we summarize the categories
-          of personal data that we've processed and the purposes thereof. You
+          of personal data that weve processed and the purposes thereof. You
           can read about these activities in detail in the section titled
           “Detailed information on the processing of Persona Data” within this
           document. Categories of personal data we collect We have collected the
@@ -788,15 +788,15 @@ export default function Privacy() {
           contact details provided in this document. How we use the data we
           collect: sharing of your personal data with third parties We do not
           share nor disclose your personal data with third parties. For our
-          purposes, the word "third party" means "a person, public authority,
+          purposes, the word third party means a person, public authority,
           agency, or body other than a consumer, controller, processor, or
-          affiliate of the processor or the controller." as defined by the
+          affiliate of the processor or the controller as defined by the
           CTDPA. Sale of your personal data We do not sell your personal data.
           In case we should decide to, we will inform you beforehand and will
           grant your right to opt out of such sale. For our purposes, the word
-          "sale", "sell", or "sold" means "the exchange of personal data for
+          sale, sell, or sold means the exchange of personal data for
           monetary or other valuable consideration by a controller to a third
-          party" as defined by the CTDPA. Please note that according to the
+          party as defined by the CTDPA. Please note that according to the
           CTDPA, the disclosure of personal data to a processor that processes
           personal data on behalf of a controller does not constitute a sale. In
           addition, other specific exceptions set forth in the CTDPA may apply,
@@ -806,17 +806,17 @@ export default function Privacy() {
           not process your personal data for targeted advertising. If we decide
           to do so, we will inform you beforehand and will grant your right to
           opt out of the processing of your personal data for targeted
-          advertising. For our purposes, the word "targeted advertising" means
-          "displaying to a consumer an advertisement that is selected based on
-          personal data obtained or inferred over time from the consumer's
+          advertising. For our purposes, the word targeted advertising means
+          displaying to a consumer an advertisement that is selected based on
+          personal data obtained or inferred over time from the consumers
           activities across non affiliated websites, applications, or online
-          services to predict consumer preferences or interests" as defined by
+          services to predict consumer preferences or interests as defined by
           CTDPA. Please note that according to the CTDPA, targeted advertising
           does not include: “advertisements based on activities within a
-          controller's own web sites or online applications; advertisements
-          based on the context of a consumer's current search query, visit to an
+          controllers own web sites or online applications; advertisements
+          based on the context of a consumers current search query, visit to an
           internet web site or online application; advertisements directed to a
-          consumer in response to the consumer's request for information or
+          consumer in response to the consumers request for information or
           feedback; or processing personal data solely to measure or report
           advertising frequency, performance or reach”. Your privacy rights
           under the Connecticut Data Privacy Act and how to exercise them You
@@ -883,11 +883,11 @@ export default function Privacy() {
           as “we”, “us”, “our”). This section applies to all Users (Users are
           referred to below, simply as “you”, “your”, “yours”), who are
           consumers residing in the State of Utah, according to the “Consumer
-          Privacy Act" (the “UCPA"), and, for such consumers, it supersedes any
+          Privacy Act (the UCPA), and, for such consumers, it supersedes any
           other possibly divergent or conflicting information contained in the
           privacy policy. This part of the document uses the term “personal
           data” as defined in the UCPA. Categories of personal data processed In
-          this section, we summarize the categories of personal data that we've
+          this section, we summarize the categories of personal data that weve
           processed and the purposes thereof. You can read about these
           activities in detail in the section titled “Detailed information on
           the processing of Persona Data” within this document. Categories of
@@ -899,10 +899,10 @@ export default function Privacy() {
           processing of Personal Data” and “The purposes of processing” within
           this document. How we use the data we collect: sharing of your
           personal data with third parties We do not share nor disclose your
-          personal data with third parties. For our purposes, the word "third
-          party" means "a person other than: the consumer, controller, or
+          personal data with third parties. For our purposes, the word third
+          party means a person other than: the consumer, controller, or
           processor; or an affiliate or contractor of the controller or the
-          processor" as defined by the UCPA. Sale of your personal data We do
+          processor as defined by the UCPA. Sale of your personal data We do
           not sell your personal data. In case we should decide to, we will
           inform you beforehand and will grant your right to opt out of such
           sale..

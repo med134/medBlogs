@@ -1,10 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
-import AlertBar from "./AlertBar";
 import useSWR from "swr";
 import SliderSkelton from "./SliderSkelton";
 import Image from "next/image";
@@ -49,9 +47,6 @@ const AddNewPost = () => {
           username: session.data.user.name,
         }),
       });
-      <div>
-        <AlertBar />
-      </div>;
       mutate();
       e.target.reset();
     } catch (err) {

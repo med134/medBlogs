@@ -71,7 +71,7 @@ const Easy = async () => {
             .map(
               (item, index) =>
                 index < 3 && (
-                  <div className="pb-4 space-y-2">
+                  <div key={item._id} className="pb-4 space-y-2">
                     <span className="flex justify-start items-center py-2 dark:text-light">
                       <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
                       <span className="ml-2 font-semibold dark:text-light xs:text-sm">

@@ -111,7 +111,7 @@ const TemplateId = async ({ params }) => {
           <div className="grid grid-cols-3 gap-8 px-8 pt-8 p-8 md:block xs:px-3 xs:p-3">
             {templates?.map((item, index) =>
               item.slug != slug && index < 7 ? (
-                <div className="w-auto rounded-md overflow-hidden shadow-md hover:shadow-lg xs:mb-4 dark:shadow-light">
+                <div key={item._id} className="w-auto rounded-md overflow-hidden shadow-md hover:shadow-lg xs:mb-4 dark:shadow-light">
                   <div className="relative">
                     <Image
                       className="w-full"

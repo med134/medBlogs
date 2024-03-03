@@ -3,10 +3,9 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 import { redirect } from "next/navigation";
-import "highlight.js/styles/a11y-dark.min.css";
 import { useQuill } from "react-quilljs";
+import 'quill/dist/quill.snow.css';
 import Link from 'next/link'
-import "react-quill/dist/quill.snow.css";
 import hljs from "highlight.js";
 
 export default function EditArticle({
@@ -98,7 +97,7 @@ export default function EditArticle({
     if (quill) {
       quill.clipboard.dangerouslyPasteHTML(newContent);
     }
-  }, [quill]);
+  });
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = newTitle;

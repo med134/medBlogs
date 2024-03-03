@@ -30,7 +30,7 @@ const Dev = async () => {
       <div className="grid grid-cols-3 gap-10 lg:grid-cols-3 lg:gap-4 px-16 py-8 lg:px-8 md:flex md:flex-wrap sm:px-2">
         {dev?.map((item, index) =>
           index < 6 ? (
-            <div className="relative overflow-hidden rounded-md bg-light md:block shadow-lg dark:bg-dark dark:border dark:border-light">
+            <div key={item.id} className="relative overflow-hidden rounded-md bg-light md:block shadow-lg dark:bg-dark dark:border dark:border-light">
               <div className="relative block h-[160px] md:h-auto w-full">
                 <Image
                   src={item.cover_image}

@@ -34,7 +34,7 @@ const SidBar = async ({ slug, category }) => {
       <div className="pt-4">
         {dev?.map((item) =>
           item.category === category && item.slug != slug ? (
-            <div className=" bg-white rounded-xl shadow-md overflow-hidden mb-4 dark:bg-dark dark:border dark:border-light">
+            <div key={item._id} className=" bg-white rounded-xl shadow-md overflow-hidden mb-4 dark:bg-dark dark:border dark:border-light">
               <div className="flex justify-start items-center xl:flex-col lg:flex lg:justify-start lg:items-start">
                 <Image
                   className="h-44 rounded-full w-44 object-contain xl:w-full xl:rounded-none"

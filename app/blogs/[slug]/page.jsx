@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import SidBar from "@/app/components/SidBar";
-import "react-quill/dist/quill.snow.css";
+import 'quill/dist/quill.snow.css';
 import { FaRegCalendarAlt } from "react-icons/fa";
 import Comments from "@/app/components/comments/comments";
 import ShareButtons from "@/app/components/ShareButtons";
