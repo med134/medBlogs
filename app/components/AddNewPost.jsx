@@ -45,6 +45,7 @@ const AddNewPost = () => {
           category,
           code,
           username: session.data.user.name,
+          email: session.data.user.email,
         }),
       });
       mutate();

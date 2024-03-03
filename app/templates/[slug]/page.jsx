@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { BsArrowLeftCircleFill, BsArrowsFullscreen } from "react-icons/bs";
+import { BsArrowLeftCircleFill } from "react-icons/bs";
+import { VscPreview } from "react-icons/vsc";
 import Image from "next/image";
 import PageNotFound from "@/app/PageNotFound";
 import CodeEditor from "@/app/components/CodeEditor";
@@ -88,11 +89,11 @@ const TemplateId = async ({ params }) => {
             <Link
               href={data?.link}
               target="_blank"
-              className={`flex w-48 mb-2 cursor-pointer select-none items-center justify-center rounded-md bg-mainColor text-sm px-6 py-1 text-light`}
+              className={`flex w-48 mb-2 cursor-pointer group select-none items-center justify-center rounded-md bg-mainColor text-sm px-6 py-1 text-light`}
             >
               <span className="flex w-full items-center justify-between rounded py-1 text-center font-semibold">
-                Full Screen
-                <BsArrowsFullscreen className="h-4 w-4" />
+                Demo Preview
+                <VscPreview className="h-6 w-6 group:hover:translate-x-1 " />
               </span>
             </Link>
           </div>
@@ -102,7 +103,7 @@ const TemplateId = async ({ params }) => {
         </div>
         <div className="p-2 mt-6 w-full h-full xs:mt-6">
           {/* <ClipBoard data={data.code} /> */}
-           <CodeEditor code2={data.code} /> 
+          <CodeEditor code2={data.code} />
         </div>
         <div className="w-full p-6 mb-16 xs:p-2">
           <span className="text-2xl font-semibold text-mainColor py-4 underline px-2 xs:mb-5 dark:text-light">
@@ -111,7 +112,10 @@ const TemplateId = async ({ params }) => {
           <div className="grid grid-cols-3 gap-8 px-8 pt-8 p-8 md:block xs:px-3 xs:p-3">
             {templates?.map((item, index) =>
               item.slug != slug && index < 7 ? (
-                <div key={item._id} className="w-auto rounded-md overflow-hidden shadow-md hover:shadow-lg xs:mb-4 dark:shadow-light">
+                <div
+                  key={item._id}
+                  className="w-auto rounded-md overflow-hidden shadow-md hover:shadow-lg xs:mb-4 dark:shadow-light"
+                >
                   <div className="relative">
                     <Image
                       className="w-full"
