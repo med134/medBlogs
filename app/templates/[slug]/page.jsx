@@ -6,6 +6,7 @@ import Image from "next/image";
 import PageNotFound from "@/app/PageNotFound";
 import CodeEditor from "@/app/components/CodeEditor";
 import BlogAction from "@/app/components/BlogAction";
+import ShareButtons from "@/app/components/ShareButtons";
 
 async function getData(slug) {
   const res = await fetch(`https://www.medcode.dev/api/posts/${slug}`, {
@@ -103,6 +104,7 @@ const TemplateId = async ({ params }) => {
         </div>
         <div className="p-2 mt-6 w-full h-full xs:mt-6">
           {/* <ClipBoard data={data.code} /> */}
+          <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
           <CodeEditor code2={data.code} />
         </div>
         <div className="w-full p-6 mb-16 xs:p-2">

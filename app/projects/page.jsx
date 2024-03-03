@@ -12,7 +12,6 @@ import { FeaturedProject } from "../components/FeaturedProject";
 import { Project } from "../components/ProjectArtcle";
 import AnimatedText from "../components/AnimatedText";
 import TransitionEffect from "../components/TransitionEffect";
-import TestTemplates from "../components/TestTemplates";
 export const metadata = {
   title: "medCode-Web Development Projects |medCode",
   description: `Discover the latest web app projects created by MedCode, free and premium code source projects for beginners, React.js Next.js,javascript,HTML CSS`,
@@ -152,7 +151,7 @@ const page = async () => {
             </div>
           </div>
         </Layout>
-        <TestTemplates/>
+        {/* <TestTemplates/> */}
       </main>
 
     </>
