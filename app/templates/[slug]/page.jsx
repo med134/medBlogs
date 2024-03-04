@@ -86,16 +86,16 @@ const TemplateId = async ({ params }) => {
               {" "}
               {data.description}
             </p>
-            <div className="flex justify-start items-start w-auto gap-4 p-2 underline rounded-md">
+            <div className="inline-flex justify-start items-start gap-4 p-2 rounded-md shadow-md bg-light">
               <Image
                 alt="author image"
                 width={200}
                 loading="lazy"
                 height={200}
                 src="https://i.ibb.co/WVDZRxF/bussiness-man.png"
-                className="w-10 h-10  object-cover rounded-full"
+                className="w-16 h-16  object-cover rounded-full"
               />
-              <div className="flex flex-col">
+              <div className="flex flex-col w-auto">
                 <span className="text-sm text-gray-700 dark:text-light">
                   Author
                 </span>
@@ -104,7 +104,7 @@ const TemplateId = async ({ params }) => {
                 </span>
                 <a
                   href={`mailto:${data?.email}`}
-                  className="text-xs text-gray-500 dark:text-light hover:text-blue-600 hover:underline"
+                  className="text-xs text-gray-500 dark:text-blue-500 hover:text-blue-800 hover:underline"
                 >
                   {data?.email}
                 </a>
@@ -116,7 +116,7 @@ const TemplateId = async ({ params }) => {
           </div>
         </div>
         <div className="p-2 mt-6 w-full h-full xs:mt-6">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center xs:flex-col-reverse xs:items-start">
             <ShareButtons
               url={`https://www.medcode.dev/blogs/${slug}`}
               className={"justify-start items-start mb-1"}
@@ -126,9 +126,9 @@ const TemplateId = async ({ params }) => {
               target="_blank"
               className={`flex w-48 mb-2 cursor-pointer group select-none items-center justify-center rounded-md bg-mainColor text-sm px-6 py-1 text-light`}
             >
-              <span className="flex w-full items-center justify-between rounded py-1 text-center font-semibold">
+              <span className="flex w-full items-center justify-between hover:translate-x-1 rounded py-1 text-center font-semibold">
                 Demo Preview
-                <VscPreview className="h-6 w-6 group:hover:translate-x-1 " />
+                <VscPreview className="h-6 w-6 hover:translate-x-1 " />
               </span>
             </Link>
           </div>
@@ -140,7 +140,7 @@ const TemplateId = async ({ params }) => {
           </span>
           <div className="grid grid-cols-3 gap-8 px-8 pt-8 p-8 md:block xs:px-3 xs:p-3">
             {templates?.map((item, index) =>
-              item.slug != slug && index < 7 ? (
+              item.slug != slug && index < 6 ? (
                 <div
                   key={item._id}
                   className="w-auto rounded-md overflow-hidden shadow-md hover:shadow-lg xs:mb-4 dark:shadow-light"

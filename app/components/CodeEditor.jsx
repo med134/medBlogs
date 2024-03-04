@@ -128,6 +128,7 @@ function CodeEditor({ code2 }) {
               mode="html"
               theme="monokai"
               fontSize="16px"
+              className="xs:text-xs sm:text-sm"
               highlightActiveLine={true}
               onChange={handleChange}
               setOptions={{
