@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { YoutubeIcons } from "./Icons";
 import SliderSkelton from "./SliderSkelton";
-const Youtube = () => {
+const Youtube = ({ card }) => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -60,7 +60,7 @@ const Youtube = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-3 p-2 sm:block xs:pt-4">
+      <div className={`p-2 sm:block xs:pt-4`}>
         <span className="flex justify-start items-center sm:mb-2">
           <p className="text-xl font-semibold text-dark dark:text-light">
             Youtube Shorts
@@ -72,7 +72,7 @@ const Youtube = () => {
         ) : (
           news?.map(
             (video, index) =>
-              index < 3 && (
+              index < 1 && (
                 <article
                   key={video.id}
                   className="flex flex-col w-full dark:bg-dark bg-light border-2 border-red-600 rounded-md sm:mb-2"

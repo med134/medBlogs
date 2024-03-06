@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import NotFoundModel from "./NotFoundModel";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -66,7 +65,7 @@ const SearchBar = () => {
     <>
       <form
         onSubmit={handleSearch}
-        className="mt-6 px-4 py-2 rounded-full max-w-2xl bg-gray-50 border flex focus-within:border-gray-300 lg:ml-12 xs:ml-2 xs:px-2 xs:py-1 dark:bg-dark dark:border-light dark:shadow-light"
+        className="mt-6 px-4 py-2 rounded-full max-w-2xl bg-gray-50 border flex focus-within:border-gray-300 lg:ml-12 xs:ml-0 xs:px-2 xs:py-1 dark:bg-dark dark:border-light dark:shadow-light"
       >
         <input
           type="text"
@@ -97,7 +96,7 @@ const SearchBar = () => {
       </form>
       {sug.length > 0 && (
         <ul className="mt-2 w-1/2 bg-white dark:bg-dark shadow-lg rounded-md overflow-y-auto scroll-m-0 h-auto absolute z-40">
-          {sug.map((item, index) => (
+          {sug.map((item) => (
             <div
               key={item._id}
               className="flex justify-start items-center px-4 mb-2 border hover:bg-slate-500 dark:hover:bg-slate-500"

@@ -29,10 +29,13 @@ async function getTemplates() {
 }
 export async function generateMetadata({ params }) {
   const post = await getData(params.slug);
-
+  const publishedAt = new Date(post.createdAt).toISOString();
+  const modifiedAt = new Date(post.updatedAt || blog.createdAt).toISOString();
   return {
     title: post.title,
     description: post.description,
+    publishedTime: publishedAt,
+    modifiedTime: modifiedAt,
     robots: {
       index: true,
       follow: true,
@@ -49,6 +52,8 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: post.title,
       description: post.description,
+      publishedTime: publishedAt,
+      modifiedTime: modifiedAt,
       images: [
         {
           url: post.image,
@@ -66,7 +71,7 @@ const TemplateId = async ({ params }) => {
 
   return (
     <>
-      <div className="p-12 pt-[40px] h-full xs:pt-6 dark:bg-dark xl:block md:p-4 xs:p-6">
+      <div className="p-12 pt-[40px] h-full xs:pt-6 dark:bg-dark xl:block md:p-4 xs:p-4">
         <div className="h-full flex justify-around items-center px-6 xs:px-1 lg:block">
           <div className="block justify-start information pt-24">
             <Link
@@ -118,7 +123,7 @@ const TemplateId = async ({ params }) => {
         <div className="p-2 mt-6 w-full h-full xs:mt-6">
           <div className="flex justify-between items-center xs:flex-col-reverse xs:items-start">
             <ShareButtons
-              url={`https://www.medcode.dev/blogs/${slug}`}
+              url={`https://www.medcode.dev/templates/${slug}`}
               className={"justify-start items-start mb-1"}
             />
             <Link
@@ -135,10 +140,10 @@ const TemplateId = async ({ params }) => {
           <CodeEditor code2={data.code} />
         </div>
         <div className="w-full p-6 mb-16 xs:p-2">
-          <span className="text-2xl font-semibold text-mainColor py-4 underline px-2 xs:mb-5 dark:text-light">
+          <span className="text-2xl font-semibold text-mainColor py-4 underline px-2 xs:mb-10 dark:text-light">
             Related components:
           </span>
-          <div className="grid grid-cols-3 gap-8 px-8 pt-8 p-8 md:block xs:px-3 xs:p-3">
+          <div className="grid grid-cols-3 gap-8 px-8 pt-10 p-8 md:block xs:px-2 xs:p-2">
             {templates?.map((item, index) =>
               item.slug != slug && index < 6 ? (
                 <div

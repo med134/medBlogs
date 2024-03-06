@@ -7,7 +7,7 @@ const CatPosts = () => {
   useEffect(() => {
     const fetchSeoData = async () => {
       const res = await fetch(
-        `https://hn.algolia.com/api/v1/search?query=software_developments`,
+        `https://www.medcode.dev/api/categories`,
         {
           cache: "no-store",
         }
@@ -16,8 +16,7 @@ const CatPosts = () => {
         throw new Error("Failed to fetch data");
       }
       const data = await res.json();
-      setPosts(data.hits);
-      console.log("data", data.hits);
+      setPosts(data);
     };
     fetchSeoData();
   });
@@ -25,7 +24,7 @@ const CatPosts = () => {
     <>
       <div>
         {posts.map((item) => {
-          <h1 key={item.objectID}>{item.title}</h1>
+          <h1 key={item._id}>{item.label}</h1>
         })}
       </div>
     </>

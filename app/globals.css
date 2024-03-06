@@ -206,6 +206,7 @@
   display: grid;
   grid-template-columns: 1fr 400px;
 }
+
 .category-task-bar {
   background: rgb(148, 148, 148);
   background: linear-gradient(
@@ -227,7 +228,25 @@
 .svg-background {
   width: 100%;
   height: 300px; /* Set the height according to your requirement */
-  background-image: url('/public//bgSvg/shap.svg');
+  background-image: url("/public//bgSvg/shap.svg");
   background-size: cover; /* Adjust the background size as needed */
   background-repeat: no-repeat; /* Prevent repeating the SVG background */
 }
+.item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.sidebar {
+  padding: 10px;
+}
+
+.is-sticky {
+  position: fixed;
+  top: 120px;
+  z-index: 999;
+  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+}
+

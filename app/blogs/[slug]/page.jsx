@@ -17,10 +17,14 @@ async function getData(slug) {
 }
 export async function generateMetadata({ params }) {
   const post = await getData(params.slug);
+  const publishedAt = new Date(post.createdAt).toISOString();
+  const modifiedAt = new Date(post.updatedAt || blog.createdAt).toISOString();
   return {
     title: post?.title,
     description: post?.description,
     keywords: post?.tags,
+    publishedTime: publishedAt,
+    modifiedTime: modifiedAt,
     robots: {
       index: true,
       follow: true,
@@ -39,6 +43,8 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: post?.title,
       description: post?.description,
+      publishedTime: publishedAt,
+      modifiedTime: modifiedAt,
       images: [
         {
           url: post?.image,

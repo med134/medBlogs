@@ -76,13 +76,13 @@ const page = async () => {
     <>
       <TransitionEffect />
       <div className="bg-white dark:bg-dark dark:text-light pt-[80px] xl:pt-[60px] lg:pt-[40px]">
-        <div className="grid grid-cols-2 p-16 mx-auto overflow-x-hidden lg:block lg:text-center xl:mt-5 sm:p-8">
-          <div className="lg:w-full pr-2 md:mb-14 py-14 md:py-0 lg:block lg:justify-center lg:items-center">
-            <h1 className="text-4xl font-bold text-mainColor xl:text-3xl lg:text-4xl xs:text-2xl dark:text-cyan-600">
+        <div className="grid grid-cols-2 p-16 mx-auto overflow-x-hidden xs:text-left xs:p-4 lg:block lg:text-center xl:mt-5 sm:p-8">
+          <div className="lg:w-full pr-2 py-14 md:py-0 xs:p-2 lg:block lg:justify-center lg:items-center xs:justify-start xs:items-start">
+            <h1 className="text-4xl font-bold text-mainColor xl:text-2xl lg:text-4xl xs:text-2xl xs:text-left dark:text-cyan-600">
               <span className="block w-full">Free Templates & components </span>
               with free code Sources
             </h1>
-            <p className="py-2 text-lg text-gray-500 md:py-6 2xl:pr-5 xs:text-sm dark:text-light">
+            <p className="py-2 text-lg text-gray-500 md:py-6 xs:py-2 2xl:pr-5 xs:text-sm xs:pr-2 dark:text-light xs:text-left">
               Open source UI & UX components and templates to bootstrap your new
               apps, projects or landing sites, Crafting Unique Web Experiences:
               Explore My Portfolio and Free Templates & Components
@@ -91,7 +91,6 @@ const page = async () => {
               <SearchBar />
             </div>
           </div>
-
           <div className="pb-10 overflow-hidden md:p-10 lg:p-0 sm:pb-0 lg:hidden">
             <Image
               id="heroImg1"
