@@ -31,6 +31,10 @@ const postSchema = new Schema(
       type: String,
       require: false,
     },
+    job: {
+      type: String,
+      require: false,
+    },
     username: {
       type: String,
       required: true,

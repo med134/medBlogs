@@ -9,6 +9,7 @@ import Image from "next/image";
 
 const AddNewPost = () => {
   const session = useSession();
+  const [selectedJobs, setSelectedJobs] = useState("");
 
   const handleDelete = async (slug) => {
     const confirmed = confirm("Are you sure you want to delete...?");
@@ -33,6 +34,7 @@ const AddNewPost = () => {
     const link = e.target[4].value;
     const category = e.target[5].value;
     const code = e.target[6].value;
+    const job = selectedJobs;
     try {
       await fetch("/api/posts", {
         method: "POST",
@@ -44,6 +46,7 @@ const AddNewPost = () => {
           link,
           category,
           code,
+          job,
           username: session.data.user.name,
           email: session.data.user.email,
         }),
@@ -61,7 +64,9 @@ const AddNewPost = () => {
     isLoading,
     mutate,
   } = useSWR(`/api/posts?username=${session?.data?.user.name}`, fetcher);
-
+  const handleJobs = (event) => {
+    setSelectedJobs(event.target.value);
+  };
   return (
     <div className="inline-block p-8 py-4 sm:p-2 sm:py-2 md:p-2 md:py-2 lg:p-2 lg:py-2 dark:bg-dark">
       <div className="w-full flex justify-start items-center px-4">
@@ -113,9 +118,25 @@ const AddNewPost = () => {
             placeholder="category"
             className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
           />
+          <div className="">
+            <select
+              id="selectChoice"
+              value={selectedJobs}
+              onChange={handleJobs}
+              className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
+            >
+              <option value="">Select Your jobs</option>
+              <option value="Software engineer">Software engineer</option>
+              <option value="Software Developer">Software Developer</option>
+              <option value="Designer">Designer</option>
+              <option value="Front-end Developer">Front-end Developer</option>
+              <option value="Content Creator">Content Creator</option>
+              <option value="student">student</option>
+            </select>
+          </div>
           <textarea
             placeholder="put your code here"
-            className="h-44 w-full max-w-full rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
+            className="h-44 w-full max-w-full p-3 rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
           />
           <button className="rounded-md font-semibold py-2 w-full bg-violet-600 text-light ml-4 hover:bg-purple-400">
             Post Now

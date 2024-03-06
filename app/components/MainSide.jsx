@@ -13,7 +13,6 @@ const MainSide = ({ posts }) => {
       counts[category] = (counts[category] || 0) + 1;
     });
 
-    console.log(counts);
     return counts;
   }, [posts]);
 
@@ -22,7 +21,7 @@ const MainSide = ({ posts }) => {
       {Object.entries(categoryCounts).map(([category, count]) => (
         <>
           <div
-            key={category}
+            key={count}
             className="flex justify-between items-center py-1"
           >
             <Link

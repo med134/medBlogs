@@ -95,7 +95,7 @@ const SearchBar = () => {
         </button>
       </form>
       {sug.length > 0 && (
-        <ul className="mt-2 w-1/2 bg-white dark:bg-dark shadow-lg rounded-md overflow-y-auto scroll-m-0 h-auto absolute z-40">
+        <ul className="mt-2 w-1/2 xs:w-full sm:w-full bg-white dark:bg-dark shadow-lg rounded-md overflow-y-auto scroll-m-0 h-auto absolute z-20">
           {sug.map((item) => (
             <div
               key={item._id}
@@ -111,7 +111,7 @@ const SearchBar = () => {
               />
               <li
                 onClick={() => onSugHandler(item.title)}
-                className="px-2 py-1 text-sm font-semibold cursor-pointer text-dark dark:text-light lg:text-light"
+                className="px-2 py-1 text-sm font-semibold cursor-pointer text-dark dark:text-light xs:text-xs"
               >
                 {item.title}
               </li>

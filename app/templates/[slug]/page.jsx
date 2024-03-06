@@ -30,7 +30,7 @@ async function getTemplates() {
 export async function generateMetadata({ params }) {
   const post = await getData(params.slug);
   const publishedAt = new Date(post.createdAt).toISOString();
-  const modifiedAt = new Date(post.updatedAt || blog.createdAt).toISOString();
+  const modifiedAt = new Date(post?.updatedAt || post?.createdAt).toISOString();
   return {
     title: post.title,
     description: post.description,

@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { AiFillYoutube } from "react-icons/ai";
 import { BsInstagram } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
