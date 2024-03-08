@@ -11,7 +11,7 @@ export default async function sitemap() {
       url: `${baseUrl}${route.url}`,
       lastModified: new Date().toISOString(),
       priority: 0.8,
-      changeFrequency: "weekly",
+      changeFrequency: "monthly",
     };
   });
   const AllPosts = posts.map((item) => {
@@ -19,7 +19,7 @@ export default async function sitemap() {
       url: `${baseUrl}/templates/${item.slug}`,
       lastModified: new Date().toISOString(),
       priority: 0.5,
-      changeFrequency: "monthly",
+      changeFrequency: "weakly",
     };
   });
   const AllBlogs = blogs.map((item) => {

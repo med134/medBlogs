@@ -1,7 +1,5 @@
-"use client";
 import React, { useMemo } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 const MainSide = ({ posts }) => {
   const categoryCounts = useMemo(() => {
@@ -18,9 +16,12 @@ const MainSide = ({ posts }) => {
 
   return (
     <div className="block mt-3">
-      {Object.entries(categoryCounts).map(([category, count, index]) => (
+      {Object.entries(categoryCounts).map(([category, count]) => (
         <>
-          <div key={index} className="flex justify-between items-center py-1">
+          <div
+            key={category}
+            className="flex justify-between items-center py-1"
+          >
             <Link
               className="px-4 font-semibold text-gray-700 hover:text-mainColor hover:font-bold xl:px-1"
               href={`/category/${category}`}

@@ -91,7 +91,7 @@ const TemplateId = async ({ params }) => {
               {" "}
               {data.description}
             </p>
-            <div className="inline-flex justify-start items-start gap-4 p-2 rounded-md shadow-md bg-light">
+            <div className="inline-flex justify-start items-start gap-4 p-2">
               <Image
                 alt="author image"
                 width={200}
@@ -165,7 +165,7 @@ const TemplateId = async ({ params }) => {
                       href={`/templates/${item.slug}`}
                       className="text-2xl xs:text-xl font-semibold hover:underline mb-2 text-mainColor dark:text-light"
                     >
-                      {item.title}
+                      <h2>{item.title}</h2>
                     </Link>
                     <p className="text-gray-600 text-sm mb-4 dark:text-light">
                       {item.description.slice(0, 70)}...

@@ -9,9 +9,9 @@ const BlogAction = () => {
           <div className="w-full px-4 lg:w-1/2 md:w-full">
             <div className="text-center lg:text-left ">
               <div className="mb-10 lg:mb-0">
-                <h1 className="mt-0 mb-3 text-3xl font-bold md:text-[26px] text-light xs:text-xl">
+                <span className="mt-0 mb-3 text-3xl font-bold md:text-[26px] text-light xs:text-xl">
                   Keep Updated : Receive recently added Articles
-                </h1>
+                </span>
                 <p className="w-full text-base font-medium sm:text-lg text-light"></p>
               </div>
             </div>
