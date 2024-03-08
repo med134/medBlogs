@@ -3,6 +3,7 @@ import { AiFillYoutube } from "react-icons/ai";
 import { BsInstagram } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 const CategoryCard = () => {
   return (
@@ -30,12 +31,23 @@ const CategoryCard = () => {
         <BsInstagram size={24} className="text-white" />
       </a>
       <a
+        href="https://x.com/mohammedda1288?s=21"
+        target={"_blank"}
+        rel="noopener noreferrer"
+        aria-label="Visit our X profile"
+        onBlur={() => console.log("Visit our X profile")}
+        name="Visit our X profile"
+        className="w-auto ml-5 flex p-2 rounded-sm text-center bg-dark focus:outline-none focus:ring focus:border-pink-600"
+      >
+        <FaSquareXTwitter size={24} className="text-white" />
+      </a>
+      <a
         href="https://www.linkedin.com/in/mohammed-dakir/"
         target={"_blank"}
         rel="noopener noreferrer"
-        aria-label="Visit our Instagram profile"
-        onBlur={() => console.log("Visit our Instagram profile")}
-        name="Visit our Instagram profile"
+        aria-label="Visit our LinkedIn profile"
+        onBlur={() => console.log("Visit our LinkedIn profile")}
+        name="Visit our LinkedIn profile"
         className="w-auto ml-5 flex bg-[#0a66c2] p-2 rounded-sm focus:outline-none focus:ring focus:border-pink-600"
       >
         <FaLinkedin size={24} className="text-white" />
@@ -44,9 +56,9 @@ const CategoryCard = () => {
         href="https://github.com/med134"
         target={"_blank"}
         rel="noopener noreferrer"
-        aria-label="Visit our Instagram profile"
-        onBlur={() => console.log("Visit our Instagram profile")}
-        name="Visit our Instagram profile"
+        aria-label="Visit our github profile"
+        onBlur={() => console.log("Visit our github profile")}
+        name="Visit our github profile"
         className="w-auto ml-5 flex p-2 rounded-sm text-center bg-dark text-pink-600 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
       >
         <FaGithub size={24} className="text-white" />

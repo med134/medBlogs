@@ -18,12 +18,9 @@ const MainSide = ({ posts }) => {
 
   return (
     <div className="block mt-3">
-      {Object.entries(categoryCounts).map(([category, count]) => (
+      {Object.entries(categoryCounts).map(([category, count, index]) => (
         <>
-          <div
-            key={count}
-            className="flex justify-between items-center py-1"
-          >
+          <div key={index} className="flex justify-between items-center py-1">
             <Link
               className="px-4 font-semibold text-gray-700 hover:text-mainColor hover:font-bold xl:px-1"
               href={`/category/${category}`}
