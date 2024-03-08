@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
 import Link from "next/link";
+import SideSkelton from "./SideSkelton";
 
-const MainSide = ({ posts }) => {
+const MainSide = ({ posts, loading }) => {
   const categoryCounts = useMemo(() => {
     const counts = {};
 
@@ -15,25 +16,31 @@ const MainSide = ({ posts }) => {
   }, [posts]);
 
   return (
-    <div className="block mt-3">
-      {Object.entries(categoryCounts).map(([category, count]) => (
-        <>
-          <div
-            key={category}
-            className="flex justify-between items-center py-1"
-          >
-            <Link
-              className="px-4 font-semibold text-gray-700 hover:text-mainColor hover:font-bold xl:px-1"
-              href={`/category/${category}`}
-            >
-              {category}
-            </Link>
-            <span className="font-bold text-gray-700">{count}</span>
-          </div>
-          <div className="h-[1px] mb-4 bg-slate-400"></div>
-        </>
-      ))}
-    </div>
+    <>
+      {loading ? (
+        <SideSkelton />
+      ) : (
+        <div className="block mt-3">
+          {Object.entries(categoryCounts).map(([category, count]) => (
+            <>
+              <div
+                key={category}
+                className="flex justify-between items-center py-1"
+              >
+                <Link
+                  className="px-4 font-semibold text-gray-700 hover:text-mainColor hover:font-bold xl:px-1"
+                  href={`/category/${category}`}
+                >
+                  {category}
+                </Link>
+                <span className="font-bold text-gray-700">{count}</span>
+              </div>
+              <div className="h-[1px] mb-4 bg-slate-400"></div>
+            </>
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 

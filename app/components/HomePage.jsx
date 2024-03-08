@@ -37,7 +37,7 @@ const HomePage = () => {
     return () => {
       window.removeEventListener("scroll", isSticky);
     };
-  }, [sidebarTop]);
+  });
 
   const isSticky = (e) => {
     const sidebarEl = document.querySelector(".sidebar");
@@ -65,7 +65,7 @@ const HomePage = () => {
             <CategoryCard />
             <div className="h-[1px] mb-4 bg-slate-400 w-auto"></div>
             <span className="font-bold text-xl">Categories</span>
-            <MainSide posts={posts} />
+            <MainSide posts={posts} loading={loading} />
           </div>
         </div>
       </div>
