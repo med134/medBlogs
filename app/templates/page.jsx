@@ -112,8 +112,66 @@ const page = async () => {
             project with different frameworks.
           </h3>
         </div>
+        {/* filter templates */}
+        <div className="filter templates">
+          <div className="container mx-auto px-10">
+            <div className="bg-white p-6">
+              <h2 className="text-lg font-semibold mb-4">Tag Cloud</h2>
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href="#"
+                  className="bg-blue-200 hover:bg-blue-300 py-1 px-2 rounded-lg text-sm"
+                >
+                  Landing
+                </a>
+                <a
+                  href="#"
+                  className="bg-green-200 hover:bg-green-300 py-1 px-2 rounded-lg text-sm"
+                >
+                  Ecommerce
+                </a>
+                <a
+                  href="#"
+                  className="bg-yellow-200 hover:bg-yellow-300 py-1 px-2 rounded-lg text-sm"
+                >
+                  Sass
+                </a>
+                <a
+                  href="#"
+                  className="bg-indigo-200 hover:bg-indigo-300 py-1 px-2 rounded-lg text-sm"
+                >
+                  Card
+                </a>
+                <a
+                  href="#"
+                  className="bg-purple-200 hover:bg-purple-300 py-1 px-2 rounded-lg text-sm"
+                >
+                  Marketing
+                </a>
+                <a
+                  href="#"
+                  className="bg-pink-200 hover:bg-pink-300 py-1 px-2 rounded-lg text-sm"
+                >
+                  Dashboard
+                </a>
+                <a
+                  href="#"
+                  className="bg-green-200 hover:bg-green-300 py-1 px-2 rounded-lg text-sm"
+                >
+                  Business
+                </a>
+                <a
+                  href="#"
+                  className="bg-yellow-200 hover:bg-yellow-300 py-1 px-2 rounded-lg text-sm"
+                >
+                  Elearning
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <article className="grid grid-cols-3 gap-6 p-16 xl:gap-4 xl:p-8 lg:grid-cols-2 lg:gap-6 lg:p-10 sm:flex flex-wrap dark:bg-dark">
+      <article className="grid grid-cols-3 gap-6 p-16 pt-4 xl:gap-4 xl:p-8 lg:grid-cols-2 lg:gap-6 lg:p-10 sm:flex flex-wrap dark:bg-dark">
         {data
           ?.slice()
           .reverse()

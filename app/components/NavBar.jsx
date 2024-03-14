@@ -181,7 +181,7 @@ const NavBar = () => {
             medCode
           </span> */}
         </Link>
-        <nav className="flex items-center justify-stretch ml-16 xl:ml-10">
+        <nav className="flex items-center justify-stretch ml-24 xl:ml-10">
           <CustomLink
             href="/projects"
             title="projects"

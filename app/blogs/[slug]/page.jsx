@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import SidBar from "@/app/components/SidBar";
-import 'quill/dist/quill.snow.css';
+import "quill/dist/quill.snow.css";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import Comments from "@/app/components/comments/comments";
 import ShareButtons from "@/app/components/ShareButtons";
@@ -91,7 +91,7 @@ const BlogPage = async ({ params }) => {
             alt={blog.title}
             className="w-full object-cover rounded mt-2"
             width={500}
-            height={500}
+            height={360}
             priority
           />
           <h2 className="flex underline font-bold justify-start items-start py-6 xs:py-2 ml-2 mt-1 font-bolder">

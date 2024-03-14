@@ -71,7 +71,7 @@ const SearchTwo = () => {
     <>
       <form
         onSubmit={handleSearch}
-        className="inline-flex w-56 h-12 mt-1 absolute xl:w-48 right-44 xl:right-36 lg:relative lg:left-0"
+        className="inline-flex w-56 h-12 mt-1 absolute xl:w-48 right-44 xl:right-36 lg:relative lg:left-0 "
       >
         <input
           type="text"
@@ -79,7 +79,7 @@ const SearchTwo = () => {
           aria-labelledby="search-input"
           value={query}
           onChange={(e) => onChangeHandle(e.target.value)}
-          className="h-10 w-56 border rounded-md border-gray-100 bg-white dark:border-light lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium shadow-sm outline-none focus:border-light lg:text-light xs:w-48"
+          className="h-10 w-56 border rounded-md border-gray-100 bg-white dark:border-light lg:border lg:border-transparent dark:bg-dark lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium shadow-sm outline-none focus:border-light lg:text-light xs:w-48"
           placeholder="Search for Articles"
         />
         <button
