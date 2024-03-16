@@ -4,6 +4,7 @@ import TransitionEffect from "../components/TransitionEffect";
 import Image from "next/image";
 import PageNotFound from "@/app/PageNotFound";
 import SearchBar from "../components/SearchBar";
+import TemplatesCategory from "../components/TemplatesCategory";
 
 async function getData() {
   const res = await fetch(`https://www.medcode.dev/api/posts`, {
@@ -72,6 +73,7 @@ export const metadata = {
 };
 const page = async () => {
   const data = await getData();
+
   return (
     <>
       <TransitionEffect />
@@ -113,100 +115,8 @@ const page = async () => {
           </h3>
         </div>
         {/* filter templates */}
-        <div className="filter templates">
-          <div className="container mx-auto px-10">
-            <div className="bg-white p-6">
-              <h2 className="text-lg font-semibold mb-4">Tag Cloud</h2>
-              <div className="flex flex-wrap gap-2">
-                <a
-                  href="#"
-                  className="bg-blue-200 hover:bg-blue-300 py-1 px-2 rounded-lg text-sm"
-                >
-                  Landing
-                </a>
-                <a
-                  href="#"
-                  className="bg-green-200 hover:bg-green-300 py-1 px-2 rounded-lg text-sm"
-                >
-                  Ecommerce
-                </a>
-                <a
-                  href="#"
-                  className="bg-yellow-200 hover:bg-yellow-300 py-1 px-2 rounded-lg text-sm"
-                >
-                  Sass
-                </a>
-                <a
-                  href="#"
-                  className="bg-indigo-200 hover:bg-indigo-300 py-1 px-2 rounded-lg text-sm"
-                >
-                  Card
-                </a>
-                <a
-                  href="#"
-                  className="bg-purple-200 hover:bg-purple-300 py-1 px-2 rounded-lg text-sm"
-                >
-                  Marketing
-                </a>
-                <a
-                  href="#"
-                  className="bg-pink-200 hover:bg-pink-300 py-1 px-2 rounded-lg text-sm"
-                >
-                  Dashboard
-                </a>
-                <a
-                  href="#"
-                  className="bg-green-200 hover:bg-green-300 py-1 px-2 rounded-lg text-sm"
-                >
-                  Business
-                </a>
-                <a
-                  href="#"
-                  className="bg-yellow-200 hover:bg-yellow-300 py-1 px-2 rounded-lg text-sm"
-                >
-                  Elearning
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <TemplatesCategory data={data} />
       </div>
-      <article className="grid grid-cols-3 gap-6 p-16 pt-4 xl:gap-4 xl:p-8 lg:grid-cols-2 lg:gap-6 lg:p-10 sm:flex flex-wrap dark:bg-dark">
-        {data
-          ?.slice()
-          .reverse()
-          .map((item) => (
-            <div
-              key={item._id}
-              className="max-w-sm rounded overflow-hidden shadow-lg dark:shadow-light"
-            >
-              <Image
-                className="w-full h-44"
-                src={item.image}
-                alt="templates image"
-                priority
-                width={500}
-                height={300}
-              />
-              <div className="px-6 py-2">
-                <Link
-                  href={`/templates/${item.slug}`}
-                  className="font-bold text-xl mb-2 mt-2 text-tailwindColor hover:underline"
-                >
-                  {item.title}
-                </Link>
-                <p className={`text-gray-700 text-sm mt-2 dark:text-light`}>
-                  {item.description.slice(0, 70)}...
-                </p>
-              </div>
-              <div className="pt-1 pb-3 flex justify-between px-4 p-6">
-                <span className="bg-gray-200 rounded-full text-sm p-1 py-1 px-2 font-semibold text-gray-700 ">
-                  {item.category}
-                </span>
-              </div>
-            </div>
-          ))}
-      </article>
     </>
   );
 };
