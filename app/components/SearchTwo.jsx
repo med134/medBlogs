@@ -79,7 +79,7 @@ const SearchTwo = () => {
           aria-labelledby="search-input"
           value={query}
           onChange={(e) => onChangeHandle(e.target.value)}
-          className="h-10 w-56 border rounded-md border-gray-100 bg-white dark:border-light lg:border lg:border-transparent dark:bg-dark lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium shadow-sm outline-none focus:border-light lg:text-light xs:w-48"
+          className="h-10 w-56 border border-b-mainColor bg-transparent text-dark placeholder-black dark:placeholder-light  dark:border-b-light border-transparent text-sm lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium  outline-none focus:border-transparent focus:border-b-mainColor focus:border-b-2 lg:text-light xs:w-48"
           placeholder="Search for Articles"
         />
         <button
@@ -87,10 +87,10 @@ const SearchTwo = () => {
           name="search-button"
           title="search-button"
           aria-labelledby="search-button"
-          className="inline-flex h-10 items-center gap-2 bg-mainColor text-white text-lg font-semibold py-1 px-4 rounded-md xs:px-2 xs:border xs:border-transparent xs:border-b-white lg:bg-transparent"
+          className="inline-flex h-10 items-center border border-transparent focus:border-b-2 border-b-mainColor dark:border-b-light gap-2 text-white text-lg font-semibold py-1 px-4 xs:px-2 xs:border xs:border-transparent xs:border-b-white lg:bg-transparent"
         >
           <svg
-            className="text-gray-200 h-5 w-5 p-0 fill-current hover:text-gray-600"
+            className="text-mainColor dark:text-light h-5 w-5 p-0 fill-current hover:text-gray-600"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             version="1.1"
@@ -108,7 +108,10 @@ const SearchTwo = () => {
       {sug.length > 0 && (
         <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md overflow-y-auto right-32 w-72 top-16 scroll-m-0 h-64 absolute z-40 lg:top-36 lg:right-32 lg:w-[270px] lg:max-h-64 lg:bg-gray-800 xs:right-0">
           {sug.map((item, index) => (
-            <div key={item._id} className="flex justify-start items-center mb-2 border hover:bg-slate-500 dark:hover:bg-slate-500">
+            <div
+              key={item._id}
+              className="flex justify-start items-center mb-2 border hover:bg-slate-500 dark:hover:bg-slate-500"
+            >
               <Image
                 src={item.image}
                 alt={item.title}

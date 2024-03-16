@@ -152,8 +152,7 @@ const page = async () => {
             </div>
           </div>
         </Layout>
-        {/*         <TestTemplates/>
-         */}{" "}
+        <TestTemplates />
       </main>
     </>
   );

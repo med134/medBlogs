@@ -71,7 +71,7 @@ const TemplateId = async ({ params }) => {
 
   return (
     <>
-      <div className="p-12 pt-[40px] h-full xs:pt-6 dark:bg-dark xl:block md:p-4 xs:p-4">
+      <div className="p-8 pt-[40px] h-full xs:pt-6 dark:bg-dark xl:block md:p-4 xs:p-4">
         <div className="h-full flex justify-around items-center px-6 xs:px-1 lg:block">
           <div className="block justify-start information pt-24">
             <Link
@@ -152,7 +152,7 @@ const TemplateId = async ({ params }) => {
                 >
                   <div className="relative">
                     <Image
-                      className="w-full"
+                      className="w-full h-44"
                       src={item.image}
                       alt={item.title}
                       width={400}
@@ -163,7 +163,7 @@ const TemplateId = async ({ params }) => {
                   <div className="p-4">
                     <Link
                       href={`/templates/${item.slug}`}
-                      className="text-2xl xs:text-xl font-semibold hover:underline mb-2 text-mainColor dark:text-light"
+                      className="text-xl font-semibold hover:underline mb-2 text-mainColor dark:text-light"
                     >
                       <h2>{item.title}</h2>
                     </Link>

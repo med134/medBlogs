@@ -1,8 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import AceEditor from "react-ace";
-
-import  "ace-builds/src-noconflict/ext-inline_autocomplete";
+import "ace-builds/src-noconflict/ext-inline_autocomplete";
 import "ace-builds/src-noconflict/mode-html";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
@@ -73,10 +72,7 @@ function CodeEditor({ code2 }) {
             onClick={() => handleScreenSizeChange("sm")}
           >
             <span className="md:hidden">SM</span>
-            <FaMobileAlt
-              className="ml-1"
-              aria-label="Mobile Screen"
-            />
+            <FaMobileAlt className="ml-1" aria-label="Mobile Screen" />
           </button>
           <button
             className={`text-light ml-2 px-2 rounded-lg flex justify-center items-center border border-light py-1 ${
@@ -144,10 +140,10 @@ function CodeEditor({ code2 }) {
             <div
               className={`border border-gray-500 p-4 ${
                 selectedScreenSize === "sm"
-                  ? "w-[400px] h-full"
+                  ? "w-[450px] h-full"
                   : selectedScreenSize === "md"
                   ? "w-[667px] h-full"
-                  : "w-[1080px] h-full"
+                  : "w-[1250px] h-full"
               }`}
               dangerouslySetInnerHTML={{ __html: code }}
             />
