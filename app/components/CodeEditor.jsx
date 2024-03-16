@@ -46,12 +46,14 @@ function CodeEditor({ code2 }) {
       case "sm":
         updatedCode = updatedCode
           .replace(/\bgrid\b/g, "block")
-          .replace(/\btext-5xl\b/g, "text-xl");
+          .replace(/\btext-5xl\b/g, "text-xl")
+          .replace(/\bflex\b/g, "block");
         break;
       case "md":
         updatedCode = updatedCode
           .replace(/\bgrid\b/g, "block")
-          .replace(/\btext-4xl\b/g, "text-2xl");
+          .replace(/\btext-4xl\b/g, "text-2xl")
+          .replace(/\bflex\b/g, "block");
         break;
       default:
         break;

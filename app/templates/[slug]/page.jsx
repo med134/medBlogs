@@ -113,10 +113,13 @@ const TemplateId = async ({ params }) => {
                 >
                   {data?.email}
                 </a>
+                <span className="text-xs text-gray-800 dark:text-light">
+                  {data?.job}
+                </span>
               </div>
             </div>
           </div>
-          <div className="blog">
+          <div className="blog w-1/2">
             <BlogAction />
           </div>
         </div>

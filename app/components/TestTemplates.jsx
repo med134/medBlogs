@@ -209,7 +209,7 @@ const TestTemplates = () => {
                     </span>
                   </td>
                 </tr>
-          
+
                 <tr class="">
                   <td class="whitespace-no-wrap py-4 text-left text-sm text-gray-600 sm:px-3 lg:text-left">
                     07 February, 2022
@@ -247,7 +247,7 @@ const TestTemplates = () => {
                     </span>
                   </td>
                 </tr>
-              
+
                 <tr class="">
                   <td class="whitespace-no-wrap py-4 text-left text-sm text-gray-600 sm:px-3 lg:text-left">
                     07 February, 2022
@@ -285,7 +285,7 @@ const TestTemplates = () => {
                     </span>
                   </td>
                 </tr>
-                
+
                 <tr class="">
                   <td class="whitespace-no-wrap py-4 text-left text-sm text-gray-600 sm:px-3 lg:text-left">
                     07 February, 2022
@@ -323,7 +323,7 @@ const TestTemplates = () => {
                     </span>
                   </td>
                 </tr>
-                
+
                 <tr class="">
                   <td class="whitespace-no-wrap py-4 text-left text-sm text-gray-600 sm:px-3 lg:text-left">
                     07 February, 2022
