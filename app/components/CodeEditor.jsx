@@ -5,6 +5,7 @@ import "ace-builds/src-noconflict/ext-inline_autocomplete";
 import "ace-builds/src-noconflict/mode-html";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
+import "ace-builds/src-noconflict/mode-jsx"
 import { IoCopyOutline } from "react-icons/io5";
 import { MdFileDownloadDone } from "react-icons/md";
 import { FaTabletScreenButton } from "react-icons/fa6";
@@ -123,7 +124,7 @@ function CodeEditor({ code2 }) {
               height="500px"
               width="100%"
               value={code}
-              mode="html"
+              mode="jsx"
               theme="monokai"
               fontSize="16px"
               className="xs:text-xs sm:text-sm"

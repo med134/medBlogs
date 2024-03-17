@@ -63,7 +63,7 @@ const TemplatesCategory = ({ data }) => {
                 Business
               </button>
               <button
-                onClick={() => handleTagClick()}
+                onClick={() => handleTagClick("Elearning")}
                 className="bg-yellow-200 hover:bg-yellow-300 py-1.5 px-3 rounded-lg text-sm"
               >
                 Elearning
