@@ -224,7 +224,7 @@ const AddNewArticle = () => {
           <div ref={quillRef} style={{ height: 400, marginLeft: 4 }} />
           <button
             type="submit"
-            className="rounded-md font-semibold py-2 w-full bg-violet-600 text-light ml-4 mt-5 hover:bg-purple-400"
+            className="rounded-md font-semibold py-2 w-full bg-mainColor text-light ml-4 mt-5 hover:bg-cyan-700"
           >
             Post Now
           </button>

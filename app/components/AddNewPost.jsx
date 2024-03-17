@@ -24,7 +24,6 @@ const AddNewPost = () => {
       }
     }
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
@@ -45,8 +44,8 @@ const AddNewPost = () => {
           image,
           link,
           category,
-          job,
           code,
+          job,
           username: session.data.user.name,
           email: session.data.user.email,
         }),
@@ -135,10 +134,10 @@ const AddNewPost = () => {
             </select>
           </div>
           <textarea
-            placeholder="put your code here"
-            className="h-44 w-full max-w-full p-3 rounded-md border m-4 bg-white px-5 text-sm outline-none focus:ring"
+            placeholder="<put your code here/>"
+            className="h-44 w-full max-w-full p-3 placeholder-white bg-gray-700 text-white rounded-md border m-4 px-5 text-sm outline-none focus:ring"
           />
-          <button className="rounded-md font-semibold py-2 w-full bg-violet-600 text-light ml-4 hover:bg-purple-400">
+          <button className="rounded-md font-semibold py-2 w-full bg-mainColor text-light ml-4 hover:bg-cyan-700">
             Post Now
           </button>
         </form>

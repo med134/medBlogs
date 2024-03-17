@@ -17,6 +17,7 @@ const TemplatesCategory = ({ data }) => {
         <div className="container mx-auto px-10">
           <div className="p-6">
             <span className="text-lg font-semibold mb-4">Categories Cloud</span>
+
             <div className="flex flex-wrap gap-2 pt-4">
               <button
                 onClick={() => setNewData(data)}
@@ -36,12 +37,7 @@ const TemplatesCategory = ({ data }) => {
               >
                 Ecommerce
               </button>
-              <button
-                onClick={() => handleTagClick("Sass")}
-                className="bg-yellow-200 hover:bg-yellow-300 py-1.5 px-3 rounded-lg text-sm"
-              >
-                Sass
-              </button>
+
               <button
                 onClick={() => handleTagClick("Card")}
                 className="bg-indigo-200 hover:bg-indigo-300 py-1.5 px-3 rounded-lg text-sm"
