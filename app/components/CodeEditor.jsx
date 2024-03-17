@@ -5,7 +5,7 @@ import "ace-builds/src-noconflict/ext-inline_autocomplete";
 import "ace-builds/src-noconflict/mode-html";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
-import "ace-builds/src-noconflict/mode-jsx"
+import "ace-builds/src-noconflict/mode-jsx";
 import { IoCopyOutline } from "react-icons/io5";
 import { MdFileDownloadDone } from "react-icons/md";
 import { FaTabletScreenButton } from "react-icons/fa6";
@@ -47,14 +47,12 @@ function CodeEditor({ code2 }) {
       case "sm":
         updatedCode = updatedCode
           .replace(/\bgrid\b/g, "block")
-          .replace(/\btext-5xl\b/g, "text-xl")
-          .replace(/\bflex\b/g, "block");
+          .replace(/\btext-5xl\b/g, "text-xl");
         break;
       case "md":
         updatedCode = updatedCode
           .replace(/\bgrid\b/g, "block")
-          .replace(/\btext-4xl\b/g, "text-2xl")
-          .replace(/\bflex\b/g, "block");
+          .replace(/\btext-4xl\b/g, "text-2xl");
         break;
       default:
         break;
