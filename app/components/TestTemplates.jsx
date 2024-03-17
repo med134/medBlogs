@@ -15,7 +15,7 @@ const TestTemplates = () => {
               alt=""
               class="h-full w-full border-none object-cover text-gray-700 transition group-hover:scale-125"
             />
-            <span class="absolute top-2 left-2 rounded-full bg-yellow-200 px-2 text-xs font-semibold text-yellow-600">
+            <span class="absolute top-2 left-2 rounded-full bg-green-500 px-2 text-xs font-semibold text-yellow-600">
               Unity
             </span>
             <img
@@ -41,15 +41,15 @@ const TestTemplates = () => {
             Ben Awad
           </a>
 
-          <div class="flex flex-col text-gray-700 sm:flex-row">
+          <div class="flex flex-col text-gray-700">
             <div class="flex h-fit space-x-2 text-sm font-medium">
-              <div class="rounded-full bg-green-100 px-2 py-0.5 text-green-700">
+              <span class="w-auto rounded-full bg-green-100 px-2 py-0.5 mb-2 text-green-700">
                 Advance level
-              </div>
+              </span>
 
-              <div class="rounded-full bg-blue-100 px-2 py-0.5 text-blue-700">
+              <span class="w-auto rounded-full bg-blue-100 px-2 py-0.5 text-blue-700">
                 160 Enrolled
-              </div>
+              </span>
             </div>
             <a
               href="#"

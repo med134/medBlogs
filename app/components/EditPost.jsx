@@ -15,6 +15,7 @@ export default function EditPost({
   code,
   link,
   image,
+  job,
 }) {
   const [newTitle, setNewTitle] = useState(title);
   const [newImage, setNewImage] = useState(image);
@@ -25,6 +26,7 @@ export default function EditPost({
   const [newCode, setNewCode] = useState(code);
   const [loading, setLoading] = useState(false);
   const session = useSession();
+  const [selectedJobs, setSelectedJobs] = useState(job);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +50,9 @@ export default function EditPost({
           link,
           category,
           code,
+          job,
           username: session.data.user.name,
+          email: session.data.user.email,
         }),
       });
 
@@ -65,6 +69,9 @@ export default function EditPost({
     } catch (err) {
       console.log(err);
     }
+  };
+  const handleJobs = (event) => {
+    setSelectedJobs(event.target.value);
   };
   return (
     <>
@@ -156,6 +163,21 @@ export default function EditPost({
             type="text"
             placeholder="Topic category"
           />
+          <select
+            id="selectChoice"
+            value={selectedJobs}
+            onChange={handleJobs}
+            className="h-12 w-full max-w-full rounded-md border m-4 bg-white px-2 text-sm outline-none focus:ring"
+          >
+            <option value="">Select Your jobs</option>
+            <option value="Software engineer">Software engineer</option>
+            <option value="Software Developer">Software Developer</option>
+            <option value="Designer">Designer</option>
+            <option value="Front-end Developer">Front-end Developer</option>
+            <option value="Content Creator">Content Creator</option>
+            <option value="student">student</option>
+          </select>
+
           <label
             className="text-gray-600 font-bold mb-1 dark:text-light"
             htmlFor="newCode"
