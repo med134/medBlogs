@@ -152,7 +152,6 @@ const page = async () => {
             </div>
           </div>
         </Layout>
-        <TestTemplates />
       </main>
     </>
   );

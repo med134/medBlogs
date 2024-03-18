@@ -10,7 +10,7 @@ const BlogAction = () => {
             <div className="text-center lg:text-left ">
               <div className="mb-10 lg:mb-0">
                 <span className="mt-0 mb-3 text-3xl font-bold md:text-[26px] text-light xs:text-xl">
-                  Keep Updated : Receive recently added Articles
+                  Keep Updated : Receive recently Added Full Projects
                 </span>
                 <p className="w-full text-base font-medium sm:text-lg text-light"></p>
               </div>
@@ -20,9 +20,9 @@ const BlogAction = () => {
             <div className="text-center">
               <Link
                 className="font-semibold rounded-lg mx-auto inline-flex items-center justify-center bg-white py-2 px-9 hover:bg-opacity-90"
-                href="/"
+                href="/projects"
               >
-                See All Articles
+                See Full Projects
               </Link>
             </div>
           </div>
