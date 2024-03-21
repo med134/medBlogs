@@ -42,7 +42,7 @@ const Dev = async () => {
                 />
               </div>
               <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:py-8 xl:px-5 2xl:p-8 xs:px-4">
-                <h5>
+                <h4>
                   <Link
                     href={item.url}
                     target="blank"
@@ -50,7 +50,7 @@ const Dev = async () => {
                   >
                     {item.title}
                   </Link>
-                </h5>
+                </h4>
                 <p className="mb-6 border-b border-body-color dark:text-light border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10">
                   {item.description}
                 </p>

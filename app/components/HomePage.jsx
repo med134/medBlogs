@@ -1,28 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Card from "./Card";
 import { AiTwotoneSound } from "react-icons/ai";
 import "../globals.css";
 import CategoryCard from "./CategoryCard";
-import MainSide from "./MainSide";
 
-const HomePage = () => {
+const HomePage = ({ child, side }) => {
   const [sidebarWidth, setSidebarWidth] = useState("");
   const [sidebarTop, setSidebarTop] = useState("");
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    fetch("/api/articles")
-      .then((res) => res.json())
-      .then((data) => {
-        const sortedPosts = data?.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
-        setPosts(sortedPosts);
-        setLoading(false);
-      });
-  }, []);
+
   useEffect(() => {
     const sidebarEl = document
       .querySelector(".sidebar")
@@ -56,16 +41,17 @@ const HomePage = () => {
         <p className="ml-2 sm:text-xl">Recent Articles</p>
       </span>
       <div className="grid grid-cols-6 p-4 xl:grid-cols-5 gap-6 lg:block">
-        <div className="col-span-4 xl:col-span-3">
-          <Card posts={posts} loading={loading} />
-        </div>
+        <div className="col-span-4 xl:col-span-3">{child}</div>
         <div className="col-span-2 xl:col-span-2 lg:grow-1">
-          <div className="sidebar lg:relative lg:top-6" style={{ width: sidebarWidth }}>
+          <div
+            className="sidebar lg:relative lg:top-6"
+            style={{ width: sidebarWidth }}
+          >
             <h3 className="py-4 text-xl font-semibold">Follow Us</h3>
             <CategoryCard />
             <div className="h-[1px] mb-4 bg-slate-400 w-auto"></div>
-            <span className="font-bold text-xl">Categories</span>
-            <MainSide posts={posts} loading={loading} />
+            <span className="font-bold text-xl py-4 mb-4">Categories</span>
+            {side}
           </div>
         </div>
       </div>

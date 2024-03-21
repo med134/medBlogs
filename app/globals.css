@@ -238,7 +238,6 @@
   padding: 10px;
   margin-bottom: 10px;
 }
-
 .sidebar {
   padding: 10px;
 }
@@ -249,4 +248,3 @@
   z-index: 999;
   animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
 }
-

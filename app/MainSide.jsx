@@ -1,0 +1,45 @@
+import React from "react";
+import Link from "next/link";
+import { AiOutlineRight } from "react-icons/ai";
+
+export async function getAllCat() {
+  const res = await fetch("https://www.medcode.dev/api/categories", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+
+  return res.json();
+}
+const Cat = async () => {
+  const cat = await getAllCat();
+
+  return (
+    <>
+      {cat?.map(
+        (item, index) =>
+          index > 0 && (
+            <>
+              <div
+                key={item._id}
+                className="group flex justify-between items-center py-1"
+              >
+                <Link
+                  className="px-4 font-semibold text-gray-700 group-hover:text-mainColor group-hover:font-bold"
+                  href={`/category/${item.value}`}
+                >
+                  {item.label}
+                </Link>
+                <AiOutlineRight className="group group-hover:text-mainColor group-hover:font-bold" />
+              </div>
+              <div className="h-[1px] mb-4 bg-slate-400"></div>
+            </>
+          )
+      )}
+    </>
+  );
+};
+
+export default Cat;

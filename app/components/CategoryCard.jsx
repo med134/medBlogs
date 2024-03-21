@@ -12,7 +12,6 @@ const CategoryCard = () => {
         href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
         target={"_blank"}
         rel="noopener noreferrer"
-        onBlur={() => console.log("Visit our youtube channel")}
         aria-label="Visit our youtube channel"
         name="Our channel youtube"
         className="w-auto flex justify-start p-2 hover:translate-y-1 ease-out all bg-red-600 rounded-sm items-center sm:mx-1 focus:outline-none focus:ring focus:border-red-600"
@@ -24,7 +23,6 @@ const CategoryCard = () => {
         target={"_blank"}
         rel="noopener noreferrer"
         aria-label="Visit our Instagram profile"
-        onBlur={() => console.log("Visit our Instagram profile")}
         name="Visit our Instagram profile"
         className="w-auto ml-5 p-2 flex bg-gradient-to-r hover:translate-y-1 from-[#833ab4] via-[#fd1d1d] to-[#fcb045] rounded-sm focus:outline-none focus:ring focus:border-pink-600"
       >
@@ -35,7 +33,6 @@ const CategoryCard = () => {
         target={"_blank"}
         rel="noopener noreferrer"
         aria-label="Visit our X profile"
-        onBlur={() => console.log("Visit our X profile")}
         name="Visit our X profile"
         className="w-auto ml-5 flex p-2 rounded-sm text-center hover:translate-y-1 bg-dark focus:outline-none focus:ring focus:border-pink-600"
       >
@@ -46,7 +43,6 @@ const CategoryCard = () => {
         target={"_blank"}
         rel="noopener noreferrer"
         aria-label="Visit our LinkedIn profile"
-        onBlur={() => console.log("Visit our LinkedIn profile")}
         name="Visit our LinkedIn profile"
         className="w-auto ml-5 flex bg-[#0a66c2] p-2 rounded-sm hover:translate-y-1 focus:outline-none focus:ring focus:border-pink-600"
       >
@@ -57,7 +53,6 @@ const CategoryCard = () => {
         target={"_blank"}
         rel="noopener noreferrer"
         aria-label="Visit our github profile"
-        onBlur={() => console.log("Visit our github profile")}
         name="Visit our github profile"
         className="w-auto ml-5 flex p-2 rounded-sm text-center hover:translate-y-1 bg-dark text-pink-600 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
       >

@@ -37,7 +37,7 @@ const Card = ({ posts, loading }) => {
                   </span>
                 </span>
                 <Link href={`/blogs/${item.slug}`}>
-                  <span
+                  <h2
                     className="bg-gradient-to-r text-2xl font-semibold from-[#075985] to-[#075755] bg-[length:0px_10px] bg-left-bottom
       bg-no-repeat
       transition-[background-size]
@@ -47,7 +47,7 @@ const Card = ({ posts, loading }) => {
       dark:from-[#075985] dark:to-[#075965] dark:text-light"
                   >
                     {item.title}
-                  </span>
+                  </h2>
                 </Link>
                 <p className="text-sm text-gray-700 py-3 dark:text-light">
                   {item.description.slice(0, 160)}...
