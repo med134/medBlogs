@@ -17,14 +17,14 @@ const Cat = async () => {
   const cat = await getAllCat();
 
   return (
-    <>
+    <div className="">
       {cat?.map(
         (item, index) =>
           index > 0 && (
             <>
               <div
                 key={item._id}
-                className="group flex justify-between items-center py-1"
+                className="group flex justify-between items-center py-1 mt-3"
               >
                 <Link
                   className="px-4 font-semibold text-gray-700 group-hover:text-mainColor group-hover:font-bold"
@@ -38,7 +38,7 @@ const Cat = async () => {
             </>
           )
       )}
-    </>
+    </div>
   );
 };
 

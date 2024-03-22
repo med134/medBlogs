@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { AiTwotoneSound } from "react-icons/ai";
 import "../globals.css";
 import CategoryCard from "./CategoryCard";
+import SearchTwo from "./SearchTwo";
 
 const HomePage = ({ child, side }) => {
   const [sidebarWidth, setSidebarWidth] = useState("");
@@ -27,6 +28,7 @@ const HomePage = ({ child, side }) => {
   const isSticky = (e) => {
     const sidebarEl = document.querySelector(".sidebar");
     const scrollTop = window.scrollY;
+    sidebarEl.classList.toggle("sticky", scrollTop > sidebarTop);
     if (scrollTop >= sidebarTop - 10 && scrollTop <= 2600) {
       sidebarEl.classList.add("is-sticky");
     } else {
@@ -50,7 +52,14 @@ const HomePage = ({ child, side }) => {
             <h3 className="py-4 text-xl font-semibold">Follow Us</h3>
             <CategoryCard />
             <div className="h-[1px] mb-4 bg-slate-400 w-auto"></div>
-            <span className="font-bold text-xl py-4 mb-4">Categories</span>
+            <span className="text-medium font-semibold black:text-light text-mainColor underline">
+              filter by categories or search..
+            </span>
+            <SearchTwo
+              className={
+                "border border-t-mainColor lg:w-auto border-l-mainColor border-r-mainColor rounded-md lg:border-l-mainColor lg:border-r-mainColor lg:border-t-mainColor lg:border-b-mainColor xs:hidden sm:hidden"
+              }
+            />
             {side}
           </div>
         </div>

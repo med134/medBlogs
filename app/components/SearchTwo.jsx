@@ -4,7 +4,7 @@ import NotFoundModel from "./NotFoundModel";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const SearchTwo = () => {
+const SearchTwo = ({ className }) => {
   const [posts, setPosts] = useState([]);
   const [sug, setSug] = useState([]);
   const [query, setQuery] = useState("");
@@ -71,7 +71,7 @@ const SearchTwo = () => {
     <>
       <form
         onSubmit={handleSearch}
-        className="inline-flex w-56 h-12 mt-1 absolute xl:w-48 right-44 xl:right-36 lg:relative lg:left-0 "
+        className={`inline-flex w-full h-12 mt-4 right-44 xl:right-6 lg:relative lg:left-0`}
       >
         <input
           type="text"
@@ -79,7 +79,7 @@ const SearchTwo = () => {
           aria-labelledby="search-input"
           value={query}
           onChange={(e) => onChangeHandle(e.target.value)}
-          className="h-10 w-56 border border-b-mainColor bg-transparent text-dark placeholder-black dark:placeholder-light  dark:border-b-light border-transparent text-sm lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium  outline-none focus:border-transparent focus:border-b-mainColor focus:border-b-2 lg:text-light xs:w-48"
+          className={`${className} h-10 w-full border border-b-mainColor bg-transparent text-dark placeholder-black dark:placeholder-dark  dark:border-b-light border-transparent text-sm lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium  outline-none focus:border-2 lg:text-light xs:w-48`}
           placeholder="Search for Articles"
         />
         <button
@@ -87,10 +87,10 @@ const SearchTwo = () => {
           name="search-button"
           title="search-button"
           aria-labelledby="search-button"
-          className="inline-flex h-10 items-center border border-transparent focus:border-b-2 border-b-mainColor dark:border-b-light gap-2 text-white text-lg font-semibold py-1 px-4 xs:px-2 xs:border xs:border-transparent xs:border-b-white lg:bg-transparent"
+          className={`${className} inline-flex h-10 items-center border border-transparent focus:border-b-2 border-b-mainColor dark:border-b-light gap-2 text-white text-lg font-semibold py-1 px-4 xs:px-2 xs:border xs:border-transparent xs:border-b-white lg:bg-transparent`}
         >
           <svg
-            className="text-mainColor dark:text-light h-5 w-5 p-0 fill-current hover:text-gray-600"
+            className="text-mainColor dark:text-light dark:xs:text-dark xs:text-light h-5 w-5 p-0 fill-current hover:text-gray-800"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             version="1.1"
@@ -106,7 +106,7 @@ const SearchTwo = () => {
       </form>
 
       {sug.length > 0 && (
-        <ul className="mt-2 bg-white dark:bg-dark shadow-lg rounded-md overflow-y-auto right-32 w-72 top-16 scroll-m-0 h-64 absolute z-40 lg:top-36 lg:right-32 lg:w-[270px] lg:max-h-64 lg:bg-gray-800 xs:right-0">
+        <ul className="mt-2 bg-white dark:bg-dark w-96 shadow-lg rounded-md overflow-y-auto right-6 scroll-m-0 h-64 absolute z-40 lg:top-36 lg:right-32 lg:w-[270px] lg:max-h-64 lg:bg-gray-800 xs:right-0">
           {sug.map((item, index) => (
             <div
               key={item._id}

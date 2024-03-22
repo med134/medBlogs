@@ -163,7 +163,7 @@ const NavBar = () => {
         </button>
       </div>
 
-      <div className="w-full px-16 flex justify-stretch items-center font-semibold xl:px-6 lg:hidden">
+      <div className="w-full px-24 flex justify-between items-center font-semibold xl:px-6 lg:hidden">
         <Link
           href="/"
           className="flex items-center justify-between flex-wrap cursor-pointer"
@@ -175,13 +175,13 @@ const NavBar = () => {
             width={300}
             height={300}
           />
-          {/*    <span
+          <span
             className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light xl:hidden`}
           >
             medCode
-          </span> */}
+          </span>
         </Link>
-        <nav className="flex items-center justify-stretch ml-24 xl:ml-10">
+        <nav className="flex items-center justify-stretch xl:ml-6">
           <CustomLink
             href="/projects"
             title="projects"
@@ -247,7 +247,7 @@ const NavBar = () => {
           )}
         </nav>
         {session.status === "authenticated" && <ProfileDown />}
-        <SearchTwo />
+        {/* <SearchTwo /> */}
       </div>
       <button
         name="theme-button"
@@ -290,7 +290,7 @@ const NavBar = () => {
                 </h2>
               </div>
             </div>
-            <SearchTwo />
+            <SearchTwo className={'text-light'}/>
             <div className="line bg-gray-600 w-full h-1"></div>
             <CustomMobileLink
               href="/"
