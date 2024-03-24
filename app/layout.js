@@ -3,8 +3,12 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import AuthProvider from "./components/authProvider/AuthProvider";
 import GoogleAnalytic from "./components/GoogleAnalytic";
-import CookieBanner from "./components/Cookies";
+import dynamic from "next/dynamic";
+const CookiesBanner = dynamic(() => import("./components/Cookies"));
 import { inter } from "./components/Fonts";
+
+
+
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
   title: "Best Programming Blog & free components|medCode",
@@ -83,7 +87,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <NavBar />
           {children}
-          <CookieBanner />
+          {<CookiesBanner />}
           <Footer />
         </AuthProvider>
       </body>

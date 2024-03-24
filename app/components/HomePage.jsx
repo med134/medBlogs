@@ -1,8 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { AiTwotoneSound } from "react-icons/ai";
+import "../globals.css";
 import CategoryCard from "./CategoryCard";
-import SearchTwo from "./SearchTwo";
+import dynamic from "next/dynamic";
+const SearchBar = dynamic(() => import("./SearchTwo"));
 
 const HomePage = ({ child, side }) => {
   const [sidebarWidth, setSidebarWidth] = useState("");
@@ -54,7 +56,7 @@ const HomePage = ({ child, side }) => {
             <span className="text-medium font-semibold black:text-light text-mainColor underline">
               filter by categories or search..
             </span>
-            <SearchTwo
+            <SearchBar
               className={
                 "border border-t-mainColor lg:w-auto border-l-mainColor border-r-mainColor rounded-md lg:border-l-mainColor lg:border-r-mainColor lg:border-t-mainColor lg:border-b-mainColor xs:hidden sm:hidden"
               }

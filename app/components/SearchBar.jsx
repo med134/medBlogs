@@ -106,8 +106,8 @@ const SearchBar = () => {
                 alt={item.title}
                 className="w-16 h-16 rounded-md object-cover border"
                 loading="lazy"
-                width={200}
-                height={200}
+                width={100}
+                height={100}
               />
               <li
                 onClick={() => onSugHandler(item.title)}
