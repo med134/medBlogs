@@ -45,7 +45,7 @@ const Footer = () => {
               aria-labelledby="Our phone"
               rel="noopener noreferrer"
               name="Our phone"
-              className="transition-colors hover:text-purple-800 hover:font-semibold duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
+              className="transition-colors hover:text-purple-800 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
               +212600462196
             </a>
@@ -59,7 +59,7 @@ const Footer = () => {
               aria-labelledby="Our email"
               rel="noopener noreferrer"
               name="Our email"
-              className="transition-colors hover:text-purple-800 hover:font-semibold duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
+              className="transition-colors hover:text-purple-800 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
               med@vivacode.dev
             </a>
@@ -72,7 +72,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               name="Our address"
               aria-labelledby="Our address"
-              className="transition-colors hover:text-purple-800 hover:font-semibold duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
+              className="transition-colors hover:text-purple-800 duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
               312 Lovely Street, NY
             </a>
@@ -82,7 +82,7 @@ const Footer = () => {
           <span className="text-base font-bold tracking-wide text-gray-900 dark:text-gray-400">
             Follow on Social Media
           </span>
-          <div className="flex justify-start items-start space-x-3 mt-2">
+          <div className="flex justify-start items-center space-x-3 mt-2">
             <div>
               <a
                 href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
@@ -91,7 +91,7 @@ const Footer = () => {
                 onBlur={() => console.log("Visit our youtube channel")}
                 aria-label="Visit our youtube channel"
                 name="Our channel youtube"
-                className="w-auto flex mb-4 justify-start transition hover:translate-x-2 items-center mx-3 sm:mx-1 focus:outline-none focus:ring focus:border-red-600"
+                className="w-auto flex mb-4 justify-start items-center mx-3 sm:mx-1 focus:outline-none focus:ring focus:border-red-600"
               >
                 <AiFillYoutube size={34} className="fill-red-600" />
                 <span className="ml-1 font-semibold text-xs">youtube</span>
@@ -103,7 +103,7 @@ const Footer = () => {
                 aria-label="Visit our Instagram profile"
                 onBlur={() => console.log("Visit our Instagram profile")}
                 name="Visit our Instagram profile"
-                className="w-auto mx-3 flex justify-start items-center text-pink-600 transition hover:translate-x-2 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
+                className="w-auto mx-3 flex justify-start items-center text-pink-600  hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
               >
                 <BsInstagram size={26} className="" />
                 <span className="text-dark font-semibold text-xs ml-1">
@@ -119,7 +119,7 @@ const Footer = () => {
                 onBlur={() => console.log("Visit our github profile")}
                 name="Our github account"
                 aria-label="Visit our github profile"
-                className="w-auto mb-5 flex justify-start items-center transition hover:translate-x-2  dark:bg-dark sm:mx-1 focus:outline-none focus:ring  "
+                className="w-auto mb-5 flex justify-start items-center dark:bg-dark sm:mx-1 focus:outline-none focus:ring  "
               >
                 <GithubIcon fontSize={28} className="" />
                 <span className="ml-1 font-semibold text-xs">Github</span>
@@ -131,7 +131,7 @@ const Footer = () => {
                 onBlur={() => console.log("Visit our LinkedIn profile")}
                 name="Our Linkedin"
                 aria-label="Visit our LinkedIn profile"
-                className="w-auto mx-3  flex justify-start items-center transition hover:translate-x-2  dark:bg-dark sm:mx-1 focus:outline-none focus:ring "
+                className="w-auto mx-3  flex justify-start items-center  dark:bg-dark sm:mx-1 focus:outline-none focus:ring "
               >
                 <LinkedInIcon fontSize={26} className="" />
                 <span className="ml-1 font-semibold text-xs">Linkedin</span>

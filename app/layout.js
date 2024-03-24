@@ -7,8 +7,6 @@ import dynamic from "next/dynamic";
 const CookiesBanner = dynamic(() => import("./components/Cookies"));
 import { inter } from "./components/Fonts";
 
-
-
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
   title: "Best Programming Blog & free components|medCode",
