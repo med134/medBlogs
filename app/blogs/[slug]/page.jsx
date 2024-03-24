@@ -1,10 +1,21 @@
 import React from "react";
 import Image from "next/image";
-import SidBar from "@/app/components/SidBar";
+import dynamic from "next/dynamic";
 import "quill/dist/quill.snow.css";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import Comments from "@/app/components/comments/comments";
-import ShareButtons from "@/app/components/ShareButtons";
+
+const SidBar = dynamic(() => import("@/app/components/SidBar"), {
+  ssr: false,
+});
+const ShareButtons = dynamic(
+  () => import("@/app/components/ShareButtons"),
+  {
+    ssr: false,
+  }
+);
+const Comments = dynamic(() => import("@/app/components/comments/comments"), {
+  ssr: false,
+});
 
 async function getData(slug) {
   const res = await fetch(`https://www.medcode.dev/api/articles/${slug}`, {
@@ -79,7 +90,7 @@ const BlogPage = async ({ params }) => {
               {FormatDate(blog?.createdAt.slice(0, 10))}
             </span>
           </div>
-          <h1 className="text-4xl font-bold py-6 sm:text-xl text-mainColor xs:py-1">
+          <h1 className="text-4xl font-bold py-6 sm:text-xl text-mainColor dark:text-light xs:py-1">
             {blog.title}
           </h1>
           <span className="text-xl text-gray-600 py-3 xs:text-sm xs:py-1 dark:text-light">
@@ -91,8 +102,9 @@ const BlogPage = async ({ params }) => {
             alt={blog.title}
             className="w-full h-96 object-cover rounded mt-2"
             width={500}
-            height={360}
-            priority
+            height={300}
+            loading="lazy"
+            priority={false}
           />
           <h2 className="flex underline font-bold justify-start items-start py-6 xs:py-2 ml-2 mt-1 font-bolder">
             {blog.tags}
@@ -111,6 +123,7 @@ const BlogPage = async ({ params }) => {
           <Image
             alt="author image"
             width={200}
+            priority={false}
             loading="lazy"
             height={200}
             src="https://i.ibb.co/WVDZRxF/bussiness-man.png"

@@ -2,20 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { AiTwotoneSound } from "react-icons/ai";
-
-const getData = async () => {
-  const res = await fetch("https://www.medcode.dev/api/posts", {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-  const templates = await res.json();
-  return templates;
-};
+import { getAll } from "./FetchData";
 
 const Easy = async () => {
-  const category = await getData();
+  const category = await getAll();
+  //converting date
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(

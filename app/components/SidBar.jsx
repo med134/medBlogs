@@ -2,19 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Cat from "./Cat";
-async function getArticles() {
-  const res = await fetch(`https://www.medcode.dev/api/articles`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-  const data = await res.json();
-  const sortedPosts = data.sort(
-    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-  );
-  return sortedPosts;
-}
+import { getArticles } from "./FetchData";
+
 const SidBar = async ({ slug, category }) => {
   const dev = await getArticles();
   return (
@@ -27,7 +16,7 @@ const SidBar = async ({ slug, category }) => {
       </aside>
       <span className="text-xl text-gray-800 font-semibold mt-7 pb-4 mb-3 sm:w-full sm:mb-4 sm:text-xl sm:mt-1 dark:text-light">
         More Related Posts About
-        <span className="text-2xl xl:text-xl ml-2 uppercase text-mainColor sm:text-xl">
+        <span className="text-2xl xl:text-xl ml-2 uppercase text-mainColor dark:text-light sm:text-xl">
           {category}
         </span>
       </span>
@@ -42,13 +31,14 @@ const SidBar = async ({ slug, category }) => {
                   alt={item.title}
                   width={300}
                   height={300}
+                  priority={false}
                   loading="lazy"
                 />
 
                 <div className="p-2 ml-2">
                   <Link
                     href={`/category/${item.category}`}
-                    className="uppercase tracking-wide text-sm text-mainColor font-semibold"
+                    className="uppercase tracking-wide text-sm text-mainColor dark:text-light font-semibold"
                   >
                     {item.category}
                   </Link>
@@ -58,7 +48,7 @@ const SidBar = async ({ slug, category }) => {
                   >
                     {item.title}
                   </Link>
-                  <p className="text-xs font-semibold mt-2 text-gray-700 dark:text-mainColor">
+                  <p className="text-xs font-semibold mt-2 text-gray-700 dark:text-light">
                     {item.tags}
                   </p>
                 </div>

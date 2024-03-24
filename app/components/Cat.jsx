@@ -1,17 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import { getAllCat } from "./FetchData";
 
-export async function getAllCat() {
-  const res = await fetch("https://www.medcode.dev/api/categories", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-
-  return res.json();
-}
 const Cat = async () => {
   const cat = await getAllCat();
 

@@ -45,6 +45,7 @@ const Comments = ({ postSlug }) => {
             width={100}
             height={100}
             loading="lazy"
+            priority={false}
             src={session?.data?.user.image}
             alt="photo_profile"
             className="w-10 h-10 rounded-[50%] cursor-pointer"
@@ -84,6 +85,7 @@ const Comments = ({ postSlug }) => {
                     width={100}
                     height={100}
                     loading="lazy"
+                    priority={false}
                     className="w-8 h-8 rounded-full"
                   />
                   <div className="block ml-2">

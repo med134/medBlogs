@@ -1,27 +1,29 @@
 "use client";
-import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { GithubIcon, LinkedInIcon, SunIcon, MoonIcon } from "./Icons";
+import { SunIcon, MoonIcon } from "./Icons";
 import med from "@/public/images/logo3.png";
-import logo from "@/public/images/logo.png";
-import { AiFillYoutube } from "react-icons/ai";
+import Link from "next/link";
 import useThemeSwitcher from "./hooks/useThemeSwitcher";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { signOut } from "next-auth/react";
-import ProfileDown from "./ProfileDown";
-import { Limelight } from "next/font/google";
-import { BsInstagram } from "react-icons/bs";
 import { useSession } from "next-auth/react";
 import { FiX } from "react-icons/fi";
-import SearchTwo from "./SearchTwo";
-import MegaMenu from "./MegaMenu";
-
-const limelight = Limelight({
-  subsets: ["latin"],
-  variables: "-limelight",
-  weight: "400",
-  display: "swap",
+import { limelight } from "./Fonts";
+const DynamicMega = dynamic(() => import("./MegaMenu"), {
+  ssr: false,
 });
+const DynamicProfile = dynamic(() => import("./ProfileDown"), {
+  ssr: false,
+});
+const CloseMenu = dynamic(() => import("./CloseMenu"), {
+  ssr: false,
+});
+const SocialLinks = dynamic(() => import("./LinkNavBarSocialMedia"), {
+  ssr: false,
+});
+
+
 const CustomLink = ({ href, title, className = "" }) => {
   return (
     <Link href={href} className={`${className} relative group`}>
@@ -39,30 +41,11 @@ const CustomLink = ({ href, title, className = "" }) => {
   );
 };
 
-const CustomMobileLink = ({ href, title, className = "" }) => {
-  return (
-    <Link
-      href={href}
-      className={`${className} relative group text-light dark:text-dark my-2`}
-    >
-      {title}
-      <span
-        className={`
-          h-[1px] inline-block  bg-light
-          absolute left-0 -bottom-0.5
-          group-hover:w-full transition-[width] ease duration-300  
-          dark:bg-dark`}
-      >
-        &nbsp;
-      </span>
-    </Link>
-  );
-};
-
 const NavBar = () => {
   const [mode, setMode] = useThemeSwitcher("dark");
   const [isOpen, setIsOpen] = useState(false);
   const session = useSession();
+
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -163,17 +146,18 @@ const NavBar = () => {
         </button>
       </div>
 
-      <div className="w-full px-24 flex justify-between items-center font-semibold xl:px-6 lg:hidden">
+      <div className={`w-full px-24 flex justify-between items-center font-semibold xl:px-6 lg:hidden`}>
         <Link
           href="/"
           className="flex items-center justify-between flex-wrap cursor-pointer"
         >
           <Image
             src={med}
-            alt="logo"
+            alt="website-logo"
             className="object-cover w-14 h-14"
-            width={300}
-            height={300}
+            width={100}
+            height={100}
+            priority={false}
           />
           <span
             className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light xl:hidden`}
@@ -221,13 +205,12 @@ const NavBar = () => {
           {dropdown && (
             <div
               onMouseEnter={() => setDropDown(true)}
-              onMouseOver={() => setDropDown(true)}
               onMouseLeave={() => setDropDown(false)}
               className={`opacity-0 ${
                 dropdown ? "opacity-100" : ""
               } transition-opacity duration-300 ease-in-out absolute top-24 left-0 w-full h-60 shadow-sm`}
             >
-              <MegaMenu />
+              <DynamicMega />
             </div>
           )}
           {session.status === "authenticated" ? (
@@ -246,14 +229,13 @@ const NavBar = () => {
             />
           )}
         </nav>
-        {session.status === "authenticated" && <ProfileDown />}
-        {/* <SearchTwo /> */}
+        {session.status === "authenticated" && <DynamicProfile />}
       </div>
       <button
         name="theme-button"
         aria-label="change-theme"
         onClick={() => setMode(mode === "light" ? "dark" : "light")}
-        className={`w-8 h-8 flex items-center lg:hidden mr-10 xl:mr-0 justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 
+        className={`w-8 h-8 flex items-center lg:hidden mr-6 xl:mr-0 justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 
     ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
     `}
       >
@@ -273,66 +255,8 @@ const NavBar = () => {
     bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
     "
         >
-          <nav className="flex items-center flex-col justify-center z-40">
-            <div className="flex items-center justify-center xs:w-full mb-1">
-              <Image
-                src={logo}
-                alt="logo_website"
-                className="w-20 dark:bg-white dark:rounded-xl dark:p-1"
-                priority
-              />
-              <div className="block mt-2">
-                <p className="font-Yeseva text-3xl text-light dark:text-dark">
-                  edCode
-                </p>
-                <h2 className="text-xs tracking-widest text-light dark:text-dark">
-                  blog for programmers
-                </h2>
-              </div>
-            </div>
-            <SearchTwo className={'text-light'}/>
-            <div className="line bg-gray-600 w-full h-1"></div>
-            <CustomMobileLink
-              href="/"
-              title="Home"
-              className=""
-              toggle={handleClick}
-            />
-            <CustomMobileLink
-              href="/category/all"
-              title="Categories"
-              className="categories"
-              toggle={handleClick}
-            />
-            <CustomMobileLink
-              href="/projects"
-              title="Projects"
-              className="projects"
-              toggle={handleClick}
-            />
-
-            <CustomMobileLink
-              href="/templates"
-              title="Templates"
-              className="templates"
-              toggle={handleClick}
-            />
-            {session.status === "authenticated" ? (
-              <CustomMobileLink
-                href="/dashboard"
-                title="Dashboard"
-                className=""
-                toggle={handleClick}
-              />
-            ) : (
-              <CustomMobileLink
-                href="/dashboard/login"
-                title="Login"
-                className=""
-                toggle={handleClick}
-              />
-            )}
-          </nav>
+          {/* close menu */}
+          <CloseMenu handleClick={handleClick} session={session} />
           {session.status === "authenticated" && (
             <button
               name="log-button"
@@ -345,35 +269,7 @@ const NavBar = () => {
           )}
 
           <nav className="flex items-center justify-center flex-wrap mt-2">
-            <Link
-              href="https://www.linkedin.com/in/mohammed-dakir/"
-              target={"_blank"}
-              className="w-6 ml-4 sm:mx-1"
-            >
-              <LinkedInIcon />
-            </Link>
-            <Link
-              href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
-              target={"_blank"}
-              className="w-6 mx-3 sm:mx-1"
-            >
-              <AiFillYoutube size={34} className="fill-red-600" />
-            </Link>
-            <Link
-              href="https://www.instagram.com/med_dakir/"
-              target={"_blank"}
-              className="w-6 mx-3"
-            >
-              <BsInstagram size={24} className="fill-pink-700" />
-            </Link>
-            <Link
-              href="https://github.com/med134"
-              target={"_blank"}
-              className="w-6 mx-3 bg-light rounded-full dark:bg-dark sm:mx-1"
-            >
-              <GithubIcon />
-            </Link>
-
+            <SocialLinks />
             <button
               name="theme-button"
               aria-label="theme"

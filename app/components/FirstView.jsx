@@ -3,25 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import icon from "/public/images/Artificial-intelligence-pana-1.png";
 import { FaRegCalendarAlt } from "react-icons/fa";
-
-async function getPost() {
-  const res = await fetch("https://www.medcode.dev/api/articles", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-
-  const posts = await res.json();
-  const sortedPosts = posts?.sort(
-    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-  );
-  return sortedPosts;
-}
+import { getArticles } from "./FetchData";
 
 const FirstView = async () => {
-  const posts = await getPost();
+  const posts = await getArticles();
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(
@@ -35,66 +20,70 @@ const FirstView = async () => {
       id="home"
       className="relative z-10 overflow-hidden pt-[70px] pb-1 md:pt-[80px] xl:pt-[100px] lg:pt-[60px] sm:pb-10 xs:pb-24 xl:pb-1 dark:bg-dark"
     >
-      {posts?.map((item, index) =>
-        index === 0 ? (
-          <div
-            key={item._id}
-            className="flex justify-between items-center z-10 px-24 relative p-8 md:flex-wrap-reverse xl:px-16 md:p-4 md:mt-4 xs:mt-0 xs:p-3"
-          >
-            <div className="xl:w-[900px] md:w-full p-2">
-              <span className="flex justify-start items-center py-2 dark:text-light">
-                <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
-                <span className="ml-2 font-semibold dark:text-light xs:text-sm">
-                  {FormatDate(item?.createdAt.slice(0, 10))}
+      {posts
+        ?.slice()
+        .reverse()
+        ?.map((item, index) =>
+          index === 0 ? (
+            <div
+              key={item._id}
+              className="flex justify-between items-center z-10 px-24 relative p-8 md:flex-wrap-reverse xl:px-16 md:p-4 md:mt-4 xs:mt-0 xs:p-3"
+            >
+              <div className="xl:w-[900px] md:w-full p-2">
+                <span className="flex justify-start items-center py-2 dark:text-light">
+                  <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
+                  <span className="ml-2 font-semibold dark:text-light xs:text-sm">
+                    {FormatDate(item?.createdAt.slice(0, 10))}
+                  </span>
                 </span>
-              </span>
-              <Link href={`/blogs/${item.slug}`} aria-current="page">
-                <h1
-                  className="bg-gradient-to-r py-3 space-y-4 text-4xl xl:text-3xl font-extrabold from-cyan-700 to-cyan-700 bg-[length:0px_10px] bg-left-bottom
+                <Link href={`/blogs/${item.slug}`} aria-current="page">
+                  <h1
+                    className="bg-gradient-to-r py-3 space-y-4 text-4xl xl:text-3xl font-extrabold from-cyan-700 to-cyan-700 bg-[length:0px_10px] bg-left-bottom
       bg-no-repeat
       transition-[background-size]
       duration-500
       hover:bg-[length:100%_3px]
       group-hover:bg-[length:100%_10px]
       dark:from-red-800 dark:to-purple-900 dark:text-light xs:text-xl"
+                  >
+                    {item.title}.
+                  </h1>
+                </Link>
+                <p className="mt-2 text-xl text-gray-850 py-4 xs:text-sm xs:mt-1 xs:py-2 dark:text-light">
+                  {item?.description.slice(0, 130)}...
+                </p>
+                <Link
+                  href={`/category/${item.category}`}
+                  className="flex justify-start items-center "
+                  aria-current="page"
                 >
-                  {item.title}.
-                </h1>
-              </Link>
-              <p className="mt-2 text-xl text-gray-850 py-4 xs:text-sm xs:mt-1 xs:py-2 dark:text-light">
-                {item?.description.slice(0, 130)}...
-              </p>
-              <Link
-                href={`/category/${item.category}`}
-                className="flex justify-start items-center "
-                aria-current="page"
-              >
-                <span className="bg-light p-1 xs:bg-transparent dark:bg-slate-800 dark:text-light uppercase text-gray-800 rounded-md font-semibold hover:bg-slate-800 hover:text-white transition-transform duration-75 ease-out">
-                  {item.category} {item.tags}
-                </span>
-              </Link>
-              <Link
-                rel="preload"
-                aria-current="page"
-                href={`/blogs/${item.slug}`}
-                className="inline-flex py-3 items-center mt-8 first-line:mt-4 mr-2  justify-center rounded-md dark:text-dark bg-sky-800 px-16 text-center text-white duration-150 md:mb-4 hover:translate-y-1 hover:bg-sky-500 dark:bg-light"
-              >
-                <span>Read more...</span>
-              </Link>
+                  <span className="bg-light p-1 xs:bg-transparent dark:bg-slate-800 dark:text-light uppercase text-gray-800 rounded-md font-semibold hover:bg-slate-800 hover:text-white transition-transform duration-75 ease-out">
+                    {item.category} {item.tags}
+                  </span>
+                </Link>
+                <Link
+                  rel="preload"
+                  aria-current="page"
+                  href={`/blogs/${item.slug}`}
+                  className="inline-flex py-3 items-center mt-8 first-line:mt-4 mr-2  justify-center rounded-md dark:text-dark bg-sky-800 px-16 text-center text-white duration-150 md:mb-4 hover:translate-y-1 hover:bg-sky-500 dark:bg-light"
+                >
+                  <span>Read more...</span>
+                </Link>
+              </div>
+              <div className="w-full rounded-xl md:hidden">
+                <Image
+                  alt={item.title}
+                  src={icon}
+                  width={300}
+                  height={300}
+                  priority={true}
+                  className="w-full rounded-2xl opacity-100 object-contain xl:object-contain xs:h-56"
+                />
+              </div>
             </div>
-            <div className="w-full rounded-xl md:hidden">
-              <Image
-                alt={item.title}
-                src={icon}
-                width={500}
-                height={500}
-                priority
-                className="w-full rounded-2xl opacity-100 object-contain xl:object-contain xs:h-56"
-              />
-            </div>
-          </div>
-        ) : null
-      )}
+          ) : null
+        )}
+
       <div className="absolute top-0 right-0 z-1 opacity-90 lg:opacity-100">
         <svg
           width="550"

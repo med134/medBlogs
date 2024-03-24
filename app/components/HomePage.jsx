@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { AiTwotoneSound } from "react-icons/ai";
-import "../globals.css";
 import CategoryCard from "./CategoryCard";
 import SearchTwo from "./SearchTwo";
 

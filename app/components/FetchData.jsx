@@ -1,18 +1,13 @@
 import { notFound } from "next/navigation";
 
-export async function getDevTo() {
-  const res = await fetch(`https://dev.to/api/articles?username=med_code`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    return notFound();
-  }
-  return res.json();
-}
+
 export async function getStack() {
-  const res = await fetch(`https://api.stackexchange.com/2.3/questions?todate=1703894400&site=stackoverflow&sort=votes&order=desc`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `https://api.stackexchange.com/2.3/questions?todate=1703894400&site=stackoverflow&sort=votes&order=desc`,
+    {
+      cache: "no-store",
+    }
+  );
   if (!res.ok) {
     return notFound();
   }
@@ -32,9 +27,10 @@ export async function getArticles() {
     cache: "no-store",
   });
   if (!res.ok) {
-    return notFound();
+    throw new Error("Failed");
   }
-  return res.json();
+  const posts = await res.json();
+  return posts;
 }
 export async function getArticle() {
   const res = await fetch(
