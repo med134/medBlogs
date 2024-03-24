@@ -103,8 +103,7 @@ const BlogPage = async ({ params }) => {
             className="w-full h-96 object-cover rounded mt-2"
             width={500}
             height={300}
-            loading="lazy"
-            priority={false}
+            priority={true}
           />
           <h2 className="flex underline font-bold justify-start items-start py-6 xs:py-2 ml-2 mt-1 font-bolder">
             {blog.tags}
