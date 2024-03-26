@@ -2,10 +2,9 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
-import { redirect } from "next/navigation";
 import { useQuill } from "react-quilljs";
-import 'quill/dist/quill.snow.css';
-import Link from 'next/link'
+import "quill/dist/quill.snow.css";
+import Link from "next/link";
 import hljs from "highlight.js";
 
 export default function EditArticle({
@@ -134,7 +133,6 @@ export default function EditArticle({
       setNewSlug("");
       setNewContent("");
       setLoading(false);
-      redirect("/dashboard/add-templates");
       e.target.reset();
     } catch (err) {
       console.log(err);
@@ -263,16 +261,20 @@ export default function EditArticle({
             content
           </label>
           <div ref={quillRef} style={{ height: 400, marginLeft: 4 }} />
-          <div className="flex justify-start items-center"> 
-          <button
-            type="submit"
-            className="bg-slate-600 font-bold text-white py-3 px-6 w-fit hover:bg-slate-400 rounded-lg"
-          >
-            Update Article
-          </button>
-          <Link href='/dashboard/add-articles' className="bg-slate-600 ml-3 font-bold text-white py-3 px-6 w-fit hover:bg-slate-400 rounded-lg">
-            Cancel
-          </Link></div>
+          <div className="flex justify-start items-center">
+            <button
+              type="submit"
+              className="bg-slate-600 font-bold text-white py-3 px-6 w-fit hover:bg-slate-400 rounded-lg"
+            >
+              Update Article
+            </button>
+            <Link
+              href="/dashboard/add-articles"
+              className="bg-slate-600 ml-3 font-bold text-white py-3 px-6 w-fit hover:bg-slate-400 rounded-lg"
+            >
+              Cancel
+            </Link>
+          </div>
         </form>
       )}
     </>

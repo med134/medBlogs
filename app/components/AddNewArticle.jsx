@@ -1,5 +1,5 @@
 "use client";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import "highlight.js/styles/a11y-dark.min.css";
 import useSWR from "swr";
@@ -7,9 +7,10 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useQuill } from "react-quilljs";
-import 'quill/dist/quill.snow.css';
+import "quill/dist/quill.snow.css";
 import hljs from "highlight.js";
 import SliderSkelton from "./SliderSkelton";
+import { revalidatePath } from "next/cache";
 
 const AddNewArticle = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -65,7 +66,7 @@ const AddNewArticle = () => {
       [{ size: ["small", false, "large", "huge"] }],
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
     ],
-  
+
     syntax: {
       highlight: (text) => hljs.highlightAuto(text).value,
     },
@@ -228,7 +229,6 @@ const AddNewArticle = () => {
           >
             Post Now
           </button>
-         
         </form>
         <div className="col-span-1">
           {isLoading ? (

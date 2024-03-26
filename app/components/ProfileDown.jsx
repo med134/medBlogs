@@ -13,7 +13,7 @@ const ProfileDown = () => {
     setIsDropdownOpen((prevState) => !prevState);
   };
   return (
-    <div className="relative inline-block text-left z-50">
+    <div className="relative inline-block z-50">
       <div className="z-50">
         <button
           type="button"

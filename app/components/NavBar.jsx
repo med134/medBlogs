@@ -23,7 +23,6 @@ const SocialLinks = dynamic(() => import("./LinkNavBarSocialMedia"), {
   ssr: false,
 });
 
-
 const CustomLink = ({ href, title, className = "" }) => {
   return (
     <Link href={href} className={`${className} relative group`}>
@@ -146,7 +145,9 @@ const NavBar = () => {
         </button>
       </div>
 
-      <div className={`w-full px-24 flex justify-between items-center font-semibold xl:px-6 lg:hidden`}>
+      <div
+        className={`w-full px-24 flex justify-between items-center font-semibold xl:px-6 lg:hidden`}
+      >
         <Link
           href="/"
           className="flex items-center justify-between flex-wrap cursor-pointer"
@@ -165,7 +166,7 @@ const NavBar = () => {
             medCode
           </span>
         </Link>
-        <nav className="flex items-center justify-stretch xl:ml-6">
+        <nav className="flex items-center justify-evenly xl:ml-6">
           <CustomLink
             href="/projects"
             title="projects"
@@ -235,7 +236,7 @@ const NavBar = () => {
         name="theme-button"
         aria-label="change-theme"
         onClick={() => setMode(mode === "light" ? "dark" : "light")}
-        className={`w-8 h-8 flex items-center lg:hidden mr-6 xl:mr-0 justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 
+        className={`w-8 h-8 flex items-center lg:hidden mr-16 xl:mr-0 justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 
     ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
     `}
       >

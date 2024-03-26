@@ -1,10 +1,10 @@
 import React from "react";
-import Link from "next/link";
 import TransitionEffect from "../components/TransitionEffect";
 import Image from "next/image";
 import PageNotFound from "@/app/PageNotFound";
 import SearchBar from "../components/SearchBar";
-import TemplatesCategory from "../components/TemplatesCategory";
+import dynamic from "next/dynamic";
+const TemplatesPreview = dynamic(()=>import("../components/TemplatesCategory"));
 
 async function getData() {
   const res = await fetch(`https://www.medcode.dev/api/posts`, {
@@ -115,7 +115,7 @@ const page = async () => {
           </h3>
         </div>
         {/* filter templates */}
-        <TemplatesCategory data={data} />
+        <TemplatesPreview data={data} />
       </div>
     </>
   );

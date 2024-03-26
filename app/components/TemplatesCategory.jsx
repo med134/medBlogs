@@ -21,50 +21,50 @@ const TemplatesCategory = ({ data }) => {
             <div className="flex flex-wrap gap-2 pt-4">
               <button
                 onClick={() => setNewData(data)}
-                className="bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm"
+                className="bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
               >
                 All Templates
               </button>
               <button
                 onClick={() => handleTagClick("Landing")}
-                className="bg-blue-200 hover:bg-blue-300 py-1.5 px-3 rounded-lg text-sm"
+                className="bg-blue-200 hover:bg-blue-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
               >
                 Landing
               </button>
               <button
                 onClick={() => handleTagClick("Ecommerce")}
-                className="bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm"
+                className="bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
               >
                 Ecommerce
               </button>
 
               <button
                 onClick={() => handleTagClick("Card")}
-                className="bg-indigo-200 hover:bg-indigo-300 py-1.5 px-3 rounded-lg text-sm"
+                className="bg-indigo-200 hover:bg-indigo-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
               >
                 Card
               </button>
               <button
                 onClick={() => handleTagClick("Marketing")}
-                className="bg-purple-200 hover:bg-purple-300 py-1.5 px-3 rounded-lg text-sm"
+                className="bg-purple-200 hover:bg-purple-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
               >
                 Marketing
               </button>
               <button
                 onClick={() => handleTagClick("Dashboard")}
-                className="bg-pink-200 hover:bg-pink-300 py-1.5 px-3 rounded-lg text-sm"
+                className="bg-pink-200 hover:bg-pink-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
               >
                 Dashboard
               </button>
               <button
                 onClick={() => handleTagClick("Business")}
-                className="bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm"
+                className="bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
               >
                 Business
               </button>
               <button
                 onClick={() => handleTagClick("Elearning")}
-                className="bg-yellow-200 hover:bg-yellow-300 py-1.5 px-3 rounded-lg text-sm"
+                className="bg-yellow-200 hover:bg-yellow-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
               >
                 Elearning
               </button>
@@ -84,15 +84,15 @@ const TemplatesCategory = ({ data }) => {
               <Image
                 className="w-full h-44"
                 src={item.image}
-                alt="templates image"
-                priority
-                width={500}
+                alt={item.title}
+                priority={true}
+                width={300}
                 height={300}
               />
               <div className="px-6 py-2">
                 <Link
                   href={`/templates/${item.slug}`}
-                  className="font-bold text-xl mb-2 mt-2 text-tailwindColor hover:underline"
+                  className="font-bold text-xl mb-2 mt-2 text-tailwindColor dark:text-light hover:underline"
                 >
                   {item.title}
                 </Link>

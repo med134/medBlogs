@@ -77,6 +77,9 @@ const SearchBar = () => {
         />
         <button
           type="submit"
+          name="search-button"
+          title="search-button"
+          aria-labelledby="search-button"
           className="flex flex-row items-center hover:bg-cyan-600 justify-center px-4 rounded-full border disabled:cursor-not-allowed disabled:opacity-50 transition ease-in-out duration-150 text-base bg-mainColor text-white font-medium tracking-wide border-transparent py-1 h-[38px]"
         >
           <svg
