@@ -47,7 +47,7 @@ const Easy = async () => {
             </p>
             <Link
               href="/templates"
-              className="mt-4 font-bold underline text-light hover:scale-75"
+              className="mt-4 font-bold text-light hover:underline"
               aria-current="page"
             >
               See More...

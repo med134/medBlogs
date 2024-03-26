@@ -160,7 +160,7 @@ const NavBar = () => {
             priority={false}
           />
           <span
-            className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light xl:hidden`}
+            className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light`}
           >
             medCode
           </span>

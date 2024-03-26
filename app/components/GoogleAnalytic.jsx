@@ -3,7 +3,7 @@ export default function GoogleAnalytic() {
   return (
     <>
       <Script
-        strategy="afterInteractive"
+        strategy="worker"
         async
         src={`https://www.googletagmanager.com/gtag/js? 
     id=G-J4KQVRLWEN`}

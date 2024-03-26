@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import icon from "/public/images/Artificial-intelligence-pana-1.png";
+import icon from "/public/images/Programming-amico.png";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { getArticles } from "./FetchData";
 
@@ -74,8 +74,8 @@ const FirstView = async () => {
                 <Image
                   alt={item.title}
                   src={icon}
-                  width={300}
-                  height={500}
+                  width={500}
+                  height={400}
                   priority={true}
                   className="w-full rounded-2xl opacity-100 object-contain xl:object-contain xs:h-56"
                 />
