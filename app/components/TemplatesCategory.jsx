@@ -21,9 +21,9 @@ const TemplatesCategory = ({ data }) => {
             <div className="flex flex-wrap gap-2 pt-4">
               <button
                 onClick={() => setNewData(data)}
-                className="bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
-              >
-                All Templates
+                className="bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border">
+              
+                 All Templates
               </button>
               <button
                 onClick={() => handleTagClick("Landing")}

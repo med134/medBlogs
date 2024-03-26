@@ -25,6 +25,9 @@ export const Project = ({ title, type, img, link, github }) => {
         <FramerImage
           src={img}
           alt={title}
+          width={500}
+          height={300}
+          priority={true}
           className="w-full h-auto"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}

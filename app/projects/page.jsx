@@ -10,7 +10,6 @@ import project8 from "@/public/images/projects/screenshotapp.png";
 import Layout from "../components/Layout";
 import { FeaturedProject } from "../components/FeaturedProject";
 import { Project } from "../components/ProjectArtcle";
-import TestTemplates from "../components/TestTemplates";
 import AnimatedText from "../components/AnimatedText";
 import TransitionEffect from "../components/TransitionEffect";
 export const metadata = {
