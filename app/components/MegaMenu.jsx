@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const MegaMenu = () => {
   return (
-    <div className="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-gradient-to-r from-cyan-900 to-cyan-700">
+    <div className="p-6 mega-menu mb-16 sm:mb-0 transition-all duration-75 ease-out shadow-xl bg-gradient-to-r from-cyan-900 to-cyan-700">
       <div className="w-full text-white mb-8 px-10">
         <h2 className="font-bold text-2xl">
           MedCode best Categories to see...
@@ -57,7 +57,7 @@ const MegaMenu = () => {
               <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
             </svg>
             <Link
-              href="/category/nextjs"
+              href="/category/next.js"
               className="text-white bold border-b-2 border-blue-300 hover:text-blue-300"
             >
               Find out more...
@@ -104,7 +104,7 @@ const MegaMenu = () => {
               <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
             </svg>
             <Link
-              href="/category/nextjs"
+              href="/category/react.js"
               className="text-white bold border-b-2 border-blue-300 hover:text-blue-300"
             >
               Find out more...

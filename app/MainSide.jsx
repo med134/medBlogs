@@ -18,7 +18,7 @@ const Cat = async () => {
               >
                 <Link
                   className="px-4 font-semibold text-gray-700 group-hover:text-mainColor group-hover:font-bold"
-                  href={`/category/${item.label}`}
+                  href={`/category/${item.value}`}
                 >
                   {item.label}
                 </Link>

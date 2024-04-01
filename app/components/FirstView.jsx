@@ -44,9 +44,9 @@ const FirstView = async () => {
       duration-500
       hover:bg-[length:100%_3px]
       group-hover:bg-[length:100%_10px]
-      dark:from-red-800 dark:to-purple-900 dark:text-light xs:text-xl"
+      dark:from-red-800 dark:to-purple-900 dark:text-light xs:text-2xl"
                   >
-                    {item.title}.
+                    {item.title}
                   </h1>
                 </Link>
                 <p className="mt-2 text-xl text-gray-850 py-4 xs:text-sm xs:mt-1 xs:py-2 dark:text-light">
@@ -54,10 +54,10 @@ const FirstView = async () => {
                 </p>
                 <Link
                   href={`/category/${item.category}`}
-                  className="flex justify-start items-center "
+                  className="flex justify-start items-center"
                   aria-current="page"
                 >
-                  <span className="bg-light p-1 xs:bg-transparent dark:bg-slate-800 dark:text-light uppercase text-gray-800 rounded-md font-semibold hover:bg-slate-800 hover:text-white transition-transform duration-75 ease-out">
+                  <span className="bg-light p-1 xs:bg-transparent dark:bg-slate-800 dark:text-light uppercase text-gray-800 rounded-md font-semibold hover:bg-slate-800 hover:text-white transition-transform duration-75 ease-out xs:py-4">
                     {item.category} {item.tags}
                   </span>
                 </Link>

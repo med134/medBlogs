@@ -9,9 +9,9 @@ import SearchTwo from "./SearchTwo";
 const SidBar = async ({ slug, category }) => {
   const dev = await getArticles();
   return (
-    <div className="mt-3 sticky">
+    <div className="mt-3">
       <aside className="w-full rounded-lg border-2 py-2 border-mainColor mb-6 p-2 mt-4 dark:border-light">
-        <span className="text-lg font-bold py-3 dark:text-light">
+        <span className="text-lg font-bold py-3 text-gray-800 dark:text-light">
           Search...
         </span>
         <SearchTwo className={"dark:placeholder-light"} />
@@ -24,7 +24,7 @@ const SidBar = async ({ slug, category }) => {
         </span>
       </span>
       <div className="pt-4">
-        {dev?.map((item, index) =>
+        {dev?.slice().reverse().map((item) =>
           item.category === category ? (
             <div
               key={item._id}
