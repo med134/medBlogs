@@ -2,17 +2,12 @@ import React from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import "quill/dist/quill.snow.css";
-import { FaRegCalendarAlt } from "react-icons/fa";
+import Link from "next/link";
+import SidBar from "@/app/components/SidBar";
 
-const SidBar = dynamic(() => import("@/app/components/SidBar"), {
+const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"), {
   ssr: false,
 });
-const ShareButtons = dynamic(
-  () => import("@/app/components/ShareButtons"),
-  {
-    ssr: false,
-  }
-);
 const Comments = dynamic(() => import("@/app/components/comments/comments"), {
   ssr: false,
 });
@@ -81,30 +76,48 @@ const BlogPage = async ({ params }) => {
   };
 
   return (
-    <section className="w-full grid grid-cols-6 gap-4 p-10 pt-[160px] lg:block dark:bg-dark xl:p-8 xl:gap-3 sm:p-4 xs:p-2 xl:pt-44 xs:pt-24">
-      <div className="col-span-4 flex flex-wrap justify-around dark:bg-dark">
+    <section className="w-full grid grid-cols-7 gap-12 p-10 pt-[160px] lg:block dark:bg-dark xl:p-8 xl:gap-3 sm:p-4 xs:p-2 xl:pt-44 xs:pt-24">
+      <div className="col-span-5 flex flex-wrap justify-around dark:bg-dark">
         <div className="w-full px-4 mb-1 sm:text-sm sm:mb-2 dark:text-light dark:bg-dark">
-          <div className="flex justify-start items-center dark:bg-dark">
-            <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
-            <span className="ml-2 font-semibold">
-              {FormatDate(blog?.createdAt.slice(0, 10))}
-            </span>
-          </div>
           <h1 className="text-4xl font-bold py-6 sm:text-xl text-mainColor dark:text-light xs:py-1">
             {blog.title}
           </h1>
           <span className="text-xl text-gray-600 py-3 xs:text-sm xs:py-1 dark:text-light">
             {blog.description.slice(0, 200)}...
           </span>
+          {/*   */}
+          <div className="mt-6">
+            <div className="flex justify-start py-1">
+              <div className="flex justify-start items-center dark:bg-dark">
+                <a
+                  href={`mailto:${blog?.email}`}
+                  className="text-blue-600 text-sm lowercase"
+                >
+                  {blog?.username}
+                </a>
+                <span className="ml-2 text-sm text-gray-800 font-semibold">
+                  | {FormatDate(blog?.createdAt.slice(0, 10))}
+                </span>
+              </div>
+              <Link
+                href={`/category/${blog.category}`}
+                className="uppercase text-xs text-gray-800 font-semibold rounded-sm px-2 py-1 ml-1 bg-yellow-400 hover:bg-yellow-300"
+              >
+                {blog.category}
+              </Link>
+            </div>
+            <Image
+              src={blog.image}
+              alt={blog.title}
+              className="w-full h-96 object-cover md:object-contain sm:object-contain rounded mt-2"
+              width={500}
+              height={300}
+              priority={true}
+            />
+          </div>
+
           <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
-          <Image
-            src={blog.image}
-            alt={blog.title}
-            className="w-full h-96 object-cover rounded mt-2"
-            width={500}
-            height={300}
-            priority={true}
-          />
+
           <h2 className="flex underline font-bold justify-start items-start py-6 xs:py-2 ml-2 mt-1 font-bolder">
             {blog.tags}
           </h2>
@@ -117,35 +130,7 @@ const BlogPage = async ({ params }) => {
           <Comments postSlug={blog._id} />
         </div>
       </div>
-      <div className="sm:w-full col-span-2 sm:p-6">
-        <div className="flex items-center w-full max-w-sm mx-auto gap-4 mt-24 sm:mt-4 border-2 p-3 border-mainColor dark:border-light rounded-md">
-          <Image
-            alt="author image"
-            width={200}
-            priority={false}
-            loading="lazy"
-            height={200}
-            src="https://i.ibb.co/WVDZRxF/bussiness-man.png"
-            className="w-24 h-24  object-cover rounded-full"
-          />
-          <div className="flex flex-col">
-            <span className="text-sm text-gray-700 dark:text-light">
-              Author
-            </span>
-            <span className="text-gray-600 dark:text-gray-200 font-bold uppercase">
-              {blog?.username}
-            </span>
-            <span className="text-xs text-gray-600 dark:text-light">
-              {blog?.job}
-            </span>
-            <a
-              href={`mailto:${blog?.email}`}
-              className="text-xs text-gray-500 dark:text-light hover:text-blue-600 hover:underline"
-            >
-              {blog.email}
-            </a>
-          </div>
-        </div>
+      <div className="sm:w-full col-span-2 sm:p-6 sticky">
         <SidBar slug={slug} category={blog.category} />
       </div>
     </section>

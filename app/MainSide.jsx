@@ -6,7 +6,6 @@ import { getAllCat } from "./components/FetchData";
 
 const Cat = async () => {
   const cat = await getAllCat();
-
   return (
     <div className="">
       {cat?.map(
@@ -19,7 +18,7 @@ const Cat = async () => {
               >
                 <Link
                   className="px-4 font-semibold text-gray-700 group-hover:text-mainColor group-hover:font-bold"
-                  href={`/category/${item.value}`}
+                  href={`/category/${item.label}`}
                 >
                   {item.label}
                 </Link>
