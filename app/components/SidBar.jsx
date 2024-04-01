@@ -14,7 +14,7 @@ const SidBar = async ({ slug, category }) => {
         <span className="text-lg font-bold py-3 text-gray-800 dark:text-light">
           Search...
         </span>
-        <SearchTwo className={"dark:placeholder-light"} />
+        <SearchTwo className={"dark:placeholder-light lg:border lg:border-b-mainColor"} />
         <Cat />
       </aside>
       <span className="text-[18px] text-gray-800 font-semibold mt-7 pb-4 mb-3 sm:w-full sm:mb-4 sm:text-xl sm:mt-1 dark:text-light">
@@ -24,39 +24,42 @@ const SidBar = async ({ slug, category }) => {
         </span>
       </span>
       <div className="pt-4">
-        {dev?.slice().reverse().map((item) =>
-          item.category === category ? (
-            <div
-              key={item._id}
-              className="flex justify-start items-center xl:flex-col lg:flex lg:justify-start lg:items-start"
-            >
-              <Image
-                className="object-contain w-36 h-36"
-                src={item.image}
-                alt={item.title}
-                width={200}
-                height={200}
-                priority={false}
-                loading="lazy"
-              />
+        {dev
+          ?.slice()
+          .reverse()
+          .map((item) =>
+            item.category === category ? (
+              <div
+                key={item._id}
+                className="flex justify-start items-center"
+              >
+                <Image
+                  className="object-contain w-36 h-36"
+                  src={item.image}
+                  alt={item.title}
+                  width={200}
+                  height={200}
+                  priority={false}
+                  loading="lazy"
+                />
 
-              <div className="p-2 ml-2">
-                <Link
-                  href={`/category/${item.category}`}
-                  className="uppercase tracking-wide text-sm text-mainColor dark:text-light font-semibold"
-                >
-                  {item.category}
-                </Link>
-                <Link
-                  href={`/blogs/${item.slug}`}
-                  className="block mt-1 leading-tight font-medium text-black dark:text-light hover:underline"
-                >
-                  {item.title}
-                </Link>
+                <div className="p-2 ml-2">
+                  <Link
+                    href={`/category/${item.category}`}
+                    className="uppercase tracking-wide text-sm text-mainColor dark:text-light font-semibold"
+                  >
+                    {item.category}
+                  </Link>
+                  <Link
+                    href={`/blogs/${item.slug}`}
+                    className="block mt-1 leading-tight font-medium text-black dark:text-light hover:underline"
+                  >
+                    {item.title}
+                  </Link>
+                </div>
               </div>
-            </div>
-          ) : null
-        )}
+            ) : null
+          )}
       </div>
     </div>
   );

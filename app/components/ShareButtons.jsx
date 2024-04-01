@@ -13,7 +13,7 @@ import {
 const ShareButtons = ({ url, className }) => {
   return (
     <div className="flex justify-center items-center">
-      <span className="font-semibold text-xl text-gray-800 dark:text-light">
+      <span className="font-semibold text-xl text-gray-800 dark:text-light xs:text-sm">
         Share
       </span>
       <div
@@ -148,7 +148,7 @@ const ShareButtons = ({ url, className }) => {
           <TelegramShareButton
             aria-label="Share on telegram"
             url={url}
-            className="ml-2"
+            className="ml-2 xs:hidden"
           >
             <span
               className="inline-block rounded-full px-2.5 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"

@@ -76,16 +76,15 @@ const BlogPage = async ({ params }) => {
   };
 
   return (
-    <section className="w-full grid grid-cols-7 gap-12 p-10 pt-[160px] lg:block dark:bg-dark xl:p-8 xl:gap-3 sm:p-4 xs:p-2 xl:pt-44 xs:pt-24">
+    <section className="w-full grid grid-cols-7 gap-12 p-10 pt-[160px] lg:block dark:bg-dark xl:p-8 xl:gap-3 sm:p-4 xs:p-2 xl:pt-44 xs:pt-28">
       <div className="col-span-5 flex flex-wrap justify-around dark:bg-dark">
         <div className="w-full px-4 mb-1 sm:text-sm sm:mb-2 dark:text-light dark:bg-dark">
-          <h1 className="text-4xl font-bold py-6 sm:text-xl text-mainColor dark:text-light xs:py-1">
+          <h1 className="text-4xl font-bold py-6 pt-6 sm:text-xl text-mainColor dark:text-light xs:py-1">
             {blog.title}
           </h1>
           <span className="text-xl text-gray-600 py-3 xs:text-sm xs:py-1 dark:text-light">
             {blog.description.slice(0, 200)}...
           </span>
-          {/*   */}
           <div className="mt-6">
             <div className="flex justify-start py-1">
               <div className="flex justify-start items-center dark:bg-dark">
@@ -109,15 +108,13 @@ const BlogPage = async ({ params }) => {
             <Image
               src={blog.image}
               alt={blog.title}
-              className="w-full h-96 object-cover md:object-contain sm:object-contain rounded mt-2"
+              className="w-full h-96 xs:h-auto object-cover md:object-contain sm:object-contain rounded mt-2"
               width={500}
               height={300}
               priority={true}
             />
           </div>
-
           <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
-
           <h2 className="flex underline font-bold justify-start items-start py-6 xs:py-2 ml-2 mt-1 font-bolder">
             {blog.tags}
           </h2>
