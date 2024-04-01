@@ -81,7 +81,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <GoogleAnalytic />
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body className={`${inter.className} w-[100%]`} suppressHydrationWarning={true}>
         <AuthProvider>
           <NavBar />
           {children}

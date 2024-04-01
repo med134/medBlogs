@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { SunIcon, MoonIcon } from "./Icons";
-import med from "@/public/images/logo3.png";
+import med from "@/public/images/logo-med-removebg-preview.png";
 import Link from "next/link";
 import useThemeSwitcher from "./hooks/useThemeSwitcher";
 import Image from "next/image";
@@ -70,7 +70,7 @@ const NavBar = () => {
   });
   return (
     <header
-      className={`header py-6 z-40 flex w-full items-center bg-transparent xl:px-6 ${
+      className={`header py-6 z-40 flex w-[100%] items-center bg-transparent xl:px-6 ${
         sticky
           ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
           : "absolute"
@@ -146,7 +146,7 @@ const NavBar = () => {
       </div>
 
       <div
-        className={`w-full px-24 flex justify-between items-center font-semibold xl:px-6 lg:hidden`}
+        className={`w-full px-24 flex justify-between items-center font-semibold xl:px-6`}
       >
         <Link
           href="/"
@@ -155,13 +155,13 @@ const NavBar = () => {
           <Image
             src={med}
             alt="website-logo"
-            className="object-cover w-14 h-14"
+            className="object-cover w-16 h-16"
             width={100}
             height={100}
             priority={false}
           />
           <span
-            className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light`}
+            className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light lg:hidden`}
           >
             medCode
           </span>
@@ -229,8 +229,8 @@ const NavBar = () => {
               target="_blank"
             />
           )}
-        </nav>
         {session.status === "authenticated" && <DynamicProfile />}
+        </nav>
       </div>
       <button
         name="theme-button"

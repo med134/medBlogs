@@ -58,7 +58,7 @@ const HomePage = ({ child, side }) => {
             </span>
             <SearchBar
               className={
-                "border border-t-mainColor lg:w-auto border-l-mainColor border-r-mainColor rounded-md lg:border-l-mainColor lg:border-r-mainColor lg:border-t-mainColor lg:border-b-mainColor xs:hidden sm:hidden"
+                "border border-t-mainColor lg:w-auto border-l-mainColor border-r-mainColor rounded-md lg:border-l-mainColor lg:border-r-mainColor lg:border-b-mainColor xs:hidden sm:hidden"
               }
             />
             {side}
