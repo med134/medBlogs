@@ -95,13 +95,13 @@ const BlogPage = async ({ params }) => {
                 >
                   {blog?.username}
                 </a>
-                <span className="ml-2 text-sm text-gray-800 font-semibold">
+                <span className="ml-2 text-sm text-gray-800 font-semibold dark:text-light">
                   | {FormatDate(blog?.createdAt.slice(0, 10))}
                 </span>
               </div>
               <Link
                 href={`/category/${blog.category}`}
-                className="uppercase text-xs text-gray-800 font-semibold rounded-sm px-2 py-1 ml-1 bg-yellow-400 hover:bg-yellow-300"
+                className="uppercase text-xs text-gray-800 font-semibold rounded-sm px-2 py-1 ml-2 bg-yellow-400 hover:bg-yellow-300"
               >
                 {blog.category}
               </Link>

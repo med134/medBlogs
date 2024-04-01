@@ -35,10 +35,10 @@ const Comments = ({ postSlug }) => {
   };
   return (
     <div className="w-full bg-white rounded-lg border p-2 dark:bg-dark">
-      <span className="font-bold text-xl py-2 dark:text-light">Comments</span>
+      <span className="font-bold text-xl py-6 dark:text-light">Comments</span>
       {session.status === "authenticated" ? (
         <form
-          className={`${styles.write} dark:bg-dark dark:text-light`}
+          className={`${styles.write} dark:bg-dark dark:text-light p-2`}
           onSubmit={handleSubmit}
         >
           <Image
@@ -53,7 +53,7 @@ const Comments = ({ postSlug }) => {
           <input
             placeholder="write a comment..."
             required
-            className="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 sm:h-12 py-2 px-4 sm:px-1 font-medium placeholder-gray-700 focus:outline-none focus:bg-white dark:bg-dark dark:text-light"
+            className="bg-gray-100 rounded border border-gray-400  leading-normal resize-none w-full h-20 sm:h-12 py-2 px-4 sm:px-1 font-medium placeholder-gray-700 focus:outline-none focus:bg-white dark:bg-dark dark:text-light dark:placeholder-light"
             onChange={(e) => setComment(e.target.value)}
           />
           <button className="text-xl sm:text-sm bg-mainColor text-light px-4 py-4 rounded-lg font-semibold p-4">
