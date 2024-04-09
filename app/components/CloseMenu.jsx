@@ -44,7 +44,7 @@ const CloseMenu = ({ handleClick, session }) => {
           </h2>
         </div>
       </div>
-      <SearchTwo className={"text-light"} />
+      <SearchTwo className={"text-light xs:placeholder:text-light"} />
       <div className="line bg-gray-600 w-full h-1"></div>
       <CustomMobileLink
         href="/"

@@ -14,7 +14,7 @@ const SidBar = async ({ slug, category }) => {
         <span className="text-lg font-bold py-3 text-gray-800 dark:text-light">
           Search...
         </span>
-        <SearchTwo className={"dark:placeholder-light lg:border lg:border-b-mainColor"} />
+        <SearchTwo className={"xs:border xs:focus:border-b-slate-700"} />
         <Cat />
       </aside>
       <span className="text-[18px] text-gray-800 font-semibold mt-7 pb-4 mb-3 sm:w-full sm:mb-4 sm:text-xl sm:mt-1 dark:text-light">

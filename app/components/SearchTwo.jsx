@@ -91,7 +91,7 @@ const SearchTwo = ({ className }) => {
           className={`${className} inline-flex h-10 items-center border border-transparent focus:border-b-2 border-b-mainColor dark:border-b-light gap-2 text-white text-lg font-semibold py-1 px-4 xs:px-2 xs:border xs:border-transparent xs:border-b-white lg:bg-transparent`}
         >
           <svg
-            className="text-mainColor dark:text-light dark:xs:text-dark xs:text-light h-5 w-5 p-0 fill-current hover:text-gray-800"
+            className="text-mainColor dark:text-light dark:xs:text-dark xs:text-dark h-5 w-5 p-0 fill-current hover:text-gray-800"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             version="1.1"
