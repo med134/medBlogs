@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Cat from "./Cat";
 import { getArticles } from "./FetchData";
-import MainSide from "@/app/MainSide";
 import SearchTwo from "./SearchTwo";
 
 const SidBar = async ({ slug, category }) => {
@@ -14,7 +13,7 @@ const SidBar = async ({ slug, category }) => {
         <span className="text-lg font-bold py-3 text-gray-800 dark:text-light">
           Search...
         </span>
-        <SearchTwo className={"xs:border xs:focus:border-b-slate-700"} />
+        <SearchTwo className={"xs:border outline-none focus:outline-none ring-0"} />
         <Cat />
       </aside>
       <span className="text-[18px] text-gray-800 font-semibold mt-7 pb-4 mb-3 sm:w-full sm:mb-4 sm:text-xl sm:mt-1 dark:text-light">

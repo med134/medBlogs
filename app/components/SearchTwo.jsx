@@ -80,7 +80,7 @@ const SearchTwo = ({ className }) => {
           aria-labelledby="search-input"
           value={query}
           onChange={(e) => onChangeHandle(e.target.value)}
-          className={`${className} h-10 w-full border border-b-mainColor bg-transparent text-dark placeholder-black dark:placeholder-dark  dark:border-b-light border-transparent text-sm lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium  outline-none focus:border-2 lg:text-light xs:w-48`}
+          className={`${className} h-10 w-full border border-b-mainColor bg-transparent text-dark placeholder-dark dark:placeholder-dark  dark:border-b-light border-transparent text-sm lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium  outline-none focus:border-2 lg:text-light xs:w-48`}
           placeholder="Search for Articles"
         />
         <button
