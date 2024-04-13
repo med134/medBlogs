@@ -122,7 +122,7 @@ function CodeEditor({ code2 }) {
               height="500px"
               width="100%"
               value={code}
-              mode="jsx"
+              mode="html"
               theme="monokai"
               fontSize="16px"
               className="xs:text-xs sm:text-sm"

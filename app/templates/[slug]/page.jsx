@@ -7,6 +7,7 @@ import PageNotFound from "@/app/PageNotFound";
 import CodeEditor from "@/app/components/CodeEditor";
 import BlogAction from "@/app/components/BlogAction";
 import ShareButtons from "@/app/components/ShareButtons";
+import FilterTemplates from "@/app/components/FilterTemplates";
 
 async function getData(slug) {
   const res = await fetch(`https://www.medcode.dev/api/posts/${slug}`, {
@@ -144,41 +145,44 @@ const TemplateId = async ({ params }) => {
             Related components:
           </span>
           <div className="grid grid-cols-3 gap-8 px-8 pt-10 p-8 md:block xs:px-2 xs:p-2">
-            {templates?.map((item, index) =>
-              item.slug != slug && index < 6 ? (
-                <div
-                  key={item._id}
-                  className="w-auto rounded-md overflow-hidden shadow-md hover:shadow-lg xs:mb-4 dark:shadow-light"
-                >
-                  <div className="relative">
-                    <Image
-                      className="w-full h-44"
-                      src={item.image}
-                      alt={item.title}
-                      width={400}
-                      height={400}
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <Link
-                      href={`/templates/${item.slug}`}
-                      className="text-xl font-semibold hover:underline mb-2 text-mainColor dark:text-light"
-                    >
-                      <h2>{item.title}</h2>
-                    </Link>
-                    <p className="text-gray-600 text-sm mb-4 dark:text-light">
-                      {item.description.slice(0, 70)}...
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-light px-2 py-1 bg-cyan-600 rounded-lg">
-                        {item.category}
-                      </span>
+            {templates
+              ?.slice()
+              .reverse()
+              ?.map((item, index) =>
+                item.slug != slug && index < 6 ? (
+                  <div
+                    key={item._id}
+                    className="w-auto rounded-md overflow-hidden shadow-md hover:shadow-lg xs:mb-4 dark:shadow-light"
+                  >
+                    <div className="relative">
+                      <Image
+                        className="w-full h-44"
+                        src={item.image}
+                        alt={item.title}
+                        width={400}
+                        height={400}
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <Link
+                        href={`/templates/${item.slug}`}
+                        className="text-xl font-semibold hover:underline mb-2 text-mainColor dark:text-light"
+                      >
+                        <h2>{item.title}</h2>
+                      </Link>
+                      <p className="text-gray-600 text-sm mb-4 dark:text-light">
+                        {item.description.slice(0, 70)}...
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-light px-2 py-1 bg-cyan-600 rounded-lg">
+                          {item.category}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ) : null
-            )}
+                ) : null
+              )}
           </div>
         </div>
       </div>
