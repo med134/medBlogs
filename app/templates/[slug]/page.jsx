@@ -101,9 +101,6 @@ const TemplateId = async ({ params }) => {
                 className="w-16 h-16  object-cover rounded-full"
               />
               <div className="flex flex-col w-auto">
-                <span className="text-sm text-gray-700 dark:text-light">
-                  Author
-                </span>
                 <span className="text-gray-600 dark:text-gray-200 font-bold uppercase text-sm">
                   {data?.username}
                 </span>
@@ -119,7 +116,7 @@ const TemplateId = async ({ params }) => {
               </div>
             </div>
           </div>
-          <div className="blog w-1/2">
+          <div className="blog w-1/2 lg:w-full">
             <BlogAction />
           </div>
         </div>

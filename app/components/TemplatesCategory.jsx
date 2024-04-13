@@ -14,7 +14,7 @@ const TemplatesCategory = ({ data }) => {
   return (
     <>
       <div className="filter templates">
-        <div className="container mx-auto px-10">
+        <div className="container mx-auto px-10 sm:px-2">
           <div className="p-6">
             <span className="text-lg font-semibold mb-4">Categories Cloud</span>
 

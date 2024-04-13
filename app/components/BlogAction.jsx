@@ -5,7 +5,7 @@ const BlogAction = () => {
   return (
     <section className="relative z-10 overflow-hidden bg-cyan-600 py-6 px-3 mt-40 rounded-lg lg:mt-6 xs:w-full">
       <div className="container">
-        <div className="-mx-4 flex flex-wrap items-center xs:block xs:text-center">
+        <div className="flex flex-wrap items-center xs:text-center">
           <div className="w-full px-4 lg:w-1/2 md:w-full">
             <div className="text-center lg:text-left ">
               <div className="mb-10 lg:mb-0">
@@ -19,7 +19,7 @@ const BlogAction = () => {
           <div className="w-full px-4 lg:w-1/2 md:w-full">
             <div className="text-center">
               <Link
-                className="font-semibold rounded-lg mx-auto inline-flex items-center justify-center bg-white py-2 px-9 hover:bg-opacity-90"
+                className="font-semibold xs:text-sm rounded-lg mx-auto inline-flex items-center justify-center bg-white py-2 px-9 hover:bg-opacity-90"
                 href="/projects"
               >
                 See Full Projects

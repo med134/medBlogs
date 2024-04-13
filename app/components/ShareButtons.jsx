@@ -13,7 +13,7 @@ import {
 const ShareButtons = ({ url, className }) => {
   return (
     <div className="flex justify-center items-center">
-      <span className="font-semibold text-xl text-gray-800 dark:text-light xs:text-sm">
+      <span className="font-semibold text-xl text-gray-800 dark:text-light xs:text-sm xs:hidden">
         Share
       </span>
       <div

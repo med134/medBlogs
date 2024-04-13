@@ -4,7 +4,9 @@ import Image from "next/image";
 import PageNotFound from "@/app/PageNotFound";
 import SearchBar from "../components/SearchBar";
 import dynamic from "next/dynamic";
-const TemplatesPreview = dynamic(()=>import("../components/TemplatesCategory"));
+const TemplatesPreview = dynamic(() =>
+  import("../components/TemplatesCategory")
+);
 
 async function getData() {
   const res = await fetch(`https://www.medcode.dev/api/posts`, {
@@ -81,8 +83,10 @@ const page = async () => {
         <div className="grid grid-cols-2 p-16 mx-auto overflow-x-hidden xs:text-left xs:p-4 lg:block lg:text-center xl:mt-5 sm:p-8">
           <div className="lg:w-full pr-2 py-14 md:py-0 xs:p-2 lg:block lg:justify-center lg:items-center xs:justify-start xs:items-start">
             <h1 className="text-4xl font-bold text-mainColor xl:text-2xl lg:text-4xl xs:text-2xl xs:text-left dark:text-cyan-600">
-              <span className="block w-full">Free Templates & components </span>
-              with free code Sources
+              <span className="block w-full lg:text-5xl xl:text-4xl xs:text-3xl">
+                Free Templates & components{" "}
+              </span>
+              <p className="xl:text-4xl lg:text-3xl lg:mt-1 xs:text-3xl">with free code Sources</p>
             </h1>
             <p className="py-2 text-lg text-gray-500 md:py-6 xs:py-2 2xl:pr-5 xs:text-sm xs:pr-2 dark:text-light xs:text-left">
               Open source UI & UX components and templates to bootstrap your new
@@ -105,7 +109,7 @@ const page = async () => {
             />
           </div>
         </div>
-        <div className="px-16 dark:text-light xs:px-8 xs:p-2">
+        <div className="px-16 dark:text-light xs:px-8 xs:p-2 md:px-8">
           <h2 className="text-3xl font-semibold mt-0 sm:text-2xl">
             Latest Templates & Components
           </h2>

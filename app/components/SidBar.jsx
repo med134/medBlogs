@@ -5,7 +5,7 @@ import Cat from "./Cat";
 import { getArticles } from "./FetchData";
 import SearchTwo from "./SearchTwo";
 
-const SidBar = async ({ slug, category }) => {
+const SidBar = async ({category }) => {
   const dev = await getArticles();
   return (
     <div className="mt-3">
