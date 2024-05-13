@@ -11,9 +11,6 @@ const axiosClient = axios.create({
 const getAllArticles = () => axiosClient.get("/blog");
 // fetch Single product
 const getBlogBySlug = async (slug) => {
-  /*  const headers = {
-    Authorization: `Bearer ${apiKey}`,
-  }; */
   const response = await fetch(`${apiUrl}/blog/${slug}`);
   const data = await response.json();
   console.log("single post", data);

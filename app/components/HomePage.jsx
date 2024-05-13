@@ -17,9 +17,9 @@ const HomePage = ({ child, side }) => {
     setLoading(true)
     AxiosFetch.getAllArticles().then((res) => {
       setPosts(res.data);
-      setLoading(false)
       console.log("come from mongo", res.data);
     });
+    setLoading(false)
   };
   useEffect(() => {
     const sidebarEl = document
