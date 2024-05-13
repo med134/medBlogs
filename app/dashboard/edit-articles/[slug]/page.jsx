@@ -4,7 +4,7 @@ import PageNotFound from "@/app/PageNotFound";
 import EditArticle from "@/app/components/EditArticle";
 
 async function getData(slug) {
-  const res = await fetch(`https://medcode.dev/api/articles/${slug}`, {
+  const res = await fetch(`https://medcode.dev/api/blog/${slug}`, {
     cache: "no-store",
   });
   if (!res.ok) {

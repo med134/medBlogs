@@ -10,7 +10,6 @@ import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 import hljs from "highlight.js";
 import SliderSkelton from "./SliderSkelton";
-import { revalidatePath } from "next/cache";
 
 const AddNewArticle = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -21,7 +20,7 @@ const AddNewArticle = () => {
     const confirmed = confirm("Are you sure you want to delete...?");
     if (confirmed) {
       try {
-        await fetch(`/api/articles/${id}`, {
+        await fetch(`/api/blog/${id}`, {
           method: "DELETE",
         });
         mutate();
@@ -109,7 +108,7 @@ const AddNewArticle = () => {
     data: articles,
     isLoading,
     mutate,
-  } = useSWR(`/api/articles?username=${session?.data?.user?.name}`, fetcher);
+  } = useSWR(`/api/blog?username=${session?.data?.user?.name}`, fetcher);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -123,7 +122,7 @@ const AddNewArticle = () => {
     const content = quill.root.innerHTML;
 
     try {
-      await fetch("/api/articles", {
+      await fetch("/api/blog", {
         method: "POST",
         body: JSON.stringify({
           title,
@@ -154,7 +153,7 @@ const AddNewArticle = () => {
           Start to Create Your Article
         </h1>
       </div>
-      <div className="p-8 grid grid-cols-3 gap-4 md:inline-block sm:items-center">
+      <div className="sm:items-center p-20">
         <form
           className="p-4 text-left col-span-2 text-gray-700"
           onSubmit={handleSubmit}
@@ -230,14 +229,14 @@ const AddNewArticle = () => {
             Post Now
           </button>
         </form>
-        <div className="col-span-1">
+        <div className="p-6 grid grid-cols-3 gap-4">
           {isLoading ? (
             <SliderSkelton />
           ) : (
             articles?.map((post) => (
               <div
                 key={post._id}
-                className="mb-4 max-w-sm rounded overflow-hidden shadow-lg mt-4"
+                className="mb-4 first-letter:max-w-sm rounded overflow-hidden shadow-lg mt-4"
               >
                 <Image
                   width={300}

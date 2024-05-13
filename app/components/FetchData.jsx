@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 
-
 export async function getStack() {
   const res = await fetch(
     `https://api.stackexchange.com/2.3/questions?todate=1703894400&site=stackoverflow&sort=votes&order=desc`,
@@ -29,8 +28,7 @@ export async function getArticles() {
   if (!res.ok) {
     throw new Error("Failed");
   }
-  const posts = await res.json();
-  return posts;
+  return res.json();
 }
 export async function getArticle() {
   const res = await fetch(
@@ -54,4 +52,17 @@ export async function getAllCat() {
   }
 
   return res.json();
+}
+export async function getNextCard() {
+  const res = await fetch("http://localhost:3000/api/blog", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+
+  const data = res.json();
+  console.log(data)
+  return data;
 }

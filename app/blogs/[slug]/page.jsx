@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import "quill/dist/quill.snow.css";
 import Link from "next/link";
 import SidBar from "@/app/components/SidBar";
+import AxiosFetch from "@/app/utils/AxiosFetch";
 
 const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"), {
   ssr: false,
@@ -21,6 +22,7 @@ async function getData(slug) {
   }
   return res.json();
 }
+
 export async function generateMetadata({ params }) {
   const post = await getData(params.slug);
   const publishedAt = new Date(post.createdAt).toISOString();

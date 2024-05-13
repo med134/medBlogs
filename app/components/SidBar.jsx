@@ -5,7 +5,7 @@ import Cat from "./Cat";
 import { getArticles } from "./FetchData";
 import SearchTwo from "./SearchTwo";
 
-const SidBar = async ({category }) => {
+const SidBar = async ({ category }) => {
   const dev = await getArticles();
   return (
     <div className="mt-3">
@@ -13,7 +13,9 @@ const SidBar = async ({category }) => {
         <span className="text-lg font-bold py-3 text-gray-800 dark:text-light">
           Search...
         </span>
-        <SearchTwo className={"xs:border outline-none focus:outline-none ring-0"} />
+        <SearchTwo
+          className={"xs:border outline-none focus:outline-none ring-0"}
+        />
         <Cat />
       </aside>
       <span className="text-[18px] text-gray-800 font-semibold mt-7 pb-4 mb-3 sm:w-full sm:mb-4 sm:text-xl sm:mt-1 dark:text-light">
@@ -23,15 +25,10 @@ const SidBar = async ({category }) => {
         </span>
       </span>
       <div className="pt-4">
-        {dev
-          ?.slice()
-          .reverse()
-          .map((item) =>
-            item.category === category ? (
-              <div
-                key={item._id}
-                className="flex justify-start items-center"
-              >
+        {dev?.map(
+          (item, index) =>
+            index < 6 && (
+              <div key={item._id} className="flex justify-start items-center">
                 <Image
                   className="object-contain w-36 h-36"
                   src={item.image}
@@ -57,8 +54,8 @@ const SidBar = async ({category }) => {
                   </Link>
                 </div>
               </div>
-            ) : null
-          )}
+            )
+        )}
       </div>
     </div>
   );

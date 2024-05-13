@@ -1,8 +1,8 @@
+"use server";
 import React from "react";
 import Link from "next/link";
 import { AiOutlineRight } from "react-icons/ai";
 import { getAllCat } from "./components/FetchData";
-
 
 const Cat = async () => {
   const cat = await getAllCat();

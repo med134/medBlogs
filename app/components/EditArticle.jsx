@@ -110,7 +110,7 @@ export default function EditArticle({
 
     try {
       setLoading(true);
-      await fetch(`https://www.medcode.dev/api/articles/${slug}`, {
+      await fetch(`https://www.medcode.dev/api/blog/${slug}`, {
         method: "PUT",
         body: JSON.stringify({
           title,
