@@ -12,9 +12,12 @@ const HomePage = ({ child, side }) => {
   const [sidebarWidth, setSidebarWidth] = useState("");
   const [sidebarTop, setSidebarTop] = useState("");
   const [posts, setPosts] = useState([]);
+  const [loading,setLoading]=useState(false);
   const getListArticles = () => {
+    setLoading(true)
     AxiosFetch.getAllArticles().then((res) => {
       setPosts(res.data);
+      setLoading(false)
       console.log("come from mongo", res.data);
     });
   };
@@ -39,7 +42,7 @@ const HomePage = ({ child, side }) => {
     const sidebarEl = document.querySelector(".sidebar");
     const scrollTop = window.scrollY;
     sidebarEl.classList.toggle("sticky", scrollTop > sidebarTop);
-    if (scrollTop >= sidebarTop - 10 && scrollTop <= 2600) {
+    if (scrollTop >= sidebarTop - 10 && scrollTop <= 2700) {
       sidebarEl.classList.add("is-sticky");
     } else {
       sidebarEl.classList.remove("is-sticky");
@@ -54,7 +57,7 @@ const HomePage = ({ child, side }) => {
       </span>
       <div className="grid grid-cols-6 p-4 xl:grid-cols-5 gap-6 lg:block">
         <div className="col-span-4 xl:col-span-3">
-          {child} <CardStrapi posts={posts} />
+          {child} <CardStrapi posts={posts} loading={loading} />
         </div>
         <div className="col-span-2 xl:col-span-2 lg:grow-1">
           <div

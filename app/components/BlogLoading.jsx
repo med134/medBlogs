@@ -2,7 +2,7 @@ import React from "react";
 
 const BlogLoading = () => {
   return (
-    <div className="p-4 flex justify-between shadow-lg rounded-lg shadow-gray-500 items-center space-y-8 animate-pulse  md:space-x-1 md:space-y-2 md:flex-wrap-reverse md:items-start md:mb-6">
+    <div className="p-4 flex mt-3 justify-between shadow-lg rounded-lg shadow-gray-500 items-center space-y-8 animate-pulse  md:space-x-1 md:space-y-2 md:flex-wrap-reverse md:items-start md:mb-6">
       <div className="w-full md:mt-3">
         <div className="h-4 py-3 bg-gray-500 rounded-full dark:bg-gray-700 w-44 mb-4" />
         <div className="h-3 bg-gray-500 rounded-full dark:bg-gray-700 mb-2.5 w-80 xl:w-64 lg:w-28" />
