@@ -58,7 +58,6 @@ export async function generateMetadata({ params }) {
 const BlogPage = async ({ params }) => {
   const { slug } = params;
   const post = await AxiosFetch.getBlogBySlug(slug);
-  console.log("my article",post)
 
  const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
