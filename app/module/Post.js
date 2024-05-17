@@ -27,11 +27,11 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
-    code: {
+    job: {
       type: String,
       require: false,
     },
-    job: {
+    code: {
       type: String,
       require: false,
     },
