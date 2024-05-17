@@ -5,6 +5,7 @@ import TransitionEffect from "./components/TransitionEffect";
 import Card from "./ServerCard";
 import Cat from "./MainSide";
 import dynamic from "next/dynamic";
+import CardStrapi from "./StrapiArticle";
 
 const Easy = dynamic(() => import("./components/EsayTemplates"), {
   ssr: false,
@@ -18,7 +19,7 @@ export default function Home() {
     <>
       <TransitionEffect />
       <FirstView />
-      <HomePage child={<Card />} side={<Cat />} />
+      <HomePage child={<Card />} side={<Cat />} card={<CardStrapi/>} />
       <Easy />
       <Dev />
     </>
