@@ -3,26 +3,15 @@ import connect from "@/app/utils/ConnectMongo";
 import { NextResponse } from "next/server";
 
 export const GET = async (request) => {
-  const url = new URL(request.url);
-  const username = url.searchParams.get("username");
-  const category = url.searchParams.get("category");
-
   try {
     await connect();
-    const query = {};
-
-    if (username) {
-      query.username = username;
-    }
-    if (category && category.toLowerCase() !== "all") {
-      query.category = category;
-    }
-    const blogs = await Blog.find(query);
+    const blogs = await Blog.find();
     return new NextResponse(JSON.stringify(blogs), { status: 200 });
   } catch (error) {
     return new NextResponse("error database", { status: 500 });
   }
 };
+
 export const POST = async (request) => {
   const body = await request.json();
   const newBlog = new Blog(body);

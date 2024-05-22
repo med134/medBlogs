@@ -15,16 +15,10 @@ const Comments = dynamic(() => import("@/app/components/comments/comments"), {
 });
 export async function generateMetadata({ params }) {
   const post = await AxiosFetch.getBlogBySlug(params.slug);
-  const publishedAt = new Date(post.createdAt).toISOString();
-  const modifiedAt = new Date(
-    post.updatedAt || blog.createdAt
-  ).toISOString();
   return {
     title: post?.title,
     description: post?.description,
     keywords: post?.tags,
-     publishedTime: publishedAt,
-    modifiedTime: modifiedAt, 
     robots: {
       index: true,
       follow: true,
@@ -43,8 +37,6 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: post?.title,
       description: post?.description,
-       publishedTime: publishedAt,
-      modifiedTime: modifiedAt,
       images: [
         {
           url: post?.image,
@@ -58,8 +50,9 @@ export async function generateMetadata({ params }) {
 const BlogPage = async ({ params }) => {
   const { slug } = params;
   const post = await AxiosFetch.getBlogBySlug(slug);
+  console.log("one post",post)
 
- const FormatDate = (dateString) => {
+  const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(
       "en-US",
@@ -67,16 +60,16 @@ const BlogPage = async ({ params }) => {
     );
 
     return formattedDate;
-  }; 
+  };
   return (
     <section className="w-full grid grid-cols-7 gap-12 p-10 pt-[160px] lg:block dark:bg-dark xl:p-8 xl:gap-3 sm:p-4 xs:p-2 xl:pt-44 xs:pt-28">
       <div className="flex col-span-5 flex-wrap justify-around dark:bg-dark">
         <div className="w-full px-4 mb-1 sm:text-sm sm:mb-2 dark:text-light dark:bg-dark">
           <h1 className="text-4xl font-bold py-6 pt-6 sm:text-xl text-mainColor dark:text-light xs:py-1">
-            {post.title}
+            {post?.title}
           </h1>
           <p className="text-xl text-gray-600 py-3 xs:text-sm xs:py-1 dark:text-light">
-            {post.description}
+            {post?.description}
           </p>
           <div className="flex justify-start py-1">
             <div className="flex justify-start items-center dark:bg-dark">
@@ -84,17 +77,17 @@ const BlogPage = async ({ params }) => {
                 href={`mailto:${post?.email}`}
                 className="text-blue-600 text-sm lowercase"
               >
-                 {post?.username}
+                {post?.username}
               </a>
               <span className="ml-2 text-sm text-gray-800 font-semibold dark:text-light">
                 | {FormatDate(post?.createdAt.slice(0, 10))}
               </span>
             </div>
             <Link
-              href={`/category/${post.category}`}
+              href={`/category/${post?.category}`}
               className="uppercase text-xs text-gray-800 font-semibold rounded-sm px-2 py-1 ml-2 bg-yellow-400 hover:bg-yellow-300"
             >
-              {post.category}
+              {post?.category}
             </Link>
           </div>
           <Image

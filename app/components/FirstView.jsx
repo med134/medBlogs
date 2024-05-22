@@ -42,7 +42,7 @@ const FirstView = async () => {
       bg-no-repeat
       transition-[background-size]
       duration-500
-      hover:bg-[length:100%_3px]
+      hover:bg-[length:100%_3px] text-mainColor
       group-hover:bg-[length:100%_10px]
       dark:from-red-800 dark:to-purple-900 dark:text-light xs:text-2xl"
                   >

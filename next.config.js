@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
-  turbo: { enabled: true },
   poweredByHeader: false,
   images: {
     remotePatterns: [
