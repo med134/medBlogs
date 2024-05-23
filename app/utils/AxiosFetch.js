@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 const { default: axios } = require("axios");
 
-const apiUrl = "http://localhost:3000/api";
+const apiUrl = "https://www.medcode.dev/api";
 
 // api tokens options
 const axiosClient = axios.create({
@@ -11,7 +11,7 @@ const axiosClient = axios.create({
 const getBlog = async () => axiosClient.get(`/blog`);
 // fetch Single product
 const getBlogBySlug = async (slug) => {
-  const response = await fetch(`http://localhost:3000/api/blog/${slug}`);
+  const response = await fetch(`https://www.medcode.dev/api/blog/${slug}`);
   const data = await response.json();
   console.log("single post", data);
   return data;

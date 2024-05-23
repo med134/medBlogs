@@ -46,5 +46,5 @@ const blogSchema = new Schema(
   { timestamps: true }
 );
 const Blog =
-  mongoose.models.blogs || mongoose.model("blogs", blogSchema);
+  mongoose.models.seconde || mongoose.model("seconde", blogSchema);
 export default Blog;
