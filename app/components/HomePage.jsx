@@ -4,23 +4,12 @@ import { AiTwotoneSound } from "react-icons/ai";
 import "../globals.css";
 import CategoryCard from "./CategoryCard";
 import dynamic from "next/dynamic";
-import AxiosFetch from "../utils/AxiosFetch";
-import CardStrapi from "../StrapiArticle";
 const SearchBar = dynamic(() => import("./SearchTwo"));
 
 const HomePage = ({ child, side }) => {
   const [sidebarWidth, setSidebarWidth] = useState("");
   const [sidebarTop, setSidebarTop] = useState("");
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const getBlog = () => {
-    setLoading(true);
-    AxiosFetch.getBlog().then((res) => {
-      console.log("my blog", res.data);
-      setPosts(res.data);
-      setLoading(false);
-    });
-  };
+
   useEffect(() => {
     const sidebarEl = document
       .querySelector(".sidebar")
@@ -58,7 +47,6 @@ const HomePage = ({ child, side }) => {
       <div className="grid grid-cols-6 p-4 xl:grid-cols-5 gap-6 lg:block">
         <div className="block col-span-4 xl:col-span-3">
           {child}
-          <CardStrapi posts={posts} loading={loading} />{" "}
         </div>
         <div className="col-span-2 xl:col-span-2 lg:grow-1">
           <div

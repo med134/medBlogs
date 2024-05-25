@@ -20,7 +20,7 @@ const AddNewArticle = () => {
     const confirmed = confirm("Are you sure you want to delete...?");
     if (confirmed) {
       try {
-        await fetch(`/api/blog/${id}`, {
+        await fetch(`/api/articles/${id}`, {
           method: "DELETE",
         });
         mutate();
@@ -108,7 +108,7 @@ const AddNewArticle = () => {
     data: articles,
     isLoading,
     mutate,
-  } = useSWR(`/api/blog?username=${session?.data?.user?.name}`, fetcher);
+  } = useSWR(`/api/articles?username=${session?.data?.user?.name}`, fetcher);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -122,7 +122,7 @@ const AddNewArticle = () => {
     const content = quill.root.innerHTML;
 
     try {
-      await fetch("/api/blog", {
+      await fetch("/api/articles", {
         method: "POST",
         body: JSON.stringify({
           title,

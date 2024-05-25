@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 const { default: axios } = require("axios");
 
-const apiUrl = "https://www.medcode.dev/api";
+const apiUrl = "http://localhost:3000/api";
 
 // api tokens options
 const axiosClient = axios.create({
