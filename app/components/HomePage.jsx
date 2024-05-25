@@ -16,7 +16,6 @@ const HomePage = ({ child, side }) => {
       .getBoundingClientRect();
     setSidebarWidth(sidebarEl.width);
     setSidebarTop(sidebarEl.top);
-    getBlog();
   }, []);
 
   useEffect(() => {
