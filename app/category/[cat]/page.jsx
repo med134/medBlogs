@@ -106,7 +106,7 @@ const Card = async ({ params }) => {
             >
               {item.image && (
                 <Image
-                  src={item.image}
+                  src={item.image.trimEnd()}
                   alt={item.label}
                   loading="lazy"
                   width={300}
@@ -133,7 +133,7 @@ const Card = async ({ params }) => {
                 width={500}
                 height={500}
                 className="object-cover w-full rounded h-44 dark:bg-gray-500 md:object-fill"
-                src={item.image}
+                src={item.image.trimEnd()}
                 alt={item.title}
                 loading="lazy"
               />

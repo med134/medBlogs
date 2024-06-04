@@ -6,10 +6,10 @@ import Link from "next/link";
 import SidBar from "@/app/components/SidBar";
 
 const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"), {
-  ssr: false,
+  suspense: true,
 });
 const Comments = dynamic(() => import("@/app/components/comments/comments"), {
-  ssr: false,
+  suspense: true,
 });
 
 async function getData(slug) {

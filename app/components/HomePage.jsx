@@ -30,7 +30,7 @@ const HomePage = ({ child, side }) => {
     const sidebarEl = document.querySelector(".sidebar");
     const scrollTop = window.scrollY;
     sidebarEl.classList.toggle("sticky", scrollTop > sidebarTop);
-    if (scrollTop >= sidebarTop - 10 && scrollTop <= 2700) {
+    if (scrollTop >= sidebarTop - 10 && scrollTop <= 2400) {
       sidebarEl.classList.add("is-sticky");
     } else {
       sidebarEl.classList.remove("is-sticky");

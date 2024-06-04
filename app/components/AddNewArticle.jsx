@@ -197,7 +197,7 @@ const AddNewArticle = () => {
             >
               <option value="">Select category</option>
               <option value="react">React.js</option>
-              <option value="nextjs">Next.js</option>
+              <option value="next.js">Next.js</option>
               <option value="career">Career</option>
               <option value="solution">Solution</option>
               <option value="productivity">Productivity</option>
