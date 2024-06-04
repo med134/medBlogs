@@ -1,9 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    reactCompiler: true,
-    serverActions: true,
-  },
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
   poweredByHeader: false,
