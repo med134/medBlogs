@@ -12,7 +12,6 @@
     "@next/bundle-analyzer": "^14.1.4",
     "ace-builds": "^1.32.7",
     "axios": "^1.6.8",
-    "babel-plugin-react-compiler": "^0.0.0-experimental-938cd9a-20240601",
     "bcryptjs": "^2.4.3",
     "classnames": "^2.3.2",
     "cloudinary": "^2.2.0",
