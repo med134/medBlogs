@@ -11,16 +11,16 @@ import { useSession } from "next-auth/react";
 import { FiX } from "react-icons/fi";
 import { limelight } from "./Fonts";
 const DynamicMega = dynamic(() => import("./MegaMenu"), {
-  ssr: false,
+  suspense: true,
 });
 const DynamicProfile = dynamic(() => import("./ProfileDown"), {
-  ssr: false,
+  suspense: true,
 });
 const CloseMenu = dynamic(() => import("./CloseMenu"), {
-  ssr: false,
+  suspense: true,
 });
 const SocialLinks = dynamic(() => import("./LinkNavBarSocialMedia"), {
-  ssr: false,
+  suspense: true,
 });
 
 const CustomLink = ({ href, title, className = "" }) => {
@@ -47,6 +47,7 @@ const NavBar = () => {
 
   const handleClick = () => {
     setIsOpen(!isOpen);
+    console.log("is open")
   };
   const [sticky, setSticky] = useState(false);
   const [dropdown, setDropDown] = useState(false);
@@ -70,7 +71,7 @@ const NavBar = () => {
   });
   return (
     <header
-      className={`header py-6 z-40 flex w-[100%] items-center bg-transparent xl:px-6 ${
+      className={`header py-6 z-40 flex max-w-full items-center bg-transparent xl:px-6 ${
         sticky
           ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
           : "absolute"
@@ -252,11 +253,11 @@ const NavBar = () => {
       </button>
       {isOpen ? (
         <div
-          className="min-w-[60vw] sm:min-w-[70vw] sm:h-min flex flex-col justify-between z-30 items-center fixed top-[50%] sm:top-[42%] xs:top-[45%] left-2/4 -translate-x-1/2 -translate-y-1/2
+          className="min-w-[60vw] fixed xs:absolute xs:top-80 sm:min-w-[70vw] sm:h-min flex flex-col justify-between z-9999 items-center top-[50%] sm:top-[20%] left-2/4 -translate-x-1/2 -translate-y-1/2
     bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
     "
         >
-          {/* close menu */}
+          {/* nav div */}
           <CloseMenu handleClick={handleClick} session={session} />
           {session.status === "authenticated" && (
             <button

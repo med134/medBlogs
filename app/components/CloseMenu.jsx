@@ -25,7 +25,7 @@ const CloseMenu = ({ handleClick, session }) => {
     );
   };
   return (
-    <nav className="flex items-center flex-col justify-center z-40">
+    <nav className="flex items-center flex-col justify-center z-9999 max-w-full">
       <div className="flex items-center justify-center xs:w-full mb-1">
         <Image
           src={logo}

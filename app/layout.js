@@ -10,7 +10,7 @@ import { inter } from "./components/Fonts";
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
   title: "Best Programming Blog & free components|medCode",
-  description: `Welcome to MedCode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
+  description: `Welcome to medCode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
   generator: "Next.js",
   applicationName: "MedCode Dev blog & Articles",
   referrer: "origin-when-cross-origin",
@@ -19,6 +19,7 @@ export const metadata = {
     "freelance",
     "frontend developer",
     "online jobs",
+    "portfolio",
     "work online",
     "make money online",
     "Beginner programming",
