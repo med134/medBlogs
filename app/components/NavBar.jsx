@@ -47,7 +47,7 @@ const NavBar = () => {
 
   const handleClick = () => {
     setIsOpen(!isOpen);
-    console.log("is open")
+    console.log("is open");
   };
   const [sticky, setSticky] = useState(false);
   const [dropdown, setDropDown] = useState(false);
@@ -71,7 +71,7 @@ const NavBar = () => {
   });
   return (
     <header
-      className={`header py-6 z-40 flex max-w-full items-center bg-transparent xl:px-6 ${
+      className={`header py-6 z-40 flex w-[100%] items-center bg-transparent xl:px-6 ${
         sticky
           ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
           : "absolute"
@@ -117,7 +117,6 @@ const NavBar = () => {
         <button
           data-collapse-toggle="navbar-search"
           aria-labelledby="menu-button"
-          onClick={handleClick}
           type="button"
           className="hover:bg-gray-100 ml-2 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="menu-search"
@@ -125,9 +124,10 @@ const NavBar = () => {
         >
           <span className="sr-only">Open main menu</span>
           {isOpen ? (
-            <FiX className="w-6 h-6" />
+            <FiX className="w-6 h-6" onClick={handleClick} />
           ) : (
             <svg
+              onClick={handleClick}
               className="w-5 h-5"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
@@ -230,7 +230,7 @@ const NavBar = () => {
               target="_blank"
             />
           )}
-        {session.status === "authenticated" && <DynamicProfile />}
+          {session.status === "authenticated" && <DynamicProfile />}
         </nav>
       </div>
       <button

@@ -28,7 +28,8 @@ export async function getArticles() {
   if (!res.ok) {
     throw new Error("Failed");
   }
-  return res.json();
+  const articles = res.json();
+  return articles;
 }
 export async function getArticle() {
   const res = await fetch(
@@ -52,17 +53,4 @@ export async function getAllCat() {
   }
 
   return res.json();
-}
-export async function getNextCard() {
-  const res = await fetch("http://localhost:3000/api/blog", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-
-  const data = res.json();
-  console.log(data)
-  return data;
 }
