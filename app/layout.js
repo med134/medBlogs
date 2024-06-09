@@ -6,6 +6,7 @@ import GoogleAnalytic from "./components/GoogleAnalytic";
 import dynamic from "next/dynamic";
 const CookiesBanner = dynamic(() => import("./components/Cookies"));
 import { inter } from "./components/Fonts";
+import Script from "next/script";
 
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
@@ -82,7 +83,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <GoogleAnalytic />
-      <body className={`${inter.className} w-[100%]`} suppressHydrationWarning={true}>
+   
+      <body
+        className={`${inter.className} w-[100%]`}
+        suppressHydrationWarning={true}
+      >
         <AuthProvider>
           <NavBar />
           {children}

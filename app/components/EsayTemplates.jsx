@@ -80,7 +80,7 @@ const Easy = async () => {
                     <Link
                       rel="noopener noreferrer"
                       href={`/templates/${item.slug}`}
-                      className="inline-flex items-center dark:text-[#075985] py-2 space-x-2 text-sm hover:text-[#075985]"
+                      className="inline-flex items-center dark:text-light py-2 space-x-2 text-sm hover:text-[#075985]"
                     >
                       <span>View Template...</span>
                       <svg
