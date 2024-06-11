@@ -35,7 +35,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="contact space-y-2 text-sm">
-          <p className="text-base font-bold tracking-wide text-gray-900 dark:text-gray-400">
+          <p className="text-base font-bold tracking-wide text-gray-900 dark:text-light">
             Contacts
           </p>
           <div className="flex dark:text-gray-400">
@@ -79,7 +79,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="social">
-          <span className="text-base font-bold tracking-wide text-gray-900 dark:text-gray-400">
+          <span className="text-base font-bold tracking-wide text-gray-900 dark:text-light">
             Follow on Social Media
           </span>
           <div className="flex justify-start items-center space-x-3 mt-2">
@@ -106,7 +106,7 @@ const Footer = () => {
                 className="w-auto mx-3 flex justify-start items-center text-pink-600  hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
               >
                 <BsInstagram size={26} className="" />
-                <span className="text-dark font-semibold text-xs ml-1">
+                <span className="text-dark dark:text-light font-semibold text-xs ml-1">
                   Instagram
                 </span>
               </a>

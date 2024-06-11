@@ -5,7 +5,7 @@ import Category from "@/app/module/Category";
 export const GET = async () => {
   try {
     await connect();
-    const categories = await Category.find();
+    const categories = await Category.find().sort({ slug: 1 });
     return new NextResponse(JSON.stringify(categories, { status: 200 }));
   } catch (err) {
     console.log(err);

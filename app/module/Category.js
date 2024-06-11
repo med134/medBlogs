@@ -14,6 +14,10 @@ const categorySchema = new Schema(
       type: String,
       require: true,
     },
+    slug: {
+      type: Number,
+      require: false,
+    },
   },
   { timestamps: true }
 );

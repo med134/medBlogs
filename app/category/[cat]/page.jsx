@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import Layout from "@/app/components/Layout";
+
+
 const getData = async () => {
   const res = await fetch("https://www.medcode.dev/api/categories", {
     cache: "no-store",
@@ -11,7 +13,8 @@ const getData = async () => {
   if (!res.ok) {
     throw new Error("Failed");
   }
-  return res.json();
+  const categories = await res.json();
+  return categories;
 };
 async function getPosts(cat) {
   const res = await fetch(
@@ -27,7 +30,6 @@ async function getPosts(cat) {
   const sortedPosts = posts?.sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
-
   return sortedPosts;
 }
 export async function generateMetadata({ params }) {
@@ -94,7 +96,7 @@ const Card = async ({ params }) => {
   return (
     <Layout className="py-4 px-16 p-8 xl:px-8 xl:p-6 pt-24 xl:pt-24 lg:pt-6 md:px-6 xs:px-4 xs:pt-10">
       <div className="px-2 xs:px-1 py-8 lg:py-5">
-        <h1 className="px-4 text-mainColor sm:text-xl sm:px-0 text-3xl font-outFit font-bold uppercase mt-4 lg:mt-2 md:px-4 xs:pt-6">
+        <h1 className="px-4 text-mainColor dark:text-light sm:text-xl sm:px-0 text-3xl font-outFit font-bold uppercase mt-4 lg:mt-2 md:px-4 xs:pt-6">
           #{myTitle}
         </h1>
         <div className="grid grid-cols-7 gap-4 pt-14 px-4 lg:grid-cols-5 lg:px-4 lg:gap-y-6 md:flex md:flex-wrap md:justify-items-start md:items-center xs:flex xs:px-2 xs:justify-start">

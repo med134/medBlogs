@@ -14,10 +14,10 @@ export const GET = async (request) => {
     if (username) {
       query.username = username;
     }
-    if (category && category.toLowerCase() !== "all")  {
+    if (category && category.toLowerCase() !== "all") {
       query.category = category;
     }
-    const articles = await Article.find(query);
+    const articles = await Article.find(query)
     return new NextResponse(JSON.stringify(articles), { status: 200 });
   } catch (error) {
     return new NextResponse("error database", { status: 500 });

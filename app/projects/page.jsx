@@ -65,7 +65,7 @@ const page = async () => {
   return (
     <>
       <TransitionEffect />
-      <main className="w-full mb-16 flex flex-col items-center justify-center bg-light pt-[100px] dark:text-light">
+      <main className="w-full mb-16 flex flex-col items-center justify-center bg-light pt-[100px] dark:text-light dark:bg-dark">
         <Layout className="pt-16 xs:pt-8 xs:p-8">
           <AnimatedText
             text="Imagination Trumps Knowledge!"
@@ -140,7 +140,7 @@ const page = async () => {
                 summary="Discover a Modern Real Estate App programming with React js and tailwind css with modern Design frontend"
               />
             </div>
-            <div className="col-span-6 sm:col-span-12">
+            <div className="col-span-6 sm:col-span-12 dark:bg-dark">
               <Project
                 type="SaaS project"
                 img={project8}
