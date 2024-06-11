@@ -86,7 +86,9 @@ const page = async () => {
               <span className="block w-full lg:text-5xl xl:text-4xl xs:text-3xl">
                 Free Templates & components{" "}
               </span>
-              <p className="xl:text-4xl lg:text-3xl lg:mt-1 xs:text-3xl">with free code Sources</p>
+              <p className="xl:text-4xl lg:text-3xl lg:mt-1 xs:text-3xl">
+                with free code Sources
+              </p>
             </h1>
             <p className="py-2 text-lg text-gray-500 md:py-6 xs:py-2 2xl:pr-5 xs:text-sm xs:pr-2 dark:text-light xs:text-left">
               Open source UI & UX components and templates to bootstrap your new

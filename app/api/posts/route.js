@@ -7,7 +7,9 @@ export const GET = async (request) => {
   const username = url.searchParams.get("username");
   try {
     await connect();
-    const posts = await Posts.find(username && { username });
+    const posts = await Posts.find(username && { username }).sort({
+      createAt: 1,
+    });
     return new NextResponse(JSON.stringify(posts), { status: 200 });
   } catch (err) {
     return new NextResponse("Error database", { status: 500 });
