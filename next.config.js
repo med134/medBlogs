@@ -17,6 +17,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.coinranking.com",
       },
+      { protocol: "https", hostname: "image.tmdb.org" },
       {
         protocol: "https",
         hostname: "i.ytimg.com",
