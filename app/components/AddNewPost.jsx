@@ -6,11 +6,19 @@ import Link from "next/link";
 import useSWR from "swr";
 import SliderSkelton from "./SliderSkelton";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const AddNewPost = () => {
   const session = useSession();
   const [selectedJobs, setSelectedJobs] = useState("");
-
+  const router = useRouter();
+  useEffect(() => {
+    if (session?.data?.user?.name === "MOHAMMED DAKIR") {
+      router.push("/dashboard/add-templates");
+    } else {
+      router.push("/dashboard");
+    }
+  }, [session]);
   const handleDelete = async (slug) => {
     const confirmed = confirm("Are you sure you want to delete...?");
     if (confirmed) {

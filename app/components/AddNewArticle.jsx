@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import "highlight.js/styles/a11y-dark.min.css";
 import useSWR from "swr";
@@ -10,12 +10,20 @@ import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 import hljs from "highlight.js";
 import SliderSkelton from "./SliderSkelton";
+import { useRouter } from "next/navigation";
 
 const AddNewArticle = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const session = useSession();
-
+  const router = useRouter();
+  useEffect(() => {
+    if (session?.data?.user?.name === "MOHAMMED DAKIR") {
+      router.push("/dashboard/add-articles");
+    } else {
+      router.push("/dashboard");
+    }
+  }, [session]);
   const handleDelete = async (id) => {
     const confirmed = confirm("Are you sure you want to delete...?");
     if (confirmed) {
