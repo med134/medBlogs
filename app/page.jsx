@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <TransitionEffect />
-      <FirstView />
+      {/* <FirstView /> */}
       <HomePage child={<Card />} side={<Cat />} />
       <Easy />
       <Dev />

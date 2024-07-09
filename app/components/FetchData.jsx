@@ -29,10 +29,7 @@ export async function getArticles() {
     throw new Error("Failed");
   }
   const posts = await res.json();
-  const sortedPosts = posts?.sort(
-    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-  );
-  return sortedPosts;
+  return posts;
 }
 export async function getArticle() {
   const res = await fetch(
@@ -54,5 +51,5 @@ export async function getAllCat() {
   if (!res.ok) {
     throw new Error("Failed");
   }
-  return res.json();;
+  return res.json();
 }
