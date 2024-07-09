@@ -1,6 +1,6 @@
 import connect from "@/app/utils/ConnectDB";
 import { NextResponse } from "next/server";
-import Blog from "@/app/module/Blog";
+import Article from "@/app/module/Article";
 
 export const GET = async (request) => {
   const url = new URL(request.url);
@@ -17,7 +17,7 @@ export const GET = async (request) => {
     if (category && category.toLowerCase() !== "all") {
       query.category = category;
     }
-    const articles = await Blog.find(query).sort({ createdAt: -1 });
+    const articles = await Article.find(query).sort({ createdAt: -1 });
     return new NextResponse(JSON.stringify(articles), { status: 200 });
   } catch (error) {
     return new NextResponse("error database", { status: 500 });
@@ -25,7 +25,7 @@ export const GET = async (request) => {
 };
 export const POST = async (request) => {
   const body = await request.json();
-  const newBlog = new Blog(body);
+  const newBlog = new Article(body);
   try {
     await connect();
     await newBlog.save();

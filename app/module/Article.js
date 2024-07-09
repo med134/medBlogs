@@ -46,5 +46,5 @@ const articleSchema = new Schema(
   { timestamps: true }
 );
 const Article =
-  mongoose.models.articles || mongoose.model("articles", articleSchema);
+  mongoose.models.article || mongoose.model("article", articleSchema);
 export default Article;
