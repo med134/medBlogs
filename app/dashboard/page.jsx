@@ -24,11 +24,8 @@ export const metadata = {
 };
 export default function DashBoard() {
   return (
-    <>
-      <TransitionEffect />
-      <div className="p-12 dark:bg-dark sm:p-4 col-auto pt-20 px-1">
-        <NavigationBar />
-      </div>
-    </>
+    <div className="p-12 h-screen dark:bg-dark sm:p-4 col-auto pt-20 px-1">
+        
+    </div>
   );
 }

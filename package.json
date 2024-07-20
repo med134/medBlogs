@@ -11,6 +11,7 @@
   "dependencies": {
     "@next/bundle-analyzer": "^14.1.4",
     "ace-builds": "^1.32.7",
+    "adapter": "^1.0.0-beta.10",
     "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
     "classnames": "^2.3.2",
@@ -18,7 +19,7 @@
     "framer-motion": "^10.16.16",
     "highlight.js": "^11.9.0",
     "markdown-it": "^14.1.0",
-    "mongodb": "^6.3.0",
+    "mongodb": "^6.8.0",
     "mongoose": "^8.0.3",
     "next": "^14.2.3",
     "next-auth": "^4.24.5",
