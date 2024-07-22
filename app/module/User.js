@@ -23,5 +23,4 @@ const userSchema = new Schema(
 );
 
 //If the User collection does not exist create a new one.
-const User = mongoose.model.users || mongoose.model("users", userSchema);
-export default User;
+module.exports = mongoose.models.users || mongoose.model("users", userSchema);

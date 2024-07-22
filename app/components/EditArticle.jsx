@@ -144,116 +144,136 @@ export default function EditArticle({
         <SkeletonLoadingForm />
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <label
-            className="text-gray-600 font-bold mb-1 dark:text-light"
-            htmlFor="newTitle"
-          >
-            title
-          </label>
-          <input
-            onChange={(e) => setNewTitle(e.target.value)}
-            value={newTitle}
-            className="border border-slate-500 px-8 py-2 rounded-lg"
-            type="text"
-            id="newTitle"
-            placeholder="Topic Title"
-          />
-          <label
-            className="text-gray-600 font-bold mb-1 dark:text-light"
-            htmlFor="newDescription"
-          >
-            Description
-          </label>
-          <input
-            onChange={(e) => setNewDescription(e.target.value)}
-            value={newDescription}
-            id="newDescription"
-            className="border border-slate-500 px-8 py-2 rounded-lg"
-            type="text"
-            placeholder="Topic Description"
-          />
-          <label
-            className="text-gray-600 font-bold mb-1 dark:text-light"
-            htmlFor="newSlug"
-          >
-            slug
-          </label>
-          <input
-            onChange={(e) => setNewSlug(e.target.value)}
-            value={newSlug}
-            id="newSlug"
-            className="border border-slate-500 px-8 py-2 rounded-lg"
-            type="text"
-            placeholder="topic slug"
-          />
-          <label
-            className="text-gray-600 font-bold mb-1 dark:text-light"
-            htmlFor="newImage"
-          >
-            Image
-          </label>
-          <input
-            onChange={(e) => setNewImage(e.target.value)}
-            value={newImage}
-            id="newImage"
-            className="border border-slate-500 px-8 py-2 rounded-lg"
-            type="text"
-            placeholder="Topic Image"
-          />
-          <label
-            className="text-gray-600 font-bold mb-1 dark:text-light"
-            htmlFor="newTags"
-          >
-            Tags
-          </label>
-          <input
-            onChange={(e) => setNewTags(e.target.value)}
-            value={newTags}
-            id="newTags"
-            className="border border-slate-500 px-8 py-2 rounded-lg"
-            type="text"
-            placeholder="Topic tags"
-          />
-          <label
-            className="text-gray-600 font-bold mb-1 dark:text-light"
-            htmlFor="newJob"
-          >
-            job
-          </label>
-          <select
-            id="newJob"
-            value={newJob}
-            onChange={(e) => setNewJob(e.target.value)}
-            className="h-12 w-full max-w-full rounded-md border px-8 bg-white text-sm outline-none focus:ring"
-          >
-            <option value="">Select Your jobs</option>
-            <option value="Software engineer">Software engineer</option>
-            <option value="Software Developer">Software Developer</option>
-            <option value="Designer">Designer</option>
-            <option value="Front-end Developer">Front-end Developer</option>
-            <option value="Content Creator">Content Creator</option>
-            <option value="student">student</option>
-          </select>
-          <label
-            className="text-gray-600 font-bold mb-1 dark:text-light"
-            htmlFor="newCategory"
-          >
-            Category
-          </label>
-          <select
-            id="newCategory"
-            value={newCategory}
-            onChange={(e) => setNewCategory(e.target.value)}
-            className="h-12 w-full max-w-full rounded-md border px-8 bg-white text-sm outline-none focus:ring"
-          >
-            <option value="">Select category</option>
-            <option value="react">React.js</option>
-            <option value="nextjs">Next.js</option>
-            <option value="career">Career</option>
-            <option value="solution">Solution</option>
-            <option value="productivity">Productivity</option>
-            <option value="tools">Tools</option>
-          </select>
+          <div className="grid grid-cols-2 gaps-10">
+            <div className="p-4">
+              <label
+                className="text-gray-600 font-bold mb-1 dark:text-light"
+                htmlFor="newTitle"
+              >
+                title
+              </label>
+              <input
+                onChange={(e) => setNewTitle(e.target.value)}
+                value={newTitle}
+                className="border w-full border-slate-500 px-8 py-2 rounded-lg"
+                type="text"
+                id="newTitle"
+                placeholder="Topic Title"
+              />
+            </div>
+            <div className="p-4">
+              <label
+                className="text-gray-600 font-bold mb-1 dark:text-light"
+                htmlFor="newDescription"
+              >
+                Description
+              </label>
+              <input
+                onChange={(e) => setNewDescription(e.target.value)}
+                value={newDescription}
+                id="newDescription"
+                className="border w-full border-slate-500 px-8 py-2 rounded-lg"
+                type="text"
+                placeholder="Topic Description"
+              />
+            </div>
+            <div className="p-4">
+              <label
+                className="text-gray-600 font-bold mb-1 dark:text-light"
+                htmlFor="newSlug"
+              >
+                slug
+              </label>
+              <input
+                onChange={(e) => setNewSlug(e.target.value)}
+                value={newSlug}
+                id="newSlug"
+                className="border w-full border-slate-500 px-8 py-2 rounded-lg"
+                type="text"
+                placeholder="topic slug"
+              />
+            </div>
+            <div className="p-4">
+              <label
+                className="text-gray-600 font-bold  dark:text-light"
+                htmlFor="newImage"
+              >
+                Image
+              </label>
+              <input
+                onChange={(e) => setNewImage(e.target.value)}
+                value={newImage}
+                id="newImage"
+                className="border w-full border-slate-500 px-8 py-2 rounded-lg"
+                type="text"
+                placeholder="Topic Image"
+              />
+            </div>
+            <div className="p-4">
+              <label
+                className="text-gray-600 font-bold mb-1 dark:text-light"
+                htmlFor="newTags"
+              >
+                Tags
+              </label>
+              <input
+                onChange={(e) => setNewTags(e.target.value)}
+                value={newTags}
+                id="newTags"
+                className="border w-full border-slate-500 px-8 py-2 rounded-lg"
+                type="text"
+                placeholder="Topic tags"
+              />
+            </div>
+            <div className="p-4">
+              <label
+                className="text-gray-600 font-bold mb-1 dark:text-light"
+                htmlFor="newJob"
+              >
+                job
+              </label>
+              <div className="p-4">
+                <select
+                  id="newJob"
+                  value={newJob}
+                  onChange={(e) => setNewJob(e.target.value)}
+                  className="h-12 w-full max-w-full rounded-md border px-8 bg-white text-sm outline-none focus:ring"
+                >
+                  <option value="">Select Your jobs</option>
+                  <option value="Software engineer">Software engineer</option>
+                  <option value="Software Developer">Software Developer</option>
+                  <option value="Designer">Designer</option>
+                  <option value="Front-end Developer">
+                    Front-end Developer
+                  </option>
+                  <option value="Content Creator">Content Creator</option>
+                  <option value="student">student</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label
+                className="text-gray-600 font-bold mb-1 dark:text-light"
+                htmlFor="newCategory"
+              >
+                Category
+              </label>
+              <select
+                id="newCategory"
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}
+                className="h-12 w-full max-w-full rounded-md border px-8 bg-white text-sm outline-none focus:ring"
+              >
+                <option value="">Select category</option>
+                <option value="react">React.js</option>
+                <option value="nextjs">Next.js</option>
+                <option value="career">Career</option>
+                <option value="solution">Solution</option>
+                <option value="productivity">Productivity</option>
+                <option value="tools">Tools</option>
+              </select>
+            </div>
+          </div>
           <label
             className="text-gray-600 font-bold mb-1 dark:text-light"
             htmlFor="newCode"

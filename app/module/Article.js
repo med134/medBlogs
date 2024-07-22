@@ -30,6 +30,9 @@ const articleSchema = new Schema(
       type: String,
       required: true,
     },
+    status: {
+      type: String,
+    },
     username: {
       type: String,
       required: true,

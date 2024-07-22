@@ -53,3 +53,14 @@ export async function getAllCat() {
   }
   return res.json();
 }
+
+export async function getUsers() {
+  const res = await fetch("http://localhost:3000/api/users", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+  return res.json();
+}

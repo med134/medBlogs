@@ -18,6 +18,7 @@ const AddNewArticle = () => {
   const [selectStatus, setSelectStatus] = useState("draft");
   const session = useSession();
   const router = useRouter();
+  console.log(selectStatus)
   /*  useEffect(() => {
     if (session?.data?.user?.name === "MOHAMMED DAKIR") {
       router.push("/dashboard/add-articles");
@@ -25,6 +26,7 @@ const AddNewArticle = () => {
       router.push("/dashboard");
     }
   }, [session]); */
+/*   
   const handleDelete = async (id) => {
     const confirmed = confirm("Are you sure you want to delete...?");
     if (confirmed) {
@@ -37,7 +39,7 @@ const AddNewArticle = () => {
         console.log(err);
       }
     }
-  };
+  }; */
   const ex = undefined;
   const text = ex || "";
   hljs.configure({
@@ -121,7 +123,7 @@ const AddNewArticle = () => {
     isLoading,
     mutate,
   } = useSWR(`/api/articles?username=${session?.data?.user?.name}`, fetcher);
-  console.log("User Data",session?.data?.user)
+  console.log("User Data", session?.data?.user);
   const addUser = async () => {
     const name = session.data.user.name;
     const email = session.data.user.email;
@@ -246,6 +248,9 @@ const AddNewArticle = () => {
             <select
               id="selectStatus"
               value={selectStatus}
+              disabled={
+                session?.data?.user?.name === "MOHAMMED DAKIR" ? false : true
+              }
               onChange={handelStatus}
               className="h-12 w-full max-w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
             >

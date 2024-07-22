@@ -6,6 +6,7 @@ import { getArticles } from "./components/FetchData";
 
 const Card = async () => {
   const posts = await getArticles();
+  console.log("data",posts)
   return (
     <>
       {posts.map((item, index) =>

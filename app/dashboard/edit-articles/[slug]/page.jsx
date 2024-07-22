@@ -18,8 +18,8 @@ const Edit = async ({ params }) => {
   const data = await getData(slug);
 
   return (
-    <Layout className="p-16 lg:p-8 md:p-8 sm:p-8 xs:p-6 pt-[120px] md:pt-[80px] sm:pt-8">
-      <h1 className="text-center text-2xl text-gray-800 font-semibold dark:text-light">
+    <Layout className="p-6 lg:p-8 md:p-8 bg-white sm:p-8 xs:p-6 pt-[120px] md:pt-[80px] sm:pt-8">
+      <h1 className="text-left py-6 text-2xl text-gray-800 font-semibold dark:text-light">
         Edit Your Article & Submit
       </h1>
       <EditArticle

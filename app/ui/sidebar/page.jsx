@@ -1,22 +1,28 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { useState } from "react";
+import { signOut } from "next-auth/react";
 
 const SideBar = () => {
+  const session = useSession();
   return (
     <div className="h-[100%] mb-6">
       <div className="h-screen w-64 pb-10 mt-32">
         <div className="flex px-4 h-full flex-grow flex-col rounded-br-lg rounded-tr-lg bg-gray-200 pt-5 ">
           <div className="flex mt-10 items-center px-4">
-            <Image
-              className="h-12 w-auto max-w-full rounded-full align-middle"
-              width={"100"}
-              height={"100"}
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-            />
+          <Image
+            width={50}
+            height={50}
+            priority
+            src={session?.data?.user.image}
+            alt="photo_profile"
+            className="w-10 h-10 rounded-[50%] cursor-pointer"
+          />
             <div className="flex ml-3 flex-col">
-              <h3 className="font-medium">Sarah Carter</h3>
+              <h3 className="font-medium text-xs">{session?.data?.user.name}</h3>
               <p className="text-xs text-gray-500">Sr. Engineer</p>
             </div>
           </div>
