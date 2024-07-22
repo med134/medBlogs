@@ -150,6 +150,7 @@ const AddNewArticle = () => {
     const slug = e.target[4].value;
     const category = selectedOption;
     const job = selectedJobs;
+    const status =selectStatus;
     const content = quill.root.innerHTML;
 
     try {
@@ -163,6 +164,7 @@ const AddNewArticle = () => {
           description,
           slug,
           content,
+          status,
           username: session.data.user.name,
           email: session.data.user.email,
           job,

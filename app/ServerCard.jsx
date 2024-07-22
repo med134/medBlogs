@@ -6,11 +6,11 @@ import { getArticles } from "./components/FetchData";
 
 const Card = async () => {
   const posts = await getArticles();
-  console.log("data",posts)
+  console.log("data", posts);
   return (
     <>
       {posts.map((item, index) =>
-        index < 7 && index > 0 ? (
+        index < 7 && index > 0 && item.status === "publish" ? (
           <section
             suppressHydrationWarning
             key={item._id}
