@@ -21,7 +21,7 @@ const FirstView = async () => {
       className="relative z-10 overflow-hidden pt-[70px] pb-1 md:pt-[80px] xl:pt-[100px] lg:pt-[60px] sm:pb-10 xs:pb-24 xl:pb-1 dark:bg-dark"
     >
       {posts?.map((item, index) =>
-        index === 0 && item.status === "publish" ? (
+        index === 0 ? (
           <div
             key={item._id}
             className="flex justify-between items-center z-10 px-24 relative p-8 md:flex-wrap-reverse xl:px-16 md:p-4 md:mt-4 xs:mt-0 xs:p-3"

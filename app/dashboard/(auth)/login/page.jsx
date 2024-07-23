@@ -76,7 +76,7 @@ const Login = () => {
 
             <div className="mt-4 text-center">
               <p className="text-sm text-gray-600 dark:text-light">
-                Dont have an account ?
+                {"Don't"} have an account ?
                 <Link
                   href="/dashboard/login"
                   className="font-bold text-blue-600 no-underline hover:text-blue-400"

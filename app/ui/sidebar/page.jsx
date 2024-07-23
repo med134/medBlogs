@@ -4,13 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { RxDashboard } from "react-icons/rx";
 import { PiUsersThree } from "react-icons/pi";
-import { RiArticleLine,RiSettings5Line } from "react-icons/ri";
+import { RiArticleLine, RiSettings5Line } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
 import { MdPendingActions } from "react-icons/md";
 import { CgFileAdd } from "react-icons/cg";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
-import { signOut } from "next-auth/react";
+import { signcut } from "next-auth/react";
 
 const SideBar = () => {
   const session = useSession();
@@ -23,7 +23,11 @@ const SideBar = () => {
               width={50}
               height={50}
               priority
-              src={session?.data?.user.image}
+              src={
+                session.status === "authentication"
+                  ? session?.data?.user.image
+                  : "https://i.ibb.co/mSjZwpw/download.png"
+              }
               alt="photo_profile"
               className="w-10 h-10 rounded-[50%] cursor-pointer"
             />
@@ -50,7 +54,7 @@ const SideBar = () => {
                 href="/dashboard/users"
                 className="flex flex-row items-center px-5 h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
               >
-                <PiUsersThree/>
+                <PiUsersThree />
                 <span className="text-sm font-medium ml-3">Users</span>
               </Link>
             </li>
@@ -59,7 +63,7 @@ const SideBar = () => {
                 href="/dashboard/blogs"
                 className="flex flex-row items-center px-5 h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
               >
-               <RiArticleLine/>
+                <RiArticleLine />
                 <span className="text-sm font-medium ml-3">Blogs</span>
               </Link>
             </li>
@@ -68,7 +72,7 @@ const SideBar = () => {
                 href="/dashboard/add-articles"
                 className="flex flex-row items-center px-5 h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
               >
-               <CgFileAdd/>
+                <CgFileAdd />
                 <span className="text-sm font-medium ml-3">Add Blog</span>
               </Link>
             </li>
@@ -77,7 +81,7 @@ const SideBar = () => {
                 href="/dashboard/pending"
                 className="flex flex-row items-center px-5 h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
               >
-                <MdPendingActions/>
+                <MdPendingActions />
                 <span className="text-sm font-medium ml-3">Pending</span>
               </Link>
             </li>
@@ -86,19 +90,19 @@ const SideBar = () => {
                 href="/dashboard/edit-articles"
                 className="flex flex-row items-center px-5 h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
               >
-               <RiSettings5Line/>
+                <RiSettings5Line />
                 <span className="text-sm font-medium ml-3">Settings</span>
               </Link>
             </li>
 
             <li>
-              <a
-                href="#"
+              <button
+                onClick={signOut()}
                 className="flex flex-row px-5 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
               >
-                <LuLogOut/>
+                <LuLogOut />
                 <span className="text-sm font-medium ml-3">Logout</span>
-              </a>
+              </button>
             </li>
           </ul>
         </div>

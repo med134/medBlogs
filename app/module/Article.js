@@ -32,6 +32,7 @@ const articleSchema = new Schema(
     },
     status: {
       type: String,
+      required: false,
     },
     username: {
       type: String,

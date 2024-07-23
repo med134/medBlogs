@@ -1,24 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { FaArrowLeft } from "react-icons/fa";
+import React, { useState } from "react";
 import "highlight.js/styles/a11y-dark.min.css";
-import useSWR from "swr";
-import Image from "next/image";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 import hljs from "highlight.js";
-import SliderSkelton from "./SliderSkelton";
-import { useRouter } from "next/navigation";
 
 const AddNewArticle = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const [selectStatus, setSelectStatus] = useState("draft");
   const session = useSession();
-  const router = useRouter();
-  console.log(selectStatus)
+
   /*  useEffect(() => {
     if (session?.data?.user?.name === "MOHAMMED DAKIR") {
       router.push("/dashboard/add-articles");
@@ -26,7 +19,7 @@ const AddNewArticle = () => {
       router.push("/dashboard");
     }
   }, [session]); */
-/*   
+  /*   
   const handleDelete = async (id) => {
     const confirmed = confirm("Are you sure you want to delete...?");
     if (confirmed) {
@@ -117,13 +110,8 @@ const AddNewArticle = () => {
   const handelStatus = (event) => {
     setSelectStatus(event.target.value);
   };
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const {
-    data: articles,
-    isLoading,
-    mutate,
-  } = useSWR(`/api/articles?username=${session?.data?.user?.name}`, fetcher);
-  console.log("User Data", session?.data?.user);
+ 
+
   const addUser = async () => {
     const name = session.data.user.name;
     const email = session.data.user.email;
@@ -150,8 +138,9 @@ const AddNewArticle = () => {
     const slug = e.target[4].value;
     const category = selectedOption;
     const job = selectedJobs;
-    const status =selectStatus;
+    const status = selectStatus;
     const content = quill.root.innerHTML;
+    console.log(status);
 
     try {
       await fetch("/api/articles", {
@@ -269,46 +258,6 @@ const AddNewArticle = () => {
             Post Now
           </button>
         </form>
-        {/* <div className="p-6 grid grid-cols-3 gap-4">
-          {isLoading ? (
-            <SliderSkelton />
-          ) : (
-            articles?.map((post) => (
-              <div
-                key={post._id}
-                className="mb-4 first-letter:max-w-sm rounded overflow-hidden shadow-lg mt-4"
-              >
-                <Image
-                  width={300}
-                  height={300}
-                  loading="lazy"
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-32 object-cover"
-                />
-
-                <div className="px-6 py-4">
-                  <div className="font-bold text-xl mb-2">{post.title}</div>
-                </div>
-
-                <div className="flex justify-between items-center px-6 py-2">
-                  <button
-                    onClick={() => handleDelete(post.slug)}
-                    className="text-red-500 cursor-pointer hover:underline font-semibold"
-                  >
-                    Delete
-                  </button>
-                  <Link
-                    href={`/dashboard/edit-articles/${post.slug}`}
-                    className="text-blue-500 cursor-pointer hover:underline font-semibold"
-                  >
-                    Edit
-                  </Link>
-                </div>
-              </div>
-            ))
-          )}
-        </div> */}
       </div>
     </div>
   );
