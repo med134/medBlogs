@@ -16,10 +16,12 @@ export default function EditArticle({
   content,
   job,
   image,
+  status,
 }) {
   const [newTitle, setNewTitle] = useState(title);
   const [newImage, setNewImage] = useState(image);
   const [newDescription, setNewDescription] = useState(description);
+  const [newStatus, setStatus] = useState(status);
   const [newTags, setNewTags] = useState(tags);
   const [newCategory, setNewCategory] = useState(category);
   const [newSlug, setNewSlug] = useState(slug);
@@ -105,6 +107,7 @@ export default function EditArticle({
     const tags = newTags;
     const slug = newSlug;
     const category = newCategory;
+    const status = newStatus;
     const job = newJob;
     const content = quill.root.innerHTML;
 
@@ -120,6 +123,7 @@ export default function EditArticle({
           slug,
           category,
           content,
+          status,
           username: session.data.user.name,
           email: session.data.user.email,
           job,
@@ -232,12 +236,12 @@ export default function EditArticle({
               >
                 job
               </label>
-              <div className="p-4">
+              <div className="">
                 <select
                   id="newJob"
                   value={newJob}
                   onChange={(e) => setNewJob(e.target.value)}
-                  className="h-12 w-full max-w-full rounded-md border px-8 bg-white text-sm outline-none focus:ring"
+                  className="h-11 w-full max-w-full rounded-md border px-8 py-2 bg-white text-sm outline-none focus:ring"
                 >
                   <option value="">Select Your jobs</option>
                   <option value="Software engineer">Software engineer</option>
@@ -271,6 +275,26 @@ export default function EditArticle({
                 <option value="solution">Solution</option>
                 <option value="productivity">Productivity</option>
                 <option value="tools">Tools</option>
+              </select>
+            </div>
+            <div>
+              <label
+                className="text-gray-600 ml-4 font-bold mb-1 dark:text-light"
+                htmlFor="newStatus"
+              >
+                Status
+              </label>
+              <select
+                id="newStatus"
+                value={newStatus}
+                disabled={
+                  session?.data?.user?.name === "MOHAMMED DAKIR" ? false : true
+                }
+                onChange={(e) => setStatus(e.target.value)}
+                className="h-12 w-full max-w-full rounded-md border ml-4 mb-1 bg-white px-5 text-sm outline-none focus:ring"
+              >
+                <option value="Software engineer">Draft</option>
+                <option value="Software Developer">publish</option>
               </select>
             </div>
           </div>

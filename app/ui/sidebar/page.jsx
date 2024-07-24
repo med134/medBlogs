@@ -10,7 +10,6 @@ import { MdPendingActions } from "react-icons/md";
 import { CgFileAdd } from "react-icons/cg";
 import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
-import { signcut } from "next-auth/react";
 
 const SideBar = () => {
   const session = useSession();
@@ -97,7 +96,7 @@ const SideBar = () => {
 
             <li>
               <button
-                onClick={signOut()}
+                onClick={() => signOut()}
                 className="flex flex-row px-5 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
               >
                 <LuLogOut />

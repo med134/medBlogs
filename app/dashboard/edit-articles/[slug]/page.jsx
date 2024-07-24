@@ -31,6 +31,7 @@ const Edit = async ({ params }) => {
         job={data.job}
         category={data.category}
         content={data.content}
+        status={data.status}
       />
     </Layout>
   );

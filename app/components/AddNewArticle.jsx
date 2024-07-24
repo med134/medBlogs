@@ -159,7 +159,6 @@ const AddNewArticle = () => {
           job,
         }),
       });
-      mutate();
       e.target.reset();
       addUser();
     } catch (err) {
