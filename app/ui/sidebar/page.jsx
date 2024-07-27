@@ -7,8 +7,9 @@ import { PiUsersThree } from "react-icons/pi";
 import { RiArticleLine, RiSettings5Line } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
 import { MdPendingActions } from "react-icons/md";
+import { FiLogIn } from "react-icons/fi";
 import { CgFileAdd } from "react-icons/cg";
-import { signOut, useSession } from "next-auth/react";
+import { signOut, useSession,signIn } from "next-auth/react";
 import { useState } from "react";
 
 const SideBar = () => {
@@ -95,13 +96,23 @@ const SideBar = () => {
             </li>
 
             <li>
-              <button
-                onClick={() => signOut()}
-                className="flex flex-row px-5 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
-              >
-                <LuLogOut />
-                <span className="text-sm font-medium ml-3">Logout</span>
-              </button>
+              {session.status === "authenticated" ? (
+                <button
+                  onClick={() => signOut()}
+                  className="flex flex-row px-5 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+                >
+                  <LuLogOut />
+                  <span className="text-sm font-medium ml-3">Logout</span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => signIn()}
+                  className="flex flex-row px-5 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+                >
+                  <FiLogIn />
+                  <span className="text-sm font-medium ml-3">Sign In</span>
+                </button>
+              )}
             </li>
           </ul>
         </div>

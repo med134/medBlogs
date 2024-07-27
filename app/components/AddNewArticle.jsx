@@ -172,7 +172,7 @@ const AddNewArticle = () => {
       </h1>
       <div className="sm:items-center py-3">
         <form className="p-4 text-left text-gray-700" onSubmit={handleSubmit}>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 md:block">
             <input
               required
               type="text"
