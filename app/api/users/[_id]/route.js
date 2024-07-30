@@ -1,5 +1,6 @@
 import User from "@/app/module/User";
 import connect from "@/app/utils/ConnectDB";
+import { NextResponse } from "next/server";
 export const DELETE = async (request, { params }) => {
   const { _id } = params;
   try {
@@ -14,9 +15,11 @@ export const GET = async (request, { params }) => {
   const { _id } = params;
   try {
     await connect();
-    const users = await User.findOne({ _id });
-    return new NextResponse(JSON.stringify(users), { status: 200 });
+    const user = await User.findById(_id);
+    return new NextResponse(JSON.stringify(user), { status: 200 });
   } catch (error) {
-    return new NextResponse("error database", { status: 500 });
+    return new NextResponse("user not found try with another user _id", {
+      status: 500,
+    });
   }
 };

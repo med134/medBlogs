@@ -9,7 +9,7 @@ export default function DashBoard() {
         Dashboard <span className="text-mainColor ml-2">Panel</span>
       </h1>
       <HomeDashboard />
-      <ChartPage />
+    {/*   <ChartPage /> */}
     </div>
   );
 }
