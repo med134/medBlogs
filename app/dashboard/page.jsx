@@ -1,31 +1,25 @@
-import React from "react";
-import NavigationBar from "../components/NavigationBar";
-import TransitionEffect from "../components/TransitionEffect";
+"use client";
+import React, { useEffect } from "react";
+import HomeDashboard from "../components/HomeDashboard";
+import ChartPage from "../components/ChartPage";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-export const metadata = {
-  title: "Dashboard | medCode ",
-  description: `Empower your online presence with a dashboard for effortless blog management. Seamlessly create, edit, and publish captivating content that engages your audience`,
-  keywords: [
-    "resume",
-    "Experience",
-    "learning",
-    "articles",
-    "blogs",
-    "templates",
-    "programming",
-    "front-end",
-  ],
-  alternates: {
-    canonical: `/dashboard`,
-    languages: {
-      en: `/en/dashboard`,
-    },
-  },
-};
 export default function DashBoard() {
+  const session = useSession();
+  const router = useRouter();
+  useEffect(() => {
+    if (session?.status === "unauthenticated") {
+      router.push("dashboard/login");
+    }
+  }, [session]);
   return (
-    <div className="p-12 h-screen dark:bg-dark sm:p-4 col-auto pt-20 px-1">
-        
+    <div className="p-12 w-[100%] bg-white dark:bg-dark sm:p-4 col-auto pt-20 px-1">
+      <h1 className="text-2xl flex text-dark font-semibold">
+        Dashboard <span className="text-mainColor ml-2">Panel</span>
+      </h1>
+      <HomeDashboard />
+      <ChartPage />
     </div>
   );
 }

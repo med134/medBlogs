@@ -1,15 +1,25 @@
 "use client";
 import React from "react";
 
-const DeleteConfirmation = ({ showModel,blogDelete ,handelDeleteModel}) => {
-  const handleDelete = async (id) => {
+const DeleteConfirmation = ({ showModel, blogDelete, onClose }) => {
+  const handleDelete = async (slug) => {
     try {
-      await fetch(`/api/articles/${id}`, {
+      await fetch(`/api/articles/${slug}`, {
         method: "DELETE",
       });
-      setData(data.filter((blog) => blog.id !== id));
+      onclose();
     } catch (err) {
       console.error(err);
+    }
+  };
+  const handleDeleteUser = async (id) => {
+    try {
+      await fetch(`/api/users/${id}`, {
+        method: "DELETE",
+      });
+      onClose();
+    } catch (err) {
+      console.log(err);
     }
   };
   return (
@@ -22,6 +32,7 @@ const DeleteConfirmation = ({ showModel,blogDelete ,handelDeleteModel}) => {
     >
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6 relative">
         <svg
+          onClick={onClose}
           xmlns="http://www.w3.org/2000/svg"
           className="w-3 cursor-pointer shrink-0 fill-gray-400 hover:fill-red-500 float-right"
           viewBox="0 0 320.591 320.591"
@@ -54,21 +65,22 @@ const DeleteConfirmation = ({ showModel,blogDelete ,handelDeleteModel}) => {
             Are you sure you want to delete it?
           </h4>
           <p className="text-sm text-gray-600 mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor
-            auctor arcu, at fermentum dui. Maecenas
+            Touch and hold the blog you want to delete, deleting process...
           </p>
         </div>
         <div className="flex flex-col space-y-2">
           <button
             type="button"
-            onClick={(handleDelete(blogDelete))}
+            onClick={() =>
+              handleDelete(blogDelete) || handleDeleteUser(blogDelete)
+            }
             className="px-4 py-2 rounded-lg text-white text-sm tracking-wide bg-red-500 hover:bg-red-600 active:bg-red-500"
           >
             Delete
           </button>
           <button
             type="button"
-            onClick={()=>handelDeleteModel()}
+            onClick={onClose}
             className="px-4 py-2 rounded-lg text-gray-800 text-sm tracking-wide bg-gray-200 hover:bg-gray-300 active:bg-gray-200"
           >
             Cancel

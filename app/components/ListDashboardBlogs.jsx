@@ -5,7 +5,10 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { BiSolidEdit } from "react-icons/bi";
 import { useSession } from "next-auth/react";
 import SkeletonLoader from "./BlogDashboardSkelton";
-import DeleteConfirmation from "./DeleteConfirmation";
+import dynamic from "next/dynamic";
+const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
+  suspense: true,
+});
 
 const ListDashboardBlogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,16 +18,22 @@ const ListDashboardBlogs = () => {
   const session = useSession();
   const router = useRouter();
   const perPage = 4;
-  const handelDeleteModel = () => {
-    setShowModel(false);
-  };
+
   const handleMovePages = (page) => {
     setCurrentPage(page);
   };
+  const closeModelDelete = () => {
+    setShowModel(false);
+  };
 
   useEffect(() => {
+    if (session.status === "unauthenticated") {
+      router.push("/dashboard/login");
+    }
     setLoading(true);
-    fetch("https://www.medcode.dev/api/articles")
+    fetch(
+      `https://www.medcode.dev/api/articles?username=${session?.data?.user.name}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -37,19 +46,6 @@ const ListDashboardBlogs = () => {
   const currentBlog = data.slice(indexOfFirstBlog, indexOfLastBlog);
   const totalPages = Math.ceil(data.length / perPage);
 
-  const handleDelete = async (id) => {
-    const confirmed = confirm("Are you sure you want to delete this blog?");
-    if (confirmed) {
-      try {
-        await fetch(`/api/articles/${id}`, {
-          method: "DELETE",
-        });
-        setData(data.filter((blog) => blog.id !== id));
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  };
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(
@@ -115,7 +111,7 @@ const ListDashboardBlogs = () => {
                       <DeleteConfirmation
                         showModel={showModel}
                         blogDelete={blog.slug}
-                        handelDeleteModel={handelDeleteModel}
+                        onClose={closeModelDelete}
                       />
                     }
                   </tr>

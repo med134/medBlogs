@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "highlight.js/styles/a11y-dark.min.css";
 import { useSession } from "next-auth/react";
 import { useQuill } from "react-quilljs";
@@ -12,27 +12,12 @@ const AddNewArticle = () => {
   const [selectStatus, setSelectStatus] = useState("draft");
   const session = useSession();
 
-  /*  useEffect(() => {
-    if (session?.data?.user?.name === "MOHAMMED DAKIR") {
-      router.push("/dashboard/add-articles");
-    } else {
-      router.push("/dashboard");
+  useEffect(() => {
+    if (session?.status === "unauthenticated") {
+      router.push("/dashboard/login");
     }
-  }, [session]); */
-  /*   
-  const handleDelete = async (id) => {
-    const confirmed = confirm("Are you sure you want to delete...?");
-    if (confirmed) {
-      try {
-        await fetch(`/api/articles/${id}`, {
-          method: "DELETE",
-        });
-        mutate();
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  }; */
+  }, [session]);
+
   const ex = undefined;
   const text = ex || "";
   hljs.configure({
@@ -110,7 +95,6 @@ const AddNewArticle = () => {
   const handelStatus = (event) => {
     setSelectStatus(event.target.value);
   };
- 
 
   const addUser = async () => {
     const name = session.data.user.name;
