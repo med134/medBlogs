@@ -3,12 +3,14 @@ import React, { useState, useEffect } from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { BiSolidEdit } from "react-icons/bi";
 import SkeletonLoader from "./DashboardSkelton";
 import { useSession } from "next-auth/react";
 const UsersDashboard = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const indexUser = users.length;
   const session = useSession();
   useEffect(() => {
     if (session?.data?.user?.name === "MOHAMMED DAKIR") {
@@ -48,7 +50,7 @@ const UsersDashboard = () => {
                   <th className="px-5 py-3">Full Name</th>
                   <th className="px-5 py-3">Email</th>
                   <th className="px-5 py-3 ">USER ROLE</th>
-                  <th className="px-5 py-3 ">Delete/Edit</th>
+                  <th className="px-5 py-3 ">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -78,14 +80,14 @@ const UsersDashboard = () => {
                       <td>
                         <p className="text-sm px-5">
                           {user.name === "MOHAMMED DAKIR" ? (
-                            <p>Administrator</p>
+                            <p>Admin</p>
                           ) : (
                             <p>user</p>
                           )}
                         </p>
                       </td>
-                      <td className="flex space-x-2 p-2">
-                        {user.name != "MOHAMMED DAKIR" && (
+                      {user.name != "MOHAMMED DAKIR" && (
+                        <td className="flex space-x-2 p-2">
                           <button
                             onClick={() => handleDelete(user._id)}
                             className="flex justify-around group px-2 py-1 items-center bg-red-500 rounded-md text-light"
@@ -93,8 +95,19 @@ const UsersDashboard = () => {
                             <span className="hover:font-semibold">Delete</span>
                             <RiDeleteBin5Line className="ml-2 hover:font-semibold" />
                           </button>
-                        )}
-                      </td>
+                          <button
+                            onClick={() =>
+                              router.push(
+                                `/dashboard/edit-articles/${blog.slug}`
+                              )
+                            }
+                            className="flex justify-around group px-2 py-1 items-center bg-blue-500 rounded-md text-white"
+                          >
+                            <span className="hover:font-semibold">Edit</span>
+                            <BiSolidEdit className="ml-2" />
+                          </button>
+                        </td>
+                      )}
                     </tr>
                   ))
                 )}

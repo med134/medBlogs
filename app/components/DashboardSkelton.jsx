@@ -1,11 +1,10 @@
 import React from 'react';
 
-const SkeletonLoader = () => {
+const SkeletonLoader = ({indexUser}) => {
   return (
     <table className="w-full">
-      
       <tbody>
-        {[1, 2, 3, 4, 5].map((_, index) => (
+        {[indexUser].map((_, index) => (
           <tr
             key={index}
             className="p-2 px-4 py-2 max-w-full justify-between items-center border border-gray-100 animate-pulse"

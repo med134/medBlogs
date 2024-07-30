@@ -10,3 +10,13 @@ export const DELETE = async (request, { params }) => {
     return new NextResponse("Error database", { status: 500 });
   }
 };
+export const GET = async (request, { params }) => {
+  const { _id } = params;
+  try {
+    await connect();
+    const users = await User.findOne({ _id });
+    return new NextResponse(JSON.stringify(users), { status: 200 });
+  } catch (error) {
+    return new NextResponse("error database", { status: 500 });
+  }
+};

@@ -40,13 +40,15 @@ const SideBar = () => {
                   : "https://i.ibb.co/mSjZwpw/download.png"
               }
               alt="photo_profile"
-              className="w-10 h-10 rounded-[50%] cursor-pointer"
+              className="w-10 h-10 rounded-[50%]"
             />
             <div className="flex ml-3 flex-col">
               <h3 className="font-medium text-xs">
                 {session?.data?.user.name}
               </h3>
-              <p className="text-xs text-gray-500">Sr. Engineer</p>
+              <p className="text-xs text-gray-500 underline cursor-pointer hover:text-blue-500">
+                see your profile
+              </p>
             </div>
           </div>
           {/* list navBar */}

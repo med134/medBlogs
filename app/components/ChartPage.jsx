@@ -6,7 +6,6 @@ const ChartPage = () => {
       <div className="relative flex flex-col">
         <div className="flex-auto p-4">
           <iframe
-            className="flex justify-between items-start mt-6"
             style={{
               background: "transparent",
               border: "none",
