@@ -1,4 +1,5 @@
 import React from "react";
+import ChartPage from "../components/ChartPage";
 
 export default function page() {
   return (
@@ -6,7 +7,8 @@ export default function page() {
       <h1 className="text-2xl mt-4 flex text-dark font-semibold">
         Dashboard <span className="text-mainColor ml-2">Panel</span>
       </h1>
-     {/*  <HomeDashboard /> */}
+      {/*  <HomeDashboard /> */}
+      <ChartPage />
     </div>
   );
 }
