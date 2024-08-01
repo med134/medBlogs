@@ -98,7 +98,7 @@ const UsersDashboard = () => {
                           <button
                             onClick={() =>
                               router.push(
-                                `/dashboard/edit-articles/${blog.slug}`
+                                `/dashboard/settings/${user._id}`
                               )
                             }
                             className="flex justify-around group px-2 py-1 items-center bg-blue-500 rounded-md text-white"

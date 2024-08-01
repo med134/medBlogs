@@ -23,3 +23,14 @@ export const GET = async (request, { params }) => {
     });
   }
 };
+export const PUT = async (request, { params }) => {
+  const { _id } = params;
+  const body = await request.json();
+  try {
+    await connect();
+    await User.findOneAndUpdate({ _id }, body, { new: true });
+    return new NextResponse("user updated", { status: 200 });
+  } catch (err) {
+    return new NextResponse("Error database", { status: 500 });
+  }
+};

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "highlight.js/styles/a11y-dark.min.css";
 import { useSession } from "next-auth/react";
 import { useQuill } from "react-quilljs";
@@ -100,6 +100,7 @@ const AddNewArticle = () => {
     const name = session.data.user.name;
     const email = session.data.user.email;
     const imageUrl = session.data.user.image;
+    const job = selectedJobs;
     try {
       await fetch("/api/register", {
         method: "POST",
@@ -107,6 +108,7 @@ const AddNewArticle = () => {
           name,
           email,
           imageUrl,
+          job,
         }),
       });
     } catch (err) {

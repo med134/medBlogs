@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { RxDashboard } from "react-icons/rx";
@@ -11,46 +11,57 @@ import { FiLogIn } from "react-icons/fi";
 import { CgFileAdd } from "react-icons/cg";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import ProfileLoading from "@/app/components/ProfileLoading";
 
 const SideBar = () => {
   const session = useSession();
+  const [user, setUser] = useState([]);
+  const [loading, setLoading] = useState(false);
   const path = usePathname();
-  console.log(path, "pathName");
   const menuItems = [
     { name: "Dashboard", link: "/dashboard", icon: RxDashboard },
     { name: "Users", link: "/dashboard/users", icon: PiUsersThree },
     { name: "Blogs", link: "/dashboard/blogs", icon: RiArticleLine },
     { name: "Add Blog", link: "/dashboard/add-articles", icon: CgFileAdd },
     { name: "Draft blog", link: "/dashboard/pending", icon: MdPendingActions },
-    { name: "Settings", link: "/dashboard/settings", icon: RiSettings5Line },
+    { name: "Settings", link: "/dashboard/profile", icon: RiSettings5Line },
   ];
 
+  useEffect(() => {
+    const userAdmin = session?.data?.user?.name;
+    console.log(userAdmin);
+    setLoading(true);
+    fetch("http://localhost:3000/api/users")
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data.filter((item) => item.name === userAdmin));
+      });
+    setLoading(false);
+    console.log("users needed", user);
+  }, [session]);
   return (
     <div className="h-[100%] mb-6">
       <div className="h-screen w-64 pb-10 mt-28 bg-gradient-to-r from-gray-200 to-gray-100">
         <div className="flex px-4 h-full flex-grow flex-col rounded-br-lg rounded-tr-lg pt-5 ">
-          <div className="flex mt-10 items-center px-4">
-            <Image
-              width={50}
-              height={50}
-              priority
-              src={
-                session.status === "authentication"
-                  ? session?.data?.user.image
-                  : "https://i.ibb.co/mSjZwpw/download.png"
-              }
-              alt="photo_profile"
-              className="w-10 h-10 rounded-[50%]"
-            />
-            <div className="flex ml-3 flex-col">
-              <h3 className="font-medium text-xs">
-                {session?.data?.user.name}
-              </h3>
-              <p className="text-xs text-gray-500 underline cursor-pointer hover:text-blue-500">
-                see your profile
-              </p>
-            </div>
-          </div>
+          {user?.map((item) => {
+            <div className="flex mt-10 items-center px-4">
+              <Image
+                width={50}
+                height={50}
+                priority
+                src={item.imageUrl}
+                alt="photo_profile"
+                className="w-10 h-10 rounded-[50%]"
+              />
+              <div className="flex ml-3 flex-col">
+                <h3 className="font-medium text-xs">{user.name}</h3>
+                <p className="text-xs text-gray-500 underline cursor-pointer hover:text-blue-500">
+                  see your profile
+                </p>
+              </div>
+            </div>;
+          })}
+
           {/* list navBar */}
           <ul className="flex flex-col py-4">
             {menuItems.map((link) => {
