@@ -10,13 +10,14 @@ import { MdPendingActions } from "react-icons/md";
 import { FiLogIn } from "react-icons/fi";
 import { CgFileAdd } from "react-icons/cg";
 import { signOut, useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
-import ProfileLoading from "@/app/components/ProfileLoading";
+import { usePathname, useRouter } from "next/navigation";
 
 const SideBar = () => {
   const session = useSession();
+  console.log(session);
   const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const path = usePathname();
   const menuItems = [
     { name: "Dashboard", link: "/dashboard", icon: RxDashboard },
@@ -27,42 +28,44 @@ const SideBar = () => {
     { name: "Settings", link: "/dashboard/profile", icon: RiSettings5Line },
   ];
 
-  useEffect(() => {
-    const userAdmin = session?.data?.user?.name;
-    console.log(userAdmin);
+  /* useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/api/users")
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data.filter((item) => item.name === userAdmin));
-      });
-    setLoading(false);
-    console.log("users needed", user);
-  }, [session]);
+    if (session) {
+      fetch(`http://localhost:3000/api/users?name=${session?.data?.user?.name}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setUser(data);
+        });
+      setLoading(false);
+      console.log("myUser", user);
+    } else {
+      null;
+    }
+  }, [session]); */
   return (
     <div className="h-[100%] mb-6">
       <div className="h-screen w-64 pb-10 mt-28 bg-gradient-to-r from-gray-200 to-gray-100">
         <div className="flex px-4 h-full flex-grow flex-col rounded-br-lg rounded-tr-lg pt-5 ">
-          {user?.map((item) => {
-            <div className="flex mt-10 items-center px-4">
-              <Image
-                width={50}
-                height={50}
-                priority
-                src={item.imageUrl}
-                alt="photo_profile"
-                className="w-10 h-10 rounded-[50%]"
-              />
-              <div className="flex ml-3 flex-col">
-                <h3 className="font-medium text-xs">{user.name}</h3>
-                <p className="text-xs text-gray-500 underline cursor-pointer hover:text-blue-500">
-                  see your profile
-                </p>
-              </div>
-            </div>;
-          })}
-
-          {/* list navBar */}
+          <div
+            onClick={() =>
+              router.push(`/dashboard/profile/${session.data.user.name}`)
+            }
+            className="flex mt-10 items-center px-4 cursor-pointer"
+          >
+            <Image
+              width={50}
+              height={50}
+              priority
+              src={session?.data?.user?.image}
+              alt="photo_profile"
+              className="w-10 h-10 rounded-[50%]"
+            />
+            <div className="flex ml-3 flex-col">
+              <h3 className="font-medium text-xs">
+                {session?.data?.user?.name}
+              </h3>
+            </div>
+          </div>
           <ul className="flex flex-col py-4">
             {menuItems.map((link) => {
               const LinkIcon = link.icon;

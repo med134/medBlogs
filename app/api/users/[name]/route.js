@@ -12,10 +12,10 @@ export const DELETE = async (request, { params }) => {
   }
 };
 export const GET = async (request, { params }) => {
-  const { _id } = params;
+  const { name} = params;
   try {
     await connect();
-    const user = await User.findById(_id);
+    const user = await User.findOne({name});
     return new NextResponse(JSON.stringify(user), { status: 200 });
   } catch (error) {
     return new NextResponse("user not found try with another user _id", {

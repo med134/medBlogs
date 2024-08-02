@@ -1,8 +1,8 @@
 import React from "react";
 import Profile from "@/app/components/Profile";
 
-async function getUser(id) {
-  const res = await fetch(`https://www.medcode.dev/api/users/${id}`, {
+async function getUser(name) {
+  const res = await fetch(`https://www.medcode.dev/api/users/${name}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -11,8 +11,8 @@ async function getUser(id) {
   return res.json();
 }
 const page = async ({params}) => {
-  const { id } = params;
-  const user = await getUser(id);
+  const { name } = params;
+  const user = await getUser(name);
   console.log(user,"userId")
   return (
     <main className="py-20">

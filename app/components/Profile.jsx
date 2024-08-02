@@ -52,13 +52,13 @@ const Profile = ({ user }) => {
                   width={500}
                   alt="user image"
                   height={500}
-                  src={user.imageUrl}
+                  src={user?.imageUrl}
                   className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
                 />
-                <h1 className="text-xl font-bold">{user.name}</h1>
+                <h1 className="text-xl font-bold">{user?.name}</h1>
                 <div className="flex justify-start items-center">
                   <MdOutlineWork className="w-6 h-6 fill-gray-400" />{" "}
-                  <p className="text-gray-700 ml-2">{user.job}</p>
+                  <p className="text-gray-700 ml-2">{user?.job}</p>
                 </div>
               </div>
               <hr className="my-3 border-t border-gray-300" />
