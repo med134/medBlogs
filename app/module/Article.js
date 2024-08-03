@@ -26,13 +26,17 @@ const articleSchema = new Schema(
       type: String,
       required: true,
     },
-    content: {
+    job: {
       type: String,
-      required: true,
+      required: false,
     },
     status: {
       type: String,
       required: false,
+    },
+    content: {
+      type: String,
+      required: true,
     },
     username: {
       type: String,
@@ -41,10 +45,6 @@ const articleSchema = new Schema(
     email: {
       type: String,
       required: true,
-    },
-    job: {
-      type: String,
-      required: false,
     },
   },
   { timestamps: true }

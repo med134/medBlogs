@@ -29,6 +29,7 @@ export default function EditArticle({
   const [newContent, setNewContent] = useState(content);
   const [loading, setLoading] = useState(false);
   const session = useSession();
+  console.log("this is new status", newStatus);
 
   hljs.configure({
     languages: [
@@ -122,11 +123,11 @@ export default function EditArticle({
           description,
           slug,
           category,
-          content,
+          job,
           status,
+          content,
           username: session.data.user.name,
           email: session.data.user.email,
-          job,
         }),
       });
 
@@ -168,6 +169,38 @@ export default function EditArticle({
             <div className="p-4">
               <label
                 className="text-gray-600 font-bold mb-1 dark:text-light"
+                htmlFor="newTags"
+              >
+                Tags
+              </label>
+              <input
+                onChange={(e) => setNewTags(e.target.value)}
+                value={newTags}
+                id="newTags"
+                className="border w-full border-slate-500 px-8 py-2 rounded-lg"
+                type="text"
+                placeholder="Topic tags"
+              />
+            </div>
+            <div className="p-4">
+              <label
+                className="text-gray-600 font-bold  dark:text-light"
+                htmlFor="newImage"
+              >
+                Image
+              </label>
+              <input
+                onChange={(e) => setNewImage(e.target.value)}
+                value={newImage}
+                id="newImage"
+                className="border w-full border-slate-500 px-8 py-2 rounded-lg"
+                type="text"
+                placeholder="Topic Image"
+              />
+            </div>
+            <div className="p-4">
+              <label
+                className="text-gray-600 font-bold mb-1 dark:text-light"
                 htmlFor="newDescription"
               >
                 Description
@@ -197,38 +230,30 @@ export default function EditArticle({
                 placeholder="topic slug"
               />
             </div>
-            <div className="p-4">
-              <label
-                className="text-gray-600 font-bold  dark:text-light"
-                htmlFor="newImage"
-              >
-                Image
-              </label>
-              <input
-                onChange={(e) => setNewImage(e.target.value)}
-                value={newImage}
-                id="newImage"
-                className="border w-full border-slate-500 px-8 py-2 rounded-lg"
-                type="text"
-                placeholder="Topic Image"
-              />
-            </div>
-            <div className="p-4">
+
+            <div>
               <label
                 className="text-gray-600 font-bold mb-1 dark:text-light"
-                htmlFor="newTags"
+                htmlFor="newCategory"
               >
-                Tags
+                Category
               </label>
-              <input
-                onChange={(e) => setNewTags(e.target.value)}
-                value={newTags}
-                id="newTags"
-                className="border w-full border-slate-500 px-8 py-2 rounded-lg"
-                type="text"
-                placeholder="Topic tags"
-              />
+              <select
+                id="newCategory"
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}
+                className="h-12 w-full max-w-full rounded-md border px-8 bg-white text-sm outline-none focus:ring"
+              >
+                <option value="">Select category</option>
+                <option value="react">React.js</option>
+                <option value="nextjs">Next.js</option>
+                <option value="career">Career</option>
+                <option value="solution">Solution</option>
+                <option value="productivity">Productivity</option>
+                <option value="tools">Tools</option>
+              </select>
             </div>
+
             <div className="p-4">
               <label
                 className="text-gray-600 font-bold mb-1 dark:text-light"
@@ -254,28 +279,6 @@ export default function EditArticle({
                   <option value="student">student</option>
                 </select>
               </div>
-            </div>
-            <div>
-              <label
-                className="text-gray-600 font-bold mb-1 dark:text-light"
-                htmlFor="newCategory"
-              >
-                Category
-              </label>
-              <select
-                id="newCategory"
-                value={newCategory}
-                onChange={(e) => setNewCategory(e.target.value)}
-                className="h-12 w-full max-w-full rounded-md border px-8 bg-white text-sm outline-none focus:ring"
-              >
-                <option value="">Select category</option>
-                <option value="react">React.js</option>
-                <option value="nextjs">Next.js</option>
-                <option value="career">Career</option>
-                <option value="solution">Solution</option>
-                <option value="productivity">Productivity</option>
-                <option value="tools">Tools</option>
-              </select>
             </div>
             <div>
               <label

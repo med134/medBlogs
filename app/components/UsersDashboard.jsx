@@ -18,7 +18,7 @@ const UsersDashboard = () => {
       session?.data?.user?.name === "MOHAMMED DAKIR"
     ) {
       setLoading(true);
-      fetch("https://www.medcode.dev/api/users")
+      fetch("http://localhost:3000/api/users")
         .then((res) => res.json())
         .then((data) => {
           setUsers(data);

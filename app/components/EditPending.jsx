@@ -14,7 +14,7 @@ const EditPending = () => {
       session?.data?.user?.name === "MOHAMMED DAKIR" &&
       session.status === "authenticated"
     ) {
-      fetch("https://www.medcode.dev/api/articles")
+      fetch("http://localhost:3000/api/articles")
         .then((res) => res.json())
         .then((data) => {
           if (data.length > 0) {

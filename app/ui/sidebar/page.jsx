@@ -14,9 +14,6 @@ import { usePathname, useRouter } from "next/navigation";
 
 const SideBar = () => {
   const session = useSession();
-  console.log(session);
-  const [user, setUser] = useState([]);
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const path = usePathname();
   const menuItems = [
@@ -27,21 +24,6 @@ const SideBar = () => {
     { name: "Draft blog", link: "/dashboard/pending", icon: MdPendingActions },
     { name: "Settings", link: "/dashboard/profile", icon: RiSettings5Line },
   ];
-
-  /* useEffect(() => {
-    setLoading(true);
-    if (session) {
-      fetch(`http://localhost:3000/api/users?name=${session?.data?.user?.name}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setUser(data);
-        });
-      setLoading(false);
-      console.log("myUser", user);
-    } else {
-      null;
-    }
-  }, [session]); */
   return (
     <div className="h-[100%] mb-6">
       <div className="h-screen w-64 pb-10 mt-28 bg-gradient-to-r from-gray-200 to-gray-100">
@@ -50,28 +32,31 @@ const SideBar = () => {
             onClick={() =>
               router.push(`/dashboard/profile/${session.data.user.name}`)
             }
-            className="flex mt-10 items-center px-4 cursor-pointer"
+            className="flex mt-10 justify-start items-center px-4 cursor-pointer"
           >
             <Image
               width={50}
               height={50}
               priority
               src={
-                session
+                session.status === "authenticated"
                   ? session?.data?.user?.image
-                  : "https://unsplash.com/illustrations/a-drawing-of-a-man-with-a-beard-o6cZNWKLddI"
+                  : "https://res.cloudinary.com/djcnq7nmj/image/upload/v1722710170/programmer_bnkuqg.png"
               }
               alt="photo_profile"
-              className="w-10 h-10 rounded-[50%]"
+              className="w-12 h-12 rounded-[50%]"
             />
             <div className="flex ml-3 flex-col">
-              {session ? (
+              {session.status === "authenticated" ? (
                 <h3 className="font-medium text-xs">
-                  {session?.data?.user?.name}{" "}
+                  {session?.data?.user?.name}
                 </h3>
               ) : (
-                <Link href={"dashboard/login"} className="">
-                  login
+                <Link
+                  href={"dashboard/login"}
+                  className="hover:text-blue-500 hover:underline text-gray-500 text-xl font-semibold"
+                >
+                  Login
                 </Link>
               )}
             </div>
