@@ -30,7 +30,7 @@ const ListDashboardBlogs = () => {
     if (session.status === "authenticated") {
       setLoading(true);
       fetch(
-        `${process.env.PUBLIC_LINK}/api/articles?username=${session?.data?.user.name}`
+        `/api/articles?username=${session?.data?.user.name}`
       )
         .then((res) => res.json())
         .then((data) => {
