@@ -104,11 +104,11 @@ export default function EditArticle({
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const title = newTitle;
-    const tags = newTags;
-    const image = newImage;
-    const description = newDescription;
-    const slug = newSlug;
+    const title = e.target[0].value;
+    const tags = e.target[1].value;
+    const image = e.target[2].value;
+    const description = e.target[3].value;
+    const slug = e.target[4].value;
     const category = newCategory;
     const job = newJob;
     const status = newStatus;
@@ -118,7 +118,7 @@ export default function EditArticle({
 
     try {
       setLoading(true);
-      await fetch(`https://www.medcode.dev/api/articles/${slug}`, {
+      await fetch(`/api/articles/${slug}`, {
         method: "PUT",
         body: JSON.stringify({
           title,

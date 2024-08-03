@@ -20,7 +20,7 @@ const AddNewArticle = () => {
       router.push("/dashboard/login");
     }
     setUserSlugOne(session?.data?.user?.name.replace(/\s+/g, "-"));
-    console.log(selectedJobs);
+    console.log(userSlugOne);
   }, [session]);
 
   const ex = undefined;
@@ -107,7 +107,7 @@ const AddNewArticle = () => {
     const imageUrl = session.data.user.image;
     const job = selectedJobs;
     const userSlug = userSlugOne;
-    const phone = "default";
+    const phone = 123698;
     const homeAddress = "default";
     try {
       await fetch("/api/register", {
@@ -137,8 +137,6 @@ const AddNewArticle = () => {
     const job = selectedJobs;
     const status = selectStatus;
     const content = quill.root.innerHTML;
-    console.log(status);
-
     try {
       await fetch("/api/articles", {
         method: "POST",
@@ -146,14 +144,14 @@ const AddNewArticle = () => {
           title,
           tags,
           image,
-          category,
           description,
           slug,
-          content,
+          category,
+          job,
           status,
+          content,
           username: session.data.user.name,
           email: session.data.user.email,
-          job,
         }),
       });
       e.target.reset();
