@@ -30,7 +30,7 @@ const ListDashboardBlogs = () => {
     if (session.status === "authenticated") {
       setLoading(true);
       fetch(
-        `https://www.medcode.dev/api/articles?username=${session?.data?.user.name}`
+        `${process.env.PUBLIC_LINK}/api/articles?username=${session?.data?.user.name}`
       )
         .then((res) => res.json())
         .then((data) => {
