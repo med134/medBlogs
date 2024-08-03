@@ -10,7 +10,10 @@ const EditPending = () => {
   const router = useRouter();
   const session = useSession();
   useEffect(() => {
-    if (session?.data?.user?.name === "MOHAMMED DAKIR") {
+    if (
+      session?.data?.user?.name === "MOHAMMED DAKIR" &&
+      session.status === "authenticated"
+    ) {
       fetch("https://www.medcode.dev/api/articles")
         .then((res) => res.json())
         .then((data) => {
@@ -19,7 +22,7 @@ const EditPending = () => {
           }
         });
     } else {
-      null;
+      router.push("/dashboard/login");
     }
   }, [session, router]);
   return (

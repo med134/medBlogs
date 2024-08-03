@@ -13,7 +13,10 @@ const UsersDashboard = () => {
   const indexUser = users.length;
   const session = useSession();
   useEffect(() => {
-    if (session?.data?.user?.name === "MOHAMMED DAKIR") {
+    if (
+      session.status === "authenticated" &&
+      session?.data?.user?.name === "MOHAMMED DAKIR"
+    ) {
       setLoading(true);
       fetch("https://www.medcode.dev/api/users")
         .then((res) => res.json())
@@ -22,7 +25,7 @@ const UsersDashboard = () => {
           setLoading(false);
         });
     } else {
-      null;
+      router.push("/dashboard/login");
     }
   }, [session]);
   const handleDelete = async (id) => {
@@ -97,9 +100,7 @@ const UsersDashboard = () => {
                           </button>
                           <button
                             onClick={() =>
-                              router.push(
-                                `/dashboard/profile/${user.name}`
-                              )
+                              router.push(`/dashboard/profile/${user.name}`)
                             }
                             className="flex justify-around group px-2 py-1 items-center bg-blue-500 rounded-md text-white"
                           >

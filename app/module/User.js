@@ -22,6 +22,10 @@ const userSchema = new Schema(
       type: String,
       required: false,
     },
+    userSlug: {
+      type: String,
+      required: true,
+    },
     phone: {
       type: Number,
       required: false,

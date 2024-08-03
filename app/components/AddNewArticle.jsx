@@ -101,6 +101,9 @@ const AddNewArticle = () => {
     const email = session.data.user.email;
     const imageUrl = session.data.user.image;
     const job = selectedJobs;
+    const userSlug = name.replace(/\s+/g, "-");
+    const phone = "";
+    const homeAddress = "";
     try {
       await fetch("/api/register", {
         method: "POST",
@@ -109,6 +112,9 @@ const AddNewArticle = () => {
           email,
           imageUrl,
           job,
+          userSlug,
+          phone,
+          homeAddress,
         }),
       });
     } catch (err) {

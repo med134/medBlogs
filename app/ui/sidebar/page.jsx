@@ -56,14 +56,24 @@ const SideBar = () => {
               width={50}
               height={50}
               priority
-              src={session?.data?.user?.image}
+              src={
+                session
+                  ? session?.data?.user?.image
+                  : "https://unsplash.com/illustrations/a-drawing-of-a-man-with-a-beard-o6cZNWKLddI"
+              }
               alt="photo_profile"
               className="w-10 h-10 rounded-[50%]"
             />
             <div className="flex ml-3 flex-col">
-              <h3 className="font-medium text-xs">
-                {session?.data?.user?.name}
-              </h3>
+              {session ? (
+                <h3 className="font-medium text-xs">
+                  {session?.data?.user?.name}{" "}
+                </h3>
+              ) : (
+                <Link href={"dashboard/login"} className="">
+                  login
+                </Link>
+              )}
             </div>
           </div>
           <ul className="flex flex-col py-4">

@@ -27,18 +27,19 @@ const ListDashboardBlogs = () => {
   };
 
   useEffect(() => {
-    if (session.status === "unauthenticated") {
+    if (session.status === "authenticated") {
+      setLoading(true);
+      fetch(
+        `https://www.medcode.dev/api/articles?username=${session?.data?.user.name}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setData(data);
+          setLoading(false);
+        });
+    } else {
       router.push("/dashboard/login");
     }
-    setLoading(true);
-    fetch(
-      `https://www.medcode.dev/api/articles?username=${session?.data?.user.name}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      });
   }, []);
 
   const indexOfLastBlog = currentPage * perPage;
