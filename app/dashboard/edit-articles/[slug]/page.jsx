@@ -32,6 +32,8 @@ const Edit = async ({ params }) => {
         category={data.category}
         content={data.content}
         status={data.status}
+        userName={data.username}
+        UserEmail={data.email}
       />
     </Layout>
   );

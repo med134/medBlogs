@@ -24,7 +24,7 @@ const userSchema = new Schema(
     },
     userSlug: {
       type: String,
-      required: true,
+      required: false,
     },
     phone: {
       type: Number,

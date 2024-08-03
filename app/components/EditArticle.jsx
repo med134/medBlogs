@@ -17,6 +17,8 @@ export default function EditArticle({
   job,
   image,
   status,
+  userName,
+  UserEmail,
 }) {
   const [newTitle, setNewTitle] = useState(title);
   const [newImage, setNewImage] = useState(image);
@@ -103,14 +105,16 @@ export default function EditArticle({
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = newTitle;
-    const description = newDescription;
-    const image = newImage;
     const tags = newTags;
+    const image = newImage;
+    const description = newDescription;
     const slug = newSlug;
     const category = newCategory;
-    const status = newStatus;
     const job = newJob;
+    const status = newStatus;
     const content = quill.root.innerHTML;
+    const username = userName;
+    const email = UserEmail;
 
     try {
       setLoading(true);
@@ -126,8 +130,8 @@ export default function EditArticle({
           job,
           status,
           content,
-          username: session.data.user.name,
-          email: session.data.user.email,
+          username,
+          email,
         }),
       });
 

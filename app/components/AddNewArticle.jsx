@@ -5,17 +5,22 @@ import { useSession } from "next-auth/react";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 import hljs from "highlight.js";
+import { useRouter } from "next/navigation";
 
 const AddNewArticle = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const [selectStatus, setSelectStatus] = useState("draft");
+  const [userSlugOne, setUserSlugOne] = useState("");
   const session = useSession();
+  const router = useRouter();
 
   useEffect(() => {
     if (session?.status === "unauthenticated") {
       router.push("/dashboard/login");
     }
+    setUserSlugOne(session?.data?.user?.name.replace(/\s+/g, "-"));
+    console.log(selectedJobs);
   }, [session]);
 
   const ex = undefined;
@@ -101,9 +106,9 @@ const AddNewArticle = () => {
     const email = session.data.user.email;
     const imageUrl = session.data.user.image;
     const job = selectedJobs;
-    const userSlug = name.replace(/\s+/g, "-");
-    const phone = "";
-    const homeAddress = "";
+    const userSlug = userSlugOne;
+    const phone = "default";
+    const homeAddress = "default";
     try {
       await fetch("/api/register", {
         method: "POST",
