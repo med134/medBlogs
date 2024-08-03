@@ -14,7 +14,7 @@ const EditPending = () => {
       session?.data?.user?.name === "MOHAMMED DAKIR" &&
       session.status === "authenticated"
     ) {
-      fetch(`${process.env.PUBLIC_LINK}/api/articles`)
+      fetch(`/api/articles`)
         .then((res) => res.json())
         .then((data) => {
           if (data.length > 0) {

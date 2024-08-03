@@ -20,7 +20,7 @@ const AddNewArticle = () => {
       router.push("/dashboard/login");
     }
     setUserSlugOne(session?.data?.user?.name.replace(/\s+/g, "-"));
-    console.log(userSlugOne);
+    console.log(selectedOption);
   }, [session]);
 
   const ex = undefined;

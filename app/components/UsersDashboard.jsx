@@ -18,7 +18,7 @@ const UsersDashboard = () => {
       session?.data?.user?.name === "MOHAMMED DAKIR"
     ) {
       setLoading(true);
-      fetch(`${process.env.PUBLIC_LINK}/api/users`)
+      fetch(`/api/users`)
         .then((res) => res.json())
         .then((data) => {
           setUsers(data);

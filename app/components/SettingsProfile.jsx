@@ -20,7 +20,7 @@ const SettingsProfile = ({ id, imageUrl, job, name, email }) => {
     const job = newJob;
     try {
       setLoading(true);
-      await fetch(`https://www.medcode.dev/api/users/${id}`, {
+      await fetch(`/api/users/${id}`, {
         method: "PUT",
         body: JSON.stringify({
           name,

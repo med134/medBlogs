@@ -19,7 +19,7 @@ const Profile = ({ user }) => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${process.env.PUBLIC_LINK}/api/articles?username=${user.name}`)
+    fetch(`/api/articles?username=${user.name}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);

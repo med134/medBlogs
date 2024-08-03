@@ -2,7 +2,7 @@ import SettingsProfile from "@/app/components/SettingsProfile";
 import React from "react";
 
 async function getUser(id) {
-  const res = await fetch(`${process.env.PUBLIC_LINK}/api/users/${id}`, {
+  const res = await fetch(`/api/users/${id}`, {
     cache: "no-store",
   });
   if (!res.ok) {

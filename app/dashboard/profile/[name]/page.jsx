@@ -2,7 +2,7 @@ import React from "react";
 import Profile from "@/app/components/Profile";
 
 async function getUser(name) {
-  const res = await fetch(`${process.env.PUBLIC_LINK}/api/users/${name}`, {
+  const res = await fetch(`api/users/${name}`, {
     cache: "no-store",
   });
   if (!res.ok) {
