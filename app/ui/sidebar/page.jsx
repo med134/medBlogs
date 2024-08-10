@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { RxDashboard } from "react-icons/rx";
 import { PiUsersThree } from "react-icons/pi";
-import { RiArticleLine, RiSettings5Line } from "react-icons/ri";
+import { RiArticleLine, RiSettings5Line, RiProfileFill } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
 import { MdPendingActions } from "react-icons/md";
 import { FiLogIn } from "react-icons/fi";
@@ -16,21 +16,40 @@ const SideBar = () => {
   const session = useSession();
   const router = useRouter();
   const path = usePathname();
+  const [user, setUser] = useState([]);
   const menuItems = [
     { name: "Dashboard", link: "/dashboard", icon: RxDashboard },
     { name: "Users", link: "/dashboard/users", icon: PiUsersThree },
     { name: "Blogs", link: "/dashboard/blogs", icon: RiArticleLine },
     { name: "Add Blog", link: "/dashboard/add-articles", icon: CgFileAdd },
     { name: "Draft blog", link: "/dashboard/pending", icon: MdPendingActions },
-    { name: "Settings", link: "/dashboard/profile", icon: RiSettings5Line },
+    { name: "Profile", link: "/dashboard/profile", icon: RiProfileFill },
   ];
+  useEffect(() => {
+    if (session?.status === "authenticated") {
+      fetch(
+        `/api/users/${session?.data?.user?.name
+          .replace(/\s+/g, "-")
+          .toLowerCase()}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setUser(data);
+        });
+      console.log(user);
+    }
+  }, [session, user]);
   return (
     <div className="h-[100%] mb-6">
       <div className="h-screen w-64 pb-10 mt-28 bg-gradient-to-r from-gray-200 to-gray-100">
         <div className="flex px-4 h-full flex-grow flex-col rounded-br-lg rounded-tr-lg pt-5 ">
           <div
             onClick={() =>
-              router.push(`/dashboard/profile/${session.data.user.name}`)
+              router.push(
+                `/dashboard/profile/${session?.data?.user?.name
+                  .replace(/\s+/g, "-")
+                  .toLowerCase()}`
+              )
             }
             className="flex mt-10 justify-start items-center px-4 cursor-pointer"
           >

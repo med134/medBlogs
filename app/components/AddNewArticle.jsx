@@ -20,6 +20,7 @@ const AddNewArticle = () => {
       router.push("/dashboard/login");
     } else if (session?.status === "authenticated") {
       const slug = session?.data?.user?.name.replace(/\s+/g, "-").toLowerCase();
+      console.log(slug)
       setUserSlugOne(slug);
     }
     console.log(userSlugOne);

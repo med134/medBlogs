@@ -13,10 +13,10 @@ export const DELETE = async (request, { params }) => {
   }
 };
 export const GET = async (request, { params }) => {
-  const { id } = params;
+  const { userSlug } = params;
   try {
     await connect();
-    const user = await User.findOne({ _id: id });
+    const user = await User.findOne({userSlug});
     return new NextResponse(JSON.stringify(user), { status: 200 });
   } catch (error) {
     return new NextResponse("user not found try with another user _id", {

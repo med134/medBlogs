@@ -57,7 +57,7 @@ const Profile = ({ user }) => {
                   <span className="text-gray-400 tracking-wider mb-2">
                     Email Address
                   </span>
-                  <p className="text-gray-700">{user.email}</p>
+                  <p className="text-gray-700">{user?.email}</p>
                 </div>
                 <div>
                   <li className="text-gray-400 tracking-wider mb-2">
