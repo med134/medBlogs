@@ -35,7 +35,6 @@ const UsersDashboard = () => {
         await fetch(`/api/users/${id}`, {
           method: "DELETE",
         });
-        mutate();
       } catch (err) {
         console.log(err);
       }
@@ -56,7 +55,7 @@ const UsersDashboard = () => {
                   <th className="px-5 py-3 ">Actions</th>
                 </tr>
               </thead>
-              <div>
+              <thead>
                 {loading ? (
                   <SkeletonLoader />
                 ) : (
@@ -112,7 +111,7 @@ const UsersDashboard = () => {
                     </tr>
                   ))
                 )}
-              </div>
+              </thead>
             </table>
           </div>
         </div>

@@ -16,11 +16,12 @@ const AddNewArticle = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (session?.status === "unauthenticated") {
+    if (session?.status != "authenticated") {
       router.push("/dashboard/login");
+    } else if (session?.status === "authenticated") {
+      const slug = session?.data?.user?.name.replace(/\s+/g, "-");
+      setUserSlugOne(slug);
     }
-    setUserSlugOne(session?.data?.user?.name.replace(/\s+/g, "-"));
-    console.log(selectedOption);
   }, [session]);
 
   const ex = undefined;
@@ -107,8 +108,9 @@ const AddNewArticle = () => {
     const imageUrl = session.data.user.image;
     const job = selectedJobs;
     const userSlug = userSlugOne;
-    const phone = +2126-12369118;
+    const phone = +2126 - 12369118;
     const homeAddress = "default";
+    console.log(name);
     try {
       await fetch("/api/register", {
         method: "POST",

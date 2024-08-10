@@ -70,7 +70,7 @@ const ListDashboardBlogs = () => {
                 <th className="px-5 py-3">Actions</th>
               </tr>
             </thead>
-            <tbody>
+            <thead>
               {loading ? (
                 <SkeletonLoader />
               ) : (
@@ -118,7 +118,7 @@ const ListDashboardBlogs = () => {
                   </tr>
                 ))
               )}
-            </tbody>
+            </thead>
           </table>
           {data.length === 0 ? null : (
             <nav

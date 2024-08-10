@@ -7,10 +7,10 @@ const DeleteConfirmation = ({ showModel, blogDelete, onClose }) => {
       await fetch(`/api/articles/${slug}`, {
         method: "DELETE",
       });
+      onclose;
     } catch (err) {
       console.error(err);
     }
-    onclose();
   };
   return (
     <div

@@ -20,14 +20,4 @@ export const GET = async (request) => {
     );
   }
 };
-export const PUT = async (request) => {
-  const body = await request.json();
-  const newUser = new User(body);
-  try {
-    await connect();
-    await newUser.save();
-    return new NextResponse("user has been created", { status: 200 });
-  } catch (err) {
-    return new NextResponse("Error database", { status: 500 });
-  }
-};
+
