@@ -1,16 +1,6 @@
-"use client";
-import React, { useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import React from "react";
 
 const ChartPage = () => {
-  const router = useRouter();
-  const session = useSession();
-  useEffect(() => {
-    if (session.status === "unauthenticated") {
-      router.push("/dashboard/login");
-    }
-  }, []);
   return (
     <div className="px-3 mt-0 mb-6 lg:flex-none w-min">
       <div className="relative flex flex-col">

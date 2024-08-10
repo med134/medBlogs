@@ -43,7 +43,7 @@ const UsersDashboard = () => {
   };
   return (
     <div className="container mx-auto p-4 py-28">
-      <h1 className="text-2xl font-bold mb-4">Users</h1>
+      <h1 className="text-2xl font-bold mb-4">Admin & Users</h1>
       {session?.data?.user?.name === "MOHAMMED DAKIR" ? (
         <div className="overflow-y-hidden rounded-lg border">
           <div className="">
@@ -56,7 +56,7 @@ const UsersDashboard = () => {
                   <th className="px-5 py-3 ">Actions</th>
                 </tr>
               </thead>
-              <tbody>
+              <div>
                 {loading ? (
                   <SkeletonLoader />
                 ) : (
@@ -112,7 +112,7 @@ const UsersDashboard = () => {
                     </tr>
                   ))
                 )}
-              </tbody>
+              </div>
             </table>
           </div>
         </div>

@@ -32,6 +32,7 @@ export default function EditArticle({
   const [loading, setLoading] = useState(false);
   const session = useSession();
   console.log("this is new status", newStatus);
+  console.log("this is new job", newJob);
 
   hljs.configure({
     languages: [
@@ -153,7 +154,7 @@ export default function EditArticle({
         <SkeletonLoadingForm />
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <div className="grid grid-cols-2 gaps-10">
+          <div className="grid grid-cols-2 gaps-10 lg:block">
             <div className="p-4">
               <label
                 className="text-gray-600 font-bold mb-1 dark:text-light"
@@ -261,13 +262,11 @@ export default function EditArticle({
             <div className="p-4">
               <label
                 className="text-gray-600 font-bold mb-1 dark:text-light"
-                htmlFor="newJob"
               >
                 job
               </label>
               <div className="">
                 <select
-                  id="newJob"
                   value={newJob}
                   onChange={(e) => setNewJob(e.target.value)}
                   className="h-11 w-full max-w-full rounded-md border px-8 py-2 bg-white text-sm outline-none focus:ring"
@@ -285,14 +284,10 @@ export default function EditArticle({
               </div>
             </div>
             <div>
-              <label
-                className="text-gray-600 ml-4 font-bold mb-1 dark:text-light"
-                htmlFor="newStatus"
-              >
+              <label className="text-gray-600 ml-4 font-bold mb-1 dark:text-light">
                 Status
               </label>
               <select
-                id="newStatus"
                 value={newStatus}
                 disabled={
                   session?.data?.user?.name === "MOHAMMED DAKIR" ? false : true
@@ -300,8 +295,8 @@ export default function EditArticle({
                 onChange={(e) => setStatus(e.target.value)}
                 className="h-12 w-full max-w-full rounded-md border ml-4 mb-1 bg-white px-5 text-sm outline-none focus:ring"
               >
-                <option value="Software engineer">Draft</option>
-                <option value="Software Developer">publish</option>
+                <option value="draft">Draft</option>
+                <option value="publish">publish</option>
               </select>
             </div>
           </div>
