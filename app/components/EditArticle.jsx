@@ -31,8 +31,7 @@ export default function EditArticle({
   const [newContent, setNewContent] = useState(content);
   const [loading, setLoading] = useState(false);
   const session = useSession();
-  console.log("this is new status", newStatus);
-  console.log("this is new job", newJob);
+ 
 
   hljs.configure({
     languages: [

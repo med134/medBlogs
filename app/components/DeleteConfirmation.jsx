@@ -12,16 +12,6 @@ const DeleteConfirmation = ({ showModel, blogDelete, onClose }) => {
     }
     onclose();
   };
-  const handleDeleteUser = async (id) => {
-    try {
-      await fetch(`/api/users/${id}`, {
-        method: "DELETE",
-      });
-      onClose();
-    } catch (err) {
-      console.log(err);
-    }
-  };
   return (
     <div
       className={`${
@@ -71,9 +61,7 @@ const DeleteConfirmation = ({ showModel, blogDelete, onClose }) => {
         <div className="flex flex-col space-y-2">
           <button
             type="button"
-            onClick={() =>
-              handleDelete(blogDelete) || handleDeleteUser(blogDelete)
-            }
+            onClick={() => handleDelete(blogDelete)}
             className="px-4 py-2 rounded-lg text-white text-sm tracking-wide bg-red-500 hover:bg-red-600 active:bg-red-500"
           >
             Delete
