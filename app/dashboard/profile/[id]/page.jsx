@@ -17,7 +17,9 @@ const page = async ({ params }) => {
   const { id } = params;
   const user = getUser(id);
   console.log(user);
-  return <main className="py-20">user</main>;
+  return <main className="py-20">user
+  <Profile/>
+  </main>;
 };
 
 export default page;
