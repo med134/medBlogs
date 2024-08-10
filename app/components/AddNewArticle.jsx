@@ -107,7 +107,7 @@ const AddNewArticle = () => {
     const imageUrl = session.data.user.image;
     const job = selectedJobs;
     const userSlug = userSlugOne;
-    const phone = 123698;
+    const phone = +2126-12369118;
     const homeAddress = "default";
     try {
       await fetch("/api/register", {
