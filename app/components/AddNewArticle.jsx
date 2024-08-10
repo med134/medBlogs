@@ -22,6 +22,7 @@ const AddNewArticle = () => {
       const slug = session?.data?.user?.name.replace(/\s+/g, "-");
       setUserSlugOne(slug);
     }
+    console.log(userSlugOne);
   }, [session]);
 
   const ex = undefined;
@@ -108,9 +109,8 @@ const AddNewArticle = () => {
     const imageUrl = session.data.user.image;
     const job = selectedJobs;
     const userSlug = userSlugOne;
-    const phone = +2126 - 12369118;
+    const phone = 9118;
     const homeAddress = "default";
-    console.log(name);
     try {
       await fetch("/api/register", {
         method: "POST",

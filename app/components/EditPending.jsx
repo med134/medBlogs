@@ -3,12 +3,20 @@ import React, { useState, useEffect } from "react";
 import { BiSolidEdit } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
+const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
+  suspense: true,
+});
 
 const EditPending = () => {
   const [posts, setPosts] = useState([]);
   const router = useRouter();
   const session = useSession();
+  const [showModel, setShowModel] = useState(false);
+  const closeModelDelete = () => {
+    setShowModel(false);
+  };
   useEffect(() => {
     if (
       session?.data?.user?.name === "MOHAMMED DAKIR" &&
@@ -69,13 +77,20 @@ const EditPending = () => {
                           <BiSolidEdit className="ml-2 hover:font-semibold" />
                         </button>
                         <button
-                          onClick={() => handleDelete(blog.slug)}
+                          onClick={() => setShowModel(true)}
                           className="flex justify-around group px-2 py-1 items-center bg-red-500 rounded-md text-light"
                         >
                           <span className="hover:font-semibold">Delete</span>
                           <RiDeleteBin5Line className="ml-2 hover:font-semibold" />
                         </button>
                       </td>
+                      {
+                      <DeleteConfirmation
+                        showModel={showModel}
+                        blogDelete={blog.slug}
+                        onClose={closeModelDelete}
+                      />
+                    }
                     </tr>
                   ))
                 ) : (

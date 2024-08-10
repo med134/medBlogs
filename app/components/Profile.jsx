@@ -16,16 +16,6 @@ const Profile = ({ user }) => {
   const [phone, setPhone] = useState("");
   const totalBlog = Object.keys(data).length;
   const router = useRouter();
-
-  useEffect(() => {
-    setLoading(true);
-    fetch(`/api/articles?username=${user.name}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      });
-  }, []);
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(

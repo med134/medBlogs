@@ -3,7 +3,8 @@ import connect from "@/app/utils/ConnectDB";
 import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
-  const { name, email, imageUrl, job, homeAddress, phone } = await req.json();
+  const { name, email, imageUrl, userSlug, job, phone, homeAddress } =
+    await req.json();
   await connect();
   const newUser = new User({
     name,
