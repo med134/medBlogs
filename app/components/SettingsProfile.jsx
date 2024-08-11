@@ -83,10 +83,7 @@ const SettingsProfile = ({
           {loading ? (
             <SkeletonLoadingForm />
           ) : (
-            <form
-              className=""
-              onSubmit={handleSubmit}
-            >
+            <form className="" onSubmit={handleSubmit}>
               <div className="rounded p-6 grid grid-cols-3 gap-4">
                 <div className="pb-2">
                   <label
@@ -184,20 +181,20 @@ const SettingsProfile = ({
                   </div>
                 </div>
               </div>
-                <div className="flex justify-between items-center py-5">
-                  <button
-                    type="submit"
-                    className="w-full bg-gray-900 hover:bg-blue-dark text-white font-bold py-2 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300"
-                  >
-                    Save
-                  </button>
-                  <button
-                    onClick={router.push(`/dashboard/profile/${userSlug}`)}
-                    className="w-full ml-4 bg-gray-900 hover:bg-blue-dark text-white font-bold py-2 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300"
-                  >
-                    Cancel
-                  </button>
-                </div>
+              <div className="flex justify-between items-center py-5">
+                <button
+                  type="submit"
+                  className="w-full bg-gray-900 hover:bg-blue-dark text-white font-bold py-2 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300"
+                >
+                  Save
+                </button>
+                <button
+                  onClick={() => router.push(`/dashboard/profile/${userSlug}`)}
+                  className="w-full ml-4 bg-gray-900 hover:bg-blue-dark text-white font-bold py-2 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300"
+                >
+                  Cancel
+                </button>
+              </div>
             </form>
           )}
         </div>

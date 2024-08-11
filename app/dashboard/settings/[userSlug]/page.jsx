@@ -2,7 +2,7 @@ import SettingsProfile from "@/app/components/SettingsProfile";
 import React from "react";
 
 async function getUser(userSlug) {
-  const res = await fetch(`https://wwww.medcode.dev/api/users/${userSlug}`, {
+  const res = await fetch(`https://www.medcode.dev/api/users/${userSlug}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -10,7 +10,7 @@ async function getUser(userSlug) {
   }
   return res.json();
 }
-const DashboardSettingsPage = async ({ params }) => {
+const page = async ({ params }) => {
   const { userSlug } = params;
   const user = await getUser(userSlug);
   return (
@@ -28,4 +28,4 @@ const DashboardSettingsPage = async ({ params }) => {
   );
 };
 
-export default DashboardSettingsPage;
+export default page;
