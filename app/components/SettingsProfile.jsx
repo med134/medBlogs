@@ -19,6 +19,7 @@ const SettingsProfile = ({
   const [newHomeAddress, setNewHomeAddress] = useState(homeAddress);
   const [newImageUrl, setImageUrl] = useState(imageUrl);
   const [loading, setLoading] = useState(false);
+  const [newSlug, setNewSlug] = useState(userSlug);
   const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,10 +29,10 @@ const SettingsProfile = ({
     const job = e.target[3].value;
     const phone = e.target[4].value;
     const homeAddress = e.target[5].value;
-    const userSlug = userSlug;
+    const userSlug = newSlug;
     setLoading(true);
     try {
-      await fetch(`/api/users/${userSlug}`, {
+      await fetch(`/api/users/${newSlug}`, {
         method: "PUT",
         body: JSON.stringify({
           name,
@@ -45,7 +46,7 @@ const SettingsProfile = ({
       });
       e.target.reset();
       setLoading(false);
-      router.push(`/dashboard/profile/${userSlug}`);
+      router.push(`/dashboard/profile/${newSlug}`);
     } catch (err) {
       console.log(err);
     }
