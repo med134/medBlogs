@@ -2,7 +2,7 @@ import React from "react";
 import Profile from "@/app/components/Profile";
 
 async function getUser(userSlug) {
-  const res = await fetch(`/api/users/${userSlug}`, {
+  const res = await fetch(`https://www.medcode.dev/api/users/${userSlug}`, {
     cache: "no-store",
   });
   if (!res.ok) {

@@ -2,7 +2,7 @@ import SettingsProfile from "@/app/components/SettingsProfile";
 import React from "react";
 
 async function getUser(userSlug) {
-  const res = await fetch(`/api/users/${userSlug}`, {
+  const res = await fetch(`https://wwww.medcode.dev/api/users/${userSlug}`, {
     cache: "no-store",
   });
   if (!res.ok) {
