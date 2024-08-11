@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { RxDashboard } from "react-icons/rx";
 import { PiUsersThree } from "react-icons/pi";
-import { RiArticleLine, RiSettings5Line, RiProfileFill } from "react-icons/ri";
+import { RiArticleLine, RiProfileFill } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
 import { MdPendingActions } from "react-icons/md";
 import { FiLogIn } from "react-icons/fi";
@@ -23,7 +23,13 @@ const SideBar = () => {
     { name: "Blogs", link: "/dashboard/blogs", icon: RiArticleLine },
     { name: "Add Blog", link: "/dashboard/add-articles", icon: CgFileAdd },
     { name: "Draft blog", link: "/dashboard/pending", icon: MdPendingActions },
-    { name: "Profile", link: "/dashboard/profile", icon: RiProfileFill },
+    {
+      name: "Profile",
+      link: `/dashboard/profile/${session?.data?.user?.name
+        .replace(/\s+/g, "-")
+        .toLowerCase()}`,
+      icon: RiProfileFill,
+    },
   ];
   useEffect(() => {
     if (session?.status === "authenticated") {
@@ -36,7 +42,6 @@ const SideBar = () => {
         .then((data) => {
           setUser(data);
         });
-      console.log(user);
     }
   }, [session, user]);
   return (

@@ -1,8 +1,8 @@
 import SettingsProfile from "@/app/components/SettingsProfile";
 import React from "react";
 
-async function getUser(id) {
-  const res = await fetch(`/api/users/${id}`, {
+async function getUser(userSlug) {
+  const res = await fetch(`/api/users/${userSlug}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -11,18 +11,18 @@ async function getUser(id) {
   return res.json();
 }
 const DashboardSettingsPage = async ({ params }) => {
-  const { id } = params;
-  const user = await getUser(id);
+  const { userSlug } = params;
+  const user = await getUser(userSlug);
   return (
     <main className="py-20">
       <SettingsProfile
-        id={id}
         email={user.email}
         name={user.name}
         job={user.job}
         phone={user.phone}
         homeAddress={user.homeAddress}
         imageUrl={user.imageUrl}
+        userSlug={user.userSlug}
       />
     </main>
   );

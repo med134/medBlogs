@@ -34,9 +34,12 @@ const Profile = ({ user }) => {
           <div className="">
             <div className="bg-white shadow rounded-lg p-6 relative">
               <RiSettings5Line
-                onClick={() => router.push(`/dashboard/settings/${user._id}`)}
+                onClick={() =>
+                  router.push(`/dashboard/settings/${user?.userSlug}`)
+                }
                 className="absolute w-8 h-8 cursor-pointer hover:fill-mainColor"
               />
+              <h3 className="ml-10 font-semibold">complete profile</h3>
               <div className="flex flex-col items-center">
                 <Image
                   width={500}
@@ -54,29 +57,25 @@ const Profile = ({ user }) => {
               <hr className="my-3 border-t border-gray-300" />
               <div className="flex justify-between items-center">
                 <div>
-                  <span className="text-gray-400 tracking-wider mb-2">
-                    Email Address
-                  </span>
+                  <span className="text-gray-400">Email Address</span>
                   <p className="text-gray-700">{user?.email}</p>
                 </div>
                 <div>
-                  <li className="text-gray-400 tracking-wider mb-2">
-                    Home Address
-                  </li>
+                  <span className="text-gray-400">Home Address</span>
                   <p className="text-gray-700">
-                    {user?.homeAddress}
+                    {user.homeAddress != "" ? user.homeAddress : "..."}
                   </p>
                 </div>
                 <div>
-                  <li className="text-gray-400 tracking-wider mb-2">
-                    Phone Number
-                  </li>
-                  <p className="text-gray-700">{user?.phone}</p>
+                  <span className="text-gray-400">Phone Number</span>
+                  <p className="text-gray-700">
+                    {user.phone != "" ? user.phone : "..."}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="">
+          {/* <div className="">
             <div className="flex rounded-xl bg-white py-2 px-2 text-gray-700 ">
               <div className="my-auto mr-4 p-3 text-blue-500">
                 <RiArticleLine className="fill-mainColor w-10 h-10" />
@@ -99,7 +98,7 @@ const Profile = ({ user }) => {
                 {loading ? (
                   <SkeletonLoader />
                 ) : (
-                  data.map((blog) => (
+                  data?.map((blog) => (
                     <tr
                       key={blog.slug}
                       className="p-2 px-4 py-2 max-w-full justify-between items-center border border-gray-100"
@@ -149,7 +148,7 @@ const Profile = ({ user }) => {
                 )}
               </tbody>
             </table>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ export const GET = async (request, { params }) => {
   const { userSlug } = params;
   try {
     await connect();
-    const user = await User.findOne({userSlug});
+    const user = await User.findOne({ userSlug });
     return new NextResponse(JSON.stringify(user), { status: 200 });
   } catch (error) {
     return new NextResponse("user not found try with another user _id", {
@@ -24,15 +24,14 @@ export const GET = async (request, { params }) => {
     });
   }
 };
-/* export const PUT = async (request, { params }) => {
-  const { id } = params;
+export const PUT = async (request, { params }) => {
+  const { userSlug } = params;
   const body = await request.json();
   try {
     await connect();
-    await User.findOneAndUpdate({ id }, body);
-    return new NextResponse("article updated", { status: 200 });
+    await User.findOneAndUpdate({ userSlug }, body);
+    return new NextResponse("profile updated", { status: 200 });
   } catch (err) {
     return new NextResponse("Error database", { status: 500 });
   }
 };
- */
