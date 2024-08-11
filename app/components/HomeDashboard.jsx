@@ -1,6 +1,7 @@
 import React from "react";
 import { RiArticleLine } from "react-icons/ri";
 import { IoStatsChart } from "react-icons/io5";
+import { MdOutlineTopic } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import { getUsers } from "./FetchData";
 import { getArticles } from "./FetchData";
@@ -10,6 +11,7 @@ const HomeDashboard = async () => {
   const articles = await getArticles();
   const totalArticles = Object.keys(articles).length;
   const totalUsers = Object.keys(users).length;
+
   return (
     <div className="mt-12 w-full">
       <div className="mt-6 grid grid-cols-3 gap-4 ">
@@ -53,14 +55,14 @@ const HomeDashboard = async () => {
         </div>
         <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
           <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-pink-600 to-pink-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
-            <IoStatsChart className="fill-white w-10 h-10" />
+            <MdOutlineTopic className="fill-white w-10 h-10" />
           </div>
           <div className="p-4 text-right">
-            <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-              Today Money
+            <p className="block antialiased font-semibold text-sm leading-normal text-blue-gray-600">
+              Total Topics
             </p>
             <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-              $53k
+              6
             </h4>
           </div>
           <div className="border-t border-blue-gray-50 p-4">
