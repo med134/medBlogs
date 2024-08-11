@@ -1,25 +1,24 @@
 "use client";
 import React from "react";
 
-const DeleteConfirmation = ({ showModel, blogDelete, onClose }) => {
-  const handleDelete = async (slug) => {
+const DeleteConfirmation = ({blogDelete, onClose }) => {
+  const handleDelete = async (blogDelete) => {
     try {
-      await fetch(`/api/articles/${slug}`, {
+      const response = await fetch(`/api/articles/${blogDelete}`, {
         method: "DELETE",
       });
-      onclose;
-    } catch (err) {
-      console.error(err);
+      if (response.ok) {
+        onClose();
+        // You can also refresh the page or update the state to reflect the deletion
+      } else {
+        console.error("Failed to delete the blog post");
+      }
+    } catch (error) {
+      console.error("Error deleting the blog post:", error);
     }
   };
   return (
-    <div
-      className={`${
-        showModel
-          ? "fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]"
-          : "hidden"
-      }`}
-    >
+    <div className="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]">
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6 relative">
         <svg
           onClick={onClose}

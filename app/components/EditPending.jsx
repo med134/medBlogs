@@ -15,7 +15,8 @@ const EditPending = () => {
   const session = useSession();
   const [showModel, setShowModel] = useState(false);
   const closeModelDelete = () => {
-    setShowModel(false);
+    setShowModel(!showModel);
+    console.log("delete button",showModel)
   };
   useEffect(() => {
     if (
@@ -77,20 +78,20 @@ const EditPending = () => {
                           <BiSolidEdit className="ml-2 hover:font-semibold" />
                         </button>
                         <button
-                          onClick={() => setShowModel(true)}
+                          onClick={closeModelDelete}
                           className="flex justify-around group px-2 py-1 items-center bg-red-500 rounded-md text-light"
                         >
                           <span className="hover:font-semibold">Delete</span>
                           <RiDeleteBin5Line className="ml-2 hover:font-semibold" />
                         </button>
                       </td>
-                      {
-                      <DeleteConfirmation
-                        showModel={showModel}
-                        blogDelete={blog.slug}
-                        onClose={closeModelDelete}
-                      />
-                    }
+                      {showModel && (
+                        <DeleteConfirmation
+                          showModel={showModel}
+                          blogDelete={blog.slug}
+                          onClose={closeModelDelete}
+                        />
+                      )}
                     </tr>
                   ))
                 ) : (

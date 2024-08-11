@@ -29,9 +29,7 @@ const ListDashboardBlogs = () => {
   useEffect(() => {
     if (session.status === "authenticated") {
       setLoading(true);
-      fetch(
-        `/api/articles?username=${session?.data?.user.name}`
-      )
+      fetch(`/api/articles?username=${session?.data?.user.name}`)
         .then((res) => res.json())
         .then((data) => {
           setData(data);
@@ -108,13 +106,13 @@ const ListDashboardBlogs = () => {
                         <RiDeleteBin5Line className="ml-2" />
                       </button>
                     </td>
-                    {
+                    {showModel && (
                       <DeleteConfirmation
                         showModel={showModel}
                         blogDelete={blog.slug}
                         onClose={closeModelDelete}
                       />
-                    }
+                    )}
                   </tr>
                 ))
               )}
