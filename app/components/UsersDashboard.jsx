@@ -10,7 +10,6 @@ const UsersDashboard = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const indexUser = users.length;
   const session = useSession();
   useEffect(() => {
     if (
