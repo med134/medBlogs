@@ -34,21 +34,25 @@ const SideBar = () => {
   ];
   useEffect(() => {
     if (session?.status === "authenticated") {
-      fetch(`/api/users`)
+      const userSlug = session?.data?.user?.name
+        .replace(/\s+/g, "-")
+        .toLowerCase();
+      console.log("nahida slug", userSlug);
+      fetch(`/api/users/${userSlug}`)
         .then((res) => res.json())
         .then((data) => {
           setUser(data);
         });
-      console.log(user);
+      console.log("check if user find",user);
     }
   }, [session]);
-  const handleMoveProfile = (userSlug) => {
-    const getUser = user?.filter((item) => item.email === userSlug);
-    const getSlug = getUser?.map((item) => item.userSlug);
-    if (getSlug) {
-      router.push(`/dashboard/profile/${getSlug}`);
-      console.log(getSlug);
-    } else{
+  const handleMoveProfile = () => {
+    /* const getUser = user?.filter((item) => item.email === userSlug);
+    const getSlug = getUser?.map((item) => item.userSlug); */
+    if (user) {
+     router.push(`/dashboard/profile/${user.userSlug}`)
+      console.log(user.userSlug);
+    } else if (user === null) {
       router.push(`/dashboard/create-user`);
     }
   };
@@ -62,7 +66,7 @@ const SideBar = () => {
       <div className="h-screen w-64 pb-10 mt-28 bg-gradient-to-r from-gray-200 to-gray-100">
         <div className="flex px-4 h-full flex-grow flex-col rounded-br-lg rounded-tr-lg pt-5 ">
           <div
-            onClick={() => handleMoveProfile(session?.data?.user?.email)}
+            onClick={() => handleMoveProfile()}
             className="flex mt-10 justify-start items-center px-4 cursor-pointer"
           >
             <div className="flex ml-3 flex-col">
