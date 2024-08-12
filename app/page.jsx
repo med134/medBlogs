@@ -5,7 +5,6 @@ import TransitionEffect from "./components/TransitionEffect";
 import Card from "./ServerCard";
 import Cat from "./MainSide";
 import dynamic from "next/dynamic";
-
 const Easy = dynamic(() => import("./components/EsayTemplates"), {
   ssr: false,
 });

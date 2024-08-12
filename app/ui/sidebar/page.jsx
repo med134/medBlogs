@@ -11,6 +11,7 @@ import { FiLogIn } from "react-icons/fi";
 import { CgFileAdd } from "react-icons/cg";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
+import ProfileLoader from "@/app/components/ProfileLoader";
 
 const SideBar = () => {
   const session = useSession();
@@ -33,55 +34,77 @@ const SideBar = () => {
   ];
   useEffect(() => {
     if (session?.status === "authenticated") {
-      fetch(
-        `/api/users/${session?.data?.user?.name
-          .replace(/\s+/g, "-")
-          .toLowerCase()}`
-      )
+      fetch(`/api/users`)
         .then((res) => res.json())
         .then((data) => {
           setUser(data);
         });
+      console.log(user);
     }
-  }, [session, user]);
+  }, [session]);
+  const handleMoveProfile = (userSlug) => {
+    const getUser = user?.filter((item) => item.email === userSlug);
+    const getSlug = getUser?.map((item) => item.userSlug);
+    if (getSlug) {
+      router.push(`/dashboard/profile/${getSlug}`);
+      console.log(getSlug);
+    } else{
+      router.push(`/dashboard/create-user`);
+    }
+  };
+  const removeLastName = (fullName) => {
+    const nameParts = fullName.trim().split(" ");
+    nameParts.pop();
+    return nameParts.join(" ");
+  };
   return (
     <div className="h-[100%] mb-6">
       <div className="h-screen w-64 pb-10 mt-28 bg-gradient-to-r from-gray-200 to-gray-100">
         <div className="flex px-4 h-full flex-grow flex-col rounded-br-lg rounded-tr-lg pt-5 ">
           <div
-            onClick={() =>
-              router.push(
-                `/dashboard/profile/${session?.data?.user?.name
-                  .replace(/\s+/g, "-")
-                  .toLowerCase()}`
-              )
-            }
+            onClick={() => handleMoveProfile(session?.data?.user?.email)}
             className="flex mt-10 justify-start items-center px-4 cursor-pointer"
           >
-            <Image
-              width={50}
-              height={50}
-              priority
-              src={
-                session.status === "authenticated"
-                  ? session?.data?.user?.image
-                  : "https://res.cloudinary.com/djcnq7nmj/image/upload/v1722710170/programmer_bnkuqg.png"
-              }
-              alt="photo_profile"
-              className="w-12 h-12 rounded-[50%]"
-            />
             <div className="flex ml-3 flex-col">
-              {session.status === "authenticated" ? (
-                <h3 className="font-medium text-xs">
-                  {session?.data?.user?.name}
-                </h3>
+              {session.status === "unauthenticated" ? (
+                <div className="flex justify-start items-center">
+                  <Image
+                    width={50}
+                    height={50}
+                    priority
+                    src={
+                      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1722710170/programmer_bnkuqg.png"
+                    }
+                    alt="photo_profile"
+                    className="w-12 h-12 rounded-[50%]"
+                  />
+                  <Link
+                    href={"dashboard/login"}
+                    rel="preload"
+                    className="hover:text-blue-500 hover:underline text-gray-500 text-xl font-semibold"
+                  >
+                    Login
+                  </Link>
+                </div>
+              ) : session.status === "loading" ? (
+                <ProfileLoader />
               ) : (
-                <Link
-                  href={"dashboard/login"}
-                  className="hover:text-blue-500 hover:underline text-gray-500 text-xl font-semibold"
-                >
-                  Login
-                </Link>
+                <div className="flex justify-start items-center">
+                  <Image
+                    width={50}
+                    height={50}
+                    priority
+                    src={session?.data?.user?.image}
+                    alt="photo_profile"
+                    className="w-12 h-12 rounded-[50%]"
+                  />
+                  <div className="ml-3">
+                    <h3 className="font-medium text-xs">
+                      {removeLastName(session?.data?.user?.name)}
+                    </h3>
+                    {/* <p className="text-xs text-gray-500">{user.job}</p> */}
+                  </div>
+                </div>
               )}
             </div>
           </div>
