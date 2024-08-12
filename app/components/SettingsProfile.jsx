@@ -12,7 +12,7 @@ const SettingsProfile = ({
   userSlug,
   phone,
 }) => {
-  const [newEmail, setNewEmail] = useState(email);
+  const [newEmail, setNewEmail] = useState(name);
   const [newJob, setNewJob] = useState(job);
   const [newName, setName] = useState(name);
   const [newPhone, setPhone] = useState(phone);

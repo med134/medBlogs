@@ -91,7 +91,7 @@ const UsersDashboard = () => {
                       {user.name != "MOHAMMED DAKIR" && (
                         <td className="flex space-x-2 p-2">
                           <button
-                            onClick={() => handleDelete(user._id)}
+                            onClick={() => handleDelete(user.userSlug)}
                             className="flex justify-around group px-2 py-1 items-center bg-red-500 rounded-md text-light"
                           >
                             <span className="hover:font-semibold">Delete</span>

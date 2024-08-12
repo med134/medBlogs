@@ -3,10 +3,10 @@ import connect from "@/app/utils/ConnectDB";
 import { NextResponse } from "next/server";
 
 export const DELETE = async (request, { params }) => {
-  const { id } = params;
+  const { userSlug } = params;
   try {
     await connect();
-    await User.findOneAndDelete({ _id: id });
+    await User.findOneAndDelete({ userSlug });
     return new NextResponse("user deleted", { status: 200 });
   } catch (err) {
     return new NextResponse("Error database", { status: 500 });

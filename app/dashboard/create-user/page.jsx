@@ -1,8 +1,11 @@
+import AddUser from '@/app/components/AddUser'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>create user</div>
+    <div className='py-16'>
+      <AddUser/>
+    </div>
   )
 }
 

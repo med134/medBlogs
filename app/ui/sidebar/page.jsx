@@ -37,21 +37,16 @@ const SideBar = () => {
       const userSlug = session?.data?.user?.name
         .replace(/\s+/g, "-")
         .toLowerCase();
-      console.log("nahida slug", userSlug);
       fetch(`/api/users/${userSlug}`)
         .then((res) => res.json())
         .then((data) => {
           setUser(data);
         });
-      console.log("check if user find",user);
     }
   }, [session]);
   const handleMoveProfile = () => {
-    /* const getUser = user?.filter((item) => item.email === userSlug);
-    const getSlug = getUser?.map((item) => item.userSlug); */
     if (user) {
      router.push(`/dashboard/profile/${user.userSlug}`)
-      console.log(user.userSlug);
     } else if (user === null) {
       router.push(`/dashboard/create-user`);
     }
