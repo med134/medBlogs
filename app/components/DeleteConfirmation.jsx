@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
-const DeleteConfirmation = ({blogDelete, onClose }) => {
+const DeleteConfirmation = ({ blogDelete, onClose }) => {
+  const router = useRouter();
   const handleDelete = async (blogDelete) => {
     try {
       const response = await fetch(`/api/articles/${blogDelete}`, {
@@ -9,6 +11,7 @@ const DeleteConfirmation = ({blogDelete, onClose }) => {
       });
       if (response.ok) {
         onClose();
+        router.refresh();
         // You can also refresh the page or update the state to reflect the deletion
       } else {
         console.error("Failed to delete the blog post");

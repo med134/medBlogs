@@ -6,14 +6,14 @@ import { useRouter } from "next/navigation";
 
 const AddUser = () => {
   const { data: session } = useSession();
-  const router =useRouter( )
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    image: session?.user?.image || "",
+    image: session?.user?.image,
     job: "",
-    userName: session?.user?.name.replace(/\s+/g, "-").toLowerCase() || "",
+    userSlug: session?.user?.name.replace(/\s+/g, "-").toLowerCase() || "",
     phone: "",
     homeAddress: "",
   });
@@ -40,10 +40,11 @@ const AddUser = () => {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
+      if (response.ok) {
+        router.push("/dashboard");
+      } else {
         throw new Error("Failed to register user");
       }
-      router.push(`/dashboard/profile/${userName}`)
     } catch (err) {
       setError(err.message);
     } finally {

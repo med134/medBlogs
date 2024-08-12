@@ -78,7 +78,7 @@ const SideBar = () => {
                     className="w-12 h-12 rounded-[50%]"
                   />
                   <Link
-                    href={"dashboard/login"}
+                    href={"/dashboard/login"}
                     rel="preload"
                     className="hover:text-blue-500 hover:underline text-gray-500 text-xl font-semibold"
                   >

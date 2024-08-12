@@ -35,6 +35,7 @@ const UsersDashboard = () => {
         await fetch(`/api/users/${id}`, {
           method: "DELETE",
         });
+        router.refresh();
       } catch (err) {
         console.log(err);
       }
