@@ -10,6 +10,7 @@ import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { FiX } from "react-icons/fi";
 import { limelight } from "./Fonts";
+import { usePathname } from "next/navigation";
 const DynamicMega = dynamic(() => import("./MegaMenu"), {
   suspense: true,
 });
@@ -44,6 +45,7 @@ const NavBar = () => {
   const [mode, setMode] = useThemeSwitcher("dark");
   const [isOpen, setIsOpen] = useState(false);
   const session = useSession();
+  const path = usePathname();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -71,7 +73,7 @@ const NavBar = () => {
   });
   return (
     <header
-      className={`header py-6 z-40 flex w-[100%] items-center bg-transparent xl:px-6 ${
+      className={`flex header py-6 z-40 w-[100%] items-center bg-transparent xl:px-6 ${
         sticky
           ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
           : "absolute"

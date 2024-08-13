@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
+import { useSession } from "next-auth/react";
 const SettingsProfile = ({
   imageUrl,
   job,
@@ -12,7 +13,7 @@ const SettingsProfile = ({
   userSlug,
   phone,
 }) => {
-  const [newEmail, setNewEmail] = useState(name);
+  const [newEmail, setNewEmail] = useState(email);
   const [newJob, setNewJob] = useState(job);
   const [newName, setName] = useState(name);
   const [newPhone, setPhone] = useState(phone);
@@ -21,8 +22,12 @@ const SettingsProfile = ({
   const [loading, setLoading] = useState(false);
   const [newSlug, setNewSlug] = useState(userSlug);
   const router = useRouter();
+  const session = useSession();
   useEffect(() => {
-    if (session.status != "authenticated") {
+    if (
+      session.status != "authenticated" &&
+      session?.data?.user.email === newEmail
+    ) {
       router.push("/dashboard/login");
     }
   }, []);

@@ -1,7 +1,7 @@
 "use client";
 import { MdOutlineWork } from "react-icons/md";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { RiSettings5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -17,7 +17,10 @@ const Profile = ({ user }) => {
     return formattedDate;
   };
   useEffect(() => {
-    if (session.status != "authenticated") {
+    if (
+      session.status != "authenticated" &&
+      session?.data?.user?.email != user.email
+    ) {
       router.push("/dashboard/login");
     }
   }, []);

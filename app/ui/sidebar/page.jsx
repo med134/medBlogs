@@ -57,9 +57,9 @@ const SideBar = () => {
     return nameParts.join(" ");
   };
   return (
-    <div className="h-[100%] mb-6">
-      <div className="h-screen w-64 pb-10 mt-28 bg-gradient-to-r from-gray-200 to-gray-100">
-        <div className="flex px-4 h-full flex-grow flex-col rounded-br-lg rounded-tr-lg pt-5 ">
+    <div className="mb-6 h-[100%]">
+      <div className="h-screen w-64 pb-10 bg-gradient-to-r from-[#f0f0f0] to-gray-50">
+        <div className="flex px-4 h-full mt-24 flex-grow flex-col rounded-br-lg rounded-tr-lg pt-5 ">
           <div
             onClick={() => handleMoveProfile()}
             className="flex mt-10 justify-start items-center px-4 cursor-pointer"
