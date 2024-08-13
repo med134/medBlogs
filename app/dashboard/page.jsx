@@ -1,6 +1,5 @@
 import React from "react";
 import ChartPage from "../components/ChartPage";
-import HomeDashboard from "../components/HomeDashboard";
 
 const page = async () => {
   return (
@@ -8,7 +7,6 @@ const page = async () => {
       <h1 className="text-2xl mt-4 flex text-dark font-semibold">
         Dashboard <span className="text-mainColor ml-2">Panel</span>
       </h1>
-      <HomeDashboard />
       <ChartPage />
     </div>
   );

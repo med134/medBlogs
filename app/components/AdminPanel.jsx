@@ -1,25 +1,17 @@
 import React from "react";
+import { RiArticleLine } from "react-icons/ri";
 
 const AdminPanel = () => {
   return (
-    <div>
-      <div className="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
-        <div className="flex justify-between mb-6">
-          <div>
-            <div className="flex items-center mb-1">
-              <div className="text-2xl font-semibold">2</div>
-            </div>
-            <div className="text-sm font-medium text-gray-400">Users</div>
+    <div className="grid grid-cols-3 gap-4">
+      <div className="flex justify-between items-center mb-6 bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
+        <div>
+          <div className="flex items-center mb-1">
+            <p className="text-2xl font-semibold">2</p>
           </div>
-          <div className="dropdown">
-            <button
-              type="button"
-              className="dropdown-toggle text-gray-400 hover:text-gray-600"
-            >
-              <i className="ri-more-fill" />
-            </button>
-          </div>
+          <div className="text-sm font-medium text-gray-400">Users</div>
         </div>
+        <RiArticleLine className="fill-white w-6 h-6" />
       </div>
     </div>
   );
