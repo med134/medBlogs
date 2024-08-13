@@ -11,6 +11,10 @@ const UsersDashboard = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const session = useSession();
+    /* reload page */
+    const reloadPage = () => {
+      window.location.reload();
+    };
   useEffect(() => {
     if (
       session.status === "authenticated" &&
@@ -34,7 +38,7 @@ const UsersDashboard = () => {
         await fetch(`/api/users/${id}`, {
           method: "DELETE",
         });
-        router.reload();
+        reloadPage()
       } catch (err) {
         console.log(err);
       }

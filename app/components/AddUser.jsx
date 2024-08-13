@@ -17,6 +17,10 @@ const AddUser = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
+  /* reload page */
+  const reloadPage = () => {
+    window.location.reload();
+  };
   const addUser = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -49,6 +53,7 @@ const AddUser = () => {
       if (response.ok) {
         setSuccess(true);
         router.push("/dashboard");
+        reloadPage();
       } else {
         throw new Error("Failed to register user");
       }
@@ -57,6 +62,7 @@ const AddUser = () => {
       setError(err.message);
     }
   };
+  
   return (
     <div className="bg-gray-100 text-gray-900 flex justify-center">
       <div className="m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">

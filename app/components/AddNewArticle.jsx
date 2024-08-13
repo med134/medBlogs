@@ -20,7 +20,7 @@ const AddNewArticle = () => {
       router.push("/dashboard/login");
     } else if (session?.status === "authenticated") {
       const slug = session?.data?.user?.name.replace(/\s+/g, "-").toLowerCase();
-      console.log(slug)
+      console.log(slug);
       setUserSlugOne(slug);
     }
     console.log(userSlugOne);
@@ -135,7 +135,9 @@ const AddNewArticle = () => {
     const tags = e.target[1].value;
     const image = e.target[2].value;
     const description = e.target[3].value;
-    const slug = e.target[4].value;
+    const blogSlug = e.target[4].value;
+    const blogS = blogSlug.replace(/\s+/g, "-").toLowerCase();
+    const slug = blogS;
     const category = selectedOption;
     const job = selectedJobs;
     const status = selectStatus;

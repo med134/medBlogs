@@ -18,6 +18,7 @@ const EditPending = () => {
     setShowModel(!showModel);
     console.log("delete button",showModel)
   };
+
   useEffect(() => {
     if (
       session?.data?.user?.name === "MOHAMMED DAKIR" &&
