@@ -4,10 +4,16 @@ import Image from "next/image";
 import React from "react";
 import { RiSettings5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 const Profile = ({ user }) => {
   const router = useRouter();
-
+  const FormatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const formattedDate = new Date(dateString).toLocaleDateString(
+      "en-US",
+      options
+    );
+    return formattedDate;
+  };
   return (
     <div className="">
       <div className="container mx-auto py-8">
@@ -34,6 +40,10 @@ const Profile = ({ user }) => {
                   <MdOutlineWork className="w-6 h-6 fill-gray-400" />{" "}
                   <p className="text-gray-700 ml-2">{user?.job}</p>
                 </div>
+                <p>
+                  Status : {user?.name === "MOHAMMED DAKIR" ? "Admin" : "User"}
+                </p>
+                <p>Date Created : {FormatDate(user?.createdAt)}</p>
               </div>
               <hr className="my-3 border-t border-gray-300" />
               <div className="flex justify-between items-center">

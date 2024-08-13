@@ -9,12 +9,14 @@ import { useSession } from "next-auth/react";
 const UsersDashboard = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
   const router = useRouter();
   const session = useSession();
-    /* reload page */
-    const reloadPage = () => {
-      window.location.reload();
-    };
+  /* reload page */
+  const reloadPage = () => {
+    window.location.reload();
+  };
   useEffect(() => {
     if (
       session.status === "authenticated" &&
@@ -30,23 +32,37 @@ const UsersDashboard = () => {
     } else {
       router.push("/dashboard/login");
     }
-  }, [session]);
+  }, [session.status]);
   const handleDelete = async (id) => {
     const confirmed = confirm("Are you sure you want to delete this user...?");
     if (confirmed) {
+      setLoading(true);
+      setError("");
       try {
-        await fetch(`/api/users/${id}`, {
+        const response = await fetch(`/api/users/${id}`, {
           method: "DELETE",
         });
-        reloadPage()
+        if (response.ok) {
+          setSuccess(true);
+          setLoading(false);
+          reloadPage();
+        } else {
+          throw new Error("Failed to register user");
+        }
       } catch (err) {
-        console.log(err);
+        setError(err.message);
       }
     }
   };
   return (
     <div className="container mx-auto p-4 py-28">
       <h1 className="text-2xl font-bold mb-4">Admin & Users</h1>
+      {success && (
+        <p className="text-white bg-green-500 mb-1 px-6 py-2 rounded-md uppercase font-semibold">
+          user has ben deleted
+        </p>
+      )}
+      {error && <p className="text-red-500">{error}</p>}
       {session?.data?.user?.name === "MOHAMMED DAKIR" ? (
         <div className="overflow-y-hidden rounded-lg border">
           <div className="">
@@ -95,10 +111,14 @@ const UsersDashboard = () => {
                       {user.name != "MOHAMMED DAKIR" && (
                         <td className="flex space-x-2 p-2">
                           <button
+                            disabled={loading}
                             onClick={() => handleDelete(user.userSlug)}
-                            className="flex justify-around group px-2 py-1 items-center bg-red-500 rounded-md text-light"
+                            className={`flex justify-around group px-2 py-1 items-center bg-red-500 rounded-md text-light
+                            ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                           >
-                            <span className="hover:font-semibold">Delete</span>
+                            <span className="hover:font-semibold">
+                              {loading ? "deleting..." : "Delete"}
+                            </span>
                             <RiDeleteBin5Line className="ml-2 hover:font-semibold" />
                           </button>
                           <button

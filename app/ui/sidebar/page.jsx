@@ -46,7 +46,7 @@ const SideBar = () => {
   }, [session]);
   const handleMoveProfile = () => {
     if (user) {
-     router.push(`/dashboard/profile/${user.userSlug}`)
+      router.push(`/dashboard/profile/${user.userSlug}`);
     } else if (user === null) {
       router.push(`/dashboard/create-user`);
     }
@@ -98,8 +98,8 @@ const SideBar = () => {
                     className="w-12 h-12 rounded-[50%]"
                   />
                   <div className="ml-3">
-                    <h3 className="font-medium text-xs">
-                      {removeLastName(session?.data?.user?.name)}
+                    <h3 className="font-medium text-xs hover:text-mainColor">
+                      Hi, {removeLastName(session?.data?.user?.name)}
                     </h3>
                     {/* <p className="text-xs text-gray-500">{user.job}</p> */}
                   </div>
