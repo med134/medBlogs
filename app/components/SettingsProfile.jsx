@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useRouter } from "next/navigation";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 const SettingsProfile = ({
@@ -21,6 +21,11 @@ const SettingsProfile = ({
   const [loading, setLoading] = useState(false);
   const [newSlug, setNewSlug] = useState(userSlug);
   const router = useRouter();
+  useEffect(() => {
+    if (session.status != "authenticated") {
+      router.push("/dashboard/login");
+    }
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target[0].value;

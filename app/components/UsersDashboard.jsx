@@ -82,9 +82,9 @@ const UsersDashboard = () => {
                   users?.map((user) => (
                     <tr
                       key={user._id}
-                      className="p-2 px-4 py-2 max-w-full justify-between items-center border border-gray-100"
+                      className="p-2 px-4 py-2 max-w-full justify-start items-start border border-gray-100"
                     >
-                      <td className="p-2 flex justify-center items-center">
+                      <td className="p-2 flex justify-start items-start px-4">
                         <Image
                           src={user.imageUrl}
                           alt="user image"
@@ -109,7 +109,7 @@ const UsersDashboard = () => {
                         </p>
                       </td>
                       {user.name != "MOHAMMED DAKIR" && (
-                        <td className="flex space-x-2 p-2">
+                        <td className="flex justify-start items-start space-x-2 p-2">
                           <button
                             disabled={loading}
                             onClick={() => handleDelete(user.userSlug)}

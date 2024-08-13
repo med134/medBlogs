@@ -1,10 +1,12 @@
 "use client";
 import { MdOutlineWork } from "react-icons/md";
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { RiSettings5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 const Profile = ({ user }) => {
+  const session = useSession();
   const router = useRouter();
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -14,6 +16,11 @@ const Profile = ({ user }) => {
     );
     return formattedDate;
   };
+  useEffect(() => {
+    if (session.status != "authenticated") {
+      router.push("/dashboard/login");
+    }
+  }, []);
   return (
     <div className="">
       <div className="container mx-auto py-8">
