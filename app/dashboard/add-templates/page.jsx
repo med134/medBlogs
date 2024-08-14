@@ -45,7 +45,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <div className="w-full h-auto p-8 py-8 md:py-2 sm:p-2 sm:py-2 pt-[120px] md:pt-[80px] sm:pt-8 dark:bg-dark">
+    <div className="w-full h-auto py-16 md:py-2 sm:pt-8 dark:bg-dark">
      <AddNewPost />
     </div>
   );

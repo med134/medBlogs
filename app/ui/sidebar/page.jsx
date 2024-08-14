@@ -7,6 +7,7 @@ import { PiUsersThree } from "react-icons/pi";
 import { RiArticleLine, RiProfileFill } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
 import { MdPendingActions } from "react-icons/md";
+import { LuLayoutTemplate } from "react-icons/lu";
 import { FiLogIn } from "react-icons/fi";
 import { CgFileAdd } from "react-icons/cg";
 import { signOut, useSession } from "next-auth/react";
@@ -25,11 +26,9 @@ const SideBar = () => {
     { name: "Add Blog", link: "/dashboard/add-articles", icon: CgFileAdd },
     { name: "Draft blog", link: "/dashboard/pending", icon: MdPendingActions },
     {
-      name: "Profile",
-      link: `/dashboard/profile/${session?.data?.user?.name
-        .replace(/\s+/g, "-")
-        .toLowerCase()}`,
-      icon: RiProfileFill,
+      name: "Add Templates",
+      link: `/dashboard/add-templates`,
+      icon: LuLayoutTemplate,
     },
   ];
   useEffect(() => {

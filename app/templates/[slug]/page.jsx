@@ -92,7 +92,7 @@ const TemplateId = async ({ params }) => {
               {" "}
               {data.description}
             </p>
-            <div className="inline-flex justify-start items-start gap-4 p-2">
+            <div className="inline-flex justify-start items-center gap-4 p-2">
               <Image
                 alt="author image"
                 width={200}

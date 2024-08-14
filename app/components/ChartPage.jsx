@@ -18,15 +18,17 @@ const ChartPage = () => {
           <iframe
             style={{
               background: "transparent",
+              display: "flex",
               border: "none",
               borderRadius: 2,
               overflowY: "hidden",
               overflow: "hidden",
-              width: "60vw",
+              overflowX: "hidden",
+              width: "80vw",
               height: "90vh",
               scrollBehavior: "none",
             }}
-            src="https://charts.mongodb.com/charts-medcodeblogs-nxmomns/embed/dashboards?id=77ed452f-9496-483d-8548-eee465e63d4f&theme=light&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixed"
+            src="https://charts.mongodb.com/charts-medcodeblogs-nxmomns/embed/dashboards?id=77ed452f-9496-483d-8548-eee465e63d4f&theme=light&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=false&scalingWidth=auto&scalingHeight=autto"
           />
         </div>
       </div>

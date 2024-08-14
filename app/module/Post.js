@@ -31,6 +31,9 @@ const postSchema = new Schema(
       type: String,
       require: false,
     },
+    status: {
+      type: String,
+    },
     code: {
       type: String,
       require: false,

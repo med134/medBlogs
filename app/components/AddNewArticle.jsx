@@ -11,10 +11,16 @@ const AddNewArticle = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const [selectStatus, setSelectStatus] = useState("draft");
+  const [loading, setLoading] = useState(false);
+  const [successful, setSuccessful] = useState(false);
   const [userSlugOne, setUserSlugOne] = useState("");
+  const [error, setError] = useState("");
   const session = useSession();
   const router = useRouter();
-
+  /* reload page */
+  const reloadPage = () => {
+    window.location.reload();
+  };
   useEffect(() => {
     if (session?.status != "authenticated") {
       router.push("/dashboard/login");
@@ -110,7 +116,7 @@ const AddNewArticle = () => {
     const imageUrl = session.data.user.image;
     const job = selectedJobs;
     const userSlug = userSlugOne;
-    const phone = "062135698";
+    const phone = "Add number phone";
     const homeAddress = "Add your home Address";
     try {
       await fetch("/api/register", {
@@ -143,7 +149,7 @@ const AddNewArticle = () => {
     const status = selectStatus;
     const content = quill.root.innerHTML;
     try {
-      await fetch("/api/articles", {
+      const response = await fetch("/api/articles", {
         method: "POST",
         body: JSON.stringify({
           title,
@@ -159,10 +165,17 @@ const AddNewArticle = () => {
           email: session.data.user.email,
         }),
       });
-      e.target.reset();
-      addUser();
+      if (response.ok) {
+        addUser();
+        setSuccessful(true);
+        setLoading(false);
+        e.target.reset();
+        reloadPage();
+      } else {
+        throw new Error("Failed to publish your post");
+      }
     } catch (err) {
-      console.log(err);
+      setError(err.message);
     }
   };
   return (
@@ -188,7 +201,7 @@ const AddNewArticle = () => {
             <input
               required
               type="text"
-              placeholder="Image link"
+              placeholder="Image link url"
               className="h-12 w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
             />
             <input
@@ -200,7 +213,7 @@ const AddNewArticle = () => {
             <input
               required
               type="text"
-              placeholder="slug"
+              placeholder="example-title-slug"
               className="h-12 w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
             />
             <div className="">
@@ -244,17 +257,26 @@ const AddNewArticle = () => {
               onChange={handelStatus}
               className="h-12 w-full max-w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
             >
-              <option value="Software engineer">Draft</option>
-              <option value="Software Developer">publish</option>
+              <option value="draft">Draft</option>
+              <option value="publish">publish</option>
             </select>
           </div>
 
           <div ref={quillRef} style={{ height: 400, marginLeft: 4 }} />
+          {error && <p className="text-red-500">{error}</p>}
+          {successful && (
+            <p className="text-light bg-green-500 mb-4 px-6 py-2 text-center rounded-md w-full mt-2">
+              post is success created
+            </p>
+          )}
           <button
+            disabled={loading}
             type="submit"
-            className="rounded-md font-semibold py-2 w-full bg-mainColor text-light ml-4 mt-5 hover:bg-cyan-700"
+            className={`rounded-md font-semibold py-2 w-full bg-mainColor text-light ml-4 mt-5 hover:bg-cyan-700 ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            Post Now
+            {loading ? "posting..." : "Post"}
           </button>
         </form>
       </div>
