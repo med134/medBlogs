@@ -1,5 +1,6 @@
 import User from "@/app/module/User";
 import connect from "@/app/utils/ConnectDB";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export const DELETE = async (request, { params }) => {
@@ -7,6 +8,7 @@ export const DELETE = async (request, { params }) => {
   try {
     await connect();
     await User.findOneAndDelete({ userSlug });
+    revalidatePath("/dashboard/users");
     return new NextResponse("user deleted", { status: 200 });
   } catch (err) {
     return new NextResponse("Error database", { status: 500 });

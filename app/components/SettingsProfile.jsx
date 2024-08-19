@@ -1,9 +1,8 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useRouter } from "next/navigation";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
-import { useSession } from "next-auth/react";
 const SettingsProfile = ({
   imageUrl,
   job,
@@ -22,15 +21,7 @@ const SettingsProfile = ({
   const [loading, setLoading] = useState(false);
   const [newSlug, setNewSlug] = useState(userSlug);
   const router = useRouter();
-  const session = useSession();
-  useEffect(() => {
-    if (
-      session.status != "authenticated" &&
-      session?.data?.user.email === newEmail
-    ) {
-      router.push("/dashboard/login");
-    }
-  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target[0].value;

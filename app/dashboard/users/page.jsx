@@ -1,12 +1,14 @@
-
-import UsersDashboard from "@/app/components/UsersDashboard";
 import React from "react";
-const Users =  () => {
+import UsersDashboard from "@/app/components/UsersDashboard";
+import { getAllUsers } from "@/app/utils/action";
+
+const page = async () => {
+  const users = await getAllUsers();
   return (
-    <div>
-      <UsersDashboard/>
+    <div className="">
+      <UsersDashboard users={users} />
     </div>
   );
 };
 
-export default Users;
+export default page;

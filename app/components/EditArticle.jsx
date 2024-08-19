@@ -1,11 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 import Link from "next/link";
 import hljs from "highlight.js";
+import IsUpdate from "./IsUpdate";
+import { useRouter } from "next/navigation";
 
 export default function EditArticle({
   title,
@@ -19,6 +20,7 @@ export default function EditArticle({
   status,
   userName,
   UserEmail,
+  session,
 }) {
   const [newTitle, setNewTitle] = useState(title);
   const [newImage, setNewImage] = useState(image);
@@ -30,8 +32,14 @@ export default function EditArticle({
   const [newJob, setNewJob] = useState(job);
   const [newContent, setNewContent] = useState(content);
   const [loading, setLoading] = useState(false);
-  const session = useSession();
- 
+  const [isUpdate, setIsUpdate] = useState(false);
+  const router = useRouter();
+  const TITLE_MODAL = "Updated";
+  const DESC_MODAL = "Your Article is Updated Now !";
+  const handelUpdate = () => {
+    setIsUpdate(!isUpdate);
+    router.push("/dashboard/blogs");
+  };
 
   hljs.configure({
     languages: [
@@ -134,14 +142,8 @@ export default function EditArticle({
           email,
         }),
       });
-
-      setNewTitle("");
-      setNewImage("");
-      setNewDescription("");
-      setNewTags("");
-      setNewSlug("");
-      setNewContent("");
       setLoading(false);
+      setIsUpdate(true);
       e.target.reset();
     } catch (err) {
       console.log(err);
@@ -246,7 +248,7 @@ export default function EditArticle({
                 id="newCategory"
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value)}
-                className="h-12 w-full max-w-full rounded-md border px-8 bg-white text-sm outline-none focus:ring"
+                className="h-12 w-full max-w-full py-2 rounded-md border px-8 bg-white text-sm outline-none focus:ring"
               >
                 <option value="">Select category</option>
                 <option value="react">React.js</option>
@@ -259,9 +261,7 @@ export default function EditArticle({
             </div>
 
             <div className="p-4">
-              <label
-                className="text-gray-600 font-bold mb-1 dark:text-light"
-              >
+              <label className="text-gray-600 font-bold mb-1 dark:text-light">
                 job
               </label>
               <div className="">
@@ -289,7 +289,7 @@ export default function EditArticle({
               <select
                 value={newStatus}
                 disabled={
-                  session?.data?.user?.name === "MOHAMMED DAKIR" ? false : true
+                  session?.user?.name === "MOHAMMED DAKIR" ? false : true
                 }
                 onChange={(e) => setStatus(e.target.value)}
                 className="h-12 w-full max-w-full rounded-md border ml-4 mb-1 bg-white px-5 text-sm outline-none focus:ring"
@@ -299,6 +299,13 @@ export default function EditArticle({
               </select>
             </div>
           </div>
+          {isUpdate && (
+            <IsUpdate
+              onClose={handelUpdate}
+              title={TITLE_MODAL}
+              desc={DESC_MODAL}
+            />
+          )}
           <label
             className="text-gray-600 font-bold mb-1 dark:text-light"
             htmlFor="newCode"

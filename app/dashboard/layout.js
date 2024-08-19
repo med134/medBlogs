@@ -1,4 +1,5 @@
-import SideBar from "../ui/sidebar/page";
+import DashSide from "../ui/sidebar/DashSide";
+import MainSideBarDashboard from "../ui/sidebar/MainSideBarDashboard";
 export const metadata = {
   title: "Dashboard | medCode ",
   description: `Empower your online presence with a dashboard for effortless blog management. Seamlessly create, edit, and publish captivating content that engages your audience`,
@@ -22,7 +23,7 @@ export const metadata = {
 const DashboardLayout = ({ children }) => {
   return (
     <div className="flex h-full w-full dark:bg-dark">
-      <SideBar />
+      <MainSideBarDashboard/>
       <section className="flex-1 p-8 text-dark w-full">{children}</section>
     </div>
   );

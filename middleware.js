@@ -1,10 +1,8 @@
-export { default } from "next-auth/middleware";
+import NextAuth from "next-auth";
+import { authConfig } from "@/app/utils/auth.config";
+
+export default NextAuth(authConfig).auth;
+
 export const config = {
-  matcher: [
-    "/dashboard/add-articles/:path*",
-    "/dashboard/add-templates/:path*",
-    "/dashboard/users/:path*",
-    "/dashboard/blogs/:path*",
-    "/dashboard/pending/:path*",
-  ],
+  matcher: ["/((?!api|static|.*\\..*|_next).*)"],
 };

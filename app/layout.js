@@ -1,12 +1,12 @@
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import AuthProvider from "./components/authProvider/AuthProvider";
 import GoogleAnalytic from "./components/GoogleAnalytic";
 import dynamic from "next/dynamic";
-const CookiesBanner = dynamic(() => import("./components/Cookies"));
+const CookiesBanner = dynamic(() => import("./components/Cookies"), {
+  ssr: false,
+});
 import { inter } from "./components/Fonts";
-import Script from "next/script";
 
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
@@ -87,12 +87,10 @@ export default function RootLayout({ children }) {
         className={`${inter.className} w-[100%]`}
         suppressHydrationWarning={true}
       >
-        <AuthProvider>
-          <NavBar />
-          {children}
-          {<CookiesBanner />}
-          <Footer />
-        </AuthProvider>
+        <NavBar/> 
+        {children}
+        {<CookiesBanner />}
+        <Footer />
       </body>
     </html>
   );

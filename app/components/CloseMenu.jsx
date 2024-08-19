@@ -71,7 +71,7 @@ const CloseMenu = ({ handleClick, session }) => {
         className="templates"
         toggle={handleClick}
       />
-      {session.status === "authenticated" ? (
+      {session?.user ? (
         <CustomMobileLink
           href="/dashboard"
           title="Dashboard"

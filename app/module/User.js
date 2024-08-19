@@ -16,7 +16,6 @@ const userSchema = new Schema(
     },
     imageUrl: {
       type: String,
-      unique: false,
     },
     job: {
       type: String,
@@ -24,19 +23,20 @@ const userSchema = new Schema(
     },
     userSlug: {
       type: String,
-      required: false,
     },
     phone: {
       type: String,
-      required: false,
     },
     homeAddress: {
       type: String,
-      required: false,
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }
 );
 
 //If the User collection does not exist create a new one.
-module.exports = mongoose.models.users || mongoose.model("users", userSchema);
+module.exports = mongoose.models?.users || mongoose.model("users", userSchema);

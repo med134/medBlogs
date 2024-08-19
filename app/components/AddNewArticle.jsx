@@ -1,36 +1,24 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "highlight.js/styles/a11y-dark.min.css";
-import { useSession } from "next-auth/react";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 import hljs from "highlight.js";
-import { useRouter } from "next/navigation";
+import IsUpdate from "./IsUpdate";
 
-const AddNewArticle = () => {
+const AddNewArticle = ({ user }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const [selectStatus, setSelectStatus] = useState("draft");
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
-  const [userSlugOne, setUserSlugOne] = useState("");
   const [error, setError] = useState("");
-  const session = useSession();
-  const router = useRouter();
-  /* reload page */
-  const reloadPage = () => {
-    window.location.reload();
+  const TITLE_MODAL = "Article is Created";
+  const DESC_MODAL = "your article is created successfully ";
+
+  const handelCloseModal = () => {
+    setSuccessful(!successful);
   };
-  useEffect(() => {
-    if (session?.status != "authenticated") {
-      router.push("/dashboard/login");
-    } else if (session?.status === "authenticated") {
-      const slug = session?.data?.user?.name.replace(/\s+/g, "-").toLowerCase();
-      console.log(slug);
-      setUserSlugOne(slug);
-    }
-    console.log(userSlugOne);
-  }, [session]);
 
   const ex = undefined;
   const text = ex || "";
@@ -110,31 +98,6 @@ const AddNewArticle = () => {
     setSelectStatus(event.target.value);
   };
 
-  const addUser = async () => {
-    const name = session.data.user.name;
-    const email = session.data.user.email;
-    const imageUrl = session.data.user.image;
-    const job = selectedJobs;
-    const userSlug = userSlugOne;
-    const phone = "Add number phone";
-    const homeAddress = "Add your home Address";
-    try {
-      await fetch("/api/register", {
-        method: "POST",
-        body: JSON.stringify({
-          name,
-          email,
-          imageUrl,
-          job,
-          userSlug,
-          phone,
-          homeAddress,
-        }),
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
@@ -161,16 +124,14 @@ const AddNewArticle = () => {
           job,
           status,
           content,
-          username: session.data.user.name,
-          email: session.data.user.email,
+          username: user,
+          userSlug: user.replace(/\s+/g, "-").toLowerCase(),
         }),
       });
       if (response.ok) {
-        addUser();
-        setSuccessful(true);
         setLoading(false);
         e.target.reset();
-        reloadPage();
+        setSuccessful(true);
       } else {
         throw new Error("Failed to publish your post");
       }
@@ -251,9 +212,7 @@ const AddNewArticle = () => {
             <select
               id="selectStatus"
               value={selectStatus}
-              disabled={
-                session?.data?.user?.name === "MOHAMMED DAKIR" ? false : true
-              }
+              disabled={user === "MOHAMMED DAKIR" ? false : true}
               onChange={handelStatus}
               className="h-12 w-full max-w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
             >
@@ -265,9 +224,11 @@ const AddNewArticle = () => {
           <div ref={quillRef} style={{ height: 400, marginLeft: 4 }} />
           {error && <p className="text-red-500">{error}</p>}
           {successful && (
-            <p className="text-light bg-green-500 mb-4 px-6 py-2 text-center rounded-md w-full mt-2">
-              post is success created
-            </p>
+            <IsUpdate
+              onClose={handelCloseModal}
+              title={TITLE_MODAL}
+              desc={DESC_MODAL}
+            />
           )}
           <button
             disabled={loading}

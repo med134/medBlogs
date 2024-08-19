@@ -1,21 +1,13 @@
 import React from "react";
 import Layout from "@/app/components/Layout";
-import PageNotFound from "@/app/PageNotFound";
 import EditArticle from "@/app/components/EditArticle";
-
-async function getData(slug) {
-  const res = await fetch(`https://medcode.dev/api/articles/${slug}`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    return <PageNotFound />;
-  }
-  return res.json();
-}
+import { getPostsBySlug } from "@/app/utils/action";
+import { auth } from "@/app/utils/auth";
 
 const Edit = async ({ params }) => {
   const { slug } = params;
-  const data = await getData(slug);
+  const data = await getPostsBySlug(slug);
+  const session = await auth();
 
   return (
     <Layout className="p-6 lg:p-8 md:p-8 bg-white sm:p-8 xs:p-6 pt-[120px] md:pt-[80px] sm:pt-8">
@@ -34,6 +26,7 @@ const Edit = async ({ params }) => {
         status={data.status}
         userName={data.username}
         UserEmail={data.email}
+        session={session}
       />
     </Layout>
   );

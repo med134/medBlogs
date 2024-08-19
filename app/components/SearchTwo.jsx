@@ -2,8 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-const NotFoundModel = dynamic(() => import("./NotFoundModel"));
-const SuggestionBar = dynamic(() => import("./SuggestionBar"));
+const SuggestionBar = dynamic(() => import("./SuggestionBar"), {
+  ssr: false,
+});
+const NotFoundModel = dynamic(() => import("./NotFoundModel"), {
+  ssr: false,
+});
 
 const SearchTwo = ({ className }) => {
   const [posts, setPosts] = useState([]);
@@ -46,7 +50,7 @@ const SearchTwo = ({ className }) => {
   };
   const closeNotFoundModal = () => {
     isModal(false);
-    setQuery("")
+    setQuery("");
   };
   // button click to search
   const handleSearch = async (e) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import AddNewArticle from "@/app/components/AddNewArticle";
-import Link from "next/link";
+import { auth } from "@/app/utils/auth";
 export const metadata = {
   title: "Dashboard Add Blogs | medCode",
   description: `Elevate Your Web Development with Free Blogs & Articles & code source Our meticulously designed frontend dashboard templates and components`,
@@ -41,10 +41,12 @@ export const metadata = {
     },
   },
 };
-const Page = () => {
+const Page = async () => {
+  const session = await auth();
+  const user = session?.user.name;
   return (
     <div className="dark:bg-dark h-full">
-      <AddNewArticle />
+      <AddNewArticle user={user} />
     </div>
   );
 };

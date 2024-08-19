@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export const GET = async (request, { params }) => {
   const { slug } = params;
   try {
-    await connect();
+    await connect()
     const articles = await Article.findOne({ slug });
     return new NextResponse(JSON.stringify(articles), { status: 200 });
   } catch (error) {

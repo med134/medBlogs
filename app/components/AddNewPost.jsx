@@ -1,37 +1,22 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import useSWR from "swr";
-import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import IsUpdate from "./IsUpdate";
 
-const AddNewPost = () => {
-  const session = useSession();
+const AddNewPost = ({ user }) => {
   const [selectedJobs, setSelectedJobs] = useState("");
   const [selectStatus, setSelectStatus] = useState("draft");
-  console.log(selectedJobs);
-  const router = useRouter();
-  useEffect(() => {
-    if (session?.status === "authenticated") {
-      router.push("/dashboard/add-templates");
-    } else {
-      router.push("/dashboard/login");
-    }
-  }, [session]);
+  const [successful, setSuccessful] = useState(false);
+  const TITLE_MODAL = "Template is Created";
+  const DESC_MODAL = "your template is created successfully ";
+
+  const handleJobs = (event) => {
+    setSelectedJobs(event.target.value);
+  };
   const handelStatus = (event) => {
     setSelectStatus(event.target.value);
   };
-  const handleDelete = async (slug) => {
-    const confirmed = confirm("Are you sure you want to delete...?");
-    if (confirmed) {
-      try {
-        await fetch(`/api/posts/${slug}`, {
-          method: "DELETE",
-        });
-        mutate();
-      } catch (err) {
-        console.log(err);
-      }
-    }
+  const handelCloseModal = () => {
+    setSuccessful(!successful);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,8 +43,7 @@ const AddNewPost = () => {
           job,
           status,
           code,
-          username: session.data.user.name,
-          email: session.data.user.email,
+          username: user.name,
         }),
       });
       mutate();
@@ -68,16 +52,7 @@ const AddNewPost = () => {
       console.log(err);
     }
   };
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const {
-    data: posts,
-    error,
-    isLoading,
-    mutate,
-  } = useSWR(`/api/posts?username=${session?.data?.user.name}`, fetcher);
-  const handleJobs = (event) => {
-    setSelectedJobs(event.target.value);
-  };
+
   return (
     <div className="p-8 py-4 sm:p-2 sm:py-2 md:p-2 md:py-2 lg:p-2 lg:py-2 dark:bg-dark">
       <h1 className="text-gray-700 text-left py-6 text-2xl lg:text-2xl dark:text-light">
@@ -139,9 +114,7 @@ const AddNewPost = () => {
           <select
             id="selectStatus"
             value={selectStatus}
-            disabled={
-              session?.data?.user?.name === "MOHAMMED DAKIR" ? false : true
-            }
+            disabled={user?.name === "MOHAMMED DAKIR" ? false : true}
             onChange={handelStatus}
             className="h-12 w-full rounded-md border m-3  bg-white px-5 text-sm outline-none focus:ring"
           >
@@ -157,48 +130,14 @@ const AddNewPost = () => {
         <button className="rounded-md font-semibold py-2 w-full bg-mainColor text-light ml-4 hover:bg-cyan-700">
           Post Now
         </button>
+        {successful && (
+          <IsUpdate
+            onClose={handelCloseModal}
+            title={TITLE_MODAL}
+            desc={DESC_MODAL}
+          />
+        )}
       </form>
-      {/*  <div className="">
-          <span className="mb-4 underline text-center px-4 font-semibold text-xl text-dark dark:text-light">
-            your recent posts
-          </span>
-          {isLoading ? (
-            <SliderSkelton />
-          ) : (
-            posts?.map((post) => (
-              <div
-                key={post._id}
-                className="mb-4 max-w-sm rounded overflow-hidden shadow-lg mt-4"
-              >
-                <Image
-                  width={300}
-                  height={300}
-                  loading="lazy"
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-32 object-cover"
-                />
-                <div className="px-6 py-4">
-                  <div className="font-bold text-xl mb-2">{post.title}</div>
-                </div>
-                <div className="flex justify-between items-center px-6 py-2">
-                  <button
-                    onClick={() => handleDelete(post.slug)}
-                    className="text-red-500 cursor-pointer hover:underline font-semibold"
-                  >
-                    Delete
-                  </button>
-                  <Link
-                    href={`/dashboard/edit-post/${post.slug}`}
-                    className="text-blue-500 cursor-pointer hover:underline font-semibold"
-                  >
-                    Edit
-                  </Link>
-                </div>
-              </div>
-            ))
-          )}
-        </div> */}
     </div>
   );
 };

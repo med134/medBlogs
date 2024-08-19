@@ -1,13 +1,10 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
 
-const DeleteConfirmation = ({ blogDelete, onClose }) => {
-  const router = useRouter();
-    /* reload page */
-    const reloadPage = () => {
-      window.location.reload();
-    };
+const DeleteConfirmation = ({ blogDelete, onClose, blogTitle }) => {
+  const reloadPage = () => {
+    window.location.reload();
+  };
   const handleDelete = async (blogDelete) => {
     try {
       const response = await fetch(`/api/articles/${blogDelete}`, {
@@ -16,12 +13,11 @@ const DeleteConfirmation = ({ blogDelete, onClose }) => {
       if (response.ok) {
         onClose();
         reloadPage();
-        // You can also refresh the page or update the state to reflect the deletion
       } else {
         console.error("Failed to delete the blog post");
       }
     } catch (error) {
-      console.error("Error deleting the blog post:", error);
+      console.error("Error deleting the blog post:", error.message);
     }
   };
   return (
@@ -58,7 +54,7 @@ const DeleteConfirmation = ({ blogDelete, onClose }) => {
             />
           </svg>
           <h4 className="text-gray-800 text-lg font-semibold mt-4">
-            Are you sure you want to delete it?
+            Are you sure you want to delete this title : {blogTitle}
           </h4>
           <p className="text-sm text-gray-600 mt-4">
             Touch and hold the blog you want to delete, deleting process...

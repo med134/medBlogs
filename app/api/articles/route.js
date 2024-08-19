@@ -7,6 +7,7 @@ export const GET = async (request) => {
   const username = url.searchParams.get("username");
   const category = url.searchParams.get("category");
 
+
   try {
     await connect();
     const query = {};

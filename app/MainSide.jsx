@@ -2,10 +2,10 @@
 import React from "react";
 import Link from "next/link";
 import { AiOutlineRight } from "react-icons/ai";
-import { getAllCat } from "./components/FetchData";
+import { getCategories } from "./utils/getDataWithOutApi";
 
 const Cat = async () => {
-  const cat = await getAllCat();
+  const cat = await getCategories();
   return (
     <div className="">
       {cat?.map(

@@ -1,21 +1,19 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { BiSolidEdit } from "react-icons/bi";
-import { useSession } from "next-auth/react";
 import SkeletonLoader from "./BlogDashboardSkelton";
 import dynamic from "next/dynamic";
 const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
-  suspense: true,
+  ssr: false,
 });
 
-const ListDashboardBlogs = () => {
+const ListDashboardBlogs = ({posts }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModel, setShowModel] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(posts);
   const [loading, setLoading] = useState(false);
-  const session = useSession();
   const router = useRouter();
   const perPage = 4;
 
@@ -23,22 +21,8 @@ const ListDashboardBlogs = () => {
     setCurrentPage(page);
   };
   const closeModelDelete = () => {
-    setShowModel(false);
+    setShowModel(!showModel);
   };
-
-  useEffect(() => {
-    if (session.status === "authenticated") {
-      setLoading(true);
-      fetch(`/api/articles?username=${session?.data?.user.name}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data);
-          setLoading(false);
-        });
-    } else {
-      router.push("/dashboard/login");
-    }
-  }, []);
 
   const indexOfLastBlog = currentPage * perPage;
   const indexOfFirstBlog = indexOfLastBlog - perPage;
@@ -65,12 +49,17 @@ const ListDashboardBlogs = () => {
                 <th className="px-5 py-3">Title</th>
                 <th className="px-5 py-3">Slug</th>
                 <th className="px-5 py-3">Date Published</th>
+                <th className="px-5 py-3">status</th>
                 <th className="px-5 py-3">Actions</th>
               </tr>
             </thead>
-            <thead>
+            <tbody>
               {loading ? (
-                <SkeletonLoader />
+                <tr>
+                  <td colSpan="4">
+                    <SkeletonLoader />
+                  </td>
+                </tr>
               ) : (
                 currentBlog.map((blog) => (
                   <tr
@@ -88,6 +77,11 @@ const ListDashboardBlogs = () => {
                         {FormatDate(blog.createdAt)}
                       </p>
                     </td>
+                    <td>
+                      <p className="text-sm px-5">
+                        {blog.status}
+                      </p>
+                    </td>
                     <td className="flex space-x-2 p-2">
                       <button
                         onClick={() =>
@@ -99,7 +93,7 @@ const ListDashboardBlogs = () => {
                         <BiSolidEdit className="ml-2" />
                       </button>
                       <button
-                        onClick={() => setShowModel(true)}
+                        onClick={closeModelDelete}
                         className="flex justify-around group px-2 py-1 items-center bg-red-500 rounded-md text-white"
                       >
                         <span className="hover:font-semibold">Delete</span>
@@ -111,12 +105,13 @@ const ListDashboardBlogs = () => {
                         showModel={showModel}
                         blogDelete={blog.slug}
                         onClose={closeModelDelete}
+                        blogTitle={blog.title}
                       />
                     )}
                   </tr>
                 ))
               )}
-            </thead>
+            </tbody>
           </table>
           {data.length === 0 ? null : (
             <nav

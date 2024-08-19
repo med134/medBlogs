@@ -22,6 +22,7 @@ const AddUser = () => {
     window.location.reload();
   };
   const addUser = async (e) => {
+    "use server";
     e.preventDefault();
     setLoading(true);
     setError("");
@@ -62,7 +63,7 @@ const AddUser = () => {
       setError(err.message);
     }
   };
-  
+
   return (
     <div className="bg-gray-100 text-gray-900 flex justify-center">
       <div className="m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">

@@ -21,6 +21,7 @@ const articleSchema = new Schema(
     slug: {
       type: String,
       required: true,
+      unique: true,
     },
     category: {
       type: String,
@@ -28,11 +29,9 @@ const articleSchema = new Schema(
     },
     job: {
       type: String,
-      required: false,
     },
     status: {
       type: String,
-      required: false,
     },
     content: {
       type: String,
@@ -40,11 +39,9 @@ const articleSchema = new Schema(
     },
     username: {
       type: String,
-      required: true,
     },
-    email: {
+    userSlug: {
       type: String,
-      required: true,
     },
   },
   { timestamps: true }
