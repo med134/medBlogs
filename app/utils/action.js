@@ -5,27 +5,6 @@ import Article from "../module/Article";
 import User from "../module/User";
 import connectDb from "./ConnectDB";
 
-export const AddNewUser = async (formData) => {
-  const { name, email, imageUrl, userSlug, job, phone, homeAddress } =
-    Object.fromEntries(formData);
-  try {
-    connectDb();
-    const newUser = User({
-      name,
-      email,
-      imageUrl,
-      userSlug,
-      job,
-      phone,
-      homeAddress,
-    });
-    await newUser.save();
-    console.log("user is saved");
-    revalidatePath("/dashboard/users");
-  } catch (err) {
-    console.log(err);
-  }
-};
 export const handelLoginGithub = async () => {
   "use server";
   await signIn("github");

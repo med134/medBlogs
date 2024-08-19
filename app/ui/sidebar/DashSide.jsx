@@ -4,15 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { RxDashboard } from "react-icons/rx";
 import { PiUsersThree } from "react-icons/pi";
-import { RiArticleLine, RiProfileFill } from "react-icons/ri";
+import { RiArticleLine } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
 import { MdPendingActions } from "react-icons/md";
 import { LuLayoutTemplate } from "react-icons/lu";
 import { CgFileAdd } from "react-icons/cg";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { handelLogOut } from "@/app/utils/action";
 const SideBar = ({ session }) => {
-  const router = useRouter();
   const path = usePathname();
   const menuItems = [
     { name: "Dashboard", link: "/dashboard", icon: RxDashboard },
