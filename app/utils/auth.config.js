@@ -21,6 +21,7 @@ export const authConfig = {
       return session;
     },
     authorized({ auth, request }) {
+      console.log("this pro auth",auth)
       const user = auth?.user;
       const isOneBlog = request?.nextUrl?.pathname?.startsWith("/dashboard");
       const adminUserPage = request?.nextUrl?.pathname === "/dashboard/users";
@@ -28,7 +29,10 @@ export const authConfig = {
       const isOnLoginPage = request?.nextUrl?.pathname.startsWith("/login");
       const EMAIL = "mohamed7dakir@gmail.com";
 
-      if (adminDraftBlog || adminUserPage && user?.email !== EMAIL) {
+      if (adminUserPage && user?.email !== EMAIL) {
+        return Response.redirect(new URL("/dashboard", request.nextUrl));
+      }
+      if (adminDraftBlog && user?.email !== EMAIL) {
         return Response.redirect(new URL("/dashboard", request.nextUrl));
       }
       if (isOneBlog && !user) {
