@@ -1,20 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import icon from "/public/images/Programming-amico.png";
+import icon from "/public/images/development-amico.png";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import { getPosts } from "../utils/action";
+import { getPosts,FormatDate } from "../utils/action";
 
 const FirstView = async () => {
   const posts = await getPosts();
-  const FormatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "en-US",
-      options
-    );
-    return formattedDate;
-  };
   return (
     <div
       id="home"
@@ -71,7 +63,7 @@ const FirstView = async () => {
               <Image
                 alt={item.title}
                 src={icon}
-                width={500}
+                width={400}
                 height={400}
                 priority={true}
                 className="w-full rounded-2xl opacity-100 object-contain xl:object-contain xs:h-56"
