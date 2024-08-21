@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./categoryList.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import PageNotFound from "@/app/PageNotFound";
+import PageNotFound from "@/app/not-found";
 const getData = async () => {
   const res = await fetch("https://www.medcode.dev/api/categories", {
     cache: "no-store",

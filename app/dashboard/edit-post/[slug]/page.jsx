@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "@/app/components/Layout";
-import PageNotFound from "@/app/PageNotFound";
+import PageNotFound from "@/app/not-found";
 import EditPost from "@/app/components/EditPost";
 
 async function getData(slug) {

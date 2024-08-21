@@ -116,3 +116,13 @@ export const getTemplatesBySlug = async (slug) => {
     throw new Error("Failed to fetch posts!");
   }
 };
+
+// concerting date function
+export const FormatDate = (dateString) => {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = new Date(dateString).toLocaleDateString(
+    "en-US",
+    options
+  );
+  return formattedDate;
+};

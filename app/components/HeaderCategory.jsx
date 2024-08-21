@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import PageNotFound from "@/app/PageNotFound";
+import PageNotFound from "@/app/not-found";
 
 // Define your SVG background inline or use an SVG file
 const SVGBackground = () => (

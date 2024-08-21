@@ -5,6 +5,7 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { BiSolidEdit } from "react-icons/bi";
 import SkeletonLoader from "./BlogDashboardSkelton";
 import dynamic from "next/dynamic";
+import { FormatDate } from "../utils/action";
 const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
   ssr: false,
 });
@@ -28,15 +29,6 @@ const ListDashboardBlogs = ({posts }) => {
   const indexOfFirstBlog = indexOfLastBlog - perPage;
   const currentBlog = data.slice(indexOfFirstBlog, indexOfLastBlog);
   const totalPages = Math.ceil(data.length / perPage);
-
-  const FormatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "en-US",
-      options
-    );
-    return formattedDate;
-  };
 
   return (
     <div className="container mx-auto p-4">

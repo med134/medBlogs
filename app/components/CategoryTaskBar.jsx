@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import PageNotFound from "@/app/PageNotFound";
+import PageNotFound from "@/app/not-found";
 const getData = async () => {
   const res = await fetch("https://www.medcode.dev/api/categories", {
     cache: "no-store",

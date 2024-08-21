@@ -5,8 +5,7 @@ import "quill/dist/quill.snow.css";
 import Link from "next/link";
 import SidBar from "@/app/components/SidBar";
 import { auth } from "@/app/utils/auth";
-
-
+import { getPostsBySlug,FormatDate } from "@/app/utils/action";
 const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"), {
   suspense: true,
 });
@@ -14,18 +13,10 @@ const Comments = dynamic(() => import("@/app/components/comments/comments"), {
   suspense: true,
 });
 
-async function getData(slug) {
-  const res = await fetch(`https://www.medcode.dev/api/articles/${slug}`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-}
+
 
 export async function generateMetadata({ params }) {
-  const post = await getData(params.slug);
+  const post = await getPostsBySlug(params.slug);
   const publishedAt = new Date(post.createdAt).toISOString();
   const modifiedAt = new Date(post.updatedAt || blog.createdAt).toISOString();
   return {
@@ -66,18 +57,9 @@ export async function generateMetadata({ params }) {
 }
 const BlogPage = async ({ params }) => {
   const { slug } = params;
-  const blog = await getData(slug);
+  const blog = await getPostsBySlug(slug);
   const content = blog.content;
   const session= await auth()
-
-  const FormatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "en-US",
-      options
-    );
-    return formattedDate;
-  };
 
   return (
     <section className="w-full grid grid-cols-7 gap-12 p-10 pt-[160px] lg:block dark:bg-dark xl:p-8 xl:gap-3 sm:p-4 xs:p-2 xl:pt-44 xs:pt-28">
@@ -99,7 +81,7 @@ const BlogPage = async ({ params }) => {
                   {blog?.username}
                 </a>
                 <span className="ml-2 text-sm text-gray-800 font-semibold dark:text-light">
-                  | {FormatDate(blog?.createdAt.slice(0, 10))}
+                  | {FormatDate(blog?.createdAt)}
                 </span>
               </div>
               <Link

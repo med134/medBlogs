@@ -3,19 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import icon from "/public/images/Programming-amico.png";
 import { FaRegCalendarAlt } from "react-icons/fa";
-async function getArticles() {
-  const res = await fetch(`https://www.medcode.dev/api/articles`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-  const posts = await res.json();
-  const publishPosts = posts.filter((item) => item.status != "draft");
-  return publishPosts;
-}
+import { getPosts } from "../utils/action";
+
 const FirstView = async () => {
-  const posts = await getArticles();
+  const posts = await getPosts();
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(
@@ -39,7 +30,7 @@ const FirstView = async () => {
               <span className="flex justify-start items-center py-2 dark:text-light">
                 <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
                 <span className="ml-2 font-semibold dark:text-light xs:text-sm">
-                  {FormatDate(item?.createdAt.slice(0, 10))}
+                  {FormatDate(item?.createdAt)}
                 </span>
               </span>
               <Link href={`/blogs/${item.slug}`} aria-current="page">
