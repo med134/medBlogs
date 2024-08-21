@@ -3,12 +3,10 @@ import Link from "next/link";
 import styles from "./comments.module.css";
 import Image from "next/image";
 import useSWR from "swr";
-import { useSession } from "next-auth/react";
 import { useState } from "react";
 import Loading from "@/app/Loading";
 
-const Comments = ({ postSlug }) => {
-  const session = useSession();
+const Comments = ({ postSlug ,session}) => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, mutate, isLoading } = useSWR(
     `/api/comments?blogId=${postSlug}`,
@@ -22,8 +20,8 @@ const Comments = ({ postSlug }) => {
         method: "POST",
         body: JSON.stringify({
           blogId: postSlug,
-          username: session?.data?.user?.name,
-          imageUser: session?.data?.user?.image,
+          username: session?.user?.name,
+          imageUser: session?.user?.image,
           comment,
         }),
       });
@@ -36,7 +34,7 @@ const Comments = ({ postSlug }) => {
   return (
     <div className="w-full bg-white rounded-lg border p-2 dark:bg-dark">
       <span className="font-bold text-xl py-6 dark:text-light">Comments</span>
-      {session.status === "authenticated" ? (
+      {session ? (
         <form
           className={`${styles.write} dark:bg-dark dark:text-light p-2`}
           onSubmit={handleSubmit}
@@ -46,7 +44,7 @@ const Comments = ({ postSlug }) => {
             height={100}
             loading="lazy"
             priority={false}
-            src={session?.data?.user.image}
+            src={session?.image}
             alt="photo_profile"
             className="w-10 h-10 rounded-[50%] cursor-pointer"
           />

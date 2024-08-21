@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import "quill/dist/quill.snow.css";
 import Link from "next/link";
 import SidBar from "@/app/components/SidBar";
+import { auth } from "@/app/utils/auth";
+
 
 const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"), {
   suspense: true,
@@ -66,6 +68,7 @@ const BlogPage = async ({ params }) => {
   const { slug } = params;
   const blog = await getData(slug);
   const content = blog.content;
+  const session= await auth()
 
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -125,7 +128,7 @@ const BlogPage = async ({ params }) => {
               dangerouslySetInnerHTML={{ __html: content }}
             />
           </div>
-          <Comments postSlug={blog._id} />
+          <Comments postSlug={blog._id} session={session} />
         </div>
       </div>
       <div className="sm:w-full col-span-2 sm:p-6 sticky">
