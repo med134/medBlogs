@@ -50,12 +50,11 @@ const HomePage = ({ child, side }) => {
             className="sidebar lg:relative lg:top-6"
             style={{ width: sidebarWidth }}
           >
-            <h3 className="py-4 text-xl font-semibold dark:text-light">Follow Us</h3>
+            <h3 className="py-4 text-xl font-semibold dark:text-light">
+              Follow Us
+            </h3>
             <CategoryCard />
             <div className="h-[1px] mb-4 bg-slate-400 w-auto"></div>
-            <span className="text-medium font-semibold dark:font-medium black:text-light text-mainColor dark:text-light underline">
-              filter by categories or search..
-            </span>
             <SearchBar
               className={
                 "border border-t-mainColor lg:w-auto border-l-mainColor border-r-mainColor rounded-md lg:border-l-mainColor lg:border-r-mainColor lg:border-b-mainColor xs:hidden sm:hidden"

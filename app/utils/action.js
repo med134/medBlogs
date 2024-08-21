@@ -4,6 +4,8 @@ import { signIn, signOut } from "./auth";
 import Article from "../module/Article";
 import User from "../module/User";
 import connectDb from "./ConnectDB";
+import Category from "../module/Category";
+import Posts from "../module/Post";
 
 export const handelLoginGithub = async () => {
   "use server";
@@ -21,7 +23,7 @@ export const LoginWithGoogle = async () => {
 export const getPosts = async () => {
   try {
     connectDb();
-    const posts = await Article.find();
+    const posts = await Article.find().sort({ createdAt: -1 });
     return posts;
   } catch (err) {
     console.log(err);
@@ -73,6 +75,16 @@ export const getPostsBySlug = async (slug) => {
   }
 };
 
+export const getAllCategories = async () => {
+  try {
+    connectDb();
+    const categories = await Category.find().sort({ slug: 1 });
+    return categories;
+  } catch (err) {
+    console.log(err.message);
+    throw new Error("Failed to fetch categories!");
+  }
+};
 export const deleteUser = async (slug) => {
   try {
     connectDb();
@@ -81,5 +93,26 @@ export const deleteUser = async (slug) => {
   } catch (err) {
     console.log(err.message);
     throw new Error("Failed to fetch users!");
+  }
+};
+
+export const getTemplates = async () => {
+  try {
+    connectDb();
+    const posts = await Posts.find().sort({ createdAt: -1 });
+    return posts;
+  } catch (err) {
+    console.log(err.message);
+    throw new Error("Failed to fetch posts!");
+  }
+};
+export const getTemplatesBySlug = async (slug) => {
+  try {
+    connectDb();
+    const posts = await Posts.findOne({slug});
+    return posts;
+  } catch (err) {
+    console.log(err.message);
+    throw new Error("Failed to fetch posts!");
   }
 };

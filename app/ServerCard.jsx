@@ -1,11 +1,9 @@
-"use server";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { getArticles } from "./components/FetchData";
-
+import { getPosts } from "./utils/action";
 const Card = async () => {
-  const posts = await getArticles();
+  const posts = await getPosts();
   return (
     <>
       {posts.map((item, index) =>

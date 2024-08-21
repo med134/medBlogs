@@ -1,11 +1,9 @@
-"use server";
 import React from "react";
 import Link from "next/link";
 import { AiOutlineRight } from "react-icons/ai";
-import { getCategories } from "./utils/getDataWithOutApi";
-
+import { getAllCategories } from "./utils/action";
 const Cat = async () => {
-  const cat = await getCategories();
+  const cat = await getAllCategories();
   return (
     <div className="">
       {cat?.map(

@@ -1,22 +1,13 @@
 import React from "react";
 import TransitionEffect from "../components/TransitionEffect";
 import Image from "next/image";
-import PageNotFound from "@/app/PageNotFound";
 import SearchBar from "../components/SearchBar";
 import dynamic from "next/dynamic";
+import { getTemplates } from "../utils/action";
 const TemplatesPreview = dynamic(() =>
   import("../components/TemplatesCategory")
 );
 
-async function getData() {
-  const res = await fetch(`https://www.medcode.dev/api/posts`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    return <PageNotFound />;
-  }
-  return res.json();
-}
 
 export const metadata = {
   title: `Free Templates & Components Resources Examples`,
@@ -74,7 +65,7 @@ export const metadata = {
   },
 };
 const page = async () => {
-  const data = await getData();
+  const data = await getTemplates();
 
   return (
     <>
