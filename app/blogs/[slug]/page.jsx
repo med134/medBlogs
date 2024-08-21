@@ -5,15 +5,13 @@ import "quill/dist/quill.snow.css";
 import Link from "next/link";
 import SidBar from "@/app/components/SidBar";
 import { auth } from "@/app/utils/auth";
-import { getPostsBySlug,FormatDate } from "@/app/utils/action";
+import { getPostsBySlug, FormatDate } from "@/app/utils/action";
 const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"), {
   suspense: true,
 });
 const Comments = dynamic(() => import("@/app/components/comments/comments"), {
   suspense: true,
 });
-
-
 
 export async function generateMetadata({ params }) {
   const post = await getPostsBySlug(params.slug);
@@ -59,7 +57,7 @@ const BlogPage = async ({ params }) => {
   const { slug } = params;
   const blog = await getPostsBySlug(slug);
   const content = blog.content;
-  const session= await auth()
+  const session = await auth();
 
   return (
     <section className="w-full grid grid-cols-7 gap-12 p-10 pt-[160px] lg:block dark:bg-dark xl:p-8 xl:gap-3 sm:p-4 xs:p-2 xl:pt-44 xs:pt-28">
@@ -74,12 +72,14 @@ const BlogPage = async ({ params }) => {
           <div className="mt-6">
             <div className="flex justify-start py-1">
               <div className="flex justify-start items-center dark:bg-dark">
-                <a
-                  href={`mailto:${blog?.email}`}
+                <Link
+                  href={`/dashboard/profile/${blog.username
+                    .replace(/\s+/g, "-")
+                    .toLowerCase()}`}
                   className="text-blue-600 text-sm lowercase"
                 >
                   {blog?.username}
-                </a>
+                </Link>
                 <span className="ml-2 text-sm text-gray-800 font-semibold dark:text-light">
                   | {FormatDate(blog?.createdAt)}
                 </span>

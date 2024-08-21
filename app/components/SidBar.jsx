@@ -2,11 +2,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Cat from "./Cat";
-import { getArticles } from "./FetchData";
 import SearchTwo from "./SearchTwo";
+import { getPosts } from "../utils/action";
 
-const SidBar = async ({ category,slug }) => {
-  const dev = await getArticles();
+const SidBar = async ({ category, slug }) => {
+  const dev = await getPosts();
   return (
     <div className="mt-3">
       <aside className="w-full rounded-lg border-2 py-2 border-mainColor mb-6 p-2 mt-4 dark:border-light">
@@ -27,40 +27,38 @@ const SidBar = async ({ category,slug }) => {
         </span>
       </span>
       <div className="pt-4">
-        {dev
-          ?.slice()
-          .reverse()
-          .map(
-            (item) =>
-              category === item.category && slug !== item.slug && (
-                <div key={item._id} className="flex justify-start items-center">
-                  <Image
-                    className="object-contain w-36 h-36"
-                    src={item.image.trimEnd()}
-                    alt={item.title}
-                    width={200}
-                    height={200}
-                    priority={false}
-                    loading="lazy"
-                  />
+        {dev?.map(
+          (item) =>
+            category === item.category &&
+            slug !== item.slug && (
+              <div key={item._id} className="flex justify-start items-center">
+                <Image
+                  className="object-contain w-36 h-36"
+                  src={item.image.trimEnd()}
+                  alt={item.title}
+                  width={200}
+                  height={200}
+                  priority={false}
+                  loading="lazy"
+                />
 
-                  <div className="p-2 ml-2">
-                    <Link
-                      href={`/category/${item.category}`}
-                      className="uppercase tracking-wide text-sm text-mainColor dark:text-light font-semibold"
-                    >
-                      {item.category}
-                    </Link>
-                    <Link
-                      href={`/blogs/${item.slug}`}
-                      className="block mt-1 leading-tight font-medium text-black dark:text-light hover:underline"
-                    >
-                      {item.title}
-                    </Link>
-                  </div>
+                <div className="p-2 ml-2">
+                  <Link
+                    href={`/category/${item.category}`}
+                    className="uppercase tracking-wide text-sm text-mainColor dark:text-light font-semibold"
+                  >
+                    {item.category}
+                  </Link>
+                  <Link
+                    href={`/blogs/${item.slug}`}
+                    className="block mt-1 leading-tight font-medium text-black dark:text-light hover:underline"
+                  >
+                    {item.title}
+                  </Link>
                 </div>
-              )
-          )}
+              </div>
+            )
+        )}
       </div>
     </div>
   );

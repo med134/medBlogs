@@ -4,29 +4,21 @@ import Image from "next/image";
 import React from "react";
 import { RiSettings5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
-const Profile = ({ user }) => {
-  const router = useRouter();
-  const FormatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "en-US",
-      options
-    );
-    return formattedDate;
-  };
+import { FormatDate } from "../utils/action";
+import Link from "next/link";
+const Profile = ({ user, session }) => {
   return (
     <div className="">
       <div className="container mx-auto py-8">
         <div className=" gap-6 px-4">
           <div className="">
             <div className="bg-white shadow rounded-lg p-6 relative">
-              <RiSettings5Line
-                onClick={() =>
-                  router.push(`/dashboard/settings/${user?.userSlug}`)
-                }
-                className="absolute w-8 h-8 cursor-pointer hover:fill-mainColor"
-              />
-              <h3 className="ml-10 font-semibold">complete profile</h3>
+              {user.name === session.user.name ? (
+                <Link href={`/dashboard/settings/${user.userSlug}`}>
+                  <RiSettings5Line className="absolute w-8 h-8 cursor-pointer hover:fill-mainColor" />
+                  <h3 className="ml-10 font-semibold">complete profile</h3>
+                </Link>
+              ) : null}
               <div className="flex flex-col items-center">
                 <Image
                   width={500}
