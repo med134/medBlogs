@@ -26,6 +26,7 @@ export const authConfig = {
       const adminUserPage = request?.nextUrl?.pathname === "/dashboard/users";
       const adminDraftBlog =request?.nextUrl?.pathname == "dashboard/pending";
       const isOnLoginPage = request?.nextUrl?.pathname.startsWith("/login");
+      const EMAIL ="mohamed7dakir@gmail.com";
 
       if (adminUserPage && user?.email !== EMAIL) {
         return Response.redirect(new URL("/dashboard", request.nextUrl));
