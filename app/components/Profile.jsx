@@ -3,7 +3,6 @@ import { MdOutlineWork } from "react-icons/md";
 import Image from "next/image";
 import React from "react";
 import { RiSettings5Line } from "react-icons/ri";
-import { useRouter } from "next/navigation";
 import { FormatDate } from "../utils/action";
 import Link from "next/link";
 const Profile = ({ user, session }) => {

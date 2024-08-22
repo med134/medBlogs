@@ -7,7 +7,7 @@ const Card = async () => {
   return (
     <>
       {posts.map((item, index) =>
-        index < 7 && index > 0 && item.status === "publish" ? (
+        index < 7 && index > 1 && item.status === "publish" ? (
           <section
             suppressHydrationWarning
             key={item._id}

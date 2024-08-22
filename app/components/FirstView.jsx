@@ -3,16 +3,17 @@ import Link from "next/link";
 import Image from "next/image";
 import icon from "/public/images/development-amico.png";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import { getPosts,FormatDate } from "../utils/action";
+import { getPosts, FormatDate } from "../utils/action";
 
 const FirstView = async () => {
   const posts = await getPosts();
+  const publicPosts = posts?.filter((item) => item.status === "publish");
   return (
     <div
       id="home"
       className="relative z-10 overflow-hidden pt-[70px] pb-1 md:pt-[80px] xl:pt-[100px] lg:pt-[60px] sm:pb-10 xs:pb-24 xl:pb-1 dark:bg-dark"
     >
-      {posts?.map((item, index) =>
+      {publicPosts?.map((item, index) =>
         index < 1 ? (
           <div
             key={item._id}
