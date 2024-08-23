@@ -29,7 +29,10 @@ export const authConfig = {
         request?.nextUrl?.pathname.startsWith("dashboard/pending");
       const isOnLoginPage = request?.nextUrl?.pathname.startsWith("/login");
 
-      if (adminUserPage || (adminDraftBlog && user?.name != "MOHAMMED DAKIR")) {
+      if (adminUserPage && user?.name != "MOHAMMED DAKIR") {
+        return Response.redirect(new URL("/dashboard", request.nextUrl));
+      }
+      if (adminDraftBlog && user?.name != "MOHAMMED DAKIR") {
         return Response.redirect(new URL("/dashboard", request.nextUrl));
       }
       if (isOneBlog && !user) {

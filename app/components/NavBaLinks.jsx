@@ -184,7 +184,7 @@ const NavBaLinks = ({ session }) => {
             />
           ) : (
             <CustomLink
-              href="/dashboard/login"
+              href="/login"
               title="Create Post"
               className="mx-4 uppercase dark:text-light"
               target="_blank"
