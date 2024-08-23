@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { getPosts } from "./utils/action";
+import { FormatDate, getPosts } from "./utils/action";
 const Card = async () => {
   const posts = await getPosts();
   return (
@@ -31,7 +31,7 @@ const Card = async () => {
                   />
                 </svg>
                 <span className="ml-2 font-semibold dark:text-light">
-                  September 12,2023
+                  {FormatDate(item?.createdAt)}
                 </span>
               </span>
               <Link href={`/blogs/${item.slug}`}>
