@@ -1,38 +1,61 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BiSolidEdit } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import SkeletonLoader from "./DashboardSkelton";
 const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
   ssr: false,
 });
-
-const ListDashboardBlogs = ({ data }) => {
-  const [posts, setPosts] = useState(data);
+  export const FormatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const formattedDate = new Date(dateString).toLocaleDateString(
+      "en-US",
+      options
+    );
+    return formattedDate;
+  };
+const ListDashboardBlogs = ({ data, session, allPosts }) => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [showModel, setShowModel] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [articleDelete, setArticleDelete] = useState("");
   const perPage = 4;
-  const closeModelDelete = () => {
+
+  useEffect(() => {
+    if (session.user.name === "MOHAMMED DAKIR") {
+      setLoading(true);
+      setPosts(allPosts);
+      setLoading(false);
+    } else {
+      setLoading(true);
+      setPosts(data);
+      setLoading(false);
+    }
+  }, []);
+  const closeModelDelete = (slug) => {
     setShowModel(!showModel);
+    setArticleDelete(slug);
   };
   const indexOfLastBlog = currentPage * perPage;
   const indexOfFirstBlog = indexOfLastBlog - perPage;
-  const currentBlog = posts.slice(indexOfFirstBlog, indexOfLastBlog);
-  const totalPages = Math.ceil(posts.length / perPage);
+  const currentBlog = posts?.slice(indexOfFirstBlog, indexOfLastBlog);
+  const totalPages = Math.ceil(posts?.length / perPage);
   const handleMovePages = (page) => {
     setCurrentPage(page);
   };
   // concerting date function
- const FormatDate = (dateString) => {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  const formattedDate = new Date(dateString).toLocaleDateString(
-    "en-US",
-    options
-  );
-  return formattedDate;
-};
+  const FormatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const formattedDate = new Date(dateString).toLocaleDateString(
+      "en-US",
+      options
+    );
+    return formattedDate;
+  };
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Your Blogs & Articles</h1>
@@ -43,12 +66,15 @@ const ListDashboardBlogs = ({ data }) => {
               <tr className="bg-blue-600 text-xs font-semibold uppercase text-white">
                 <th className="px-5 py-3">title</th>
                 <th className="px-5 py-3">slug</th>
+                <th className="px-5 py-3">status</th>
                 <th className="px-5 py-3 ">date publish</th>
                 <th className="px-5 py-3 ">Delete/Edit</th>
               </tr>
             </thead>
             <tbody>
-              {posts.length > 0 ? (
+              {loading ? (
+                <SkeletonLoader />
+              ) : (
                 currentBlog?.map((blog) => (
                   <tr
                     key={blog.slug}
@@ -60,8 +86,13 @@ const ListDashboardBlogs = ({ data }) => {
                     <td className=" bg-white px-5 text-sm">
                       <p className="text-gray-600 px-4">{blog.slug}</p>
                     </td>
+                    <td className=" bg-white px-5 text-sm">
+                      <p className="text-gray-600 px-4">{blog.status}</p>
+                    </td>
                     <td>
-                      <p className="text-sm px-5">{FormatDate(blog?.createdAt)}</p>
+                      <p className="text-sm px-5">
+                        {FormatDate(blog?.createdAt)}
+                      </p>
                     </td>
                     <td className="flex space-x-2 p-2">
                       <button
@@ -74,33 +105,26 @@ const ListDashboardBlogs = ({ data }) => {
                         <BiSolidEdit className="ml-2" />
                       </button>
                       <button
-                        onClick={closeModelDelete}
+                        onClick={() => closeModelDelete(blog.slug)}
                         className="flex justify-around group px-4 py-2 items-center hover:bg-red-400 bg-red-500 rounded-md text-light"
                       >
                         <span className="text-xs">Delete</span>
                         <RiDeleteBin5Line className="ml-2" />
                       </button>
+                      {showModel && (
+                        <DeleteConfirmation
+                          blogDelete={articleDelete}
+                          onClose={closeModelDelete}
+                          blogTitle={articleDelete}
+                        />
+                      )}
                     </td>
-                    {showModel && (
-                      <DeleteConfirmation
-                        showModel={showModel}
-                        blogDelete={blog.slug}
-                        onClose={closeModelDelete}
-                        blogTitle={blog.title}
-                      />
-                    )}
                   </tr>
                 ))
-              ) : (
-                <tr className="p-6 items-center">
-                  <td className="text-xl font-semibold p-12">
-                    <h2>no found blogs yet...!! </h2>
-                  </td>
-                </tr>
               )}
             </tbody>
           </table>
-          {posts.length === 0 ? null : (
+          {posts?.length === 0 ? null : (
             <nav
               aria-label="Page navigation"
               className="flex justify-center mt-4"

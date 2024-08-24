@@ -4,6 +4,7 @@ import { BiSolidEdit } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import { FormatDate } from "./ListDashboardBlogs";
 const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
   ssr: false,
 });
@@ -12,8 +13,11 @@ const EditPending = ({ draftBlog }) => {
   const [posts, setPosts] = useState(draftBlog);
   const router = useRouter();
   const [showModel, setShowModel] = useState(false);
-  const closeModelDelete = () => {
+  const [articleDelete, setArticleDelete] = useState("");
+
+  const closeModelDelete = (slug) => {
     setShowModel(!showModel);
+    setArticleDelete(slug);
   };
 
   return (
@@ -44,7 +48,7 @@ const EditPending = ({ draftBlog }) => {
                       <p className="text-gray-600 px-4">{blog.slug}</p>
                     </td>
                     <td>
-                      <p className="text-sm px-5">June 5, 2024</p>
+                      <p className="text-sm px-5">{FormatDate(blog.createdAt)}</p>
                     </td>
                     <td className="flex space-x-2 p-2">
                       <button
@@ -66,10 +70,9 @@ const EditPending = ({ draftBlog }) => {
                     </td>
                     {showModel && (
                       <DeleteConfirmation
-                        showModel={showModel}
-                        blogDelete={blog.slug}
+                        blogDelete={articleDelete}
                         onClose={closeModelDelete}
-                        blogTitle={blog.title}
+                        blogTitle={articleDelete}
                       />
                     )}
                   </tr>

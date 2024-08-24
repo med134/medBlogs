@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { BiSolidEdit } from "react-icons/bi";
 import SkeletonLoader from "./DashboardSkelton";
-import { deleteUser } from "../utils/action";
 
 const UsersDashboard = ({ users }) => {
   const [loading, setLoading] = useState(false);
