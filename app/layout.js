@@ -2,7 +2,8 @@ import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import dynamic from "next/dynamic";
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/react";
 const CookiesBanner = dynamic(() => import("./components/Cookies"), {
   ssr: false,
 });
@@ -87,13 +88,17 @@ export default function RootLayout({ children }) {
         className={`${inter.className} w-[100%]`}
         suppressHydrationWarning={true}
       >
-        <NavBar/> 
-<Script async src="https://www.googletagmanager.com/gtag/js?id=G-J4KQVRLWEN"></Script>
+        <NavBar />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-J4KQVRLWEN"
+        ></Script>
         {children}
         {<CookiesBanner />}
         <Footer />
       </body>
-      <GoogleAnalytics gaId="G-J4KQVRLWEN"/>
+      <GoogleAnalytics gaId="G-J4KQVRLWEN" />
+      <Analytics />
     </html>
   );
 }
