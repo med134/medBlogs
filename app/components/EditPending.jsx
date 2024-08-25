@@ -9,7 +9,7 @@ const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
   ssr: false,
 });
 
-const EditPending = ({ draftBlog }) => {
+const EditPending = ({ draftBlog, session }) => {
   const [posts, setPosts] = useState(draftBlog);
   const router = useRouter();
   const [showModel, setShowModel] = useState(false);
@@ -52,24 +52,26 @@ const EditPending = ({ draftBlog }) => {
                         {FormatDate(blog.createdAt)}
                       </p>
                     </td>
-                    <td className="flex space-x-2 p-2">
-                      <button
-                        onClick={() =>
-                          router.push(`/dashboard/edit-articles/${blog.slug}`)
-                        }
-                        className="flex justify-around group hover:bg-blue-400 px-2 py-1 items-center bg-blue-500 rounded-md text-light"
-                      >
-                        <span className="">Edit Status</span>
-                        <BiSolidEdit className="ml-2" />
-                      </button>
-                      <button
-                        onClick={closeModelDelete}
-                        className="flex justify-around group px-2 py-1 items-center bg-red-500 hover:bg-red-400 rounded-md text-light"
-                      >
-                        <span className="">Delete</span>
-                        <RiDeleteBin5Line className="ml-2" />
-                      </button>
-                    </td>
+                    {session.user.name === "MOHAMMED DAKIR" && (
+                      <td className="flex space-x-2 p-2">
+                        <button
+                          onClick={() =>
+                            router.push(`/dashboard/edit-articles/${blog.slug}`)
+                          }
+                          className="flex justify-around group hover:bg-blue-400 px-2 py-1 items-center bg-blue-500 rounded-md text-light"
+                        >
+                          <span className="">Edit Status</span>
+                          <BiSolidEdit className="ml-2" />
+                        </button>
+                        <button
+                          onClick={closeModelDelete}
+                          className="flex justify-around group px-2 py-1 items-center bg-red-500 hover:bg-red-400 rounded-md text-light"
+                        >
+                          <span className="">Delete</span>
+                          <RiDeleteBin5Line className="ml-2" />
+                        </button>
+                      </td>
+                    )}
                     {showModel && (
                       <DeleteConfirmation
                         blogDelete={articleDelete}
