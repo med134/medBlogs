@@ -21,7 +21,7 @@ export default function CookieBanner() {
   return (
     <div
       className={`${
-        cookieConsent === true
+        cookieConsent
           ? "hidden"
           : "flex  flex-col fixed inset-x-0 bottom-0 z-30  justify-between gap-x-8 gap-y-4 bg-white p-6 ring-1 ring-gray-900/10 md:flex-row md:items-center lg:px-8 xs:block"
       }`}

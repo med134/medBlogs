@@ -1,12 +1,13 @@
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import GoogleAnalytic from "./components/GoogleAnalytic";
 import dynamic from "next/dynamic";
+import { GoogleAnalytics } from '@next/third-parties/google';
 const CookiesBanner = dynamic(() => import("./components/Cookies"), {
   ssr: false,
 });
 import { inter } from "./components/Fonts";
+import Script from "next/script";
 
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
@@ -82,16 +83,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <GoogleAnalytic />
       <body
         className={`${inter.className} w-[100%]`}
         suppressHydrationWarning={true}
       >
         <NavBar/> 
+<Script async src="https://www.googletagmanager.com/gtag/js?id=G-J4KQVRLWEN"></Script>
         {children}
         {<CookiesBanner />}
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-J4KQVRLWEN"/>
     </html>
   );
 }
