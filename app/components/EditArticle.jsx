@@ -294,8 +294,12 @@ export default function EditArticle({
                 onChange={(e) => setStatus(e.target.value)}
                 className="h-12 w-full max-w-full rounded-md border ml-4 mb-1 bg-white px-5 text-sm outline-none focus:ring"
               >
-                <option value="draft">Draft</option>
-                <option value="publish">publish</option>
+                <option className="py-2" value="draft">
+                  Draft
+                </option>
+                <option value="publish" className="py-2">
+                  publish
+                </option>
               </select>
             </div>
           </div>
