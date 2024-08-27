@@ -16,8 +16,8 @@ const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
     );
     return formattedDate;
   };
-const ListDashboardBlogs = ({ data, session, allPosts }) => {
-  const [posts, setPosts] = useState([]);
+const ListDashboardBlogs = ({ data }) => {
+  const [posts, setPosts] = useState(data);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [showModel, setShowModel] = useState(false);
@@ -25,17 +25,6 @@ const ListDashboardBlogs = ({ data, session, allPosts }) => {
   const [articleDelete, setArticleDelete] = useState("");
   const perPage = 4;
 
-  useEffect(() => {
-    if (session.user.name === "MOHAMMED DAKIR") {
-      setLoading(true);
-      setPosts(allPosts);
-      setLoading(false);
-    } else {
-      setLoading(true);
-      setPosts(data);
-      setLoading(false);
-    }
-  }, []);
   const closeModelDelete = (slug) => {
     setShowModel(!showModel);
     setArticleDelete(slug);

@@ -44,7 +44,7 @@ export const getDraftBlog = async () => {
 
 export const getPostsByUser = async (username) => {
   const res = await fetch(
-    `https://www.medcode/api/articles?username=${username}`
+    `https://www.medcode.dev/api/articles?username=${username}`
   );
   if (!res.ok) {
     throw new Error("failed to get data");

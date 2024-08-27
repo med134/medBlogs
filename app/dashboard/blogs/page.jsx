@@ -9,7 +9,7 @@ const Blogs = async () => {
   const posts = await getPostsByUser(session?.user.name);
   return (
     <div className="mx-auto p-6 pt-24 h-full">
-      <ListDashboardBlogs data={posts} allPosts={allPosts} session={session}/>
+      <ListDashboardBlogs data={posts}/>
     </div>
   );
 };

@@ -22,12 +22,14 @@ export const authConfig = {
     },
     authorized({ auth, request }) {
       const user = auth?.user;
+      console.log(user,auth);
       const isOneBlog = request?.nextUrl?.pathname?.startsWith("/dashboard");
+      const isOnLoginPage = request?.nextUrl?.pathname.startsWith("/login");
       const adminUserPage =
         request?.nextUrl?.pathname.startsWith("/dashboard/users");
+
       const adminDraftBlog =
         request?.nextUrl?.pathname.startsWith("dashboard/pending");
-      const isOnLoginPage = request?.nextUrl?.pathname.startsWith("/login");
 
       if (adminUserPage && user?.name != "MOHAMMED DAKIR") {
         return Response.redirect(new URL("/dashboard", request.nextUrl));
@@ -35,6 +37,7 @@ export const authConfig = {
       if (adminDraftBlog && user?.name != "MOHAMMED DAKIR") {
         return Response.redirect(new URL("/dashboard", request.nextUrl));
       }
+
       if (isOneBlog && !user) {
         return Response.redirect(new URL("/login", request.nextUrl));
       }
