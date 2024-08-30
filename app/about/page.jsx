@@ -3,11 +3,15 @@ import TransitionEffect from "../components/TransitionEffect";
 import { AnimatedNumbers } from "../components/AnimatedNumbers";
 import Layout from "../components/Layout";
 import Image from "next/image";
+import Link from "next/link";
 import Experience from "../components/Experience";
 import Skills from "../components/Skills";
 import Education from "../components/Education";
 import React from "react";
 import profilePic from "@/public/images/med.jpg";
+import { FaGithubAlt, FaInstagram, FaLinkedin } from "react-icons/fa6";
+import { FaYoutube, FaDev } from "react-icons/fa";
+import { MdAttachEmail } from "react-icons/md";
 
 export const metadata = {
   title: "About us & Resume & Experience | medCode ",
@@ -32,6 +36,39 @@ export const metadata = {
   },
 };
 
+const contact = [
+  {
+    name: "Google",
+    link: "mailto:mohamed7dakir@gmail.com",
+    icon: MdAttachEmail,
+  },
+  {
+    name: "Instagram",
+    link: "https://www.instagram.com/med_dakir/",
+    icon: FaInstagram,
+  },
+  {
+    name: "Linkedin",
+    link: "https://www.linkedin.com/in/mohammed-dakir/",
+    icon: FaLinkedin,
+  },
+  {
+    name: "Youtube",
+    link: "https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A",
+    icon: FaYoutube,
+  },
+  {
+    name: "Github",
+    link: "https://github.com/med134",
+    icon: FaGithubAlt,
+  },
+  {
+    name: "DEV.to",
+    link: "https://dev.to/med_code",
+    icon: FaDev,
+  },
+];
+
 const Page = () => {
   return (
     <>
@@ -54,22 +91,29 @@ const Page = () => {
                 am always looking for new and innovative ways to bring my
                 clients&apos; visions to life.
               </p>
-
-              <p className="my-4 font-lexend text-xl">
-                I believe that design is about more than just making things look
-                pretty – it&apos;s about solving problems and creating
-                intuitive, enjoyable experiences for users.
-              </p>
-
-              <p className="font-lexend text-xl xs:mb-4">
-                Whether I&apos;m working on a website, mobile app, or other
-                digital product, I bring my commitment to design excellence and
-                user-centered thinking to every project I work on. I look
-                forward to the opportunity to bring my skills and passion to
-                your next project.
-              </p>
+              {/* personal info */}
+              <span className="mb-2 py-4 text-lg font-bold underline uppercase text-dark/75 dark:text-light/75">
+                Contact Me
+              </span>
+              <div className="flex justify-start items-center flex-wrap">
+                {contact.map((link) => {
+                  const LinkIcon = link.icon;
+                  return (
+                    <div key={link.name} className="py-2 ml-5">
+                      <Link
+                        href={link.link}
+                        target="blank"
+                        className={`flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800
+                    `}
+                      >
+                        <LinkIcon className="mr-3 h-8 w-8" />
+                        <span className="text-sm font-medium">{link.name}</span>
+                      </Link>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-
             <div
               className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark
               bg-light p-8 dark:bg-dark dark:border-light xl:col-span-4 md:order-1 md:col-span-8"

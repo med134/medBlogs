@@ -55,7 +55,7 @@ const Footer = () => {
               Email:
             </label>
             <a
-              href="mailto:info@lorem.mail"
+              href="mailto:med@vivacode.dev"
               aria-labelledby="Our email"
               rel="noopener noreferrer"
               name="Our email"

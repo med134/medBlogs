@@ -9,9 +9,7 @@ import { MoonIcon, SunIcon } from "./Icons";
 import dynamic from "next/dynamic";
 import useThemeSwitcher from "./hooks/useThemeSwitcher";
 import { handelLogOut } from "../utils/action";
-const DynamicMega = dynamic(() => import("./MegaMenu"), {
-  suspense: true,
-});
+
 const DynamicProfile = dynamic(() => import("./ProfileDown"), {
   suspense: true,
 });
@@ -140,41 +138,13 @@ const NavBaLinks = ({ session }) => {
             className="mx-4 uppercase dark:text-light"
             target="_blank"
           />
+          <CustomLink
+            href="/about"
+            title="About Us"
+            className="mx-4 uppercase dark:text-light"
+            target="_blank"
+          />
 
-          <button
-            onMouseEnter={handelMenuDown}
-            onMouseOver={() => setDropDown(true)}
-            onMouseOverCapture={() => setDropDown(true)}
-            className="mx-4 uppercase flex items-center justify-between text-gray-900 hover:border-b border-black md:w-auto md:p-0 dark:text-white"
-          >
-            Categories
-            <svg
-              className="w-2.5 h-2.5 ms-3"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 10 6"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="m1 1 4 4 4-4"
-              />
-            </svg>
-          </button>
-          {dropdown && (
-            <div
-              onMouseEnter={() => setDropDown(true)}
-              onMouseLeave={() => setDropDown(false)}
-              className={`opacity-0 ${
-                dropdown ? "opacity-100" : ""
-              } transition-opacity duration-300 ease-in-out absolute top-24 left-0 w-full h-60 shadow-sm`}
-            >
-              <DynamicMega />
-            </div>
-          )}
           {session ? (
             <CustomLink
               href="/dashboard"
