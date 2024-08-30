@@ -39,17 +39,6 @@ export const getDraftBlog = async () => {
   }
 };
 
-export const getPostsByUser = async (username) => {
-  const res = await fetch(
-    `https://www.medcode.dev/api/articles?username=${username}`
-  );
-  if (!res.ok) {
-    throw new Error("failed to get data");
-  }
-  const posts = await res.json();
-  return posts;
-};
-
 export const getAllUsers = async () => {
   try {
     connectDb();

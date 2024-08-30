@@ -17,7 +17,6 @@ const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
     return formattedDate;
   };
 const ListDashboardBlogs = ({ data }) => {
-  const [posts, setPosts] = useState(data);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [showModel, setShowModel] = useState(false);
@@ -31,8 +30,8 @@ const ListDashboardBlogs = ({ data }) => {
   };
   const indexOfLastBlog = currentPage * perPage;
   const indexOfFirstBlog = indexOfLastBlog - perPage;
-  const currentBlog = posts?.slice(indexOfFirstBlog, indexOfLastBlog);
-  const totalPages = Math.ceil(posts?.length / perPage);
+  const currentBlog = data?.slice(indexOfFirstBlog, indexOfLastBlog);
+  const totalPages = Math.ceil(data?.length / perPage);
   const handleMovePages = (page) => {
     setCurrentPage(page);
   };
@@ -113,7 +112,7 @@ const ListDashboardBlogs = ({ data }) => {
               )}
             </tbody>
           </table>
-          {posts?.length === 0 ? null : (
+          {data?.length === 0 ? null : (
             <nav
               aria-label="Page navigation"
               className="flex justify-center mt-4"
