@@ -9,6 +9,8 @@ const ChartPage = () => {
               background: "transparent",
               display: "flex",
               border: "none",
+              justifyContent:"flex-start",
+              alignItems:"center",
               borderRadius: 2,
               overflowY: "hidden",
               overflow: "hidden",
@@ -17,7 +19,7 @@ const ChartPage = () => {
               height: "90vh",
               scrollBehavior: "none",
             }}
-            src="https://charts.mongodb.com/charts-medcodeblogs-nxmomns/embed/dashboards?id=77ed452f-9496-483d-8548-eee465e63d4f&theme=light&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=false&scalingWidth=auto&scalingHeight=autto"
+            src="https://charts.mongodb.com/charts-medcodeblogs-nxmomns/embed/dashboards?id=77ed452f-9496-483d-8548-eee465e63d4f&theme=light&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=false&scalingWidth=auto&scalingHeight=auto"
           />
         </div>
       </div>

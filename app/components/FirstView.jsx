@@ -11,15 +11,15 @@ const FirstView = async () => {
   return (
     <div
       id="home"
-      className="relative z-10 overflow-hidden pt-[70px] pb-1 md:pt-[80px] xl:pt-[100px] lg:pt-[60px] sm:pb-10 xs:pb-24 xl:pb-1 dark:bg-dark"
+      className="relative z-10 overflow-hidden py-32 sm:pb-10 xs:pb-24 xl:pb-1 dark:bg-dark"
     >
       {publicPosts?.map((item, index) =>
         index < 1 ? (
           <div
             key={item._id}
-            className="flex justify-between items-center z-10 px-24 relative p-8 md:flex-wrap-reverse xl:px-16 md:p-4 md:mt-4 xs:mt-0 xs:p-3"
+            className="grid grid-cols-5 z-10 px-24 relative p-8 md:flex-wrap-reverse xl:px-16 md:p-4 md:mt-4 xs:mt-0 xs:p-3 xl:flex xl:justify-between xl:items-center"
           >
-            <div className="xl:w-[900px] md:w-full p-2">
+            <div className="xl:w-[900px] md:w-full p-2 col-span-3">
               <span className="flex justify-start items-center py-2 dark:text-light">
                 <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
                 <span className="ml-2 font-semibold dark:text-light xs:text-sm">
@@ -60,14 +60,14 @@ const FirstView = async () => {
                 <span>Read more...</span>
               </Link>
             </div>
-            <div className="w-full rounded-xl md:hidden">
+            <div className="w-full rounded-xl md:hidden col-span-2">
               <Image
                 alt={item.title}
                 src={icon}
                 width={400}
                 height={400}
                 priority={true}
-                className="w-full rounded-2xl opacity-100 object-contain xl:object-contain xs:h-56"
+                className="rounded-2xl opacity-100 object-contain xl:object-contain xs:h-56"
               />
             </div>
           </div>

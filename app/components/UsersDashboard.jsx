@@ -100,16 +100,6 @@ const UsersDashboard = ({ users }) => {
                           Delete
                           <RiDeleteBin5Line className="ml-2 hover:font-semibold" />
                         </button>
-
-                        <button
-                          onClick={() =>
-                            router.push(`/dashboard/profile/${user.name}`)
-                          }
-                          className="flex justify-around group px-2 py-1 items-center bg-blue-500 rounded-md text-white"
-                        >
-                          <span className="hover:font-semibold">Edit</span>
-                          <BiSolidEdit className="ml-2" />
-                        </button>
                       </td>
                     ) : null}
                   </tr>

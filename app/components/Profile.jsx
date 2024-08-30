@@ -20,11 +20,11 @@ const Profile = ({ user, session }) => {
               ) : null}
               <div className="flex flex-col items-center">
                 <Image
-                  width={500}
+                  width={300}
                   alt="user image"
-                  height={500}
+                  height={300}
                   src={user?.imageUrl}
-                  className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
+                  className="w-32 h-32 object-cover bg-gray-300 rounded-full mb-4 shrink-0"
                 />
                 <h1 className="text-xl font-bold">{user?.name}</h1>
                 <div className="flex justify-start items-center">

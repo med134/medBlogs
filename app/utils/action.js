@@ -8,15 +8,12 @@ import Category from "../module/Category";
 import Posts from "../module/Post";
 
 export const handelLoginGithub = async () => {
-  "use server";
   await signIn("github");
 };
 export const handelLogOut = async () => {
-  "use server";
   await signOut();
 };
 export const LoginWithGoogle = async () => {
-  "use server";
   await signIn("google");
 };
 
