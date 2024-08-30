@@ -52,15 +52,15 @@ const ListDashboardBlogs = ({ data }) => {
               {currentBlog?.map((blog) => (
                 <tr
                   key={blog.slug}
-                  className="p-2 px-4 py-2 w-full justify-between items-center border border-gray-100"
+                  className="p-2 px-4 py-2 w-full justify-between items-center border border-gray-100 dark:text-light"
                 >
                   <td className="p-2">
                     <h2 className="text-sm font-semibold">{blog.title}</h2>
                   </td>
-                  <td className=" bg-white px-5 text-sm">
+                  <td className=" px-5 text-sm">
                     <p className="text-gray-600 px-4">{blog.slug}</p>
                   </td>
-                  <td className=" bg-white px-5 text-sm">
+                  <td className=" px-5 text-sm">
                     <p className="text-gray-600 px-4">{blog.status}</p>
                   </td>
                   <td>

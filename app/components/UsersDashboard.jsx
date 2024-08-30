@@ -35,7 +35,7 @@ const UsersDashboard = ({ users }) => {
 
   return (
     <div className="container mx-auto p-4 py-28">
-      <h1 className="text-2xl font-bold mb-4">Admin & Users</h1>
+      <h1 className="text-2xl font-bold mb-4 dark:text-light">Admin & Users</h1>
       {success && (
         <span className="text-white bg-green-500 mb-1 px-6 py-2 rounded-md uppercase font-semibold">
           user has ben deleted
@@ -74,12 +74,12 @@ const UsersDashboard = ({ users }) => {
                         width={200}
                         className="h-10 w-10 rounded-full object-cover"
                       />
-                      <h2 className="text-sm font-semibold px-4">
+                      <h2 className="text-sm font-semibold px-4 dark:text-light">
                         {user.name}
                       </h2>
                     </td>
-                    <td className=" bg-white px-5 text-sm">
-                      <p className="text-gray-600 px-4">{user.email}</p>
+                    <td className=" px-5 text-sm">
+                      <p className="text-gray-600 px-4 dark:text-light">{user.email}</p>
                     </td>
                     <td>
                       <p className="text-sm px-5">

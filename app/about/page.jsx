@@ -69,7 +69,7 @@ const contact = [
   },
 ];
 
-const Page = () => {
+const page = () => {
   return (
     <>
       <TransitionEffect />
@@ -106,7 +106,7 @@ const Page = () => {
                         className={`flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800
                     `}
                       >
-                        <LinkIcon className="mr-3 h-8 w-8" />
+                        <LinkIcon className="mr-3 h-8 w-8 dark:fill-white" />
                         <span className="text-sm font-medium">{link.name}</span>
                       </Link>
                     </div>
@@ -178,4 +178,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default page;
