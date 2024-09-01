@@ -6,6 +6,7 @@ import User from "../module/User";
 import connectDb from "./ConnectDB";
 import Category from "../module/Category";
 import Posts from "../module/Post";
+import Email from "../module/Email";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
@@ -15,6 +16,23 @@ export const handelLogOut = async () => {
 };
 export const LoginWithGoogle = async () => {
   await signIn("google");
+};
+export const sendMessage = async () => {
+  const { name, email, message } = Object.fromEntries(formData);
+  try {
+    connectDb();
+    const newMessage = new Email({
+      name,
+      email,
+      message,
+    });
+    await newMessage.save();
+    console.log("message is send");
+    revalidatePath("/dashboard");
+  } catch (err) {
+    console.log(err.message);
+    return { error: "something went wrong try again" };
+  }
 };
 
 export const getPosts = async () => {
@@ -95,7 +113,7 @@ export const getTemplates = async () => {
 export const getTemplatesBySlug = async (slug) => {
   try {
     connectDb();
-    const posts = await Posts.findOne({slug});
+    const posts = await Posts.findOne({ slug });
     return posts;
   } catch (err) {
     console.log(err.message);

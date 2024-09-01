@@ -4,10 +4,17 @@ import { BiSolidEdit } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-import { FormatDate } from "./ListDashboardBlogs";
 const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
   ssr: false,
 });
+const FormatDate = (dateString) => {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = new Date(dateString).toLocaleDateString(
+    "en-US",
+    options
+  );
+  return formattedDate;
+};
 
 const EditPending = ({ draftBlog }) => {
   const [posts, setPosts] = useState(draftBlog);

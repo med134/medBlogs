@@ -43,9 +43,12 @@ const Footer = () => {
           </div>
         </div>
         <div className="contact space-y-2 text-sm">
-          <p className="text-base font-bold tracking-wide text-gray-900 dark:text-light">
-            Contacts
-          </p>
+          <Link
+            href="/contact_us"
+            className="text-base font-bold tracking-wide text-gray-900 dark:text-light hover:text-mainColor"
+          >
+            Contacts us
+          </Link>
           <div className="flex dark:text-gray-400">
             <p className="mr-1 text-gray-800 dark:text-gray-400">Phone:</p>
             <a
