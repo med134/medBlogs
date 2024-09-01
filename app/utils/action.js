@@ -17,7 +17,7 @@ export const handelLogOut = async () => {
 export const LoginWithGoogle = async () => {
   await signIn("google");
 };
-export const sendMessage = async () => {
+export const sendMessage = async (prevState, formData) => {
   const { name, email, message } = Object.fromEntries(formData);
   try {
     connectDb();
@@ -27,8 +27,8 @@ export const sendMessage = async () => {
       message,
     });
     await newMessage.save();
-    console.log("message is send");
-    revalidatePath("/dashboard");
+    revalidatePath("/contact_us");
+    return { succuss: "Your message is send successfully" };
   } catch (err) {
     console.log(err.message);
     return { error: "something went wrong try again" };
@@ -43,6 +43,16 @@ export const getPosts = async () => {
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch posts!");
+  }
+};
+export const getMessages = async () => {
+  try {
+    connectDb();
+    const messages = await Email.find();
+    return messages;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch messages!");
   }
 };
 export const getDraftBlog = async () => {

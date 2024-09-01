@@ -1,16 +1,22 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useFormState } from "react-dom";
 import { sendMessage } from "../utils/action";
+import IsUpdate from "./IsUpdate";
 
 const FormMessage = () => {
   const [state, formAction] = useFormState(sendMessage, undefined);
+
   return (
     <form action={formAction} className="mb-12 w-full px-10">
+      {state && (
+        <h3 className="bg-green-500 text-white px-10 py-2">{state.succuss}</h3>
+      )}
       <div className="mb-3 w-full">
         <label className="block font-medium mb-[2px] text-teal-700">Name</label>
         <input
           type="name"
+          required
           name="name"
           className="px-2 py-2 border w-full outline-none rounded-md"
           placeholder="Name"
@@ -23,6 +29,7 @@ const FormMessage = () => {
         <input
           type="email"
           name="email"
+          required
           className="px-2 py-2 border w-full outline-none rounded-md"
           placeholder="Enter your email address"
         />
@@ -34,13 +41,18 @@ const FormMessage = () => {
         <textarea
           rows={5}
           name="message"
+          maxlength="300"
+          minlength="10"
+          required
           className="px-2 py-2 border rounded-[5px] w-full outline-none"
         />
       </div>
       <button className="mb-6 inline-block w-full rounded bg-teal-400 px-6 py-2.5 font-medium uppercase leading-normal text-white hover:shadow-md hover:bg-teal-500">
         Send
       </button>
-      {state && state.error}
+      {state && (
+        <h3 className="text-red-500 px-10 py-2">{state.error}</h3>
+      )}
     </form>
   );
 };

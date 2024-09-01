@@ -28,7 +28,8 @@ export const authConfig = {
       const isOnLoginPage = request?.nextUrl?.pathname.startsWith("/login");
       const adminPages =
         request?.nextUrl?.pathname.startsWith("/dashboard/pending") ||
-        request?.nextUrl?.pathname.startsWith("/dashboard/users");
+        request?.nextUrl?.pathname.startsWith("/dashboard/users") ||
+        request?.nextUrl?.pathname.startsWith("/dashboard/messages");
 
       if (adminPages && user?.name != "MOHAMMED DAKIR") {
         return Response.redirect(new URL("/dashboard", request.nextUrl));

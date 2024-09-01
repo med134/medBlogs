@@ -3,7 +3,7 @@ import FormMessage from "../components/FormMessage";
 
 function Page() {
   return (
-    <section className="py-36">
+    <section className="py-36 bg-light">
       <div className="text-center md:max-w-xl lg:max-w-3xl">
         <h2 className="mb-6 px-6 text-3xl font-bold">Contact us</h2>
       </div>
