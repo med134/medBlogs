@@ -5,7 +5,7 @@ import { getDraftBlog } from "@/app/utils/action";
 const page = async () => {
   const draftBlog = await getDraftBlog();
   return (
-    <div className="container mx-auto p-4 py-28">
+    <div className="container mx-auto p-4 py-8">
       <EditPending  draftBlog={draftBlog} />
     </div>
   );

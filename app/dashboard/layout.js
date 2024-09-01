@@ -1,3 +1,4 @@
+import DashboardNav from "../components/DashboardNav";
 import DashSide from "../ui/sidebar/DashSide";
 import MainSideBarDashboard from "../ui/sidebar/MainSideBarDashboard";
 export const metadata = {
@@ -22,9 +23,12 @@ export const metadata = {
 };
 const DashboardLayout = ({ children }) => {
   return (
-    <div className="flex h-full w-full dark:bg-dark">
-      <MainSideBarDashboard/>
-      <section className="flex-1 p-8 text-dark w-full">{children}</section>
+    <div className="flex">
+      <MainSideBarDashboard />
+      <div className="flex-1">
+        <DashboardNav />
+        <div className="ml-[20%] p-4">{children}</div>
+      </div>
     </div>
   );
 };

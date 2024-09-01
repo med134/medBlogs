@@ -142,7 +142,7 @@ const AddNewArticle = ({ user }) => {
     }
   };
   return (
-    <div className="inline-block max-h-full p-8 py-8 sm:p-2 sm:py-2 dark:bg-dark mt-24">
+    <div className="inline-block max-h-full p-8 py-8 sm:p-2 sm:py-2 dark:bg-dark">
       <h1 className="text-gray-700 text-2xl lg:text-2xl dark:text-light font-bold">
         Start to Create Your Article
       </h1>
@@ -174,7 +174,7 @@ const AddNewArticle = ({ user }) => {
                 required
                 type="text"
                 placeholder="description"
-                className="h-24 w-full rows-3 rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
+                className="h-24 w-full p-3 rows-3 rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
               />
               <input
                 required

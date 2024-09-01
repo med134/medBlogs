@@ -27,7 +27,7 @@ const EditPending = ({ draftBlog }) => {
         <div className="">
           <table className="w-full">
             <thead>
-              <tr className="bg-blue-600 text-xs font-semibold uppercase text-white">
+              <tr className="bg-mainColor text-xs font-semibold uppercase text-white">
                 <th className="px-5 py-3">title</th>
                 <th className="px-5 py-3">slug</th>
                 <th className="px-5 py-3 ">date publish</th>

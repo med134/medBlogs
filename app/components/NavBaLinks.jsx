@@ -9,6 +9,7 @@ import { MoonIcon, SunIcon } from "./Icons";
 import dynamic from "next/dynamic";
 import useThemeSwitcher from "./hooks/useThemeSwitcher";
 import { handelLogOut } from "../utils/action";
+import { usePathname } from "next/navigation";
 
 const DynamicProfile = dynamic(() => import("./ProfileDown"), {
   suspense: true,
@@ -45,13 +46,9 @@ const NavBaLinks = ({ session }) => {
   };
   const [sticky, setSticky] = useState(false);
   const [dropdown, setDropDown] = useState(false);
-  const handelMenuDown = () => {
-    if (dropdown) {
-      setDropDown(false);
-    } else {
-      setDropDown(true);
-    }
-  };
+  const [removeNav,setRemoveNav]=useState(false);
+  const path = usePathname();
+  console.log(path)
 
   const handleStickyNavbar = () => {
     if (window.scrollY >= 80) {
@@ -65,7 +62,7 @@ const NavBaLinks = ({ session }) => {
   });
   return (
     <header
-      className={`flex header py-6 z-40 w-[100%] items-center bg-transparent xl:px-6 ${
+      className={`${path.startsWith("/dashboard") ? "hidden" : "flex"} header py-6 z-40 w-[100%] items-center bg-transparent xl:px-6 ${
         sticky
           ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
           : "absolute"

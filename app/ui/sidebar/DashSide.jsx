@@ -27,64 +27,36 @@ const SideBar = ({ session }) => {
   ];
 
   return (
-    <div className="mb-6 h-[100%]">
-      <div className="h-screen w-64 pb-10">
-        <div className="flex px-4 h-full mt-24 flex-grow flex-col bg-gradient-to-r from-[#f0f0f0] to-gray-50 dark:gradient-to-r dark:from-gray-900 dark:to-gray-950 rounded-br-lg rounded-tr-lg pt-5 ">
-          <div className="flex mt-10 justify-start items-center px-4 cursor-pointer">
-            <div className="flex ml-3 flex-col">
+    <div className="fixed left-0 top-16 h-screen flex px-4 flex-grow flex-col bg-gradient-to-r from-[#f0f0f0] to-gray-50 dark:gradient-to-r dark:from-gray-900 dark:to-gray-950">
+      <ul className="flex flex-col pt-12">
+        {menuItems.map((link) => {
+          const LinkIcon = link.icon;
+          const isActive = path === link.link;
+          return (
+            <li key={link.name} className="py-3">
               <Link
-                href={`/dashboard/profile/${session.user.name
-                  .replace(/\s+/g, "-")
-                  .toLowerCase()}`}
-                className="flex justify-start items-center"
+                href={link.link}
+                className={`flex flex-row items-center px-5 h-12 cursor-pointer transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800 ${
+                  isActive ? "font-semibold bg-mainColor  text-light" : ""
+                }`}
               >
-                <Image
-                  width={50}
-                  height={50}
-                  priority
-                  src={session?.user?.image}
-                  alt="photo_profile"
-                  className="w-12 h-12 rounded-[50%]"
-                />
-                <div className="ml-3">
-                  <h3 className="font-medium text-xs hover:text-mainColor dark:text-light">
-                    Hi, {session?.user?.name}
-                  </h3>
-                </div>
+                <LinkIcon className="mr-3 h-6 w-6" />
+                <span className="font-medium ml-3 dark:text-light">
+                  {link.name}
+                </span>
               </Link>
-            </div>
-          </div>
-          <ul className="flex flex-col pt-4">
-            {menuItems.map((link) => {
-              const LinkIcon = link.icon;
-              const isActive = path === link.link;
-              return (
-                <li key={link.name} className="py-2">
-                  <Link
-                    href={link.link}
-                    className={`flex flex-row items-center px-5 h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800 ${
-                      isActive ? "text-mainColor font-semibold" : ""
-                    }`}
-                  >
-                    <LinkIcon className="mr-3 h-5 w-5" />
-                    <span className="text-sm font-medium ml-3 dark:text-light">
-                      {link.name}
-                    </span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-          <form action={handelLogOut}>
-            <button className="flex flex-row px-5 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-              <LuLogOut />
-              <span className="text-sm font-medium ml-3 dark:text-light">
-                Logout
-              </span>
-            </button>
-          </form>
-        </div>
-      </div>
+            </li>
+          );
+        })}
+      </ul>
+      <form action={handelLogOut}>
+        <button className="flex flex-row px-5 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+          <LuLogOut className="w-6 h-6" />
+          <span className="font-medium ml-3 dark:text-light">
+            Logout
+          </span>
+        </button>
+      </form>
     </div>
   );
 };

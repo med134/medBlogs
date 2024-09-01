@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { BiSolidEdit } from "react-icons/bi";
 import SkeletonLoader from "./DashboardSkelton";
 
 const UsersDashboard = ({ users }) => {
@@ -34,7 +33,7 @@ const UsersDashboard = ({ users }) => {
   };
 
   return (
-    <div className="container mx-auto p-4 py-28">
+    <div className="container mx-auto p-4 py-6">
       <h1 className="text-2xl font-bold mb-4 dark:text-light">Admin & Users</h1>
       {success && (
         <span className="text-white bg-green-500 mb-1 px-6 py-2 rounded-md uppercase font-semibold">

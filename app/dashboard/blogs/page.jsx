@@ -15,7 +15,7 @@ const Blogs = async () => {
   const session = await auth();
   const posts = await getPostsByUser(session?.user.name);
   return (
-    <div className="mx-auto p-6 pt-24 h-full">
+    <div className="mx-auto p-6 pt-4 h-full">
       <ListDashboardBlogs data={posts} />
     </div>
   );

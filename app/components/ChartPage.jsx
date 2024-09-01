@@ -1,13 +1,14 @@
 import React from "react";
 const ChartPage = () => {
   return (
-    <div className="px-3 mt-0 mb-6 lg:flex-none w-min">
-      <div className="relative flex flex-col">
-        <div className="flex-auto p-4">
+    <div className="px-3 mt-0 mb-6 lg:flex-none w-min -z-1">
+      <div className="flex flex-col">
+        <div className="flex-auto p-4 -z-1">
           <iframe
             style={{
               background: "transparent",
               display: "flex",
+              zIndex: -1,
               border: "none",
               justifyContent:"flex-start",
               alignItems:"center",

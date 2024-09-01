@@ -5,9 +5,17 @@ import logo from "@/public/images/logo.png";
 import { AiFillYoutube } from "react-icons/ai";
 import { GithubIcon, LinkedInIcon } from "./Icons";
 import { BsInstagram } from "react-icons/bs";
+import { usePathname } from "next/navigation";
 const Footer = () => {
+  const path = usePathname();
   return (
-    <div className="p-12 bg-white first:font-lexend xs:p-8 dark:bg-dark dark:text-light">
+    <div
+      className={`${
+        path.startsWith("/dashboard")
+          ? "hidden"
+          : "p-12 bg-white first:font-lexend xs:p-8 dark:bg-dark dark:text-light"
+      }`}
+    >
       <div className="ourFooter gap-6 md:flex md:flex-wrap pb-6">
         <div className="brand sm:col-span-2">
           <div
