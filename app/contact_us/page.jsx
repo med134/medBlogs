@@ -1,53 +1,14 @@
 import React from "react";
-import { useFormState } from "react-dom";
-import { sendMessage } from "../utils/action";
+import FormMessage from "../components/FormMessage";
 
 function Page() {
-  const [state, formAction] = useFormState(sendMessage, undefined);
   return (
     <section className="py-36">
       <div className="text-center md:max-w-xl lg:max-w-3xl">
         <h2 className="mb-6 px-6 text-3xl font-bold">Contact us</h2>
       </div>
-      <div className="flex justify-between items-center p-10 sm:p-2 lg:flex-col-reverse bg-light">
-        <form action={formAction} className="mb-12 w-full px-10">
-          <div className="mb-3 w-full">
-            <label className="block font-medium mb-[2px] text-teal-700">
-              Name
-            </label>
-            <input
-              type="name"
-              name="name"
-              className="px-2 py-2 border w-full outline-none rounded-md"
-              placeholder="Name"
-            />
-          </div>
-          <div className="mb-3 w-full">
-            <label className="block font-medium mb-[2px] text-teal-700">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              className="px-2 py-2 border w-full outline-none rounded-md"
-              placeholder="Enter your email address"
-            />
-          </div>
-          <div className="mb-3 w-full">
-            <label className="block font-medium mb-[2px] text-teal-700">
-              Message
-            </label>
-            <textarea
-              rows={5}
-              name="message"
-              className="px-2 py-2 border rounded-[5px] w-full outline-none"
-            />
-          </div>
-          <button className="mb-6 inline-block w-full rounded bg-teal-400 px-6 py-2.5 font-medium uppercase leading-normal text-white hover:shadow-md hover:bg-teal-500">
-            Send
-          </button>
-          {state && state.error}
-        </form>
+      <div className="flex justify-between items-center p-10 sm:p-2 lg:flex-col-reverse">
+        <FormMessage />
         <div className="w-full grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-start">
           <div className="mb-12 w-full">
             <div className="flex items-start">
