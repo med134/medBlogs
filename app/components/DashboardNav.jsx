@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import med from "@/public/images/logo-med-removebg-preview.png";
-import { BiExit } from "react-icons/bi";
+import { RxExit } from "react-icons/rx";
 import { auth } from "../utils/auth";
 import { MdSpaceDashboard } from "react-icons/md";
 
@@ -17,7 +17,7 @@ async function DashboardNav() {
       <div>
         {" "}
         <div className="flex justify-start items-center px-4 cursor-pointer">
-          <div className="flex ml-3 flex-col">
+          <div className="flex mr-6 flex-col">
             <Link
               href={`/dashboard/profile/${session.user.name
                 .replace(/\s+/g, "-")
@@ -40,7 +40,7 @@ async function DashboardNav() {
             </Link>
           </div>
           <Link href="/" className="ml-3">
-            <BiExit className="w-6 h-6 fill-mainColor" />
+            <RxExit className="w-8 h-8 fill-mainColor" />
           </Link>
         </div>
       </div>

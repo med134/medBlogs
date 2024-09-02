@@ -47,19 +47,15 @@ const HomePage = ({ child, side }) => {
         <div className="block col-span-4 xl:col-span-3">{child}</div>
         <div className="col-span-2 xl:col-span-2 lg:grow-1">
           <div
-            className="sidebar lg:relative lg:top-6"
+            className="sidebar lg:relative lg:top-6 "
             style={{ width: sidebarWidth }}
           >
-            <h3 className="py-4 text-xl font-semibold dark:text-light">
+            <h3 className="py-4 text-xl sm:py-0 font-semibold dark:text-light">
               Follow Us
             </h3>
             <CategoryCard />
             <div className="h-[1px] mb-4 bg-slate-400 w-auto"></div>
-            <SearchBar
-              className={
-                "border border-t-mainColor lg:w-auto border-l-mainColor border-r-mainColor rounded-md lg:border-l-mainColor lg:border-r-mainColor lg:border-b-mainColor xs:hidden sm:hidden"
-              }
-            />
+            <SearchBar />
             {side}
           </div>
         </div>

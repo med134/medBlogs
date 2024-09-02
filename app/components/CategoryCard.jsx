@@ -7,7 +7,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 
 const CategoryCard = () => {
   return (
-    <div className="w-full flex justify-start items-center mb-4">
+    <div className="w-full flex justify-start items-center mb-4 sm:mb-2">
       <a
         href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
         target={"_blank"}

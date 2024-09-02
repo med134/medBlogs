@@ -9,7 +9,7 @@ import Skills from "../components/Skills";
 import Education from "../components/Education";
 import React from "react";
 import profilePic from "@/public/images/med.jpg";
-import { FaGithubAlt, FaInstagram, FaLinkedin } from "react-icons/fa6";
+import { FaGithubAlt, FaInstagram, FaLinkedin,FaWhatsapp } from "react-icons/fa6";
 import { FaYoutube, FaDev } from "react-icons/fa";
 import { MdAttachEmail } from "react-icons/md";
 
@@ -38,9 +38,9 @@ export const metadata = {
 
 const contact = [
   {
-    name: "Google",
-    link: "mailto:mohamed7dakir@gmail.com",
-    icon: MdAttachEmail,
+    name: "Whatsapp",
+    link: "whatsapp://send?text=Hello!&phone=+212600462196",
+    icon: FaWhatsapp,
   },
   {
     name: "Instagram",
@@ -77,9 +77,9 @@ const page = () => {
         <Layout className="xs:p-10">
           <AnimatedText
             text="Passion Fuels Purpose!"
-            className="mb-16 !leading-tight lg:!text-7xl sm:!text-6xl xs:text-xl sm:mb-8"
+            className="mb-16 !leading-tight lg:!text-7xl sm:!text-6xl xs:text-xl sm:mb-8 md:text-2xl"
           />
-          <div className="grid w-full grid-cols-8 gap-16 sm:gap-8 xs:inline-block">
+          <div className="grid w-full grid-cols-8 gap-16 md:flex md:flex-col sm:gap-8">
             <div className="col-span-3 flex flex-col items-start justify-start xl:col-span-4 md:order-2 md:col-span-8">
               <p className="mb-4 text-lg font-bold underline uppercase text-dark/75 dark:text-light/75">
                 Biography

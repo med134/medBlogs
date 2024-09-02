@@ -53,9 +53,9 @@ const CloseMenu = ({ handleClick, session }) => {
         toggle={handleClick}
       />
       <CustomMobileLink
-        href="/category/all"
-        title="Categories"
-        className="categories"
+        href="/contact_us"
+        title="Contact us"
+        className="contact"
         toggle={handleClick}
       />
       <CustomMobileLink
@@ -80,7 +80,7 @@ const CloseMenu = ({ handleClick, session }) => {
         />
       ) : (
         <CustomMobileLink
-          href="/dashboard/login"
+          href="/login"
           title="Login"
           className=""
           toggle={handleClick}

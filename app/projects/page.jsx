@@ -65,14 +65,14 @@ const page = async () => {
   return (
     <>
       <TransitionEffect />
-      <main className="w-full mb-16 flex flex-col items-center justify-center bg-light pt-[100px] dark:text-light dark:bg-dark">
-        <Layout className="pt-16 xs:pt-8 xs:p-8">
+      <main className="w-full mb-16 sm:mb-6 flex flex-col items-center justify-center bg-light pt-[100px] sm:pt-10 dark:text-light dark:bg-dark">
+        <Layout className="pt-16 sm:pt-6 xs:pt-8 xs:p-8">
           <AnimatedText
             text="Imagination Trumps Knowledge!"
-            className="mb-16 lg:!text-7xl sm:mb-8 sm:!text-6xl xs:!text-4xl"
+            className="mb-16 lg:!text-7xl sm:mb-8 sm:text-2xl xs:!text-4xl"
           />
-          <div className="grid grid-cols-12 gap-24 gap-y-32 xl:gap-x-16 lg:gap-x-8 md:gap-y-24 sm:gap-x-0 xs:inline-block">
-            <div className="col-span-12 xs:mb-4">
+          <div className="grid grid-cols-12 gap-24 sm:gap-2 md:block gap-y-32 xl:gap-x-16 lg:gap-x-8 md:gap-y-24 sm:gap-x-0 xs:inline-block">
+            <div className="col-span-12 sm:col-span-4 xs:mb-4 md:mb-10">
               <FeaturedProject
                 type="Website App"
                 title="Free Tailwind CSS + Next.js Starter Template"
@@ -82,7 +82,7 @@ const page = async () => {
                 github="https://github.com/med134/startup"
               />
             </div>
-            <div className="col-span-6 sm:col-span-12 xs:mb-4">
+            <div className="col-span-6 sm:col-span-12  md:mb-10">
               <Project
                 type="Website App"
                 title="Next.js Blogging Website with Sanity"
@@ -91,7 +91,7 @@ const page = async () => {
                 github="https://github.com/med134/blog-with-nextjs-sanity"
               />
             </div>
-            <div className="col-span-6 sm:col-span-12 xs:mb-4">
+            <div className="col-span-6 sm:col-span-6 md:mb-10">
               <Project
                 type="Website"
                 title="Example portfolio of designer"
@@ -101,7 +101,7 @@ const page = async () => {
               />
             </div>
 
-            <div className="col-span-12 xs:mb-4">
+            <div className="col-span-12 md:mb-10">
               <FeaturedProject
                 type="store web app"
                 title="Modern Ecommerce website"
@@ -112,7 +112,7 @@ const page = async () => {
                 github="https://github.com/med134/stote-ecommerce-nextjs"
               />
             </div>
-            <div className="col-span-6 sm:col-span-12 xs:mb-4">
+            <div className="col-span-6 sm:col-span-12 md:mb-10">
               <Project
                 type="Featured Project"
                 title="Authentication with Next.js"
@@ -121,7 +121,7 @@ const page = async () => {
                 github="https://github.com/med134/auth-weith-nextjs"
               />
             </div>
-            <div className="col-span-6 sm:col-span-12 xs:mb-4">
+            <div className="col-span-6 sm:col-span-12 md:mb-10">
               <Project
                 type="Shopping website"
                 img={project6}
@@ -130,7 +130,7 @@ const page = async () => {
                 github="https://github.com/med134/medStores/tree/main"
               />
             </div>
-            <div className="col-span-12 xs:mb-4">
+            <div className="col-span-12 md:mb-10">
               <FeaturedProject
                 type="Web App"
                 img={project5}
@@ -140,7 +140,7 @@ const page = async () => {
                 summary="Discover a Modern Real Estate App programming with React js and tailwind css with modern Design frontend"
               />
             </div>
-            <div className="col-span-6 sm:col-span-12 dark:bg-dark">
+            <div className="col-span-6 sm:col-span-12 dark:bg-dark md:mb-10">
               <Project
                 type="SaaS project"
                 img={project8}
