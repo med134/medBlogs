@@ -163,11 +163,18 @@ const Footer = () => {
           </Link>
           . All rights reserved./
           <Link
-            href="https://www.medcode.dev/cookies"
+            href="https://www.medcode.dev/privacy_policy"
             target="_blank"
             className="text-sm font-bold underline hover:text-purple-800 hover:font-semibold dark:text-light"
           >
             privacy policy
+          </Link>
+          <Link
+            href="https://www.medcode.dev/terms_and_conditions"
+            target="_blank"
+            className="text-sm ml-3 font-bold underline hover:text-purple-800 hover:font-semibold dark:text-light"
+          >
+            Terms & Conditions
           </Link>
         </div>
       </div>

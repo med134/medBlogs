@@ -8,12 +8,12 @@ import Link from "next/link";
 const Profile = ({ user, session }) => {
   return (
     <div className="">
-      <div className="container mx-auto py-8">
-        <div className=" gap-6 px-4">
+      <div className="container mx-auto py-8 sm:py-4">
+        <div className="gap-6 px-4">
           <div className="">
-            <div className="bg-white shadow rounded-lg p-6 relative">
+            <div className="bg-white shadow rounded-lg p-6 relative sm:p-3">
               {user.name === session.user.name ? (
-                <Link href={`/dashboard/settings/${user.userSlug}`}>
+                <Link href={`/dashboard/settings/${user.userSlug}`} className="mb-4">
                   <RiSettings5Line className="absolute w-8 h-8 cursor-pointer hover:fill-mainColor" />
                   <h3 className="ml-10 font-semibold">complete profile</h3>
                 </Link>
@@ -37,7 +37,7 @@ const Profile = ({ user, session }) => {
                 <p>Date Created : {FormatDate(user?.createdAt)}</p>
               </div>
               <hr className="my-3 border-t border-gray-300" />
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center md:flex md:flex-col sm:justify-start">
                 <div>
                   <span className="text-gray-400">Email Address</span>
                   <p className="text-gray-700">{user?.email}</p>

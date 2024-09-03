@@ -34,17 +34,17 @@ const ListDashboardBlogs = ({ data }) => {
     setCurrentPage(page);
   };
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 md:p-1">
       <h1 className="text-2xl font-bold mb-4">Your Blogs & Articles</h1>
       <div className="overflow-y-hidden rounded-lg border">
         <div className="">
           <table className="w-full">
             <thead>
-              <tr className="bg-blue-600 text-xs font-semibold uppercase text-white">
+              <tr className="bg-mainColor text-xs font-semibold uppercase text-white">
                 <th className="px-5 py-3">title</th>
-                <th className="px-5 py-3">slug</th>
+                <th className="px-5 py-3 sm:hidden">slug</th>
                 <th className="px-5 py-3">status</th>
-                <th className="px-5 py-3 ">date publish</th>
+                <th className="px-5 py-3 md:hidden ">date publish</th>
                 <th className="px-5 py-3 ">Delete/Edit</th>
               </tr>
             </thead>
@@ -52,28 +52,28 @@ const ListDashboardBlogs = ({ data }) => {
               {currentBlog?.map((blog) => (
                 <tr
                   key={blog.slug}
-                  className="p-2 px-4 py-2 w-full justify-between items-center border border-gray-100 dark:text-light"
+                  className="p-2 px-4 py-2 w-full justify-between items-center border border-gray-100"
                 >
                   <td className="p-2">
-                    <h2 className="text-sm font-semibold">{blog.title}</h2>
+                    <h2 className="text-sm font-semibold sm:text-xs sm:font-normal">{blog.title}</h2>
                   </td>
-                  <td className=" px-5 text-sm">
+                  <td className=" px-5 text-sm sm:hidden">
                     <p className="text-gray-600 px-4">{blog.slug}</p>
                   </td>
                   <td className=" px-5 text-sm">
                     <p className="text-gray-600 px-4">{blog.status}</p>
                   </td>
-                  <td>
+                  <td className='md:hidden'>
                     <p className="text-sm px-5">
                       {FormatDate(blog?.createdAt)}
                     </p>
                   </td>
-                  <td className="flex space-x-2 p-2">
+                  <td className="flex space-x-2 sm:space-x-0 p-2 sm:flex-col justify-center">
                     <button
                       onClick={() =>
                         router.push(`/dashboard/edit-articles/${blog.slug}`)
                       }
-                      className="flex justify-around group px-4 py-2 items-center hover:bg-blue-400 bg-blue-500 rounded-md text-light"
+                      className="flex justify-around group px-4 py-2 sm:mb-2 items-center hover:bg-blue-400 bg-blue-500 rounded-md text-light"
                     >
                       <span className="text-xs">Edit</span>
                       <BiSolidEdit className="ml-2" />

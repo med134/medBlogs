@@ -9,11 +9,8 @@ const page = async () => {
       <div className="overflow-y-hidden rounded-lg border">
         <div className="">
           {message?.map((item) => (
-            <>
-              <tr
-                key={item._id}
-                className="p-4 bg-light px-4 py-2 max-w-full flex justify-between items-center border border-gray-100"
-              >
+            <div className="p-4 mb-4 bg-slate-300 shadow-md" key={item._id}>
+              <tr className="p-4  px-4 py-2 max-w-full flex justify-between items-center border border-gray-100">
                 <td className="p-2">
                   <h2 className="text-sm font-semibold">{item.name}</h2>
                 </td>
@@ -25,7 +22,7 @@ const page = async () => {
                 </td>
               </tr>
               <p className="p-4">{item.message}</p>
-            </>
+            </div>
           ))}
         </div>
       </div>

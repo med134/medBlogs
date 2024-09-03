@@ -67,7 +67,7 @@ const BlogPage = async ({ params }) => {
             {blog.title}
           </h1>
           <span className="text-xl text-gray-600 py-3 sm:text-sm xs:text-sm xs:py-1 dark:text-light">
-            {blog.description.slice(0, 200)}...
+            {blog.description}
           </span>
           <div className="mt-6">
             <div className="flex justify-start py-1">

@@ -13,7 +13,7 @@ const FormMessage = () => {
         <h3 className="bg-green-500 text-white px-10 py-2">{state.succuss}</h3>
       )}
       <div className="mb-3 w-full">
-        <label className="block font-medium mb-[2px] text-teal-700">Name</label>
+        <label className="block font-medium mb-[2px] text-teal-700 dark:text-light">Name</label>
         <input
           type="name"
           required
@@ -23,7 +23,7 @@ const FormMessage = () => {
         />
       </div>
       <div className="mb-3 w-full">
-        <label className="block font-medium mb-[2px] text-teal-700">
+        <label className="block font-medium mb-[2px] text-teal-700 dark:text-light">
           Email
         </label>
         <input
@@ -35,7 +35,7 @@ const FormMessage = () => {
         />
       </div>
       <div className="mb-3 w-full">
-        <label className="block font-medium mb-[2px] text-teal-700">
+        <label className="block font-medium mb-[2px] text-teal-700 dark:text-light">
           Message
         </label>
         <textarea

@@ -3,9 +3,11 @@ import FormMessage from "../components/FormMessage";
 
 function Page() {
   return (
-    <section className="py-36 bg-light">
+    <section className="py-36 bg-light dark:bg-dark">
       <div className="text-center md:max-w-xl lg:max-w-3xl">
-        <h2 className="mb-6 px-6 text-3xl font-bold">Contact us</h2>
+        <h2 className="mb-6 px-6 text-3xl font-bold dark:text-light">
+          Contact us
+        </h2>
       </div>
       <div className="flex justify-between items-center p-10 sm:p-2 lg:flex-col-reverse">
         <FormMessage />
@@ -31,9 +33,15 @@ function Page() {
                 </div>
               </div>
               <div className="ml-6 grow">
-                <p className="mb-2 font-bold">Technical support</p>
-                <p className="text-neutral-500 ">med@vivacode.dev</p>
-                <p className="text-neutral-500 ">+212 600-462-196</p>
+                <p className="mb-2 font-bold dark:text-light">
+                  Technical support
+                </p>
+                <p className="text-neutral-500 dark:text-light ">
+                  med@vivacode.dev
+                </p>
+                <p className="text-neutral-500 dark:text-light ">
+                  +212 600-462-196
+                </p>
               </div>
             </div>
           </div>
@@ -58,9 +66,9 @@ function Page() {
                 </div>
               </div>
               <div className="ml-6 grow">
-                <p className="mb-2 font-bold ">Sales questions</p>
-                <p className="text-neutral-500 ">sales10@gmail.com</p>
-                <p className="text-neutral-500 ">+1 234-567-89</p>
+                <p className="mb-2 font-bold dark:text-light">Sales questions</p>
+                <p className="text-neutral-500 dark:text-light ">sales10@gmail.com</p>
+                <p className="text-neutral-500 dark:text-light ">+1 234-567-89</p>
               </div>
             </div>
           </div>
@@ -85,9 +93,9 @@ function Page() {
                 </div>
               </div>
               <div className="ml-6 grow">
-                <p className="mb-2 font-bold ">Press</p>
-                <p className="text-neutral-500 ">pres01s@gmail.com</p>
-                <p className="text-neutral-500 ">+1 234-567-89</p>
+                <p className="mb-2 font-bold dark:text-light">Press</p>
+                <p className="text-neutral-500 dark:text-light ">pres01s@gmail.com</p>
+                <p className="text-neutral-500 dark:text-light ">+1 234-567-89</p>
               </div>
             </div>
           </div>
@@ -112,9 +120,9 @@ function Page() {
                 </div>
               </div>
               <div className="ml-6 grow">
-                <p className="mb-2 font-bold">Bug report</p>
-                <p className="text-neutral-500 ">jhon10@gmail.com</p>
-                <p className="text-neutral-500">+1 234-567-89</p>
+                <p className="mb-2 font-bold dark:text-light">Bug report</p>
+                <p className="text-neutral-500 dark:text-light">jhon10@gmail.com</p>
+                <p className="text-neutral-500 dark:text-light">+1 234-567-89</p>
               </div>
             </div>
           </div>

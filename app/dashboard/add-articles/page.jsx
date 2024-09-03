@@ -45,7 +45,7 @@ const Page = async () => {
   const session = await auth();
   const user = session?.user.name;
   return (
-    <div className="dark:bg-dark h-full">
+    <div className="h-full">
       <AddNewArticle user={user} />
     </div>
   );

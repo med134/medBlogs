@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 const SettingsProfile = ({
@@ -53,31 +53,25 @@ const SettingsProfile = ({
     }
   };
   return (
-    <div className="py-32">
+    <div className="py-24 z-0 md:py-16">
       <div className="border-b-2 flex-col md:flex">
-        <div className="bg-white relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto">
-          <div className="flex justify-center">
+        <div className="bg-white relative shadow rounded-lg z-0 ">
+          <div className="flex justify-center -z-1">
             <Image
               src={newImageUrl}
               alt="user"
               width={300}
               height={300}
-              className="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110"
+              className="rounded-full z-0 mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110"
             />
           </div>
-          <div className="mt-16">
+          <div className="mt-16 py-2">
             <h1 className="font-bold text-center text-3xl text-gray-900">
               {newName}
             </h1>
             <p className="text-center text-sm text-gray-400 font-medium">
               {newJob}
             </p>
-
-            <div className="my-5 px-6">
-              <span className="text-gray-200 block cursor-text rounded-lg text-center font-medium leading-6 px-6 py-3 bg-gray-900 hover:bg-black hover:text-white">
-                Edit <span className="font-bold">Profile Admin</span>
-              </span>
-            </div>
           </div>
         </div>
 
@@ -86,7 +80,7 @@ const SettingsProfile = ({
             <SkeletonLoadingForm />
           ) : (
             <form className="" onSubmit={handleSubmit}>
-              <div className="rounded p-6 grid grid-cols-3 gap-4">
+              <div className="rounded p-6 grid grid-cols-3 gap-4 md:flex md:flex-col">
                 <div className="pb-2">
                   <label
                     htmlFor="name"
@@ -183,7 +177,7 @@ const SettingsProfile = ({
                   </div>
                 </div>
               </div>
-              <div className="flex justify-between items-center py-5">
+              <div className="flex justify-between items-center py-5 sm:flex sm:flex-col sm:justify-start">
                 <button
                   type="submit"
                   className="w-full bg-gray-900 hover:bg-blue-dark text-white font-bold py-2 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300"

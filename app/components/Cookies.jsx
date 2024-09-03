@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { getLocalStorage, setLocalStorage } from "../utils/Helper";
 import { useEffect, useState } from "react";
+
+
 export default function CookieBanner() {
   const [cookieConsent, setCookieConsent] = useState(false);
   useEffect(() => {

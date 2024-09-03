@@ -65,13 +65,13 @@ const page = async () => {
   return (
     <>
       <TransitionEffect />
-      <main className="w-full mb-16 sm:mb-6 flex flex-col items-center justify-center bg-light pt-[100px] sm:pt-10 dark:text-light dark:bg-dark">
+      <main className="w-full sm:mb-6 flex flex-col items-center justify-center bg-light pt-[100px] sm:pt-10 dark:text-light dark:bg-dark">
         <Layout className="pt-16 sm:pt-6 xs:pt-8 xs:p-8">
           <AnimatedText
             text="Imagination Trumps Knowledge!"
-            className="mb-16 lg:!text-7xl sm:mb-8 sm:text-2xl xs:!text-4xl"
+            className="mb-16 lg:!text-7xl sm:mb-8 sm:text-2xl xs:!text-4xl xs:py-6"
           />
-          <div className="grid grid-cols-12 gap-24 sm:gap-2 md:block gap-y-32 xl:gap-x-16 lg:gap-x-8 md:gap-y-24 sm:gap-x-0 xs:inline-block">
+          <div className="grid grid-cols-12 gap-24 sm:gap-2 md:block gap-y-32 xl:gap-x-16 lg:gap-x-8">
             <div className="col-span-12 sm:col-span-4 xs:mb-4 md:mb-10">
               <FeaturedProject
                 type="Website App"

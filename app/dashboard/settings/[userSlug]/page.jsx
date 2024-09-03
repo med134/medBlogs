@@ -15,6 +15,7 @@ const page = async ({ params }) => {
   const user = await getUser(userSlug);
   return (
     <main className="py-20">
+      <h1 className="text-2xl font-semibold">Edit Profile</h1>
       <SettingsProfile
         email={user.email}
         name={user.name}

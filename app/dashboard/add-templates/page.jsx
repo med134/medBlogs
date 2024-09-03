@@ -47,7 +47,7 @@ export default async function page() {
   const session = await auth();
   const user = session.user;
   return (
-    <div className="w-full h-auto py-16 md:py-2 sm:pt-8 dark:bg-dark">
+    <div className="w-full h-auto py-4 md:py-2 sm:pt-2">
       <AddNewPost user={user}/>
     </div>
   );

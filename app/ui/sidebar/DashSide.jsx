@@ -12,24 +12,24 @@ import { MdOutlineMail } from "react-icons/md";
 import { CgFileAdd } from "react-icons/cg";
 import { usePathname } from "next/navigation";
 import { handelLogOut } from "@/app/utils/action";
+
+export const menuItems = [
+ { name: "Dashboard", link: "/dashboard", icon: RxDashboard },
+ { name: "Users", link: "/dashboard/users", icon: PiUsersThree },
+ { name: "Blogs", link: "/dashboard/blogs", icon: RiArticleLine },
+ { name: "Add Blog", link: "/dashboard/add-articles", icon: CgFileAdd },
+ { name: "Draft blog", link: "/dashboard/pending", icon: MdPendingActions },
+ { name: "Messages", link: "/dashboard/messages", icon: MdOutlineMail },
+ {
+   name: "Add Templates",
+   link: `/dashboard/add-templates`,
+   icon: LuLayoutTemplate,
+ },
+];
 const SideBar = () => {
   const path = usePathname();
-  const menuItems = [
-    { name: "Dashboard", link: "/dashboard", icon: RxDashboard },
-    { name: "Users", link: "/dashboard/users", icon: PiUsersThree },
-    { name: "Blogs", link: "/dashboard/blogs", icon: RiArticleLine },
-    { name: "Add Blog", link: "/dashboard/add-articles", icon: CgFileAdd },
-    { name: "Draft blog", link: "/dashboard/pending", icon: MdPendingActions },
-    { name: "Messages", link: "/dashboard/messages", icon: MdOutlineMail },
-    {
-      name: "Add Templates",
-      link: `/dashboard/add-templates`,
-      icon: LuLayoutTemplate,
-    },
-  ];
-
   return (
-    <div className="fixed left-0 top-16 h-screen flex px-4 flex-grow flex-col bg-gradient-to-r from-[#f0f0f0] to-gray-50 dark:gradient-to-r dark:from-gray-900 dark:to-gray-950">
+    <div className="fixed left-0 top-16 h-screen lg:hidden flex px-4 flex-grow flex-col bg-gradient-to-r from-[#f0f0f0] to-gray-50">
       <ul className="flex flex-col pt-12">
         {menuItems.map((link) => {
           const LinkIcon = link.icon;
@@ -43,7 +43,7 @@ const SideBar = () => {
                 }`}
               >
                 <LinkIcon className="mr-3 h-6 w-6" />
-                <span className="font-medium ml-3 dark:text-light">
+                <span className="font-medium ml-3">
                   {link.name}
                 </span>
               </Link>
@@ -54,7 +54,7 @@ const SideBar = () => {
       <form action={handelLogOut}>
         <button className="flex flex-row px-5 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
           <LuLogOut className="w-6 h-6" />
-          <span className="font-medium ml-3 dark:text-light">
+          <span className="font-medium ml-3">
             Logout
           </span>
         </button>

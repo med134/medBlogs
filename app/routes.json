@@ -1,31 +1,55 @@
 [
-    {
-      "name": "home",
-      "url": "/"
-    },
-    {
-      "name": "about",
-      "url": "/about"
-    },
-    {
-      "name": "projects",
-      "url": "/projects"
-    },
-    {
-      "name": "blogs",
-      "url": "/blogs"
-    },
-    {
-      "name": "category",
-      "url":"/category"
-    },
-    {
-      "name": "templates",
-      "url": "/templates"
-    },
-    {
-      "name": "dashboard",
-      "url": "/dashboard"
-    }
-  ]
-  
+  {
+    "name": "home",
+    "url": "/"
+  },
+  {
+    "name": "about",
+    "url": "/about"
+  },
+  {
+    "name": "projects",
+    "url": "/projects"
+  },
+  {
+    "name": "blogs",
+    "url": "/blogs"
+  },
+  {
+    "name": "contact us",
+    "url": "/contact_us"
+  },
+  {
+    "name": "templates",
+    "url": "/templates"
+  },
+  {
+    "name": "dashboard",
+    "url": "/dashboard"
+  },
+  {
+    "name": "Login",
+    "url": "/login"
+  },
+  {
+    "name": "dashboard Blogs",
+    "url": "/dashboard/blogs"
+  },
+  {
+    "name": "dashboard add new blog",
+    "url": "/dashboard/add-articles"
+  },
+  {
+    "name": "dashboard add new Template",
+    "url": "/dashboard/add-templates"
+  },
+  {
+    "name": "Privacy Policy",
+    "url": "/privacy_policy"
+  },
+  {
+    "name": "Terms & Conditions",
+    "url": "/terms_and_conditions"
+  }
+
+]

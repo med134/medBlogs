@@ -45,8 +45,6 @@ const NavBaLinks = ({ session }) => {
     console.log("is open");
   };
   const [sticky, setSticky] = useState(false);
-  const [dropdown, setDropDown] = useState(false);
-  const [removeNav,setRemoveNav]=useState(false);
   const path = usePathname();
   console.log(path)
 
@@ -111,7 +109,7 @@ const NavBaLinks = ({ session }) => {
           <Image
             src={med}
             alt="website-logo"
-            className="object-cover w-16 h-16"
+            className="object-cover w-16 h-16 dark:bg-light dark:rounded-md dark:w-14 dark:h-14"
             width={100}
             height={100}
             priority={false}

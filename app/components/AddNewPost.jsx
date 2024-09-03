@@ -54,12 +54,12 @@ const AddNewPost = ({ user }) => {
   };
 
   return (
-    <div className="p-8 py-4 sm:p-2 sm:py-2 md:p-2 md:py-2 lg:p-2 lg:py-2 dark:bg-dark">
-      <h1 className="text-gray-700 text-left py-6 text-2xl lg:text-2xl dark:text-light">
+    <div className="p-2 py-4 sm:p-2 sm:py-2 md:p-2 md:py-2 lg:p-2 lg:py-2">
+      <h1 className="text-gray-700 text-left sm:text-xl py-6 text-2xl lg:text-2xl">
         Create a Templates & Component
       </h1>
-      <form className="text-left text-gray-700 p-6" onSubmit={handleSubmit}>
-        <div className="w-full grid grid-cols-2 gap-6">
+      <form className="text-left text-gray-700 p-6 sm:p-3" onSubmit={handleSubmit}>
+        <div className="w-full grid grid-cols-2 md:flex md:flex-col gap-6">
           <input
             required
             type="text"
