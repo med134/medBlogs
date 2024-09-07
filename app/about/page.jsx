@@ -24,7 +24,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "medCode|Portfolio",
+    title: "About us| MedCode",
     description: `Welcome to My Web Developer Portfolio UX Designer Here, you'll find a showcase of my career and educational as a web developer also some of my skills`,
     images: [
       {

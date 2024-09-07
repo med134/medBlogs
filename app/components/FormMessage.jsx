@@ -10,7 +10,7 @@ const FormMessage = () => {
   return (
     <form action={formAction} className="mb-12 w-full px-10">
       {state && (
-        <h3 className="bg-green-500 text-white px-10 py-2">{state.succuss}</h3>
+        <span className="bg-green-500 text-white px-10 py-2">{state.succuss}</span>
       )}
       <div className="mb-3 w-full">
         <label className="block font-medium mb-[2px] text-teal-700 dark:text-light">Name</label>

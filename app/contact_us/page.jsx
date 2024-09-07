@@ -1,13 +1,35 @@
 import React from "react";
 import FormMessage from "../components/FormMessage";
 
+export const metadata = {
+  title: "Contact us | medCode ",
+  description: `Welcome to My website please contact us`,
+  keywords: ["resume", "Experience", "learning", "coding", "projects"],
+  alternates: {
+    canonical: `/contact_us`,
+    languages: {
+      en: `/en/contact_us`,
+    },
+  },
+  openGraph: {
+    title: "Contact us|medCode",
+    description: `Welcome to My Web Developer Portfolio UX Designer Here, you'll find a showcase of my career and educational as a web developer also some of my skills`,
+    images: [
+      {
+        url: "/public/images/med.jpg",
+        width: "400",
+        height: "300",
+      },
+    ],
+  },
+};
 function Page() {
   return (
-    <section className="py-36 bg-light dark:bg-dark">
+    <section className="py-36 p-10 bg-light dark:bg-dark">
       <div className="text-center md:max-w-xl lg:max-w-3xl">
-        <h2 className="mb-6 px-6 text-3xl font-bold dark:text-light">
+        <h1 className="mb-6 px-6 text-3xl font-bold dark:text-light">
           Contact us
-        </h2>
+        </h1>
       </div>
       <div className="flex justify-between items-center p-10 sm:p-2 lg:flex-col-reverse">
         <FormMessage />

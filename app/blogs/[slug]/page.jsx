@@ -15,8 +15,8 @@ const Comments = dynamic(() => import("@/app/components/comments/comments"), {
 
 export async function generateMetadata({ params }) {
   const post = await getPostsBySlug(params.slug);
-  const publishedAt = new Date(post.createdAt).toISOString();
-  const modifiedAt = new Date(post.updatedAt || blog.createdAt).toISOString();
+  const publishedAt = new Date(post?.createdAt).toISOString();
+  const modifiedAt = new Date(post?.updatedAt || post?.createdAt).toISOString();
   return {
     title: post?.title,
     description: post?.description,
@@ -94,7 +94,7 @@ const BlogPage = async ({ params }) => {
             <Image
               src={blog.image}
               alt={blog.title}
-              className="w-full h-full xs:h-auto object-cover md:object-contain sm:object-contain rounded mt-2"
+              className="w-[450px] h-80 xs:h-auto object-cover md:object-contain sm:object-contain rounded mt-2"
               width={500}
               height={300}
               priority={true}
