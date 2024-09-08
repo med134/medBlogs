@@ -1,11 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import "quill/dist/quill.snow.css";
 import Link from "next/link";
 import SidBar from "@/app/components/SidBar";
 import { auth } from "@/app/utils/auth";
 import { getPostsBySlug, FormatDate } from "@/app/utils/action";
+import "jodit-react/examples/app.css";
+
 const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"), {
   suspense: true,
 });
@@ -104,12 +105,7 @@ const BlogPage = async ({ params }) => {
           <h2 className="flex underline font-bold justify-start items-start py-6 xs:py-2 ml-2 mt-1 font-bolder">
             {blog.tags}
           </h2>
-          <div className="ql-snow">
-            <div
-              className="ql-editor"
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
-          </div>
+          <div dangerouslySetInnerHTML={{ __html: content }} />
           <Comments postSlug={blog._id} session={session} />
         </div>
       </div>

@@ -15,7 +15,7 @@ const ResponsiveDashboardNavbar = ({ session }) => {
   const path = usePathname();
 
   return (
-    <div className="h-20 flex sticky top-0 w-[100%] justify-between z-99 items-center bg-gradient-to-r from-[#f0f0f0] to-gray-50">
+    <div className="h-20 flex sticky top-0 w-[100%] justify-between z-50 items-center bg-gradient-to-r from-[#f0f0f0] to-gray-50">
       {/* hidden navbar responsive */}
       <div className="items-center hidden lg:flex relative p-2 w-10 h-10 text-sm text-gray-500 rounded-lg">
         <button

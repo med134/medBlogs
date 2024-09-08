@@ -1,12 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import "jodit-react/examples/app.css";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
-import { useQuill } from "react-quilljs";
-import "quill/dist/quill.snow.css";
 import Link from "next/link";
-import hljs from "highlight.js";
 import IsUpdate from "./IsUpdate";
 import { useRouter } from "next/navigation";
+import JoditEditor from "jodit-react";
 
 export default function EditArticle({
   title,
@@ -30,7 +29,6 @@ export default function EditArticle({
   const [newCategory, setNewCategory] = useState(category);
   const [newSlug, setNewSlug] = useState(slug);
   const [newJob, setNewJob] = useState(job);
-  const [newContent, setNewContent] = useState(content);
   const [loading, setLoading] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
   const router = useRouter();
@@ -40,76 +38,18 @@ export default function EditArticle({
     setIsUpdate(!isUpdate);
     router.push("/dashboard/blogs");
   };
-
-  hljs.configure({
-    languages: [
-      "javascript",
-      "ruby",
-      "python",
-      "rust",
-      "java",
-      "html",
-      "css",
-      "C",
-      "C#",
-    ],
-  });
-  const theme = "snow";
-  const placeholder = "write your content...";
-
-  const modules = {
-    toolbar: [
-      ["blockquote", "code-block"],
-      ["bold", "italic", "underline", "strike"],
-      [{ header: 1 }, { header: 2 }],
-      [{ list: "ordered" }, { list: "bullet" }],
-      [{ script: "sub" }, { script: "super" }],
-      [{ indent: "-1" }, { indent: "+1" }],
-      [{ direction: "rtl" }],
-      [{ color: [] }, { background: [] }],
-      ["link", "image", "video"],
-      ["clean"],
-      [{ font: [] }],
-      [{ align: [] }],
-
-      [{ size: ["small", false, "large", "huge"] }],
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    ],
-    syntax: {
-      highlight: (text) => hljs.highlightAuto(text).value,
-    },
-  };
-  const formats = [
-    "header",
-    "font",
-    "size",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "code-block",
-    "list",
-    "bullet",
-    "indent",
-    "link",
-    "image",
-    "video",
-    "align",
-    "color",
-    "background",
-  ];
-  const { quill, quillRef } = useQuill({
-    theme,
-    modules,
-    formats,
-    placeholder,
+  /* JoditEditor */
+  const editor = useRef(null);
+  const [myContent, setMyContent] = useState(content);
+  const [config, setConfig] = useState({
+    readonly: false,
+    height: 600,
+    toolbar: true,
+    zIndex: 0,
   });
   useEffect(() => {
-    if (quill) {
-      quill.clipboard.dangerouslyPasteHTML(newContent);
-    }
-  });
+    setMyContent(myContent);
+  }, [myContent]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
@@ -120,7 +60,7 @@ export default function EditArticle({
     const category = newCategory;
     const job = newJob;
     const status = newStatus;
-    const content = quill.root.innerHTML;
+    const content = myContent;
     const username = userName;
     const email = UserEmail;
 
@@ -316,7 +256,16 @@ export default function EditArticle({
           >
             content
           </label>
-          <div ref={quillRef} style={{ height: 400, marginLeft: 4 }} />
+          <div>
+            <JoditEditor
+              ref={editor}
+              config={config}
+              value={myContent}
+              tabIndex={1} // tabIndex of textarea
+              onBlur={(newContent) => setMyContent(newContent)} // Update content on blur
+              onChange={(newContent) => setMyContent(newContent)}
+            />
+          </div>
           <div className="flex justify-start items-center">
             <button
               type="submit"

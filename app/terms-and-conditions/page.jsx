@@ -1,5 +1,16 @@
 import React from "react";
-
+export async function generateMetadata() {
+  return {
+    title: "Terms & Conditions | Medcode",
+    description: `In order to receive information about your Personal Data, the purposes
+          and the parties the Data is shared with, contact the Owner`,
+    openGraph: {
+      title: "Terms & Conditions | Medcode",
+      description: `In order to receive information about your Personal Data, the purposes
+          and the parties the Data is shared with, contact the Owner`,
+    },
+  };
+}
 const page = () => {
   return (
     <div className="min-h-screen py-32 bg-gray-100 px-8 lg:px-16">

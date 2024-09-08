@@ -1,4 +1,16 @@
 import Link from "next/link";
+export async function generateMetadata() {
+  return {
+    title: "Privacy Policy | Medcode",
+    description: `In order to receive information about your Personal Data, the purposes
+          and the parties the Data is shared with, contact the Owner`,
+    openGraph: {
+      title: "Privacy Policy | Medcode",
+      description: `In order to receive information about your Personal Data, the purposes
+          and the parties the Data is shared with, contact the Owner`,
+    },
+  };
+}
 export default function Privacy() {
   return (
     <article className="container p-16 mx-auto px-8 py-40  xl:pt-44 xs:pt-24">
@@ -53,14 +65,14 @@ export default function Privacy() {
         </p>
         <span className="font-semibold">Place</span>
         <p className="mb-4">
-          The Data is processed at the Owners operating offices and in any
-          other places where the parties involved in the processing are located.
+          The Data is processed at the Owners operating offices and in any other
+          places where the parties involved in the processing are located.
         </p>
         <p className="mb-2">
           Depending on the Users location, data transfers may involve
-          transferring the Users Data to a country other than their own. To
-          find out more about the place of processing of such transferred Data,
-          Users can check the section containing details about the processing of
+          transferring the Users Data to a country other than their own. To find
+          out more about the place of processing of such transferred Data, Users
+          can check the section containing details about the processing of
           Personal Data
         </p>
         <span className="font-semibold">Retention time</span>
@@ -290,12 +302,12 @@ export default function Privacy() {
           applies to all Users (Users are referred to below, simply as “you”,
           “your”, “yours”), who are consumers residing in the state of
           California, United States of America, according to the California
-          Consumer Privacy Act of 2018 as updated by the
-          California Privacy Rights and subsequent
-          regulations. For such consumers, this section supersedes any other
-          possibly divergent or conflicting information contained in the privacy
-          policy. This part of the document uses the term “personal information“
-          as defined in the California Consumer Privacy Act (CCPA/CPRA).
+          Consumer Privacy Act of 2018 as updated by the California Privacy
+          Rights and subsequent regulations. For such consumers, this section
+          supersedes any other possibly divergent or conflicting information
+          contained in the privacy policy. This part of the document uses the
+          term “personal information“ as defined in the California Consumer
+          Privacy Act (CCPA/CPRA).
         </p>
         <span className="font-bold mb-2 mt-3">
           Categories of personal information collected, used, sold, or shared
@@ -527,10 +539,10 @@ export default function Privacy() {
           section applies to all Users (Users are referred to below, simply as
           “you”, “your”, “yours”), who are consumers residing in the
           Commonwealth of Virginia, according to the “Virginia Consumer Data
-          Protection Act and, for such consumers, it supersedes
-          any other possibly divergent or conflicting information contained in
-          the privacy policy. This part of the document uses the term “personal
-          data” as defined in the VCDPA
+          Protection Act and, for such consumers, it supersedes any other
+          possibly divergent or conflicting information contained in the privacy
+          policy. This part of the document uses the term “personal data” as
+          defined in the VCDPA
         </p>
         <span className="font-bold mb-2 mt-3">
           Categories of personal data processed
@@ -675,50 +687,167 @@ export default function Privacy() {
           affiliate of the processor or the controller as defined by the CPA.
           Sale of your personal data We do not sell your personal data. In case
           we should decide to, we will inform you beforehand and will grant your
-          right to opt out of such sale. For our purposes, the word sale,
-          sell, or sold means the exchange of personal data for monetary or
-          other valuable consideration by a controller to a third party as
-          defined by the CPA. Please note that according to the CPA, the
-          disclosure of personal data to a processor that processes personal
-          data on behalf of a controller does not constitute a sale. In
-          addition, other specific exceptions set forth in the CPA may apply,
-          such as, but not limited to, the disclosure of personal data to a
-          third party for the provision of a product or service requested by
-          you. Processing of your personal data for targeted advertising We do
-          not process your personal data for targeted advertising. If we decide
-          to do so, we will inform you beforehand and will grant your right to
-          opt out of the processing of your personal data for targeted
-          advertising. For our purposes, the word targeted advertising means
-          displaying to a consumer an advertisement that is selected based on
-          personal data obtained or inferred over time from the consumers
-          activities across nonaffiliated websites, applications, or online
-          services to predict consumer preferences or interests as defined by
-          CPA. Please note that according to the CPA, targeted advertising does
-          not include: “advertisements directed to a consumer in response to the
-          consumers request for information or feedback; advertisements based
-          on activities within a controllers own websites or online
-          applications or any affiliated website or online application;
-          advertisements based on the context of a consumers current search
-          query, visit to an internet web site or online application; or
-          processing personal data solely to measure or report advertising
-          frequency, performance or reach”. Your privacy rights under the
-          Colorado Privacy Act and how to exercise them You may exercise certain
-          rights regarding your data processed by us. In particular, you have
-          the right to do the following: opt out of the processing of your
-          personal data for the purposes of targeted advertising, the sale of
-          personal data, or profiling in furtherance of decisions that produce
-          legal or similarly significant effects concerning you. access personal
-          data. You have the right to request that we confirm whether or not we
-          are processing your personal data. You also have the right to access
-          such personal data. correct inaccurate personal data. You have the
-          right to request that we correct any inaccurate personal data we
-          maintain about you, taking into account the nature of the personal
-          data and the purposes of the processing of the personal data. request
-          the deletion of your personal data. You have the right to request that
-          we delete any of your personal data. obtain a copy of your personal
-          data. We will provide your personal data in a portable and usable
-          format that allows you to transfer data easily to another entity –
-          provided that this is technically feasible. In any case, we will not
+          right to opt out of such sale. For our purposes, the word sale, sell,
+          or sold means the exchange of personal data for monetary or other
+          valuable consideration by a controller to a third party as defined by
+          the CPA. Please note that according to the CPA, the disclosure of
+          personal data to a processor that processes personal data on behalf of
+          a controller does not constitute a sale. In addition, other specific
+          exceptions set forth in the CPA may apply, such as, but not limited
+          to, the disclosure of personal data to a third party for the provision
+          of a product or service requested by you. Processing of your personal
+          data for targeted advertising We do not process your personal data for
+          targeted advertising. If we decide to do so, we will inform you
+          beforehand and will grant your right to opt out of the processing of
+          your personal data for targeted advertising. For our purposes, the
+          word targeted advertising means displaying to a consumer an
+          advertisement that is selected based on personal data obtained or
+          inferred over time from the consumers activities across nonaffiliated
+          websites, applications, or online services to predict consumer
+          preferences or interests as defined by CPA. Please note that according
+          to the CPA, targeted advertising does not include: “advertisements
+          directed to a consumer in response to the consumers request for
+          information or feedback; advertisements based on activities within a
+          controllers own websites or online applications or any affiliated
+          website or online application; advertisements based on the context of
+          a consumers current search query, visit to an internet web site or
+          online application; or processing personal data solely to measure or
+          report advertising frequency, performance or reach”. Your privacy
+          rights under the Colorado Privacy Act and how to exercise them You may
+          exercise certain rights regarding your data processed by us. In
+          particular, you have the right to do the following: opt out of the
+          processing of your personal data for the purposes of targeted
+          advertising, the sale of personal data, or profiling in furtherance of
+          decisions that produce legal or similarly significant effects
+          concerning you. access personal data. You have the right to request
+          that we confirm whether or not we are processing your personal data.
+          You also have the right to access such personal data. correct
+          inaccurate personal data. You have the right to request that we
+          correct any inaccurate personal data we maintain about you, taking
+          into account the nature of the personal data and the purposes of the
+          processing of the personal data. request the deletion of your personal
+          data. You have the right to request that we delete any of your
+          personal data. obtain a copy of your personal data. We will provide
+          your personal data in a portable and usable format that allows you to
+          transfer data easily to another entity – provided that this is
+          technically feasible. In any case, we will not increase the cost of,
+          or decrease the availability of, a product or service, based solely on
+          the exercise of any of your rights and unrelated to the feasibility or
+          the value of a service. However, to the extent permitted by the law,
+          we may offer a different price, rate, level, quality, or selection of
+          goods or services to you, including offering goods or services for no
+          fee, if our offer is related to your voluntary participation in a bona
+          fide loyalty, rewards, premium features, discounts, or club card
+          program. How to exercise your rights To exercise the rights described
+          above, you need to submit your request to us by contacting us via the
+          contact details provided in this document. For us to respond to your
+          request, we need to know who you are and which right you wish to
+          exercise. We will not respond to any request if we are unable to
+          verify your identity using commercially reasonable efforts and
+          therefore confirm that the personal data in our possession actually
+          relate to you. In such cases, we may request that you provide
+          additional information which is reasonably necessary to authenticate
+          you and your request. Making a consumer request does not require you
+          to create an account with us. However, we may require you to use your
+          existing account. We will use any personal data collected from you in
+          connection with your request solely for the purposes of
+          authentication, without further disclosing the personal data,
+          retaining it longer than necessary for purposes of authentication, or
+          using it for unrelated purposes. If you are an adult, you can make a
+          request on behalf of a child under your parental authority. How and
+          when we are expected to handle your request We will respond to your
+          request without undue delay, but in all cases and at the latest within
+          45 days of its receipt. Should we need more time, we will explain to
+          you the reasons why, and how much more time we need. In this regard,
+          please note that we may take up to 90 days to fulfill your request.
+          Should we deny your request, we will explain to you the reasons behind
+          our denial without undue delay, but in all cases and at the latest
+          within 45 days of receipt of the request. It is your right to appeal
+          such decision by submitting a request to us via the details provided
+          in this document. Within 45 days of receipt of the appeal, we will
+          inform you in writing of any action taken or not taken in response to
+          the appeal, including a written explanation of the reasons for the
+          decisions. If the appeal is denied you may contact the Attorney
+          General to submit a complaint. We do not charge a fee to respond to
+          your request, for up to two requests per year. Further information for
+          Connecticut consumers This section of the document integrates with and
+          supplements the information contained in the rest of the privacy
+          policy and is provided by the controller running this Application and,
+          if the case may be, its parent, subsidiaries and affiliates (for the
+          purposes of this section referred to collectively as “we”, “us”,
+          “our”). This section applies o all Users (Users are referred to below,
+          simply as “you”, “your”, “yours”), who are consumers residing in the
+          State of Connecticut, according to “An Act Concerning Personal Data
+          Privacy and Online Monitoring (also known as The Connecticut Data
+          Privacy Act or the CTDPA), and, for such consumers, it supersedes any
+          other possibly divergent or conflicting information contained in the
+          privacy policy. This part of the document uses the term “personal
+          data” as defined in the CTDPA. Categories of personal data processed
+          In this section, we summarize the categories of personal data that
+          weve processed and the purposes thereof. You can read about these
+          activities in detail in the section titled “Detailed information on
+          the processing of Persona Data” within this document. Categories of
+          personal data we collect We have collected the following categories of
+          personal data: We do not collect sensitive data. We will not collect
+          additional categories of personal data without notifying you. Why we
+          process your personal data To find out why we process your personal
+          data, you can read the sections titled “Detailed information on the
+          processing of Personal Data” and “The purposes of processing” within
+          this document. We won’t process your information for unexpected
+          purposes, or for purposes incompatible with the purposes originally
+          disclosed, without your consent. You can freely give, deny, or
+          withdraw such consent at any time using the contact details provided
+          in this document. How we use the data we collect: sharing of your
+          personal data with third parties We do not share nor disclose your
+          personal data with third parties. For our purposes, the word third
+          party means a person, public authority, agency, or body other than a
+          consumer, controller, processor, or affiliate of the processor or the
+          controller as defined by the CTDPA. Sale of your personal data We do
+          not sell your personal data. In case we should decide to, we will
+          inform you beforehand and will grant your right to opt out of such
+          sale. For our purposes, the word sale, sell, or sold means the
+          exchange of personal data for monetary or other valuable consideration
+          by a controller to a third party as defined by the CTDPA. Please note
+          that according to the CTDPA, the disclosure of personal data to a
+          processor that processes personal data on behalf of a controller does
+          not constitute a sale. In addition, other specific exceptions set
+          forth in the CTDPA may apply, such as, but not limited to, the
+          disclosure of personal data to a third party for the provision of a
+          product or service requested by you. Processing of your personal data
+          for targeted advertising We do not process your personal data for
+          targeted advertising. If we decide to do so, we will inform you
+          beforehand and will grant your right to opt out of the processing of
+          your personal data for targeted advertising. For our purposes, the
+          word targeted advertising means displaying to a consumer an
+          advertisement that is selected based on personal data obtained or
+          inferred over time from the consumers activities across non affiliated
+          websites, applications, or online services to predict consumer
+          preferences or interests as defined by CTDPA. Please note that
+          according to the CTDPA, targeted advertising does not include:
+          “advertisements based on activities within a controllers own web sites
+          or online applications; advertisements based on the context of a
+          consumers current search query, visit to an internet web site or
+          online application; advertisements directed to a consumer in response
+          to the consumers request for information or feedback; or processing
+          personal data solely to measure or report advertising frequency,
+          performance or reach”. Your privacy rights under the Connecticut Data
+          Privacy Act and how to exercise them You may exercise certain rights
+          regarding your data processed by us. In particular, you have the right
+          to do the following: access personal data. You have the right to
+          request that we confirm whether or not we are processing your personal
+          data. You also have the right to access such personal data. correct
+          inaccurate personal data. You have the right to request that we
+          correct any inaccurate personal data we maintain about you, taking
+          into account the nature of the personal data and the purposes of the
+          processing of the personal data. request the deletion of your personal
+          data. You have the right to request that we delete any of your
+          personal data. obtain a copy of your personal data. We will provide
+          your personal data in a portable and usable format that allows you to
+          transfer data easily to another entity – provided that this is
+          technically feasible. opt out of the processing of your personal data
+          for the purposes of targeted advertising, the sale of personal data,
+          or profiling in furtherance of decisions that produce legal or
+          similarly significant effects concerning you. In any case, we will not
           increase the cost of, or decrease the availability of, a product or
           service, based solely on the exercise of any of your rights and
           unrelated to the feasibility or the value of a service. However, to
@@ -732,123 +861,6 @@ export default function Privacy() {
           this document. For us to respond to your request, we need to know who
           you are and which right you wish to exercise. We will not respond to
           any request if we are unable to verify your identity using
-          commercially reasonable efforts and therefore confirm that the
-          personal data in our possession actually relate to you. In such cases,
-          we may request that you provide additional information which is
-          reasonably necessary to authenticate you and your request. Making a
-          consumer request does not require you to create an account with us.
-          However, we may require you to use your existing account. We will use
-          any personal data collected from you in connection with your request
-          solely for the purposes of authentication, without further disclosing
-          the personal data, retaining it longer than necessary for purposes of
-          authentication, or using it for unrelated purposes. If you are an
-          adult, you can make a request on behalf of a child under your parental
-          authority. How and when we are expected to handle your request We will
-          respond to your request without undue delay, but in all cases and at
-          the latest within 45 days of its receipt. Should we need more time, we
-          will explain to you the reasons why, and how much more time we need.
-          In this regard, please note that we may take up to 90 days to fulfill
-          your request. Should we deny your request, we will explain to you the
-          reasons behind our denial without undue delay, but in all cases and at
-          the latest within 45 days of receipt of the request. It is your right
-          to appeal such decision by submitting a request to us via the details
-          provided in this document. Within 45 days of receipt of the appeal, we
-          will inform you in writing of any action taken or not taken in
-          response to the appeal, including a written explanation of the reasons
-          for the decisions. If the appeal is denied you may contact the
-          Attorney General to submit a complaint. We do not charge a fee to
-          respond to your request, for up to two requests per year. Further
-          information for Connecticut consumers This section of the document
-          integrates with and supplements the information contained in the rest
-          of the privacy policy and is provided by the controller running this
-          Application and, if the case may be, its parent, subsidiaries and
-          affiliates (for the purposes of this section referred to collectively
-          as “we”, “us”, “our”). This section applies o all Users (Users are
-          referred to below, simply as “you”, “your”, “yours”), who are
-          consumers residing in the State of Connecticut, according to “An Act
-          Concerning Personal Data Privacy and Online Monitoring (also known
-          as The Connecticut Data Privacy Act or the CTDPA), and, for such
-          consumers, it supersedes any other possibly divergent or conflicting
-          information contained in the privacy policy. This part of the document
-          uses the term “personal data” as defined in the CTDPA. Categories of
-          personal data processed In this section, we summarize the categories
-          of personal data that weve processed and the purposes thereof. You
-          can read about these activities in detail in the section titled
-          “Detailed information on the processing of Persona Data” within this
-          document. Categories of personal data we collect We have collected the
-          following categories of personal data: We do not collect sensitive
-          data. We will not collect additional categories of personal data
-          without notifying you. Why we process your personal data To find out
-          why we process your personal data, you can read the sections titled
-          “Detailed information on the processing of Personal Data” and “The
-          purposes of processing” within this document. We won’t process your
-          information for unexpected purposes, or for purposes incompatible with
-          the purposes originally disclosed, without your consent. You can
-          freely give, deny, or withdraw such consent at any time using the
-          contact details provided in this document. How we use the data we
-          collect: sharing of your personal data with third parties We do not
-          share nor disclose your personal data with third parties. For our
-          purposes, the word third party means a person, public authority,
-          agency, or body other than a consumer, controller, processor, or
-          affiliate of the processor or the controller as defined by the
-          CTDPA. Sale of your personal data We do not sell your personal data.
-          In case we should decide to, we will inform you beforehand and will
-          grant your right to opt out of such sale. For our purposes, the word
-          sale, sell, or sold means the exchange of personal data for
-          monetary or other valuable consideration by a controller to a third
-          party as defined by the CTDPA. Please note that according to the
-          CTDPA, the disclosure of personal data to a processor that processes
-          personal data on behalf of a controller does not constitute a sale. In
-          addition, other specific exceptions set forth in the CTDPA may apply,
-          such as, but not limited to, the disclosure of personal data to a
-          third party for the provision of a product or service requested by
-          you. Processing of your personal data for targeted advertising We do
-          not process your personal data for targeted advertising. If we decide
-          to do so, we will inform you beforehand and will grant your right to
-          opt out of the processing of your personal data for targeted
-          advertising. For our purposes, the word targeted advertising means
-          displaying to a consumer an advertisement that is selected based on
-          personal data obtained or inferred over time from the consumers
-          activities across non affiliated websites, applications, or online
-          services to predict consumer preferences or interests as defined by
-          CTDPA. Please note that according to the CTDPA, targeted advertising
-          does not include: “advertisements based on activities within a
-          controllers own web sites or online applications; advertisements
-          based on the context of a consumers current search query, visit to an
-          internet web site or online application; advertisements directed to a
-          consumer in response to the consumers request for information or
-          feedback; or processing personal data solely to measure or report
-          advertising frequency, performance or reach”. Your privacy rights
-          under the Connecticut Data Privacy Act and how to exercise them You
-          may exercise certain rights regarding your data processed by us. In
-          particular, you have the right to do the following: access personal
-          data. You have the right to request that we confirm whether or not we
-          are processing your personal data. You also have the right to access
-          such personal data. correct inaccurate personal data. You have the
-          right to request that we correct any inaccurate personal data we
-          maintain about you, taking into account the nature of the personal
-          data and the purposes of the processing of the personal data. request
-          the deletion of your personal data. You have the right to request that
-          we delete any of your personal data. obtain a copy of your personal
-          data. We will provide your personal data in a portable and usable
-          format that allows you to transfer data easily to another entity –
-          provided that this is technically feasible. opt out of the processing
-          of your personal data for the purposes of targeted advertising, the
-          sale of personal data, or profiling in furtherance of decisions that
-          produce legal or similarly significant effects concerning you. In any
-          case, we will not increase the cost of, or decrease the availability
-          of, a product or service, based solely on the exercise of any of your
-          rights and unrelated to the feasibility or the value of a service.
-          However, to the extent permitted by the law, we may offer a different
-          price, rate, level, quality, or selection of goods or services to you,
-          including offering goods or services for no fee, if our offer is
-          related to your voluntary participation in a bona fide loyalty,
-          rewards, premium features, discounts, or club card program. How to
-          exercise your rights To exercise the rights described above, you need
-          to submit your request to us by contacting us via the contact details
-          provided in this document. For us to respond to your request, we need
-          to know who you are and which right you wish to exercise. We will not
-          respond to any request if we are unable to verify your identity using
           commercially reasonable efforts and therefore confirm that the
           personal data in our possession actually relate to you. In such cases,
           we may request that you provide additional information which is
@@ -902,10 +914,9 @@ export default function Privacy() {
           personal data with third parties. For our purposes, the word third
           party means a person other than: the consumer, controller, or
           processor; or an affiliate or contractor of the controller or the
-          processor as defined by the UCPA. Sale of your personal data We do
-          not sell your personal data. In case we should decide to, we will
-          inform you beforehand and will grant your right to opt out of such
-          sale..
+          processor as defined by the UCPA. Sale of your personal data We do not
+          sell your personal data. In case we should decide to, we will inform
+          you beforehand and will grant your right to opt out of such sale..
         </p>
         <Link
           target="blank"

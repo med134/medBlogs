@@ -1,11 +1,9 @@
 "use client";
-import React, { useState } from "react";
-import "highlight.js/styles/a11y-dark.min.css";
-import { useQuill } from "react-quilljs";
-import "quill/dist/quill.snow.css";
-import hljs from "highlight.js";
+import React, { useState, useRef } from "react";
+import JoditEditor from "jodit-react";
 import IsUpdate from "./IsUpdate";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
+import "jodit-react/examples/app.css";
 
 const AddNewArticle = ({ user }) => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -20,75 +18,6 @@ const AddNewArticle = ({ user }) => {
   const handelCloseModal = () => {
     setSuccessful(!successful);
   };
-
-  const ex = undefined;
-  const text = ex || "";
-  hljs.configure({
-    languages: [
-      "javascript",
-      "ruby",
-      "python",
-      "rust",
-      "java",
-      "html",
-      "css",
-      "C",
-      "C#",
-    ],
-  });
-  const theme = "snow";
-  const placeholder = "write your content...";
-
-  const modules = {
-    toolbar: [
-      ["blockquote", "code-block"],
-      ["bold", "italic", "underline", "strike"],
-      [{ header: 1 }, { header: 2 }],
-      [{ list: "ordered" }, { list: "bullet" }],
-      [{ script: "sub" }, { script: "super" }],
-      [{ indent: "-1" }, { indent: "+1" }],
-      [{ direction: "rtl" }],
-      [{ color: [] }, { background: [] }],
-      ["link", "image", "video"],
-      ["clean"],
-      [{ font: [] }],
-      [{ align: [] }],
-
-      [{ size: ["small", false, "large", "huge"] }],
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    ],
-
-    syntax: {
-      highlight: (text) => hljs.highlightAuto(text).value,
-    },
-  };
-
-  const formats = [
-    "header",
-    "font",
-    "size",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "code-block",
-    "list",
-    "bullet",
-    "indent",
-    "link",
-    "image",
-    "video",
-    "align",
-    "color",
-    "background",
-  ];
-  const { quill, quillRef } = useQuill({
-    theme,
-    modules,
-    formats,
-    placeholder,
-  });
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -99,6 +28,15 @@ const AddNewArticle = ({ user }) => {
     setSelectStatus(event.target.value);
   };
 
+  /* joditEditor */
+  const editor = useRef(null);
+  const [myContent, setMyContent] = useState("");
+  const [config, setConfig] = useState({
+    readonly: false,
+    height: 600,
+    toolbar: true,
+    zIndex: -1,
+  });
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
@@ -111,7 +49,7 @@ const AddNewArticle = ({ user }) => {
     const category = selectedOption;
     const job = selectedJobs;
     const status = selectStatus;
-    const content = quill.root.innerHTML;
+    const content = myContent;
     try {
       setLoading(true);
       const response = await fetch("/api/articles", {
@@ -141,6 +79,7 @@ const AddNewArticle = ({ user }) => {
       setError(err.message);
     }
   };
+
   return (
     <div className="inline-block max-h-full p-8 py-8 sm:p-2 sm:py-2">
       <h1 className="text-gray-700 text-2xl lg:text-2xl font-bold">
@@ -227,8 +166,14 @@ const AddNewArticle = ({ user }) => {
                 <option value="publish">publish</option>
               </select>
             </div>
-
-            <div ref={quillRef} style={{ height: 400, marginLeft: 4 }} />
+            <JoditEditor
+              ref={editor}
+              config={config}
+              value={myContent}
+              tabIndex={1} // tabIndex of textarea
+              onBlur={(newContent) => setMyContent(newContent)} // Update content on blur
+              onChange={(newContent) => setMyContent(newContent)}
+            />
             {error && <p className="text-red-500">{error}</p>}
             {successful && (
               <IsUpdate
@@ -248,7 +193,7 @@ const AddNewArticle = ({ user }) => {
             </button>
           </form>
         </div>
-      )}
+      )}    
     </div>
   );
 };

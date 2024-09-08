@@ -20,6 +20,7 @@
     "cloudinary": "^2.2.0",
     "framer-motion": "^10.16.16",
     "highlight.js": "^11.9.0",
+    "jodit-react": "^4.1.2",
     "markdown-it": "^14.1.0",
     "mongodb": "^6.8.0",
     "mongoose": "^8.0.3",

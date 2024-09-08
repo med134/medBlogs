@@ -94,7 +94,6 @@ export default function RootLayout({ children }) {
           src="https://www.googletagmanager.com/gtag/js?id=G-J4KQVRLWEN"
         ></Script>
         {children}
-        {<CookiesBanner />}
         <Footer />
       </body>
       <GoogleAnalytics gaId="G-J4KQVRLWEN" />
