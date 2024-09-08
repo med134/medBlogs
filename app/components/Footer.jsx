@@ -44,7 +44,7 @@ const Footer = () => {
         </div>
         <div className="contact space-y-2 text-sm">
           <Link
-            href="/contact_us"
+            href="/contact-us"
             className="text-base font-bold tracking-wide text-gray-900 dark:text-light hover:text-mainColor"
           >
             Contacts us
@@ -136,7 +136,7 @@ const Footer = () => {
                 <span className="ml-1 font-semibold text-xs">Github</span>
               </a>
               <a
-                href="https://www.linkedin.com/in/mohammed-dakir/"
+                href="https://www.linkedin.com/in/med-dkr/"
                 target={"_blank"}
                 rel="noopener noreferrer"
                 onBlur={() => console.log("Visit our LinkedIn profile")}
@@ -163,14 +163,14 @@ const Footer = () => {
           </Link>
           . All rights reserved./
           <Link
-            href="https://www.medcode.dev/privacy_policy"
+            href="https://www.medcode.dev/privacy-policy"
             target="_blank"
             className="text-sm font-bold underline hover:text-purple-800 hover:font-semibold dark:text-light"
           >
             privacy policy
           </Link>
           <Link
-            href="https://www.medcode.dev/terms_and_conditions"
+            href="https://www.medcode.dev/terms-and-conditions"
             target="_blank"
             className="text-sm ml-3 font-bold underline hover:text-purple-800 hover:font-semibold dark:text-light"
           >

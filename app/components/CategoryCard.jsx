@@ -39,7 +39,7 @@ const CategoryCard = () => {
         <FaSquareXTwitter size={24} className="text-white" />
       </a>
       <a
-        href="https://www.linkedin.com/in/mohammed-dakir/"
+        href="https://www.linkedin.com/in/med-dkr/"
         target={"_blank"}
         rel="noopener noreferrer"
         aria-label="Visit our LinkedIn profile"
