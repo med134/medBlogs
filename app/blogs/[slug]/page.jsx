@@ -99,6 +99,7 @@ const BlogPage = async ({ params }) => {
               width={500}
               height={300}
               priority={true}
+              quality={100}
             />
           </div>
           <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />

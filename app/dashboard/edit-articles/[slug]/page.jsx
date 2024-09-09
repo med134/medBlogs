@@ -10,7 +10,7 @@ const Edit = async ({ params }) => {
   const session = await auth();
 
   return (
-    <Layout className="p-6 lg:p-8 md:p-8 bg-white sm:p-8 xs:p-6  py-16">
+    <Layout className="p-6 lg:p-8 md:p-8 bg-white sm:p-8 xs:p-6  py-14 md:py-8">
       <h1 className="text-left py-6 text-2xl text-gray-800 font-semibold dark:text-light">
         Edit Your Article & Submit
       </h1>

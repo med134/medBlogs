@@ -28,8 +28,8 @@ export const CustomLink = ({ href, title, className = "" }) => {
       <span
         className={`
       h-[1px] inline-block
-      absolute left-0 -bottom-0.5 bg-mainColor
-      group-hover:w-full transition-[width] ease duration-300
+      absolute left-0 -bottom-0.5
+      group-hover:w-full transition-[width] ease duration-300 bg-dark
       dark:bg-light`}
       >
         &nbsp;
@@ -120,7 +120,7 @@ const NavBaLinks = ({ session }) => {
             medCode
           </span>
         </Link>
-        <nav className="flex items-center justify-evenly xl:ml-6">
+        <div className="flex items-center justify-evenly xl:ml-6 bg-transparent z-50">
           <CustomLink
             href="/projects"
             title="projects"
@@ -156,7 +156,7 @@ const NavBaLinks = ({ session }) => {
             />
           )}
           {session?.user && <DynamicProfile session={session} />}
-        </nav>
+        </div>
       </div>
       <button
         name="theme-button"

@@ -17,7 +17,7 @@
   },
   {
     "name": "contact us",
-    "url": "/contact_us"
+    "url": "/contact-us"
   },
   {
     "name": "templates",
@@ -45,11 +45,11 @@
   },
   {
     "name": "Privacy Policy",
-    "url": "/privacy_policy"
+    "url": "/privacy-policy"
   },
   {
     "name": "Terms & Conditions",
-    "url": "/terms_and_conditions"
+    "url": "/terms-and-conditions"
   }
 
 ]
