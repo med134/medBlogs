@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FiX } from "react-icons/fi";
 import { LuLogOut } from "react-icons/lu";
 import { RxExit } from "react-icons/rx";
-import { MdSpaceDashboard } from "react-icons/md";
+import { MdSpaceDashboard, MdOutlineExitToApp } from "react-icons/md";
 import { menuItems } from "../ui/sidebar/DashSide";
 import { usePathname } from "next/navigation";
 import { handelLogOut } from "../utils/action";
@@ -103,15 +103,22 @@ const ResponsiveDashboardNavbar = ({ session }) => {
                   }`}
                 >
                   <LinkIcon className="mr-3 h-6 w-6" />
-                  <span className="font-medium ml-3 dark:text-light">
+                  <span className="font-medium ml-3">
                     {link.name}
                   </span>
                 </Link>
               </div>
             );
           })}
+          <Link
+            href="/"
+            className={`flex flex-row items-center py-2 px-5 h-10 cursor-pointer transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800 `}
+          >
+            <MdOutlineExitToApp className="mr-3 h-6 w-6"/>
+            <span className="font-medium ml-3">Exit Dashboard</span>
+          </Link>
           <form action={handelLogOut}>
-            <button className="flex flex-row px-5 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+            <button className="flex flex-row px-5 mt-2 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
               <LuLogOut className="w-6 h-6" />
               <span className="font-medium ml-3 dark:text-light">Logout</span>
             </button>
