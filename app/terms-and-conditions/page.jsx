@@ -13,9 +13,9 @@ export async function generateMetadata() {
 }
 const page = () => {
   return (
-    <div className="min-h-screen py-32 bg-gray-100 px-8 lg:px-16">
-      <div className="bg-white rounded-lg shadow-lg p-8 lg:p-16">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
+    <div className="py-32 bg-light px-8 sm:px-5">
+      <div className="mt-10 sm:mt-4">
+        <h1 className="text-4xl font-bold text-gray-800 mb-4 sm:text-2xl">
           Terms and Conditions
         </h1>
         <p className="text-sm text-gray-600 mb-8">

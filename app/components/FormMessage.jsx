@@ -8,7 +8,7 @@ const FormMessage = () => {
   const [state, formAction] = useFormState(sendMessage, undefined);
 
   return (
-    <form action={formAction} className="mb-12 w-full px-10">
+    <form action={formAction} className="mb-12 w-full px-6 xs:px-0">
       {state && (
         <span className="bg-green-500 text-white px-10 py-2">{state.succuss}</span>
       )}

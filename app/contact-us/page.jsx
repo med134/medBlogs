@@ -25,15 +25,15 @@ export const metadata = {
 };
 function Page() {
   return (
-    <section className="py-36 p-10 bg-light dark:bg-dark">
-      <div className="text-center md:max-w-xl lg:max-w-3xl">
-        <h1 className="mb-6 px-6 text-3xl font-bold dark:text-light">
+    <section className="py-36 p-10 bg-light dark:bg-dark xs:p-4 w-[100%]">
+      <div className="md:max-w-xl lg:max-w-3xl">
+        <h1 className="mb-6 px-10 py-10 text-5xl xs:text-3xl xs:mt-16 xs:px-2 font-bold dark:text-light">
           Contact us
         </h1>
       </div>
-      <div className="flex justify-between items-center p-10 sm:p-2 lg:flex-col-reverse">
+      <div className="flex justify-between items-start p-6 sm:p-2 lg:flex-col">
         <FormMessage />
-        <div className="w-full grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-start">
+        <div className="w-full grid grid-cols-2 gap-4 xs:flex xs:flex-wrap xs:justify-start">
           <div className="mb-12 w-full">
             <div className="flex items-start">
               <div className="shrink-0">
@@ -68,60 +68,6 @@ function Page() {
             </div>
           </div>
           <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
-            <div className="flex items-start">
-              <div className="shrink-0">
-                <div className="inline-block rounded-md bg-teal-400-100 p-4 text-teal-700">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="h-6 w-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="ml-6 grow">
-                <p className="mb-2 font-bold dark:text-light">Sales questions</p>
-                <p className="text-neutral-500 dark:text-light ">sales10@gmail.com</p>
-                <p className="text-neutral-500 dark:text-light ">+1 234-567-89</p>
-              </div>
-            </div>
-          </div>
-          <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
-            <div className="align-start flex">
-              <div className="shrink-0">
-                <div className="inline-block rounded-md bg-teal-400-100 p-4 text-teal-700">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="h-6 w-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="ml-6 grow">
-                <p className="mb-2 font-bold dark:text-light">Press</p>
-                <p className="text-neutral-500 dark:text-light ">pres01s@gmail.com</p>
-                <p className="text-neutral-500 dark:text-light ">+1 234-567-89</p>
-              </div>
-            </div>
-          </div>
-          <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
             <div className="align-start flex">
               <div className="shrink-0">
                 <div className="inline-block rounded-md bg-teal-400-100 p-4 text-teal-700">
@@ -143,8 +89,12 @@ function Page() {
               </div>
               <div className="ml-6 grow">
                 <p className="mb-2 font-bold dark:text-light">Bug report</p>
-                <p className="text-neutral-500 dark:text-light">jhon10@gmail.com</p>
-                <p className="text-neutral-500 dark:text-light">+1 234-567-89</p>
+                <p className="text-neutral-500 dark:text-light">
+                  jhon10@gmail.com
+                </p>
+                <p className="text-neutral-500 dark:text-light">
+                  +1 234-567-89
+                </p>
               </div>
             </div>
           </div>

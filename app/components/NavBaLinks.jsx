@@ -196,7 +196,7 @@ bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
             </form>
           )}
 
-          <nav className="flex items-center justify-center flex-wrap mt-2">
+          <div className="flex items-center justify-center flex-wrap mt-2">
             <SocialLinks />
             <button
               name="theme-button"
@@ -212,7 +212,7 @@ ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
                 <MoonIcon className={"fill-dark"} />
               )}
             </button>
-          </nav>
+          </div>
         </div>
       ) : null}
     </header>

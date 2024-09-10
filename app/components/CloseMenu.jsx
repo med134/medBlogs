@@ -25,7 +25,7 @@ const CloseMenu = ({ handleClick, session }) => {
     );
   };
   return (
-    <nav className="flex items-center flex-col justify-center z-9999 max-w-full">
+    <div className="flex items-center flex-col justify-center z-9999 max-w-full">
       <div className="flex items-center justify-center xs:w-full mb-1">
         <Image
           src={logo}
@@ -53,7 +53,7 @@ const CloseMenu = ({ handleClick, session }) => {
         toggle={handleClick}
       />
       <CustomMobileLink
-        href="/contact_us"
+        href="/contact-us"
         title="Contact us"
         className="contact"
         toggle={handleClick}
@@ -86,7 +86,7 @@ const CloseMenu = ({ handleClick, session }) => {
           toggle={handleClick}
         />
       )}
-    </nav>
+    </div>
   );
 };
 

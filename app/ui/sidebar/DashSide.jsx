@@ -51,7 +51,7 @@ const SideBar = () => {
           );
         })}
       </ul>
-      <form action={handelLogOut}>
+      <form action={handelLogOut} className="mt-3">
         <button className="flex flex-row px-5 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
           <LuLogOut className="w-6 h-6" />
           <span className="font-medium ml-3">

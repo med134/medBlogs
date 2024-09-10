@@ -112,7 +112,7 @@ const ResponsiveDashboardNavbar = ({ session }) => {
           })}
           <Link
             href="/"
-            className={`flex flex-row items-center py-2 px-5 h-10 cursor-pointer transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800 `}
+            className={`flex flex-row items-center mt-2 py-2 px-5 h-10 cursor-pointer transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800 `}
           >
             <MdOutlineExitToApp className="mr-3 h-6 w-6"/>
             <span className="font-medium ml-3">Exit Dashboard</span>
