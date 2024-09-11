@@ -73,36 +73,34 @@ export async function generateMetadata({ params }) {
 const Card = async ({ params }) => {
   const sortedPosts = await getPosts(params.cat);
   const category = await getAllCat();
-  
+
   const myTitle =
     params.cat === "all" ? `All Articles` : `All Articles About ${params.cat}`;
   return (
     <div className="py-28 bg-light dark:bg-dark">
-      <div className="px-2 xs:px-1 py-8 lg:py-5">
-        <h1 className="px-10 text-mainColor dark:text-light sm:text-xl sm:px-0 text-3xl font-outFit font-bold uppercase mt-4 lg:mt-2 md:px-4 xs:pt-6">
-          #{myTitle}
-        </h1>
-        <div className="grid grid-cols-7 px-16 dark:bg-dark gap-4 pt-14 lg:grid-cols-5 lg:px-4 lg:gap-y-6 md:flex md:flex-wrap md:justify-items-start md:items-center xs:flex xs:px-2 xs:justify-start">
-          {category?.map((item) => (
-            <Link
-              className={`${styles.category} text-sm xs:shrink w-12 h-16 xl:w-12 xl:h-10 dark:text-light xs:bg-mainColor xs:text-light `}
-              key={item._id}
-              href={`/category/${item.value}`}
-            >
-              {item.image && (
-                <Image
-                  src={item.image.trimEnd()}
-                  alt={item.label}
-                  loading="lazy"
-                  width={300}
-                  height={300}
-                  className={"w-12 h-12 xl:w-10 xl:h-10 rounded-full xs:hidden"}
-                />
-              )}
-              {item.label}
-            </Link>
-          ))}
-        </div>
+      <h1 className="px-10 text-mainColor dark:text-light sm:text-xl text-3xl font-outFit font-bold uppercase mt-4 lg:mt-2 md:px-6 xs:pt-6">
+        #{myTitle}
+      </h1>
+      <div className="flex justify-around items-center px-16 pt-14 lg:px-4  md:flex md:flex-wrap md:justify-around md:items-center xs:flex xs:px-6 xs:justify-start">
+        {category?.map((item) => (
+          <Link
+            className={`${styles.category} text-sm md:mb-3 xs:shrink w-12 h-16 xl:w-12 xl:h-10 sm:ml-4 dark:text-light xs:bg-mainColor xs:text-light `}
+            key={item._id}
+            href={`/category/${item.value}`}
+          >
+            {item.image && (
+              <Image
+                src={item.image.trimEnd()}
+                alt={item.label}
+                loading="lazy"
+                width={300}
+                height={300}
+                className={"w-12 h-12 xl:w-10 xl:h-10 rounded-full xs:hidden"}
+              />
+            )}
+            {item.label}
+          </Link>
+        ))}
       </div>
       <AllCategoryPage sortedPosts={sortedPosts} />
     </div>

@@ -46,10 +46,10 @@ const AllCategoryPage = ({ sortedPosts }) => {
                   alt={item.title}
                   loading="lazy"
                 />
-                <div className="p-6 space-y-2 block">
-                  <p className="text-mainColor font-bold tex-sm">
+                <div className="p-6 flex flex-col space-y-2">
+                  <span className="text-mainColor font-bold tex-sm">
                     #{item.category}
-                  </p>
+                  </span>
                   <span
                     className="bg-gradient-to-r text-2xl font-semibold from-red-200 to-red-400 bg-[length:0px_10px] bg-left-bottom
   bg-no-repeat
@@ -93,12 +93,12 @@ const AllCategoryPage = ({ sortedPosts }) => {
                 </g>
               </g>
             </svg>
-            <h3 className="text-xl font-medium mt-4 text-gray-700 dark:text-gray-200">
+            <span className="text-xl font-medium mt-4 text-gray-700 dark:text-gray-200">
               Article not found
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400 mt-2">
+            </span>
+            <span className="text-gray-500 dark:text-gray-400 mt-2">
               there are not article about productivity
-            </p>
+            </span>
           </div>
         )}
       </div>

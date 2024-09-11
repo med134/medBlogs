@@ -95,7 +95,7 @@ const BlogPage = async ({ params }) => {
             <Image
               src={blog.image}
               alt={blog.title}
-              className="w-[850px] h-80 xs:h-auto object-cover md:object-contain sm:object-contain rounded mt-2"
+              className="w-[850px] h-80 xs:h-auto object-contain rounded mt-2"
               width={500}
               height={300}
               priority={true}
