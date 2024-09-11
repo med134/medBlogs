@@ -96,8 +96,8 @@ export default function RootLayout({ children }) {
         ></Script>
         {children}
         <Footer />
-        <CookiesBanner/>
-      </body>
+{/*         <CookiesBanner/>
+ */}      </body>
       <GoogleAnalytics gaId="G-J4KQVRLWEN" />
       <Analytics />
       <SpeedInsights/>
