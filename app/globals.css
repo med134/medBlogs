@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .groupCart {
   background: linear-gradient(
     90deg,
@@ -254,7 +253,33 @@
   display: none;
 }
 
-.chart{
+.chart {
   scrollbar-width: none;
 }
 
+.firstView {
+  background: linear-gradient(
+      45deg,
+      transparent 34%,
+      #3c76c4 35%,
+      #3c76c4 40%,
+      transparent 41%,
+      transparent 59%,
+      #3c76c4 60%,
+      #3c76c4 65%,
+      transparent 66%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 34%,
+      #3c76c4 35%,
+      #3c76c4 40%,
+      transparent 41%,
+      transparent 59%,
+      #3c76c4 60%,
+      #3c76c4 65%,
+      transparent 66%
+    );
+  background-size: 3em 3em;
+  background-color: #ffffff;
+}

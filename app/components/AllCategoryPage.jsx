@@ -26,13 +26,13 @@ const AllCategoryPage = ({ sortedPosts }) => {
   const currentBlog = blog.slice(indexOfFirstBlog, indexOfLastBlog);
   const totalPages = Math.ceil(blog.length / perPage);
   return (
-    <div className="py-6">
+    <div className="bg-light px-16 dark:bg-dark">
       <div className="grid justify-center grid-cols-3 gap-6 mt-8 md:block">
         {currentBlog.length > 0 ? (
           currentBlog?.map((item) => (
             <div
               key={item._id}
-              className="bg-white shadow-lg dark:shadow-white rounded-md lg:block md:mb-6 lg:w-full sm:w-full dark:bg-dark dark:border-light"
+              className=" shadow-lg dark:shadow-white rounded-md lg:block md:mb-6 lg:w-full sm:w-full dark:bg-dark dark:border-light"
             >
               <Link
                 href={`/blogs/${item.slug}`}
@@ -41,7 +41,7 @@ const AllCategoryPage = ({ sortedPosts }) => {
                 <Image
                   width={500}
                   height={500}
-                  className="object-cover w-full rounded h-44 dark:bg-gray-500 md:object-fill"
+                  className="object-contain w-full rounded h-44 dark:bg-gray-500 md:object-fill"
                   src={item.image.trimEnd()}
                   alt={item.title}
                   loading="lazy"
@@ -103,9 +103,9 @@ const AllCategoryPage = ({ sortedPosts }) => {
         )}
       </div>
       {blog.length === 0 ? null : (
-        <nav
+        <div
           aria-label="Page navigation"
-          className="flex justify-center mt-4 mb-10"
+          className="flex justify-center mt-4"
         >
           <ul className="inline-flex -space-x-px text-sm">
             <li>
@@ -141,7 +141,7 @@ const AllCategoryPage = ({ sortedPosts }) => {
               </button>
             </li>
           </ul>
-        </nav>
+        </div>
       )}
     </div>
   );

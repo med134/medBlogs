@@ -77,12 +77,12 @@ const Card = async ({ params }) => {
   const myTitle =
     params.cat === "all" ? `All Articles` : `All Articles About ${params.cat}`;
   return (
-    <Layout className="py-4 px-16 p-8 xl:px-8 xl:p-6 pt-24 xl:pt-24 lg:pt-6 md:px-6 xs:px-4 xs:pt-10">
+    <div className="py-28 bg-light dark:bg-dark">
       <div className="px-2 xs:px-1 py-8 lg:py-5">
-        <h1 className="px-4 text-mainColor dark:text-light sm:text-xl sm:px-0 text-3xl font-outFit font-bold uppercase mt-4 lg:mt-2 md:px-4 xs:pt-6">
+        <h1 className="px-10 text-mainColor dark:text-light sm:text-xl sm:px-0 text-3xl font-outFit font-bold uppercase mt-4 lg:mt-2 md:px-4 xs:pt-6">
           #{myTitle}
         </h1>
-        <div className="grid grid-cols-7 gap-4 pt-14 px-4 lg:grid-cols-5 lg:px-4 lg:gap-y-6 md:flex md:flex-wrap md:justify-items-start md:items-center xs:flex xs:px-2 xs:justify-start">
+        <div className="grid grid-cols-7 px-16 dark:bg-dark gap-4 pt-14 lg:grid-cols-5 lg:px-4 lg:gap-y-6 md:flex md:flex-wrap md:justify-items-start md:items-center xs:flex xs:px-2 xs:justify-start">
           {category?.map((item) => (
             <Link
               className={`${styles.category} text-sm xs:shrink w-12 h-16 xl:w-12 xl:h-10 dark:text-light xs:bg-mainColor xs:text-light `}
@@ -105,7 +105,7 @@ const Card = async ({ params }) => {
         </div>
       </div>
       <AllCategoryPage sortedPosts={sortedPosts} />
-    </Layout>
+    </div>
   );
 };
 export default Card;

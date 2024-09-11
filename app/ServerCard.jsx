@@ -80,7 +80,7 @@ const Card = async () => {
                 alt={item.title}
                 width={300}
                 height={300}
-                className="object-cover rounded-xl max-w-xl xl:w-64 xs:w-full h-52 border border-gray-500"
+                className="object-contain rounded-xl max-w-xl xl:w-64 xs:w-full h-52 border border-gray-500"
               />
             </div>
           </section>
