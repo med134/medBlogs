@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import dynamic from "next/dynamic";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react";
 const CookiesBanner = dynamic(() => import("./components/Cookies"), {
   ssr: false,
@@ -95,9 +96,11 @@ export default function RootLayout({ children }) {
         ></Script>
         {children}
         <Footer />
+        <CookiesBanner/>
       </body>
       <GoogleAnalytics gaId="G-J4KQVRLWEN" />
       <Analytics />
+      <SpeedInsights/>
     </html>
   );
 }
