@@ -1,13 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BiSolidEdit } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import SkeletonLoader from "./BlogDashboardSkelton";
 const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
   ssr: false,
 });
- const FormatDate = (dateString) => {
+const FormatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
   const formattedDate = new Date(dateString).toLocaleDateString(
     "en-US",
@@ -15,12 +16,29 @@ const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
   );
   return formattedDate;
 };
-const ListDashboardBlogs = ({ data }) => {
+const ListDashboardBlogs = ({ user }) => {
   const [showModel, setShowModel] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [blogs, setBlogs] = useState([]);
   const [articleDelete, setArticleDelete] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const perPage = 4;
+  useEffect(() => {
+    const getBlogs = async (username) => {
+      setLoading(true);
+      const res = await fetch(
+        `https://www.medcode.dev/api/articles?username=${username}`
+      );
+      if (!res.ok) {
+        throw new Error("failed to get data");
+      }
+      const posts = await res.json();
+      setBlogs(posts);
+      setLoading(false);
+    };
+    getBlogs(user);
+  }, [user]);
 
   const closeModelDelete = (slug) => {
     setShowModel(!showModel);
@@ -28,8 +46,8 @@ const ListDashboardBlogs = ({ data }) => {
   };
   const indexOfLastBlog = currentPage * perPage;
   const indexOfFirstBlog = indexOfLastBlog - perPage;
-  const currentBlog = data?.slice(indexOfFirstBlog, indexOfLastBlog);
-  const totalPages = Math.ceil(data?.length / perPage);
+  const currentBlog = blogs?.slice(indexOfFirstBlog, indexOfLastBlog);
+  const totalPages = Math.ceil(blogs?.length / perPage);
   const handleMovePages = (page) => {
     setCurrentPage(page);
   };
@@ -49,56 +67,62 @@ const ListDashboardBlogs = ({ data }) => {
               </tr>
             </thead>
             <tbody>
-              {currentBlog?.map((blog) => (
-                <tr
-                  key={blog.slug}
-                  className="p-2 px-4 py-2 w-full justify-between items-center border border-gray-100"
-                >
-                  <td className="p-2">
-                    <h2 className="text-sm font-semibold sm:text-xs sm:font-normal">{blog.title}</h2>
-                  </td>
-                  <td className=" px-5 text-sm sm:hidden">
-                    <p className="text-gray-600 px-4">{blog.slug}</p>
-                  </td>
-                  <td className=" px-5 text-sm">
-                    <p className="text-gray-600 px-4">{blog.status}</p>
-                  </td>
-                  <td className='md:hidden'>
-                    <p className="text-sm px-5">
-                      {FormatDate(blog?.createdAt)}
-                    </p>
-                  </td>
-                  <td className="flex space-x-2 sm:space-x-0 p-2 sm:flex-col justify-center">
-                    <button
-                      onClick={() =>
-                        router.push(`/dashboard/edit-articles/${blog.slug}`)
-                      }
-                      className="flex justify-around group px-4 py-2 sm:mb-2 items-center hover:bg-blue-400 bg-blue-500 rounded-md text-light"
-                    >
-                      <span className="text-xs">Edit</span>
-                      <BiSolidEdit className="ml-2" />
-                    </button>
-                    <button
-                      onClick={() => closeModelDelete(blog.slug)}
-                      className="flex justify-around group px-4 py-2 items-center hover:bg-red-400 bg-red-500 rounded-md text-light"
-                    >
-                      <span className="text-xs">Delete</span>
-                      <RiDeleteBin5Line className="ml-2" />
-                    </button>
-                    {showModel && (
-                      <DeleteConfirmation
-                        blogDelete={articleDelete}
-                        onClose={closeModelDelete}
-                        blogTitle={articleDelete}
-                      />
-                    )}
-                  </td>
-                </tr>
-              ))}
+              {loading ? (
+                <SkeletonLoader />
+              ) : (
+                currentBlog?.map((blog) => (
+                  <tr
+                    key={blog.slug}
+                    className="p-2 px-4 py-2 w-full justify-between items-center border border-gray-100"
+                  >
+                    <td className="p-2">
+                      <h2 className="text-sm font-semibold sm:text-xs sm:font-normal">
+                        {blog.title}
+                      </h2>
+                    </td>
+                    <td className=" px-5 text-sm sm:hidden">
+                      <p className="text-gray-600 px-4">{blog.slug}</p>
+                    </td>
+                    <td className=" px-5 text-sm">
+                      <p className="text-gray-600 px-4">{blog.status}</p>
+                    </td>
+                    <td className="md:hidden">
+                      <p className="text-sm px-5">
+                        {FormatDate(blog?.createdAt)}
+                      </p>
+                    </td>
+                    <td className="flex space-x-2 sm:space-x-0 p-2 sm:flex-col justify-center">
+                      <button
+                        onClick={() =>
+                          router.push(`/dashboard/edit-articles/${blog.slug}`)
+                        }
+                        className="flex justify-around group px-4 py-2 sm:mb-2 items-center hover:bg-blue-400 bg-blue-500 rounded-md text-light"
+                      >
+                        <span className="text-xs">Edit</span>
+                        <BiSolidEdit className="ml-2" />
+                      </button>
+                      <button
+                        onClick={() => closeModelDelete(blog.slug)}
+                        className="flex justify-around group px-4 py-2 items-center hover:bg-red-400 bg-red-500 rounded-md text-light"
+                      >
+                        <span className="text-xs">Delete</span>
+                        <RiDeleteBin5Line className="ml-2" />
+                      </button>
+                      {showModel && (
+                        <DeleteConfirmation
+                          blogDelete={articleDelete}
+                          onClose={closeModelDelete}
+                          blogTitle={articleDelete}
+                        />
+                      )}
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
-          {data?.length === 0 ? null : (
-            <nav
+          {blogs?.length === 0 ? null : (
+            <div
               aria-label="Page navigation"
               className="flex justify-center mt-4"
             >
@@ -136,7 +160,7 @@ const ListDashboardBlogs = ({ data }) => {
                   </button>
                 </li>
               </ul>
-            </nav>
+            </div>
           )}
         </div>
       </div>
