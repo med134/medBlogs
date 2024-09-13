@@ -123,7 +123,7 @@ const page = () => {
                 src={profilePic}
                 alt="med_dakir"
                 className="w-full h-auto rounded-2xl"
-                priority
+                loading="lazy"
                 sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"

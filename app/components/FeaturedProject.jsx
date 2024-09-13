@@ -31,7 +31,7 @@ export const FeaturedProject = ({ type, title, summary, img, link, github }) => 
             transition={{ duration: 0.2 }}
             width={500}
             height={300}
-            priority={true}
+            loading="lazy"
             sizes="(max-width: 768px) 100vw,
                 (max-width: 1200px) 50vw,
                 50vw"

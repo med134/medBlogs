@@ -20,8 +20,9 @@ const ProfileDown = ({ session }) => {
           <Image
             width={50}
             height={50}
-            priority
+            loading="lazy"
             src={session?.user?.image}
+            quality={50}
             alt="photo_profile"
             className="w-10 h-10 rounded-[50%] cursor-pointer"
           />

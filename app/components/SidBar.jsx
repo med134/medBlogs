@@ -38,7 +38,7 @@ const SidBar = async ({ category, slug }) => {
                   alt={item.title}
                   width={200}
                   height={200}
-                  priority={false}
+                  quality={50}
                   loading="lazy"
                 />
 

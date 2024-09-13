@@ -71,7 +71,8 @@ const ResponsiveDashboardNavbar = ({ session }) => {
               <Image
                 width={50}
                 height={50}
-                priority
+                loading="lazy"
+                quality={30}
                 src={session?.user?.image}
                 alt="photo_profile"
                 className="w-10 h-10 rounded-[50%] ml-3"

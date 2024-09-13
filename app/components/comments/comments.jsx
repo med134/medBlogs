@@ -5,8 +5,10 @@ import Image from "next/image";
 import useSWR from "swr";
 import { useState } from "react";
 import Loading from "@/app/Loading";
+import dynamic from "next/dynamic";
+const UserComments = dynamic(() => import("../UserComments"), { ssr: false });
 
-const Comments = ({ postSlug ,session}) => {
+const Comments = ({ postSlug, session }) => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, mutate, isLoading } = useSWR(
     `/api/comments?blogId=${postSlug}`,
@@ -40,10 +42,10 @@ const Comments = ({ postSlug ,session}) => {
           onSubmit={handleSubmit}
         >
           <Image
-            width={100}
-            height={100}
+            width={40}
+            height={40}
             loading="lazy"
-            priority={false}
+            quality={40}
             src={session?.user.image}
             alt="photo_profile"
             className="w-10 h-10 rounded-[50%] cursor-pointer"
@@ -67,41 +69,7 @@ const Comments = ({ postSlug ,session}) => {
         </Link>
       )}
       <div className={styles.comments}>
-        {isLoading ? (
-          <Loading />
-        ) : (
-          data?.map((item) => (
-            <div
-              className="border rounded-md p-3 ml-3 my-3 bg-gray-100 dark:bg-dark dark:text-light"
-              key={item._id}
-            >
-              <div className={styles.user}>
-                <div className="flex justify-center items-center">
-                  <Image
-                    src={item?.imageUser}
-                    alt="useImage"
-                    width={100}
-                    height={100}
-                    loading="lazy"
-                    priority={false}
-                    className="w-8 h-8 rounded-full"
-                  />
-                  <div className="block ml-2">
-                    <span className="text-sm font-semibold block text-gray-700 dark:text-light">
-                      {item?.username}
-                    </span>
-                    <span className="text-xs text-gray-700 dark:text-light">
-                      {item.createdAt.slice(0, 10)}
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <p className="text-medium px-3 text-gray-800 rounded-lg dark:text-light font-poppins sm:text-sm">
-                {item?.comment}
-              </p>
-            </div>
-          ))
-        )}
+        {isLoading ? <Loading /> : <UserComments data={data} />}
       </div>
     </div>
   );

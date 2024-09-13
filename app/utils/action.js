@@ -140,3 +140,17 @@ export const FormatDate = (dateString) => {
   );
   return formattedDate;
 };
+
+export async function getDevTo() {
+  const res = await fetch("https://dev.to/api/articles?username=med_code", {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+  const templates = await res.json();
+  const sortedTemplates = templates.sort(
+    (a, b) => new Date(b.published_at) - new Date(a.published_at)
+  );
+  return sortedTemplates;
+}

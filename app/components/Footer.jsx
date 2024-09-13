@@ -25,6 +25,8 @@ const Footer = () => {
           >
             <Image
               src={logo}
+              loading="lazy"
+              quality={40}
               alt="medCode blogs & articles"
               className="w-20 dark:bg-white dark:rounded-xl dark:p-1"
             />

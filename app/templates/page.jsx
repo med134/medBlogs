@@ -19,25 +19,6 @@ export const metadata = {
     "frontend templates",
     "how to learn programming",
     "free components sketchup ",
-    "python programming",
-    "django frontend templates",
-    "Artificial Intelligence",
-    "best programming languages",
-    "rust programming language",
-    " Programming Languages",
-    "Software Engineering",
-    "tailwind css",
-    "free templates",
-    "free components",
-    "bootstrap",
-    "free code",
-    "Front-end",
-    "UI/UX Design",
-    "Frameworks",
-    "Best Practices",
-    "Web Design",
-    "Learning Resources",
-    "Code Snippets",
   ],
   robots: {
     index: true,
@@ -97,8 +78,8 @@ const page = async () => {
               className="transition-all ml-10 duration-300 ease-in-out hover:scale-105 lg:w-full sm:mx-auto sm:w-4/6 sm:pb-12 lg:pb-0"
               src="https://i.ibb.co/GPXxP06/hero-img.png"
               alt="Free Templates & components"
-              width="500"
-              height="488"
+              width={500}
+              height={488}
             />
           </div>
         </div>

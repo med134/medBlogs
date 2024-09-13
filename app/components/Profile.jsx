@@ -20,9 +20,11 @@ const Profile = ({ user, session }) => {
               ) : null}
               <div className="flex flex-col items-center">
                 <Image
-                  width={300}
+                  width={50}
                   alt="user image"
-                  height={300}
+                  height={50}
+                  loading="lazy"
+                  quality={30}
                   src={user?.imageUrl}
                   className="w-32 h-32 object-cover bg-gray-300 rounded-full mb-4 shrink-0"
                 />

@@ -77,9 +77,10 @@ const TemplateId = async ({ params }) => {
             <div className="inline-flex justify-start items-center gap-4 p-2">
               <Image
                 alt="author image"
-                width={200}
+                width={50}
                 loading="lazy"
-                height={200}
+                height={50}
+                quality={30}
                 src="https://i.ibb.co/WVDZRxF/bussiness-man.png"
                 className="w-16 h-16  object-cover rounded-full"
               />
@@ -138,8 +139,9 @@ const TemplateId = async ({ params }) => {
                       className="w-full h-44"
                       src={item.image}
                       alt={item.title}
-                      width={400}
-                      height={400}
+                      width={300}
+                      height={200}
+                      quality={50}
                       loading="lazy"
                     />
                   </div>

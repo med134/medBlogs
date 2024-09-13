@@ -57,6 +57,8 @@ const Card = async () => {
                   className="w-8 h-8 rounded-full"
                   width={24}
                   height={24}
+                  loading="lazy"
+                  quality={30}
                 />
                 <p className="text-sm font-semibold text-gray-800 ml-2 dark:text-light">
                   {item.username}
@@ -76,10 +78,11 @@ const Card = async () => {
             <div className="">
               <Image
                 src={item.image}
-                priority={true}
                 alt={item.title}
-                width={300}
-                height={300}
+                width={200}
+                height={200}
+                loading="lazy"
+                quality={60}
                 className="object-contain rounded-xl max-w-xl xl:w-64 xs:w-full h-52 border border-gray-500"
               />
             </div>

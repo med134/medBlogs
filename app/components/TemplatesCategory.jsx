@@ -35,9 +35,10 @@ const TemplatesCategory = ({ data }) => {
               className="w-full h-44"
               src={item.image}
               alt={item.title}
-              priority={true}
               width={300}
               height={300}
+              loading="lazy"
+              quality={50}
             />
             <div className="px-6 py-2">
               <Link

@@ -112,7 +112,7 @@ const NavBaLinks = ({ session }) => {
             className="object-cover w-16 h-16 dark:bg-light dark:rounded-md dark:w-14 dark:h-14"
             width={100}
             height={100}
-            priority={false}
+            loading="lazy"
           />
           <span
             className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light lg:hidden`}

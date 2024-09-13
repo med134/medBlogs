@@ -11,31 +11,28 @@ const HomePage = ({ child, side }) => {
   const [sidebarTop, setSidebarTop] = useState("");
 
   useEffect(() => {
+    const isSticky = (e) => {
+      const sidebarEl = document.querySelector(".sidebar");
+      const scrollTop = window.scrollY;
+      sidebarEl.classList.toggle("sticky", scrollTop > sidebarTop);
+      if (scrollTop >= sidebarTop - 10 && scrollTop <= sidebarTop + 1100) {
+        sidebarEl.classList.add("is-sticky");
+      } else {
+        sidebarEl.classList.remove("is-sticky");
+      }
+    };
     const sidebarEl = document
       .querySelector(".sidebar")
       .getBoundingClientRect();
     setSidebarWidth(sidebarEl.width);
     setSidebarTop(sidebarEl.top);
-  }, []);
-
-  useEffect(() => {
     if (!sidebarTop) return;
     window.addEventListener("scroll", isSticky);
     return () => {
       window.removeEventListener("scroll", isSticky);
     };
-  });
+  }, [sidebarTop]);
 
-  const isSticky = (e) => {
-    const sidebarEl = document.querySelector(".sidebar");
-    const scrollTop = window.scrollY;
-    sidebarEl.classList.toggle("sticky", scrollTop > sidebarTop);
-    if (scrollTop >= sidebarTop - 10 && scrollTop <= 2200) {
-      sidebarEl.classList.add("is-sticky");
-    } else {
-      sidebarEl.classList.remove("is-sticky");
-    }
-  };
 
   return (
     <div className="p-10 xl:p-6 sm:p-2 xs:p-2 dark:bg-dark">
