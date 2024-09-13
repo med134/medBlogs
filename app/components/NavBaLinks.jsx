@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import med from "@/public/images/logo-med-removebg-preview.png";
+import med from "@/public/images/logo-med-removebg-preview.webp";
 import { limelight } from "./Fonts";
 import { FiX } from "react-icons/fi";
 import { MoonIcon, SunIcon } from "./Icons";

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import icon from "/public/images/development-amico.png";
+import icon from "/public/images/development-amico.webp";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { getPosts, FormatDate } from "../utils/action";
 

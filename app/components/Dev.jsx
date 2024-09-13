@@ -28,8 +28,9 @@ const Dev = async () => {
                 <Image
                   src={item.cover_image}
                   alt={item.title}
-                  width={400}
-                  height={300}
+                  width={300}
+                  height={200}
+                  quality={50}
                   loading="lazy"
                   className="md:w-full"
                 />
