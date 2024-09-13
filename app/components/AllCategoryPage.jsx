@@ -26,8 +26,8 @@ const AllCategoryPage = ({ sortedPosts }) => {
   const currentBlog = blog.slice(indexOfFirstBlog, indexOfLastBlog);
   const totalPages = Math.ceil(blog.length / perPage);
   return (
-    <div className="bg-light px-16 dark:bg-dark">
-      <div className="grid justify-center grid-cols-3 gap-6 mt-8 md:block">
+    <div className="">
+      <div className="grid justify-center grid-cols-3 gap-6 mt-8 md:block bg-light px-16 sm:px-6 dark:bg-dark">
         {currentBlog.length > 0 ? (
           currentBlog?.map((item) => (
             <div

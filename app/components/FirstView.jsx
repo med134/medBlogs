@@ -11,15 +11,15 @@ const FirstView = async () => {
   return (
     <div
       id="home"
-      className="py-32 sm:mb-10 xs:pb-24 xl:pb-1 bg-light dark:bg-dark"
+      className="py-32 sm:mb-10 xl:pb-1 bg-light dark:bg-dark"
     >
       {publicPosts?.map((item, index) =>
         index < 1 ? (
           <div
             key={item._id}
-            className="grid grid-cols-5 px-24 relative p-8 sm:p-2 md:flex md:flex-col xl:px-16 sm:px-2 "
+            className="grid grid-cols-5 px-24 p-8 sm:p-2 md:grid md:grid-cols-1 xl:px-16 sm:px-2"
           >
-            <div className="md:w-full p-2 col-span-3">
+            <div className="p-2 col-span-3">
               <span className="flex justify-start items-center py-2 dark:text-light">
                 <FaRegCalendarAlt className="w-5 h-5 text-gray-800 dark:text-light" />
                 <span className="ml-2 font-semibold dark:text-light xs:text-sm">
@@ -47,7 +47,7 @@ const FirstView = async () => {
                 className="flex justify-start items-center"
                 aria-current="page"
               >
-                <span className="bg-light p-1 xs:bg-transparent dark:bg-slate-800 dark:text-light uppercase text-gray-800 rounded-md font-semibold hover:bg-slate-800 hover:text-white transition-transform duration-75 ease-out xs:py-4">
+                <span className="bg-light p-1 xs:bg-transparent xs:text-sm dark:bg-slate-800 dark:text-light uppercase text-gray-800 rounded-md font-semibold hover:bg-slate-800 hover:text-white transition-transform duration-75 ease-out xs:py-4">
                   {item.category} {item.tags}
                 </span>
               </Link>
@@ -60,7 +60,7 @@ const FirstView = async () => {
                 <span>Read more...</span>
               </Link>
             </div>
-            <div className="w-full rounded-xl md:hidden col-span-2 ml-6">
+            <div className="w-full rounded-xl md:hidden col-span-2 ml-6 xs:ml-2">
               <Image
                 alt={item.title}
                 src={icon}
