@@ -77,7 +77,7 @@ const BlogPage = async ({ params }) => {
                   href={`/dashboard/profile/${blog.username
                     .replace(/\s+/g, "-")
                     .toLowerCase()}`}
-                  className="text-blue-600 text-sm lowercase"
+                  className="text-blue-600 text-sm lowercase dark:text-light"
                 >
                   {blog?.username}
                 </Link>

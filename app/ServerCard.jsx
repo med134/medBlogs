@@ -79,11 +79,11 @@ const Card = async () => {
               <Image
                 src={item.image}
                 alt={item.title}
-                width={200}
-                height={200}
+                width={300}
+                height={300}
                 loading="lazy"
                 quality={60}
-                className="object-contain rounded-xl max-w-xl xl:w-64 xs:w-full h-52 border border-gray-500"
+                className="object-contain rounded-xl max-w-xl xl:w-64 xs:w-full border border-gray-500"
               />
             </div>
           </section>

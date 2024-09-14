@@ -11,14 +11,10 @@ import useThemeSwitcher from "./hooks/useThemeSwitcher";
 import { handelLogOut } from "../utils/action";
 import { usePathname } from "next/navigation";
 
-const DynamicProfile = dynamic(() => import("./ProfileDown"), {
-  suspense: true,
-});
-const CloseMenu = dynamic(() => import("./CloseMenu"), {
-  suspense: true,
-});
+const DynamicProfile = dynamic(() => import("./ProfileDown"), { ssr: false });
+const CloseMenu = dynamic(() => import("./CloseMenu"), { ssr: false });
 const SocialLinks = dynamic(() => import("./LinkNavBarSocialMedia"), {
-  suspense: true,
+  ssr: false,
 });
 
 export const CustomLink = ({ href, title, className = "" }) => {
@@ -46,7 +42,7 @@ const NavBaLinks = ({ session }) => {
   };
   const [sticky, setSticky] = useState(false);
   const path = usePathname();
-  console.log(path)
+  console.log(path);
 
   const handleStickyNavbar = () => {
     if (window.scrollY >= 80) {
@@ -60,7 +56,9 @@ const NavBaLinks = ({ session }) => {
   });
   return (
     <header
-      className={`${path.startsWith("/dashboard") ? "hidden" : "flex"} header py-6 z-40 w-[100%] items-center bg-transparent xl:px-6 ${
+      className={`${
+        path.startsWith("/dashboard") ? "hidden" : "flex"
+      } header py-6 z-40 w-[100%] items-center bg-transparent xl:px-6 ${
         sticky
           ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
           : "absolute"

@@ -3,11 +3,9 @@ import Link from "next/link";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { VscPreview } from "react-icons/vsc";
 import Image from "next/image";
-import PageNotFound from "@/app/not-found";
 import CodeEditor from "@/app/components/CodeEditor";
 import BlogAction from "@/app/components/BlogAction";
 import ShareButtons from "@/app/components/ShareButtons";
-import FilterTemplates from "@/app/components/FilterTemplates";
 import { getTemplatesBySlug, getTemplates } from "@/app/utils/action";
 
 export async function generateMetadata({ params }) {

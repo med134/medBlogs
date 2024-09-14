@@ -2,7 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/images/logo.png";
-import SearchTwo from "./SearchTwo";
+import dynamic from "next/dynamic";
+const SearchTwo = dynamic(() => import("./SearchTwo"))
 
 const CloseMenu = ({ handleClick, session }) => {
   const CustomMobileLink = ({ href, title, className = "" }) => {
@@ -34,6 +35,7 @@ const CloseMenu = ({ handleClick, session }) => {
           priority={false}
           width={100}
           height={100}
+          quality={30}
         />
         <div className="block mt-2">
           <p className="font-Yeseva text-3xl text-light dark:text-dark">
