@@ -8,7 +8,7 @@ const Easy = async () => {
   const templates = await getTemplates();
 
   return (
-    <section id="templates" className="bg-light dark:bg-dark">
+    <section id="templates" className="bg-light dark:bg-dark mb-12 sm:mb-6">
       <span className="text-2xl underline dark:text-light xs:pt-6 font-bold flex justify-start items-center text-gray-800 font-slab px-12 xs:px-4 xs:text-xl pt-16 py-2">
         <AiTwotoneSound className="dark:text-light" />
         <p className="ml-2 sm:text-xl ">Recent Templates & components</p>

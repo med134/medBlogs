@@ -47,18 +47,28 @@ const FirstView = async () => {
                 className="flex justify-start items-center"
                 aria-current="page"
               >
-                <span className="bg-light p-1 xs:bg-transparent xs:text-sm dark:bg-slate-800 dark:text-light uppercase text-gray-800 rounded-md font-semibold hover:bg-slate-800 hover:text-white transition-transform duration-75 ease-out xs:py-4">
+                <span className="bg-light p-1 xs:bg-transparent xs:text-sm dark:bg-slate-800  dark:text-light uppercase text-gray-800 rounded-md font-semibold hover:bg-slate-800 hover:text-white transition-transform duration-75 ease-out xs:py-4">
                   {item.category} {item.tags}
                 </span>
               </Link>
+              <div className="flex justify-start items-center"> 
               <Link
                 rel="preload"
                 aria-current="page"
                 href={`/blogs/${item.slug}`}
-                className="inline-flex py-3 items-center mt-8 first-line:mt-4 mr-2  justify-center rounded-md dark:text-dark bg-sky-800 px-16 text-center text-white duration-150 md:mb-4 hover:translate-y-1 hover:bg-sky-500 dark:bg-light"
+                className="inline-flex py-2.5 items-center xs:py-1.5 xs:text-xs mt-8 first-line:mt-4 mr-2  justify-center xs:justify-start rounded-md dark:text-dark bg-sky-800 px-16 xs:px-8 text-center text-white hover:text-dark md:mb-4 md:px-10 hover:bg-transparent hover:border hover:border-sky-800 dark:bg-light"
               >
                 <span>Read more...</span>
               </Link>
+              <Link
+                rel="preload"
+                aria-current="page"
+                href={`/category/all`}
+                className="inline-flex py-2.5 items-center xs:py-1.5 xs:text-xs mt-8 xs:justify-start first-line:mt-4 mr-2 hover:text-light justify-center rounded-md dark:text-dark border border-sky-800 md:px-10 xs:px-10  px-16 text-center text-dark  md:mb-4 hover:bg-sky-800 dark:bg-light"
+              >
+                <span>Explore Blogs</span>
+              </Link>
+              </div>
             </div>
             <div className="w-full rounded-xl md:hidden col-span-2 ml-6 xs:ml-2">
               <Image
