@@ -11,6 +11,11 @@ const AddNewArticle = ({ user }) => {
   const [selectStatus, setSelectStatus] = useState("draft");
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
+  const [dataUrl, setDataUrl] = useState("");
+  const [canvasVisible, setCanvasVisible] = useState(true);
+  const [dataUrlVisible, setDataUrlVisible] = useState(true);
+  const canvasRef = useRef(null);
+  const textareaRef = useRef(null);
   const [error, setError] = useState("");
   const TITLE_MODAL = "Article is Created";
   const DESC_MODAL = "your article is created successfully ";
@@ -41,7 +46,7 @@ const AddNewArticle = ({ user }) => {
     e.preventDefault();
     const title = e.target[0].value;
     const tags = e.target[1].value;
-    const image = e.target[2].value;
+    const image = dataUrl;
     const description = e.target[3].value;
     const blogSlug = e.target[4].value;
     const blogS = blogSlug.replace(/\s+/g, "-").toLowerCase();
@@ -80,6 +85,39 @@ const AddNewArticle = ({ user }) => {
     }
   };
 
+  const readURL = (event) => {
+    const input = event.target;
+
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        const avatarImg = new Image();
+        const src = reader.result;
+        setDataUrl(src);
+
+        avatarImg.onload = () => {
+          const canvas = canvasRef.current;
+          const ctx = canvas.getContext("2d");
+          ctx.canvas.width = avatarImg.width;
+          ctx.canvas.height = avatarImg.height;
+          ctx.drawImage(avatarImg, 0, 0);
+        };
+
+        avatarImg.src = src;
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  };
+/* 
+  const toggleCanvas = () => {
+    setCanvasVisible(!canvasVisible);
+  };
+
+  const toggleDataUrl = () => {
+    setDataUrlVisible(!dataUrlVisible);
+  }; */
+
   return (
     <div className="inline-block max-h-full p-8 py-8 sm:p-2 sm:py-2">
       <h1 className="text-gray-700 text-2xl lg:text-2xl font-bold">
@@ -103,12 +141,17 @@ const AddNewArticle = ({ user }) => {
                 placeholder="tags"
                 className="h-12 w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
               />
-              <input
-                required
-                type="text"
-                placeholder="Image link url"
-                className="h-12 w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
-              />
+              <div>
+                <input
+                  required
+                  type="file"
+                  accept="image/*"
+                  id="image"
+                  onChange={readURL}
+                  className="h-12 w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
+                />
+
+              </div>
               <textarea
                 required
                 type="text"
@@ -193,7 +236,7 @@ const AddNewArticle = ({ user }) => {
             </button>
           </form>
         </div>
-      )}    
+      )}
     </div>
   );
 };

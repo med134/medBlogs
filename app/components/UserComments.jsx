@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-
+import styles from "../components/comments/comments.module.css"
 const UserComments = ({data}) => {
   return (
     <>

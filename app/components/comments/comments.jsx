@@ -1,9 +1,9 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import styles from "./comments.module.css";
 import Image from "next/image";
 import useSWR from "swr";
-import { useState } from "react";
 import Loading from "@/app/Loading";
 import dynamic from "next/dynamic";
 const UserComments = dynamic(() => import("../UserComments"), { ssr: false });
