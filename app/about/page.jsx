@@ -1,4 +1,4 @@
-import AnimatedText from "../components/AnimatedText";
+import React from "react";
 import TransitionEffect from "../components/TransitionEffect";
 import { AnimatedNumbers } from "../components/AnimatedNumbers";
 import Layout from "../components/Layout";
@@ -7,11 +7,8 @@ import Link from "next/link";
 import Experience from "../components/Experience";
 import Skills from "../components/Skills";
 import Education from "../components/Education";
-import React from "react";
 import profilePic from "@/public/images/med.jpg";
-import { FaGithubAlt, FaInstagram, FaLinkedin,FaWhatsapp } from "react-icons/fa6";
-import { FaYoutube, FaDev } from "react-icons/fa";
-import { MdAttachEmail } from "react-icons/md";
+import { ContactMenu } from "../components/ProjectArrays";
 
 export const metadata = {
   title: "About us & Resume & Experience | medCode ",
@@ -36,54 +33,20 @@ export const metadata = {
   },
 };
 
-const contact = [
-  {
-    name: "Whatsapp",
-    link: "whatsapp://send?text=Hello!&phone=+212600462196",
-    icon: FaWhatsapp,
-  },
-  {
-    name: "Instagram",
-    link: "https://www.instagram.com/med_dakir/",
-    icon: FaInstagram,
-  },
-  {
-    name: "Linkedin",
-    link: "https://www.linkedin.com/in/mohammed-dakir/",
-    icon: FaLinkedin,
-  },
-  {
-    name: "Youtube",
-    link: "https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A",
-    icon: FaYoutube,
-  },
-  {
-    name: "Github",
-    link: "https://github.com/med134",
-    icon: FaGithubAlt,
-  },
-  {
-    name: "DEV.to",
-    link: "https://dev.to/med_code",
-    icon: FaDev,
-  },
-];
-
 const page = () => {
   return (
     <>
       <TransitionEffect />
       <main className="flex w-full flex-col items-center bg-light dark:bg-dark justify-center dark:text-light pt-24 lg:pt-10 md:pt-6 sm:pt-4">
         <Layout className="xs:p-10">
-          <AnimatedText
-            text="Passion Fuels Purpose!"
-            className="mb-16 !leading-tight lg:!text-7xl sm:!text-6xl xs:text-xl sm:mb-8 md:text-2xl"
-          />
+          <h1 className="mb-16 text-7xl font-extrabold text-center font-sans !leading-tight lg:!text-7xl sm:text-6xl xs:text-xl sm:mb-8 md:text-2xl">
+            Passion Fuels Purpose!
+          </h1>
           <div className="grid w-full grid-cols-8 gap-16 md:flex md:flex-col sm:gap-8">
             <div className="col-span-3 flex flex-col items-start justify-start xl:col-span-4 md:order-2 md:col-span-8">
-              <p className="mb-4 text-lg font-bold underline uppercase text-dark/75 dark:text-light/75">
+              <span className="mb-4 text-lg font-bold underline uppercase text-dark/75 dark:text-light/75">
                 Biography
-              </p>
+              </span>
               <p className="font-lexend text-xl">
                 Hi, I&apos;m med, a web developer and UI/UX designer with a
                 passion for creating beautiful, functional, and user-centered
@@ -96,7 +59,7 @@ const page = () => {
                 Contact Me
               </span>
               <div className="flex justify-start items-center flex-wrap">
-                {contact.map((link) => {
+                {ContactMenu.map((link) => {
                   const LinkIcon = link.icon;
                   return (
                     <div key={link.name} className="py-2 ml-5">

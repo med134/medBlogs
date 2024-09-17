@@ -92,7 +92,6 @@ const page = async () => {
             project with different frameworks.
           </h3>
         </div>
-        {/* filter templates */}
         <TemplatesPreview data={data} />
       </div>
     </>

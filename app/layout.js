@@ -1,13 +1,9 @@
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import dynamic from "next/dynamic";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-const CookiesBanner = dynamic(() => import("./components/Cookies"), {
-  ssr: false,
-});
 import { inter } from "./components/Fonts";
 import Script from "next/script";
 
@@ -56,13 +52,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} w-[100%]`}
-        suppressHydrationWarning={true}
-      >
+      <body className={`${inter.className}`}>
         <NavBar />
         <Script
-         strategy="lazyOnload"
+          strategy="lazyOnload"
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-J4KQVRLWEN"
         ></Script>

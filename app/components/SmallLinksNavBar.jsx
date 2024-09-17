@@ -8,7 +8,6 @@ import { handelLogOut } from "../utils/action";
 import { GithubIcon, LinkedInIcon } from "./Icons";
 import { AiFillYoutube } from "react-icons/ai";
 import { BsInstagram } from "react-icons/bs";
-import { MoonIcon, SunIcon } from "./Icons";
 import Link from "next/link";
 
 const SmallLinksNavBar = ({ session }) => {
@@ -44,40 +43,42 @@ bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
           }
         />
         <div className="line bg-gray-600 w-full h-1"></div>
+        <CustomMobileLink key="home" href="/" title="Home" className="" />
         <CustomMobileLink
-          href="/"
-          title="Home"
-          className=""
-        />
-        <CustomMobileLink
-          href="/contact-us"
-          title="Contact us"
+          key="about"
+          href="/about"
+          title="About us"
           className="contact"
         />
         <CustomMobileLink
+          key="projects"
           href="/projects"
           title="Projects"
           className="projects"
         />
 
         <CustomMobileLink
+          key="templates"
           href="/templates"
           title="Templates"
           className="templates"
         />
         <CustomMobileLink
+          key="dev"
           href="/dev.to-blogs"
           title="DEV.TO"
           className="templates"
         />
         {session?.user ? (
           <CustomMobileLink
+            key="dashboard"
             href="/dashboard"
             title="Dashboard"
             className=""
           />
         ) : (
           <CustomMobileLink
+            key="login"
             href="/login"
             title="Login"
             className=""

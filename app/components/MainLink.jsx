@@ -1,13 +1,19 @@
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import dynamic from "next/dynamic";
 import { CustomLink } from "./CustomLinks";
 import med from "@/public/images/logo-med-removebg-preview.webp";
-import { limelight } from "./Fonts";
-const DynamicProfile = dynamic(() => import("./ProfileDown"));
+import ProfileDown from "./ProfileDown";
+import { Limelight } from "next/font/google";
+import Link from "next/link";
 
-const MainLink = ({session}) => {
+const limelight = Limelight({
+  subsets: ["latin"],
+  variables: "-limelight",
+  weight: "400",
+  display: "swap",
+});
+
+const MainLink = ({ session }) => {
   return (
     <div
       className={`w-full px-24 flex justify-between items-center font-semibold xl:px-6`}
@@ -32,24 +38,28 @@ const MainLink = ({session}) => {
       </Link>
       <div className="flex items-center justify-evenly xl:ml-6 bg-transparent z-50">
         <CustomLink
+          key="projects"
           href="/projects"
           title="projects"
           className="mx-4 uppercase dark:text-light"
           target="_blank"
         />
         <CustomLink
+          key="templates"
           href="/templates"
           title="Templates"
           className="mx-4 uppercase dark:text-light"
           target="_blank"
         />
         <CustomLink
+          key="about"
           href="/about"
           title="About Us"
           className="mx-4 uppercase dark:text-light"
           target="_blank"
         />
         <CustomLink
+          key="dev"
           href="/dev.to-blogs"
           title="DEV.TO"
           className="mx-4 uppercase dark:text-light"
@@ -58,6 +68,7 @@ const MainLink = ({session}) => {
 
         {session ? (
           <CustomLink
+            key="dashboard"
             href="/dashboard"
             title="Dashboard"
             className="mx-4 uppercase dark:text-light"
@@ -65,13 +76,14 @@ const MainLink = ({session}) => {
           />
         ) : (
           <CustomLink
+            key="login"
             href="/login"
             title="Create Post"
             className="mx-4 uppercase dark:text-light"
             target="_blank"
           />
         )}
-        <>{session?.user && <DynamicProfile session={session} />}</>
+        <>{session?.user && <ProfileDown session={session} />}</>
       </div>
     </div>
   );
