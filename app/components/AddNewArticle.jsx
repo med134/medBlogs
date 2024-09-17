@@ -109,7 +109,7 @@ const AddNewArticle = ({ user }) => {
       reader.readAsDataURL(input.files[0]);
     }
   };
-/* 
+  /* 
   const toggleCanvas = () => {
     setCanvasVisible(!canvasVisible);
   };
@@ -141,17 +141,22 @@ const AddNewArticle = ({ user }) => {
                 placeholder="tags"
                 className="h-12 w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
               />
-              <div>
+              <div className="max-w-md mx-auto border border-gray-200 px-10 p-2 rounded-md">
+                <label className="text-base text-gray-500 font-semibold mb-2 block">
+                  Upload Image
+                </label>
                 <input
-                  required
                   type="file"
-                  accept="image/*"
-                  id="image"
                   onChange={readURL}
-                  className="h-12 w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
+                  id="image"
+                  accept="image/*"
+                  className="w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"
                 />
-
+                <p className="text-xs text-gray-400 mt-2">
+                  PNG, JPG SVG, WEBP, and GIF are Allowed.
+                </p>
               </div>
+
               <textarea
                 required
                 type="text"
