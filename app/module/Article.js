@@ -12,6 +12,7 @@ const articleSchema = new Schema(
     },
     image: {
       type: String,
+      required: false,
     },
     description: {
       type: String,

@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import SidBar from "@/app/components/SidBar";
 import { auth } from "@/app/utils/auth";
+import imageBlog from "@/public/images/postera.png";
 import { getPostsBySlug, FormatDate } from "@/app/utils/action";
 import "jodit-react/examples/app.css";
 
@@ -59,6 +60,8 @@ const BlogPage = async ({ params }) => {
   const blog = await getPostsBySlug(slug);
   const content = blog.content;
   const session = await auth();
+  const user = session.user.name;
+  const imageUser = session.user.image;
 
   return (
     <section className="w-full grid grid-cols-7 gap-12 p-10 pt-[160px] lg:block dark:bg-dark xl:p-8 xl:gap-3 sm:p-4 xs:p-2 xl:pt-44 xs:pt-28">
@@ -92,8 +95,9 @@ const BlogPage = async ({ params }) => {
                 {blog.category}
               </Link>
             </div>
+
             <Image
-              src={blog.image ? blog.image : `/public/images/postera.png`}
+              src={blog.image ? blog.image : imageBlog}
               alt={blog.title}
               className="w-[850px] h-80 xs:h-auto object-contain rounded mt-2"
               width={500}
@@ -107,7 +111,7 @@ const BlogPage = async ({ params }) => {
             {blog.tags}
           </h2>
           <div dangerouslySetInnerHTML={{ __html: content }} />
-          <Comments postSlug={blog._id} session={session} />
+          <Comments postSlug={blog._id} user={user} imageUser={imageUser} />
         </div>
       </div>
       <div className="sm:w-full col-span-2 sm:p-6 sticky">

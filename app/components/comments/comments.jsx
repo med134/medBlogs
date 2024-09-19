@@ -8,7 +8,7 @@ import Loading from "@/app/Loading";
 import dynamic from "next/dynamic";
 const UserComments = dynamic(() => import("../UserComments"), { ssr: false });
 
-const Comments = ({ postSlug, session }) => {
+const Comments = ({ postSlug, user,imageUser }) => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, mutate, isLoading } = useSWR(
     `/api/comments?blogId=${postSlug}`,
@@ -22,8 +22,8 @@ const Comments = ({ postSlug, session }) => {
         method: "POST",
         body: JSON.stringify({
           blogId: postSlug,
-          username: session?.user?.name,
-          imageUser: session?.user?.image,
+          username: user,
+          imageUser: imageUser,
           comment,
         }),
       });
@@ -36,7 +36,7 @@ const Comments = ({ postSlug, session }) => {
   return (
     <div className="w-full bg-white rounded-lg border p-2 dark:bg-dark">
       <span className="font-bold text-xl py-6 dark:text-light">Comments</span>
-      {session ? (
+      {user ? (
         <form
           className={`${styles.write} dark:bg-dark dark:text-light p-2`}
           onSubmit={handleSubmit}
@@ -46,7 +46,7 @@ const Comments = ({ postSlug, session }) => {
             height={40}
             loading="lazy"
             quality={40}
-            src={session?.user.image}
+            src={imageUser}
             alt="photo_profile"
             className="w-10 h-10 rounded-[50%] cursor-pointer"
           />
