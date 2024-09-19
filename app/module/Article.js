@@ -12,7 +12,6 @@ const articleSchema = new Schema(
     },
     image: {
       type: String,
-      required: true,
     },
     description: {
       type: String,
@@ -39,6 +38,7 @@ const articleSchema = new Schema(
     },
     username: {
       type: String,
+      required: true,
     },
     userSlug: {
       type: String,

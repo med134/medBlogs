@@ -93,7 +93,7 @@ const BlogPage = async ({ params }) => {
               </Link>
             </div>
             <Image
-              src={blog.image}
+              src={blog.image ? blog.image : `/public/images/postera.png`}
               alt={blog.title}
               className="w-[850px] h-80 xs:h-auto object-contain rounded mt-2"
               width={500}
