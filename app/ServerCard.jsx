@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import BlogImage from "@/public/images/postera.png";
 import { FormatDate, getPostsHome } from "./utils/action";
 const Card = async () => {
   const posts = await getPostsHome();
@@ -76,7 +77,7 @@ const Card = async () => {
           </div>
           <div className="">
             <Image
-              src={item.image}
+              src={item.image ? item.image : BlogImage}
               alt={item.title}
               width={300}
               height={300}

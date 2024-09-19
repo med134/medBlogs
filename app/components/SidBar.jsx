@@ -4,6 +4,7 @@ import Image from "next/image";
 import Cat from "./Cat";
 import SearchTwo from "./SearchTwo";
 import { getPosts } from "../utils/action";
+import BlogImage from "@/public/images/postera.png";
 
 const SidBar = async ({ category, slug }) => {
   const dev = await getPosts();
@@ -34,7 +35,7 @@ const SidBar = async ({ category, slug }) => {
               <div key={item._id} className="flex justify-start items-center">
                 <Image
                   className="object-contain w-36 h-36"
-                  src={item.image.trimEnd()}
+                  src={item.image ? item.image.trimEnd() : BlogImage}
                   alt={item.title}
                   width={200}
                   height={200}

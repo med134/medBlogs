@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import { TbArticleOff } from "react-icons/tb";
+import imageBlog from "@/public/images/postera.png";
 
 const AllCategoryPage = ({ sortedPosts }) => {
   const [blog, setBlog] = useState(sortedPosts);
@@ -42,7 +42,7 @@ const AllCategoryPage = ({ sortedPosts }) => {
                   width={500}
                   height={500}
                   className="object-contain w-full rounded h-44 dark:bg-gray-500 md:object-fill"
-                  src={item.image.trimEnd()}
+                  src={item.image ? item.image.trimEnd() : imageBlog}
                   alt={item.title}
                   loading="lazy"
                 />
@@ -103,10 +103,7 @@ const AllCategoryPage = ({ sortedPosts }) => {
         )}
       </div>
       {blog.length === 0 ? null : (
-        <div
-          aria-label="Page navigation"
-          className="flex justify-center mt-16"
-        >
+        <div aria-label="Page navigation" className="flex justify-center mt-16">
           <ul className="inline-flex -space-x-px text-sm">
             <li>
               <button

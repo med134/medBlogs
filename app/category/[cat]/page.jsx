@@ -2,7 +2,6 @@ import React from "react";
 import styles from "@/app/components/categoryList/categoryList.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import Layout from "@/app/components/Layout";
 import { getAllCat } from "@/app/components/FetchData";
 import AllCategoryPage from "@/app/components/AllCategoryPage";
 

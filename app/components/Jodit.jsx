@@ -6,7 +6,12 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 const MyEditor = () => {
   const editor = useMemo(() => withReact(createEditor()), []);
   const [value, setValue] = useState(initialValue);
-
+  const initialValue = [
+    {
+      type: "paragraph",
+      children: [{ text: "A line of text in a paragraph." }],
+    },
+  ];
   return (
     <div>
       <CKEditor
