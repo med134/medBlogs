@@ -1,18 +1,11 @@
-import SettingsProfile from "@/app/components/SettingsProfile";
 import React from "react";
+import SettingsProfile from "@/app/components/SettingsProfile";
+import { getUserBySlug } from "@/app/utils/action";
 
-async function getUser(userSlug) {
-  const res = await fetch(`https://www.medcode.dev/api/users/${userSlug}`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-}
+
 const page = async ({ params }) => {
   const { userSlug } = params;
-  const user = await getUser(userSlug);
+  const user = await getUserBySlug(userSlug);
   return (
     <main className="py-20">
       <h1 className="text-2xl font-semibold">Edit Profile</h1>

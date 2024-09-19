@@ -37,7 +37,7 @@ const page = () => {
   return (
     <>
       <TransitionEffect />
-      <main className="flex w-full flex-col items-center bg-light dark:bg-dark justify-center dark:text-light pt-24 lg:pt-10 md:pt-6 sm:pt-4">
+      <main className="flex w-full flex-col items-center bg-light dark:bg-dark justify-center dark:text-light pt-24 lg:pt-10 md:pt-6 sm:pt-10">
         <Layout className="xs:p-10">
           <h1 className="mb-16 text-7xl font-extrabold text-center font-sans !leading-tight lg:!text-7xl sm:text-6xl xs:text-xl sm:mb-8 md:text-2xl">
             Passion Fuels Purpose!

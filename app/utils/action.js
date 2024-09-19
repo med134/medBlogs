@@ -39,7 +39,21 @@ export const getPosts = async () => {
   try {
     connectDb();
     const posts = await Article.find().sort({ createdAt: -1 });
-    return posts;
+    const publicPosts = posts?.filter((item) => item.status === "publish");
+    return publicPosts;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch posts!");
+  }
+};
+export const getPostsHome = async () => {
+  try {
+    connectDb();
+    const posts = await Article.find().sort({ createdAt: -1 });
+    const publicPosts = posts?.filter(
+      (item, index) => item.status === "publish" && index < 7 && index > 1
+    );
+    return publicPosts;
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch posts!");
@@ -72,6 +86,16 @@ export const getAllUsers = async () => {
     connectDb();
     const users = await User.find();
     return users;
+  } catch (err) {
+    console.log(err.message);
+    throw new Error("Failed to fetch users!");
+  }
+};
+export const getUserBySlug = async (slug) => {
+  try {
+    connectDb();
+    const user = await User.findOne({ slug });
+    return user;
   } catch (err) {
     console.log(err.message);
     throw new Error("Failed to fetch users!");

@@ -1,5 +1,12 @@
-import { FaGithubAlt, FaInstagram, FaLinkedin,FaWhatsapp } from "react-icons/fa6";
+import {
+  FaGithubAlt,
+  FaInstagram,
+  FaLinkedin,
+  FaWhatsapp,
+  FaSquareXTwitter,
+} from "react-icons/fa6";
 import { FaYoutube, FaDev } from "react-icons/fa";
+
 export const ProjectFull = [
   {
     id: 1,
@@ -85,35 +92,55 @@ export const miniProject = [
     gitHub: "https://github.com/med134/screeshotApp",
   },
 ];
- export const ContactMenu = [
-    {
-      name: "Whatsapp",
-      link: "whatsapp://send?text=Hello!&phone=+212600462196",
-      icon: FaWhatsapp,
-    },
-    {
-      name: "Instagram",
-      link: "https://www.instagram.com/med_dakir/",
-      icon: FaInstagram,
-    },
-    {
-      name: "Linkedin",
-      link: "https://www.linkedin.com/in/mohammed-dakir/",
-      icon: FaLinkedin,
-    },
-    {
-      name: "Youtube",
-      link: "https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A",
-      icon: FaYoutube,
-    },
-    {
-      name: "Github",
-      link: "https://github.com/med134",
-      icon: FaGithubAlt,
-    },
-    {
-      name: "DEV.to",
-      link: "https://dev.to/med_code",
-      icon: FaDev,
-    },
-  ];
+export const ContactMenu = [
+  {
+    name: "Whatsapp",
+    link: "whatsapp://send?text=Hello!&phone=+212600462196",
+    icon: FaWhatsapp,
+  },
+  {
+    name: "Instagram",
+    link: "https://www.instagram.com/med_dakir/",
+    icon: FaInstagram,
+    labelName: "Visit our Instagram profile",
+    className:
+      "w-auto p-2 flex bg-gradient-to-r hover:translate-y-1 from-[#833ab4] via-[#fd1d1d] to-[#fcb045] rounded-sm focus:outline-none focus:ring focus:border-pink-600",
+  },
+  {
+    name: "Linkedin",
+    link: "https://www.linkedin.com/in/mohammed-dakir/",
+    icon: FaLinkedin,
+    ariaLabel:"Visit our LinkedIn profile",
+    className:
+      "w-auto flex bg-[#0a66c2] p-2 rounded-sm hover:translate-y-1 focus:outline-none focus:ring focus:border-pink-600",
+  },
+  {
+    name: "Youtube",
+    link: "https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A",
+    icon: FaYoutube,
+    labelName: "Visit our youtube channel",
+    className:
+      "w-auto flex justify-start p-2 hover:translate-y-1 ease-out all bg-red-600 rounded-sm items-center sm:mx-1 focus:outline-none focus:ring focus:border-red-600",
+  },
+  {
+    name: "X",
+    link: "https://x.com/mohammedda1288?s=21",
+    icon: FaSquareXTwitter,
+    ariaLabel: "Visit our X profile",
+    labelName: "Visit our youtube channel",
+    className:
+      "w-auto flex p-2 rounded-sm text-center hover:translate-y-1 bg-dark focus:outline-none focus:ring focus:border-pink-600",
+  },
+  {
+    name: "Github",
+    link: "https://github.com/med134",
+    ariaLabel:"Visit our github profile",
+    icon: FaGithubAlt,
+     className:"w-auto flex p-2 rounded-sm text-center hover:translate-y-1 bg-dark text-pink-600 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
+  },
+  {
+    name: "DEV.to",
+    link: "https://dev.to/med_code",
+    icon: FaDev,
+  },
+];

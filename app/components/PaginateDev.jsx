@@ -20,7 +20,7 @@ const PaginateDev = ({ dev }) => {
       {currentBlog?.map((item) => (
         <div
           key={item.id}
-          className="flex max-lg:flex-col bg-white dark:bg-dark sm:flex sm:flex-col cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] hover:scale-[1.03] transition-all duration-300"
+          className="flex max-lg:flex-col bg-white dark:bg-dark md:mb-3 sm:flex sm:flex-col cursor-pointer rounded overflow-hidden shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] hover:scale-[1.03] transition-all duration-300"
         >
           <div className="h-64 lg:w-full xs:h-auto">
             <Image

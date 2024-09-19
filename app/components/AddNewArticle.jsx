@@ -5,17 +5,14 @@ import IsUpdate from "./IsUpdate";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 import "jodit-react/examples/app.css";
 
-const AddNewArticle = ({ user }) => {
+const AddNewArticle = ({ session }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const [selectStatus, setSelectStatus] = useState("draft");
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
   const [dataUrl, setDataUrl] = useState("");
-  const [canvasVisible, setCanvasVisible] = useState(true);
-  const [dataUrlVisible, setDataUrlVisible] = useState(true);
   const canvasRef = useRef(null);
-  const textareaRef = useRef(null);
   const [error, setError] = useState("");
   const TITLE_MODAL = "Article is Created";
   const DESC_MODAL = "your article is created successfully ";
@@ -69,8 +66,8 @@ const AddNewArticle = ({ user }) => {
           job,
           status,
           content,
-          username: user,
-          userSlug: user.replace(/\s+/g, "-").toLowerCase(),
+          username: session?.user?.name,
+          userSlug: session?.user?.name.replace(/\s+/g, "-").toLowerCase(),
         }),
       });
       if (response.ok) {
@@ -109,15 +106,6 @@ const AddNewArticle = ({ user }) => {
       reader.readAsDataURL(input.files[0]);
     }
   };
-  /* 
-  const toggleCanvas = () => {
-    setCanvasVisible(!canvasVisible);
-  };
-
-  const toggleDataUrl = () => {
-    setDataUrlVisible(!dataUrlVisible);
-  }; */
-
   return (
     <div className="inline-block max-h-full p-8 py-8 sm:p-2 sm:py-2">
       <h1 className="text-gray-700 text-2xl lg:text-2xl font-bold">
@@ -206,7 +194,7 @@ const AddNewArticle = ({ user }) => {
               <select
                 id="selectStatus"
                 value={selectStatus}
-                disabled={user === "MOHAMMED DAKIR" ? false : true}
+                disabled={session.user.name === "MOHAMMED DAKIR" ? false : true}
                 onChange={handelStatus}
                 className="h-12 w-full max-w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
               >

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import IsUpdate from "./IsUpdate";
 
-const AddNewPost = ({ user }) => {
+const AddNewPost = ({ session }) => {
   const [selectedJobs, setSelectedJobs] = useState("");
   const [selectStatus, setSelectStatus] = useState("draft");
   const [successful, setSuccessful] = useState(false);
@@ -43,7 +43,7 @@ const AddNewPost = ({ user }) => {
           job,
           status,
           code,
-          username: user.name,
+          username: session?.user.name,
         }),
       });
       mutate();
@@ -114,7 +114,7 @@ const AddNewPost = ({ user }) => {
           <select
             id="selectStatus"
             value={selectStatus}
-            disabled={user?.name === "MOHAMMED DAKIR" ? false : true}
+            disabled={session?.user?.name === "MOHAMMED DAKIR" ? false : true}
             onChange={handelStatus}
             className="h-12 w-full rounded-md border m-3  bg-white px-5 text-sm outline-none focus:ring"
           >

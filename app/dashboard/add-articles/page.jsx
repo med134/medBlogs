@@ -43,10 +43,9 @@ export const metadata = {
 };
 const Page = async () => {
   const session = await auth();
-  const user = session?.user.name;
   return (
     <div className="h-full">
-      <AddNewArticle user={user} />
+      <AddNewArticle session={session} />
     </div>
   );
 };

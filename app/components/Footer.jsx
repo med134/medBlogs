@@ -157,7 +157,7 @@ const Footer = () => {
         <div className="text-sm text-gray-600 dark:text-light">
           © Copyright 2024{" "}
           <Link
-            href="https://www.medcode.dev/about"
+            href="/about"
             target="_blank"
             className="font-bold text-borderColor dark:text-light"
           >
@@ -165,16 +165,16 @@ const Footer = () => {
           </Link>
           . All rights reserved./
           <Link
-            href="https://www.medcode.dev/privacy-policy"
+            href="/privacy-policy"
             target="_blank"
-            className="text-sm font-bold underline hover:text-purple-800 hover:font-semibold dark:text-light"
+            className="text-sm font-bold underline hover:text-purple-800 dark:text-light"
           >
             privacy policy
           </Link>
           <Link
-            href="https://www.medcode.dev/terms-and-conditions"
+            href="/terms-and-conditions"
             target="_blank"
-            className="text-sm ml-3 font-bold underline hover:text-purple-800 hover:font-semibold dark:text-light"
+            className="text-sm ml-3 font-bold underline hover:text-purple-800 dark:text-light"
           >
             Terms & Conditions
           </Link>

@@ -17,7 +17,6 @@ const FormatDate = (dateString) => {
 };
 
 const EditPending = ({ draftBlog }) => {
-  const [posts, setPosts] = useState(draftBlog);
   const router = useRouter();
   const [showModel, setShowModel] = useState(false);
   const [articleDelete, setArticleDelete] = useState("");
@@ -26,7 +25,7 @@ const EditPending = ({ draftBlog }) => {
     setShowModel(!showModel);
     setArticleDelete(slug);
   };
-
+  
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Draft Blogs</h1>
@@ -42,8 +41,8 @@ const EditPending = ({ draftBlog }) => {
               </tr>
             </thead>
             <tbody>
-              {posts.length > 0 ? (
-                posts?.map((blog) => (
+              {draftBlog.length > 0 ? (
+                draftBlog?.map((blog) => (
                   <tr
                     key={blog.slug}
                     className="p-2 px-4 py-2 max-w-full justify-between items-center border border-gray-100"
