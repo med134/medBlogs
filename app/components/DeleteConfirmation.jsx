@@ -5,9 +5,9 @@ const DeleteConfirmation = ({ blogDelete, onClose, blogTitle }) => {
   const reloadPage = () => {
     window.location.reload();
   };
-  const handleDelete = async (blogDelete) => {
+  const handleDelete = async (slug) => {
     try {
-      const response = await fetch(`/api/articles/${blogDelete}`, {
+      const response = await fetch(`/api/articles/${slug}`, {
         method: "DELETE",
       });
       if (response.ok) {

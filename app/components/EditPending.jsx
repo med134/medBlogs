@@ -19,11 +19,9 @@ const FormatDate = (dateString) => {
 const EditPending = ({ draftBlog }) => {
   const router = useRouter();
   const [showModel, setShowModel] = useState(false);
-  const [articleDelete, setArticleDelete] = useState("");
 
   const closeModelDelete = (slug) => {
     setShowModel(!showModel);
-    setArticleDelete(slug);
   };
   
   return (
@@ -80,9 +78,9 @@ const EditPending = ({ draftBlog }) => {
 
                     {showModel && (
                       <DeleteConfirmation
-                        blogDelete={articleDelete}
+                        blogDelete={blog.slug}
                         onClose={closeModelDelete}
-                        blogTitle={articleDelete}
+                        blogTitle={blog.title}
                       />
                     )}
                   </tr>
