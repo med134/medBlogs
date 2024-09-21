@@ -35,29 +35,6 @@
 .brand {
   grid-area: brand;
 }
-/* .book {
-  background: linear-gradient(
-    90deg,
-    rgba(87, 23, 116, 1) 3%,
-    rgba(101, 60, 130, 1) 51%,
-    rgba(171, 119, 190, 1) 100%
-  );
-} */
-/* .headerTitle {
-  font-size: 72px;
-  background: rgb(101, 60, 130);
-  background: linear-gradient(
-    170deg,
-    rgba(101, 60, 130, 1) 3%,
-    rgba(214, 108, 9, 1) 51%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-} */
-/* .image-container {
-  position: relative;
-  overflow: hidden;
-} */
 
 .overlay {
   position: absolute;
@@ -96,16 +73,7 @@
 .preview {
   grid-area: preview;
 }
-/* .logo::before {
-  content: "";
-  background: linear-gradient(315deg, #00ccff, #184345, #c3a29f);
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  transition: 0.5s;
-  position: relative;
-  animation: animate 1s linear infinite forwards;
-} */
+
 .line {
   height: 1px;
   width: full;
@@ -118,26 +86,6 @@
     transform: rotate(360deg);
   }
 }
-
-/* .animate-charcter {
-  background-image: linear-gradient(
-    -225deg,
-    #231557 0%,
-    #1907bb 29%,
-    #46eaf5 67%,
-    #446780 100%
-  );
-  background-size: auto auto;
-  background-clip: border-box;
-  background-size: 200% auto;
-  color: #fff;
-  background-clip: text;
-  text-fill-color: transparent;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textclip 3s linear infinite;
-  display: inline-block;
-} */
 
 @keyframes textclip {
   to {
@@ -163,25 +111,7 @@
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
-/* .design {
-  background-image: linear-gradient(
-    -225deg,
-    #336872 0%,
-    #09a1c3 29%,
-    #46eaf5 67%,
-    #fff800 100%
-  );
-  background-size: auto auto;
-  background-clip: border-box;
-  background-size: 300% auto;
-  font-weight: 500;
-  color: #fff;
-  background-clip: text;
-  text-fill-color: transparent;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-} */
+
 .containerBlog {
   display: grid;
   grid-template-columns: auto 400px;
@@ -282,4 +212,40 @@
     );
   background-size: 3em 3em;
   background-color: #ffffff;
+}
+
+/* sticky sidebar */
+.left-sideT {
+  width: 350px;
+  height: 480px;
+  display: inline-block;
+  position: sticky;
+  top: 110px;
+}
+
+.sectionT {
+  padding: 20px 0;
+}
+
+.right-sideT {
+  vertical-align: top;
+}
+
+.boxT {
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* sticky sidebar blogs page single */
+.myLeftSide{
+  width: 350px;
+  height: 980px;
+  display: inline-block;
+  position: sticky;
+  top: 110px;
+}
+.myRightSide {
+  vertical-align: top;
 }

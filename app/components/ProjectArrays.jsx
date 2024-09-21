@@ -99,6 +99,11 @@ export const ContactMenu = [
     icon: FaWhatsapp,
   },
   {
+    name: "DEV.to",
+    link: "https://dev.to/med_code",
+    icon: FaDev,
+  },
+  {
     name: "Instagram",
     link: "https://www.instagram.com/med_dakir/",
     icon: FaInstagram,
@@ -138,9 +143,5 @@ export const ContactMenu = [
     icon: FaGithubAlt,
      className:"w-auto flex p-2 rounded-sm text-center hover:translate-y-1 bg-dark text-pink-600 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
   },
-  {
-    name: "DEV.to",
-    link: "https://dev.to/med_code",
-    icon: FaDev,
-  },
+
 ];

@@ -3,9 +3,10 @@ import { ContactMenu } from "./ProjectArrays";
 
 const CategoryCard = () => {
   return (
-    <div className="w-full flex justify-between items-start mb-4 sm:mb-2">
-      {ContactMenu.map((item) => {
+    <div className="w-full flex justify-around items-start mb-4 sm:mb-2">
+      {ContactMenu.map((item,index) => {
         const LinkIcon = item.icon;
+        if(index > 1 ){
         return (
           <a
             key={item.name}
@@ -18,10 +19,9 @@ const CategoryCard = () => {
           >
             <LinkIcon size={24} className="text-white" />
           </a>
-        );
+        )}
       })}
     </div>
   );
 };
-
 export default CategoryCard;

@@ -3,6 +3,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import SidBar from "@/app/components/SidBar";
+import "@/app/globals.css";
 import { auth } from "@/app/utils/auth";
 import imageBlog from "@/public/images/postera.png";
 import { getPostsBySlug, FormatDate } from "@/app/utils/action";
@@ -60,14 +61,15 @@ const BlogPage = async ({ params }) => {
   const blog = await getPostsBySlug(slug);
   const content = blog.content;
   const session = await auth();
-  const user = session?.user?.name;
-  const imageUser = session?.user?.image;
+  const userData = JSON.parse(JSON.stringify(session));
 
-  return (
-    <section className="w-full grid grid-cols-7 gap-12 p-10 pt-[160px] lg:block dark:bg-dark xl:p-8 xl:gap-3 sm:p-4 xs:p-2 xl:pt-44 xs:pt-28">
-      <div className="col-span-5 flex flex-wrap justify-around dark:bg-dark">
+  
+
+  return (  
+    <section className="p-16 py-40 w-full grid grid-cols-7 gap-10 xl:gap-8 lg:flex lg:flex-col xs:p-2 xs:py-28">
+      <div className="myRightSide col-span-5 flex flex-col justify-around dark:bg-dark">
         <div className="w-full px-4 mb-1 sm:text-sm sm:mb-2 dark:text-light dark:bg-dark">
-          <h1 className="text-4xl font-bold py-6 pt-6 sm:text-2xl text-mainColor dark:text-light xs:py-1">
+          <h1 className="hello text-4xl font-bold py-6 pt-6 sm:text-2xl text-mainColor dark:text-light xs:py-1">
             {blog.title}
           </h1>
           <span className="text-xl text-gray-600 py-3 sm:text-sm xs:text-sm xs:py-1 dark:text-light">
@@ -111,11 +113,11 @@ const BlogPage = async ({ params }) => {
             {blog.tags}
           </h2>
           <div className="py-4" dangerouslySetInnerHTML={{ __html: content }} />
-          <Comments postSlug={blog._id} user={user} imageUser={imageUser} />
+          <Comments postSlug={blog._id} userData={userData} />
         </div>
       </div>
-      <div className="sm:w-full col-span-2 sm:p-6 sticky">
-        <SidBar slug={slug} category={blog.category} />
+      <div className="myLeftSide xl:w-72 lg:w-full col-span-2 xs:w-full sm:p-2 xs:h-44">
+        <SidBar />
       </div>
     </section>
   );

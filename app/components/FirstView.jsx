@@ -53,7 +53,7 @@ const FirstView = async () => {
                   rel="preload"
                   aria-current="page"
                   href={`/blogs/${item.slug}`}
-                  className="inline-flex py-2.5 items-center xs:py-1.5 xs:text-xs mt-8 first-line:mt-4 mr-2  justify-center xs:justify-start rounded-md dark:text-dark bg-sky-800 px-16 xs:px-8 text-center text-white hover:text-dark md:mb-4 md:px-10 hover:bg-transparent hover:border hover:border-sky-800 dark:bg-light"
+                  className="inline-flex py-2.5 items-center xs:py-2 xs:text-xs mt-8 first-line:mt-4 mr-2  justify-center xs:justify-start rounded-md dark:text-dark bg-sky-800 px-16 xs:px-8 text-center text-white hover:text-dark md:mb-4 md:px-10 hover:bg-transparent hover:border hover:border-sky-800 dark:bg-light"
                 >
                   <span>Read more...</span>
                 </Link>
@@ -61,7 +61,7 @@ const FirstView = async () => {
                   rel="preload"
                   aria-current="page"
                   href={`/category/all`}
-                  className="inline-flex py-2.5 items-center xs:py-1.5 xs:text-xs mt-8 xs:justify-start first-line:mt-4 mr-2 hover:text-light justify-center rounded-md dark:text-dark border border-sky-800 md:px-10 xs:px-10  px-16 text-center text-dark  md:mb-4 hover:bg-sky-800 dark:bg-light"
+                  className="inline-flex py-2.5 items-center xs:py-2 xs:text-xs mt-8 xs:justify-start first-line:mt-4 mr-2 hover:text-light justify-center rounded-md dark:text-dark border border-sky-800 md:px-10 xs:px-10  px-16 text-center text-dark  md:mb-4 hover:bg-sky-800 dark:bg-light"
                 >
                   <span>Explore Blogs</span>
                 </Link>

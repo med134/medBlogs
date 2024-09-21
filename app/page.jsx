@@ -2,8 +2,6 @@ import React from "react";
 import HomePage from "./components/HomePage";
 import FirstView from "./components/FirstView";
 import TransitionEffect from "./components/TransitionEffect";
-import Card from "./ServerCard";
-import Cat from "./MainSide";
 import dynamic from "next/dynamic";
 const Easy = dynamic(() => import("./components/EsayTemplates"));
 
@@ -12,7 +10,7 @@ export default function Home() {
     <>
       <TransitionEffect />
       <FirstView />
-      <HomePage child={<Card />} side={<Cat />} />
+      <HomePage />
       <Easy />
     </>
   );

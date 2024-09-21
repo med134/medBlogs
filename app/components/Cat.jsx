@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import { getAllCat } from "./FetchData";
+import { getAllCategories } from "../utils/action";
 
 const Cat = async () => {
-  const cat = await getAllCat();
+  const cat = await getAllCategories();
 
   return (
     <>
