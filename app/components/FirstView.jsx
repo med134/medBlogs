@@ -14,7 +14,7 @@ const FirstView = async () => {
         index < 1 ? (
           <div
             key={item._id}
-            className="grid grid-cols-5 px-24 p-8 sm:p-2 md:grid md:grid-cols-1 xl:px-16 sm:px-2"
+            className="grid grid-cols-5 px-24 p-8 sm:p-2 md:block xl:px-16 sm:px-2 xs:px-6"
           >
             <div className="p-2 col-span-3">
               <span className="flex justify-start items-center py-2 dark:text-light">

@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import logo from "@/public/images/logo.png";
 import { CustomMobileLink } from "./CustomLinks";
 import dynamic from "next/dynamic";
+import { MoonIcon, SunIcon } from "./Icons";
 const SearchTwo = dynamic(() => import("./SearchTwo"));
 import Image from "next/image";
 import { handelLogOut } from "../utils/action";
@@ -10,7 +12,7 @@ import { AiFillYoutube } from "react-icons/ai";
 import { BsInstagram } from "react-icons/bs";
 import Link from "next/link";
 
-const SmallLinksNavBar = ({ session }) => {
+const SmallLinksNavBar = ({ session, handelMode, mode }) => {
   return (
     <div
       className="min-w-[60vw] fixed xs:absolute xs:top-80 sm:min-w-[70vw] sm:h-min flex flex-col justify-between z-9999 items-center top-[50%] sm:top-[20%] left-2/4 -translate-x-1/2 -translate-y-1/2
@@ -125,6 +127,20 @@ bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
         >
           <GithubIcon />
         </Link>
+        <button
+          name="theme-button"
+          aria-label="theme"
+          onClick={handelMode}
+          className={`w-8 h-8 ml-3 flex items-center transition-all hover:scale-75 justify-center rounded-full p-1
+${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
+`}
+        >
+          {mode === "light" ? (
+            <SunIcon className={"fill-dark"} />
+          ) : (
+            <MoonIcon className={"fill-dark"} />
+          )}
+        </button>
       </div>
     </div>
   );

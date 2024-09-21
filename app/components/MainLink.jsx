@@ -16,7 +16,7 @@ const limelight = Limelight({
 const MainLink = ({ session }) => {
   return (
     <div
-      className={`w-full px-24 flex justify-between items-center font-semibold xl:px-6`}
+      className={`w-full px-24 flex justify-between items-center font-semibold xl:px-6 lg:hidden`}
     >
       <Link
         href="/"

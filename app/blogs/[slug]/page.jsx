@@ -9,10 +9,10 @@ import { getPostsBySlug, FormatDate } from "@/app/utils/action";
 import "jodit-react/examples/app.css";
 
 const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"), {
-  suspense: true,
+  ssr: false,
 });
 const Comments = dynamic(() => import("@/app/components/comments/comments"), {
-  suspense: true,
+  ssr: false,
 });
 
 export async function generateMetadata({ params }) {
@@ -60,8 +60,8 @@ const BlogPage = async ({ params }) => {
   const blog = await getPostsBySlug(slug);
   const content = blog.content;
   const session = await auth();
-  const user = session.user.name;
-  const imageUser = session.user.image;
+  const user = session?.user?.name;
+  const imageUser = session?.user?.image;
 
   return (
     <section className="w-full grid grid-cols-7 gap-12 p-10 pt-[160px] lg:block dark:bg-dark xl:p-8 xl:gap-3 sm:p-4 xs:p-2 xl:pt-44 xs:pt-28">
@@ -110,7 +110,7 @@ const BlogPage = async ({ params }) => {
           <h2 className="flex underline font-bold justify-start items-start py-6 xs:py-2 ml-2 mt-1 font-bolder">
             {blog.tags}
           </h2>
-          <div dangerouslySetInnerHTML={{ __html: content }} />
+          <div className="py-4" dangerouslySetInnerHTML={{ __html: content }} />
           <Comments postSlug={blog._id} user={user} imageUser={imageUser} />
         </div>
       </div>
