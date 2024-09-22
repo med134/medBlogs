@@ -9,8 +9,8 @@ import BlogImage from "@/public/images/postera.png";
 const SidBar = async () => {
   const dev = await getPosts();
   return (
-    <div className="mt-3 mb-2">
-      <aside className="w-full rounded-lg border-2 py-2 border-mainColor mb-6 p-2 mt-4 dark:border-light">
+    <div className="mt-3">
+      <aside className="w-full rounded-lg border-2 py-2 border-mainColor mb-6 p-2 mt-3 dark:border-light">
         <span className="text-lg font-bold py-3 text-gray-800 dark:text-light">
           Search...
         </span>
@@ -22,7 +22,7 @@ const SidBar = async () => {
         <Cat />
       </aside>
       <div className="pt-1">
-        <span className="text-[18px] text-gray-800 font-semibold mt-7 sm:w-full sm:mb-4 sm:text-xl sm:mt-1 dark:text-light">
+        <span className="text-[18px] text-gray-800 font-semibold mt-7 sm:w-full sm:text-xl dark:text-light">
           Recent Related Posts
         </span>
         {dev?.map(
@@ -42,7 +42,7 @@ const SidBar = async () => {
                 <div className="p-2 ml-2">
                   <Link
                     href={`/category/${item.category}`}
-                    className="uppercase tracking-wide text-sm text-mainColor dark:text-light font-semibold"
+                    className="uppercase tracking-wide text-sm text-mainColor hover:text-dark dark:text-light font-semibold"
                   >
                     {item.category}
                   </Link>

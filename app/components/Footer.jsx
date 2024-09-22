@@ -58,7 +58,7 @@ const Footer = () => {
               aria-labelledby="Our phone"
               rel="noopener noreferrer"
               name="Our phone"
-              className="transition-colors hover:text-purple-800 text-deep-purple-accent-400 hover:text-deep-purple-800"
+              className="transition-colors dark:text-light hover:text-purple-800 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
               +212600462196
             </a>

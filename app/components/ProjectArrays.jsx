@@ -115,7 +115,7 @@ export const ContactMenu = [
     name: "Linkedin",
     link: "https://www.linkedin.com/in/mohammed-dakir/",
     icon: FaLinkedin,
-    ariaLabel:"Visit our LinkedIn profile",
+    ariaLabel: "Visit our LinkedIn profile",
     className:
       "w-auto flex bg-[#0a66c2] p-2 rounded-sm hover:translate-y-1 focus:outline-none focus:ring focus:border-pink-600",
   },
@@ -134,14 +134,14 @@ export const ContactMenu = [
     ariaLabel: "Visit our X profile",
     labelName: "Visit our youtube channel",
     className:
-      "w-auto flex p-2 rounded-sm text-center hover:translate-y-1 bg-dark focus:outline-none focus:ring focus:border-pink-600",
+      "w-auto flex p-2 rounded-sm text-center dark:border dark:border-light hover:translate-y-1 bg-dark focus:outline-none focus:ring focus:border-pink-600",
   },
   {
     name: "Github",
     link: "https://github.com/med134",
-    ariaLabel:"Visit our github profile",
+    ariaLabel: "Visit our github profile",
     icon: FaGithubAlt,
-     className:"w-auto flex p-2 rounded-sm text-center hover:translate-y-1 bg-dark text-pink-600 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600"
+    className:
+      "w-auto flex p-2 rounded-sm text-center dark:border dark:border-light hover:translate-y-1 bg-dark text-pink-600 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600",
   },
-
 ];

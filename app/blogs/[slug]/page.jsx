@@ -66,7 +66,7 @@ const BlogPage = async ({ params }) => {
   
 
   return (  
-    <section className="p-16 py-40 w-full grid grid-cols-7 gap-10 xl:gap-8 lg:flex lg:flex-col xs:p-2 xs:py-28">
+    <section className="p-16 py-40 w-full grid grid-cols-7 gap-10 xl:gap-8 lg:flex lg:flex-col sm:p-3 sm:py-28 dark:bg-dark">
       <div className="myRightSide col-span-5 flex flex-col justify-around dark:bg-dark">
         <div className="w-full px-4 mb-1 sm:text-sm sm:mb-2 dark:text-light dark:bg-dark">
           <h1 className="hello text-4xl font-bold py-6 pt-6 sm:text-2xl text-mainColor dark:text-light xs:py-1">
@@ -101,7 +101,7 @@ const BlogPage = async ({ params }) => {
             <Image
               src={blog.image ? blog.image : imageBlog}
               alt={blog.title}
-              className="w-[850px] h-80 xs:h-auto object-contain rounded mt-2"
+              className="w-[850px] h-80 sm:h-auto object-contain rounded mt-2"
               width={500}
               height={300}
               priority={true}
@@ -116,7 +116,7 @@ const BlogPage = async ({ params }) => {
           <Comments postSlug={blog._id} userData={userData} />
         </div>
       </div>
-      <div className="myLeftSide xl:w-72 lg:w-full col-span-2 xs:w-full sm:p-2 xs:h-44">
+      <div className="myLeftSide xl:w-72 col-span-2 sm:w-full sm:p-2 lg:h-[650px] sm:mb-8">
         <SidBar />
       </div>
     </section>

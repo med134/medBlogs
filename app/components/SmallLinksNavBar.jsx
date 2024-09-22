@@ -39,11 +39,7 @@ bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
             </h3>
           </div>
         </div>
-        <SearchTwo
-          className={
-            "text-light xs:placeholder:text-light md:placeholder:text-light"
-          }
-        />
+        <SearchTwo />
         <div className="line bg-gray-600 w-full h-1"></div>
         <CustomMobileLink key="home" href="/" title="Home" className="" />
         <CustomMobileLink
@@ -92,13 +88,13 @@ bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
           <button
             name="log-button"
             aria-label="login/logOut"
-            className="text-medium mt-2 text-light dark:text-dark font-semibold "
+            className="text-medium mt-2 text-light dark:text-dark"
           >
             Logout
           </button>
         </form>
       )}
-      <div className="flex items-center justify-center flex-wrap mt-2">
+      <div className="flex items-center justify-center flex-wrap mt-4">
         <Link
           href="https://www.linkedin.com/in/mohammed-dakir/"
           target={"_blank"}

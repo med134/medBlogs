@@ -11,7 +11,7 @@ const Cat = async () => {
         <ul key={item._id} className="inline-flex items-start ml-2">
           <li className="flex mx-1">
             <Link
-              className="p-2 px-3 border-mainColor mb-1 rounded hover:bg-white font-medium dark:hover:text-mainColor hover:border-mainColo dark:hover:border-light border bg-light dark:bg-purple text-gray-800 dark:text-light dark:bg-dark"
+              className="p-2 px-3 border-mainColor mb-1 rounded hover:border-dark font-medium dark:hover:text-mainColor border dark:border-light text-gray-800 dark:text-light"
               href={`/category/${item.value}`}
             >
               {item?.label}

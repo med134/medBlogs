@@ -8,7 +8,7 @@ import Card from "../ServerCard";
 import Cat from "../MainSide";
 const HomePage = () => {
   return (
-    <div className="sectionT grid grid-cols-6 gap-6 xl:gap-2 lg:block">
+    <div className="sectionT grid grid-cols-6 gap-6 xl:gap-2 lg:block dark:bg-dark">
       <div className="right-sideT col-span-4 w-full px-10 mb-6">
         <span className="text-2xl underline dark:text-light mb-4 font-bold flex justify-start items-center text-gray-800 font-slab px-5">
           <AiTwotoneSound className="dark:text-light" />
