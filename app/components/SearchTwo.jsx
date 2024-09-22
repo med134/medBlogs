@@ -62,7 +62,7 @@ const SearchTwo = ({ className }) => {
       cache: "no-store",
     });
     if (!res.ok) {
-       throw new Error("No results found");
+      throw new Error("No results found");
     }
     const searchResult = await res.json();
     if (searchResult.length === 0) {
@@ -91,7 +91,7 @@ const SearchTwo = ({ className }) => {
           aria-labelledby="search-input"
           value={query}
           onChange={(e) => onChangeHandle(e.target.value)}
-          className={`${className} h-10 w-full border dark:placeholder-light sm:placeholder-light dark:border-light border-b-mainColor sm:border sm:border-b-mainColor bg-transparent text-dark placeholder-dark dark:border-b-light border-transparent text-sm lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium  outline-none focus:rounded-md focus:border-2 focus:border-mainColor lg:text-light`}
+          className={`h-10 w-full border dark:placeholder-light xs:placeholder-dark sm:placeholder-light dark:border-light border-b-mainColor sm:border sm:border-b-mainColor bg-transparent text-dark placeholder-dark dark:border-b-light border-transparent text-sm lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium  outline-none focus:rounded-md focus:border-2 focus:border-mainColor lg:text-light`}
           placeholder="Search for Articles..."
         />
         <button
@@ -99,10 +99,10 @@ const SearchTwo = ({ className }) => {
           name="search-button"
           title="search-button"
           aria-labelledby="search-button"
-          className={`${className} inline-flex dark:border-light h-10 items-center border border-transparent focus:border-b-2 border-b-mainColor lg:border-b-light dark:border-b-light gap-2 text-white text-lg font-semibold py-1 px-4 xs:px-2 xs:border xs:border-transparent xs:border-b-white lg:bg-transparent `}
+          className={`inline-flex dark:border-light h-10 items-center border border-transparent focus:border-b-2 border-b-mainColor lg:border-b-light dark:border-b-light gap-2 text-white text-lg font-semibold py-1 px-4 xs:px-2 xs:border xs:border-transparent xs:border-b-white lg:bg-transparent `}
         >
           <svg
-            className="text-mainColor lg:text-dark dark:fill-light sm:fill-light dark:text-dark dark:xs:text-dark h-5 w-5 p-0 fill-current  hover:text-gray-800"
+            className={`${className} text-mainColor lg:text-dark dark:fill-light sm:fill-light dark:text-dark dark:xs:text-dark h-5 w-5 p-0 fill-current  hover:text-gray-800`}
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             version="1.1"

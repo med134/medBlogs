@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <div className="sectionT grid grid-cols-6 gap-6 xl:gap-2 lg:block dark:bg-dark">
       <div className="right-sideT col-span-4 w-full px-10 mb-6">
-        <span className="text-2xl underline dark:text-light mb-4 font-bold flex justify-start items-center text-gray-800 font-slab px-5">
+        <span className="text-2xl underline dark:text-light mb-4 font-bold flex justify-start items-center text-gray-800 font-slab px-5 xs:px-2">
           <AiTwotoneSound className="dark:text-light" />
           <p className="sm:text-xl">Recent Articles</p>
         </span>
@@ -18,14 +18,14 @@ const HomePage = () => {
           <Card />
         </div>
       </div>
-      <div className="left-sideT col-span-1 xl:w-72 lg:w-full lg:px-10">
+      <div className="left-sideT col-span-1 xl:w-72 lg:px-10 xs:w-full">
         <div className="">
-          <h3 className="py-4 text-xl sm:py-0 font-semibold dark:text-light">
+          <h3 className="py-4 text-xl sm:mb-2 font-semibold dark:text-light">
             Follow Us
           </h3>
           <CategoryCard />
           <div className="h-[1px] mb-4 bg-slate-400 w-auto"></div>
-          <SearchBar />
+          <SearchBar className="xs:fill-dark"/>
           <Cat />
         </div>
       </div>
