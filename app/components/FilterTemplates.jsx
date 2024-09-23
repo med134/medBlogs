@@ -1,5 +1,7 @@
 import React from "react";
-const FilterTemplates = ({ handleTagClick,seAttCat }) => { 
+import { FilterTemplate } from "./ProjectArrays";
+
+const FilterTemplates = ({ handleTagClick, seAttCat }) => {
   return (
     <div className="filter templates">
       <div className="container mx-auto px-10 sm:px-2">
@@ -13,49 +15,17 @@ const FilterTemplates = ({ handleTagClick,seAttCat }) => {
             >
               All Templates
             </button>
-            <button
-              onClick={() => handleTagClick("Landing")}
-              className="bg-blue-200 hover:bg-blue-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
-            >
-              Landing
-            </button>
-            <button
-              onClick={() => handleTagClick("Ecommerce")}
-              className="bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
-            >
-              Ecommerce
-            </button>
-
-            <button
-              onClick={() => handleTagClick("Card")}
-              className="bg-indigo-200 hover:bg-indigo-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
-            >
-              Card
-            </button>
-            <button
-              onClick={() => handleTagClick("Marketing")}
-              className="bg-purple-200 hover:bg-purple-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
-            >
-              Marketing
-            </button>
-            <button
-              onClick={() => handleTagClick("Dashboard")}
-              className="bg-pink-200 hover:bg-pink-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
-            >
-              Dashboard
-            </button>
-            <button
-              onClick={() => handleTagClick("Business")}
-              className="bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
-            >
-              Business
-            </button>
-            <button
-              onClick={() => handleTagClick("Elearning")}
-              className="bg-yellow-200 hover:bg-yellow-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border"
-            >
-              Elearning
-            </button>
+            {FilterTemplate?.map((item) => {
+              return (
+                <button
+                  key={item.name}
+                  onClick={() => handleTagClick(item.name)}
+                  className={item.className}
+                >
+                  {item.name}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -47,7 +47,6 @@ export const metadata = {
 };
 const page = async () => {
   const data = await getTemplates();
-
   return (
     <>
       <TransitionEffect />

@@ -9,12 +9,12 @@ const FirstView = async () => {
   const posts = await getPosts();
 
   return (
-    <div id="home" className="py-32 sm:mb-10 xl:pb-1 bg-light dark:bg-dark">
+    <div id="home" className="py-32 xl:pb-1 bg-light dark:bg-dark">
       {posts?.map((item, index) =>
         index < 1 ? (
           <div
             key={item._id}
-            className="grid grid-cols-5 px-24 p-8 sm:p-2 md:block xl:px-16 sm:px-2 xs:px-6"
+            className="grid grid-cols-5 px-24 p-8 sm:p-2 md:block xl:px-16 sm:px-2 xs:px-6 sm:mb-10"
           >
             <div className="p-2 col-span-3">
               <span className="flex justify-start items-center py-2 dark:text-light">

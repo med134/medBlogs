@@ -4,7 +4,9 @@ import { BiSolidEdit } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-import SkeletonLoader from "./BlogDashboardSkelton";
+import Pagination from "./Pagination";
+import Loading from "../Loading";
+import BlogSkelton from "./BlogSkelton";
 const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
   ssr: false,
 });
@@ -56,9 +58,9 @@ const ListDashboardBlogs = ({ user }) => {
       <h1 className="text-2xl font-bold mb-4">Your Blogs & Articles</h1>
       <div className="overflow-y-hidden rounded-lg border">
         <div className="">
-          <table className="w-full">
-            <thead>
-              <tr className="bg-mainColor text-xs font-semibold uppercase text-white">
+          <table className="">
+            <thead className="w-min">
+              <tr className="bg-mainColor w-min justify-between text-xs font-semibold uppercase text-white">
                 <th className="px-5 py-3">title</th>
                 <th className="px-5 py-3 sm:hidden">slug</th>
                 <th className="px-5 py-3">status</th>
@@ -68,12 +70,12 @@ const ListDashboardBlogs = ({ user }) => {
             </thead>
             <tbody>
               {loading ? (
-                <SkeletonLoader />
+                <BlogSkelton />
               ) : (
                 currentBlog?.map((blog) => (
                   <tr
                     key={blog.slug}
-                    className="p-2 px-4 py-2 w-full justify-between items-center border border-gray-100"
+                    className="p-2 px-4 py-2 w-full justify-between border border-gray-100"
                   >
                     <td className="p-2">
                       <h2 className="text-sm font-semibold sm:text-xs sm:font-normal">
@@ -121,49 +123,15 @@ const ListDashboardBlogs = ({ user }) => {
               )}
             </tbody>
           </table>
-          {blogs?.length === 0 ? null : (
-            <div
-              aria-label="Page navigation"
-              className="flex justify-center mt-4"
-            >
-              <ul className="inline-flex -space-x-px text-sm">
-                <li>
-                  <button
-                    onClick={() => handleMovePages(currentPage - 1)}
-                    disabled={currentPage === 1}
-                    className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"
-                  >
-                    Previous
-                  </button>
-                </li>
-                {Array.from({ length: totalPages }, (_, index) => (
-                  <li key={index}>
-                    <button
-                      onClick={() => handleMovePages(index + 1)}
-                      className={`flex items-center justify-center px-3 h-8 leading-tight border ${
-                        currentPage === index + 1
-                          ? "bg-slate-500 text-white"
-                          : "bg-white text-gray-500 border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                      }`}
-                    >
-                      {index + 1}
-                    </button>
-                  </li>
-                ))}
-                <li>
-                  <button
-                    onClick={() => handleMovePages(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                    className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"
-                  >
-                    Next
-                  </button>
-                </li>
-              </ul>
-            </div>
-          )}
         </div>
       </div>
+          {blogs?.length > 0 && (
+            <Pagination
+              totalPages={totalPages}
+              handleMovePages={handleMovePages}
+              currentPage={currentPage}
+            />
+          )}
     </div>
   );
 };

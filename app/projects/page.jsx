@@ -52,7 +52,7 @@ export const metadata = {
   },
 };
 
-const page = async () => {
+const page = () => {
   return (
     <>
       <TransitionEffect />

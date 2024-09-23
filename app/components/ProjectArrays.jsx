@@ -145,3 +145,41 @@ export const ContactMenu = [
       "w-auto flex p-2 rounded-sm text-center dark:border dark:border-light hover:translate-y-1 bg-dark text-pink-600 hover:text-pink-800 focus:outline-none focus:ring focus:border-pink-600",
   },
 ];
+
+export const FilterTemplate = [
+  {
+    name: "Landing",
+    className:
+      "bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border",
+  },
+  {
+    name: "Ecommerce",
+    className:
+      "bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border",
+  },
+  {
+    name: "Card",
+    className:
+      "bg-indigo-200 hover:bg-indigo-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border",
+  },
+  {
+    name: "Marketing",
+    className:
+      "bg-purple-200 hover:bg-purple-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border",
+  },
+  {
+    name: "Dashboard",
+    className:
+      "bg-pink-200 hover:bg-pink-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border",
+  },
+  {
+    name: "Business",
+    className:
+      "bg-green-200 hover:bg-green-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border",
+  },
+  {
+    name: "Elearning",
+    className:
+      "bg-yellow-200 hover:bg-yellow-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border",
+  },
+];

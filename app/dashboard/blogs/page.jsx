@@ -7,7 +7,7 @@ const Blogs = async () => {
   const user = session.user.name;
   console.log("this is username",user)
   return (
-    <div className="mx-auto p-6 pt-4 h-full md:p-1">
+    <div className="mx-auto p-6 pt-16 h-full md:p-1">
       <ListDashboardBlogs user={user} />
     </div>
   );
