@@ -4,8 +4,8 @@ import { getUserBySlug } from "@/app/utils/action";
 
 
 const page = async ({ params }) => {
-  const { userSlug } = params;
-  const user = await getUserBySlug(userSlug);
+  const { slug } = params;
+  const user = await getUserBySlug(slug);
   return (
     <main className="py-20">
       <h1 className="text-2xl font-semibold">Edit Profile</h1>

@@ -1,4 +1,3 @@
-"use client";
 import { MdOutlineWork } from "react-icons/md";
 import Image from "next/image";
 import React from "react";
@@ -12,19 +11,19 @@ const Profile = ({ user, session }) => {
         <div className="gap-6 px-4">
           <div className="">
             <div className="bg-white shadow rounded-lg p-6 relative sm:p-3">
-              {user.name === session.user.name ? (
-                <Link href={`/dashboard/settings/${user.userSlug}`} className="mb-4">
+              {user?.name === session?.user?.name ? (
+                <Link href={`/dashboard/settings/${user?.userSlug}`} className="mb-4">
                   <RiSettings5Line className="absolute w-8 h-8 cursor-pointer hover:fill-mainColor" />
                   <h3 className="ml-10 font-semibold">complete profile</h3>
                 </Link>
               ) : null}
               <div className="flex flex-col items-center">
                 <Image
-                  width={50}
+                  width={150}
                   alt="user image"
-                  height={50}
+                  height={150}
                   loading="lazy"
-                  quality={30}
+                  quality={50}
                   src={user?.imageUrl}
                   className="w-32 h-32 object-cover bg-gray-300 rounded-full mb-4 shrink-0"
                 />
