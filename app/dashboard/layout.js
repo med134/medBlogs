@@ -23,7 +23,7 @@ export const metadata = {
 };
 const DashboardLayout = ({ children }) => {
   return (
-    <div className="flex w-[100%]">
+    <div className="flex">
       <MainSideBarDashboard />
       <div className="flex-1">
         <DashboardNav />

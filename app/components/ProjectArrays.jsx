@@ -107,7 +107,7 @@ export const ContactMenu = [
     name: "Instagram",
     link: "https://www.instagram.com/med_dakir/",
     icon: FaInstagram,
-    labelName: "Visit our Instagram profile",
+    ariaLabel: "Visit our Instagram profile",
     className:
       "w-auto p-2 flex bg-gradient-to-r hover:translate-y-1 from-[#833ab4] via-[#fd1d1d] to-[#fcb045] rounded-sm focus:outline-none focus:ring focus:border-pink-600",
   },
@@ -123,7 +123,7 @@ export const ContactMenu = [
     name: "Youtube",
     link: "https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A",
     icon: FaYoutube,
-    labelName: "Visit our youtube channel",
+    ariaLabel: "Visit our youtube channel",
     className:
       "w-auto flex justify-start p-2 hover:translate-y-1 ease-out all bg-red-600 rounded-sm items-center sm:mx-1 focus:outline-none focus:ring focus:border-red-600",
   },
@@ -132,7 +132,6 @@ export const ContactMenu = [
     link: "https://x.com/mohammedda1288?s=21",
     icon: FaSquareXTwitter,
     ariaLabel: "Visit our X profile",
-    labelName: "Visit our youtube channel",
     className:
       "w-auto flex p-2 rounded-sm text-center dark:border dark:border-light hover:translate-y-1 bg-dark focus:outline-none focus:ring focus:border-pink-600",
   },

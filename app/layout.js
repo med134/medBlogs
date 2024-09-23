@@ -55,7 +55,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className}`}>
         <NavBar />
         <Script
-          strategy="lazyOnload"
+          strategy="afterInteractive"
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-J4KQVRLWEN"
         ></Script>

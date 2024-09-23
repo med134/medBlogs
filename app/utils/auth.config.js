@@ -11,7 +11,6 @@ export const authConfig = {
         token.userSlug = user.userSlug;
       }
       return token;
-      console.log(token);
     },
     async session({ session, token }) {
       if (token) {
@@ -20,7 +19,6 @@ export const authConfig = {
         session.user.userSlug = token.userSlug;
       }
       return session;
-      console.log(session);
     },
     authorized({ auth, request }) {
       const user = auth?.user;
