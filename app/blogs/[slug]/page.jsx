@@ -116,7 +116,7 @@ const BlogPage = async ({ params }) => {
           <Comments postSlug={blog._id} userData={userData} />
         </div>
       </div>
-      <div className="myLeftSide xl:w-72 col-span-2 sm:w-full sm:p-2 lg:h-[650px] sm:mb-8">
+      <div className="myLeftSide xl:w-72 col-span-2 sm:w-full xs:w-full sm:p-2 lg:h-[650px] sm:mb-8">
         <SidBar />
       </div>
     </section>

@@ -14,11 +14,7 @@ const SidBar = async () => {
         <span className="text-lg font-bold py-3 text-gray-800 dark:text-light">
           Search...
         </span>
-        <SearchTwo
-          className={
-            "xs:border outline-none focus:outline-none ring-0 lg:text-dark"
-          }
-        />
+        <SearchTwo className="sm:fill-dark" />
         <Cat />
       </aside>
       <div className="pt-1">
