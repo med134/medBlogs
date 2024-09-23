@@ -61,10 +61,10 @@ export default function RootLayout({ children }) {
         ></Script>
         {children}
         <Footer />
+        <Analytics mode={"production"} />
+        <SpeedInsights />
       </body>
       <GoogleAnalytics gaId="G-J4KQVRLWEN" />
-      <Analytics />
-      <SpeedInsights />
     </html>
   );
 }
