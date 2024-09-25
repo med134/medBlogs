@@ -227,7 +227,7 @@ const AddNewArticle = ({ session }) => {
             <button
               disabled={loading}
               type="submit"
-              className={`rounded-md font-semibold py-2 w-full bg-mainColor text-light ml-4 mt-5 hover:bg-cyan-700 ${
+              className={`rounded-md font-semibold py-2 w-full bg-mainColor text-light ml-4 sm:ml-0 mt-5 hover:bg-cyan-700 ${
                 loading ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >

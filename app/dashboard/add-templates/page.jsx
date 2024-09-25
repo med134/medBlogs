@@ -46,7 +46,7 @@ export const metadata = {
 export default async function page() {
   const session = await auth();
   return (
-    <div className="w-full h-auto py-4 md:py-2 sm:pt-2">
+    <div className="w-full py-4 md:py-2 sm:pt-2">
       <AddNewPost session={session}/>
     </div>
   );

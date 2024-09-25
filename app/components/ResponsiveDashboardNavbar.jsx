@@ -71,7 +71,6 @@ const ResponsiveDashboardNavbar = ({ session }) => {
               <Image
                 width={50}
                 height={50}
-                loading="lazy"
                 quality={30}
                 src={session?.user?.image}
                 alt="photo_profile"
@@ -104,9 +103,7 @@ const ResponsiveDashboardNavbar = ({ session }) => {
                   }`}
                 >
                   <LinkIcon className="mr-3 h-6 w-6" />
-                  <span className="font-medium ml-3">
-                    {link.name}
-                  </span>
+                  <span className="font-medium ml-3">{link.name}</span>
                 </Link>
               </div>
             );
@@ -115,7 +112,7 @@ const ResponsiveDashboardNavbar = ({ session }) => {
             href="/"
             className={`flex flex-row items-center mt-2 py-2 px-5 h-10 cursor-pointer transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800 `}
           >
-            <MdOutlineExitToApp className="mr-3 h-6 w-6"/>
+            <MdOutlineExitToApp className="mr-3 h-6 w-6" />
             <span className="font-medium ml-3">Exit Dashboard</span>
           </Link>
           <form action={handelLogOut}>

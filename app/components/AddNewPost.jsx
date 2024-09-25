@@ -58,8 +58,8 @@ const AddNewPost = ({ session }) => {
       <h1 className="text-gray-700 text-left sm:text-xl py-6 text-2xl lg:text-2xl">
         Create a Templates & Component
       </h1>
-      <form className="text-left text-gray-700 p-6 sm:p-3" onSubmit={handleSubmit}>
-        <div className="w-full grid grid-cols-2 md:flex md:flex-col gap-6">
+      <form className="text-gray-700 p-6 xs:p-1" onSubmit={handleSubmit}>
+        <div className="w-full grid grid-cols-2 gap-3 md:grid-cols-1 xs:gap-0">
           <input
             required
             type="text"
