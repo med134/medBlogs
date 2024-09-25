@@ -14,7 +14,7 @@ const SidBar = async () => {
         <span className="text-lg font-bold py-3 text-gray-800 dark:text-light">
           Search...
         </span>
-        <SearchTwo className="sm:fill-dark" />
+        <SearchTwo className="xs:fill-dark" />
         <Cat />
       </aside>
       <div className="pt-1">
