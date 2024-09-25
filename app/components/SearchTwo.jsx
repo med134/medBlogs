@@ -8,7 +8,7 @@ const SuggestionBar = dynamic(() => import("./SuggestionBar"), {
 const NotFoundModel = dynamic(() => import("./NotFoundModel"), {
   ssr: false,
 });
-const SearchLoading = dynamic(() => import("./SearchLoading"));
+const SearchLoading = dynamic(() => import("./SearchLoading"), { ssr: false });
 
 const SearchTwo = ({ className }) => {
   const [posts, setPosts] = useState([]);

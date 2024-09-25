@@ -16,7 +16,7 @@ const Profile = ({ userData, dataSession }) => {
                   href={`/dashboard/settings/${userData?.userSlug}`}
                   className="mb-4"
                 >
-                  <RiSettings5Line className="absolute w-8 h-8 cursor-pointer hover:fill-mainColor" />
+                  <RiSettings5Line className="absolute w-8 h-8 py-5 cursor-pointer hover:fill-mainColor" />
                   <h3 className="ml-10 font-semibold">complete profile</h3>
                 </Link>
               )}
