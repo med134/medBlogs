@@ -1,5 +1,4 @@
 import DashboardNav from "../components/DashboardNav";
-import DashSide from "../ui/sidebar/DashSide";
 import MainSideBarDashboard from "../ui/sidebar/MainSideBarDashboard";
 export const metadata = {
   title: "Dashboard | medCode ",

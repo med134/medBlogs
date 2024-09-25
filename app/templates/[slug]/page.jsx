@@ -2,11 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { VscPreview } from "react-icons/vsc";
+import { getTemplatesBySlug, getTemplates } from "@/app/utils/action";
 import Image from "next/image";
 import CodeEditor from "@/app/components/CodeEditor";
-import BlogAction from "@/app/components/BlogAction";
-import ShareButtons from "@/app/components/ShareButtons";
-import { getTemplatesBySlug, getTemplates } from "@/app/utils/action";
+import dynamic from "next/dynamic";
+const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"));
 
 export async function generateMetadata({ params }) {
   const post = await getTemplatesBySlug(params.slug);
@@ -52,9 +52,8 @@ const TemplateId = async ({ params }) => {
 
   return (
     <>
-      <div className="p-8 pt-[40px] h-full xs:pt-6 dark:bg-dark xl:block md:p-4 xs:p-4">
-        <div className="h-full flex justify-around items-center px-6 xs:px-1 lg:block">
-          <div className="block justify-start information pt-24">
+      <div className="p-8 h-full py-28 xs:pt-6 dark:bg-dark xl:block md:p-4 xs:p-4">
+          <div className="block justify-start information pt-24 px-10 md:px-3">
             <Link
               href="/templates"
               className="group inline-flex justify-around rounded-md bg-mainColor mb-3 p-2 px-4 py-2 xs:mt-4 text-white transition sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-indigo-200"
@@ -98,10 +97,6 @@ const TemplateId = async ({ params }) => {
               </div>
             </div>
           </div>
-          <div className="blog w-1/2 lg:w-full">
-            <BlogAction />
-          </div>
-        </div>
         <div className="p-2 mt-6 w-full h-full xs:mt-6">
           <div className="flex justify-between items-center xs:flex-col-reverse xs:items-start">
             <ShareButtons

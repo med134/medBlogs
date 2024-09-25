@@ -4,6 +4,7 @@ import { auth } from "@/app/utils/auth";
 
 const MainSideBarDashboard = async () => {
   const session = await auth();
+
   return <DashSide session={session} />;
 };
 

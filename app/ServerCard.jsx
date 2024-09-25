@@ -83,7 +83,7 @@ const Card = async () => {
               height={300}
               loading="lazy"
               quality={60}
-              className="object-contain rounded-xl max-w-xl xl:w-64 xs:w-full border border-gray-500"
+              className="object-contain h-auto rounded-xl max-w-xl xl:w-64 xs:w-full border border-gray-500"
             />
           </div>
         </section>

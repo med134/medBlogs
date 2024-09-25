@@ -4,16 +4,13 @@ import { auth } from "@/app/utils/auth";
 import { getUserBySlug } from "@/app/utils/action";
 
 const page = async ({ params }) => {
-  const { slug } = params;
-  const user = await getUserBySlug(slug);
+  const { userSlug } = params;
+  const userData = await getUserBySlug(userSlug);
   const session = await auth();
   const dataSession = JSON.parse(JSON.stringify(session));
-  console.log(dataSession, user);
-
-
   return (
     <main className="py-20">
-      <Profile session={dataSession} user={user}/>
+      <Profile dataSession={dataSession} userData={userData} />
     </main>
   );
 };

@@ -2,8 +2,8 @@ import React from "react";
 import styles from "@/app/components/categoryList/categoryList.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { getAllCat } from "@/app/components/FetchData";
 import AllCategoryPage from "@/app/components/AllCategoryPage";
+import { getAllCategories } from "@/app/utils/action";
 
 async function getPosts(cat) {
   const res = await fetch(
@@ -71,7 +71,7 @@ export async function generateMetadata({ params }) {
 
 const Card = async ({ params }) => {
   const sortedPosts = await getPosts(params.cat);
-  const category = await getAllCat();
+  const category = await getAllCategories();
 
   const myTitle =
     params.cat === "all" ? `All Articles` : `All Articles About ${params.cat}`;

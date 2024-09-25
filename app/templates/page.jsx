@@ -4,10 +4,11 @@ import Image from "next/image";
 import SearchBar from "../components/SearchBar";
 import dynamic from "next/dynamic";
 import { getTemplates } from "../utils/action";
-const TemplatesPreview = dynamic(() =>
-  import("../components/TemplatesCategory")
+import Loading from "../Loading";
+const TemplatesPreview = dynamic(
+  () => import("../components/TemplatesCategory"),
+  { loading: () => <Loading /> }
 );
-
 
 export const metadata = {
   title: `Free Templates & Components Resources Examples`,
