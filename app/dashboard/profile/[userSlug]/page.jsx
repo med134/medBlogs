@@ -1,8 +1,17 @@
 import React from "react";
 import Profile from "@/app/components/Profile";
 import { auth } from "@/app/utils/auth";
-import { getUserBySlug } from "@/app/utils/action";
 
+async function getUserBySlug(slug) {
+  const res = await fetch(`https://www.medcode.dev/api/users/${slug}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+  const user = await res.json();
+  return user;
+}
 const page = async ({ params }) => {
   const { userSlug } = params;
   const userData = await getUserBySlug(userSlug);
