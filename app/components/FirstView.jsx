@@ -72,7 +72,7 @@ const FirstView = async () => {
                 alt={item.title}
                 src={icon}
                 width={400}
-                height={400}
+                height={350}
                 priority={true}
                 className="rounded-2xl object-contain xl:object-contain xs:h-56"
               />

@@ -2,10 +2,13 @@ import React from "react";
 import Link from "next/link";
 import { AiOutlineRight } from "react-icons/ai";
 import { getAllCategories } from "./utils/action";
+import SearchBar from "./components/SearchTwo";
+
 const Cat = async () => {
   const cat = await getAllCategories();
   return (
     <>
+      <SearchBar className="xs:fill-dark" />
       {cat?.map(
         (item, index) =>
           index > 0 && (

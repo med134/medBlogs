@@ -3,9 +3,12 @@ import { AiTwotoneSound } from "react-icons/ai";
 import "../globals.css";
 import CategoryCard from "./CategoryCard";
 import dynamic from "next/dynamic";
-const SearchBar = dynamic(() => import("./SearchTwo"), { ssr: false });
 import Card from "../ServerCard";
-import Cat from "../MainSide";
+import Loading from "../Loading";
+const Cat = dynamic(() => import("../MainSide"),{
+  loading: () => <Loading />,
+});
+
 const HomePage = () => {
   return (
     <div className="grid grid-cols-6 gap-6 xl:gap-2 lg:block dark:bg-dark sm:p-2">
@@ -15,7 +18,7 @@ const HomePage = () => {
           <span className="sm:text-xl">Recent Articles</span>
         </div>
         <div className="div01 section" id="chapter1">
-          <Card /> 
+          <Card />
         </div>
       </div>
       <div className="left-sideT col-span-1 xl:w-72 lg:px-10 xs:w-full">
@@ -25,7 +28,6 @@ const HomePage = () => {
           </h3>
           <CategoryCard />
           <div className="h-[1px] mb-4 bg-slate-400 w-auto"></div>
-          <SearchBar className="xs:fill-dark"/>
           <Cat />
         </div>
       </div>

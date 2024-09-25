@@ -1,12 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import { getAllCategories } from "../utils/action";
+import SearchTwo from "./SearchTwo";
 
 const Cat = async () => {
   const cat = await getAllCategories();
 
   return (
     <>
+      <SearchTwo className="xs:fill-dark" />
       {cat?.map((item) => (
         <ul key={item._id} className="inline-flex items-start ml-2">
           <li className="flex mx-1">

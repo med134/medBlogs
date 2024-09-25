@@ -2,20 +2,22 @@ import React from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import SidBar from "@/app/components/SidBar";
 import "@/app/globals.css";
 import { auth } from "@/app/utils/auth";
-import imageBlog from "@/public/images/postera.png";
+const imageBlog = dynamic(() => import("@/public/images/postera.png"));
 import { getPostsBySlug, FormatDate } from "@/app/utils/action";
 import "jodit-react/examples/app.css";
+import Loading from "@/app/Loading";
 
 const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"), {
-  ssr: false,
+  loading: () => <Loading />,
 });
 const Comments = dynamic(() => import("@/app/components/comments/comments"), {
-  ssr: false,
+  loading: () => <Loading />,
 });
-
+const SidBar = dynamic(() => import("@/app/components/SidBar"), {
+  loading: () => <Loading />,
+});
 export async function generateMetadata({ params }) {
   const post = await getPostsBySlug(params.slug);
   const publishedAt = new Date(post?.createdAt).toISOString();
@@ -63,9 +65,7 @@ const BlogPage = async ({ params }) => {
   const session = await auth();
   const userData = JSON.parse(JSON.stringify(session));
 
-  
-
-  return (  
+  return (
     <section className="p-16 py-40 w-full grid grid-cols-7 gap-10 xl:gap-8 lg:flex lg:flex-col sm:p-3 sm:py-28 dark:bg-dark">
       <div className="myRightSide col-span-5 flex flex-col justify-around dark:bg-dark">
         <div className="w-full px-4 mb-1 sm:text-sm sm:mb-2 dark:text-light dark:bg-dark">
@@ -108,11 +108,12 @@ const BlogPage = async ({ params }) => {
               quality={100}
             />
           </div>
-          <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
+
           <h2 className="flex underline font-bold justify-start items-start py-6 xs:py-2 ml-2 mt-1 font-bolder">
             {blog.tags}
           </h2>
           <div className="py-4" dangerouslySetInnerHTML={{ __html: content }} />
+          <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
           <Comments postSlug={blog._id} userData={userData} />
         </div>
       </div>

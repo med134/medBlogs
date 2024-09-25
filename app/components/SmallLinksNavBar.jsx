@@ -2,15 +2,14 @@
 import React from "react";
 import logo from "@/public/images/logo.png";
 import { CustomMobileLink } from "./CustomLinks";
-import dynamic from "next/dynamic";
 import { MoonIcon, SunIcon } from "./Icons";
-const SearchTwo = dynamic(() => import("./SearchTwo"));
 import Image from "next/image";
 import { handelLogOut } from "../utils/action";
 import { GithubIcon, LinkedInIcon } from "./Icons";
 import { AiFillYoutube } from "react-icons/ai";
 import { BsInstagram } from "react-icons/bs";
 import Link from "next/link";
+import SearchTwo from "./SearchTwo";
 
 const SmallLinksNavBar = ({ session, handelMode, mode }) => {
   return (

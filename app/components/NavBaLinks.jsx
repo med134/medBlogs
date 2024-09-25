@@ -2,13 +2,15 @@
 import React, { useState, useEffect } from "react";
 import { FiX } from "react-icons/fi";
 import { MoonIcon, SunIcon } from "./Icons";
+import dynamic from "next/dynamic";
 import useThemeSwitcher from "./hooks/useThemeSwitcher";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MainLink from "./MainLink";
-import SmallLinksNavBar from "./SmallLinksNavBar";
-import dynamic from "next/dynamic";
-import Link from "next/link";
-const ProfileDown = dynamic(() => import("./ProfileDown"));
+const SmallLinksNavBar = dynamic(() => import("./SmallLinksNavBar"), {
+  ssr: false,
+});
+const ProfileDown = dynamic(() => import("./ProfileDown"), { ssr: false });
 
 const NavBaLinks = ({ session }) => {
   const [mode, setMode] = useThemeSwitcher("dark");

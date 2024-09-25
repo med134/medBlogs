@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Cat from "./Cat";
-import SearchTwo from "./SearchTwo";
 import { getPosts } from "../utils/action";
 import BlogImage from "@/public/images/postera.png";
 
@@ -14,7 +13,6 @@ const SidBar = async () => {
         <span className="text-lg font-bold py-3 text-gray-800 dark:text-light">
           Search...
         </span>
-        <SearchTwo className="xs:fill-dark" />
         <Cat />
       </aside>
       <div className="pt-1">

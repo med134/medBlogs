@@ -3,7 +3,11 @@ import Link from "next/link";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { AiTwotoneSound } from "react-icons/ai";
 import { FormatDate, getTemplates } from "../utils/action";
-import BackgroundDev from "./BackgroundDev";
+import dynamic from "next/dynamic";
+import Loading from "../Loading";
+const BackgroundDev = dynamic(() => import("./BackgroundDev"), {
+  loading: () => <Loading />,
+});
 
 const Easy = async () => {
   const templates = await getTemplates();

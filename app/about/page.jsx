@@ -3,12 +3,20 @@ import TransitionEffect from "../components/TransitionEffect";
 import { AnimatedNumbers } from "../components/AnimatedNumbers";
 import Layout from "../components/Layout";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import Experience from "../components/Experience";
-import Skills from "../components/Skills";
-import Education from "../components/Education";
 import profilePic from "@/public/images/med.jpg";
 import { ContactMenu } from "../components/ProjectArrays";
+import Loading from "../Loading";
+const Skills = dynamic(() => import("../components/Skills"), {
+  loading: () => <Loading />,
+});
+const Experience = dynamic(() => import("../components/Experience"), {
+  loading: () => <Loading />,
+});
+const Education = dynamic(() => import("../components/Education"), {
+  loading: () => <Loading />,
+});
 
 export const metadata = {
   title: "About us & Resume & Experience | medCode ",
