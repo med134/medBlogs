@@ -13,6 +13,7 @@ export const handelLoginGithub = async () => {
 };
 export const handelLogOut = async () => {
   await signOut();
+  return Response.redirect(new URL("/login"));
 };
 export const LoginWithGoogle = async () => {
   await signIn("google");

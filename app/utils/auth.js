@@ -33,6 +33,7 @@ export const {
               email: profile.email,
               imageUrl: profile.avatar_url,
               userSlug: profile.name.replace(/\s+/g, "-").toLowerCase(),
+              isAdmin: false,
             });
             await newUser.save();
             console.log("user is created");
@@ -52,6 +53,7 @@ export const {
               email: profile.email,
               imageUrl: profile.picture,
               userSlug: profile.name.replace(/\s+/g, "-").toLowerCase(),
+              isAdmin: false,
             });
             await newUser.save();
             console.log("user is created");

@@ -10,6 +10,7 @@ export const authConfig = {
         token.isAdmin = user.isAdmin;
         token.userSlug = user.userSlug;
       }
+      
       return token;
     },
     async session({ session, token }) {

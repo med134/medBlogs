@@ -13,24 +13,62 @@ import { usePathname } from "next/navigation";
 import { handelLogOut } from "@/app/utils/action";
 
 export const menuItems = [
- { name: "Dashboard", link: "/dashboard", icon: RxDashboard },
- { name: "Users", link: "/dashboard/users", icon: PiUsersThree },
- { name: "Blogs", link: "/dashboard/blogs", icon: RiArticleLine },
- { name: "Add Blog", link: "/dashboard/add-articles", icon: CgFileAdd },
- { name: "Draft blog", link: "/dashboard/pending", icon: MdPendingActions },
- { name: "Messages", link: "/dashboard/messages", icon: MdOutlineMail },
- {
-   name: "Add Templates",
-   link: `/dashboard/add-templates`,
-   icon: LuLayoutTemplate,
- },
+  {
+    name: "Dashboard",
+    link: "/dashboard",
+    icon: RxDashboard,
+    isAdmin: false,
+  },
+  {
+    name: "Blogs",
+    link: "/dashboard/blogs",
+    icon: RiArticleLine,
+    isAdmin: false,
+  },
+  {
+    name: "Create Blog",
+    link: "/dashboard/add-articles",
+    icon: CgFileAdd,
+    isAdmin: false,
+  },
+  {
+    name: "Create Template",
+    link: `/dashboard/add-templates`,
+    icon: LuLayoutTemplate,
+    isAdmin: false,
+  },
+  {
+    name: "Users",
+    link: "/dashboard/users",
+    icon: PiUsersThree,
+    isAdmin: true,
+  },
+  {
+    name: "Draft blog",
+    link: "/dashboard/pending",
+    icon: MdPendingActions,
+    isAdmin: true,
+  },
+  {
+    name: "Messages",
+    link: "/dashboard/messages",
+    icon: MdOutlineMail,
+    isAdmin: true,
+  },
 ];
-const SideBar = () => {
+const SideBar = ({ session }) => {
   const path = usePathname();
+  const filteredMenuItems = menuItems.filter((item) => {
+    if (session.user.email === "mohamed7dakir@gmail.com") {
+      return true;
+    } else {
+      return !item.isAdmin;
+    }
+  });
   return (
     <div className="fixed left-0 top-16 h-screen lg:hidden flex px-4 flex-grow flex-col bg-gradient-to-r from-[#f0f0f0] to-gray-50">
       <ul className="flex flex-col pt-12">
-        {menuItems.map((link) => {
+        {filteredMenuItems.map((link) => {
           const LinkIcon = link.icon;
           const isActive = path === link.link;
           return (
@@ -42,20 +80,16 @@ const SideBar = () => {
                 }`}
               >
                 <LinkIcon className="mr-3 h-6 w-6" />
-                <span className="font-medium ml-3">
-                  {link.name}
-                </span>
+                <span className="font-medium ml-3">{link.name}</span>
               </Link>
             </li>
           );
         })}
       </ul>
-      <form action={handelLogOut} className="mt-3">
+      <form action={handelLogOut} className="fixed bottom-4">
         <button className="flex flex-row px-5 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
           <LuLogOut className="w-6 h-6" />
-          <span className="font-medium ml-3">
-            Logout
-          </span>
+          <span className="font-medium ml-3">Logout</span>
         </button>
       </form>
     </div>

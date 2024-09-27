@@ -13,7 +13,6 @@ import { handelLogOut } from "../utils/action";
 const ResponsiveDashboardNavbar = ({ session }) => {
   const [isOpen, setIsOpen] = useState(false);
   const path = usePathname();
-
   return (
     <div className="h-20 flex sticky top-0 w-[100%] justify-between z-50 items-center bg-gradient-to-r from-[#f0f0f0] to-gray-50">
       {/* hidden navbar responsive */}
@@ -87,26 +86,27 @@ const ResponsiveDashboardNavbar = ({ session }) => {
         <div
           className={`absolute top-16 right-0 mt-2 w-full p-6 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 `}
         >
-          {menuItems.map((link) => {
+          {menuItems.map((link, index) => {
             const LinkIcon = link.icon;
             const isActive = path === link.link;
-            return (
-              <div
-                key={link.name}
-                className="py-3 text-center"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                <Link
-                  href={link.link}
-                  className={`flex flex-row items-center px-5 h-10 cursor-pointer transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800 ${
-                    isActive ? "font-semibold bg-mainColor  text-light" : ""
-                  }`}
+            if (index < 4)
+              return (
+                <div
+                  key={link.name}
+                  className="py-3 text-center"
+                  onClick={() => setIsOpen(!isOpen)}
                 >
-                  <LinkIcon className="mr-3 h-6 w-6" />
-                  <span className="font-medium ml-3">{link.name}</span>
-                </Link>
-              </div>
-            );
+                  <Link
+                    href={link.link}
+                    className={`flex flex-row items-center px-5 h-10 cursor-pointer transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800 ${
+                      isActive ? "font-semibold bg-mainColor  text-light" : ""
+                    }`}
+                  >
+                    <LinkIcon className="mr-3 h-6 w-6" />
+                    <span className="font-medium ml-3">{link.name}</span>
+                  </Link>
+                </div>
+              );
           })}
           <Link
             href="/"
@@ -115,7 +115,7 @@ const ResponsiveDashboardNavbar = ({ session }) => {
             <MdOutlineExitToApp className="mr-3 h-6 w-6" />
             <span className="font-medium ml-3">Exit Dashboard</span>
           </Link>
-          <form action={handelLogOut}>
+          <form action={handelLogOut} className="">
             <button className="flex flex-row px-5 mt-2 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
               <LuLogOut className="w-6 h-6" />
               <span className="font-medium ml-3 dark:text-light">Logout</span>

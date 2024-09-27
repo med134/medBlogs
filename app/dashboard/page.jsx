@@ -1,6 +1,10 @@
 import React from "react";
-import ChartPage from "../components/ChartPage";
+import dynamic from "next/dynamic";
 import HomeDash from "../components/HomeDash";
+import Loading from "../Loading";
+const ChartPage = dynamic(() => import("../components/ChartPage"), {
+  loading: () => <Loading />,
+});
 
 const page = async () => {
   return (
