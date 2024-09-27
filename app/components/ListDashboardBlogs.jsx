@@ -4,10 +4,14 @@ import { BiSolidEdit } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-import Pagination from "./Pagination";
-import Loading from "../Loading";
-import BlogSkelton from "./BlogSkelton";
+import Link from "next/link";
 const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
+  ssr: false,
+});
+const BlogSkelton = dynamic(() => import("./BlogSkelton"), {
+  ssr: false,
+});
+const Pagination = dynamic(() => import("./Pagination"), {
   ssr: false,
 });
 const FormatDate = (dateString) => {
@@ -56,8 +60,8 @@ const ListDashboardBlogs = ({ user }) => {
   return (
     <div className="container mx-auto p-4 md:p-1">
       <h1 className="text-2xl font-bold mb-4">Your Blogs & Articles</h1>
-      <div className="overflow-y-hidden rounded-lg border">
-        <div className="">
+      {blogs.length > 0 ? (
+        <div className={`overflow-y-hidden rounded-lg border`}>
           <table className="">
             <thead className="w-min">
               <tr className="bg-mainColor w-min justify-between text-xs font-semibold uppercase text-white">
@@ -124,14 +128,23 @@ const ListDashboardBlogs = ({ user }) => {
             </tbody>
           </table>
         </div>
-      </div>
-          {blogs?.length > 0 && (
-            <Pagination
-              totalPages={totalPages}
-              handleMovePages={handleMovePages}
-              currentPage={currentPage}
-            />
-          )}
+      ) : (
+        <div className="py-6 sm:text-center">
+          <Link
+            href="/dashboard/add-articles"
+            className="px-10 py-2 bg-mainColor sm:text-center rounded-md text-light hover:text-white"
+          >
+            Create Blog
+          </Link>
+        </div>
+      )}
+      {blogs?.length > 0 && (
+        <Pagination
+          totalPages={totalPages}
+          handleMovePages={handleMovePages}
+          currentPage={currentPage}
+        />
+      )}
     </div>
   );
 };

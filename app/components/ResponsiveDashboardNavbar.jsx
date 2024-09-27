@@ -116,7 +116,7 @@ const ResponsiveDashboardNavbar = ({ session }) => {
             <span className="font-medium ml-3">Exit Dashboard</span>
           </Link>
           <form action={handelLogOut} className="">
-            <button className="flex flex-row px-5 mt-2 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+            <button className="flex flex-row px-5 mt-4 items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
               <LuLogOut className="w-6 h-6" />
               <span className="font-medium ml-3 dark:text-light">Logout</span>
             </button>
