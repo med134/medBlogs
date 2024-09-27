@@ -58,8 +58,8 @@ const ListDashboardBlogs = ({ user }) => {
     setCurrentPage(page);
   };
   return (
-    <div className="container mx-auto p-4 md:p-1">
-      <h1 className="text-2xl font-bold mb-4">Your Blogs & Articles</h1>
+    <div className="p-4 md:p-1">
+      <h1 className="text-2xl font-bold mb-10 sm:mb-6">Your Blogs & Articles</h1>
       {blogs.length > 0 ? (
         <div className={`overflow-y-hidden rounded-lg border`}>
           <table className="">
