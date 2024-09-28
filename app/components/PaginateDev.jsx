@@ -17,7 +17,7 @@ const PaginateDev = ({ dev }) => {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-10 lg:gap-4 px-16 py-8 lg:px-8 md:flex md:flex-col sm:px-2 xl:px-10 xs:gap-1">
+      <div className="grid grid-cols-2 gap-10 lg:gap-4 px-16 py-8 xs:py-3 lg:px-8 md:flex md:flex-col sm:px-2 xl:px-10 xs:gap-1">
         {currentBlog?.map((item) => (
           <div
             key={item.id}

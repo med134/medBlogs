@@ -56,7 +56,7 @@ const SettingsProfile = ({
     <div className="py-24 z-0 md:py-16">
       <div className="border-b-2 flex-col md:flex">
         <div className="bg-white relative shadow rounded-lg flex flex-col justify-center z-0 ">
-          <div className="flex justify-center -z-1">
+          <div className="flex justify-center">
             <Image
               src={newImageUrl}
               alt="user"
@@ -66,21 +66,21 @@ const SettingsProfile = ({
               className="rounded-full z-0 mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110"
             />
           </div>
-          <div className="mt-16 py-2 items-center">
+          <div className="mt-16 py-2 text-center">
             <h1 className="font-bold text-center text-3xl text-gray-900">
               {newName}
             </h1>
-            <span className="text-center text-sm text-gray-400 font-medium">
+            <span className="text-sm text-gray-400 font-medium">
               {newJob}
             </span>
           </div>
         </div>
-        <div className="w-full p-8 bg-white lg:ml-4">
+        <div className="w-full p-8 bg-white lg:ml-4 xs:p-1 xs:ml-0 py-4">
           {loading ? (
             <SkeletonLoadingForm />
           ) : (
             <form className="" onSubmit={handleSubmit}>
-              <div className="rounded p-6 grid grid-cols-3 gap-4 md:flex md:flex-col">
+              <div className="rounded p-6 grid grid-cols-3 gap-4 md:flex md:flex-col xs:p-1">
                 <div className="pb-2">
                   <label
                     htmlFor="name"
@@ -177,7 +177,7 @@ const SettingsProfile = ({
                   </div>
                 </div>
               </div>
-              <div className="flex justify-between items-center py-5 sm:flex sm:flex-col sm:justify-start">
+              <div className="flex justify-between items-center py-5">
                 <button
                   type="submit"
                   className="w-full bg-gray-900 hover:bg-blue-dark text-white font-bold py-2 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300"

@@ -1,14 +1,13 @@
 import React from "react";
 import SettingsProfile from "@/app/components/SettingsProfile";
-import { getUserBySlug } from "@/app/utils/action";
+import { getUserBySlug } from "../../profile/[userSlug]/page";
 
 
 const page = async ({ params }) => {
   const { slug } = params;
   const user = await getUserBySlug(slug);
   return (
-    <main className="py-20">
-      <h1 className="text-2xl font-semibold">Edit Profile</h1>
+    <main className="py-20 w-full">
       <SettingsProfile
         email={user.email}
         name={user.name}
