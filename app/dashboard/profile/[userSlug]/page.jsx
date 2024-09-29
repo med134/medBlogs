@@ -18,7 +18,7 @@ const page = async ({ params }) => {
   const session = await auth();
   const dataSession = JSON.parse(JSON.stringify(session));
   return (
-    <main className="py-20">
+    <main className="py-20 w-full">
       <Profile dataSession={dataSession} userData={userData} />
     </main>
   );

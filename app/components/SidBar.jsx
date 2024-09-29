@@ -21,7 +21,8 @@ const SidBar = async () => {
         </span>
         {dev?.map(
           (item, index) =>
-            index < 3 && (
+            index > 0 &&
+            index < 4 && (
               <div key={item._id} className="flex justify-start items-center">
                 <Image
                   className="object-contain w-36 h-36"

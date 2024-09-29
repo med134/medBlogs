@@ -112,7 +112,7 @@ const BlogPage = async ({ params }) => {
           <h2 className="flex underline font-bold justify-start items-start py-6 xs:py-2 ml-2 mt-1 font-bolder">
             {blog.tags}
           </h2>
-          <div className="py-4" dangerouslySetInnerHTML={{ __html: content }} />
+          <div className="py-4 w-full" dangerouslySetInnerHTML={{ __html: content }} />
           <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
           <Comments postSlug={blog._id} userData={userData} />
         </div>

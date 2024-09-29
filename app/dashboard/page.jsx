@@ -6,7 +6,7 @@ const ChartPage = dynamic(() => import("../components/ChartPage"), {
   loading: () => <Loading />,
 });
 
-const page = async () => {
+const page = () => {
   return (
     <div className="p-12 bg-white sm:p-4 col-auto pt-4 px-1 md:p-6 w-[100%]">
       <h1 className="text-2xl mt-4 flex text-dark font-semibold">
