@@ -42,6 +42,7 @@ const AddNewArticle = ({ session }) => {
         imagesExtensions: ["jpg", "png", "jpeg", "gif", "svg", "webp"],
       },
       height: "500px",
+      width: "100%",
     }),
     []
   );
