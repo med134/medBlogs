@@ -2,7 +2,6 @@ import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { inter } from "./components/Fonts";
 import Script from "next/script";
@@ -62,7 +61,6 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         <Analytics mode={"production"} />
-        <SpeedInsights />
       </body>
       <GoogleAnalytics gaId="G-J4KQVRLWEN" />
     </html>

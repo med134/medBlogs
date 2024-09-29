@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, useRef } from "react";
-import JoditEditor from "jodit-react";
+import React, { useState, useRef, useMemo } from "react";
 import IsUpdate from "./IsUpdate";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 import "jodit-react/examples/app.css";
+import dynamic from "next/dynamic";
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 const AddNewArticle = ({ session }) => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -34,12 +35,16 @@ const AddNewArticle = ({ session }) => {
   const editor = useRef(null);
   const myLocalContent = localStorage.getItem("content");
   const [myContent, setMyContent] = useState(myLocalContent);
-  const [config, setConfig] = useState({
-    readonly: false,
-    height: 600,
-    toolbar: true,
-    zIndex: -1,
-  });
+  const config = useMemo(
+    () => ({
+      uploader: {
+        insertImageAsBase64URI: true,
+        imagesExtensions: ["jpg", "png", "jpeg", "gif", "svg", "webp"],
+      },
+      height: "500px",
+    }),
+    []
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -108,10 +113,10 @@ const AddNewArticle = ({ session }) => {
       reader.readAsDataURL(input.files[0]);
     }
   };
-  const changeContent=(newContent)=>{
-    setMyContent(newContent)
+  const changeContent = (newContent) => {
+    setMyContent(newContent);
     localStorage.setItem("content", myContent);
-  }
+  };
   return (
     <div className="inline-block max-h-full p-8 py-8 sm:p-2 sm:py-2 w-full">
       <h1 className="text-gray-700 text-2xl lg:text-2xl font-bold">
