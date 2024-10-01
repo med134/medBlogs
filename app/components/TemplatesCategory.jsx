@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import FilterTemplates from "./FilterTemplates";
-import Pagination from "./Pagination";
+import dynamic from "next/dynamic";
+const Pagination = dynamic(() => import("./Pagination"), { ssr: false });
 
 const TemplatesCategory = ({ data }) => {
   const [newData, setNewData] = useState(data);

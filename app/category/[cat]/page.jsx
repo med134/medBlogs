@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "@/app/components/categoryList/categoryList.module.css";
 import Link from "next/link";
+import { Suspense } from "react";
 import Image from "next/image";
 import AllCategoryPage from "@/app/components/AllCategoryPage";
 import { getAllCategories } from "@/app/utils/action";
+import SkeltonCard from "@/app/components/SkeltonCard";
 
 async function getPosts(cat) {
   const res = await fetch(
@@ -101,7 +103,9 @@ const Card = async ({ params }) => {
           </Link>
         ))}
       </div>
-      <AllCategoryPage sortedPosts={sortedPosts} />
+      <Suspense fallback={<SkeltonCard />}>
+        <AllCategoryPage sortedPosts={sortedPosts} />
+      </Suspense>
     </div>
   );
 };

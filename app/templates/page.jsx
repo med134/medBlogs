@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import TransitionEffect from "../components/TransitionEffect";
 import Image from "next/image";
 import SearchBar from "../components/SearchBar";
 import dynamic from "next/dynamic";
 import { getTemplates } from "../utils/action";
 import Loading from "../Loading";
+import SkeltonCard from "../components/SkeltonCard";
 const TemplatesPreview = dynamic(
   () => import("../components/TemplatesCategory"),
   { loading: () => <Loading /> }
@@ -92,7 +93,7 @@ const page = async () => {
             project with different frameworks.
           </h3>
         </div>
-        <TemplatesPreview data={data} />
+          <TemplatesPreview data={data} />
       </div>
     </>
   );
