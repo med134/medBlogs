@@ -30,6 +30,12 @@ const userSchema = new Schema(
     homeAddress: {
       type: String,
     },
+    skills: {
+      type: [String], // Array of strings to store skills
+    },
+    Experience: {
+      type: [String], // Array of strings to store Experience
+    },
     isAdmin: {
       type: Boolean,
       default: false,

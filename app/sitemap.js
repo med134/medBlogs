@@ -1,10 +1,12 @@
 import { getAll, getAllCat, getArticles } from "./components/FetchData";
+import { getAllUsers } from "./utils/action";
 import routes from "./routes.json";
 
 export default async function sitemap() {
   const posts = await getAll();
   const blogs = await getArticles();
   const categories = await getAllCat();
+  const users = await getAllUsers();
   const baseUrl = "https://medcode.dev";
   const staticUrls = routes.map((route) => {
     return {
@@ -36,6 +38,18 @@ export default async function sitemap() {
       lastModified: new Date().toISOString(),
     };
   });
+  const allProfile = users.map((cat) => {
+    return {
+      url: `${baseUrl}/dashboard/profile/${cat.userSlug}`,
+      lastModified: new Date().toISOString(),
+    };
+  });
 
-  return [...staticUrls, ...AllPosts, ...AllBlogs, ...allCategories];
+  return [
+    ...staticUrls,
+    ...AllPosts,
+    ...AllBlogs,
+    ...allCategories,
+    ...allProfile,
+  ];
 }
