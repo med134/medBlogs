@@ -12,10 +12,14 @@ const page = async ({ params }) => {
         email={user.email}
         name={user.name}
         job={user.job}
-        phone={user.phone}
-        homeAddress={user.homeAddress}
+        phone={user?.phone}
+        homeAddress={user?.homeAddress}
         imageUrl={user.imageUrl}
         userSlug={user.userSlug}
+        isAdmin={user.isAdmin}
+        workLinks={user.workLinks}
+        skills={user.skills}
+        experience={user.experience}
       />
     </main>
   );

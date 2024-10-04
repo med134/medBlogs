@@ -5,6 +5,16 @@ import { FormatDate } from "../utils/action";
 import Link from "next/link";
 import { IoSettingsOutline } from "react-icons/io5";
 
+export async function getUserBySlug(slug) {
+  const res = await fetch(`https://www.medcode.dev/api/users/${slug}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+  const user = await res.json();
+  return user;
+}
 const Profile = ({ userData, dataSession }) => {
   return (
     <div className="w-full mx-auto py-8 sm:py-4">

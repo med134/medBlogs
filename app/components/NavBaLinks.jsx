@@ -84,10 +84,10 @@ const NavBaLinks = ({ session }) => {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-4 fill-current mr-2"
+                className="w-4 fill-current mr-2"
                 viewBox="0 0 24 24"
               >
-                <g fill-rule="evenodd" clip-rule="evenodd">
+                <g fillRule="evenodd" clip-rule="evenodd">
                   <path
                     d="M7 4a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-6a1 1 0 1 1 2 0v6a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5h6a1 1 0 1 1 0 2z"
                     data-original="#000000"

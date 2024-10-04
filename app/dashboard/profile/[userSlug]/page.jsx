@@ -64,12 +64,15 @@ export const metadata = {
 
 const page = async ({ params }) => {
   const { userSlug } = params;
-  const userData = await getUserBySlug(userSlug);
-  const session = await auth();
+  const [session, userData] = await Promise.all([
+    auth(),
+    getUserBySlug(userSlug),
+  ]);
   const dataSession = JSON.parse(JSON.stringify(session));
+  console.log(userData)
   return (
     <main className="py-20 w-full">
-      <ProfileDashboard />
+      <ProfileDashboard dataSession={dataSession} userData={userData} />
     </main>
   );
 };

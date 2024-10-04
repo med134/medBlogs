@@ -33,8 +33,11 @@ const userSchema = new Schema(
     skills: {
       type: [String], // Array of strings to store skills
     },
-    Experience: {
+    workLinks: {
       type: [String], // Array of strings to store Experience
+    },
+    experience: {
+      type: Number,
     },
     isAdmin: {
       type: Boolean,
