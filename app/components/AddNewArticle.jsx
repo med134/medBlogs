@@ -97,7 +97,7 @@ const AddNewArticle = ({ session }) => {
       const reader = new FileReader();
 
       reader.onload = () => {
-        const avatarImg = new Image();
+        const avatarImg = new Image()
         const src = reader.result;
         setDataUrl(src);
 

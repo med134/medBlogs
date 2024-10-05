@@ -34,6 +34,8 @@ export const {
               imageUrl: profile.avatar_url,
               userSlug: profile.name.replace(/\s+/g, "-").toLowerCase(),
               isAdmin: false,
+              skills: ["insert skill one","insert skill two","insert skill three"],
+              workLinks: ["insert Github Link","insert website Link","insert Linkedin Link"],
             });
             await newUser.save();
             console.log("user is created");

@@ -18,8 +18,8 @@ const page = async ({ params }) => {
         userSlug={user.userSlug}
         isAdmin={user.isAdmin}
         workLinks={user.workLinks}
-        skills={user.skills}
-        experience={user.experience}
+        skills={user?.skills}
+        experience={user?.experience}
       />
     </main>
   );

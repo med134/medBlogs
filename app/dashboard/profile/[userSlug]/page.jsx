@@ -71,7 +71,7 @@ const page = async ({ params }) => {
   const dataSession = JSON.parse(JSON.stringify(session));
   console.log(userData)
   return (
-    <main className="py-20 w-full">
+    <main className="py-20 w-full sm:py-8">
       <ProfileDashboard dataSession={dataSession} userData={userData} />
     </main>
   );
