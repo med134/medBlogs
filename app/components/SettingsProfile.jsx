@@ -98,7 +98,7 @@ const SettingsProfile = ({
               <div className="relative">
                 <ImageUser
                   imageUrl={newImageUrl}
-                  className="w-1/2 mx-auto h-60 md:w-1/3 md:h-36 xs:w-80 xs:h-80 xs:rounded-full"
+                  className="w-1/2 mx-auto h-60 xs:w-60 xs:h-60 xs:rounded-full"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <label className="py-1.5 px-3 bg-dark bg-opacity-80 text-white text-sm cursor-pointer">
@@ -137,14 +137,14 @@ const SettingsProfile = ({
             </div>
           </div>
 
-          <div className="flex mt-8 sm:flex-col sm:mt-4">
-            <div className="w-full sm:flex sm:justify-between sm:items-center sm:text-sm">
-              <div>
-                <p className="text-xl md:text-sm text-gray-600 mt-8 mb-4">
+          <div className="flex mt-8 sm:flex-col sm:mt-8">
+            <div className="w-full sm:flex sm:flex-col sm:text-sm">
+              <div className="sm:mb-4">
+                <span className="text-xl font-semibold text-mainColor mt-8 mb-4 sm:text-sm">
                   WORK LINKS
-                </p>
+                </span>
                 {newWorkLinks?.map((link, index) => (
-                  <div key={index} className="flex items-center">
+                  <div key={index} className="flex items-center sm:mt-2">
                     <input
                       key={index}
                       type="url"
@@ -152,18 +152,18 @@ const SettingsProfile = ({
                       onChange={(e) =>
                         handleWorkLinkChange(index, e.target.value)
                       }
-                      className="block mb-2 w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
+                      className="block mb-2 sm:w-full w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
                     />
                     <CiEdit className="w-6 h-6 fill-dark ml-1" />
                   </div>
                 ))}
               </div>
-              <div>
-                <p className="text-xl xs:text-sm text-gray-600 mt-8 mb-4">
+              <div className="sm:mb-4">
+                <span className="text-xl font-semibold text-mainColor mt-8 mb-4 sm:text-sm">
                   SKILLS
-                </p>
+                </span>
                 {newSkills?.map((skill, index) => (
-                  <div key={index} className="flex items-center">
+                  <div key={index} className="flex items-center sm:mt-2">
                     <input
                       key={index}
                       type="text"
@@ -171,7 +171,7 @@ const SettingsProfile = ({
                         handleSkillsChange(index, e.target.value)
                       }
                       value={skill}
-                      className="block mb-2 w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
+                      className="block sm:w-full mb-2 w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
                     />
                     <CiEdit className="w-6 h-6 fill-dark ml-1" />
                   </div>
@@ -180,6 +180,9 @@ const SettingsProfile = ({
             </div>
 
             <div className="w-full">
+              <span className="font-semibold uppercase text-xl text-mainColor sm:text-sm">
+                Personnel Information
+              </span>
               <div className="tab-content sm:mt-4">
                 <div className="active xs:text-sm" id="home">
                   <div className="flex flex-wrap mb-4">

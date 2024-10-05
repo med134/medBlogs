@@ -7,7 +7,7 @@ const page = async ({ params }) => {
   const { slug } = params;
   const user = await getUserBySlug(slug);
   return (
-    <main className="py-20 w-full">
+    <main className="py-6 w-full">
       <SettingsProfile
         email={user.email}
         name={user.name}
