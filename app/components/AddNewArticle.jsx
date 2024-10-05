@@ -4,6 +4,7 @@ import IsUpdate from "./IsUpdate";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 import "jodit-react/examples/app.css";
 import dynamic from "next/dynamic";
+import imageCompression from "browser-image-compression";
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 const AddNewArticle = ({ session }) => {
@@ -89,29 +90,29 @@ const AddNewArticle = ({ session }) => {
       setError(err.message);
     }
   };
-
-  const readURL = (event) => {
+  const readURL = async (event) => {
     const input = event.target;
-
     if (input.files && input.files[0]) {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        const avatarImg = new Image()
-        const src = reader.result;
-        setDataUrl(src);
-
-        avatarImg.onload = () => {
-          const canvas = canvasRef.current;
-          const ctx = canvas.getContext("2d");
-          ctx.canvas.width = avatarImg.width;
-          ctx.canvas.height = avatarImg.height;
-          ctx.drawImage(avatarImg, 0, 0);
-        };
-
-        avatarImg.src = src;
+      const file = input.files[0];
+      // Compression options
+      const options = {
+        maxSizeMB: 1, // Maximum file size in MB
+        maxWidthOrHeight: 800, // Maximum width or height
+        useWebWorker: true, // For better performance
       };
-      reader.readAsDataURL(input.files[0]);
+      try {
+        // Compress the image file
+        const compressedFile = await imageCompression(file, options);
+        // Convert the compressed file to base64 URL
+        const reader = new FileReader();
+        reader.onload = () => {
+          const src = reader.result;
+          setDataUrl(src); // Set compressed image to state
+        };
+        reader.readAsDataURL(compressedFile);
+      } catch (error) {
+        console.log("Error while compressing the image", error);
+      }
     }
   };
   const changeContent = (newContent) => {

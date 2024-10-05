@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 import { CiEdit } from "react-icons/ci";
+import imageCompression from "browser-image-compression";
 import dynamic from "next/dynamic";
 const ImageUser = dynamic(() => import("./ImageUser"), { ssr: false });
 
@@ -30,9 +31,11 @@ const SettingsProfile = ({
   const [newWorkLinks, setNewWorkLinks] = useState(workLinks);
   const [newSkills, setNewSkills] = useState(skills);
   const [loading, setLoading] = useState(false);
+  const [newSkillInput, setNewSkillInput] = useState("");
+  const [newWorkLinksInput, setNewWorkLinksInput] = useState("");
 
   const router = useRouter();
-  console.log("this is image user", newImageUrl);
+  console.log("skills input",newWorkLinks);
   // Handle change a new work link
   const handleWorkLinkChange = (index, value) => {
     const updatedLinks = [...newWorkLinks];
@@ -44,8 +47,20 @@ const SettingsProfile = ({
     updatedSkills[index] = value;
     setNewSkills(updatedSkills);
   };
-  const canvasRef = useRef(null);
-
+  // Add new skill to array
+  const handleAddNewSkill = () => {
+    if (newSkillInput.trim() !== "") {
+      setNewSkills([...newSkills, newSkillInput]); // Add new skill to the array
+      setNewSkillInput(""); // Clear the input field
+    }
+  };
+  // Add new workLinks to array
+  const handleAddWorkLinks = () => {
+    if (newWorkLinksInput.trim() !== "") {
+      setNewWorkLinks([...newWorkLinks, newWorkLinksInput]); // Add new skill to the array
+      setNewWorkLinksInput(""); // Clear the input field
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userSlug = newSlug;
@@ -74,17 +89,29 @@ const SettingsProfile = ({
     }
   };
   // upload photo
-  const readURL = (event) => {
+  const readURL = async (event) => {
     const input = event.target;
     if (input.files && input.files[0]) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const avatarImg = new Image();
-        const src = reader.result;
-        setImageUrl(src);
-        avatarImg.src = src;
+      const file = input.files[0];
+      // Compression options
+      const options = {
+        maxSizeMB: 1, // Maximum file size in MB
+        maxWidthOrHeight: 800, // Maximum width or height
+        useWebWorker: true, // For better performance
       };
-      reader.readAsDataURL(input.files[0]);
+      try {
+        // Compress the image file
+        const compressedFile = await imageCompression(file, options);
+        // Convert the compressed file to base64 URL
+        const reader = new FileReader();
+        reader.onload = () => {
+          const src = reader.result;
+          setImageUrl(src); // Set compressed image to state
+        };
+        reader.readAsDataURL(compressedFile);
+      } catch (error) {
+        console.log("Error while compressing the image", error);
+      }
     }
   };
   return (
@@ -140,42 +167,84 @@ const SettingsProfile = ({
           <div className="flex mt-8 sm:flex-col sm:mt-8">
             <div className="w-full sm:flex sm:flex-col sm:text-sm">
               <div className="sm:mb-4">
-                <span className="text-xl font-semibold text-mainColor mt-8 mb-4 sm:text-sm">
+                <span className="text-xl font-semibold text-mainColor mt-8 sm:text-sm">
                   WORK LINKS
                 </span>
-                {newWorkLinks?.map((link, index) => (
-                  <div key={index} className="flex items-center sm:mt-2">
+                {newWorkLinks.length > 2 ? (
+                  newWorkLinks.map((link, index) => (
+                    <div key={index} className="flex items-center sm:mt-2">
+                      <input
+                        key={index}
+                        type="url"
+                        value={link}
+                        required={false}
+                        onChange={(e) =>
+                          handleWorkLinkChange(index, e.target.value)
+                        }
+                        className="block mb-2 sm:w-full w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
+                      />
+                      <CiEdit className="w-6 h-6 fill-dark ml-1" />
+                    </div>
+                  ))
+                ) : (
+                  <div className="flex items-center sm:mt-2">
                     <input
-                      key={index}
                       type="url"
-                      value={link}
-                      onChange={(e) =>
-                        handleWorkLinkChange(index, e.target.value)
-                      }
+                      required={false}
+                      placeholder="Add a new links"
+                      value={newWorkLinksInput}
+                      onChange={(e) => setNewWorkLinksInput(e.target.value)}
                       className="block mb-2 sm:w-full w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
                     />
-                    <CiEdit className="w-6 h-6 fill-dark ml-1" />
+                    <button
+                      type="button"
+                      onClick={handleAddWorkLinks}
+                      className="ml-2 px-6 py-1 bg-mainColor text-white rounded"
+                    >
+                      Add links
+                    </button>
                   </div>
-                ))}
+                )}
               </div>
               <div className="sm:mb-4">
-                <span className="text-xl font-semibold text-mainColor mt-8 mb-4 sm:text-sm">
+                <span className="text-xl font-semibold text-mainColor mt-8 sm:text-sm">
                   SKILLS
                 </span>
-                {newSkills?.map((skill, index) => (
-                  <div key={index} className="flex items-center sm:mt-2">
+                {newSkills.length > 2 ? (
+                  newSkills.map((link, index) => (
+                    <div key={index} className="flex items-center sm:mt-2">
+                      <input
+                        key={index}
+                        type="text"
+                        value={link}
+                        required={false}
+                        onChange={(e) =>
+                          handleSkillsChange(index, e.target.value)
+                        }
+                        className="block mb-2 sm:w-full w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
+                      />
+                      <CiEdit className="w-6 h-6 fill-dark ml-1" />
+                    </div>
+                  ))
+                ) : (
+                  <div className="flex items-center sm:mt-2">
                     <input
-                      key={index}
                       type="text"
-                      onChange={(e) =>
-                        handleSkillsChange(index, e.target.value)
-                      }
-                      value={skill}
-                      className="block sm:w-full mb-2 w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
+                      required={false}
+                      placeholder="Add a new skill"
+                      value={newSkillInput}
+                      onChange={(e) => setNewSkillInput(e.target.value)}
+                      className="block mb-2 sm:w-full w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
                     />
-                    <CiEdit className="w-6 h-6 fill-dark ml-1" />
+                    <button
+                      type="button"
+                      onClick={handleAddNewSkill}
+                      className="ml-2 px-6 py-1 bg-mainColor text-white rounded"
+                    >
+                      Add Skill
+                    </button>
                   </div>
-                ))}
+                )}
               </div>
             </div>
 
