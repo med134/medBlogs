@@ -4,26 +4,36 @@ import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { CgWebsite } from "react-icons/cg";
+import { CiEdit } from "react-icons/ci";
 
 const ProfileDashboard = ({ dataSession, userData }) => {
   return (
     <div className="w-full mx-auto p-8 mb-8 bg-white rounded-lg md:p-3 sm:p-3">
+      {userData.email === dataSession.user.email && (
+        <Link
+          href={`/dashboard/settings/${userData?.userSlug}`}
+          className="absolute group right-10 inline-flex px-4 items-center bg-gray-200 p-2 rounded-full hover:bg-mainColor  text-gray-600 cursor-pointer xs:right-4"
+        >
+          <span className="sm:text-sm group-hover:text-light xs:hidden">
+            Edit Profile
+          </span>
+          <CiEdit className="w-6 h-6 fill-dark ml-1 group-hover:fill-light" />
+        </Link>
+      )}
       <form method="post">
-        <div className="flex md:block">
-          <div className="w-full">
-            <div className="relative">
-              <Image
-                src={userData?.imageUrl}
-                alt="photo profile"
-                className="w-3/4 mx-auto h-60 md:w-1/3 md:h-36 sm:w-56 sm:h-56 rounded-full"
-                width={400}
-                height={400}
-                loading="lazy"
-              />
-            </div>
+        <div className="w-full flex justify-start items-center md:flex md:flex-col md:justify-center">
+          <div className="relative w-full">
+            <Image
+              src={userData?.imageUrl}
+              alt="photo profile"
+              className="mx-auto w-60 h-60 sm:w-56 sm:h-56 rounded-full"
+              width={400}
+              height={400}
+              loading="lazy"
+            />
           </div>
           <div className="w-full md:mt-10 xs:mt-3">
-            <div className="text-left mb-2">
+            <div className="text-left mb-2 md:text-center">
               <h5 className="text-gray-800 text-2xl md:text-xl">
                 Hello, {userData.name}
               </h5>
@@ -38,18 +48,9 @@ const ProfileDashboard = ({ dataSession, userData }) => {
               </div>
             </div>
           </div>
-          {userData.email === dataSession.user.email && (
-            <div className="w-full text-right px-6">
-              <Link
-                href={`/dashboard/settings/${userData?.userSlug}`}
-                className="w-full bg-gray-200 p-2 rounded-full px-6 hover:bg-mainColor hover:text-light text-gray-600 cursor-pointer"
-              >
-                Edit Profile
-              </Link>
-            </div>
-          )}
         </div>
-        <div className="flex mt-8 sm:flex-col sm:mt-4">
+
+        <div className="flex mt-8 md:flex-col sm:mt-4">
           <div className="w-full sm:block sm:justify-between sm:items-center sm:text-sm">
             <div>
               <p className="text-xl font-semibold text-mainColor mt-8 mb-4">
