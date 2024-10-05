@@ -35,7 +35,7 @@ const SettingsProfile = ({
   const [newWorkLinksInput, setNewWorkLinksInput] = useState("");
 
   const router = useRouter();
-  console.log("skills input",newWorkLinks);
+  console.log("skills input",newSkills);
   // Handle change a new work link
   const handleWorkLinkChange = (index, value) => {
     const updatedLinks = [...newWorkLinks];
@@ -199,7 +199,7 @@ const SettingsProfile = ({
                     <button
                       type="button"
                       onClick={handleAddWorkLinks}
-                      className="ml-2 px-6 py-1 bg-mainColor text-white rounded"
+                      className="ml-2 px-6 py-1 sm:text-xs bg-mainColor text-white rounded"
                     >
                       Add links
                     </button>
@@ -239,7 +239,7 @@ const SettingsProfile = ({
                     <button
                       type="button"
                       onClick={handleAddNewSkill}
-                      className="ml-2 px-6 py-1 bg-mainColor text-white rounded"
+                      className="ml-2 px-6 py-1 sm:tex-xs bg-mainColor text-white rounded"
                     >
                       Add Skill
                     </button>

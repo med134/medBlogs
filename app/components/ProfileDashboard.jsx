@@ -7,8 +7,6 @@ import { CgWebsite } from "react-icons/cg";
 import { CiEdit } from "react-icons/ci";
 
 const ProfileDashboard = ({ dataSession, userData }) => {
-  const Names = ["GITHUB LINK", "WEBSITE LINK", "LINKEDIN Link"];
-
   return (
     <div className="w-full mx-auto p-8 mb-8 bg-white rounded-lg md:p-3 sm:p-3">
       {userData.email === dataSession.user.email && (
@@ -58,29 +56,16 @@ const ProfileDashboard = ({ dataSession, userData }) => {
               <p className="text-xl font-semibold text-mainColor mt-8 mb-4">
                 WORK LINKS
               </p>
-              <>
+              {userData?.workLinks?.map((link, index) => {
                 <a
-                  href={userData?.workLinks[0]}
+                  key={index}
+                  href={link.link}
                   className="w-1/2 flex items-center bg-white border mb-3 border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:w-full"
                 >
                   <FaGithub className="fill-dark w-6 h-6" />{" "}
-                  <span className="ml-4">GITHUB LINK</span>
-                </a>
-                <a
-                  href={userData?.workLinks[1]}
-                  className="w-1/2 flex items-center bg-white border mb-3 border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:w-full"
-                >
-                  <CgWebsite className="fill-dark w-6 h-6" />{" "}
-                  <span className="ml-4">Website LINK</span>
-                </a>
-                <a
-                  href={userData?.workLinks[2]}
-                  className="w-1/2 flex items-center bg-white border  border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:w-full"
-                >
-                  <FaLinkedin className="w-6 h-6 fill-blue-900" />
-                  <span className="ml-4 font-semibold">LinkedIn Link</span>
-                </a>
-              </>
+                  <span className="ml-4">{link.title}</span>
+                </a>;
+              })}
             </div>
             <div className="mt-4 block">
               <span className="font-semibold text-xl text-mainColor">
@@ -90,7 +75,7 @@ const ProfileDashboard = ({ dataSession, userData }) => {
                 userData.skills?.map((skill, index) => (
                   <div
                     key={index}
-                    className="w-1/2 flex items-center bg-white border mt-3 border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:w-full"
+                    className="w-1/2 uppercase flex items-center bg-white border mt-3 border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:w-full"
                   >
                     {skill}
                   </div>

@@ -34,7 +34,11 @@ const userSchema = new Schema(
       type: [String], // Array of strings to store skills
     },
     workLinks: {
-      type: [String], // Array of strings to store Experience
+      type: {
+        github: { type: String },
+        website: { type: String },
+        linkedin: { type: String },
+      }, // Object to store different types of work links
     },
     experience: {
       type: Number,
