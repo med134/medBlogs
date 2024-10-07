@@ -170,13 +170,30 @@ const SettingsProfile = ({
                 <span className="text-xl font-semibold text-mainColor mt-8 sm:text-sm">
                   WORK LINKS
                 </span>
-                {newWorkLinks.map((link, index) => (
+                {newWorkLinks.length > 0 ? (
+                  newWorkLinks.map((link, index) => (
+                    <div key={index} className="flex items-center sm:mt-2">
+                      <ImageUser imageUrl={link.image} className="w-5 h-6" />
+                      <input
+                        key={index}
+                        type="url"
+                        value={link.url || ""}
+                        placeholder={link.title}
+                        required={false}
+                        onChange={(e) =>
+                          handleWorkLinkChange(index, e.target.value)
+                        }
+                        className="block mb-2 sm:w-full ml-3 w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
+                      />
+                    </div>
+                  ))
+                ) : (
                   <div key={index} className="flex items-center sm:mt-2">
                     <ImageUser imageUrl={link.image} className="w-5 h-6" />
                     <input
                       key={index}
                       type="url"
-                      value={link.url || ''}  
+                      value={link.url || " add link"}
                       placeholder={link.title}
                       required={false}
                       onChange={(e) =>
@@ -185,7 +202,7 @@ const SettingsProfile = ({
                       className="block mb-2 sm:w-full ml-3 w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
                     />
                   </div>
-                ))}
+                )}
               </div>
               <div className="sm:mb-4">
                 <span className="text-xl font-semibold text-mainColor mt-8 sm:text-sm">
@@ -212,7 +229,7 @@ const SettingsProfile = ({
                     <input
                       type="text"
                       required={false}
-                      placeholder="Add a new skill"
+                      placeholder="Add a new three skill"
                       value={newSkillInput}
                       onChange={(e) => setNewSkillInput(e.target.value)}
                       className="block mb-2 sm:w-full w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
@@ -222,7 +239,7 @@ const SettingsProfile = ({
                       onClick={handleAddNewSkill}
                       className="ml-2 px-6 py-1 sm:tex-xs bg-mainColor text-white rounded"
                     >
-                      Add Skill
+                      Add three Skill
                     </button>
                   </div>
                 )}

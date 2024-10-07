@@ -74,7 +74,9 @@ const ProfileDashboard = ({ dataSession, userData }) => {
                   </a>
                 ))
               ) : (
-                <p>No work links available</p>
+                <Link href={`/dashboard/settings/${userData?.userSlug}`}>
+                  No work links,Add links
+                </Link>
               )}
             </div>
             <div className="mt-4 block">
@@ -95,7 +97,7 @@ const ProfileDashboard = ({ dataSession, userData }) => {
                   href={`/dashboard/settings/${userData?.userSlug}`}
                   className="text-dark px-6 py-1.5 rounded-md hover:text-mainColor hover:font-semibold"
                 >
-                  Add skills
+                  No skills, Add skills
                 </Link>
               )}
             </div>
