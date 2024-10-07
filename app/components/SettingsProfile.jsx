@@ -35,11 +35,11 @@ const SettingsProfile = ({
   const [newWorkLinksInput, setNewWorkLinksInput] = useState("");
 
   const router = useRouter();
-  console.log("skills input",newSkills);
+  console.log("skills input", newWorkLinks);
   // Handle change a new work link
-  const handleWorkLinkChange = (index, value) => {
+  const handleWorkLinkChange = (index, newUrl) => {
     const updatedLinks = [...newWorkLinks];
-    updatedLinks[index] = value;
+    updatedLinks[index] = { ...updatedLinks[index], url: newUrl }; // Only update the URL
     setNewWorkLinks(updatedLinks);
   };
   const handleSkillsChange = (index, value) => {
@@ -170,41 +170,22 @@ const SettingsProfile = ({
                 <span className="text-xl font-semibold text-mainColor mt-8 sm:text-sm">
                   WORK LINKS
                 </span>
-                {newWorkLinks.length > 2 ? (
-                  newWorkLinks.map((link, index) => (
-                    <div key={index} className="flex items-center sm:mt-2">
-                      <input
-                        key={index}
-                        type="url"
-                        value={link}
-                        required={false}
-                        onChange={(e) =>
-                          handleWorkLinkChange(index, e.target.value)
-                        }
-                        className="block mb-2 sm:w-full w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
-                      />
-                      <CiEdit className="w-6 h-6 fill-dark ml-1" />
-                    </div>
-                  ))
-                ) : (
-                  <div className="flex items-center sm:mt-2">
+                {newWorkLinks.map((link, index) => (
+                  <div key={index} className="flex items-center sm:mt-2">
+                    <ImageUser imageUrl={link.image} className="w-5 h-6" />
                     <input
+                      key={index}
                       type="url"
+                      value={link.url || ''}  
+                      placeholder={link.title}
                       required={false}
-                      placeholder="Add a new links"
-                      value={newWorkLinksInput}
-                      onChange={(e) => setNewWorkLinksInput(e.target.value)}
-                      className="block mb-2 sm:w-full w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
+                      onChange={(e) =>
+                        handleWorkLinkChange(index, e.target.value)
+                      }
+                      className="block mb-2 sm:w-full ml-3 w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
                     />
-                    <button
-                      type="button"
-                      onClick={handleAddWorkLinks}
-                      className="ml-2 px-6 py-1 sm:text-xs bg-mainColor text-white rounded"
-                    >
-                      Add links
-                    </button>
                   </div>
-                )}
+                ))}
               </div>
               <div className="sm:mb-4">
                 <span className="text-xl font-semibold text-mainColor mt-8 sm:text-sm">

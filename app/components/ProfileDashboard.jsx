@@ -1,13 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaLinkedin } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
-import { CgWebsite } from "react-icons/cg";
 import { CiEdit } from "react-icons/ci";
 
 const ProfileDashboard = ({ dataSession, userData }) => {
-  console.log(userData.workLinks);
   const myLinks = userData.workLinks;
   return (
     <div className="w-full mx-auto p-8 mb-8 bg-white rounded-lg md:p-3 sm:p-3">
@@ -59,15 +55,22 @@ const ProfileDashboard = ({ dataSession, userData }) => {
                 WORK LINKS
               </p>
               {Object.keys(myLinks).length > 0 ? (
-                Object.entries(myLinks).map(([key, link], index) => (
+                myLinks?.map((link, index) => (
                   <a
                     key={index}
-                    href={link.url} // Use link.url for the href
+                    href={link?.url} // Use link.url for the href
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-1/2 flex items-center bg-white border mb-3 border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:w-full"
                   >
-                    <span className="ml-4">{link.title}</span>
+                    <Image
+                      src={link?.image}
+                      width={100}
+                      height={100}
+                      className="h-5 w-5"
+                      alt="icons image"
+                    />
+                    <span className="ml-4">{link?.title}</span>
                   </a>
                 ))
               ) : (

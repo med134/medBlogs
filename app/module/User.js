@@ -38,8 +38,9 @@ const userSchema = new Schema(
     workLinks: {
       type: [
         {
-          title: { type: String, required: true }, // Title of the work link
-          url: { type: String, required: true }, // URL of the work link
+          title: { type: String }, // Title of the work link
+          url: { type: String },
+          image: { type: String }, // URL of the work link
         },
       ],
     },
