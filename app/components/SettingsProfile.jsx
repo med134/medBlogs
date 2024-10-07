@@ -173,7 +173,10 @@ const SettingsProfile = ({
                 {newWorkLinks.length > 0 ? (
                   newWorkLinks.map((link, index) => (
                     <div key={index} className="flex items-center sm:mt-2">
-                      <ImageUser imageUrl={link.image} className="w-5 h-6" />
+                      <ImageUser
+                        imageUrl={link.image || ""}
+                        className="w-5 h-6"
+                      />
                       <input
                         key={index}
                         type="url"
@@ -188,19 +191,26 @@ const SettingsProfile = ({
                     </div>
                   ))
                 ) : (
-                  <div key={index} className="flex items-center sm:mt-2">
-                    <ImageUser imageUrl={link.image} className="w-5 h-6" />
-                    <input
-                      key={index}
-                      type="url"
-                      value={link.url || " add link"}
-                      placeholder={link.title}
-                      required={false}
-                      onChange={(e) =>
-                        handleWorkLinkChange(index, e.target.value)
-                      }
-                      className="block mb-2 sm:w-full ml-3 w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
-                    />
+                  <div>
+                    {newWorkLinks.map((link, index) => (
+                      <div key={index} className="flex items-center sm:mt-2">
+                        <ImageUser
+                          imageUrl={link.image || ""}
+                          className="w-5 h-6"
+                        />
+                        <input
+                          key={index}
+                          type="url"
+                          value={link.url || ""}
+                          placeholder={link.title}
+                          required={false}
+                          onChange={(e) =>
+                            handleWorkLinkChange(index, e.target.value)
+                          }
+                          className="block mb-2 sm:w-full ml-3 w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
+                        />
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>

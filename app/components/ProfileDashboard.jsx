@@ -4,7 +4,8 @@ import Link from "next/link";
 import { CiEdit } from "react-icons/ci";
 
 const ProfileDashboard = ({ dataSession, userData }) => {
-  const myLinks = userData.workLinks;
+  const myLinks = userData?.workLinks;
+  console.log(myLinks);
   return (
     <div className="w-full mx-auto p-8 mb-8 bg-white rounded-lg md:p-3 sm:p-3">
       {userData.email === dataSession.user.email && (
@@ -74,8 +75,11 @@ const ProfileDashboard = ({ dataSession, userData }) => {
                   </a>
                 ))
               ) : (
-                <Link href={`/dashboard/settings/${userData?.userSlug}`}>
-                  No work links,Add links
+                <Link
+                  href={`/dashboard/settings/${userData?.userSlug}`}
+                  className="px-6 shadow-md hover:bg-mainColor hover:text-light border rounded-md py-2"
+                >
+                  No work links, Add links
                 </Link>
               )}
             </div>

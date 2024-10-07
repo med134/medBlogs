@@ -69,9 +69,10 @@ const page = async ({ params }) => {
     getUserBySlug(userSlug),
   ]);
   const dataSession = JSON.parse(JSON.stringify(session));
+  console.log(userData);
   return (
     <main className="py-6 w-full sm:py-8">
-      <ProfileDashboard dataSession={dataSession} userData={userData} />
+      <ProfileDashboard dataSession={dataSession} userData={userData} /> 
     </main>
   );
 };
