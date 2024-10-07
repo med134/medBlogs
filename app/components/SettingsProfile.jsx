@@ -1,11 +1,10 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 import { CiEdit } from "react-icons/ci";
 import imageCompression from "browser-image-compression";
-import dynamic from "next/dynamic";
-const ImageUser = dynamic(() => import("./ImageUser"), { ssr: false });
+import ImageUser from "./ImageUser";
 
 const SettingsProfile = ({
   imageUrl,
@@ -36,12 +35,14 @@ const SettingsProfile = ({
 
   const router = useRouter();
   console.log("skills input", newWorkLinks);
+
   // Handle change a new work link
   const handleWorkLinkChange = (index, newUrl) => {
     const updatedLinks = [...newWorkLinks];
     updatedLinks[index] = { ...updatedLinks[index], url: newUrl }; // Only update the URL
     setNewWorkLinks(updatedLinks);
   };
+
   const handleSkillsChange = (index, value) => {
     const updatedSkills = [...newSkills];
     updatedSkills[index] = value;
@@ -170,7 +171,7 @@ const SettingsProfile = ({
                 <span className="text-xl font-semibold text-mainColor mt-8 sm:text-sm">
                   WORK LINKS
                 </span>
-                {newWorkLinks.length > 0 ? (
+                {newWorkLinks.length > 0 &&
                   newWorkLinks.map((link, index) => (
                     <div key={index} className="flex items-center sm:mt-2">
                       <ImageUser
@@ -189,30 +190,7 @@ const SettingsProfile = ({
                         className="block mb-2 sm:w-full ml-3 w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
                       />
                     </div>
-                  ))
-                ) : (
-                  <div>
-                    {newWorkLinks.map((link, index) => (
-                      <div key={index} className="flex items-center sm:mt-2">
-                        <ImageUser
-                          imageUrl={link.image || ""}
-                          className="w-5 h-6"
-                        />
-                        <input
-                          key={index}
-                          type="url"
-                          value={link.url || ""}
-                          placeholder={link.title}
-                          required={false}
-                          onChange={(e) =>
-                            handleWorkLinkChange(index, e.target.value)
-                          }
-                          className="block mb-2 sm:w-full ml-3 w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
+                  ))}
               </div>
               <div className="sm:mb-4">
                 <span className="text-xl font-semibold text-mainColor mt-8 sm:text-sm">

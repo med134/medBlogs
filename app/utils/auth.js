@@ -33,6 +33,26 @@ export const {
               email: profile.email,
               imageUrl: profile.avatar_url,
               userSlug: profile.name.replace(/\s+/g, "-").toLowerCase(),
+              workLinks: [
+                {
+                  title: "GITHUB",
+                  url: "https://github.com/johndoe",
+                  image:
+                    "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/github_c2lbts.png",
+                },
+                {
+                  title: "WEBSITE LINK",
+                  url: "https://github.com/johndoe",
+                  image:
+                    "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/web-link_qu5zhs.png",
+                },
+                {
+                  title: "LINKEDIN",
+                  url: "https://github.com/johndoe",
+                  image:
+                    "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/linkedin_wc9g2d.png",
+                },
+              ],
               isAdmin: false,
             });
             await newUser.save();

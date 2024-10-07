@@ -182,3 +182,24 @@ export const FilterTemplate = [
       "bg-yellow-200 hover:bg-yellow-300 py-1.5 px-3 rounded-lg text-sm dark:bg-dark dark:border",
   },
 ];
+
+export const myWorkLinks = [
+  {
+    title: "GITHUB",
+    url: "",
+    image:
+      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/github_c2lbts.png",
+  },
+  {
+    title: "WEBSITE LINK",
+    url: "",
+    image:
+      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/web-link_qu5zhs.png",
+  },
+  {
+    title: "LINKEDIN",
+    url: "",
+    image:
+      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/linkedin_wc9g2d.png",
+  },
+];
