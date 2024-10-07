@@ -13,6 +13,7 @@ const userSchema = new Schema(
       type: String,
       unique: true,
       required: true,
+      match: /.+\@.+\..+/,
     },
     imageUrl: {
       type: String,
@@ -26,6 +27,7 @@ const userSchema = new Schema(
     },
     phone: {
       type: String,
+      match: /^\+?[1-9]\d{1,14}$/,
     },
     homeAddress: {
       type: String,
@@ -34,14 +36,16 @@ const userSchema = new Schema(
       type: [String], // Array of strings to store skills
     },
     workLinks: {
-      type: {
-        github: { type: String },
-        website: { type: String },
-        linkedin: { type: String },
-      }, // Object to store different types of work links
+      type: [
+        {
+          title: { type: String, required: true }, // Title of the work link
+          url: { type: String, required: true }, // URL of the work link
+        },
+      ],
     },
     experience: {
       type: Number,
+      default: 0,
     },
     isAdmin: {
       type: Boolean,

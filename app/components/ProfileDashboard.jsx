@@ -7,6 +7,8 @@ import { CgWebsite } from "react-icons/cg";
 import { CiEdit } from "react-icons/ci";
 
 const ProfileDashboard = ({ dataSession, userData }) => {
+  console.log(userData.workLinks);
+  const myLinks = userData.workLinks;
   return (
     <div className="w-full mx-auto p-8 mb-8 bg-white rounded-lg md:p-3 sm:p-3">
       {userData.email === dataSession.user.email && (
@@ -56,16 +58,21 @@ const ProfileDashboard = ({ dataSession, userData }) => {
               <p className="text-xl font-semibold text-mainColor mt-8 mb-4">
                 WORK LINKS
               </p>
-              {userData?.workLinks?.map((link, index) => {
-                <a
-                  key={index}
-                  href={link.link}
-                  className="w-1/2 flex items-center bg-white border mb-3 border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:w-full"
-                >
-                  <FaGithub className="fill-dark w-6 h-6" />{" "}
-                  <span className="ml-4">{link.title}</span>
-                </a>;
-              })}
+              {Object.keys(myLinks).length > 0 ? (
+                Object.entries(myLinks).map(([key, link], index) => (
+                  <a
+                    key={index}
+                    href={link.url} // Use link.url for the href
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-1/2 flex items-center bg-white border mb-3 border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:w-full"
+                  >
+                    <span className="ml-4">{link.title}</span>
+                  </a>
+                ))
+              ) : (
+                <p>No work links available</p>
+              )}
             </div>
             <div className="mt-4 block">
               <span className="font-semibold text-xl text-mainColor">
