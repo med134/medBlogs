@@ -32,9 +32,7 @@ const SettingsProfile = ({
   const [loading, setLoading] = useState(false);
   const [newSkillInput, setNewSkillInput] = useState("");
   const [newWorkLinksInput, setNewWorkLinksInput] = useState("");
-
   const router = useRouter();
-  console.log("skills input", newWorkLinks);
 
   // Handle change a new work link
   const handleWorkLinkChange = (index, newUrl) => {
@@ -53,13 +51,6 @@ const SettingsProfile = ({
     if (newSkillInput.trim() !== "") {
       setNewSkills([...newSkills, newSkillInput]); // Add new skill to the array
       setNewSkillInput(""); // Clear the input field
-    }
-  };
-  // Add new workLinks to array
-  const handleAddWorkLinks = () => {
-    if (newWorkLinksInput.trim() !== "") {
-      setNewWorkLinks([...newWorkLinks, newWorkLinksInput]); // Add new skill to the array
-      setNewWorkLinksInput(""); // Clear the input field
     }
   };
   const handleSubmit = async (e) => {

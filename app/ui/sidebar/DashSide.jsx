@@ -1,61 +1,12 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { RxDashboard } from "react-icons/rx";
-import { PiUsersThree } from "react-icons/pi";
-import { RiArticleLine } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
-import { MdPendingActions } from "react-icons/md";
-import { LuLayoutTemplate } from "react-icons/lu";
-import { MdOutlineMail } from "react-icons/md";
-import { CgFileAdd } from "react-icons/cg";
 import { usePathname } from "next/navigation";
 import { handelLogOut } from "@/app/utils/action";
+import { menuItems } from "@/app/components/ProjectArrays";
 
-export const menuItems = [
-  {
-    name: "Dashboard",
-    link: "/dashboard",
-    icon: RxDashboard,
-    isAdmin: false,
-  },
-  {
-    name: "Blogs",
-    link: "/dashboard/blogs",
-    icon: RiArticleLine,
-    isAdmin: false,
-  },
-  {
-    name: "Create Blog",
-    link: "/dashboard/add-articles",
-    icon: CgFileAdd,
-    isAdmin: false,
-  },
-  {
-    name: "Create Template",
-    link: `/dashboard/add-templates`,
-    icon: LuLayoutTemplate,
-    isAdmin: false,
-  },
-  {
-    name: "Users",
-    link: "/dashboard/users",
-    icon: PiUsersThree,
-    isAdmin: true,
-  },
-  {
-    name: "Draft blog",
-    link: "/dashboard/pending",
-    icon: MdPendingActions,
-    isAdmin: true,
-  },
-  {
-    name: "Messages",
-    link: "/dashboard/messages",
-    icon: MdOutlineMail,
-    isAdmin: true,
-  },
-];
+
 const SideBar = ({ session }) => {
   const path = usePathname();
   const filteredMenuItems = menuItems.filter((item) => {

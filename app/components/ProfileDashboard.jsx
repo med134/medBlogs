@@ -9,7 +9,6 @@ import { PiUserGear } from "react-icons/pi";
 
 const ProfileDashboard = ({ dataSession, userData }) => {
   const myLinks = userData?.workLinks;
-  console.log(myLinks);
   return (
     <div className="w-full mx-auto mb-8 rounded-lg md:p-3 sm:p-3">
       <div className="relative w-full bg-light p-4 shadow-md flex justify-start items-center md:flex md:flex-col md:justify-center">

@@ -5,6 +5,14 @@ import {
   FaWhatsapp,
   FaSquareXTwitter,
 } from "react-icons/fa6";
+import { RxDashboard } from "react-icons/rx";
+import { PiUsersThree } from "react-icons/pi";
+import { RiArticleLine } from "react-icons/ri";
+import { LuLogOut } from "react-icons/lu";
+import { MdPendingActions } from "react-icons/md";
+import { LuLayoutTemplate } from "react-icons/lu";
+import { MdOutlineMail } from "react-icons/md";
+import { CgFileAdd } from "react-icons/cg";
 import { FaYoutube, FaDev } from "react-icons/fa";
 
 export const ProjectFull = [
@@ -201,5 +209,50 @@ export const myWorkLinks = [
     url: "",
     image:
       "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/linkedin_wc9g2d.png",
+  },
+];
+
+export const menuItems = [
+  {
+    name: "Dashboard",
+    link: "/dashboard",
+    icon: RxDashboard,
+    isAdmin: false,
+  },
+  {
+    name: "Blogs",
+    link: "/dashboard/blogs",
+    icon: RiArticleLine,
+    isAdmin: false,
+  },
+  {
+    name: "Create Blog",
+    link: "/dashboard/add-articles",
+    icon: CgFileAdd,
+    isAdmin: false,
+  },
+  {
+    name: "Create Template",
+    link: `/dashboard/add-templates`,
+    icon: LuLayoutTemplate,
+    isAdmin: false,
+  },
+  {
+    name: "Users",
+    link: "/dashboard/users",
+    icon: PiUsersThree,
+    isAdmin: true,
+  },
+  {
+    name: "Draft blog",
+    link: "/dashboard/pending",
+    icon: MdPendingActions,
+    isAdmin: true,
+  },
+  {
+    name: "Messages",
+    link: "/dashboard/messages",
+    icon: MdOutlineMail,
+    isAdmin: true,
   },
 ];

@@ -16,7 +16,6 @@ const page = async ({ params }) => {
         homeAddress={user?.homeAddress}
         imageUrl={user.imageUrl}
         userSlug={user.userSlug}
-        isAdmin={user.isAdmin}
         workLinks={user.workLinks}
         skills={user?.skills}
         experience={user?.experience}
