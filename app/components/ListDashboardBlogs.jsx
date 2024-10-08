@@ -35,7 +35,7 @@ const ListDashboardBlogs = ({ user }) => {
     const getBlogs = async (username) => {
       setLoading(true);
       const res = await fetch(
-        `http://localhost:3000/api/articles?username=${username}`
+        `http://localhost:3000/api/articles?email=${email}`
       );
       if (!res.ok) {
         throw new Error("failed to get data");

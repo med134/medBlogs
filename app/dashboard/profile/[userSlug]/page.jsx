@@ -1,5 +1,4 @@
 import React from "react";
-import Profile from "@/app/components/Profile";
 import { auth } from "@/app/utils/auth";
 import ProfileDashboard from "@/app/components/ProfileDashboard";
 
@@ -69,10 +68,9 @@ const page = async ({ params }) => {
     getUserBySlug(userSlug),
   ]);
   const dataSession = JSON.parse(JSON.stringify(session));
-  console.log(userData);
   return (
-    <main className="py-6 w-full sm:py-8">
-      <ProfileDashboard dataSession={dataSession} userData={userData} /> 
+    <main className="w-full">
+      <ProfileDashboard dataSession={dataSession} userData={userData} />
     </main>
   );
 };

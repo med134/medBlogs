@@ -4,15 +4,14 @@ import { NextResponse } from "next/server";
 
 export const GET = async (request) => {
   const url = new URL(request.url);
-  const username = url.searchParams.get("username");
+  const email = url.searchParams.get("email");
   const category = url.searchParams.get("category");
-
 
   try {
     await connect();
     const query = {};
-    if (username) {
-      query.username = username;
+    if (email) {
+      query.email = email;
     }
     if (category && category.toLowerCase() !== "all") {
       query.category = category;

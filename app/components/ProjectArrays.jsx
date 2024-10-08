@@ -185,7 +185,7 @@ export const FilterTemplate = [
 
 export const myWorkLinks = [
   {
-    title: "GITHUB",
+    title: "GITHUB LINK",
     url: "",
     image:
       "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/github_c2lbts.png",
@@ -197,7 +197,7 @@ export const myWorkLinks = [
       "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/web-link_qu5zhs.png",
   },
   {
-    title: "LINKEDIN",
+    title: "LINKEDIN LINK",
     url: "",
     image:
       "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/linkedin_wc9g2d.png",

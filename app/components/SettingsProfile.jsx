@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 import { CiEdit } from "react-icons/ci";
 import imageCompression from "browser-image-compression";
 import ImageUser from "./ImageUser";
+import { myWorkLinks } from "./ProjectArrays";
 
 const SettingsProfile = ({
   imageUrl,
@@ -14,7 +15,6 @@ const SettingsProfile = ({
   homeAddress,
   userSlug,
   phone,
-  isAdmin,
   workLinks,
   skills,
   experience,
@@ -115,6 +115,11 @@ const SettingsProfile = ({
       }
     }
   };
+  useEffect(() => {
+    if (newWorkLinks.length < 2) {
+      setNewWorkLinks(myWorkLinks);
+    }
+  }, []);
   return (
     <div className="w-full mx-auto p-8 mb-8 bg-white rounded-lg md:p-3">
       {loading ? (
@@ -142,9 +147,9 @@ const SettingsProfile = ({
                 </div>
               </div>
             </div>
-            <div className="w-full md:mt-10 xs:mt-3">
+            <div className="w-full md:mt-3">
               <div className="text-left mb-2">
-                <div className="flex items-center mb-3">
+                <div className="flex items-center mb-3 md:justify-center">
                   <input
                     type="text"
                     name="name"
@@ -155,19 +160,13 @@ const SettingsProfile = ({
                   <CiEdit className="w-6 h-6 fill-dark ml-1" />
                 </div>
                 <span className="text-blue-500 text-xl">{newJob}</span>
-                <div className="text-sm text-gray-600 mt-2">
-                  STATUS:
-                  <span className="text-gray-900 font-semibold uppercase">
-                    {isAdmin ? "Admin" : "User"}
-                  </span>
-                </div>
               </div>
             </div>
           </div>
 
-          <div className="flex mt-8 sm:flex-col sm:mt-8">
+          <div className="flex mt-8 md:flex-col sm:mt-8">
             <div className="w-full sm:flex sm:flex-col sm:text-sm">
-              <div className="sm:mb-4">
+              <div className="sm:mb-4 p-4">
                 <span className="text-xl font-semibold text-mainColor mt-8 sm:text-sm">
                   WORK LINKS
                 </span>
@@ -192,7 +191,7 @@ const SettingsProfile = ({
                     </div>
                   ))}
               </div>
-              <div className="sm:mb-4">
+              <div className="sm:mb-4 p-4">
                 <span className="text-xl font-semibold text-mainColor mt-8 sm:text-sm">
                   SKILLS
                 </span>
@@ -238,7 +237,7 @@ const SettingsProfile = ({
               <span className="font-semibold uppercase text-xl text-mainColor sm:text-sm">
                 Personnel Information
               </span>
-              <div className="tab-content sm:mt-4">
+              <div className="tab-content mt-4 sm:mt-4">
                 <div className="active xs:text-sm" id="home">
                   <div className="flex flex-wrap mb-4">
                     <div className="w-1/3 text-gray-700">Email</div>

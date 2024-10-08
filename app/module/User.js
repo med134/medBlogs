@@ -37,31 +37,11 @@ const userSchema = new Schema(
     },
     workLinks: [
       {
-        title: { type: String, default: "GITHUB LINK" }, // Title of the work link
-        url: { type: String, default: "" },
+        title: { type: String }, // Title of the work link
+        url: { type: String },
         image: {
           type: String,
-          default:
-            "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/github_c2lbts.png",
-        }, // URL of the work link
-      },
-      {
-        title: { type: String, default: "WEBSITE LINK" }, // Title of the work link
-        url: { type: String, default: "" },
-        image: {
-          type: String,
-          default:
-            "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728331894/browser_icpfbr.png",
-        }, // URL of the work link
-      },
-      {
-        title: { type: String, default: "LINKEDIN LINK" }, // Title of the work link
-        url: { type: String, default: "" },
-        image: {
-          type: String,
-          default:
-            "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/linkedin_wc9g2d.png",
-        }, // URL of the work link
+        },
       },
     ],
     experience: {
