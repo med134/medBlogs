@@ -3,9 +3,7 @@ import React, { useState, useEffect } from "react";
 import { BiSolidEdit } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
-import { CgFileAdd } from "react-icons/cg";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
   ssr: false,
 });
@@ -32,10 +30,10 @@ const ListDashboardBlogs = ({ user }) => {
   const router = useRouter();
   const perPage = 4;
   useEffect(() => {
-    const getBlogs = async (username) => {
+    const getBlogs = async (email) => {
       setLoading(true);
       const res = await fetch(
-        `http://localhost:3000/api/articles?email=${email}`
+        `https://www.medcode.dev/api/articles?email=${email}`
       );
       if (!res.ok) {
         throw new Error("failed to get data");

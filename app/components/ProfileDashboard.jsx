@@ -2,9 +2,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CiEdit } from "react-icons/ci";
-import { FaBirthdayCake } from "react-icons/fa";
+import { LiaBirthdayCakeSolid } from "react-icons/lia";
 import { CgWorkAlt } from "react-icons/cg";
 import { FormatDate } from "../utils/action";
+import { PiUserGear } from "react-icons/pi";
 
 const ProfileDashboard = ({ dataSession, userData }) => {
   const myLinks = userData?.workLinks;
@@ -33,14 +34,13 @@ const ProfileDashboard = ({ dataSession, userData }) => {
             loading="lazy"
           />
         </div>
-        <div className="w-full">
-          <div className="text-left mb-2 md:text-center py-4">
+        <div className="w-full py-4">
+          <div className="text-left mb-2 md:text-center pt-5">
             <h5 className="text-gray-800 text-4xl md:text-xl">
               Hello, {userData.name}
             </h5>
-            <h6 className="text-blue-600 text-lg md:text-sm">{userData.job}</h6>
-            <div className="text-sm text-gray-600 mt-2">
-              STATUS :
+            <div className="text-sm text-gray-600 mt-4 flex md:justify-center">
+              <PiUserGear className="w-6 h-6 fill-gray-600" />
               <span className="text-gray-900 font-semibold uppercase ml-3">
                 {userData.isAdmin ? "Admin" : "user"}
               </span>
@@ -52,7 +52,7 @@ const ProfileDashboard = ({ dataSession, userData }) => {
               </span>
             </div>
             <div className="text-sm text-gray-600 mt-2 flex md:justify-center  ">
-              <FaBirthdayCake className="w-6 h-6 fill-gray-600" />
+              <LiaBirthdayCakeSolid className="w-6 h-6 fill-gray-600" />
               <span className="text-gray-900 font-semibold ml-3">
                 Joined on {FormatDate(userData.createdAt)}
               </span>
