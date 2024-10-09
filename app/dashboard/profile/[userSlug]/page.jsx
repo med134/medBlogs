@@ -13,7 +13,7 @@ export async function getUserBySlug(slug) {
   return user;
 }
 export const metadata = {
-  title: "medCode | Profile",
+  title: `medCode | Profile`,
   description: `your profile dashboard you can add more information about your works or contact page`,
   keywords: [
     "Web Development",

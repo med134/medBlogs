@@ -9,7 +9,6 @@ const Card = async () => {
     <>
       {posts.map((item) => (
         <section
-          suppressHydrationWarning
           key={item._id}
           className="w-auto p-4 flex justify-between bg-light items-start mb-3 border border-gray-500 dark:bg-dark  rounded-xl sm:flex-col-reverse"
         >
@@ -50,9 +49,12 @@ const Card = async () => {
             <p className="text-sm text-gray-700 py-3 dark:text-light">
               {item.description.slice(0, 160)}...
             </p>
-            <div className="flex items-center justify-start py-3">
+            <Link
+              href={`/dashboard/profile/${item.userSlug}`}
+              className="flex items-center justify-start py-3"
+            >
               <Image
-                src="https://i.ibb.co/mSjZwpw/download.png"
+                src={"https://i.ibb.co/mSjZwpw/download.png"}
                 alt="userImage"
                 className="w-8 h-8 rounded-full"
                 width={24}
@@ -60,10 +62,10 @@ const Card = async () => {
                 loading="lazy"
                 quality={30}
               />
-              <p className="text-sm font-semibold text-gray-800 ml-2 dark:text-light">
+              <span className="text-sm font-semibold text-gray-800 ml-2 dark:text-light">
                 {item.username}
-              </p>
-            </div>
+              </span>
+            </Link>
             <div>
               <Link
                 href={`/category/${item.category}`}

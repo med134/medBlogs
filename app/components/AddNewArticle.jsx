@@ -14,7 +14,6 @@ const AddNewArticle = ({ session }) => {
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
   const [dataUrl, setDataUrl] = useState("");
-  const canvasRef = useRef(null);
   const [error, setError] = useState("");
   const TITLE_MODAL = "Article is Created";
   const DESC_MODAL = "your article is created successfully ";
