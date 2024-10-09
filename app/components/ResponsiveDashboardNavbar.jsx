@@ -5,7 +5,7 @@ import { FiX } from "react-icons/fi";
 import { LuLogOut } from "react-icons/lu";
 import { RxExit } from "react-icons/rx";
 import { MdSpaceDashboard, MdOutlineExitToApp } from "react-icons/md";
-import { menuItems } from "../ui/sidebar/DashSide";
+import { menuItems } from "./ProjectArrays";
 import { usePathname } from "next/navigation";
 import { handelLogOut } from "../utils/action";
 import dynamic from "next/dynamic";
@@ -60,8 +60,8 @@ const ResponsiveDashboardNavbar = ({ session }) => {
       <div>
         {" "}
         <div className="flex justify-start items-center px-4 cursor-pointer">
-          <div className="flex mr-6 flex-col md:ml-4 xs:ml-0 xs:mr-0">
-            <span className="text-xs text-gray-500">
+          <div className="flex mr-6 items-center md:ml-4 xs:ml-0 xs:mr-0">
+            <span className="text-xs text-gray-500 mr-2">
               Hi, {session.user.name}
             </span>{" "}
             <ProfileDown session={session} />

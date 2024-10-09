@@ -19,7 +19,6 @@ const ProfileDown = ({ session }) => {
           className="flex items-center text-sm border-2 border-transparent z-50 rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
           onClick={toggleDropdown}
         >
-          
           <Image
             width={50}
             height={50}
@@ -27,7 +26,7 @@ const ProfileDown = ({ session }) => {
             src={session?.user?.image}
             quality={50}
             alt="photo_profile"
-            className="w-10 h-10 rounded-[50%] cursor-pointer ml-2"
+            className="w-10 h-10 rounded-[50%] cursor-pointer"
           />
         </button>
       </div>
@@ -84,7 +83,7 @@ const ProfileDown = ({ session }) => {
                 className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer"
               >
                 <IoSettingsOutline className="fill-dark w-6 h-6 mr-3" />
-                 Settings
+                Settings
               </Link>
             </ul>
             <form
