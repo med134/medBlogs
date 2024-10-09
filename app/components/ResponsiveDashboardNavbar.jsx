@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { FiX } from "react-icons/fi";
 import { LuLogOut } from "react-icons/lu";
@@ -9,14 +8,16 @@ import { MdSpaceDashboard, MdOutlineExitToApp } from "react-icons/md";
 import { menuItems } from "../ui/sidebar/DashSide";
 import { usePathname } from "next/navigation";
 import { handelLogOut } from "../utils/action";
+import dynamic from "next/dynamic";
+const ProfileDown = dynamic(() => import("./ProfileDown"), { ssr: false });
 
 const ResponsiveDashboardNavbar = ({ session }) => {
   const [isOpen, setIsOpen] = useState(false);
   const path = usePathname();
-  const handelOpen=()=>{
-    setIsOpen(!isOpen)
-    console.log(isOpen)
-  }
+  const handelOpen = () => {
+    setIsOpen(!isOpen);
+    console.log(isOpen);
+  };
   return (
     <div className="h-20 flex sticky top-0 w-[100%] justify-between z-50 items-center bg-gradient-to-r from-[#f0f0f0] to-gray-50">
       {/* hidden navbar responsive */}
@@ -60,26 +61,7 @@ const ResponsiveDashboardNavbar = ({ session }) => {
         {" "}
         <div className="flex justify-start items-center px-4 cursor-pointer">
           <div className="flex mr-6 flex-col md:ml-4 xs:ml-0 xs:mr-0">
-            <Link
-              href={`/dashboard/profile/${session.user.name
-                .replace(/\s+/g, "-")
-                .toLowerCase()}`}
-              className="flex justify-start items-center"
-            >
-              <div className="">
-                <h3 className="font-medium text-xs hover:text-mainColor">
-                  Hi, {session?.user?.name}
-                </h3>
-              </div>
-              <Image
-                width={50}
-                height={50}
-                quality={30}
-                src={session?.user?.image}
-                alt="photo_profile"
-                className="w-10 h-10 rounded-[50%] ml-3"
-              />
-            </Link>
+            <ProfileDown session={session} />
           </div>
           <Link href="/" className="ml-3 lg:hidden">
             <RxExit className="w-8 h-8 fill-mainColor" />

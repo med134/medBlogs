@@ -108,7 +108,7 @@ const ProfileDashboard = ({ dataSession, userData }) => {
             ) : (
               <Link
                 href={`/dashboard/settings/${userData?.userSlug}`}
-                className="text-dark px-6 py-1.5 rounded-md hover:text-mainColor hover:font-semibold"
+                className="px-6 shadow-md hover:bg-mainColor hover:text-light border rounded-md py-2"
               >
                 No skills, Add skills
               </Link>

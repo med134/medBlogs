@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { handelLogOut } from "../utils/action";
 import Link from "next/link";
+import { IoSettingsOutline } from "react-icons/io5";
 
 const ProfileDown = ({ session }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -15,9 +16,10 @@ const ProfileDown = ({ session }) => {
       <div className="z-50">
         <button
           type="button"
-          className="flex text-sm border-2 border-transparent z-50 rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
+          className="flex items-center text-sm border-2 border-transparent z-50 rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
           onClick={toggleDropdown}
         >
+          <span className="text-xs text-gray-500">Hi, {session.user.name}</span>
           <Image
             width={50}
             height={50}
@@ -25,7 +27,7 @@ const ProfileDown = ({ session }) => {
             src={session?.user?.image}
             quality={50}
             alt="photo_profile"
-            className="w-10 h-10 rounded-[50%] cursor-pointer"
+            className="w-10 h-10 rounded-[50%] cursor-pointer ml-2"
           />
         </button>
       </div>
@@ -75,15 +77,24 @@ const ProfileDown = ({ session }) => {
                 </svg>
                 Dashboard
               </Link>
+              <Link
+                href={`/dashboard/settings/${session.user.name
+                  .replace(/\s+/g, "-")
+                  .toLowerCase()}`}
+                className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer"
+              >
+                <IoSettingsOutline className="fill-dark w-6 h-6 mr-3" />
+                 Settings
+              </Link>
             </ul>
             <form
               action={handelLogOut}
-              className="flex items-center hover:bg-gray-100"
+              className="flex items-center hover:bg-gray-100 ml-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
-                className="w-4 h-4 ml-4"
+                className="w-5 h-5 ml-4"
                 viewBox="0 0 6.35 6.35"
               >
                 <path
