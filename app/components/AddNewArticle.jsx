@@ -77,6 +77,7 @@ const AddNewArticle = ({ session }) => {
           username: session?.user?.name,
           userSlug: session?.user?.name.replace(/\s+/g, "-").toLowerCase(),
           email: session.user.email,
+          userImage: session.user.image,
         }),
       });
       if (response.ok) {

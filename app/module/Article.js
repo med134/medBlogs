@@ -47,6 +47,9 @@ const articleSchema = new Schema(
     email: {
       type: String,
     },
+    userImage: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
