@@ -19,7 +19,7 @@ const ProfileDown = ({ session }) => {
           className="flex items-center text-sm border-2 border-transparent z-50 rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
           onClick={toggleDropdown}
         >
-          <span className="text-xs text-gray-500">Hi, {session.user.name}</span>
+          
           <Image
             width={50}
             height={50}

@@ -44,6 +44,9 @@ const articleSchema = new Schema(
     userSlug: {
       type: String,
     },
+    email: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

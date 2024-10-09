@@ -61,6 +61,9 @@ const ResponsiveDashboardNavbar = ({ session }) => {
         {" "}
         <div className="flex justify-start items-center px-4 cursor-pointer">
           <div className="flex mr-6 flex-col md:ml-4 xs:ml-0 xs:mr-0">
+            <span className="text-xs text-gray-500">
+              Hi, {session.user.name}
+            </span>{" "}
             <ProfileDown session={session} />
           </div>
           <Link href="/" className="ml-3 lg:hidden">
