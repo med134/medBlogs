@@ -4,6 +4,8 @@ import Footer from "./components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { inter } from "./components/Fonts";
 import Script from "next/script";
+import NextTopLoader from "nextjs-toploader";
+
 
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
@@ -58,6 +60,7 @@ export default function RootLayout({ children }) {
           src="https://www.googletagmanager.com/gtag/js?id=G-J4KQVRLWEN"
         ></Script>
         {children}
+        <NextTopLoader />
         <Footer />
       </body>
       <GoogleAnalytics gaId="G-J4KQVRLWEN" />
