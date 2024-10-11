@@ -6,7 +6,6 @@ import { inter } from "./components/Fonts";
 import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
 
-
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
   title: "Best Programming Blog & free components|medCode",
@@ -60,7 +59,7 @@ export default function RootLayout({ children }) {
           src="https://www.googletagmanager.com/gtag/js?id=G-J4KQVRLWEN"
         ></Script>
         {children}
-        <NextTopLoader zIndex={99} />
+        <NextTopLoader zIndex={99} showSpinner={false} />
         <Footer />
       </body>
       <GoogleAnalytics gaId="G-J4KQVRLWEN" />

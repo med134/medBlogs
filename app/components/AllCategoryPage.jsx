@@ -13,6 +13,7 @@ const AllCategoryPage = ({ sortedPosts }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
   const perPage = 3;
+  console.log(blog)
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(
@@ -64,10 +65,10 @@ const AllCategoryPage = ({ sortedPosts }) => {
                 <div className="flex justify-between items-center">
                   <Link
                     href={`/dashboard/profile/${item?.userSlug}`}
-                    className="flex items-center justify-start py-3"
+                    className="flex items-center justify-center py-3"
                   >
                     <Image
-                      src={"https://i.ibb.co/mSjZwpw/download.png"}
+                      src={item?.userImage || "https://i.ibb.co/mSjZwpw/download.png"}
                       alt="userImage"
                       className="w-8 h-8 rounded-full"
                       width={24}

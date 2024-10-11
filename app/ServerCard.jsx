@@ -54,7 +54,7 @@ const Card = async () => {
               className="flex items-center justify-start py-3"
             >
               <Image
-                src={"https://i.ibb.co/mSjZwpw/download.png"}
+                src={item?.userImage || "https://i.ibb.co/mSjZwpw/download.png"}
                 alt="userImage"
                 className="w-8 h-8 rounded-full"
                 width={24}

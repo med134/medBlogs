@@ -3,7 +3,7 @@ import React from "react";
 
 const Pagination = ({ handleMovePages, currentPage, totalPages }) => {
   return (
-    <div aria-label="Page navigation" className="flex justify-center mt-16">
+    <div aria-label="Page navigation" className="flex justify-center flex-wrap mt-16">
       <ul className="inline-flex -space-x-px text-sm">
         <li>
           <button
