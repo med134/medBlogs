@@ -179,3 +179,14 @@ export async function getDevTo() {
   );
   return sortedTemplates;
 }
+export async function getPostOfUser(email) {
+  const res = await fetch(`https://www.medcode.dev/api/articles?email=${email}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+  const templates = await res.json();
+  const totalBlog = templates.length;
+  return totalBlog;
+}

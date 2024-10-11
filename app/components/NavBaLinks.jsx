@@ -39,7 +39,7 @@ const NavBaLinks = ({ session }) => {
         path.startsWith("/dashboard") ? "hidden" : "flex"
       } header py-6 z-40 w-[100%] items-center bg-transparent xl:px-6 ${
         sticky
-          ? "!fixed !z-[9999] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
+          ? "!fixed !z-[80] !bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm !transition dark:!bg-primary dark:!bg-opacity-20"
           : "absolute"
       }`}
     >

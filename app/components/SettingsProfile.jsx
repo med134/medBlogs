@@ -18,6 +18,7 @@ const SettingsProfile = ({
   workLinks,
   skills,
   experience,
+  session
 }) => {
   const [newEmail, setNewEmail] = useState(email);
   const [newJob, setNewJob] = useState(job);
@@ -107,9 +108,13 @@ const SettingsProfile = ({
     }
   };
   useEffect(() => {
+    if(email !== session.user.email){
+      router.push('/dashboard')
+    }
     if (newWorkLinks.length < 2) {
       setNewWorkLinks(myWorkLinks);
     }
+    
   }, []);
   return (
     <div className="w-full mx-auto p-8 mb-8 bg-white rounded-lg md:p-3">

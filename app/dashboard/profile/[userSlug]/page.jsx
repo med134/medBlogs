@@ -12,6 +12,7 @@ export async function getUserBySlug(slug) {
   const user = await res.json();
   return user;
 }
+
 export const metadata = {
   title: `medCode | Profile`,
   description: `your profile dashboard you can add more information about your works or contact page`,

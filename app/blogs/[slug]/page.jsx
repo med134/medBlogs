@@ -82,7 +82,7 @@ const BlogPage = async ({ params }) => {
                   href={`/dashboard/profile/${blog.username
                     .replace(/\s+/g, "-")
                     .toLowerCase()}`}
-                  className="text-blue-600 text-sm lowercase dark:text-light"
+                  className="text-blue-600 text-sm uppercase dark:text-light"
                 >
                   {blog?.username}
                 </Link>
@@ -121,7 +121,7 @@ const BlogPage = async ({ params }) => {
         </div>
       </div>
       <div className="myLeftSide xl:w-72 col-span-2 sm:w-full xs:w-full sm:p-2 lg:h-[650px] sm:mb-8">
-        <SidBar />
+        <SidBar postSlug={blog.slug} />
       </div>
     </section>
   );

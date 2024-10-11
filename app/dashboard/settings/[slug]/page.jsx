@@ -1,11 +1,12 @@
 import React from "react";
 import SettingsProfile from "@/app/components/SettingsProfile";
 import { getUserBySlug } from "../../profile/[userSlug]/page";
-
+import { auth } from "@/app/utils/auth";
 
 const page = async ({ params }) => {
   const { slug } = params;
   const user = await getUserBySlug(slug);
+  const session = await auth();
   return (
     <main className="py-6 w-full">
       <SettingsProfile
@@ -19,6 +20,7 @@ const page = async ({ params }) => {
         workLinks={user.workLinks}
         skills={user?.skills}
         experience={user?.experience}
+        session={session}
       />
     </main>
   );

@@ -5,7 +5,7 @@ import Cat from "./Cat";
 import { getPosts } from "../utils/action";
 import BlogImage from "@/public/images/postera.png";
 
-const SidBar = async () => {
+const SidBar = async ({ postSlug }) => {
   const dev = await getPosts();
   return (
     <div className="mt-3">
@@ -21,8 +21,8 @@ const SidBar = async () => {
         </span>
         {dev?.map(
           (item, index) =>
-            index > 0 &&
-            index < 4 && (
+            index < 4 &&
+            item.slug != postSlug && (
               <div key={item._id} className="flex justify-start items-center">
                 <Image
                   className="object-contain w-36 h-36"

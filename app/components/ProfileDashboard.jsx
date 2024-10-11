@@ -6,9 +6,12 @@ import { LiaBirthdayCakeSolid } from "react-icons/lia";
 import { CgWorkAlt } from "react-icons/cg";
 import { FormatDate } from "../utils/action";
 import { PiUserGear } from "react-icons/pi";
+import { RiArticleLine } from "react-icons/ri";
+import { getPostOfUser } from "../utils/action";
 
-const ProfileDashboard = ({ dataSession, userData }) => {
+const ProfileDashboard = async ({ dataSession, userData }) => {
   const myLinks = userData?.workLinks;
+  const totalPost = await getPostOfUser(userData.email);
   return (
     <div className="w-full mx-auto mb-8 rounded-lg md:p-3 sm:p-3">
       <div className="relative w-full bg-light p-4 shadow-md flex justify-start items-center md:flex md:flex-col md:justify-center">
@@ -33,9 +36,9 @@ const ProfileDashboard = ({ dataSession, userData }) => {
             loading="lazy"
           />
         </div>
-        <div className="w-full py-4">
+        <div className="w-full py-6">
           <div className="text-left mb-2 md:text-center pt-5">
-            <h5 className="text-gray-800 text-4xl md:text-xl">
+            <h5 className="text-gray-800 text-3xl md:text-xl">
               Hello, {userData.name}
             </h5>
             <div className="text-sm text-gray-600 mt-4 flex md:justify-center">
@@ -48,6 +51,12 @@ const ProfileDashboard = ({ dataSession, userData }) => {
               <CgWorkAlt className="w-6 h-6 fill-gray-600" />
               <span className="text-gray-900 font-semibold uppercase ml-3">
                 {userData.job || "...."}
+              </span>
+            </div>
+            <div className="text-sm text-gray-600 mt-2 flex md:justify-center ">
+              <RiArticleLine className="w-6 h-6 fill-gray-600" />
+              <span className="text-gray-900 font-semibold uppercase ml-3">
+                {totalPost || "0"} article
               </span>
             </div>
             <div className="text-sm text-gray-600 mt-2 flex md:justify-center  ">
