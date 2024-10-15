@@ -2,13 +2,21 @@
 import Link from "next/link";
 import { GithubIcon } from "../components/Icons";
 import Image from "next/image";
+import { MdPreview } from "react-icons/md";
 import { motion } from "framer-motion";
 const FramerImage = motion(Image);
 
-export const Project = ({ title, type, img, link, github, className }) => {
+export const Project = ({
+  title,
+  type,
+  img,
+  preview,
+  className,
+  slug,
+}) => {
   return (
     <article
-      className={`${className} w-full ml-10 mb-6 md:ml-0 flex flex-col items-center justify-center rounded-2xl
+      className={`${className} w-full ml-8 mb-6 md:ml-0 flex flex-col items-center justify-center rounded-2xl
       border border-solid border-dark bg-light p-6 relative dark:bg-dark dark:border-light xs:p-4
       `}
     >
@@ -17,9 +25,7 @@ export const Project = ({ title, type, img, link, github, className }) => {
       rounded-br-3xl dark:bg-light md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]
       "
       />
-      <Link
-        href={link}
-        target="_blank"
+      <div
         className="w-full cursor-pointer overflow-hidden rounded-lg"
       >
         <FramerImage
@@ -30,15 +36,14 @@ export const Project = ({ title, type, img, link, github, className }) => {
           loading="lazy"
           className="w-full h-auto"
         />
-      </Link>
+      </div>
 
       <div className="w-full flex flex-col items-start justify-between mt-4">
         <span className="text-mainColor font-medium text-xl dark:text-primaryDark lg:text-lg md:text-base">
           {type}
         </span>
         <Link
-          href={link}
-          target="_blank"
+          href={`/projects/${slug}`}
           className="hover:underline underline-offset-2"
         >
           <h2 className="my-2 w-full text-left text-3xl font-bold lg:text-2xl">
@@ -48,20 +53,20 @@ export const Project = ({ title, type, img, link, github, className }) => {
 
         <div className="w-full flex items-center justify-between">
           <Link
-            href={link}
+            href={`/projects/${slug}`}
             target="_blank"
             className="text-lg font-semibold underline md:text-base"
           >
             Visit
           </Link>
-          <a
-            href={github}
+          <Link
+            href={preview}
             aria-label="see project on github"
             target="_blank"
-            className="w-8 md:w-6"
+            className="w-7 md:w-8 cursor-pointer"
           >
-            <GithubIcon />
-          </a>
+            <MdPreview className="w-7 h-7 fill-dark hover:fill-mainColor" />
+          </Link>
         </div>
       </div>
     </article>
@@ -72,13 +77,13 @@ export const FeaturedProject = ({
   title,
   summary,
   img,
-  link,
-  github,
+  slug,
+  preview,
 }) => {
   return (
     <article
-      className="w-full flex items-center justify-between relative  rounded-br-2xl
-          rounded-3xl border border-solid border-dark bg-light shadow-2xl p-12 dark:bg-dark dark:border-light
+      className="w-4xl flex ml-8 items-center justify-between relative rounded-br-2xl
+          rounded-3xl border border-solid border-dark bg-light shadow-2xl p-10 dark:bg-dark dark:border-light
           lg:flex-col lg:p-8 xs:rounded-2xl xs:rounded-br-3xl xs:p-4"
     >
       <div
@@ -86,11 +91,7 @@ export const FeaturedProject = ({
       rounded-br-3xl xs:-right-2 sm:h-[102%] xs:w-full xs:rounded-[1.5rem]
       "
       />
-      <Link
-        href={link}
-        target="_blank"
-        className="w-1/2 cursor-pointer overflow-hidden rounded-lg lg:w-full"
-      >
+      <div className="w-1/2 cursor-pointer overflow-hidden rounded-lg lg:w-full">
         <FramerImage
           src={img}
           alt={title}
@@ -102,15 +103,14 @@ export const FeaturedProject = ({
                 (max-width: 1200px) 50vw,
                 50vw"
         />
-      </Link>
+      </div>
 
       <div className="w-1/2 flex flex-col items-start justify-between pl-6 lg:w-full lg:pl-0 lg:pt-6">
         <span className="text-mainColor font-medium text-xl dark:text-primaryDark xs:text-base">
           {type}
         </span>
         <Link
-          href={link}
-          target="_blank"
+          href={`/projects/${slug}`}
           className="hover:underline underline-offset-2"
         >
           <h2 className="my-2 w-full text-left text-4xl font-bold dark:text-light lg:text-3xl xs:text-2xl">
@@ -121,24 +121,25 @@ export const FeaturedProject = ({
           {summary}
         </p>
         <div className="mt-2 flex items-center">
-          <a
-            href={github}
-            target="_blank"
-            className="w-10"
-            aria-label="see project on github"
-          >
-            {" "}
-            <GithubIcon />
-          </a>
           <Link
-            href={link}
+            href={`projects/${slug}`}
             target="_blank"
             className="ml-4 rounded-lg bg-dark text-light p-2 px-6 text-lg font-semibold
-              dark:bg-light dark:text-dark
+              dark:bg-light dark:text-dark hover:bg-light hover:text-dark border border-dark hover:border-dark
               sm:px-4 sm:text-base
               "
           >
             Visit Project
+          </Link>
+          <Link
+            href={preview}
+            target="_blank"
+            className="ml-4 rounded-lg flex items-center group hover:bg-dark bg-light border text-dark border-dark p-2 px-6 text-lg font-semibold
+              dark:bg-light dark:text-dark
+              sm:px-4 sm:text-base
+              "
+          >
+            <span className="ml-2 group-hover:text-light">Live Preview </span>
           </Link>
         </div>
       </div>

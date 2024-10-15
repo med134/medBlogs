@@ -82,11 +82,11 @@ const BlogPage = async ({ params }) => {
                   href={`/dashboard/profile/${blog.username
                     .replace(/\s+/g, "-")
                     .toLowerCase()}`}
-                  className="text-blue-600 text-sm uppercase dark:text-light"
+                  className="text-blue-600 text-sm uppercase dark:text-light xs:text-xs"
                 >
                   {blog?.username}
                 </Link>
-                <span className="ml-2 text-sm text-gray-800 font-semibold dark:text-light">
+                <span className="ml-2 text-sm text-gray-800 font-semibold dark:text-light xs:text-xs">
                   | {FormatDate(blog?.createdAt)}
                 </span>
               </div>

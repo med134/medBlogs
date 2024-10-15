@@ -72,8 +72,8 @@ const page = () => {
                       title={item.title}
                       summary={item.summary}
                       img={item.image}
-                      link={item.link}
-                      github={item?.gitHub}
+                      slug={item.slug}
+                      preview={item.livePreview}
                     />
                   );
               })}
@@ -88,8 +88,8 @@ const page = () => {
                       type={item.type}
                       title={item.title}
                       img={item.image}
-                      link={item.link}
-                      github={item?.gitHub}
+                      slug={item?.slug}
+                      preview={item.preview}
                     />
                   );
               })}
@@ -104,8 +104,8 @@ const page = () => {
                       title={item.title}
                       summary={item.summary}
                       img={item.image}
-                      link={item.link}
-                      github={item?.gitHub}
+                      slug={item.slug}
+                      preview={item.livePreview}
                     />
                   );
               })}
@@ -119,9 +119,9 @@ const page = () => {
                       key={item.id}
                       type={item.type}
                       title={item.title}
-                      img={item.image}
-                      link={item.link}
-                      github={item?.gitHub}
+                      img={item?.image}
+                      slug={item.slug}
+                      preview={item.preview}
                     />
                   );
               })}
@@ -137,7 +137,8 @@ const page = () => {
                       summary={item.summary}
                       img={item.image}
                       link={item.link}
-                      github={item?.gitHub}
+                      slug={item.slug}
+                      preview={item.livePreview}
                     />
                   );
               })}

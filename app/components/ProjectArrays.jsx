@@ -18,55 +18,72 @@ import { FaYoutube, FaDev } from "react-icons/fa";
 export const ProjectFull = [
   {
     id: 1,
+    slug: "free-tailwindcss-nextjs-templates",
     title: "Free Tailwind CSS + Next.js Starter Template",
-    link: "https://startup-jade.vercel.app/",
+    livePreview: "https://startup-jade.vercel.app/",
     image:
       "https://res.cloudinary.com/djcnq7nmj/image/upload/v1726591108/startapImage_eeoima.png",
     type: "Website App",
+    isFree: false,
+    technology: "NEXT.JS , TAILWIND CSS",
     summary:
       "Tailwind CSS + Next.js Starter Template is designed and crafted for startup and SaaS business websites. This open-source starter template is free to use for personal and commercial project",
-    gitHub: "https://github.com/med134/startup",
+    /* gitHub: "https://github.com/med134/startup", */
   },
   {
     id: 2,
-    title: "Modern Ecommerce website",
-    link: "https://med-stores.vercel.app/",
-    image:
-      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1726591107/project1_dtuuhw.png",
-    type: "store web app",
-    summary:
-      "an innovative and user-friendly e-commerce store that offers a wide range of trendy and fashionable clothing for men and women. Our store aims to provide customers with a seamless online shopping experience using typeScript with Next.js and tailwind css",
-
-    gitHub: "https://github.com/med134/stote-ecommerce-nextjs",
-  },
-  {
-    id: 3,
-    title: "Modern Real Estate App",
-    link: "https://estate-app-web.vercel.app/",
+    title: "Modern Real Estate App Next.js 14",
+    livePreview: "https://estate-app-web.vercel.app/",
+    slug: "modern-real-estate-app",
     image:
       "https://res.cloudinary.com/djcnq7nmj/image/upload/v1726591105/project5_siw7tl.png",
     type: "Web App",
+    isFree: false,
+    technology: "NEXT.JS , TAILWIND CSS",
     summary:
       "Discover a Modern Real Estate App programming with React js and tailwind css with modern Design frontend",
 
-    gitHub: "https://github.com/codebucks27/wibe-studio",
+    /* gitHub: "https://github.com/codebucks27/wibe-studio", */
+  },
+  {
+    id: 3,
+    title: "Next.js Blogging Website with Sanity",
+    slug: "nextjs-blogging-website-sanity",
+    isFree: false,
+    technology: "NEXT.JS, TAILWIND CSS, SANITY",
+    livePreview: "https://stote-ecommerce-nextjs-gezn.vercel.app/",
+    summary:
+      "a modern blogging platform powered by Next.js. Our website offers a seamless reading experience, combining performance and flexibility",
+    image:
+      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1726591108/project3_rgvbve.png",
+    type: "Website App",
+    gitHub: "https://github.com/med134/blog-with-nextjs-sanity",
   },
 ];
 
 export const miniProject = [
   {
     id: 1,
-    title: "Next.js Blogging Website with Sanity",
-    link: "https://stote-ecommerce-nextjs-gezn.vercel.app/",
+    title: "Modern Ecommerce website",
+    slug: "modern-ecommerce-websites",
+    preview: "https://med-stores.vercel.app/",
     image:
-      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1726591108/project3_rgvbve.png",
-    type: "Website App",
-    gitHub: "https://github.com/med134/blog-with-nextjs-sanity",
+      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1726591107/project1_dtuuhw.png",
+    type: "store web app",
+    isFree: true,
+    technology: "REACT.JS , TAILWIND CSS",
+    summary:
+      "an innovative and user-friendly e-commerce store that offers a wide range of trendy and fashionable clothing for men and women. Our store aims to provide customers with a seamless online shopping experience using typeScript with Next.js and tailwind css",
+
+    /* gitHub: "https://github.com/med134/stote-ecommerce-nextjs", */
   },
   {
     id: 2,
     title: "Example portfolio of designer",
-    link: "https://my-portfolio-topaz-gamma.vercel.app/",
+    slug: "example-portfolio-of-designer",
+    isFree: false,
+    technology: "NEXT.JS, TAILWIND CSS",
+    preview: "https://my-portfolio-topaz-gamma.vercel.app/",
     image:
       "https://res.cloudinary.com/djcnq7nmj/image/upload/v1726591102/project4_tvl4yh.png",
     type: "Website",
@@ -74,30 +91,31 @@ export const miniProject = [
   },
   {
     id: 3,
-    title: "Authentication with Next.js",
-    link: "https://auth-weith-nextjs.vercel.app/",
-    image:
-      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1726591112/project7_ngdhg5.jpg",
-    type: "Featured Project",
-    gitHub: "https://github.com/med134/auth-weith-nextjs",
-  },
-  {
-    id: 4,
-    title: "Store Ecommerce website",
-    link: "https://devdreaming.com",
-    image:
-      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1726591110/project6_koerwd.png",
-    type: "Shopping website",
-    gitHub: "https://github.com/med134/medStores/tree/main",
-  },
-  {
-    id: 5,
-    title: "Screenshot App responsive",
-    link: "https://screen-woad.vercel.app/",
+    title: "Screenshot App responsive Design UX",
+    slug: "screenshot-app-responsive",
+    isFree: false,
+    technology: "NEXT.JS, TAILWIND CSS",
+    preview: "https://screen-woad.vercel.app/",
     image:
       "https://res.cloudinary.com/djcnq7nmj/image/upload/v1726591109/screenshotapp_krjdtr.png",
     type: "Sass Project",
-    gitHub: "https://github.com/med134/screeshotApp",
+    summary:
+      "Allows you to easily take screenshots on your tablet, phone, or other Android devices",
+    /* gitHub: "https://github.com/med134/screeshotApp", */
+  },
+  {
+    id: 3,
+    title: "Next.js Admin and E-Commerce Dashboard",
+    preview: "https://dashboard-next-ui-wine.vercel.app/dashboard",
+    slug: "next.js-admin-dashboard",
+    image:
+      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1729004059/next.js_dashboard_b22sew.png",
+    type: "Dashboard App",
+    isFree: false,
+    technology: "NEXT.JS , TAILWIND CSS HTML, CSS",
+    summary:
+      "Base is an admin dashboard template designed for the admin panel of e-commerce websites",
+    /* gitHub: "https://github.com/codebucks27/wibe-studio", */
   },
 ];
 export const ContactMenu = [
@@ -256,3 +274,13 @@ export const menuItems = [
     isAdmin: true,
   },
 ];
+
+export const getProjects = async (slug) => {
+  return ProjectFull.find((project) => project.slug === slug);
+};
+
+export const getProjectsMini = async (slug) => {
+  return miniProject.find((project) => project.slug === slug);
+};
+
+/*  */

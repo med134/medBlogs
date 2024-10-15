@@ -13,7 +13,6 @@ const AllCategoryPage = ({ sortedPosts }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
   const perPage = 3;
-  console.log(blog)
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(

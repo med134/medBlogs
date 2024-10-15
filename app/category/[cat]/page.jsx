@@ -78,8 +78,8 @@ const Card = async ({ params }) => {
   const myTitle =
     params.cat === "all" ? `All Articles` : `All Articles About ${params.cat}`;
   return (
-    <div className="py-36 bg-light dark:bg-dark sm:py-28">
-      <h1 className="px-14 text-mainColor dark:text-light sm:text-xl text-3xl font-outFit font-bold uppercase mt-4 lg:mt-2 md:px-6 xs:pt-6">
+    <div className="bg-light dark:bg-dark w-full py-16">
+      <h1 className="px-14 text-mainColor dark:text-light sm:text-xl text-3xl font-outFit font-bold uppercase mt-16 lg:mt-2 md:px-6 xs:pt-6">
         #{myTitle}
       </h1>
       <div className="flex justify-around items-center px-16 pt-14 lg:px-4  md:flex md:flex-wrap md:justify-around md:items-center xs:flex xs:px-6 xs:justify-start">
