@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { VscPreview } from "react-icons/vsc";
 
 const page = async ({ params }) => {
   const { slug } = params;
@@ -12,7 +11,7 @@ const page = async ({ params }) => {
   const miniProject = await getProjectsMini(slug);
   return (
     <div className="w-full rounded-lg bg-light p-10 flex flex-col justify-center items-center sm:p-6">
-      <div className="bg bg-white shadow mt-28 rounded-lg p-10 max-w-4xl">
+      <div className="bg bg-white shadow mt-28 rounded-lg p-10 max-w-4xl sm:p-3 sm:mt-16">
         <div className="flex justify-center items-center">
           {/* Image Placeholder */}
           <Image
@@ -28,7 +27,7 @@ const page = async ({ params }) => {
           <div className="col-span-3 p-4 flex md:flex md:flex-col">
             <div>
               {" "}
-              <h1 className="text-2xl font-bold text-gray-900 mb-3 sm:mb-0">
+              <h1 className="text-2xl font-bold text-gray-900 mb-3 sm:mb-0 sm:text-xl">
                 {project?.title || miniProject?.title}
               </h1>
               <div className="flex space-x-4">
@@ -40,8 +39,8 @@ const page = async ({ params }) => {
             <div className="h-[1px] w-full bg-gray-400 col-span-1 mt-4 hidden md:flex"></div>
           </div>
 
-          <div className="col-span-2">
-            <div className="mt-3 text-mainColor">
+          <div className="col-span-2 sm:p-4">
+            <div className="mt-3 text-mainColor sm:mt-0">
               Compatible Browsers :{" "}
               <span className="text-gray-700">
                 Firefox, Safari, Opera, Chrome, Edge

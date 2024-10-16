@@ -6,14 +6,7 @@ import { MdPreview } from "react-icons/md";
 import { motion } from "framer-motion";
 const FramerImage = motion(Image);
 
-export const Project = ({
-  title,
-  type,
-  img,
-  preview,
-  className,
-  slug,
-}) => {
+export const Project = ({ title, type, img, preview, className, slug }) => {
   return (
     <article
       className={`${className} w-full ml-8 mb-6 md:ml-0 flex flex-col items-center justify-center rounded-2xl
@@ -25,9 +18,7 @@ export const Project = ({
       rounded-br-3xl dark:bg-light md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]
       "
       />
-      <div
-        className="w-full cursor-pointer overflow-hidden rounded-lg"
-      >
+      <div className="w-full cursor-pointer overflow-hidden rounded-lg">
         <FramerImage
           src={img}
           alt={title}
@@ -84,7 +75,7 @@ export const FeaturedProject = ({
     <article
       className="w-4xl flex ml-8 items-center justify-between relative rounded-br-2xl
           rounded-3xl border border-solid border-dark bg-light shadow-2xl p-10 dark:bg-dark dark:border-light
-          lg:flex-col lg:p-8 xs:rounded-2xl xs:rounded-br-3xl xs:p-4"
+          lg:flex-col lg:p-8 xs:rounded-2xl xs:rounded-br-3xl xs:p-4 sm:ml-2"
     >
       <div
         className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2.5rem] bg-dark dark:bg-light
@@ -126,7 +117,7 @@ export const FeaturedProject = ({
             target="_blank"
             className="ml-4 rounded-lg bg-dark text-light p-2 px-6 text-lg font-semibold
               dark:bg-light dark:text-dark hover:bg-light hover:text-dark border border-dark hover:border-dark
-              sm:px-4 sm:text-base
+              sm:px-4 sm:text-base xs:text-sm xs:ml-0
               "
           >
             Visit Project
@@ -136,10 +127,10 @@ export const FeaturedProject = ({
             target="_blank"
             className="ml-4 rounded-lg flex items-center group hover:bg-dark bg-light border text-dark border-dark p-2 px-6 text-lg font-semibold
               dark:bg-light dark:text-dark
-              sm:px-4 sm:text-base
+              sm:px-4 sm:text-base xs:text-sm xs:ml-2
               "
           >
-            <span className="ml-2 group-hover:text-light">Live Preview </span>
+            Live Preview
           </Link>
         </div>
       </div>

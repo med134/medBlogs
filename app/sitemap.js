@@ -1,6 +1,7 @@
 import { getAll, getAllCat, getArticles } from "./components/FetchData";
 import { getAllUsers } from "./utils/action";
 import routes from "./routes.json";
+import { miniProject } from "./components/ProjectArrays";
 
 export default async function sitemap() {
   const posts = await getAll();
@@ -44,6 +45,12 @@ export default async function sitemap() {
       lastModified: new Date().toISOString(),
     };
   });
+  const allProjects = miniProject.map((pro) => {
+    return {
+      url: `${baseUrl}/projects/${pro.slug}`,
+      lastModified: new Date().toISOString(),
+    };
+  });
 
   return [
     ...staticUrls,
@@ -51,5 +58,6 @@ export default async function sitemap() {
     ...AllBlogs,
     ...allCategories,
     ...allProfile,
+    ...allProjects,
   ];
 }

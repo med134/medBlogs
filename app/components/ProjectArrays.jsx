@@ -104,7 +104,7 @@ export const miniProject = [
     /* gitHub: "https://github.com/med134/screeshotApp", */
   },
   {
-    id: 3,
+    id: 4,
     title: "Next.js Admin and E-Commerce Dashboard",
     preview: "https://dashboard-next-ui-wine.vercel.app/dashboard",
     slug: "next.js-admin-dashboard",
@@ -282,5 +282,3 @@ export const getProjects = async (slug) => {
 export const getProjectsMini = async (slug) => {
   return miniProject.find((project) => project.slug === slug);
 };
-
-/*  */
