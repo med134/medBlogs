@@ -1,10 +1,44 @@
 import { getProjects, getProjectsMini } from "@/app/components/ProjectArrays";
 import ShareButtons from "@/app/components/ShareButtons";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
+export async function generateMetadata({ params }) {
+  const project = await getProjects(params.slug);
+  const miniProject = await getProjectsMini(params.slug);
+  return {
+    title: project?.title || miniProject.title,
+    description: project?.summary || miniProject.summary,
+    keywords: project?.technology || miniProject.technology,
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: `/projects/${params.slug}`,
+      languages: {
+        "en-US": `en-US/blogs${params.slug}`,
+      },
+      types: {
+        "application/rss+xml": "https://www.medcode.dev/rss",
+      },
+    },
+    local: "en_Us",
+    type: "templates",
+    openGraph: {
+      title: project?.title || miniProject.title,
+      description: project?.summary || miniProject.summary,
+      images: [
+        {
+          url: project?.image || miniProject.image,
+          width: "400",
+          height: "300",
+        },
+      ],
+    },
+  };
+}
 const page = async ({ params }) => {
   const { slug } = params;
   const project = await getProjects(slug);
@@ -31,9 +65,13 @@ const page = async ({ params }) => {
                 {project?.title || miniProject?.title}
               </h1>
               <div className="flex space-x-4">
-                <ShareButtons />
+                <ShareButtons
+                  url={`https://www.medcode.dev/projects/${slug}`}
+                />
               </div>
-              <p className="text-gray-700">{project?.summary || miniProject?.summary}</p>
+              <p className="text-gray-700">
+                {project?.summary || miniProject?.summary}
+              </p>
             </div>
             <div className="h-56 w-[1px] bg-gray-400 col-span-1 md:hidden"></div>
             <div className="h-[1px] w-full bg-gray-400 col-span-1 mt-4 hidden md:flex"></div>
@@ -48,7 +86,9 @@ const page = async ({ params }) => {
             </div>
             <div className="mt-3 text-mainColor">
               technology :{" "}
-              <span className="text-gray-700">{project?.technology || miniProject?.technology}</span>
+              <span className="text-gray-700">
+                {project?.technology || miniProject?.technology}
+              </span>
             </div>
             <div className="text-gray-700 text-left mt-4 text-xl font-semibold">
               Contact me for code source
@@ -61,11 +101,10 @@ const page = async ({ params }) => {
                 aria-label={"whatsapp contact"}
                 name={"whatsapp contact"}
                 className={
-                  "flex items-center relative rounded-md px-16 py-1.5 border-2 border-green-600 text-light bg-green-600 text-2xl hover:text-white hover:bg-green-600"
+                  "flex items-center rounded-md px-16 py-1 border-2 border-green-600 text-light bg-green-600 text-xl hover:text-white hover:bg-green-600"
                 }
               >
-                <div className="absolute z-10 top-0 left-0 w-max h-8 bg-[#25d366] animate-ping"></div>
-                <FaWhatsapp className="h-7 w-7" />
+                <FaWhatsapp className="h-6 w-6" />
                 <span className="ml-4">whatsapp</span>
               </a>
             </div>
