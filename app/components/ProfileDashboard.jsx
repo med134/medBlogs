@@ -104,7 +104,7 @@ const ProfileDashboard = async ({ dataSession, userData }) => {
             )}
           </div>
           <div className="mt-4 block mb-4">
-            <span className="font-semibold text-xl text-mainColor">SKILLS</span>
+            <span className="font-semibold text-xl text-mainColor">SOME SKILLS</span>
             {userData?.skills.length > 0 ? (
               userData.skills?.map((skill, index) => (
                 <div

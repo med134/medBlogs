@@ -58,14 +58,6 @@ const MainLink = ({ session }) => {
           className="mx-4 uppercase dark:text-light"
           target="_blank"
         />
-        <CustomLink
-          key="dev"
-          href="/dev.to-blogs"
-          title="DEV.TO"
-          className="mx-4 uppercase dark:text-light"
-          target="_blank"
-        />
-
         {session ? (
           <CustomLink
             key="dashboard"

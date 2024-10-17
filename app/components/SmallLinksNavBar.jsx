@@ -60,12 +60,6 @@ bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
           title="Templates"
           className="templates"
         />
-        <CustomMobileLink
-          key="dev"
-          href="/dev.to-blogs"
-          title="DEV.TO"
-          className="templates"
-        />
         {session?.user ? (
           <CustomMobileLink
             key="dashboard"
