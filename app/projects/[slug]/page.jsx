@@ -46,12 +46,12 @@ const page = async ({ params }) => {
   return (
     <div className="w-full rounded-lg bg-light p-10 flex flex-col justify-center items-center sm:p-6">
       <div className="bg bg-white shadow mt-28 rounded-lg p-10 max-w-4xl sm:p-3 sm:mt-16">
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center w-full">
           {/* Image Placeholder */}
           <Image
             src={project?.image || miniProject.image}
             alt={project?.title || miniProject?.title}
-            className="rounded-lg shadow-lg w-full h-full"
+            className="rounded-lg shadow-lg w-full h-96"
             width={500}
             height={500}
             loading="lazy"
@@ -64,7 +64,7 @@ const page = async ({ params }) => {
               <h1 className="text-2xl font-bold text-gray-900 mb-3 sm:mb-0 sm:text-xl">
                 {project?.title || miniProject?.title}
               </h1>
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 mr-3">
                 <ShareButtons
                   url={`https://www.medcode.dev/projects/${slug}`}
                 />
