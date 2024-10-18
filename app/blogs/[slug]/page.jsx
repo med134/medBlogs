@@ -63,7 +63,6 @@ const BlogPage = async ({ params }) => {
   const blog = await getPostsBySlug(slug);
   const content = blog.content;
   const session = await auth();
-  const userData = JSON.parse(JSON.stringify(session));
 
   return (
     <section className="p-16 py-40 w-full grid grid-cols-7 gap-10 xl:gap-8 lg:flex lg:flex-col sm:p-3 sm:py-28 dark:bg-dark">
@@ -97,13 +96,12 @@ const BlogPage = async ({ params }) => {
                 {blog.category}
               </Link>
             </div>
-
             <Image
               src={blog.image ? blog.image : imageBlog}
               alt={blog.title}
-              className="w-[850px] h-80 sm:h-auto object-contain rounded mt-2"
-              width={500}
-              height={300}
+              className="w-[1280px] h-auto sm:h-auto object-cover rounded mt-2"
+              width={800}
+              height={400}
               priority={true}
               quality={100}
             />
@@ -117,7 +115,7 @@ const BlogPage = async ({ params }) => {
             dangerouslySetInnerHTML={{ __html: content }}
           />
           <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
-          <Comments postSlug={blog._id} userData={userData} />
+          <Comments postSlug={blog._id} userData={session} />
         </div>
       </div>
       <div className="myLeftSide xl:w-72 col-span-2 sm:w-full xs:w-full sm:p-2 lg:h-[650px] sm:mb-8">
