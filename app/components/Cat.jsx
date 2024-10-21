@@ -5,7 +5,6 @@ import SearchTwo from "./SearchTwo";
 
 const Cat = async () => {
   const cat = await getAllCategories();
-
   return (
     <>
       <SearchTwo className="xs:fill-dark" />
