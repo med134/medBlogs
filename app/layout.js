@@ -18,17 +18,19 @@ export const metadata = {
     "make money online",
   ],
   applicationName: "MedCode Dev blog & Articles",
+  site_name: "MedCode Dev blog & Articles",
   referrer: "origin-when-cross-origin",
   category: "technology",
   openGraph: {
     title: "Best Programming Blog & components|medCode",
     description: `Welcome to MedCode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
     url: "https://medcode.dev",
+    site_name: "MedCode Dev blog & Articles",
     images: [
       {
-        url: "https://i.ibb.co/7C7bbTZ/Frame-1.png",
-        width: "400",
-        height: "300",
+        url: "https://res.cloudinary.com/djcnq7nmj/image/upload/v1729700169/ogImage_nelsbz.png",
+        width: "1200",
+        height: "630",
       },
     ],
     type: "website",
