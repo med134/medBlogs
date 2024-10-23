@@ -17,8 +17,8 @@ export const metadata = {
     "portfolio",
     "make money online",
   ],
-  applicationName: "MedCode Dev blog & Articles",
-  site_name: "MedCode Dev blog & Articles",
+  applicationName: "medcode",
+  site_name: "medcode",
   referrer: "origin-when-cross-origin",
   category: "technology",
   openGraph: {

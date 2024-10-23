@@ -35,6 +35,7 @@ export async function generateMetadata({ params }) {
       description: post.description,
       publishedTime: publishedAt,
       modifiedTime: modifiedAt,
+      url: `https://www.medcode.dev/templates/${params.slug}`,
       images: [
         {
           url: post.image,
@@ -53,50 +54,48 @@ const TemplateId = async ({ params }) => {
   return (
     <>
       <div className="p-8 h-full py-28 xs:pt-6 dark:bg-dark xl:block md:p-4 xs:p-4">
-          <div className="block justify-start information pt-24 px-10 md:px-3">
-            <Link
-              href="/templates"
-              className="group inline-flex justify-around rounded-md bg-mainColor mb-3 p-2 px-4 py-2 xs:mt-4 text-white transition sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-indigo-200"
-            >
-              <BsArrowLeftCircleFill className="ml-3 group-hover:-translate-x-3 group-hover:transition-all " />
-              <span className="text-sm mr-3 px-3"> Back to templates </span>
-            </Link>
-            <p className="px-2 text-gray-500 dark:text-light">
-              {data.category}
-            </p>
-            <h1 className="text-3xl font-serif px-2 font-semibold text-mainColor py-1 xs:text-xl dark:text-cyan-600">
-              {data.title}
-            </h1>
-            <p className="px-2 py-4 text-sm text-gray-700 dark:text-light">
-              {" "}
-              {data.description}
-            </p>
-            <div className="inline-flex justify-start items-center gap-4 p-2">
-              <Image
-                alt="author image"
-                width={50}
-                loading="lazy"
-                height={50}
-                quality={30}
-                src="https://i.ibb.co/WVDZRxF/bussiness-man.png"
-                className="w-16 h-16  object-cover rounded-full"
-              />
-              <div className="flex flex-col w-auto">
-                <span className="text-gray-600 dark:text-gray-200 font-bold uppercase text-sm">
-                  {data?.username}
-                </span>
-                <a
-                  href={`mailto:${data?.email}`}
-                  className="text-xs text-gray-500 dark:text-blue-500 hover:text-blue-800 hover:underline"
-                >
-                  {data?.email}
-                </a>
-                <span className="text-xs text-gray-800 dark:text-light">
-                  {data?.job}
-                </span>
-              </div>
+        <div className="block justify-start information pt-24 px-10 md:px-3">
+          <Link
+            href="/templates"
+            className="group inline-flex justify-around rounded-md bg-mainColor mb-3 p-2 px-4 py-2 xs:mt-4 text-white transition sm:mt-0 sm:w-auto focus:outline-none focus:ring focus:ring-indigo-200"
+          >
+            <BsArrowLeftCircleFill className="ml-3 group-hover:-translate-x-3 group-hover:transition-all " />
+            <span className="text-sm mr-3 px-3"> Back to templates </span>
+          </Link>
+          <p className="px-2 text-gray-500 dark:text-light">{data.category}</p>
+          <h1 className="text-3xl font-serif px-2 font-semibold text-mainColor py-1 xs:text-xl dark:text-cyan-600">
+            {data.title}
+          </h1>
+          <p className="px-2 py-4 text-sm text-gray-700 dark:text-light">
+            {" "}
+            {data.description}
+          </p>
+          <div className="inline-flex justify-start items-center gap-4 p-2">
+            <Image
+              alt="author image"
+              width={50}
+              loading="lazy"
+              height={50}
+              quality={30}
+              src="https://i.ibb.co/WVDZRxF/bussiness-man.png"
+              className="w-16 h-16  object-cover rounded-full"
+            />
+            <div className="flex flex-col w-auto">
+              <span className="text-gray-600 dark:text-gray-200 font-bold uppercase text-sm">
+                {data?.username}
+              </span>
+              <a
+                href={`mailto:${data?.email}`}
+                className="text-xs text-gray-500 dark:text-blue-500 hover:text-blue-800 hover:underline"
+              >
+                {data?.email}
+              </a>
+              <span className="text-xs text-gray-800 dark:text-light">
+                {data?.job}
+              </span>
             </div>
           </div>
+        </div>
         <div className="p-2 mt-6 w-full h-full xs:mt-6">
           <div className="flex justify-between items-center xs:flex-col-reverse xs:items-start">
             <ShareButtons

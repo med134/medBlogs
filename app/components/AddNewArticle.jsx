@@ -13,6 +13,14 @@ const AddNewArticle = ({ session }) => {
   const [selectStatus, setSelectStatus] = useState("draft");
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
+  const [tags, setTags] = useState([
+    "next.js",
+    "react.js",
+    "solution",
+    "tools",
+    "productivity",
+  ]);
+  const [inputTags, setInputTags] = useState([]);
   const [dataUrl, setDataUrl] = useState("");
   const [error, setError] = useState("");
   const TITLE_MODAL = "Article is Created";
@@ -50,7 +58,7 @@ const AddNewArticle = ({ session }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
-    const tags = e.target[1].value;
+    const tags = inputTags;
     const image = dataUrl;
     const description = e.target[3].value;
     const blogSlug = e.target[4].value;
@@ -120,6 +128,13 @@ const AddNewArticle = ({ session }) => {
     setMyContent(newContent);
     localStorage.setItem("content", myContent);
   };
+  // handelAddTags
+  const addTagToInput = (tag) => {
+    if (!inputTags.includes(tag)) {
+      setInputTags((prev) => [...prev, tag]);
+    }
+  };
+  console.log(inputTags);
   return (
     <div className="inline-block max-h-full p-8 py-8 sm:p-2 sm:py-2 w-full">
       <h1 className="text-gray-700 text-2xl lg:text-2xl font-bold">
@@ -135,14 +150,29 @@ const AddNewArticle = ({ session }) => {
                 required
                 type="text"
                 placeholder="Title"
-                className="h-12 w-full rounded-md border m-1 bg-white px-2 text-sm outline-none focus:ring sm:px-2"
+                className="h-12 w-full sm:mb-2 rounded-md border m-1 bg-white px-2 text-sm outline-none focus:ring sm:px-2"
               />
-              <input
-                required
-                type="text"
-                placeholder="tags"
-                className="h-12 w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
-              />
+              <div className="">
+                <div>
+                  {tags.map((tag, index) => (
+                    <button
+                      key={index}
+                      onClick={() => addTagToInput(tag)}
+                      className="px-2 ml-2 mb-1 py-2 sm:py-1 sm:text-sm bg-gray-300 text-white rounded-full hover:bg-gray-500 focus:outline-none"
+                    >
+                      #{tag}
+                    </button>
+                  ))}
+                </div>
+                <input
+                  required
+                  type="text"
+                  value={inputTags}
+                  onChange={(e) => setInputTags(e.target.value)}
+                  placeholder="tags"
+                  className="h-12 w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
+                />
+              </div>
               <div className="max-w-md mx-auto border border-gray-200 px-10 p-2 rounded-md">
                 <label className="text-base text-gray-500 font-semibold mb-2 block">
                   Upload Image
