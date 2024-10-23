@@ -22,9 +22,8 @@ const SearchTwo = ({ className }) => {
     const handleSearch = async () => {
       try {
         const res = await fetch(`/api/articles`, {
-          cache: "no-store",
+          cache: "force-cache",
         });
-
         if (!res.ok) {
           throw new Error("No results found");
         }

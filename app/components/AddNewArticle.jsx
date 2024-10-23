@@ -13,13 +13,7 @@ const AddNewArticle = ({ session }) => {
   const [selectStatus, setSelectStatus] = useState("draft");
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
-  const [tags, setTags] = useState([
-    "next.js",
-    "react.js",
-    "solution",
-    "tools",
-    "productivity",
-  ]);
+  const tags = ["next.js", "react.js", "solution", "tools", "productivity"]; // list of tags
   const [inputTags, setInputTags] = useState([]);
   const [dataUrl, setDataUrl] = useState("");
   const [error, setError] = useState("");
@@ -170,7 +164,7 @@ const AddNewArticle = ({ session }) => {
                   value={inputTags}
                   onChange={(e) => setInputTags(e.target.value)}
                   placeholder="tags"
-                  className="h-12 w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
+                  className="h-12 w-full rounded-md border m-1 bg-white px-5 font-bold text-xl outline-none focus:ring"
                 />
               </div>
               <div className="max-w-md mx-auto border border-gray-200 px-10 p-2 rounded-md">
