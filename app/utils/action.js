@@ -145,6 +145,21 @@ export const getTemplates = async () => {
     throw new Error("Failed to fetch posts!");
   }
 };
+// search params
+export const searchFunction = async (query) => {
+  try {
+    connectDb();
+    const articles = await Article.find();
+    const filteredPosts = articles.filter((post) => {
+      const regex = new RegExp(`${query}`, "gi");
+      return post.title.match(regex);
+    });
+    return filteredPosts;
+  } catch (err) {
+    console.log(err.message);
+    throw new Error("Failed to fetch posts!");
+  }
+};
 export const getTemplatesBySlug = async (slug) => {
   try {
     connectDb();
@@ -157,7 +172,7 @@ export const getTemplatesBySlug = async (slug) => {
 };
 
 // concerting date function
-export const FormatDate = (dateString) => {
+export const FormatDate = async (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
   const formattedDate = new Date(dateString).toLocaleDateString(
     "en-US",
@@ -166,7 +181,7 @@ export const FormatDate = (dateString) => {
   return formattedDate;
 };
 
-export async function getDevTo() {
+/* export async function getDevTo() {
   const res = await fetch("https://dev.to/api/articles?username=med_code", {
     cache: "no-store",
   });
@@ -178,11 +193,14 @@ export async function getDevTo() {
     (a, b) => new Date(b.published_at) - new Date(a.published_at)
   );
   return sortedTemplates;
-}
+} */
 export async function getPostOfUser(email) {
-  const res = await fetch(`https://www.medcode.dev/api/articles?email=${email}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `https://www.medcode.dev/api/articles?email=${email}`,
+    {
+      cache: "no-store",
+    }
+  );
   if (!res.ok) {
     throw new Error("Failed");
   }

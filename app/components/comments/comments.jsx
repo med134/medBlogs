@@ -8,10 +8,10 @@ import Loading from "@/app/Loading";
 import dynamic from "next/dynamic";
 const UserComments = dynamic(() => import("../UserComments"), { ssr: false });
 
-const Comments = ({ postSlug, userData }) => {
+const Comments = ({ postId, userData }) => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, mutate, isLoading } = useSWR(
-    `/api/comments?blogId=${postSlug}`,
+    `/api/comments?blogId=${postId._id}`,
     fetcher
   );
   const [comment, setComment] = useState("");
@@ -21,7 +21,7 @@ const Comments = ({ postSlug, userData }) => {
       await fetch("/api/comments", {
         method: "POST",
         body: JSON.stringify({
-          blogId: postSlug,
+          blogId: postId._id,
           username: userData.user.name,
           imageUser: userData.user.image,
           comment,

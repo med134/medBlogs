@@ -19,7 +19,8 @@ const SidBar = dynamic(() => import("@/app/components/SidBar"), {
   loading: () => <Loading />,
 });
 export async function generateMetadata({ params }) {
-  const post = await getPostsBySlug(params.slug);
+  const { slug } = await params
+  const post = await getPostsBySlug(slug);
   const publishedAt = new Date(post?.createdAt).toISOString();
   const modifiedAt = new Date(post?.updatedAt || post?.createdAt).toISOString();
   return {
@@ -33,9 +34,9 @@ export async function generateMetadata({ params }) {
       follow: true,
     },
     alternates: {
-      canonical: `/blogs/${params.slug}`,
+      canonical: `/blogs/${slug}`,
       languages: {
-        "en-US": `en-US/blogs/${params.slug}`,
+        "en-US": `en-US/blogs/${slug}`,
       },
       types: {
         "application/rss+xml": "https://www.medcode.dev/rss",
@@ -59,9 +60,10 @@ export async function generateMetadata({ params }) {
   };
 }
 const BlogPage = async ({ params }) => {
-  const { slug } = params;
+  const { slug } = await  params;
   const blog = await getPostsBySlug(slug);
   const content = blog.content;
+   const BlogId = JSON.parse(JSON.stringify(blog._id))
   const session = await auth();
 
   return (
@@ -115,7 +117,7 @@ const BlogPage = async ({ params }) => {
             dangerouslySetInnerHTML={{ __html: content }}
           />
           <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
-          <Comments postSlug={blog._id} userData={session} />
+          <Comments postId={BlogId} userData={session} />
         </div>
       </div>
       <div className="myLeftSide xl:w-72 col-span-2 sm:w-full xs:w-full sm:p-2 lg:h-[650px] sm:mb-8">
