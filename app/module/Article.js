@@ -7,7 +7,7 @@ const articleSchema = new Schema(
       required: true,
     },
     tags: {
-      type: Array,
+      type: [String], // array of strings
       required: true,
     },
     image: {
