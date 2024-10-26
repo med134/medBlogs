@@ -24,8 +24,9 @@ async function getPosts(cat) {
   return sortedPosts;
 }
 export async function generateMetadata({ params }) {
-  const post = await getPosts(params.cat);
-  const heading = `All Articles About ${params.cat}`;
+  const { cat } = await params;
+  const post = await getPosts(cat);
+  const heading = `All Articles About ${cat}`;
   return {
     title: heading,
     description: `Explore a treasure trove of insightful programming articles and engaging blogs about ${params.cat} Discover expert-written content covering languages, frameworks`,
@@ -46,9 +47,9 @@ export async function generateMetadata({ params }) {
       follow: true,
     },
     alternates: {
-      canonical: `/category/${params.cat}`,
+      canonical: `/category/${cat}`,
       languages: {
-        "en-US": `en-US/category/${params.cat}`,
+        "en-US": `en-US/category/${cat}`,
       },
       types: {
         "application/rss+xml": "https://www.medcode.dev/rss",
@@ -60,6 +61,7 @@ export async function generateMetadata({ params }) {
           ? `All Blogs & Articles`
           : `All Blogs About ${params.cat}`,
       description: `Explore a treasure trove of insightful programming articles and engaging blogs about ${params.cat} Discover expert-written content covering languages, frameworks`,
+      url: `https://www.medcode.dev/category/${cat}`,
       images: [
         {
           url: post.image,
