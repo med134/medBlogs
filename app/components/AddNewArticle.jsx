@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useMemo } from "react";
+import React, { useState, useRef, useMemo, useEffect } from "react";
 import IsUpdate from "./IsUpdate";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 import "jodit-react/examples/app.css";
@@ -48,11 +48,18 @@ const AddNewArticle = ({ session }) => {
     }),
     []
   );
+  useEffect(() => {
+    // Check if localStorage is available
+    if (typeof window !== "undefined" && window.localStorage) {
+      const myLocalContent = localStorage.getItem("content");
+      setMyContent(myLocalContent);
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
-    const tags = inputTags;
+    const tags = e.target[1].value;
     const image = dataUrl;
     const description = e.target[3].value;
     const blogSlug = e.target[4].value;
@@ -62,6 +69,16 @@ const AddNewArticle = ({ session }) => {
     const job = selectedJobs;
     const status = selectStatus;
     const content = myContent;
+    console.log(
+      "object",
+      title,
+      tags,
+      description,
+      slug,
+      category,
+      job,
+      status
+    );
     try {
       setLoading(true);
       const response = await fetch("/api/articles", {
@@ -146,27 +163,12 @@ const AddNewArticle = ({ session }) => {
                 placeholder="Title"
                 className="h-12 w-full sm:mb-2 rounded-md border m-1 bg-white px-2 text-sm outline-none focus:ring sm:px-2"
               />
-              <div className="">
-                <div>
-                  {tags.map((tag, index) => (
-                    <button
-                      key={index}
-                      onClick={() => addTagToInput(tag)}
-                      className="px-2 ml-2 mb-1 py-2 sm:py-1 sm:text-sm bg-gray-300 text-white rounded-full hover:bg-gray-500 focus:outline-none"
-                    >
-                      #{tag}
-                    </button>
-                  ))}
-                </div>
                 <input
                   required
                   type="text"
-                  value={inputTags}
-                  onChange={(e) => setInputTags(e.target.value)}
                   placeholder="tags"
                   className="h-12 w-full rounded-md border m-1 bg-white px-5 font-bold text-xl outline-none focus:ring"
                 />
-              </div>
               <div className="max-w-md mx-auto border border-gray-200 px-10 p-2 rounded-md">
                 <label className="text-base text-gray-500 font-semibold mb-2 block">
                   Upload Image

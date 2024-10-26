@@ -47,6 +47,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: post?.title,
       description: post?.description,
+      ur: `https://www.medcode.dev/blogs/${slug}`,
       publishedTime: publishedAt,
       modifiedTime: modifiedAt,
       images: [
