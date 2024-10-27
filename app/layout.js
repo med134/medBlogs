@@ -1,7 +1,7 @@
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from '@next/third-parties/google';
 import { inter } from "./components/Fonts";
 import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
@@ -64,7 +64,7 @@ export default function RootLayout({ children }) {
         <NextTopLoader zIndex={99} showSpinner={false} />
         <Footer />
       </body>
-      <GoogleAnalytics gaId="G-J4KQVRLWEN" />
+      <GoogleTagManager gaId="G-J4KQVRLWEN" />
     </html>
   );
 }
