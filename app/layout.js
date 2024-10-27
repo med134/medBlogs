@@ -1,9 +1,8 @@
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { inter } from "./components/Fonts";
-import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
 
 export const metadata = {
@@ -55,16 +54,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className}`} suppressHydrationWarning={true}>
         <NavBar />
-        <Script
-          strategy="afterInteractive"
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-J4KQVRLWEN"
-        ></Script>
         {children}
         <NextTopLoader zIndex={99} showSpinner={false} />
         <Footer />
       </body>
       <GoogleTagManager gaId="G-J4KQVRLWEN" />
+      <GoogleAnalytics gaId="G-J4KQVRLWEN" />
     </html>
   );
 }

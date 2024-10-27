@@ -6,7 +6,7 @@ const SearchTwo = ({ className }) => {
   return (
     <Form
       action={`/search`}
-      className={`relative inline-flex w-full h-12 mt-4 xl:right-6 lg:relative lg:left-0 rounded-lg`}
+      className={`relative inline-flex w-full h-14 mt-4 xl:right-6 lg:relative lg:left-0 rounded-lg`}
     >
       <input
         type="text"
