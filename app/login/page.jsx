@@ -3,7 +3,10 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 import TransitionEffect from "@/app/components/TransitionEffect";
-import { handelLoginGithub, LoginWithGoogle } from "@/app/utils/action";
+import {
+  handelLoginGithub,
+  LoginWithGoogle,
+} from "@/app/utils/action";
 
 const Login = async () => {
   return (
@@ -71,6 +74,7 @@ const Login = async () => {
                   </span>
                 </span>
               </Link>
+             
             </div>
           </div>
         </div>

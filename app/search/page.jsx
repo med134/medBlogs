@@ -7,7 +7,7 @@ import Form from "next/form";
 import SearchButton from "../components/SearchButton";
 
 const page = async ({ searchParams }) => {
-  const { query } = await searchParams;
+  const {query} = await searchParams;
   const allResult = await searchFunction(query);
 
   return (
