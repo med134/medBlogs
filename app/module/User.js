@@ -6,11 +6,15 @@ const userSchema = new Schema(
   {
     id: {
       type: Number,
+      unique: true,
+      required: false,
     },
     name: {
       type: String,
       unique: true,
       required: true,
+      min: 3,
+      max: 20,
     },
     email: {
       type: String,
@@ -18,15 +22,15 @@ const userSchema = new Schema(
       required: true,
       match: /.+\@.+\..+/,
     },
+    password: {
+      type: String,
+    },
     imageUrl: {
       type: String,
     },
     job: {
       type: String,
       required: false,
-    },
-    userSlug: {
-      type: String,
     },
     phone: {
       type: String,
@@ -36,7 +40,8 @@ const userSchema = new Schema(
       type: String,
     },
     skills: {
-      type: [String], // Array of strings to store skills
+      type: [String],
+      default: [], // Array of strings to store skills
     },
     workLinks: [
       {
@@ -47,10 +52,6 @@ const userSchema = new Schema(
         },
       },
     ],
-    experience: {
-      type: Number,
-      default: 0,
-    },
     isAdmin: {
       type: Boolean,
       default: false,

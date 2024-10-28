@@ -7,6 +7,7 @@ import connectDb from "./ConnectDB";
 import Category from "../module/Category";
 import Posts from "../module/Post";
 import Email from "../module/Email";
+import { CgPassword } from "react-icons/cg";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
@@ -195,3 +196,28 @@ export async function getPostOfUser(email) {
   const totalBlog = templates.length;
   return totalBlog;
 }
+
+export const RegisterUser = async (formData) => {
+  const { name, email, imageUrl, password, repeatPassword } =
+    Object.formEntries(formData.entries());
+  if (password == !repeatPassword) {
+    return "password not match";
+  }
+  try {
+    connectDb();
+    const user = await User.findOne({ name });
+    if (!user) {
+      return "user all ready exist";
+    }
+    const newUser = new User({
+      name,
+      email,
+      password,
+      imageUrl,
+    });
+    await newUser.save();
+    console.log("user save");
+  } catch (err) {
+    console.log(err);
+  }
+};

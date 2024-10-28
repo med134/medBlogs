@@ -3,10 +3,7 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 import TransitionEffect from "@/app/components/TransitionEffect";
-import {
-  handelLoginGithub,
-  LoginWithGoogle,
-} from "@/app/utils/action";
+import { handelLoginGithub, LoginWithGoogle } from "@/app/utils/action";
 
 const Login = async () => {
   return (
@@ -63,18 +60,17 @@ const Login = async () => {
             </form>
             <div className="mt-4 text-center">
               <Link
-                href="/login"
+                href="/create-account"
                 className="font-bold text-blue-600 no-underline hover:text-blue-400"
               >
                 <span className="text-sm text-gray-600 dark:text-light">
-                  {"Don't"} have an account ?{" "}
+                  {"Don't have"} you have an account ?{" "}
                   <span className="hover:text-blue-500 hover:underline">
                     {" "}
-                    Sign Up
+                    Create Account
                   </span>
                 </span>
               </Link>
-             
             </div>
           </div>
         </div>
