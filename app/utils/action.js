@@ -198,7 +198,7 @@ export async function getPostOfUser(email) {
 }
 
 export const RegisterUser = async (formData) => {
-  const { name, email, imageUrl, password, repeatPassword } =
+  const { name, email, password, repeatPassword } =
     Object.formEntries(formData.entries());
   if (password == !repeatPassword) {
     return "password not match";
@@ -213,7 +213,6 @@ export const RegisterUser = async (formData) => {
       name,
       email,
       password,
-      imageUrl,
     });
     await newUser.save();
     console.log("user save");
