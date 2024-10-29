@@ -12,7 +12,7 @@ const SmallLinksNavBar = dynamic(() => import("./SmallLinksNavBar"), {
 });
 const ProfileDown = dynamic(() => import("./ProfileDown"), { ssr: false });
 
-const NavBaLinks = ({ session }) => {
+const NavBaLinks = ({ user }) => {
   const [mode, setMode] = useThemeSwitcher("dark");
   const [isOpen, setIsOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
@@ -75,8 +75,8 @@ const NavBaLinks = ({ session }) => {
           )}
         </button>
         <div className="fixed right-4">
-          {session ? (
-            <ProfileDown session={session} className="" />
+          {user ? (
+            <ProfileDown user={user}/>
           ) : (
             <Link
               href="/login"
@@ -107,7 +107,7 @@ const NavBaLinks = ({ session }) => {
           )}
         </div>
       </div>
-      <MainLink session={session} />
+      <MainLink user={user} />
       <button
         name="theme-button"
         aria-label="change-theme"
@@ -130,7 +130,7 @@ ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
         <div>
           {" "}
           <SmallLinksNavBar
-            session={session}
+            user={user}
             handelMode={handelMode}
             mode={mode}
           />

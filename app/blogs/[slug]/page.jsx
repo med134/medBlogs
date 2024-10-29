@@ -19,7 +19,7 @@ const SidBar = dynamic(() => import("@/app/components/SidBar"), {
   loading: () => <Loading />,
 });
 export async function generateMetadata({ params }) {
-  const { slug } = await params
+  const { slug } = await params;
   const post = await getPostsBySlug(slug);
   const publishedAt = new Date(post?.createdAt).toISOString();
   const modifiedAt = new Date(post?.updatedAt || post?.createdAt).toISOString();
@@ -61,10 +61,10 @@ export async function generateMetadata({ params }) {
   };
 }
 const BlogPage = async ({ params }) => {
-  const { slug } = await  params;
+  const { slug } = await params;
   const blog = await getPostsBySlug(slug);
   const content = blog.content;
-   const BlogId = JSON.parse(JSON.stringify(blog._id))
+  const BlogId = JSON.parse(JSON.stringify(blog._id));
   const session = await auth();
 
   return (

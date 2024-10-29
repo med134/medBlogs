@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 import imageCompression from "browser-image-compression";
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
-const AddNewArticle = ({ session }) => {
+const AddNewArticle = ({ user }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const [selectStatus, setSelectStatus] = useState("draft");
@@ -79,15 +79,15 @@ const AddNewArticle = ({ session }) => {
           image,
           description,
           slug,
-          userId: session.user.id,
+          userId: user.id,
           category,
           job,
           status,
           content,
-          username: session?.user?.name,
-          userSlug: session?.user?.name.replace(/\s+/g, "-").toLowerCase(),
-          email: session.user.email,
-          userImage: session.user.image,
+          username: user?.name,
+          userSlug: user?.name.replace(/\s+/g, "-").toLowerCase(),
+          email: user.email,
+          userImage: user.imageUrl,
         }),
       });
       if (response.ok) {
@@ -225,7 +225,7 @@ const AddNewArticle = ({ session }) => {
               <select
                 id="selectStatus"
                 value={selectStatus}
-                disabled={session.user.name === "MOHAMMED DAKIR" ? false : true}
+                disabled={user.name === "MOHAMMED DAKIR" ? false : true}
                 onChange={handelStatus}
                 className="h-12 w-full max-w-full rounded-md border m-1 bg-white px-5 text-sm outline-none focus:ring"
               >

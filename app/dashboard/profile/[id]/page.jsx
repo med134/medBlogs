@@ -1,9 +1,10 @@
 import React from "react";
 import { auth } from "@/app/utils/auth";
 import ProfileDashboard from "@/app/components/ProfileDashboard";
+import { getUserById } from "@/app/utils/action";
 
-export async function getUserBySlug(slug) {
-  const res = await fetch(`https://www.medcode.dev/api/users/${slug}`, {
+export async function getUserBySlug(id) {
+  const res = await fetch(`https://www.medcode.dev/api/users/${id}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -63,15 +64,12 @@ export const metadata = {
 };
 
 const page = async ({ params }) => {
-  const { userSlug } = params;
-  const [session, userData] = await Promise.all([
-    auth(),
-    getUserBySlug(userSlug),
-  ]);
-  const dataSession = JSON.parse(JSON.stringify(session));
+  const { id } = await params;
+  const session = await getUserById(id);
+  const user = JSON.parse(JSON.stringify(session));
   return (
     <main className="w-full">
-      <ProfileDashboard dataSession={dataSession} userData={userData} />
+     <ProfileDashboard user={user} />
     </main>
   );
 };

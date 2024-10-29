@@ -18,7 +18,7 @@ const SettingsProfile = ({
   workLinks,
   skills,
   experience,
-  session,
+  userId
 }) => {
   const [newEmail, setNewEmail] = useState(email);
   const [newJob, setNewJob] = useState(job);
@@ -59,7 +59,7 @@ const SettingsProfile = ({
     const userSlug = newSlug;
     setLoading(true);
     try {
-      await fetch(`/api/users/${newSlug}`, {
+      await fetch(`/api/users/${userId}`, {
         method: "PUT",
         body: JSON.stringify({
           name: newName,
@@ -71,12 +71,11 @@ const SettingsProfile = ({
           homeAddress: newHomeAddress,
           skills: newSkills,
           workLinks: newWorkLinks,
-          experience: newExperience,
         }),
       });
       e.target.reset();
       setLoading(false);
-      router.push(`/dashboard/profile/${newSlug}`);
+      router.push(`/dashboard/profile/${userId}`);
     } catch (err) {
       console.log(err);
     }
@@ -108,13 +107,10 @@ const SettingsProfile = ({
     }
   };
   useEffect(() => {
-    if (email !== session.user.email) {
-      router.push("/dashboard");
-    }
     if (newWorkLinks.length < 2) {
       setNewWorkLinks(myWorkLinks);
     }
-  }, [email, newWorkLinks, router,session.user.email]);
+  }, [newWorkLinks, router]);
   return (
     <div className="w-full mx-auto p-8 mb-8 bg-white rounded-lg md:p-3">
       {loading ? (
@@ -276,21 +272,6 @@ const SettingsProfile = ({
                       value={newHomeAddress}
                       placeholder="Add your country"
                       onChange={(e) => setNewHomeAddress(e.target.value)}
-                      className="w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
-                    />
-                    <CiEdit className="w-6 h-6 fill-dark ml-1" />
-                  </div>
-                </div>
-
-                <div id="profile">
-                  <div className="flex flex-wrap items-center mb-4">
-                    <div className="w-1/3 text-gray-700">Experience</div>
-                    <input
-                      type="number"
-                      name="experience"
-                      placeholder="Add years of experience"
-                      value={newExperience}
-                      onChange={(e) => setNewExperience(e.target.value)}
                       className="w-1/2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-purple-500 hover:border-purple-300 shadow-sm focus:shadow"
                     />
                     <CiEdit className="w-6 h-6 fill-dark ml-1" />

@@ -1,12 +1,13 @@
 import React from "react";
 import NavBaLinks from "./NavBaLinks";
-import { auth } from "../utils/auth";
+import { getUserId } from "../utils/action";
 
 const NavBar = async () => {
-  const  session  = await auth();
+  const BlogId = await getUserId();
+  const user = JSON.parse(JSON.stringify(BlogId));
   return (
     <>
-      <NavBaLinks session={session} />
+      <NavBaLinks user={user} />
     </>
   );
 };

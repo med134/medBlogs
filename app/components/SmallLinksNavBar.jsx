@@ -11,7 +11,7 @@ import { BsInstagram } from "react-icons/bs";
 import Link from "next/link";
 import SearchTwo from "./SearchTwo";
 
-const SmallLinksNavBar = ({ session, handelMode, mode }) => {
+const SmallLinksNavBar = ({ user, handelMode, mode }) => {
   return (
     <div
       className="min-w-[60vw] fixed xs:absolute xs:top-80 sm:min-w-[70vw] sm:h-min flex flex-col justify-between z-9999 items-center top-[50%] sm:top-[20%] left-2/4 -translate-x-1/2 -translate-y-1/2
@@ -60,7 +60,7 @@ bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
           title="Templates"
           className="templates"
         />
-        {session?.user ? (
+        {user ? (
           <CustomMobileLink
             key="dashboard"
             href="/dashboard"
@@ -76,7 +76,7 @@ bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
           />
         )}
       </div>
-      {session?.user && (
+      {user && (
         <form action={handelLogOut}>
           <button
             name="log-button"

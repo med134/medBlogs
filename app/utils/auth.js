@@ -15,12 +15,13 @@ export const {
   providers: [GitHub, Google],
   callbacks: {
     async signIn({ user, account, profile }) {
+      console.log("this is user",user)
       connect();
       try {
         const userAuth = await User.findOne({ email: profile.email });
         if (!userAuth) {
           const newUser = new User({
-            id: account.providerAccountId,
+            id: user.id,
             name: profile.login || user.name,
             email: profile.email,
             imageUrl: profile.avatar_url || profile.picture,

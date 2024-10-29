@@ -4,8 +4,6 @@ import { auth } from "@/app/utils/auth";
 
 const Blogs = async () => {
   const session = await auth();
-  console.log(session)
-  const user = session.user.email;
   return (
     <div className="w-full p-6 h-full md:p-1 xs:py-10">
       <ListDashboardBlogs user={user} />

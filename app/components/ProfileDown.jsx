@@ -6,7 +6,7 @@ import { handelLogOut } from "../utils/action";
 import Link from "next/link";
 import { IoSettingsOutline } from "react-icons/io5";
 
-const ProfileDown = ({ session }) => {
+const ProfileDown = ({ user }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -23,7 +23,7 @@ const ProfileDown = ({ session }) => {
             width={50}
             height={50}
             loading="lazy"
-            src={session?.user?.image}
+            src={user?.imageUrl}
             quality={50}
             alt="photo_profile"
             className="w-10 h-10 rounded-[50%] cursor-pointer"
@@ -33,17 +33,9 @@ const ProfileDown = ({ session }) => {
       {isDropdownOpen && (
         <div className="origin-top-right w-56  bg-white p-6 absolute right-2 mt-4 rounded-md shadow-lg z-50">
           <div className="py-1 rounded-md shadow-xs">
-            <div className="flex flex-col px-4">
-              <span className="text-xs text-gray-700">{session.user.name}</span>
-              <span className="text-xs text-gray-500">
-                {session.user.email}
-              </span>
-            </div>
             <ul className="block py-2 z-[1000] min-w-full w-max rounded-lg max-h-96 overflow-auto">
               <Link
-                href={`/dashboard/profile/${session.user.name
-                  .replace(/\s+/g, "-")
-                  .toLowerCase()}`}
+                href={`/dashboard/profile/${user.id}`}
                 className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer"
               >
                 <svg
@@ -77,9 +69,7 @@ const ProfileDown = ({ session }) => {
                 Dashboard
               </Link>
               <Link
-                href={`/dashboard/settings/${session.user.name
-                  .replace(/\s+/g, "-")
-                  .toLowerCase()}`}
+                href={`/dashboard/settings/${user.id}`}
                 className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer"
               >
                 <IoSettingsOutline className="fill-dark w-6 h-6 mr-3" />

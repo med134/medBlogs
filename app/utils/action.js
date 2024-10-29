@@ -1,20 +1,19 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { signIn, signOut } from "./auth";
+import { auth, signIn, signOut } from "./auth";
 import Article from "../module/Article";
 import User from "../module/User";
 import connectDb from "./ConnectDB";
 import Category from "../module/Category";
 import Posts from "../module/Post";
 import Email from "../module/Email";
-import bcrypt from "bcryptjs";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
 };
 export const handelLogOut = async () => {
   await signOut();
-  return Response.redirect(new URL("/login"));
+  revalidatePath("/login");
 };
 export const LoginWithGoogle = async () => {
   await signIn("google");
@@ -93,15 +92,30 @@ export const getAllUsers = async () => {
     throw new Error("Failed to fetch users!");
   }
 };
-export const getUserBySlug = async (slug) => {
+export const getUserById = async (id) => {
   try {
     connectDb();
-    const user = await User.findOne({ slug });
+    const user = await User.findOne({ id });
     return user;
   } catch (err) {
     console.log(err.message);
     throw new Error("Failed to fetch users!");
   }
+};
+export const getUserByEmail = async (email) => {
+  try {
+    connectDb();
+    const user = await User.findOne({ email });
+    return user;
+  } catch (err) {
+    console.log(err.message);
+    throw new Error("Failed to fetch users!");
+  }
+};
+export const getUserId = async () => {
+  const session = await auth();
+  const user = getUserByEmail(session.user.email);
+  return user;
 };
 
 export const getPostsBySlug = async (slug) => {
@@ -198,7 +212,8 @@ export async function getPostOfUser(email) {
 }
 
 export const loginUser = async (prevState, formData) => {
-  const { username, password } = Object.fromEntries(formData);
+  const { title, tags, image, description, slug } =
+    Object.fromEntries(formData);
 
   try {
     await signIn("credentials", { username, password });

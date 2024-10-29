@@ -1,11 +1,12 @@
 import React from "react";
 import ResponsiveDashboardNavbar from "./ResponsiveDashboardNavbar";
-import { auth } from "../utils/auth";
+import {getUserId } from "../utils/action";
 
 async function DashboardNav() {
-  const session = await auth();
+  const userId = await getUserId();
+  const user = JSON.parse(JSON.stringify(userId));
 
-  return <ResponsiveDashboardNavbar session={session} />;
+  return <ResponsiveDashboardNavbar user={user} />;
 }
 
 export default DashboardNav;

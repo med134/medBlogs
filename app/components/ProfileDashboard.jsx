@@ -7,17 +7,17 @@ import { CgWorkAlt } from "react-icons/cg";
 import { FormatDate } from "../utils/action";
 import { PiUserGear } from "react-icons/pi";
 import { RiArticleLine } from "react-icons/ri";
-import { getPostOfUser } from "../utils/action";
+import { auth } from "../utils/auth";
 
-const ProfileDashboard = async ({ dataSession, userData }) => {
-  const myLinks = userData?.workLinks;
-  const totalPost = await getPostOfUser(userData.email);
+const ProfileDashboard = async ({ user }) => {
+  const myLinks = user.workLinks;
+  const session = await auth();
   return (
     <div className="w-full mx-auto mb-8 rounded-lg md:p-3 sm:p-3">
       <div className="relative w-full bg-light p-4 shadow-md flex justify-start items-center md:flex md:flex-col md:justify-center">
-        {userData.email === dataSession.user.email && (
+        {session.user.email === user.email && (
           <Link
-            href={`/dashboard/settings/${userData?.userSlug}`}
+            href={`/dashboard/settings/${user.id}`}
             className="absolute z-10 group right-10 top-3 inline-flex px-4 items-center bg-gray-200 p-2 rounded-full hover:bg-mainColor  text-gray-600 cursor-pointer md:right-4"
           >
             <span className="sm:text-sm group-hover:text-light xs:hidden">
@@ -28,7 +28,7 @@ const ProfileDashboard = async ({ dataSession, userData }) => {
         )}
         <div className="relative w-full">
           <Image
-            src={userData?.imageUrl}
+            src={user?.imageUrl}
             alt="photo profile"
             className="mx-auto w-60 h-60 sm:w-56 sm:h-56 rounded-full"
             width={400}
@@ -39,30 +39,30 @@ const ProfileDashboard = async ({ dataSession, userData }) => {
         <div className="w-full py-6">
           <div className="text-left mb-2 md:text-center pt-5">
             <h5 className="text-gray-800 text-3xl md:text-xl">
-              Hello, {userData.name}
+              Hello, {user.name}
             </h5>
             <div className="text-sm text-gray-600 mt-4 flex md:justify-center">
               <PiUserGear className="w-6 h-6 fill-gray-600" />
               <span className="text-gray-900 font-semibold uppercase ml-3">
-                {userData.isAdmin ? "Admin" : "user"}
+                {user.isAdmin ? "Admin" : "user"}
               </span>
             </div>
             <div className="text-sm text-gray-600 mt-2 flex md:justify-center ">
               <CgWorkAlt className="w-6 h-6 fill-gray-600" />
               <span className="text-gray-900 font-semibold uppercase ml-3">
-                {userData.job || "...."}
+                {user.job || "...."}
               </span>
             </div>
             <div className="text-sm text-gray-600 mt-2 flex md:justify-center ">
               <RiArticleLine className="w-6 h-6 fill-gray-600" />
               <span className="text-gray-900 font-semibold uppercase ml-3">
-                {totalPost || "0"} article
+                0 article
               </span>
             </div>
             <div className="text-sm text-gray-600 mt-2 flex md:justify-center  ">
               <LiaBirthdayCakeSolid className="w-6 h-6 fill-gray-600" />
               <span className="text-gray-900 font-semibold ml-3">
-                Joined on {FormatDate(userData.createdAt)}
+                Joined on {FormatDate(user.createdAt)}
               </span>
             </div>
           </div>
@@ -96,7 +96,7 @@ const ProfileDashboard = async ({ dataSession, userData }) => {
               ))
             ) : (
               <Link
-                href={`/dashboard/settings/${userData?.userSlug}`}
+                href={`/dashboard/settings/${user.id}`}
                 className="px-6 shadow-md hover:bg-mainColor hover:text-light border rounded-md py-2"
               >
                 No work links, Add links
@@ -104,9 +104,11 @@ const ProfileDashboard = async ({ dataSession, userData }) => {
             )}
           </div>
           <div className="mt-4 block mb-4">
-            <span className="font-semibold text-xl text-mainColor">SOME SKILLS</span>
-            {userData?.skills.length > 0 ? (
-              userData.skills?.map((skill, index) => (
+            <span className="font-semibold text-xl text-mainColor">
+              SOME SKILLS
+            </span>
+            {user?.skills.length > 0 ? (
+              user.skills?.map((skill, index) => (
                 <div
                   key={index}
                   className="uppercase flex items-center bg-white border mt-3 border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:w-full"
@@ -116,7 +118,7 @@ const ProfileDashboard = async ({ dataSession, userData }) => {
               ))
             ) : (
               <Link
-                href={`/dashboard/settings/${userData?.userSlug}`}
+                href={`/dashboard/settings/${user?.userSlug}`}
                 className="px-6 shadow-md hover:bg-mainColor hover:text-light border rounded-md py-2"
               >
                 No skills, Add skills
@@ -133,33 +135,25 @@ const ProfileDashboard = async ({ dataSession, userData }) => {
               <div className="flex flex-wrap mb-4">
                 <div className="w-1/3 text-gray-700">Email</div>
                 <div className="w-1/2 text-blue-600 font-semibold">
-                  {userData.email}
+                  {user.email}
                 </div>
               </div>
               <div className="flex flex-wrap mb-4">
                 <div className="w-1/2 text-gray-700">Phone</div>
                 <div className="w-1/2 text-blue-600 font-semibold">
-                  {userData?.phone}
+                  {user?.phone}
                 </div>
               </div>
               <div className="flex flex-wrap mb-4">
                 <div className="w-1/2 text-gray-700">Profession</div>
                 <div className="w-1/2 text-blue-600 font-semibold">
-                  {userData?.job}
+                  {user?.job}
                 </div>
               </div>
               <div className="flex flex-wrap mb-4">
                 <div className="w-1/2 text-gray-700">Country</div>
                 <div className="w-1/2 text-blue-600 font-semibold">
-                  {userData?.homeAddress}
-                </div>
-              </div>
-            </div>
-            <div id="profile">
-              <div className="flex flex-wrap mb-4">
-                <div className="w-1/2 text-gray-700">Experience</div>
-                <div className="w-1/2 text-blue-600 font-semibold">
-                  {userData?.experience} years
+                  {user?.homeAddress}
                 </div>
               </div>
             </div>

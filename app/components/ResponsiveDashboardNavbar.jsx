@@ -11,12 +11,11 @@ import { handelLogOut } from "../utils/action";
 import dynamic from "next/dynamic";
 const ProfileDown = dynamic(() => import("./ProfileDown"), { ssr: false });
 
-const ResponsiveDashboardNavbar = ({ session }) => {
+const ResponsiveDashboardNavbar = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const path = usePathname();
   const handelOpen = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen);
   };
   return (
     <div className="h-20 flex sticky top-0 w-[100%] justify-between z-50 items-center bg-gradient-to-r from-[#f0f0f0] to-gray-50">
@@ -62,9 +61,9 @@ const ResponsiveDashboardNavbar = ({ session }) => {
         <div className="flex justify-start items-center px-4 cursor-pointer">
           <div className="flex mr-6 items-center md:ml-4 xs:ml-0 xs:mr-0">
             <span className="text-xs text-gray-500 mr-2">
-              Hi, {session.user.name}
+              Hi, {user.name}
             </span>{" "}
-            <ProfileDown session={session} />
+            <ProfileDown user={user} />
           </div>
           <Link href="/" className="ml-3 lg:hidden">
             <RxExit className="w-8 h-8 fill-mainColor" />
