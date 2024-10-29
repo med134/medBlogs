@@ -7,7 +7,7 @@ import connectDb from "./ConnectDB";
 import Category from "../module/Category";
 import Posts from "../module/Post";
 import Email from "../module/Email";
-import { CgPassword } from "react-icons/cg";
+import bcrypt from "bcryptjs";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
@@ -197,26 +197,17 @@ export async function getPostOfUser(email) {
   return totalBlog;
 }
 
-export const RegisterUser = async (formData) => {
-  const { name, email, password, repeatPassword } =
-    Object.formEntries(formData.entries());
-  if (password == !repeatPassword) {
-    return "password not match";
-  }
+export const loginUser = async (prevState, formData) => {
+  const { username, password } = Object.fromEntries(formData);
+
   try {
-    connectDb();
-    const user = await User.findOne({ name });
-    if (!user) {
-      return "user all ready exist";
-    }
-    const newUser = new User({
-      name,
-      email,
-      password,
-    });
-    await newUser.save();
-    console.log("user save");
+    await signIn("credentials", { username, password });
   } catch (err) {
     console.log(err);
+
+    if (err.message.includes("CredentialsSignin")) {
+      return { error: "Invalid username or password" };
+    }
+    throw err;
   }
 };

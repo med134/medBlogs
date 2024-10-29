@@ -25,15 +25,41 @@ const Login = async () => {
         <div className="w-full sm:w-full">
           <div className="p-8 xs:p-4">
             <h1 className="text-3xl font-black text-slate-700 dark:text-light">
-              Sign In
+              Login
             </h1>
             <p className="mt-2 mb-5 text-base leading-tight text-gray-600 dark:text-light">
-              Create an account in{" "}
+              Login to your account in{" "}
               <span className="font-bold text-blue-500 text-xl">
                 MedCode Community !
               </span>{" "}
               to publish blogs.
             </p>
+            <form className="mt-4" action="">
+              <div className="flex justify-center items-center">
+                <input
+                  className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                  type="email"
+                  placeholder="Email"
+                  required
+                />
+                <input
+                  className="w-full px-8 ml-2 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                  type="password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className="mt-5 tracking-wide font-semibold bg-[#2b7aa6] text-white-500 w-full py-2 rounded-lg hover:bg-[#2b9aa2] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+              >
+                <span className="text-light">Login</span>
+              </button>
+            </form>
+            <div className="bg-gray-400 h-[1px] w-full mt-5 mb-5"></div>
+            <h4 className="flex justify-center underline text-gray-500">
+              Login with Google or Github
+            </h4>
             <form action={LoginWithGoogle}>
               <button className="w-full mt-4 text-center px-6 py-2 border flex justify-center items-center gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
                 <FcGoogle className="h-6 w-6 " />
@@ -64,8 +90,8 @@ const Login = async () => {
                 className="font-bold text-blue-600 no-underline hover:text-blue-400"
               >
                 <span className="text-sm text-gray-600 dark:text-light">
-                  {"Don't have"} you have an account ?{" "}
-                  <span className="hover:text-blue-500 hover:underline">
+                  {"Don't have"} an account ?{" "}
+                  <span className="text-blue-500 hover:underline">
                     {" "}
                     Create Account
                   </span>

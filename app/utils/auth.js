@@ -4,24 +4,27 @@ import Google from "next-auth/providers/google";
 import { connect } from "./ConnectMongo";
 import User from "@/app/module/User";
 import { authConfig } from "./auth.config";
+
 export const {
   handlers: { GET, POST },
   auth,
   signIn,
   signOut,
 } = NextAuth({
+  ...authConfig,
   providers: [GitHub, Google],
   callbacks: {
     async signIn({ user, account, profile }) {
       connect();
       try {
-        const user = await User.findOne({ email: profile.email });
-        if (!user) {
+        const userAuth = await User.findOne({ email: profile.email });
+        if (!userAuth) {
           const newUser = new User({
-            id: profile.id,
-            name: profile.login,
+            id: account.providerAccountId,
+            name: profile.login || user.name,
             email: profile.email,
-            imageUrl: profile.avatar_url,
+            imageUrl: profile.avatar_url || profile.picture,
+            isAdmin: false,
           });
           await newUser.save();
           console.log("user is created");
@@ -29,7 +32,6 @@ export const {
       } catch (err) {
         console.log("this is the error auth new user", err.message);
       }
-
       return true;
     },
     ...authConfig.callbacks,

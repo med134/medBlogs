@@ -13,7 +13,6 @@ const AddNewArticle = ({ session }) => {
   const [selectStatus, setSelectStatus] = useState("draft");
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
-  const tags = ["next.js", "react.js", "solution", "tools", "productivity"]; // list of tags
   const [inputTags, setInputTags] = useState([]);
   const [dataUrl, setDataUrl] = useState("");
   const [error, setError] = useState("");
@@ -69,16 +68,7 @@ const AddNewArticle = ({ session }) => {
     const job = selectedJobs;
     const status = selectStatus;
     const content = myContent;
-    console.log(
-      "object",
-      title,
-      tags,
-      description,
-      slug,
-      category,
-      job,
-      status
-    );
+
     try {
       setLoading(true);
       const response = await fetch("/api/articles", {
@@ -89,6 +79,7 @@ const AddNewArticle = ({ session }) => {
           image,
           description,
           slug,
+          userId: session.user.id,
           category,
           job,
           status,
@@ -163,12 +154,12 @@ const AddNewArticle = ({ session }) => {
                 placeholder="Title"
                 className="h-12 w-full sm:mb-2 rounded-md border m-1 bg-white px-2 text-sm outline-none focus:ring sm:px-2"
               />
-                <input
-                  required
-                  type="text"
-                  placeholder="tags"
-                  className="h-12 w-full rounded-md border m-1 bg-white px-5 font-bold text-xl outline-none focus:ring"
-                />
+              <input
+                required
+                type="text"
+                placeholder="tags"
+                className="h-12 w-full rounded-md border m-1 bg-white px-5 font-bold text-xl outline-none focus:ring"
+              />
               <div className="max-w-md mx-auto border border-gray-200 px-10 p-2 rounded-md">
                 <label className="text-base text-gray-500 font-semibold mb-2 block">
                   Upload Image

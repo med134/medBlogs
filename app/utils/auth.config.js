@@ -6,31 +6,30 @@ export const authConfig = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
-        token.isAdmin = user.isAdmin;
-        token.userSlug = user.userSlug;
+        (token.id = user.id), (token.isAdmin = user.isAdmin);
       }
-      
       return token;
     },
     async session({ session, token }) {
       if (token) {
         session.user.id = token.id;
         session.user.isAdmin = token.isAdmin;
-        session.user.userSlug = token.userSlug;
       }
       return session;
     },
     authorized({ auth, request }) {
       const user = auth?.user;
+      const EMAIL = "mohamed7dakir@gmail.com";
       const isOneBlog = request?.nextUrl?.pathname?.startsWith("/dashboard");
-      const isOnLoginPage = request?.nextUrl?.pathname.startsWith("/login");
+      const isOnLoginPage =
+        request?.nextUrl?.pathname.startsWith("/login") ||
+        request?.nextUrl?.pathname.startsWith("/create-account");
       const adminPages =
         request?.nextUrl?.pathname.startsWith("/dashboard/pending") ||
         request?.nextUrl?.pathname.startsWith("/dashboard/users") ||
         request?.nextUrl?.pathname.startsWith("/dashboard/messages");
 
-      if (adminPages && user?.name != "MOHAMMED DAKIR") {
+      if (adminPages && user?.email !== EMAIL) {
         return Response.redirect(new URL("/dashboard", request.nextUrl));
       }
       if (isOneBlog && !user) {

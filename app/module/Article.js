@@ -44,6 +44,9 @@ const articleSchema = new Schema(
     userSlug: {
       type: String,
     },
+    userId: {
+      type: String,
+    },
     email: {
       type: String,
     },

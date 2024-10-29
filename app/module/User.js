@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const userSchema = new Schema(
   {
     id: {
-      type: Number,
+      type: String,
       unique: true,
       required: false,
     },
@@ -27,6 +27,7 @@ const userSchema = new Schema(
     },
     imageUrl: {
       type: String,
+      default: "",
     },
     job: {
       type: String,
@@ -38,10 +39,14 @@ const userSchema = new Schema(
     },
     homeAddress: {
       type: String,
+      required: false,
     },
     skills: {
       type: [String],
-      default: [], // Array of strings to store skills
+      default: [],
+      required: false,
+
+      // Array of strings to store skills
     },
     workLinks: [
       {
