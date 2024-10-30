@@ -196,33 +196,28 @@ export const FormatDate = async (dateString) => {
   return formattedDate;
 };
 
-export async function getPostOfUser(email) {
-  const res = await fetch(
-    `https://www.medcode.dev/api/articles?email=${email}`,
-    {
-      cache: "no-store",
-    }
-  );
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-  const templates = await res.json();
-  const totalBlog = templates.length;
-  return totalBlog;
-}
-
-export const loginUser = async (prevState, formData) => {
-  const { title, tags, image, description, slug } =
-    Object.fromEntries(formData);
-
+export const getArticlesByEmail = async (email) => {
   try {
-    await signIn("credentials", { username, password });
-  } catch (err) {
-    console.log(err);
+    connectDb(); // Connect to the database
+    const query = email ? { email: { $regex: email, $options: "i" } } : {}; // Partial, case-insensitive match if email is provided
+    const articles = await Article.find(query).sort({ createdAt: -1 }); // Find and sort articles
+    return articles; // Return articles
+  } catch (error) {
+    console.log(error.message); // Log any errors
+    throw new Error("Failed to fetch articles!"); // Throw a new error if something goes wrong
+  }
+};
 
-    if (err.message.includes("CredentialsSignin")) {
-      return { error: "Invalid username or password" };
-    }
-    throw err;
+export const getArticleByCategories = async (category) => {
+  try {
+    connectDb(); // Connect to the database
+    const query = category
+      ? { category: { $regex: category, $options: "i" } }
+      : {}; // Partial, case-insensitive match if email is provided
+    const articles = await Article.find(query).sort({ createdAt: -1 }); // Find and sort articles
+    return articles; // Return articles
+  } catch (error) {
+    console.log(error.message); // Log any errors
+    throw new Error("Failed to fetch articles!"); // Throw a new error if something goes wrong
   }
 };

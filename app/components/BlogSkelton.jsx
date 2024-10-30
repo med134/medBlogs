@@ -1,6 +1,6 @@
 const TableSkeleton = () => {
   return (
-    <div className="overflow-y-hidden rounded-lg border w-full">
+    <table className="overflow-y-hidden rounded-lg border w-full">
       <thead className="w-full">
         <tr className="bg-mainColor w-min justify-between text-xs font-semibold uppercase text-white">
           <th className="px-5 py-3">Title</th>
@@ -37,7 +37,7 @@ const TableSkeleton = () => {
             </tr>
           ))}
       </tbody>
-    </div>
+    </table>
   );
 };
 

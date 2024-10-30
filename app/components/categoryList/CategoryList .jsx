@@ -3,6 +3,7 @@ import styles from "./categoryList.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import PageNotFound from "@/app/not-found";
+import { getAllCategories } from "@/app/utils/action";
 const getData = async () => {
   const res = await fetch("https://www.medcode.dev/api/categories", {
     cache: "no-store",
@@ -16,7 +17,7 @@ const getData = async () => {
 };
 
 const CategoryList = async () => {
-  const data = await getData();
+  const data = await getAllCategories();
   return (
     <div className="px-2 mt-6">
       <span className="px-10 py-3 mt-4 text-red-600 font-bold text-xl sm:text-sm">

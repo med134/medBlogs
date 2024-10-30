@@ -8,8 +8,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 const Pagination = dynamic(() => import("./Pagination"), { ssr: false });
 
-const AllCategoryPage = ({ sortedPosts }) => {
-  const [blog, setBlog] = useState(sortedPosts);
+const AllCategoryPage = ({ post }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
   const perPage = 3;
@@ -26,8 +25,8 @@ const AllCategoryPage = ({ sortedPosts }) => {
   };
   const indexOfLastBlog = currentPage * perPage;
   const indexOfFirstBlog = indexOfLastBlog - perPage;
-  const currentBlog = blog.slice(indexOfFirstBlog, indexOfLastBlog);
-  const totalPages = Math.ceil(blog.length / perPage);
+  const currentBlog = post.slice(indexOfFirstBlog, indexOfLastBlog);
+  const totalPages = Math.ceil(post.length / perPage);
   return (
     <div className="">
       <div className="grid justify-center grid-cols-3 gap-6 mt-8 md:block bg-light px-16 sm:px-6 dark:bg-dark">
@@ -40,7 +39,7 @@ const AllCategoryPage = ({ sortedPosts }) => {
               <Image
                 width={300}
                 height={300}
-                className="object-cover w-full rounded h-44 dark:bg-gray-500 md:object-fill"
+                className="object-contain w-full rounded h-44 dark:bg-gray-500 md:object-fill"
                 src={item.image ? item.image.trimEnd() : imageBlog}
                 alt={item.title}
                 loading="lazy"
@@ -94,7 +93,7 @@ const AllCategoryPage = ({ sortedPosts }) => {
           </div>
         ))}
       </div>
-      {blog.length > 0 && (
+      {post.length > 0 && (
         <Pagination
           totalPages={totalPages}
           handleMovePages={handleMovePages}

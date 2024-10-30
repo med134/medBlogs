@@ -4,29 +4,13 @@ import Link from "next/link";
 import { Suspense } from "react";
 import Image from "next/image";
 import AllCategoryPage from "@/app/components/AllCategoryPage";
-import { getAllCategories } from "@/app/utils/action";
+import { getAllCategories, getArticleByCategories } from "@/app/utils/action";
 import SkeltonCard from "@/app/components/SkeltonCard";
 
-async function getPosts(cat) {
-  const res = await fetch(
-    `https://www.medcode.dev/api/articles?category=${cat}`,
-    {
-      cache: "no-store",
-    }
-  );
-  if (!res.ok) {
-    throw new Error("Failed to fetch articles");
-  }
-  const posts = await res.json();
-  const sortedPosts = posts?.sort(
-    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-  );
-  return sortedPosts;
-}
 export async function generateMetadata({ params }) {
-  const { cat } = await params;
-  const post = await getPosts(cat);
-  const heading = `All Articles About ${cat}`;
+  const { category } = await params;
+  const post = await getArticleByCategories(category);
+  const heading = `All Articles About ${category}`;
   return {
     title: heading,
     description: `Explore a treasure trove of insightful programming articles and engaging blogs about ${params.cat} Discover expert-written content covering languages, frameworks`,
@@ -47,9 +31,9 @@ export async function generateMetadata({ params }) {
       follow: true,
     },
     alternates: {
-      canonical: `/category/${cat}`,
+      canonical: `/category/${category}`,
       languages: {
-        "en-US": `en-US/category/${cat}`,
+        "en-US": `en-US/category/${category}`,
       },
       types: {
         "application/rss+xml": "https://www.medcode.dev/rss",
@@ -59,9 +43,9 @@ export async function generateMetadata({ params }) {
       title:
         params.cat === "all"
           ? `All Blogs & Articles`
-          : `All Blogs About ${params.cat}`,
+          : `All Blogs About ${category}`,
       description: `Explore a treasure trove of insightful programming articles and engaging blogs about ${params.cat} Discover expert-written content covering languages, frameworks`,
-      url: `https://www.medcode.dev/category/${cat}`,
+      url: `https://www.medcode.dev/category/${category}`,
       images: [
         {
           url: post.image,
@@ -74,18 +58,20 @@ export async function generateMetadata({ params }) {
 }
 
 const Card = async ({ params }) => {
-  const sortedPosts = await getPosts(params.cat);
-  const category = await getAllCategories();
+  const { category } = await params;
+  const categoryHeader = await getAllCategories();
+  const post = await getArticleByCategories(category);
+  const posts = JSON.parse(JSON.stringify(post));
 
   const myTitle =
     params.cat === "all" ? `All Articles` : `All Articles About ${params.cat}`;
   return (
-    <div className="bg-light dark:bg-dark w-full py-16">
+    <div className="bg-light dark:bg-dark w-full py-16 p-6">
       <h1 className="px-14 text-mainColor dark:text-light sm:text-xl text-3xl font-outFit font-bold uppercase mt-16 lg:mt-2 md:px-6 xs:pt-6">
         #{myTitle}
       </h1>
       <div className="flex justify-around items-center px-16 pt-14 lg:px-4  md:flex md:flex-wrap md:justify-around md:items-center xs:flex xs:px-6 xs:justify-start">
-        {category?.map((item) => (
+        {categoryHeader?.map((item) => (
           <Link
             className={`${styles.category} text-sm md:mb-3 xs:shrink w-12 h-16 xl:w-12 xl:h-10 sm:ml-4 dark:text-light xs:bg-mainColor xs:text-light `}
             key={item._id}
@@ -106,7 +92,7 @@ const Card = async ({ params }) => {
         ))}
       </div>
       <Suspense fallback={<SkeltonCard />}>
-        <AllCategoryPage sortedPosts={sortedPosts} />
+        <AllCategoryPage post={posts} />
       </Suspense>
     </div>
   );

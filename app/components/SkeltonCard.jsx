@@ -39,7 +39,7 @@ function Card() {
 }
 const SkeltonCard = () => {
   return (
-    <div className="grid grid-cols-3 gap-4 md:block">
+    <div className="grid grid-cols-3 gap-4 md:block p-16">
       <Card />
       <Card />
       <Card />
