@@ -41,9 +41,6 @@ const articleSchema = new Schema(
       type: String,
       required: true,
     },
-    userSlug: {
-      type: String,
-    },
     userId: {
       type: String,
     },

@@ -2,14 +2,9 @@ import React, { Suspense } from "react";
 import TransitionEffect from "../components/TransitionEffect";
 import Image from "next/image";
 import SearchBar from "../components/SearchBar";
-import dynamic from "next/dynamic";
 import { getTemplates } from "../utils/action";
-import Loading from "../Loading";
 import SkeltonCard from "../components/SkeltonCard";
-const TemplatesPreview = dynamic(
-  () => import("../components/TemplatesCategory"),
-  { loading: () => <Loading /> }
-);
+import TemplatesPreview from "../components/TemplatesCategory";
 
 export const metadata = {
   title: `Free Templates & Components Resources Examples`,
@@ -48,7 +43,8 @@ export const metadata = {
   },
 };
 const page = async () => {
-  const data = await getTemplates();
+  const posts = await getTemplates();
+  const data = JSON.parse(JSON.stringify(posts));
   return (
     <>
       <TransitionEffect />
@@ -93,7 +89,9 @@ const page = async () => {
             project with different frameworks.
           </h3>
         </div>
+        <Suspense fallback={<SkeltonCard />}>
           <TemplatesPreview data={data} />
+        </Suspense>
       </div>
     </>
   );

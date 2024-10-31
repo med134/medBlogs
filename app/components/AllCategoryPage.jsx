@@ -39,7 +39,7 @@ const AllCategoryPage = ({ post }) => {
               <Image
                 width={300}
                 height={300}
-                className="object-contain w-full rounded h-44 dark:bg-gray-500 md:object-fill"
+                className="object-fill w-full rounded h-44 dark:bg-gray-500 md:object-fill"
                 src={item.image ? item.image.trimEnd() : imageBlog}
                 alt={item.title}
                 loading="lazy"

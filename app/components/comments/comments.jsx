@@ -11,7 +11,7 @@ const UserComments = dynamic(() => import("../UserComments"), { ssr: false });
 const Comments = ({ postId, userData }) => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, mutate, isLoading } = useSWR(
-    `/api/comments?blogId=${postId._id}`,
+    `/api/comments?blogId=${postId._id}`, 
     fetcher
   );
   const [comment, setComment] = useState("");

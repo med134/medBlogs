@@ -56,11 +56,12 @@ export async function generateMetadata({ params }) {
     },
   };
 }
-
 const Card = async ({ params }) => {
   const { category } = await params;
-  const categoryHeader = await getAllCategories();
-  const post = await getArticleByCategories(category);
+  const [categoryHeader, post] = await Promise.all([
+    getAllCategories(),
+    getArticleByCategories(category),
+  ]);
   const posts = JSON.parse(JSON.stringify(post));
 
   const myTitle =

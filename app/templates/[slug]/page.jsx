@@ -9,7 +9,8 @@ import dynamic from "next/dynamic";
 const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"));
 
 export async function generateMetadata({ params }) {
-  const post = await getTemplatesBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getTemplatesBySlug(slug);
   const publishedAt = new Date(post.createdAt).toISOString();
   const modifiedAt = new Date(post?.updatedAt || post?.createdAt).toISOString();
   return {
@@ -22,9 +23,9 @@ export async function generateMetadata({ params }) {
       follow: true,
     },
     alternates: {
-      canonical: `/templates/${params.slug}`,
+      canonical: `/templates/${slug}`,
       languages: {
-        "en-US": `en-US/templates/${params.slug}`,
+        "en-US": `en-US/templates/${slug}`,
       },
       types: {
         "application/rss+xml": "https://www.medcode.dev/rss",
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }) {
       description: post.description,
       publishedTime: publishedAt,
       modifiedTime: modifiedAt,
-      url: `https://www.medcode.dev/templates/${params.slug}`,
+      url: `https://www.medcode.dev/templates/${slug}`,
       images: [
         {
           url: post.image,
@@ -47,8 +48,8 @@ export async function generateMetadata({ params }) {
   };
 }
 const TemplateId = async ({ params }) => {
+  const { slug } = await params;
   const templates = await getTemplates();
-  const { slug } = params;
   const data = await getTemplatesBySlug(slug);
 
   return (

@@ -9,7 +9,6 @@ import { GithubIcon, LinkedInIcon } from "./Icons";
 import { AiFillYoutube } from "react-icons/ai";
 import { BsInstagram } from "react-icons/bs";
 import Link from "next/link";
-import SearchTwo from "./SearchTwo";
 
 const SmallLinksNavBar = ({ user, handelMode, mode }) => {
   return (
@@ -38,8 +37,7 @@ bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-8
             </h3>
           </div>
         </div>
-        <SearchTwo />
-        <div className="line bg-gray-600 w-full h-1"></div>
+        <div className="line bg-gray-600 w-full h-1 mb-4"></div>
         <CustomMobileLink key="home" href="/" title="Home" className="" />
         <CustomMobileLink
           key="about"

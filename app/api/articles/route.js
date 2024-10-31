@@ -2,26 +2,6 @@ import Article from "@/app/module/Article";
 import connect from "@/app/utils/ConnectDB";
 import { NextResponse } from "next/server";
 
-export const GET = async (request) => {
-  const url = new URL(request.url);
-  const email = url.searchParams.get("email");
-  const category = url.searchParams.get("category");
-
-  try {
-    await connect();
-    const query = {};
-    if (email) {
-      query.email = email;
-    }
-    if (category && category.toLowerCase() !== "all") {
-      query.category = category;
-    }
-    const articles = await Article.find(query).sort({ createdAt: -1 });
-    return new NextResponse(JSON.stringify(articles), { status: 200 });
-  } catch (error) {
-    return new NextResponse("error database", { status: 500 });
-  }
-};
 export const POST = async (request) => {
   const body = await request.json();
   const newBlog = new Article(body);

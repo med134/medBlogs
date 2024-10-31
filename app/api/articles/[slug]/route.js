@@ -2,16 +2,7 @@ import Article from "@/app/module/Article";
 import connect from "@/app/utils/ConnectDB";
 import { NextResponse } from "next/server";
 
-export const GET = async (request, { params }) => {
-  const { slug } = params;
-  try {
-    await connect()
-    const articles = await Article.findOne({ slug });
-    return new NextResponse(JSON.stringify(articles), { status: 200 });
-  } catch (error) {
-    return new NextResponse("error database", { status: 500 });
-  }
-};
+
 export const DELETE = async (request, { params }) => {
   const { slug } = params;
   try {
