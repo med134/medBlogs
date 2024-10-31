@@ -117,7 +117,7 @@ export const getUserId = async () => {
   if (session) {
     const user = getUserByEmail(session?.user?.email);
     return user;
-  }else{
+  } else {
     return null;
   }
 };
@@ -224,4 +224,56 @@ export const getArticleByCategories = async (category) => {
     console.log(error.message); // Log any errors
     throw new Error("Failed to fetch articles!"); // Throw a new error if something goes wrong
   }
+};
+
+export const addUser = async (formData) => {
+  const { name, email, password } = Object.fromEntries(formData);
+  try {
+    connectDb();
+    const newUser = new User({
+      name,
+      email,
+      password,
+    });
+    await newUser.save();
+    console.log("user is save");
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const addArticle = async (formData) => {
+/*   const session = await auth();
+  const user = await getUserByEmail(session?.email); */
+  const {
+    title,
+    tags,
+    description,
+    image,
+    category,
+    slug,
+    job,
+    content,
+  } = Object.formEntries(formData);
+  console.log(formData)
+  /* try {
+    connectDb();
+    const newArticle = new Article({
+      title,
+      tags,
+      description,
+      image,
+      category,
+      slug,
+      job,
+      content,
+      username: user.name,
+      userId: user.id,
+      userImage: user.imageUrl,
+      email: user.email,
+    });
+    await newArticle.save();
+    console.log("article is created");
+  } catch (error) {
+    console.log(error);
+  } */
 };

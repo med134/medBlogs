@@ -32,10 +32,11 @@ const articleSchema = new Schema(
     },
     status: {
       type: String,
+      default: "draft",
     },
     content: {
       type: String,
-      required: true,
+      required: false,
     },
     username: {
       type: String,
