@@ -24,10 +24,13 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
+      required: true,
     },
     imageUrl: {
       type: String,
-      default: "",
+      default:
+        "https://res.cloudinary.com/djcnq7nmj/image/upload/v1730411682/profile_qjehzj.png",
+      required: false,
     },
     job: {
       type: String,

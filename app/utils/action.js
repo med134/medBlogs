@@ -1,19 +1,22 @@
 "use server";
-import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import Article from "../module/Article";
 import User from "../module/User";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import connectDb from "./ConnectDB";
 import Category from "../module/Category";
 import Posts from "../module/Post";
 import Email from "../module/Email";
+import bcrypt from "bcryptjs";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
 };
 export const handelLogOut = async () => {
   await signOut();
-  revalidatePath("/login");
+  revalidatePath("/dashboard");
+  redirect("/create-account")
 };
 export const LoginWithGoogle = async () => {
   await signIn("google");
@@ -143,14 +146,16 @@ export const getAllCategories = async () => {
     throw new Error("Failed to fetch categories!");
   }
 };
-export const deleteUser = async (slug) => {
+export const deleteUser = async (formData) => {
+  const { id } = Object.fromEntries(formData);
   try {
     connectDb();
-    await User.findOneAndDelete({ slug });
+    await User.findByIdAndDelete(id);
+    console.log("deleted from db");
     revalidatePath("/dashboard/users");
   } catch (err) {
-    console.log(err.message);
-    throw new Error("Failed to fetch users!");
+    console.log(err);
+    return { error: "Something went wrong!" };
   }
 };
 
@@ -240,22 +245,15 @@ export const addUser = async (formData) => {
   } catch (error) {
     console.log(error);
   }
+  revalidatePath("/create-account");
+  redirect("/login");
 };
 export const addArticle = async (formData) => {
-/*   const session = await auth();
-  const user = await getUserByEmail(session?.email); */
-  const {
-    title,
-    tags,
-    description,
-    image,
-    category,
-    slug,
-    job,
-    content,
-  } = Object.formEntries(formData);
-  console.log(formData)
-  /* try {
+  const session = await auth();
+  const user = await getUserByEmail(session?.user.email);
+  const { title, tags, description, image, category, slug, job, content } =
+    Object.fromEntries(formData);
+  try {
     connectDb();
     const newArticle = new Article({
       title,
@@ -275,5 +273,15 @@ export const addArticle = async (formData) => {
     console.log("article is created");
   } catch (error) {
     console.log(error);
-  } */
+  }
+};
+export const login = async (formData) => {
+  console.log(formData);
+  const { name, password } = Object.fromEntries(formData);
+  try {
+    await signIn("credentials", { name, password });
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
 };

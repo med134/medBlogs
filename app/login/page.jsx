@@ -3,7 +3,8 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 import TransitionEffect from "@/app/components/TransitionEffect";
-import { handelLoginGithub, LoginWithGoogle } from "@/app/utils/action";
+import { handelLoginGithub, login, LoginWithGoogle } from "@/app/utils/action";
+import Form from "next/form";
 
 const Login = async () => {
   return (
@@ -34,17 +35,19 @@ const Login = async () => {
               </span>{" "}
               to publish blogs.
             </p>
-            <form className="mt-4" action="">
+            <Form className="mt-4" action={login}>
               <div className="flex justify-center items-center">
                 <input
                   className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                  type="email"
-                  placeholder="Email"
+                  type="text"
+                  placeholder="name"
+                  name="name"
                   required
                 />
                 <input
                   className="w-full px-8 ml-2 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                   type="password"
+                  name="password"
                   placeholder="Password"
                   required
                 />
@@ -55,7 +58,7 @@ const Login = async () => {
               >
                 <span className="text-light">Login</span>
               </button>
-            </form>
+            </Form>
             <div className="bg-gray-400 h-[1px] w-full mt-5 mb-5"></div>
             <h4 className="flex justify-center underline text-gray-500">
               Login with Google or Github

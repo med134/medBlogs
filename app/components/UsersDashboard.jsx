@@ -4,6 +4,8 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import SkeletonLoader from "./DashboardSkelton";
+import Form from "next/form";
+import { deleteUser } from "../utils/action";
 
 const UsersDashboard = ({ users }) => {
   const [loading, setLoading] = useState(false);
@@ -21,8 +23,8 @@ const UsersDashboard = ({ users }) => {
           method: "DELETE",
         });
         if (response.ok) {
-          setSuccess(true); 
-          setLoading(false)
+          setSuccess(true);
+          setLoading(false);
         } else {
           throw new Error("Failed to register user");
         }
@@ -46,7 +48,9 @@ const UsersDashboard = ({ users }) => {
           <table className="w-full">
             <thead>
               <tr className="bg-mainColor text-xs font-semibold md:text-sm uppercase text-white">
-                <th className="px-5 py-3 md:text-sm ms:font-normal">Full Name</th>
+                <th className="px-5 py-3 md:text-sm ms:font-normal">
+                  Full Name
+                </th>
                 <th className="px-5 py-3 sm:hidden">Email</th>
                 <th className="px-5 py-3 sm:hidden ">USER ROLE</th>
                 <th className="px-5 py-3 ">Actions</th>
@@ -89,18 +93,22 @@ const UsersDashboard = ({ users }) => {
                         )}
                       </p>
                     </td>
-                    {user.userSlug != "mohammed-dakir" ? (
-                      <td className="flex justify-start items-start space-x-2 p-2">
+                    <td className="flex justify-start items-start space-x-2 p-2">
+                      <Form action={deleteUser} className="">
                         <button
-                          onClick={() => handleDelete(user.userSlug)}
-                          disabled={loading}
                           className={`flex justify-around group px-2 py-1 items-center bg-red-500 rounded-md text-light`}
                         >
+                          <input
+                            type="text"
+                            name="id"
+                            value={user.id}
+                            hidden
+                          />
                           Delete
                           <RiDeleteBin5Line className="ml-2 hover:font-semibold" />
                         </button>
-                      </td>
-                    ) : null}
+                      </Form>
+                    </td>
                   </tr>
                 ))
               )}

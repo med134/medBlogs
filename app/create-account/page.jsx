@@ -63,7 +63,7 @@ const Register = async () => {
                 type="submit"
                 className="mt-5 tracking-wide font-semibold bg-[#2b7aa6] text-white-500 w-full py-2 rounded-lg hover:bg-[#2b9aa2] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
               >
-                <span className="text-light">Login</span>
+                <span className="text-light">Create Account</span>
               </button>
             </Form>
             <div className="bg-gray-400 h-[1px] w-full mt-5 mb-5"></div>

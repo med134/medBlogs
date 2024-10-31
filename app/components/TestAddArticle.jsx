@@ -1,12 +1,25 @@
-import React from "react";
+"use client";
+import React, { useMemo } from "react";
+import { useFormStatus } from "react-dom";
 import Form from "next/form";
 import "jodit-react/examples/app.css";
-import dynamic from "next/dynamic";
-import imageCompression from "browser-image-compression";
 import { addArticle } from "../utils/action";
+import dynamic from "next/dynamic";
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
-const TestAddArticle = async() => {
-
+const TestAddArticle = () => {
+  const { pending, error } = useFormStatus();
+  const config = useMemo(
+    () => ({
+      uploader: {
+        insertImageAsBase64URI: true,
+        imagesExtensions: ["jpg", "png", "jpeg", "gif", "svg", "webp"],
+      },
+      height: "500px",
+      width: "100%",
+    }),
+    []
+  );
   return (
     <div className="inline-block max-h-full p-8 py-8 sm:p-2 sm:py-2 w-full">
       <h1 className="text-gray-700 text-2xl lg:text-2xl font-bold">
@@ -28,25 +41,15 @@ const TestAddArticle = async() => {
               type="text"
               placeholder="tags"
               name="tags"
-              className="h-12 w-full rounded-md border m-1 bg-white px-5 font-bold text-xl outline-none focus:ring"
+              className="h-12 w-full rounded-md border m-1 bg-white px-5 outline-none focus:ring"
             />
-           {/*  <div className="max-w-md mx-auto border border-gray-200 px-10 p-2 rounded-md">
-              <label className="text-base text-gray-500 font-semibold mb-2 block">
-                Upload Image
-              </label>
-              <input
-                type="file"
-                onChange={readURL}
-                name="image"
-                id="image"
-                accept="image/*"
-                className="w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"
-              />
-              <p className="text-xs text-gray-400 mt-2">
-                PNG, JPG SVG, WEBP, and GIF are Allowed.
-              </p>
-            </div> */}
-
+            <input
+              type="url"
+              name="image"
+              id="image"
+              placeholder="image link url"
+              className="h-12 w-full rounded-md border m-1 bg-white px-5 outline-none focus:ring"
+            />
             <textarea
               required
               type="text"
@@ -91,19 +94,18 @@ const TestAddArticle = async() => {
               </select>
             </div>
           </div>
-        {/*   <JoditEditor
-            ref={editor}
+          <JoditEditor
             config={config}
-            value={myContent}
-            tabIndex={1} // tabIndex of textarea
-            // Update content on blur
-            onChange={changeContent}
-          /> */}
+            id="content"
+            name="content"
+            tabIndex={1}
+          />
+          <p className="text-red-500">{error}</p>
           <button
             type="submit"
             className={`rounded-md font-semibold py-2 w-full bg-mainColor text-light ml-4 sm:ml-0 mt-5 hover:bg-cyan-700`}
           >
-            Post
+            {pending ? "Posting..." : "POST"}
           </button>
         </Form>
       </div>
