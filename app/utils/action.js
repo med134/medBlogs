@@ -114,8 +114,12 @@ export const getUserByEmail = async (email) => {
 };
 export const getUserId = async () => {
   const session = await auth();
-  const user = getUserByEmail(session.user.email);
-  return user;
+  if (session) {
+    const user = getUserByEmail(session?.user?.email);
+    return user;
+  }else{
+    return null;
+  }
 };
 
 export const getPostsBySlug = async (slug) => {
