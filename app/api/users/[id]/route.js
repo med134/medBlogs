@@ -8,7 +8,6 @@ export const DELETE = async (request, { params }) => {
   try {
     await connect();
     await User.findOneAndDelete({ id });
-    revalidatePath("/dashboard/users");
     return new NextResponse("user deleted", { status: 200 });
   } catch (err) {
     return new NextResponse("Error database", { status: 500 });

@@ -23,7 +23,10 @@ const ProfileDown = ({ user }) => {
             width={50}
             height={50}
             loading="lazy"
-            src={user?.imageUrl}
+            src={
+              user?.imageUrl ||
+              "https://res.cloudinary.com/djcnq7nmj/image/upload/v1730411682/profile_qjehzj.png"
+            }
             quality={50}
             alt="photo_profile"
             className="w-10 h-10 rounded-[50%] cursor-pointer"

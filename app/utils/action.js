@@ -16,7 +16,7 @@ export const handelLoginGithub = async () => {
 export const handelLogOut = async () => {
   await signOut();
   revalidatePath("/dashboard");
-  redirect("/create-account")
+  redirect("/create-account");
 };
 export const LoginWithGoogle = async () => {
   await signIn("google");
@@ -147,16 +147,18 @@ export const getAllCategories = async () => {
   }
 };
 export const deleteUser = async (formData) => {
-  const { id } = Object.fromEntries(formData);
+  const _id = formData.get("id");
+  console.log("this is email", _id);
   try {
     connectDb();
-    await User.findByIdAndDelete(id);
+    await User.findByIdAndDelete(_id);
     console.log("deleted from db");
-    revalidatePath("/dashboard/users");
   } catch (err) {
     console.log(err);
     return { error: "Something went wrong!" };
   }
+  revalidatePath("/dashboard/users");
+  redirect("/dashboard/users");
 };
 
 export const getTemplates = async () => {

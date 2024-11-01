@@ -61,7 +61,7 @@ const ResponsiveDashboardNavbar = ({ user }) => {
         <div className="flex justify-start items-center px-4 cursor-pointer">
           <div className="flex mr-6 items-center md:ml-4 xs:ml-0 xs:mr-0">
             <span className="text-xs text-gray-500 mr-2">
-              Hi, {user.name}
+              Hi, {user?.name}
             </span>{" "}
             <ProfileDown user={user} />
           </div>
