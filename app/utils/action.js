@@ -95,10 +95,10 @@ export const getAllUsers = async () => {
     throw new Error("Failed to fetch users!");
   }
 };
-export const getUserById = async (id) => {
+export const getUserById = async (_id) => {
   try {
     connectDb();
-    const user = await User.findOne({ id });
+    const user = await User.findOne({ _id });
     return user;
   } catch (err) {
     console.log(err.message);

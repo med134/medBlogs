@@ -20,7 +20,6 @@ export const {
         const userAuth = await User.findOne({ email: profile.email });
         if (!userAuth) {
           const newUser = new User({
-            id: user.id,
             name: profile.login || user.name,
             email: profile.email,
             imageUrl: profile.avatar_url || profile.picture,

@@ -19,7 +19,7 @@ const page = async ({ params }) => {
         workLinks={user.workLinks}
         skills={user?.skills}
         experience={user?.experience}
-        userId={user.id}
+        userId={id}
       />
     </main>
   );

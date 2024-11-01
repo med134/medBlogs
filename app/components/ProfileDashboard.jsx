@@ -10,14 +10,14 @@ import { RiArticleLine } from "react-icons/ri";
 import { auth } from "../utils/auth";
 
 const ProfileDashboard = async ({ user }) => {
-  const myLinks = user.workLinks;
+  const myLinks = user?.workLinks;
   const session = await auth();
   return (
     <div className="w-full mx-auto mb-8 rounded-lg md:p-3 sm:p-3">
       <div className="relative w-full bg-light p-4 shadow-md flex justify-start items-center md:flex md:flex-col md:justify-center">
         {session.user.email === user.email && (
           <Link
-            href={`/dashboard/settings/${user.id}`}
+            href={`/dashboard/settings/${user._id}`}
             className="absolute z-10 group right-10 top-3 inline-flex px-4 items-center bg-gray-200 p-2 rounded-full hover:bg-mainColor  text-gray-600 cursor-pointer md:right-4"
           >
             <span className="sm:text-sm group-hover:text-light xs:hidden">
@@ -96,7 +96,7 @@ const ProfileDashboard = async ({ user }) => {
               ))
             ) : (
               <Link
-                href={`/dashboard/settings/${user.id}`}
+                href={`/dashboard/settings/${user._id}`}
                 className="px-6 shadow-md hover:bg-mainColor hover:text-light border rounded-md py-2"
               >
                 No work links, Add links
@@ -118,7 +118,7 @@ const ProfileDashboard = async ({ user }) => {
               ))
             ) : (
               <Link
-                href={`/dashboard/settings/${user?.userSlug}`}
+                href={`/dashboard/settings/${user?._id}`}
                 className="px-6 shadow-md hover:bg-mainColor hover:text-light border rounded-md py-2"
               >
                 No skills, Add skills

@@ -11,6 +11,7 @@ const ProfileDown = ({ user }) => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+  console.log(user._id)
   return (
     <div className="relative inline-block z-50">
       <div className="z-50">
@@ -38,7 +39,7 @@ const ProfileDown = ({ user }) => {
           <div className="py-1 rounded-md shadow-xs">
             <ul className="block py-2 z-[1000] min-w-full w-max rounded-lg max-h-96 overflow-auto">
               <Link
-                href={`/dashboard/profile/${user.id}`}
+                href={`/dashboard/profile/${user._id}`}
                 className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer"
               >
                 <svg
@@ -72,7 +73,7 @@ const ProfileDown = ({ user }) => {
                 Dashboard
               </Link>
               <Link
-                href={`/dashboard/settings/${user.id}`}
+                href={`/dashboard/settings/${user._id}`}
                 className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer"
               >
                 <IoSettingsOutline className="fill-dark w-6 h-6 mr-3" />

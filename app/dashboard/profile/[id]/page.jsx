@@ -69,7 +69,7 @@ const page = async ({ params }) => {
   const user = JSON.parse(JSON.stringify(session));
   return (
     <main className="w-full">
-     <ProfileDashboard user={user} />
+      <ProfileDashboard user={user} />
     </main>
   );
 };
