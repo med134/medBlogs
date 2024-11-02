@@ -25,7 +25,7 @@ const ProfileDown = ({ user }) => {
             height={50}
             loading="lazy"
             src={
-              user?.imageUrl ||
+              user?.imageUrl || 
               "https://res.cloudinary.com/djcnq7nmj/image/upload/v1730411682/profile_qjehzj.png"
             }
             quality={50}

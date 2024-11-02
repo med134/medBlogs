@@ -17,7 +17,7 @@ export const {
     async signIn({ user, account, profile }) {
       connect();
       try {
-        const userAuth = await User.findOne({ email: profile.email });
+        const userAuth = await User.findOne({ email: user.email });
         if (!userAuth) {
           const newUser = new User({
             name: profile.login || user.name,

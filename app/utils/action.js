@@ -121,7 +121,7 @@ export const getUserId = async () => {
     const user = getUserByEmail(session?.user?.email);
     return user;
   } else {
-    return null;
+    return [];
   }
 };
 
@@ -234,10 +234,11 @@ export const getArticleByCategories = async (category) => {
 };
 
 export const addUser = async (formData) => {
-  const { name, email, password } = Object.fromEntries(formData);
+  const { id, name, email, password } = Object.fromEntries(formData);
   try {
     connectDb();
     const newUser = new User({
+      id,
       name,
       email,
       password,

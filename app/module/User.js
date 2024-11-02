@@ -1,11 +1,8 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
-const ObjectId = require("mongodb").ObjectId;
 const userSchema = new Schema(
   {
-    _id: {
-      id: new ObjectId().toString(),
-    },
+    id: mongoose.ObjectId,
     name: {
       type: String,
       unique: true,
