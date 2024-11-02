@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import { BiSolidEdit } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
   ssr: false,
 });
@@ -22,7 +22,6 @@ const ListDashboardBlogs = ({ posts }) => {
   const [showModel, setShowModel] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [articleDelete, setArticleDelete] = useState("");
-  const router = useRouter();
   const perPage = 4;
   const closeModelDelete = (slug) => {
     setShowModel(!showModel);
@@ -48,7 +47,7 @@ const ListDashboardBlogs = ({ posts }) => {
             }
           >
             <th className="px-5 py-3">title</th>
-            <th className="px-5 py-3 sm:hidden">slug</th>
+            <th className="px-5 py-3 sm:hidden">Author</th>
             <th className="px-5 py-3">status</th>
             <th className="px-5 py-3 md:hidden ">date publish</th>
             <th className="px-5 py-3 ">Action</th>
@@ -63,7 +62,7 @@ const ListDashboardBlogs = ({ posts }) => {
                 </h2>
               </td>
               <td className=" px-5 text-sm sm:hidden">
-                <p className="text-gray-600 px-4">{blog.slug}</p>
+                <p className="text-gray-600 px-4">{blog?.username}</p>
               </td>
               <td className=" px-5 text-sm">
                 <p className="text-gray-600 px-4">{blog.status}</p>
@@ -72,15 +71,13 @@ const ListDashboardBlogs = ({ posts }) => {
                 <p className="text-sm px-5">{FormatDate(blog?.createdAt)}</p>
               </td>
               <td className="flex space-x-2 sm:space-x-0 p-2 sm:flex-col justify-center">
-                <button
-                  onClick={() =>
-                    router.push(`/dashboard/edit-articles/${blog.slug}`)
-                  }
+                <Link
+                  href={`/dashboard/edit-articles/${blog.slug}`}
                   className="flex justify-around group px-4 py-2 xs:px-2 sm:mb-2 items-center hover:bg-blue-400 bg-blue-500 rounded-md text-light"
                 >
                   <span className="text-xs xs:hidden">Edit</span>
                   <BiSolidEdit className="ml-2" />
-                </button>
+                </Link>
                 <button
                   onClick={() => closeModelDelete(blog.slug)}
                   className="flex justify-around group px-4 xs:px-2 py-2 items-center hover:bg-red-400 bg-red-500 rounded-md text-light"

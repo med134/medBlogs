@@ -49,6 +49,16 @@ export const getPosts = async () => {
     throw new Error("Failed to fetch posts!");
   }
 };
+export const getPostsAdmin = async () => {
+  try {
+    connectDb();
+    const posts = await Article.find().sort({ createdAt: -1 });
+    return posts;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch posts!");
+  }
+};
 export const getPostsHome = async () => {
   try {
     connectDb();
@@ -146,18 +156,16 @@ export const getAllCategories = async () => {
   }
 };
 export const deleteUser = async (formData) => {
-  const { _id } = Object.fromEntries(formData);
+  const _id = formData.get("id");
   try {
     connectDb();
-    await User.findByIdAndDelete(_id);
+    await User.findByIdAndDelete({ _id });
     console.log("deleted from db");
   } catch (err) {
     console.log(err);
     return { error: "Something went wrong!" };
   }
-
   revalidatePath("/dashboard/users");
-  redirect("/dashboard/users");
 };
 
 export const getTemplates = async () => {
@@ -276,6 +284,19 @@ export const addArticle = async (formData) => {
   } catch (error) {
     console.log(error);
   }
+};
+export const handelDeleteBlog = async (formData) => {
+  const slug = formData.get("slug");
+  console.log("this is slug", slug);
+  try {
+    connectDb();
+    await Article.findOneAndDelete({ slug });
+    console.log("article deleted from db");
+  } catch (err) {
+    console.log(err);
+    return { error: "Something went wrong!" };
+  }
+  revalidatePath("/dashboard/blogs");
 };
 export const login = async (formData) => {
   console.log(formData);
