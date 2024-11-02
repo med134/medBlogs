@@ -7,9 +7,6 @@ import dynamic from "next/dynamic";
 const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
   ssr: false,
 });
-const Loading = dynamic(() => import("@/app/Loading"), {
-  ssr: false,
-});
 const Pagination = dynamic(() => import("./Pagination"), {
   ssr: false,
 });

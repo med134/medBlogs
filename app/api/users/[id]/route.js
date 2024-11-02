@@ -17,7 +17,7 @@ export const GET = async (request, { params }) => {
   }
 };
 export const PUT = async (request, { params }) => {
-  const { id } = params;
+  const { id } = await params;
   const body = await request.json();
   try {
     await connect();

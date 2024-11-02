@@ -147,8 +147,7 @@ export const getAllCategories = async () => {
   }
 };
 export const deleteUser = async (formData) => {
-  const _id = formData.get("id");
-  console.log("this is email", _id);
+  const { _id } = Object.fromEntries(formData);
   try {
     connectDb();
     await User.findByIdAndDelete(_id);
@@ -157,6 +156,7 @@ export const deleteUser = async (formData) => {
     console.log(err);
     return { error: "Something went wrong!" };
   }
+
   revalidatePath("/dashboard/users");
   redirect("/dashboard/users");
 };

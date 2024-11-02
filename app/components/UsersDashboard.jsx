@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Image from "next/image";
@@ -5,6 +6,15 @@ import Form from "next/form";
 import { deleteUser } from "../utils/action";
 
 const UsersDashboard = ({ users }) => {
+  const deleteFormUser = async (e) => {
+    e.preventDefault();
+    const confirmation = window.confirm("are you sure delete this user");
+    if (confirmation) {
+      deleteUser();
+    } else {
+      console.log("error delete");
+    }
+  };
   return (
     <div className="container mx-auto p-4 py-6 xs:p-2 xs:py-1">
       <h1 className="text-2xl font-bold mb-4">Admin & Users</h1>
