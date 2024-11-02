@@ -15,23 +15,21 @@ export const {
   providers: [GitHub, Google],
   callbacks: {
     async signIn({ user, account, profile }) {
-      console.log("this is auth",user);
+      console.log("this is auth", profile);
       connect();
       try {
-        const userAuth = await User.findOne({ email: user.email });
+        const userAuth = await User.findOne({ email: profile.email });
         if (!userAuth) {
           const newUser = new User({
             name: profile.login || user.name,
             email: profile.email,
             imageUrl: profile.avatar_url || profile.picture,
-            workLinks: {},
-            isAdmin: false,
           });
           await newUser.save();
           console.log("user is created");
         }
       } catch (err) {
-        console.log("this is the error auth new user", err.message);
+        console.log("this is the error", err.message);
       }
       return true;
     },

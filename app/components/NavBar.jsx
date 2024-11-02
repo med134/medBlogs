@@ -7,7 +7,6 @@ const NavBar = async () => {
   const session = await auth();
   const BlogId = await getUserId();
   const user = JSON.parse(JSON.stringify(BlogId));
-  console.log("session user", session);
   return (
     <>
       <NavBaLinks user={user} />
