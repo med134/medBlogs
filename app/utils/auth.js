@@ -15,6 +15,7 @@ export const {
   providers: [GitHub, Google],
   callbacks: {
     async signIn({ user, account, profile }) {
+      console.log("this is auth",user);
       connect();
       try {
         const userAuth = await User.findOne({ email: user.email });
@@ -23,7 +24,7 @@ export const {
             name: profile.login || user.name,
             email: profile.email,
             imageUrl: profile.avatar_url || profile.picture,
-            workLinks:{},
+            workLinks: {},
             isAdmin: false,
           });
           await newUser.save();

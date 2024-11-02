@@ -59,13 +59,16 @@ const MainLink = ({ user }) => {
           target="_blank"
         />
         {user ? (
-          <CustomLink
-            key="dashboard"
-            href="/dashboard"
-            title="Dashboard"
-            className="mx-4 uppercase dark:text-light"
-            target="_blank"
-          />
+          <>
+            <CustomLink
+              key="dashboard"
+              href="/dashboard"
+              title="Dashboard"
+              className="mx-4 uppercase dark:text-light"
+              target="_blank"
+            />
+            <ProfileDown user={user} />
+          </>
         ) : (
           <CustomLink
             key="login"
@@ -75,7 +78,6 @@ const MainLink = ({ user }) => {
             target="_blank"
           />
         )}
-        <>{user && <ProfileDown user={user} />}</>
       </div>
     </div>
   );

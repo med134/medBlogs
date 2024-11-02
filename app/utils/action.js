@@ -8,7 +8,6 @@ import connectDb from "./ConnectDB";
 import Category from "../module/Category";
 import Posts from "../module/Post";
 import Email from "../module/Email";
-import bcrypt from "bcryptjs";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
@@ -121,7 +120,7 @@ export const getUserId = async () => {
     const user = getUserByEmail(session?.user?.email);
     return user;
   } else {
-    return [];
+    return null;
   }
 };
 

@@ -5,13 +5,13 @@ import { useState } from "react";
 import { handelLogOut } from "../utils/action";
 import Link from "next/link";
 import { IoSettingsOutline } from "react-icons/io5";
+import { useSession } from "next-auth/react";
 
 const ProfileDown = ({ user }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  console.log(user._id)
   return (
     <div className="relative inline-block z-50">
       <div className="z-50">
@@ -25,7 +25,7 @@ const ProfileDown = ({ user }) => {
             height={50}
             loading="lazy"
             src={
-              user?.imageUrl || 
+              user?.imageUrl ||
               "https://res.cloudinary.com/djcnq7nmj/image/upload/v1730411682/profile_qjehzj.png"
             }
             quality={50}
