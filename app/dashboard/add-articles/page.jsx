@@ -1,5 +1,6 @@
 import React from "react";
-import TestAddArticle from "@/app/components/TestAddArticle";
+import AddNewArticle from "@/app/components/AddNewArticle";
+import { getUserId } from "@/app/utils/action";
 export const metadata = {
   title: "Dashboard Add Blogs | medCode",
   description: `Elevate Your Web Development with Free Blogs & Articles & code source Our meticulously designed frontend dashboard templates and components`,
@@ -41,9 +42,12 @@ export const metadata = {
   },
 };
 const Page = async () => {
+  const userId = await getUserId();
+  const user = JSON.parse(JSON.stringify(userId));
+
   return (
     <div className="h-full">
-      <TestAddArticle />
+      <AddNewArticle user={user} />
     </div>
   );
 };

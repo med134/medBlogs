@@ -1,12 +1,13 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Form from "next/form";
 import { handelDeleteBlog } from "../utils/action";
 import { RiDeleteBin5Line, RiCloseFill } from "react-icons/ri";
-import { useFormStatus } from "react-dom";
+import { useActionState } from "react";
 
 const DeleteConfirmation = ({ blogDelete, onClose, blogTitle }) => {
-  const status = useFormStatus();
+  const [message, action, isPending] = useActionState(handelDeleteBlog, null);
+  console.log("message", message);
   return (
     <div className="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]">
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6 relative">
@@ -25,7 +26,7 @@ const DeleteConfirmation = ({ blogDelete, onClose, blogTitle }) => {
         </div>
         <div className="space-y-2">
           <Form
-            action={handelDeleteBlog}
+            action={action}
             className="flex justify-center cursor-pointer px-4 py-2 rounded-lg text-white text-sm tracking-wide bg-red-500 hover:bg-red-600 active:bg-red-500"
           >
             <input
@@ -37,7 +38,7 @@ const DeleteConfirmation = ({ blogDelete, onClose, blogTitle }) => {
               readOnly
             />
             <button type="submit" className="">
-              {status.pending ? "deleting process..." : "Delete"}
+              {isPending ? "deleting process..." : "Delete"}
             </button>
           </Form>
           <button

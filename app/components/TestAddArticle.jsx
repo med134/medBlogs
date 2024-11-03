@@ -1,6 +1,5 @@
 "use client";
-import React, { useMemo } from "react";
-import { useFormStatus } from "react-dom";
+import React, { useMemo, useActionState } from "react";
 import Form from "next/form";
 import "jodit-react/examples/app.css";
 import { addArticle } from "../utils/action";
@@ -8,7 +7,7 @@ import dynamic from "next/dynamic";
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 const TestAddArticle = () => {
-  const { pending, error } = useFormStatus();
+  const [message, action, isPending] = useActionState(addArticle, null);
   const config = useMemo(
     () => ({
       uploader: {
@@ -27,7 +26,7 @@ const TestAddArticle = () => {
       </h1>
 
       <div className="sm:items-center py-3">
-        <Form className="p-4 text-left text-gray-700" action={addArticle}>
+        <Form className="p-4 text-left text-gray-700" action={action}>
           <div className="grid grid-cols-2 gap-4 md:block">
             <input
               required
@@ -43,13 +42,21 @@ const TestAddArticle = () => {
               name="tags"
               className="h-12 w-full rounded-md border m-1 bg-white px-5 outline-none focus:ring"
             />
-            <input
-              type="url"
-              name="image"
-              id="image"
-              placeholder="image link url"
-              className="h-12 w-full rounded-md border m-1 bg-white px-5 outline-none focus:ring"
-            />
+            <div className="max-w-md mx-auto border border-gray-200 px-10 p-2 rounded-md">
+                <label className="text-base text-gray-500 font-semibold mb-2 block">
+                  Upload Image
+                </label>
+                <input
+                  type="file"
+                  onChange={readURL}
+                  id="image"
+                  accept="image/*"
+                  className="w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"
+                />
+                <p className="text-xs text-gray-400 mt-2">
+                  PNG, JPG SVG, WEBP, and GIF are Allowed.
+                </p>
+              </div>
             <textarea
               required
               type="text"
@@ -100,12 +107,12 @@ const TestAddArticle = () => {
             name="content"
             tabIndex={1}
           />
-          <p className="text-red-500">{error}</p>
+          <p className="text-red-500">{message?.error}</p>
           <button
             type="submit"
             className={`rounded-md font-semibold py-2 w-full bg-mainColor text-light ml-4 sm:ml-0 mt-5 hover:bg-cyan-700`}
           >
-            {pending ? "Posting..." : "POST"}
+            {isPending ? "Posting..." : "POST"}
           </button>
         </Form>
       </div>

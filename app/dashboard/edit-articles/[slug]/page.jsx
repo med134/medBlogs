@@ -5,7 +5,7 @@ import { getPostsBySlug } from "@/app/utils/action";
 import { auth } from "@/app/utils/auth";
 
 const Edit = async ({ params }) => {
-  const { slug } = params;
+  const { slug } = await params;
   const data = await getPostsBySlug(slug);
   const session = await auth();
 

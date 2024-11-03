@@ -30,13 +30,14 @@ export const sendMessage = async (prevState, formData) => {
       message,
     });
     await newMessage.save();
-    revalidatePath("/contact_us");
     return { succuss: "Your message is send successfully" };
   } catch (err) {
     console.log(err.message);
     return { error: "something went wrong try again" };
   }
+  revalidatePath("/contact_us");
 };
+
 
 export const getPosts = async () => {
   try {
@@ -262,7 +263,7 @@ export const addArticle = async (formData) => {
   const session = await auth();
   const user = await getUserByEmail(session?.user.email);
   const { title, tags, description, image, category, slug, job, content } =
-    Object.fromEntries(formData);
+  Object.fromEntries(formData);
   try {
     connectDb();
     const newArticle = new Article({
@@ -285,21 +286,9 @@ export const addArticle = async (formData) => {
     console.log(error);
   }
 };
-export const handelDeleteBlog = async (formData) => {
-  const slug = formData.get("slug");
-  console.log("this is slug", slug);
-  try {
-    connectDb();
-    await Article.findOneAndDelete({ slug });
-    console.log("article deleted from db");
-  } catch (err) {
-    console.log(err);
-    return { error: "Something went wrong!" };
-  }
-  revalidatePath("/dashboard/blogs");
-};
+
+
 export const login = async (formData) => {
-  console.log(formData);
   const { name, password } = Object.fromEntries(formData);
   try {
     await signIn("credentials", { name, password });

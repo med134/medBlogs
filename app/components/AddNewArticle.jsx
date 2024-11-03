@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useMemo, useEffect } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import IsUpdate from "./IsUpdate";
 import SkeletonLoadingForm from "./SkeletonLoadingForm ";
 import "jodit-react/examples/app.css";
@@ -8,10 +8,13 @@ import imageCompression from "browser-image-compression";
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 const AddNewArticle = ({ user }) => {
+  console.log(user._id)
+  
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
   const [selectStatus, setSelectStatus] = useState("draft");
   const [loading, setLoading] = useState(false);
+  const [myContent, setMyContent] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [inputTags, setInputTags] = useState([]);
   const [dataUrl, setDataUrl] = useState("");
@@ -34,8 +37,6 @@ const AddNewArticle = ({ user }) => {
 
   /* joditEditor */
   const editor = useRef(null);
-  const myLocalContent = localStorage.getItem("content");
-  const [myContent, setMyContent] = useState(myLocalContent);
   const config = useMemo(
     () => ({
       uploader: {
@@ -47,13 +48,6 @@ const AddNewArticle = ({ user }) => {
     }),
     []
   );
-  useEffect(() => {
-    // Check if localStorage is available
-    if (typeof window !== "undefined" && window.localStorage) {
-      const myLocalContent = localStorage.getItem("content");
-      setMyContent(myLocalContent);
-    }
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,13 +73,12 @@ const AddNewArticle = ({ user }) => {
           image,
           description,
           slug,
-          userId: user.id,
+          userId: user._id,
           category,
           job,
           status,
           content,
           username: user?.name,
-          userSlug: user?.name.replace(/\s+/g, "-").toLowerCase(),
           email: user.email,
           userImage: user.imageUrl,
         }),
@@ -101,6 +94,7 @@ const AddNewArticle = ({ user }) => {
       setError(err.message);
     }
   };
+
   const readURL = async (event) => {
     const input = event.target;
     if (input.files && input.files[0]) {
@@ -127,8 +121,7 @@ const AddNewArticle = ({ user }) => {
     }
   };
   const changeContent = (newContent) => {
-    setMyContent(newContent);
-    localStorage.setItem("content", myContent);
+     setMyContent(newContent);
   };
   // handelAddTags
   const addTagToInput = (tag) => {
@@ -158,7 +151,7 @@ const AddNewArticle = ({ user }) => {
                 required
                 type="text"
                 placeholder="tags"
-                className="h-12 w-full rounded-md border m-1 bg-white px-5 font-bold text-xl outline-none focus:ring"
+                className="h-12 w-full rounded-md border m-1 bg-white px-5 outline-none focus:ring"
               />
               <div className="max-w-md mx-auto border border-gray-200 px-10 p-2 rounded-md">
                 <label className="text-base text-gray-500 font-semibold mb-2 block">

@@ -2,31 +2,28 @@
 import React, { useState } from "react";
 import { BiSolidEdit } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { useActionState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
-  ssr: false,
-});
+import Form from "next/form";
+import { handelDeleteBlog } from "../utils/delete";
+
 const Pagination = dynamic(() => import("./Pagination"), {
   ssr: false,
 });
 const FormatDate = (dateString) => {
-  const options = { year: "numeric", month: "long", day: "numeric" };
+  const options = { month: "long", day: "numeric" };
   const formattedDate = new Date(dateString).toLocaleDateString(
     "en-US",
     options
   );
   return formattedDate;
 };
+
 const ListDashboardBlogs = ({ posts }) => {
-  const [showModel, setShowModel] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [articleDelete, setArticleDelete] = useState("");
+  const [message, action, isPending] = useActionState(handelDeleteBlog, null);
   const perPage = 4;
-  const closeModelDelete = (slug) => {
-    setShowModel(!showModel);
-    setArticleDelete(slug);
-  };
   const indexOfLastBlog = currentPage * perPage;
   const indexOfFirstBlog = indexOfLastBlog - perPage;
   const currentBlog = posts?.slice(indexOfFirstBlog, indexOfLastBlog);
@@ -39,6 +36,7 @@ const ListDashboardBlogs = ({ posts }) => {
       <h1 className="text-2xl font-bold mb-10 sm:mb-6">
         Your Blogs & Articles
       </h1>
+      <p className="text-green-600">{message?.success}</p>
       <table className={`overflow-y-hidden rounded-lg border w-full`}>
         <thead className="w-full">
           <tr
@@ -61,11 +59,11 @@ const ListDashboardBlogs = ({ posts }) => {
                   {blog.title}
                 </h2>
               </td>
-              <td className=" px-5 text-sm sm:hidden">
-                <p className="text-gray-600 px-4">{blog?.username}</p>
+              <td className="px-5 text-sm sm:hidden">
+                <p className="px-4">{blog?.username}</p>
               </td>
               <td className=" px-5 text-sm">
-                <p className="text-gray-600 px-4">{blog.status}</p>
+                <p className="px-4">{blog.status}</p>
               </td>
               <td className="md:hidden">
                 <p className="text-sm px-5">{FormatDate(blog?.createdAt)}</p>
@@ -78,20 +76,25 @@ const ListDashboardBlogs = ({ posts }) => {
                   <span className="text-xs xs:hidden">Edit</span>
                   <BiSolidEdit className="ml-2" />
                 </Link>
-                <button
-                  onClick={() => closeModelDelete(blog.slug)}
-                  className="flex justify-around group px-4 xs:px-2 py-2 items-center hover:bg-red-400 bg-red-500 rounded-md text-light"
-                >
-                  <span className="text-xs xs:hidden">Delete</span>
-                  <RiDeleteBin5Line className="ml-2" />
-                </button>
-                {showModel && (
-                  <DeleteConfirmation
-                    blogDelete={articleDelete}
-                    onClose={closeModelDelete}
-                    blogTitle={articleDelete}
+                <Form action={action}>
+                  <input
+                    type="text"
+                    name="slug"
+                    id="slug"
+                    value={blog.slug}
+                    hidden
+                    readOnly
                   />
-                )}
+                  <button
+                    type="submit"
+                    className="flex justify-around group px-6 xs:px-2 py-2 items-center hover:bg-red-400 bg-red-500 rounded-md text-light"
+                  >
+                    <span className="text-xs xs:hidden">
+                      {isPending ? "deleting..." : "Delete"}
+                    </span>
+                    <RiDeleteBin5Line className="ml-2" />
+                  </button>
+                </Form>
               </td>
             </tr>
           </tbody>
