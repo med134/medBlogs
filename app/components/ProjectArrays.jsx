@@ -239,7 +239,7 @@ export const menuItems = [
   },
   {
     name: "Blogs",
-    link: "/dashboard/blogs",
+    link: "/dashboard/blogs?page=1",
     icon: RiArticleLine,
     isAdmin: false,
   },

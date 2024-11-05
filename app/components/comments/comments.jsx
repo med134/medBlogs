@@ -1,38 +1,13 @@
-"use client";
-import { useState } from "react";
 import Link from "next/link";
 import styles from "./comments.module.css";
 import Image from "next/image";
-import useSWR from "swr";
-import Loading from "@/app/Loading";
-import dynamic from "next/dynamic";
-const UserComments = dynamic(() => import("../UserComments"), { ssr: false });
+import UserComments from "../UserComments";
+import { createComment, getComments } from "@/app/utils/action";
+import Form from "next/form";
+import { PostButton } from "../SearchButton";
 
-const Comments = ({ postId, userData }) => {
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, mutate, isLoading } = useSWR(
-    `/api/comments?blogId=${postId._id}`, 
-    fetcher
-  );
-  const [comment, setComment] = useState("");
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await fetch("/api/comments", {
-        method: "POST",
-        body: JSON.stringify({
-          blogId: postId._id,
-          username: userData.user.name,
-          imageUser: userData.user.image,
-          comment,
-        }),
-      });
-      mutate();
-      e.target.reset();
-    } catch (err) {
-      console.log(err);
-    }
-  };
+const Comments = async ({ postId, userData }) => {
+  const comments = await getComments(postId);
   return (
     <div
       className={`w-full bg-white  p-2 dark:bg-dark ${
@@ -44,10 +19,7 @@ const Comments = ({ postId, userData }) => {
       </span>
       <div>
         {userData ? (
-          <form
-            className={`${styles.write} dark:bg-dark dark:text-light p-2`}
-            onSubmit={handleSubmit}
-          >
+          <>
             <Image
               width={40}
               height={40}
@@ -57,16 +29,38 @@ const Comments = ({ postId, userData }) => {
               alt="photo_profile"
               className="w-10 h-10 rounded-[50%] cursor-pointer"
             />
-            <input
-              placeholder="write a comment..."
-              required
-              className="bg-gray-100 rounded border border-gray-400  leading-normal resize-none w-full h-20 sm:h-12 py-2 px-4 sm:px-1 font-medium placeholder-gray-700 focus:outline-none focus:bg-white dark:bg-dark dark:text-light dark:placeholder-light"
-              onChange={(e) => setComment(e.target.value)}
-            />
-            <button className="text-xl sm:text-sm bg-mainColor text-light px-4 py-4 rounded-lg font-semibold p-4">
-              Post
-            </button>
-          </form>
+            <Form
+              className={`${styles.write} dark:bg-dark dark:text-light p-2`}
+              action={createComment}
+            >
+              <input
+                name="username"
+                hidden
+                id="username"
+                type="text"
+                value={userData.user.name}
+                readOnly
+              />
+              <input name="blogId" hidden id="blogId" value={postId} readOnly />
+              <input
+                name="imageUser"
+                hidden
+                id="imageUser"
+                type="url"
+                value={userData.user.image}
+                readOnly
+              />
+              <input
+                placeholder="write a comment..."
+                required
+                className="bg-gray-100 rows-3 text-sm rounded border border-gray-400  leading-normal resize-none w-full h-20 sm:h-12 py-2 px-4 sm:px-1 font-medium placeholder-gray-700 focus:outline-none focus:bg-white dark:bg-dark dark:text-light dark:placeholder-light"
+                name="comment"
+                id="comment"
+                type="text"
+              />
+              <PostButton />
+            </Form>
+          </>
         ) : (
           <Link
             href="/login"
@@ -76,11 +70,8 @@ const Comments = ({ postId, userData }) => {
           </Link>
         )}
       </div>
-      <div className={styles.comments}>
-        {isLoading ? <Loading /> : <UserComments data={data} />}
-      </div>
+      <UserComments data={comments} />
     </div>
   );
 };
-
 export default Comments;

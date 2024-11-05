@@ -7,7 +7,7 @@ import Form from "next/form";
 import SearchButton from "../components/SearchButton";
 
 const page = async ({ searchParams }) => {
-  const {query} = await searchParams;
+  const { query } = await searchParams;
   const allResult = await searchFunction(query);
 
   return (
@@ -50,7 +50,8 @@ const page = async ({ searchParams }) => {
                   <span className="text-mainColor font-bold tex-sm">
                     #{item.category}
                   </span>
-                  <span
+                  <Link
+                    href={`/blogs/${item.slug}`}
                     className="bg-gradient-to-r cursor-pointer text-2xl font-semibold from-red-200 to-red-400 bg-[length:0px_10px] bg-left-bottom
   bg-no-repeat
   transition-[background-size]
@@ -60,7 +61,7 @@ const page = async ({ searchParams }) => {
   dark:from-red-800 dark:to-purple-900 dark:text-light"
                   >
                     {item.title}
-                  </span>
+                  </Link>
                   <div className="flex justify-between items-center">
                     <Link
                       href={`/dashboard/profile/${item?.userSlug}`}

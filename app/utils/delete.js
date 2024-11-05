@@ -1,10 +1,9 @@
 "use server";
-
 import Article from "../module/Article";
 import { revalidatePath } from "next/cache";
 import connectDb from "./ConnectDB";
 
-export const handelDeleteBlog = async (previousState, formData) => {
+export const handelDeleteBlog = async (formData) => {
   const slug = formData.get("slug");
   console.log("slug delete", slug);
   try {
@@ -15,5 +14,5 @@ export const handelDeleteBlog = async (previousState, formData) => {
   } catch (err) {
     console.log(err);
   }
-  revalidatePath("/dashboard/blog");
+  revalidatePath("/dashboard/blogs?page=1");
 };

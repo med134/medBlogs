@@ -1,5 +1,6 @@
 "use client";
 import { useFormStatus } from "react-dom";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 export default function SearchButton({ className }) {
   const status = useFormStatus();
@@ -21,6 +22,18 @@ export default function SearchButton({ className }) {
           d="M14.795 13.408l5.204 5.204a1 1 0 01-1.414 1.414l-5.204-5.204a7.5 7.5 0 111.414-1.414zM8.5 14A5.5 5.5 0 103 8.5 5.506 5.506 0 008.5 14z"
         />
       </svg>
+    </button>
+  );
+}
+
+export function PostButton({ className }) {
+  const status = useFormStatus();
+  return (
+    <button
+      className="flex justify-around group px-6 xs:px-2 py-2 items-center hover:bg-cyan-500 bg-mainColor rounded-md text-light"
+      type="submit"
+    >
+      {status.pending ? "Posting..." : "Post"}
     </button>
   );
 }

@@ -48,8 +48,8 @@ const AllCategoryPage = ({ post }) => {
                 <span className="text-mainColor font-bold tex-sm">
                   #{item.category}
                 </span>
-                <span
-                  onClick={() => router.push(`/blogs/${item.slug}`)}
+                <Link
+                  href={`/blogs/${item.slug}`}
                   className="bg-gradient-to-r cursor-pointer text-2xl font-semibold from-red-200 to-red-400 bg-[length:0px_10px] bg-left-bottom
   bg-no-repeat
   transition-[background-size]
@@ -59,14 +59,17 @@ const AllCategoryPage = ({ post }) => {
   dark:from-red-800 dark:to-purple-900 dark:text-light"
                 >
                   {item.title}
-                </span>
+                </Link>
                 <div className="flex justify-between items-center">
                   <Link
-                    href={`/dashboard/profile/${item?.userSlug}`}
+                    href={`/dashboard/profile/${item?._id}`}
                     className="flex items-center justify-center py-3"
                   >
                     <Image
-                      src={item?.userImage || "https://i.ibb.co/mSjZwpw/download.png"}
+                      src={
+                        item?.userImage ||
+                        "https://i.ibb.co/mSjZwpw/download.png"
+                      }
                       alt="userImage"
                       className="w-8 h-8 rounded-full"
                       width={24}

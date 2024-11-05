@@ -8,7 +8,6 @@ import imageCompression from "browser-image-compression";
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 const AddNewArticle = ({ user }) => {
-  console.log(user._id)
   
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedJobs, setSelectedJobs] = useState("");
@@ -122,12 +121,6 @@ const AddNewArticle = ({ user }) => {
   };
   const changeContent = (newContent) => {
      setMyContent(newContent);
-  };
-  // handelAddTags
-  const addTagToInput = (tag) => {
-    if (!inputTags.includes(tag)) {
-      setInputTags((prev) => [...prev, tag]);
-    }
   };
   console.log(inputTags);
   return (

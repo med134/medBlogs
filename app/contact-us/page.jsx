@@ -27,7 +27,7 @@ function Page() {
   return (
     <section className="py-36 p-10 bg-light dark:bg-dark xs:p-4 w-[100%]">
       <div className="md:max-w-xl lg:max-w-3xl">
-        <h1 className="mb-6 px-10 py-10 text-5xl xs:text-3xl xs:mt-16 xs:px-2 font-bold dark:text-light">
+        <h1 className="mb-4 px-10 py-10 text-5xl xs:text-3xl xs:mt-16 xs:px-2 font-bold dark:text-light">
           Contact us
         </h1>
       </div>

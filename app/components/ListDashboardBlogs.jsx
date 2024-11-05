@@ -1,16 +1,11 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import { BiSolidEdit } from "react-icons/bi";
-import { RiDeleteBin5Line } from "react-icons/ri";
-import { useActionState } from "react";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import Form from "next/form";
-import { handelDeleteBlog } from "../utils/delete";
+import ServerPagination from "./ServerPagination";
+import { DeleteButton } from "./SearchButton";
+import { handelDeleteBlog } from "../utils/action";
 
-const Pagination = dynamic(() => import("./Pagination"), {
-  ssr: false,
-});
 const FormatDate = (dateString) => {
   const options = { month: "long", day: "numeric" };
   const formattedDate = new Date(dateString).toLocaleDateString(
@@ -20,23 +15,12 @@ const FormatDate = (dateString) => {
   return formattedDate;
 };
 
-const ListDashboardBlogs = ({ posts }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [message, action, isPending] = useActionState(handelDeleteBlog, null);
-  const perPage = 4;
-  const indexOfLastBlog = currentPage * perPage;
-  const indexOfFirstBlog = indexOfLastBlog - perPage;
-  const currentBlog = posts?.slice(indexOfFirstBlog, indexOfLastBlog);
-  const totalPages = Math.ceil(posts?.length / perPage);
-  const handleMovePages = (page) => {
-    setCurrentPage(page);
-  };
+const ListDashboardBlogs = async ({ posts, totalPage, page }) => {
   return (
     <div className="p-4 md:p-1 ">
       <h1 className="text-2xl font-bold mb-10 sm:mb-6">
         Your Blogs & Articles
       </h1>
-      <p className="text-green-600">{message?.success}</p>
       <table className={`overflow-y-hidden rounded-lg border w-full`}>
         <thead className="w-full">
           <tr
@@ -51,7 +35,7 @@ const ListDashboardBlogs = ({ posts }) => {
             <th className="px-5 py-3 ">Action</th>
           </tr>
         </thead>
-        {currentBlog?.map((blog) => (
+        {posts?.map((blog) => (
           <tbody key={blog.slug} className="w-full">
             <tr className="p-2 px-4 py-5 w-full justify-between border border-gray-300 bg-gray-100">
               <td className="p-2">
@@ -76,7 +60,7 @@ const ListDashboardBlogs = ({ posts }) => {
                   <span className="text-xs xs:hidden">Edit</span>
                   <BiSolidEdit className="ml-2" />
                 </Link>
-                <Form action={action}>
+                <Form action={handelDeleteBlog}>
                   <input
                     type="text"
                     name="slug"
@@ -85,28 +69,16 @@ const ListDashboardBlogs = ({ posts }) => {
                     hidden
                     readOnly
                   />
-                  <button
-                    type="submit"
-                    className="flex justify-around group px-6 xs:px-2 py-2 items-center hover:bg-red-400 bg-red-500 rounded-md text-light"
-                  >
-                    <span className="text-xs xs:hidden">
-                      {isPending ? "deleting..." : "Delete"}
-                    </span>
-                    <RiDeleteBin5Line className="ml-2" />
-                  </button>
+                 <DeleteButton/>
                 </Form>
               </td>
             </tr>
           </tbody>
         ))}
       </table>
-      {posts?.length > 0 && (
-        <Pagination
-          totalPages={totalPages}
-          handleMovePages={handleMovePages}
-          currentPage={currentPage}
-        />
-      )}
+     {/*  {posts?.length > 0 && (
+        <ServerPagination totalPages={totalPage} currentPage={page} />
+      )} */}
     </div>
   );
 };

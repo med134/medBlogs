@@ -12,7 +12,7 @@ const commentsSchema = new Schema(
     },
     imageUser: {
       type: String,
-      required: true,
+      required: false,
     },
     comment: {
       type: String,

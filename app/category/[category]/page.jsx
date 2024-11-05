@@ -65,7 +65,7 @@ const Card = async ({ params }) => {
   const posts = JSON.parse(JSON.stringify(post));
 
   const myTitle =
-    params.cat === "all" ? `All Articles` : `All Articles About ${params.cat}`;
+    category === "all" ? `All Articles` : `All Articles About ${category}`;
   return (
     <div className="bg-light dark:bg-dark w-full py-16 p-6">
       <h1 className="px-14 text-mainColor dark:text-light sm:text-xl text-3xl font-outFit font-bold uppercase mt-16 lg:mt-2 md:px-6 xs:pt-6">

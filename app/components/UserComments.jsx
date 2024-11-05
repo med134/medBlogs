@@ -1,42 +1,45 @@
-import React from 'react'
-import Image from 'next/image'
-import styles from "../components/comments/comments.module.css"
-const UserComments = ({data}) => {
+import React from "react";
+import Image from "next/image";
+import { FormatDate } from "../utils/action";
+const UserComments = ({ data }) => {
   return (
     <>
-        {data?.map((item) => (
-            <div
-              className="border rounded-md p-3 ml-3 my-3 bg-gray-100 dark:bg-dark dark:text-light"
-              key={item._id}
-            >
-              <div className={styles.user}>
-                <div className="flex justify-center items-center">
-                  <Image
-                    src={item?.imageUser}
-                    alt="useImage"
-                    width={50}
-                    height={50}
-                    loading="lazy"
-                    className="w-8 h-8 rounded-full"
-                  />
-                  <div className="block ml-2">
-                    <span className="text-sm font-semibold block text-gray-700 dark:text-light">
-                      {item?.username}
-                    </span>
-                    <span className="text-xs text-gray-700 dark:text-light">
-                      {item.createdAt.slice(0, 10)}
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <p className="text-medium px-3 text-gray-800 rounded-lg dark:text-light font-poppins sm:text-sm">
-                {item?.comment}
+      {data?.map((item) => (
+        <div key={item._id} className="bg-white p-4 rounded-lg shadow">
+          <div className="flex items-center mb-2">
+            <Image
+              src={item.imageUser || "https://i.ibb.co/mSjZwpw/download.png"}
+              width={100}
+              height={100}
+              alt="User Avatar"
+              className="w-10 h-10 rounded-full mr-3"
+            />
+            <div>
+              <h3 className="font-semibold text-gray-600">{item.username}</h3>
+              <p className="text-sm text-gray-500">
+                {FormatDate(item.createdAt)}
               </p>
             </div>
-          )
-        )}
+          </div>
+          <p className="text-gray-700">{item.comment}</p>
+          <div className="flex items-center mt-2">
+            <button className="text-blue-500 hover:text-blue-600 mr-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 inline"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+              </svg>
+              Like
+            </button>
+            <button className="text-gray-500 hover:text-gray-600">Reply</button>
+          </div>
+        </div>
+      ))}
     </>
-  )
-}
+  );
+};
 
-export default UserComments
+export default UserComments;

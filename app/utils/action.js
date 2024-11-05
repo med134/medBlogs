@@ -8,20 +8,24 @@ import connectDb from "./ConnectDB";
 import Category from "../module/Category";
 import Posts from "../module/Post";
 import Email from "../module/Email";
+import Comments from "../module/Comments";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
 };
 export const handelLogOut = async () => {
   await signOut();
-  revalidatePath("/dashboard");
-  redirect("/create-account");
+  revalidatePath("/");
+  redirect("/login");
 };
 export const LoginWithGoogle = async () => {
   await signIn("google");
 };
-export const sendMessage = async (prevState, formData) => {
-  const { name, email, message } = Object.fromEntries(formData);
+export const sendMessage = async (previeusState,formData) => {
+  const name = formData.get("name");
+  const email = formData.get("email");
+  const message = formData.get("message");
+  console.log(name, email, message);
   try {
     connectDb();
     const newMessage = new Email({
@@ -30,14 +34,14 @@ export const sendMessage = async (prevState, formData) => {
       message,
     });
     await newMessage.save();
-    return { succuss: "Your message is send successfully" };
+    console.log("Your message is send successfully");
+    return "Your message is send successfully";
   } catch (err) {
     console.log(err.message);
-    return { error: "something went wrong try again" };
+    return "Something was error";
   }
-  revalidatePath("/contact_us");
+  revalidatePath("/contact-us");
 };
-
 
 export const getPosts = async () => {
   try {
@@ -50,11 +54,18 @@ export const getPosts = async () => {
     throw new Error("Failed to fetch posts!");
   }
 };
-export const getPostsAdmin = async () => {
+export const getPostsAdmin = async (page) => {
   try {
     connectDb();
-    const posts = await Article.find().sort({ createdAt: -1 });
-    return posts;
+    const pageSizes = 4;
+    const pageNumber = page || 1;
+    const count = await Article.find({}).countDocuments();
+    const posts = await Article.find({})
+      .limit(pageSizes)
+      .skip((pageNumber - 1) * pageSizes)
+      .sort({ createdAt: -1 });
+    const totalPage = Math.ceil(count / pageSizes);
+    return { posts, totalPage };
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch posts!");
@@ -263,7 +274,7 @@ export const addArticle = async (formData) => {
   const session = await auth();
   const user = await getUserByEmail(session?.user.email);
   const { title, tags, description, image, category, slug, job, content } =
-  Object.fromEntries(formData);
+    Object.fromEntries(formData);
   try {
     connectDb();
     const newArticle = new Article({
@@ -287,7 +298,6 @@ export const addArticle = async (formData) => {
   }
 };
 
-
 export const login = async (formData) => {
   const { name, password } = Object.fromEntries(formData);
   try {
@@ -296,4 +306,49 @@ export const login = async (formData) => {
     console.log(err);
     throw err;
   }
+};
+export const handelDeleteBlog = async (formData) => {
+  const slug = formData.get("slug");
+  console.log("slug delete", slug);
+  try {
+    connectDb();
+    await Article.findOneAndDelete({ slug });
+    console.log("article deleted successfully");
+    return "article deleted successfully"
+  } catch (err) {
+    console.log(err);
+  }
+  revalidatePath("/dashboard");
+};
+export const getComments = async (blogId) => {
+  try {
+    connectDb();
+    const query = blogId ? { blogId: { $regex: blogId, $options: "i" } } : {};
+    const comment = await Comments.find(query).sort({ createdAt: -1 });
+    return comment;
+  } catch (error) {
+    console.log(error.message);
+    throw new Error("Failed to fetch articles!");
+  }
+};
+export const createComment = async (formData) => {
+  const blogId = formData.get("blogId");
+  const username = formData.get("username");
+  const imageUser = formData.get("imageUser");
+  const comment = formData.get("comment");
+  console.log(blogId, username, imageUser, imageUser);
+  try {
+    connectDb();
+    const newComment = new Comments({
+      blogId,
+      username,
+      imageUser,
+      comment,
+    });
+    await newComment.save();
+    console.log("newComment is created");
+  } catch (error) {
+    console.log(error);
+  }
+  revalidatePath("/blogs");
 };
