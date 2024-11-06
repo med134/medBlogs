@@ -21,7 +21,7 @@ export const handelLogOut = async () => {
 export const LoginWithGoogle = async () => {
   await signIn("google");
 };
-export const sendMessage = async (previeusState,formData) => {
+export const sendMessage = async (previeusState, formData) => {
   const name = formData.get("name");
   const email = formData.get("email");
   const message = formData.get("message");
@@ -71,6 +71,7 @@ export const getPostsAdmin = async (page) => {
     throw new Error("Failed to fetch posts!");
   }
 };
+
 export const getPostsHome = async () => {
   try {
     connectDb();
@@ -240,15 +241,19 @@ export const getArticlesByEmail = async (email) => {
 
 export const getArticleByCategories = async (category) => {
   try {
-    connectDb(); // Connect to the database
+    connectDb();
+    if ((category = "all")) {
+      const articles = await Article.find().sort({ createdAt: -1 });
+      return articles;
+    }
     const query = category
       ? { category: { $regex: category, $options: "i" } }
-      : {}; // Partial, case-insensitive match if email is provided
-    const articles = await Article.find(query).sort({ createdAt: -1 }); // Find and sort articles
+      : {};
+    const articles = await Article.find(query).sort({ createdAt: -1 });
     return articles; // Return articles
   } catch (error) {
-    console.log(error.message); // Log any errors
-    throw new Error("Failed to fetch articles!"); // Throw a new error if something goes wrong
+    console.log(error.message);
+    throw new Error("Failed to fetch articles!");
   }
 };
 
@@ -308,17 +313,16 @@ export const login = async (formData) => {
   }
 };
 export const handelDeleteBlog = async (formData) => {
-  const slug = formData.get("slug");
-  console.log("slug delete", slug);
+  const _id = formData.get("id");
+  console.log("slug delete", _id);
   try {
     connectDb();
-    await Article.findOneAndDelete({ slug });
+    await Article.findByIdAndDelete({ _id });
     console.log("article deleted successfully");
-    return "article deleted successfully"
   } catch (err) {
     console.log(err);
   }
-  revalidatePath("/dashboard");
+  revalidatePath("/dashboard/blogs");
 };
 export const getComments = async (blogId) => {
   try {
@@ -328,7 +332,7 @@ export const getComments = async (blogId) => {
     return comment;
   } catch (error) {
     console.log(error.message);
-    throw new Error("Failed to fetch articles!");
+    throw new Error("Failed to fetch comments!");
   }
 };
 export const createComment = async (formData) => {

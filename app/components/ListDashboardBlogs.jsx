@@ -15,7 +15,7 @@ const FormatDate = (dateString) => {
   return formattedDate;
 };
 
-const ListDashboardBlogs = async ({ posts, totalPage, page }) => {
+const ListDashboardBlogs = ({ posts, totalPage, page }) => {
   return (
     <div className="p-4 md:p-1 ">
       <h1 className="text-2xl font-bold mb-10 sm:mb-6">
@@ -62,10 +62,10 @@ const ListDashboardBlogs = async ({ posts, totalPage, page }) => {
                 </Link>
                 <Form action={handelDeleteBlog}>
                   <input
-                    type="text"
-                    name="slug"
-                    id="slug"
-                    value={blog.slug}
+                    type=""
+                    name="id"
+                    id="id"
+                    value={blog._id}
                     hidden
                     readOnly
                   />
@@ -76,9 +76,9 @@ const ListDashboardBlogs = async ({ posts, totalPage, page }) => {
           </tbody>
         ))}
       </table>
-     {/*  {posts?.length > 0 && (
+      {posts?.length > 0 && (
         <ServerPagination totalPages={totalPage} currentPage={page} />
-      )} */}
+      )} 
     </div>
   );
 };

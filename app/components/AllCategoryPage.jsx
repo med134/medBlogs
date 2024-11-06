@@ -11,7 +11,6 @@ const Pagination = dynamic(() => import("./Pagination"), { ssr: false });
 const AllCategoryPage = ({ post }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
-  const perPage = 3;
   const FormatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const formattedDate = new Date(dateString).toLocaleDateString(
@@ -23,6 +22,7 @@ const AllCategoryPage = ({ post }) => {
   const handleMovePages = (page) => {
     setCurrentPage(page);
   };
+  const perPage = 3;
   const indexOfLastBlog = currentPage * perPage;
   const indexOfFirstBlog = indexOfLastBlog - perPage;
   const currentBlog = post.slice(indexOfFirstBlog, indexOfLastBlog);

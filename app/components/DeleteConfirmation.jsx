@@ -1,13 +1,12 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Form from "next/form";
 import { handelDeleteBlog } from "../utils/action";
 import { RiDeleteBin5Line, RiCloseFill } from "react-icons/ri";
-import { useActionState } from "react";
+import { DeleteButton } from "./SearchButton";
 
-const DeleteConfirmation = ({ blogDelete, onClose, blogTitle }) => {
-  const [message, action, isPending] = useActionState(handelDeleteBlog, null);
-  console.log("message", message);
+const DeleteConfirmation = ({ blogId, onClose }) => {
+  console.log("blog id 2",blogId);
   return (
     <div className="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]">
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6 relative">
@@ -18,35 +17,26 @@ const DeleteConfirmation = ({ blogDelete, onClose, blogTitle }) => {
         <div className="my-8 text-center flex flex-col justify-end items-center">
           <RiDeleteBin5Line className="fill-red-500 w-14 h-16 flex justify-center" />
           <h4 className="text-gray-800 text-lg font-semibold mt-4">
-            Are you sure you want to delete this title : {blogTitle}
+            Are you sure you want to delete that article
           </h4>
           <p className="text-sm text-gray-600 mt-4">
             Touch and hold the blog you want to delete, deleting process...
           </p>
         </div>
-        <div className="space-y-2">
+        <div className="flex justify-around items-center">
           <Form
-            action={action}
-            className="flex justify-center cursor-pointer px-4 py-2 rounded-lg text-white text-sm tracking-wide bg-red-500 hover:bg-red-600 active:bg-red-500"
+            action={handelDeleteBlog}
+            className="w-full flex items-center justify-center cursor-pointer px-4 py-2 rounded-lg text-white text-sm tracking-wide bg-red-500 hover:bg-red-400 active:bg-red-500"
           >
-            <input
-              type="text"
-              name="slug"
-              id="slug"
-              value={blogDelete}
-              hidden
-              readOnly
-            />
-            <button type="submit" className="">
-              {isPending ? "deleting process..." : "Delete"}
-            </button>
+            <input type="" hidden name="id" id="id" value={blogId} readOnly />
+            <DeleteButton />
           </Form>
           <button
             type="button"
             onClick={onClose}
-            className="w-full cursor-pointer px-4 py-2 rounded-lg text-white text-sm tracking-wide bg-gray-500 hover:bg-gray-400 active:bg-gray-200"
+            className="w-full ml-2 cursor-pointer px-4 py-2 rounded-lg text-white text-sm tracking-wide bg-gray-500 hover:bg-gray-400 active:bg-gray-200"
           >
-            <span>Cancel</span>
+            Cancel
           </button>
         </div>
       </div>
