@@ -43,14 +43,14 @@ const ListDashboardBlogs = ({ posts, totalPage, page }) => {
                   {blog.title}
                 </h2>
               </td>
-              <td className="px-5 text-sm sm:hidden">
+              <td className="px-5 text-sm sm:hidden uppercase">
                 <p className="px-4">{blog?.username}</p>
               </td>
               <td className=" px-5 text-sm">
                 <p className="px-4">{blog.status}</p>
               </td>
               <td className="md:hidden">
-                <p className="text-sm px-5">{FormatDate(blog?.createdAt)}</p>
+                <p className="text-sm px-6">{FormatDate(blog?.createdAt)}</p>
               </td>
               <td className="flex space-x-2 sm:space-x-0 p-2 sm:flex-col justify-center">
                 <Link
@@ -60,7 +60,10 @@ const ListDashboardBlogs = ({ posts, totalPage, page }) => {
                   <span className="text-xs xs:hidden">Edit</span>
                   <BiSolidEdit className="ml-2" />
                 </Link>
-                <Form action={handelDeleteBlog}>
+                <Form
+                  action={handelDeleteBlog}
+                  className="flex justify-around group px-4 py-2 xs:px-2 sm:mb-2 items-center hover:bg-red-400 bg-red-500 rounded-md text-light"
+                >
                   <input
                     type=""
                     name="id"
@@ -69,7 +72,7 @@ const ListDashboardBlogs = ({ posts, totalPage, page }) => {
                     hidden
                     readOnly
                   />
-                 <DeleteButton/>
+                  <DeleteButton />
                 </Form>
               </td>
             </tr>
@@ -78,7 +81,7 @@ const ListDashboardBlogs = ({ posts, totalPage, page }) => {
       </table>
       {posts?.length > 0 && (
         <ServerPagination totalPages={totalPage} currentPage={page} />
-      )} 
+      )}
     </div>
   );
 };

@@ -180,6 +180,18 @@ export const deleteUser = async (formData) => {
   }
   revalidatePath("/dashboard/users");
 };
+export const deleteMessage = async (formData) => {
+  const _id = formData.get("id");
+  try {
+    connectDb();
+    await Email.findByIdAndDelete({ _id });
+    console.log("deleted message from db");
+  } catch (err) {
+    console.log(err);
+    return { error: "Something went wrong!" };
+  }
+  revalidatePath("/dashboard/messages");
+};
 
 export const getTemplates = async () => {
   try {
@@ -242,15 +254,16 @@ export const getArticlesByEmail = async (email) => {
 export const getArticleByCategories = async (category) => {
   try {
     connectDb();
-    if ((category = "all")) {
+    if (category === "all") {
       const articles = await Article.find().sort({ createdAt: -1 });
       return articles;
+    } else {
+      const query = category
+        ? { category: { $regex: category, $options: "i" } }
+        : {};
+      const articles = await Article.find(query).sort({ createdAt: -1 });
+      return articles;
     }
-    const query = category
-      ? { category: { $regex: category, $options: "i" } }
-      : {};
-    const articles = await Article.find(query).sort({ createdAt: -1 });
-    return articles; // Return articles
   } catch (error) {
     console.log(error.message);
     throw new Error("Failed to fetch articles!");

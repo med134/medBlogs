@@ -40,12 +40,11 @@ export function PostButton({ className }) {
 export function DeleteButton({ className }) {
   const status = useFormStatus();
   return (
-    <button
-      className="flex justify-around group px-6 xs:px-2 py-2 items-center hover:bg-red-400 bg-red-500 rounded-md text-light"
-      type="submit"
-    >
-      {status.pending ? "deleting..." : "Delete"}
-      <RiDeleteBin5Line className="ml-2" />
+    <button className="flex justify-center items-center" type="submit">
+      <span className="sm:hidden">
+        {status.pending ? "deleting..." : "Delete"}
+      </span>
+       <RiDeleteBin5Line className="ml-2" />
     </button>
   );
 }
