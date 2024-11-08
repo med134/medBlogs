@@ -1,18 +1,7 @@
 import React from "react";
-import { auth } from "@/app/utils/auth";
 import ProfileDashboard from "@/app/components/ProfileDashboard";
 import { getUserById } from "@/app/utils/action";
 
-export async function getUserBySlug(id) {
-  const res = await fetch(`https://www.medcode.dev/api/users/${id}`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-  const user = await res.json();
-  return user;
-}
 
 export const metadata = {
   title: `medCode | Profile`,

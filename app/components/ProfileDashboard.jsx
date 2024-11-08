@@ -38,7 +38,7 @@ const ProfileDashboard = async ({ user }) => {
         </div>
         <div className="w-full py-6">
           <div className="text-left mb-2 md:text-center pt-5">
-            <h5 className="text-gray-800 text-3xl md:text-xl">
+            <h5 className="text-gray-800 text-3xl md:text-xl uppercase">
               Hello, {user.name}
             </h5>
             <div className="text-sm text-gray-600 mt-4 flex md:justify-center">

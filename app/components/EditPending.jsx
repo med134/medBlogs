@@ -1,12 +1,10 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import { BiSolidEdit } from "react-icons/bi";
-import { RiDeleteBin5Line } from "react-icons/ri";
-import { useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
-const DeleteConfirmation = dynamic(() => import("./DeleteConfirmation"), {
-  ssr: false,
-});
+import { DeleteButton } from "./SearchButton";
+import Form from "next/form";
+import Link from "next/link";
+import { handelDeleteBlog } from "../utils/action";
+
 const FormatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
   const formattedDate = new Date(dateString).toLocaleDateString(
@@ -17,13 +15,7 @@ const FormatDate = (dateString) => {
 };
 
 const EditPending = ({ draftBlog }) => {
-  const router = useRouter();
-  const [showModel, setShowModel] = useState(false);
 
-  const closeModelDelete = (slug) => {
-    setShowModel(!showModel);
-  };
-  
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Draft Blogs</h1>
@@ -57,32 +49,29 @@ const EditPending = ({ draftBlog }) => {
                       </p>
                     </td>
 
-                    <td className="flex space-x-2 p-2">
-                      <button
-                        onClick={() =>
-                          router.push(`/dashboard/edit-articles/${blog.slug}`)
-                        }
-                        className="flex justify-around group hover:bg-blue-400 px-2 py-1 items-center bg-blue-500 rounded-md text-light"
+                    <td className="flex space-x-2 sm:space-x-0 p-2 sm:flex-col justify-center">
+                      <Link
+                        href={`/dashboard/edit-articles/${blog.slug}`}
+                        className="flex justify-around group px-4 py-2 xs:px-2 sm:mb-2 items-center hover:bg-blue-400 bg-blue-500 rounded-md text-light"
                       >
-                        <span className="">Edit Status</span>
+                        <span className="text-xs xs:hidden">Edit</span>
                         <BiSolidEdit className="ml-2" />
-                      </button>
-                      <button
-                        onClick={closeModelDelete}
-                        className="flex justify-around group px-2 py-1 items-center bg-red-500 hover:bg-red-400 rounded-md text-light"
+                      </Link>
+                      <Form
+                        action={handelDeleteBlog}
+                        className="flex justify-around group px-4 py-2 xs:px-2 sm:mb-2 items-center hover:bg-red-400 bg-red-500 rounded-md text-light"
                       >
-                        <span className="">Delete</span>
-                        <RiDeleteBin5Line className="ml-2" />
-                      </button>
+                        <input
+                          type=""
+                          name="id"
+                          id="id"
+                          value={blog._id}
+                          hidden
+                          readOnly
+                        />
+                        <DeleteButton />
+                      </Form>
                     </td>
-
-                    {showModel && (
-                      <DeleteConfirmation
-                        blogDelete={blog.slug}
-                        onClose={closeModelDelete}
-                        blogTitle={blog.title}
-                      />
-                    )}
                   </tr>
                 ))
               ) : (

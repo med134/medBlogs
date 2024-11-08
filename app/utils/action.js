@@ -9,6 +9,7 @@ import Category from "../module/Category";
 import Posts from "../module/Post";
 import Email from "../module/Email";
 import Comments from "../module/Comments";
+import connect from "./ConnectDB";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
@@ -353,7 +354,6 @@ export const createComment = async (formData) => {
   const username = formData.get("username");
   const imageUser = formData.get("imageUser");
   const comment = formData.get("comment");
-  console.log(blogId, username, imageUser, imageUser);
   try {
     connectDb();
     const newComment = new Comments({
@@ -369,3 +369,24 @@ export const createComment = async (formData) => {
   }
   revalidatePath("/blogs");
 };
+
+export const editUserProfile=async(formData)=>{
+   const name = formData.get("name");
+   const email = formData.get("email");
+   const imageUrl = formData.get("imageUrl");
+   const job = formData.get("job")
+   const phone = formData.get("phone");
+   const homeAddress = formData.get("homeAddress");
+   const skills = formData.get("skills");
+   const workLinks = formData.get("workLinks");
+   try{
+    connect()
+    await Article.findOneAndUpdate({slug}, body);
+   }catch(err){
+    console.log(err)
+   }
+   
+
+   
+
+}
