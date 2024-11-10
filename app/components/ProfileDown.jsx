@@ -14,7 +14,7 @@ const ProfileDown = ({ user }) => {
   };
   return (
     <div className="relative inline-block z-50">
-      <div className="z-50">
+      <div className="">
         <button
           type="button"
           className="flex items-center text-sm border-2 border-transparent z-50 rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
@@ -35,12 +35,12 @@ const ProfileDown = ({ user }) => {
         </button>
       </div>
       {isDropdownOpen && (
-        <div className="origin-top-right w-56  bg-white p-6 absolute right-2 mt-4 rounded-md shadow-lg z-50">
+        <div className="origin-top-right w-56 bg-light dark:bg-dark dark:shadow-light p-6 absolute left-2 mt-4 rounded-md shadow-lg z-50">
           <div className="py-1 rounded-md shadow-xs">
-            <ul className="block py-2 z-[1000] min-w-full w-max rounded-lg max-h-96 overflow-auto">
+            <ul className="block py-2 z-[1000] min-w-full w-max rounded-lg max-h-96 overflow-auto dark:text-light">
               <Link
                 href={`/dashboard/profile/${user._id}`}
-                className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer"
+                className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer  dark:text-light"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ const ProfileDown = ({ user }) => {
               </Link>
               <Link
                 href="/dashboard"
-                className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer"
+                className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer  dark:text-light"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@ const ProfileDown = ({ user }) => {
               </Link>
               <Link
                 href={`/dashboard/settings/${user._id}`}
-                className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer"
+                className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer  dark:text-light"
               >
                 <IoSettingsOutline className="fill-dark w-6 h-6 mr-3" />
                 Settings
@@ -87,7 +87,7 @@ const ProfileDown = ({ user }) => {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
-                className="w-5 h-5 ml-4"
+                className="w-5 h-5 ml-4 dark:fill-light"
                 viewBox="0 0 6.35 6.35"
               >
                 <path
@@ -95,7 +95,7 @@ const ProfileDown = ({ user }) => {
                   data-original="#000000"
                 ></path>
               </svg>
-              <button className="block px-6 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
+              <button className="block px-6 py-2 text-sm leading-5  dark:text-light text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
                 Logout
               </button>
             </form>

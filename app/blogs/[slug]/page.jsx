@@ -8,6 +8,7 @@ const imageBlog = dynamic(() => import("@/public/images/postera.png"));
 import { getPostsBySlug, FormatDate } from "@/app/utils/action";
 import "jodit-react/examples/app.css";
 import Loading from "@/app/Loading";
+import SideBarLoading from "@/app/components/SideBarLoading";
 
 const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"), {
   loading: () => <Loading />,
@@ -16,7 +17,7 @@ const Comments = dynamic(() => import("@/app/components/comments/comments"), {
   loading: () => <Loading />,
 });
 const SidBar = dynamic(() => import("@/app/components/SidBar"), {
-  loading: () => <Loading />,
+  loading: () => <SideBarLoading />,
 });
 export async function generateMetadata({ params }) {
   const { slug } = await params;

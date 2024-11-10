@@ -1,9 +1,17 @@
 import "./globals.css";
+import React, { Suspense } from "react";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { inter } from "./components/Fonts";
 import NextTopLoader from "nextjs-toploader";
+import CookieBanner from "./components/Cookies";
+import GoogleAnalytics from "./components/GoogleAnalytics";
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "light" },
+    { media: "(prefers-color-scheme: dark)", color: "dark" },
+  ],
+};
 
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
@@ -52,14 +60,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Suspense fallback={null}>
+        <GoogleAnalytics GA_MEASUREMENT_ID="G-J4KQVRLWEN" />
+      </Suspense>
       <body className={`${inter.className}`} suppressHydrationWarning={true}>
         <NavBar />
         {children}
         <NextTopLoader zIndex={99} showSpinner={false} />
         <Footer />
+        <CookieBanner />
       </body>
-      <GoogleTagManager gaId="GTM-M6WS9SLS" />
-      <GoogleAnalytics gaId="G-J4KQVRLWEN" />
     </html>
   );
 }

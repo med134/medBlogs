@@ -14,7 +14,7 @@ const SearchTwo = () => {
         required
         aria-labelledby="search-input"
         className={`h-8 w-full rounded-lg border border-gray-800 dark:placeholder-light xs:placeholder-dark  sm:placeholder-light dark:border-light border-b-mainColor sm:border sm:border-b-mainColor bg-transparent text-dark placeholder-dark dark:border-b-light border-transparent text-sm lg:border lg:border-transparent lg:bg-transparent lg:border-b-slate-50  dark:text-light py-4 pl-2 lg:text-medium  outline-none focus:rounded-md focus:border-2 focus:border-mainColor`}
-        placeholder="search by one keyword please..."
+        placeholder="one keyword..."
       />
       <SearchButton
         className={"h-10 bg-transparent border-none hover:bg-transparent"}

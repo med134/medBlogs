@@ -6,7 +6,10 @@ import dynamic from "next/dynamic";
 import useThemeSwitcher from "./hooks/useThemeSwitcher";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { RiMenu5Fill } from "react-icons/ri";
 import MainLink from "./MainLink";
+import { IoCreateOutline } from "react-icons/io5";
+
 const SmallLinksNavBar = dynamic(() => import("./SmallLinksNavBar"), {
   ssr: false,
 });
@@ -43,68 +46,54 @@ const NavBaLinks = ({ user }) => {
           : "absolute"
       }`}
     >
-      <div className="hidden lg:inline-flex  text-sm text-gray-500 rounded-lg  dark:text-gray-400 ">
-        <button
-          data-collapse-toggle="navbar-search"
-          aria-labelledby="menu-button"
-          type="button"
-          className="hover:bg-gray-100 ml-2 p-2 left-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="menu-search"
-          aria-expanded="false"
-        >
-          <span className="sr-only">Open main menu</span>
-          {isOpen ? (
-            <FiX className="w-6 h-6" onClick={handleClick} />
-          ) : (
-            <svg
-              onClick={handleClick}
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          )}
-        </button>
-        <div className="fixed right-4">
+      <div className="hidden lg:flex lg:justify-stretch  text-sm text-gray-500 rounded-lg  dark:text-gray-400 ">
+        <div className="left-2">
           {user ? (
-            <ProfileDown user={user}/>
+            <ProfileDown user={user} />
           ) : (
             <Link
               href="/login"
               className="text-white bg-gray-700 px-4 py-2 rounded-full text-sm tracking-wide font-bold cursor-pointer flex items-center"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-4 fill-current mr-2"
-                viewBox="0 0 24 24"
-              >
-                <g fillRule="evenodd" clipRule="evenodd">
-                  <path
-                    d="M7 4a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-6a1 1 0 1 1 2 0v6a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5h6a1 1 0 1 1 0 2z"
-                    data-original="#000000"
-                  />
-                  <path
-                    d="M19.197 4a.803.803 0 0 0-.567.235l-7.877 7.877-.379 1.514 1.514-.379 7.877-7.877A.803.803 0 0 0 19.197 4zm-1.981-1.18a2.802 2.802 0 1 1 3.963 3.964l-8.073 8.073a1 1 0 0 1-.464.263l-3.4.85a1 1 0 0 1-1.212-1.213l.85-3.399a1 1 0 0 1 .263-.464z"
-                    data-original="#000000"
-                  />
-                  <path
-                    d="M15.293 5.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1-1.414 1.414l-2-2a1 1 0 0 1 0-1.414z"
-                    data-original="#000000"
-                  />
-                </g>
-              </svg>
+              <IoCreateOutline className="w-7" />
               Create Post
             </Link>
           )}
+        </div>
+        <div className="absolute right-2 flex justify-center items-center">
+          <button
+            data-collapse-toggle="navbar-search"
+            aria-labelledby="menu-button"
+            type="button"
+            className="hover:bg-gray-100 mr-2 p-2 left-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="menu-search"
+            aria-expanded="false"
+          >
+            <span className="sr-only">Open main menu</span>
+            {isOpen ? (
+              <FiX className="w-6 h-6" onClick={handleClick} />
+            ) : (
+              <RiMenu5Fill className="w-7 h-7" onClick={handleClick} />
+            )}
+          </button>
+          <button
+            name="theme-button"
+            aria-label="change-theme"
+            onClick={() => setMode(mode === "light" ? "dark" : "light")}
+            className={`w-8 h-8 flex items-center justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 
+${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
+`}
+          >
+            {mode === "light" ? (
+              <SunIcon className={"fill-dark"} />
+            ) : (
+              <MoonIcon
+                className={
+                  "fill-dark transition-all duration-75 ease-linear delay-75 animate-spin"
+                }
+              />
+            )}
+          </button>
         </div>
       </div>
       <MainLink user={user} />
@@ -129,11 +118,7 @@ ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
       {isOpen && (
         <div>
           {" "}
-          <SmallLinksNavBar
-            user={user}
-            handelMode={handelMode}
-            mode={mode}
-          />
+          <SmallLinksNavBar user={user} handelMode={handelMode} mode={mode} />
         </div>
       )}
     </header>
