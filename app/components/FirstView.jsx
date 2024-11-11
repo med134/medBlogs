@@ -1,14 +1,16 @@
+import React from "react";
+import { getPosts, FormatDate } from "../utils/action";
+import { FaRegCalendarAlt } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { FaRegCalendarAlt } from "react-icons/fa";
-import { FormatDate } from "../utils/action";
-import icon from "@/public/images/development-amico.webp";
+import icon from "@/public/images/development-amico.webp"
 
-const FirstView = ({ posts }) => {
+const FirstView = async () => {
+  const post = await getPosts();
+
   return (
     <div id="home" className="py-32 xl:pb-1 bg-light dark:bg-dark">
-      {posts?.map((item, index) =>
+      {post?.map((item, index) =>
         index < 1 ? (
           <div
             key={item._id}

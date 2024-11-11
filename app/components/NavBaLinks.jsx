@@ -2,18 +2,24 @@
 import React, { useState, useEffect } from "react";
 import { FiX } from "react-icons/fi";
 import { MoonIcon, SunIcon } from "./Icons";
+import { Limelight } from "next/font/google";
 import dynamic from "next/dynamic";
 import useThemeSwitcher from "./hooks/useThemeSwitcher";
+import med from "@/public/images/logo-med-removebg-preview.webp";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RiMenu5Fill } from "react-icons/ri";
 import MainLink from "./MainLink";
-import { IoCreateOutline } from "react-icons/io5";
-
+import Image from "next/image";
+const limelight = Limelight({
+  subsets: ["latin"],
+  variables: "-limelight",
+  weight: "400",
+  display: "swap",
+});
 const SmallLinksNavBar = dynamic(() => import("./SmallLinksNavBar"), {
   ssr: false,
 });
-const ProfileDown = dynamic(() => import("./ProfileDown"), { ssr: false });
 
 const NavBaLinks = ({ user }) => {
   const [mode, setMode] = useThemeSwitcher("dark");
@@ -48,24 +54,26 @@ const NavBaLinks = ({ user }) => {
     >
       <div className="hidden lg:flex lg:justify-stretch  text-sm text-gray-500 rounded-lg  dark:text-gray-400 ">
         <div className="left-2">
-          {user ? (
-            <ProfileDown user={user} />
-          ) : (
-            <Link
-              href="/login"
-              className="text-white bg-gray-700 px-4 py-2 rounded-full text-sm tracking-wide font-bold cursor-pointer flex items-center"
-            >
-              <IoCreateOutline className="w-7" />
-              Create Post
-            </Link>
-          )}
+          <Link
+            href="/"
+            className="flex items-center justify-between flex-wrap cursor-pointer"
+          >
+            <Image
+              src={med}
+              alt="website-logo"
+              className="object-cover w-13 h-13 dark:bg-light dark:rounded-md"
+              width={100}
+              height={100}
+              loading="lazy"
+            />
+          </Link>
         </div>
         <div className="absolute right-2 flex justify-center items-center">
           <button
             data-collapse-toggle="navbar-search"
             aria-labelledby="menu-button"
             type="button"
-            className="hover:bg-gray-100 mr-2 p-2 left-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="hover:bg-gray-100 p-2 left-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="menu-search"
             aria-expanded="false"
           >
@@ -80,7 +88,7 @@ const NavBaLinks = ({ user }) => {
             name="theme-button"
             aria-label="change-theme"
             onClick={() => setMode(mode === "light" ? "dark" : "light")}
-            className={`w-8 h-8 flex items-center justify-center rounded-full p-1 transition-all duration-75 ease-linear delay-75 
+            className={`w-8 h-8 flex items-center justify-center mr-2 rounded-full p-1 transition-all duration-75 ease-linear delay-75 
 ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
 `}
           >

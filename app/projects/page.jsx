@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import { Project, FeaturedProject } from "../components/ProjectArtcle";
 import TransitionEffect from "../components/TransitionEffect";
 import { miniProject, ProjectFull } from "../components/ProjectArrays";
+import AnimatedText from "../components/AnimatedText";
 export const metadata = {
   title: "medCode-Web Development Projects |medCode",
   description: `Discover the latest web app projects created by MedCode, free and premium code source projects for beginners, React.js Next.js,javascript,HTML CSS`,
@@ -59,7 +60,7 @@ const page = () => {
       <main className="w-full sm:mb-6 flex flex-col items-center justify-center bg-light py-24 md:py-10  dark:text-light dark:bg-dark">
         <Layout className="pt-16 md:pt-10 sm:pt-6 xs:pt-8 xs:p-8">
           <h1 className="text-7xl text-dark font-sans md:text-5xl font-extrabold text-center py-10">
-            Imagination Trumps Knowledge!
+            <AnimatedText text="Imagination Trumps Knowledge!" />
           </h1>
           <div className="flex flex-col justify-center items-center">
             <div className="mb-6">
@@ -83,13 +84,14 @@ const page = () => {
                 if (index < 2)
                   return (
                     <Project
-                      className="px-6"
+                      className="px-6 mx-4"
                       key={item.id}
                       type={item.type}
                       title={item.title}
                       img={item.image}
                       slug={item?.slug}
                       preview={item.preview}
+                      index={index}
                     />
                   );
               })}
@@ -115,13 +117,14 @@ const page = () => {
                 if (index > 1 && index < 4)
                   return (
                     <Project
-                      className="px-6"
+                      className="px-6 mx-4"
                       key={item.id}
                       type={item.type}
                       title={item.title}
                       img={item?.image}
                       slug={item.slug}
                       preview={item.preview}
+                      index={index}
                     />
                   );
               })}
