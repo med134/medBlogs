@@ -56,12 +56,12 @@ const NavBaLinks = ({ user }) => {
         <div className="left-2">
           <Link
             href="/"
-            className="flex items-center justify-between flex-wrap cursor-pointer"
+            className="cursor-pointer"
           >
             <Image
               src={med}
               alt="website-logo"
-              className="object-cover w-13 h-13 dark:bg-light dark:rounded-md"
+              className="object-cover w-11 h-11 dark:bg-light dark:rounded-md"
               width={100}
               height={100}
               loading="lazy"
