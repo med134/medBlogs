@@ -17,7 +17,7 @@ export const Project = ({
 }) => {
   return (
     <motion.div
-      className="m-8"
+      className="m-8 md:m-1"
       initial={{
         opacity: 0,
         // if odd index card,slide from right instead of left
@@ -33,7 +33,7 @@ export const Project = ({
       viewport={{ once: false }}
     >
       <article
-        className={`${className} w-full m-8 mb-6 md:ml-0 flex flex-col items-center justify-center rounded-2xl
+        className={`${className} w-full m-8 md:m-1 mb-6 md:ml-0 flex flex-col items-center justify-center rounded-2xl
       border border-solid border-dark bg-light p-6 relative dark:bg-dark dark:border-light xs:p-4
       `}
       >

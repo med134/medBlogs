@@ -84,7 +84,7 @@ const page = () => {
                 if (index < 2)
                   return (
                     <Project
-                      className="px-6 mx-4"
+                      className="px-6 md:px-2"
                       key={item.id}
                       type={item.type}
                       title={item.title}
@@ -117,7 +117,7 @@ const page = () => {
                 if (index > 1 && index < 4)
                   return (
                     <Project
-                      className="px-6 mx-4"
+                      className="px-6 md:px-2"
                       key={item.id}
                       type={item.type}
                       title={item.title}

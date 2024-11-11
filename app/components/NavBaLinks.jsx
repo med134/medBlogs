@@ -61,7 +61,7 @@ const NavBaLinks = ({ user }) => {
             <Image
               src={med}
               alt="website-logo"
-              className="object-cover w-11 h-11 dark:bg-light dark:rounded-md"
+              className="object-cover w-12 h-12 dark:bg-light dark:rounded-md"
               width={100}
               height={100}
               loading="lazy"
@@ -73,15 +73,15 @@ const NavBaLinks = ({ user }) => {
             data-collapse-toggle="navbar-search"
             aria-labelledby="menu-button"
             type="button"
-            className="hover:bg-gray-100 p-2 left-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="hover:bg-gray-100 p-2 left-0 rounded-lg dark:hover:bg-gray-700"
             aria-controls="menu-search"
             aria-expanded="false"
           >
             <span className="sr-only">Open main menu</span>
             {isOpen ? (
-              <FiX className="w-6 h-6" onClick={handleClick} />
+              <FiX className="w-7 h-7 text-dark dark:text-light" onClick={handleClick} />
             ) : (
-              <RiMenu5Fill className="w-7 h-7" onClick={handleClick} />
+              <RiMenu5Fill className="w-7 h-7 text-dark dark:text-light" onClick={handleClick} />
             )}
           </button>
           <button
