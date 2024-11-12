@@ -1,12 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { CiEdit } from "react-icons/ci";
-import { LiaBirthdayCakeSolid } from "react-icons/lia";
-import { CgWorkAlt } from "react-icons/cg";
-import { FormatDate } from "../utils/action";
 import { PiUserGear } from "react-icons/pi";
-import { RiArticleLine } from "react-icons/ri";
 import { auth } from "../utils/auth";
 
 const ProfileDashboard = async ({ user }) => {
@@ -21,7 +16,7 @@ const ProfileDashboard = async ({ user }) => {
         <div className="p-4 md:p-12 text-center lg:text-left">
           {/* Image for mobile view*/}
           <Image
-            className="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
+            className="block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
             src={user?.imageUrl}
             width={300}
             height={300}
@@ -61,8 +56,8 @@ const ProfileDashboard = async ({ user }) => {
             </span>
           </span>
           <p className="pt-8 text-sm">
-            Totally optional short description about yourself, what you do and
-            so on.
+            {user?.about ||
+              "Totally optional short description about yourself, what you do and so on."}
           </p>
           <div className="pt-12 pb-8">
             {session.user.email === user.email ? (

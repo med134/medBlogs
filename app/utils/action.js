@@ -369,13 +369,12 @@ export const createComment = async (formData) => {
   }
   revalidatePath("/blogs");
 };
-
 export const editUserProfile = async (formData) => {
-  const _id = formData.get("id")
+  const _id = formData.get("id");
   const name = formData.get("name");
   const email = formData.get("email");
-  const imageUrl = formData.get("imageUrl");
   const job = formData.get("job");
+  const about = formData.get("about");
   const homeAddress = formData.get("homeAddress");
   try {
     connect();
@@ -384,15 +383,16 @@ export const editUserProfile = async (formData) => {
       {
         name,
         email,
-        imageUrl,
         job,
         homeAddress,
+        about,
       },
       { new: true } // Option to return the updated document
     );
     return updatedUser;
     console.log("add user");
+    revalidatePath("/dashboard/settings");
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
   }
 };

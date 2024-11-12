@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "next/form";
 import { editUserProfile } from "../utils/action";
-import ImageUploader from "./ImageUploader";
+import Image from "next/image";
 
 const SettingsProfile = ({ imageUrl, name, email, userId }) => {
   return (
@@ -15,10 +15,15 @@ const SettingsProfile = ({ imageUrl, name, email, userId }) => {
           className="p-4 md:p-12 text-center lg:text-left"
         >
           {/* Image for mobile view */}
-          <ImageUploader imageUrl={imageUrl} />
+          <Image
+            className="block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
+            src={imageUrl}
+            width={300}
+            height={300}
+            alt="user image"
+          />
           <h1 className="text-3xl font-bold pt-8 lg:pt-0 uppercase">{name}</h1>
           <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-mainColor opacity-25" />
-
           {/* Job and Country */}
           <div className="w-full py-6 flex justify-evenly items-center">
             <input name="id" value={userId} hidden readOnly />
@@ -43,20 +48,37 @@ const SettingsProfile = ({ imageUrl, name, email, userId }) => {
           </div>
 
           {/* About Me Textarea */}
-          <textarea
-            className="w-1/2 ml-20 px-6 py-1.5 h-28 outline-mainColor border flex justify-start"
-            type="text"
-            placeholder="Write something about you..."
-            rows={4}
-            minLength="10"
-            maxLength="50"
-            name="about"
-          />
+          <div className="flex flex-col mx-auto gap-2 max-w-lg p-4">
+            <label htmlFor="input" className="font-semibold text-lg mb-4">
+              Enter somethings about you
+            </label>
+            <textarea
+              name="about"
+              id="about"
+              rows={5}
+              maxLength={256}
+              placeholder="write somethings about you experience or skills to describe you self [Max 256 chars]"
+              className="rounded-lg p-4 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
+            />
+          </div>
           <button
             type="submit"
-            className="inline-block w-auto text-center min-w-[200px] px-6 py-4 text-white transition-all rounded-md shadow-xl sm:w-auto bg-gradient-to-r from-blue-600 to-blue-500 hover:bg-gradient-to-b dark:shadow-blue-900 shadow-blue-200 hover:shadow-2xl hover:shadow-blue-400 hover:-tranneutral-y-px "
+            className="rounded-lg p-3 w-1/2 bg-cyan-700/20 border-2 border-solid border-green-500/20 transition-colors hover:bg-cyan-500/40 font-medium text-base leading-none inline-flex items-center justify-center gap-2"
           >
-            Submit
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              width={18}
+              height={18}
+            >
+              <path
+                fillRule="evenodd"
+                d="M14.615 1.595a.75.75 0 01.359.852L12.982 9.75h7.268a.75.75 0 01.548 1.262l-10.5 11.25a.75.75 0 01-1.272-.71l1.992-7.302H3.75a.75.75 0 01-.548-1.262l10.5-11.25a.75.75 0 01.913-.143z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <span className="font-bold">Edit now!</span>
           </button>
         </Form>
       </div>
