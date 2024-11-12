@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const AnimatedText = ({ text }) => {
   return (
-    <div className="w-full">
+    <div className="w-full dark:text-light">
       {text.split(" ").map((el, i) => (
         <motion.span
           initial={{ opacity: 0 }}

@@ -29,30 +29,14 @@ const userSchema = new Schema(
       type: String,
       required: false,
     },
-    phone: {
-      type: String,
-      match: /^\+?[1-9]\d{1,14}$/,
-    },
     homeAddress: {
       type: String,
       required: false,
     },
-    skills: {
-      type: [String],
-      default: [],
+    about: {
+      type: String,
       required: false,
-
-      // Array of strings to store skills
     },
-    workLinks: [
-      {
-        title: { type: String }, // Title of the work link
-        url: { type: String },
-        image: {
-          type: String,
-        },
-      },
-    ],
     isAdmin: {
       type: Boolean,
       default: false,

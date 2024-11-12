@@ -370,23 +370,29 @@ export const createComment = async (formData) => {
   revalidatePath("/blogs");
 };
 
-export const editUserProfile=async(formData)=>{
-   const name = formData.get("name");
-   const email = formData.get("email");
-   const imageUrl = formData.get("imageUrl");
-   const job = formData.get("job")
-   const phone = formData.get("phone");
-   const homeAddress = formData.get("homeAddress");
-   const skills = formData.get("skills");
-   const workLinks = formData.get("workLinks");
-   try{
-    connect()
-    await Article.findOneAndUpdate({slug}, body);
-   }catch(err){
-    console.log(err)
-   }
-   
-
-   
-
-}
+export const editUserProfile = async (formData) => {
+  const _id = formData.get("id")
+  const name = formData.get("name");
+  const email = formData.get("email");
+  const imageUrl = formData.get("imageUrl");
+  const job = formData.get("job");
+  const homeAddress = formData.get("homeAddress");
+  try {
+    connect();
+    const updatedUser = await User.findByIdAndUpdate(
+      _id,
+      {
+        name,
+        email,
+        imageUrl,
+        job,
+        homeAddress,
+      },
+      { new: true } // Option to return the updated document
+    );
+    return updatedUser;
+    console.log("add user");
+  } catch (err) {
+    console.log(err);
+  }
+};

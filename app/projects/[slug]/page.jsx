@@ -44,8 +44,8 @@ const page = async ({ params }) => {
   const project = await getProjects(slug);
   const miniProject = await getProjectsMini(slug);
   return (
-    <div className="w-full rounded-lg bg-light p-10 flex flex-col justify-center items-center sm:p-6">
-      <div className="bg bg-white shadow mt-28 rounded-lg p-10 max-w-4xl sm:p-3 sm:mt-16">
+    <div className="w-full rounded-lg bg-light p-10 flex flex-col justify-center items-center dark:bg-dark sm:p-6">
+      <div className="bg bg-white dark:bg-dark shadow dark:shadow-light mt-28 rounded-lg p-10 max-w-4xl sm:p-3 sm:mt-16">
         <div className="flex justify-center items-center w-full">
           {/* Image Placeholder */}
           <Image
@@ -69,7 +69,7 @@ const page = async ({ params }) => {
                   url={`https://www.medcode.dev/projects/${slug}`}
                 />
               </div>
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-light">
                 {project?.summary || miniProject?.summary}
               </p>
             </div>
@@ -78,19 +78,19 @@ const page = async ({ params }) => {
           </div>
 
           <div className="col-span-2 sm:p-4">
-            <div className="mt-3 text-mainColor sm:mt-0">
+            <div className="mt-3 text-mainColor sm:mt-0 dark:text-light">
               Compatible Browsers :{" "}
-              <span className="text-gray-700">
+              <span className="text-gray-700 dark:text-light">
                 Firefox, Safari, Opera, Chrome, Edge
               </span>
             </div>
-            <div className="mt-3 text-mainColor">
+            <div className="mt-3 text-mainColor dark:text-light">
               technology :{" "}
-              <span className="text-gray-700">
+              <span className="text-gray-700 dark:text-light">
                 {project?.technology || miniProject?.technology}
               </span>
             </div>
-            <div className="text-gray-700 text-left mt-4 text-xl font-semibold">
+            <div className="text-gray-700 text-left mt-4 text-xl font-semibold dark:text-light">
               Contact me for code source
             </div>
             <div className="w-full flex justify-around items-start mt-2 sm:mb-2">
@@ -101,11 +101,11 @@ const page = async ({ params }) => {
                 aria-label={"whatsapp contact"}
                 name={"whatsapp contact"}
                 className={
-                  "flex items-center rounded-md px-16 py-1 border-2 border-green-600 text-light bg-green-600 text-xl hover:text-white hover:bg-green-600"
+                  "flex items-center rounded-md dark:text-light px-16 py-1 border-2 border-green-600 text-light bg-green-600 text-xl hover:text-white hover:bg-green-600"
                 }
               >
                 <FaWhatsapp className="h-6 w-6" />
-                <span className="ml-4">whatsapp</span>
+                <span className="ml-4 dark:text-light">whatsapp</span>
               </a>
             </div>
           </div>

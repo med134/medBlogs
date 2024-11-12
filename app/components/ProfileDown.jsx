@@ -35,7 +35,7 @@ const ProfileDown = ({ user }) => {
         </button>
       </div>
       {isDropdownOpen && (
-        <div className="origin-top-right w-56 bg-light dark:bg-dark dark:shadow-light p-6 absolute left-2 mt-4 rounded-md shadow-lg z-50">
+        <div className="origin-top-right w-56 bg-light dark:bg-dark dark:shadow-light p-6 absolute right-2 mt-4 rounded-md shadow-lg z-50">
           <div className="py-1 rounded-md shadow-xs">
             <ul className="block py-2 z-[1000] min-w-full w-max rounded-lg max-h-96 overflow-auto dark:text-light">
               <Link

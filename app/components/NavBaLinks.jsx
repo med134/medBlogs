@@ -61,7 +61,7 @@ const NavBaLinks = ({ user }) => {
             <Image
               src={med}
               alt="website-logo"
-              className="object-cover w-12 h-12 dark:bg-light dark:rounded-md"
+              className="object-cover w-13 h-13 dark:bg-light dark:rounded-md"
               width={100}
               height={100}
               loading="lazy"

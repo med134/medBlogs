@@ -13,7 +13,7 @@ const page = async ({ searchParams }) => {
   return (
     <div className="bg-light dark:bg-dark w-full py-16">
       <div className="px-16 flex justify-between items-center mt-20 md:flex md:flex-col lg:px-6">
-        <h1 className="px-2 text-mainColor mt-1 md:mb-4 dark:text-light xs:text-sm text-3xl lg:text-2xl font-outFit font-bold uppercase">
+        <h1 className="px-2 text-mainColor mt-1 md:mb-4 dark:text-light xs:text-xl text-3xl lg:text-2xl font-outFit font-bold uppercase">
           Result for search:
           <span className="text-gray-800 text-3xl ml-3 sm:text-xl dark:text-light">
             {searchParams.query}

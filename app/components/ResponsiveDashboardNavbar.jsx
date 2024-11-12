@@ -7,7 +7,7 @@ import { RxExit } from "react-icons/rx";
 import { MdSpaceDashboard, MdOutlineExitToApp } from "react-icons/md";
 import { menuItems } from "./ProjectArrays";
 import { usePathname } from "next/navigation";
-import { handelLogOut } from "../utils/action";
+import { handelLogOut, getFirstName } from "../utils/action";
 import dynamic from "next/dynamic";
 const ProfileDown = dynamic(() => import("./ProfileDown"), { ssr: false });
 
@@ -60,9 +60,7 @@ const ResponsiveDashboardNavbar = ({ user }) => {
         {" "}
         <div className="flex justify-start items-center px-4 cursor-pointer">
           <div className="flex mr-6 items-center md:ml-4 xs:ml-0 xs:mr-0">
-            <span className="text-xs text-gray-500 mr-2">
-              Hi, {user?.name}
-            </span>{" "}
+            <span className="text-xs text-gray-500 mr-2">Hi, {user.name}</span>{" "}
             <ProfileDown user={user} />
           </div>
           <Link href="/" className="ml-3 lg:hidden">
