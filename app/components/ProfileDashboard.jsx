@@ -7,22 +7,22 @@ import { auth } from "../utils/auth";
 const ProfileDashboard = async ({ user }) => {
   const session = await auth();
   return (
-    <div className="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-16">
+    <div className="max-w-4xl flex items-center mx-auto my-16">
       {/*Main Col*/}
       <div
         id="profile"
-        className="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0"
+        className="w-full rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 sm:mx-3"
       >
-        <div className="p-4 md:p-12 text-center lg:text-left">
+        <div className="p-4 text-center lg:text-left">
           {/* Image for mobile view*/}
           <Image
-            className="block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
+            className="block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover lg:mb-3 bg-center"
             src={user?.imageUrl}
             width={300}
             height={300}
             alt="user image"
           />
-          <h1 className="text-3xl font-bold pt-8 lg:pt-0 uppercase">
+          <h1 className="text-3xl font-bold pt-8 lg:pt-0 uppercase flex justify-center sm:text-xl">
             {user.name}
           </h1>
           <div className="flex justify-center items-center">
@@ -31,8 +31,8 @@ const ProfileDashboard = async ({ user }) => {
               {user?.isAdmin ? "Admin" : "User"}
             </span>
           </div>
-          <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25" />
-          <span className="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">
+          <div className="mx-auto  w-4/5 pt-3 border-b-2 border-green-500 opacity-25" />
+          <div className="pt-4 text-base font-bold flex items-center justify-center">
             <svg
               className="h-4 fill-current text-green-700 pr-4"
               xmlns="http://www.w3.org/2000/svg"
@@ -41,8 +41,8 @@ const ProfileDashboard = async ({ user }) => {
               <path d="M9 12H1v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6h-8v2H9v-2zm0-1H0V5c0-1.1.9-2 2-2h4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1h4a2 2 0 0 1 2 2v6h-9V9H9v2zm3-8V2H8v1h4z" />
             </svg>{" "}
             {user?.job || "Unknown"}
-          </span>
-          <span className="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">
+          </div>
+          <div className="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center">
             <svg
               className="h-4 fill-current text-green-700 pr-4"
               xmlns="http://www.w3.org/2000/svg"
@@ -54,12 +54,12 @@ const ProfileDashboard = async ({ user }) => {
             <span className="text-gray-900 ml-2">
               {user?.homeAddress || "Unknown"}
             </span>
-          </span>
-          <p className="pt-8 text-sm">
+          </div>
+          <p className="pt-8 text-sm text-center">
             {user?.about ||
               "Totally optional short description about yourself, what you do and so on."}
           </p>
-          <div className="pt-12 pb-8">
+          <div className="pt-12 pb-8 text-center">
             {session.user.email === user.email ? (
               <Link
                 href={`/dashboard/settings/${user._id}`}
