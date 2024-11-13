@@ -376,12 +376,11 @@ export const editUserProfile = async (formData) => {
   const job = formData.get("job");
   const about = formData.get("about");
   const homeAddress = formData.get("homeAddress");
-  const socialMedia = {
-    x: formData.get("x") || "", // Default to empty string if not provided
-    linkedIn: formData.get("linkedIn") || "",
-    github: formData.get("github") || "",
-    youtube: formData.get("youtube") || "",
-  };
+  const twitterUrl = formData.get("twitterUrl");
+  const linkedInUrl = formData.get("linkedInUrl");
+  const githubUrl = formData.get("githubUrl");
+  const youtubeUrl = formData.get("youtubeUrl");
+  const dribbleUrl = formData.get("dribbleUrl");
   try {
     connect();
     const updatedUser = await User.findByIdAndUpdate(
@@ -392,7 +391,11 @@ export const editUserProfile = async (formData) => {
         job,
         homeAddress,
         about,
-        socialMedia,
+        twitterUrl,
+        linkedInUrl,
+        githubUrl,
+        youtubeUrl,
+        dribbleUrl,
       },
       { new: true }
     );

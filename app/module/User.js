@@ -1,41 +1,6 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const socialMediaSchema = new Schema({
-  x: {
-    url: { type: String, default: "" },
-    icon: {
-      type: String,
-      default:
-        "https://res.cloudinary.com/djcnq7nmj/image/upload/v1731532173/twitter_pdfcvr.png",
-    },
-  },
-  linkedIn: {
-    url: { type: String, default: "" },
-    icon: {
-      type: String,
-      default:
-        "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/linkedin_wc9g2d.png",
-    },
-  },
-  github: {
-    url: { type: String, default: "" },
-    icon: {
-      type: String,
-      default:
-        "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/github_c2lbts.png",
-    },
-  },
-  youtube: {
-    url: { type: String, default: "" },
-    icon: {
-      type: String,
-      default:
-        "https://res.cloudinary.com/djcnq7nmj/image/upload/v1731532343/youtube_ouib4j.png",
-    },
-  },
-});
-
 const userSchema = new Schema(
   {
     name: {
@@ -73,7 +38,30 @@ const userSchema = new Schema(
       type: String,
       required: false,
     },
-    socialMedia: { type: socialMediaSchema, required: false },
+    youtubeUrl: {
+      type: String,
+      required: false,
+    },
+    githubUrl: {
+      type: String,
+      required: false,
+    },
+    linkedInUrl: {
+      type: String,
+      required: false,
+    },
+    dribbleUrl: {
+      type: String,
+      required: false,
+    },
+    instagramUrl: {
+      type: String,
+      required: false,
+    },
+    twitterUrl: {
+      type: String,
+      required: false,
+    },
     isAdmin: {
       type: Boolean,
       default: false,

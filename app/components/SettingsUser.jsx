@@ -3,8 +3,8 @@ import { EditButton } from "./SearchButton";
 import Image from "next/image";
 import Form from "next/form";
 import { editUserProfile } from "../utils/action";
-import { LinkedinIcon, XIcon } from "react-share";
-import { BsGithub, BsYoutube } from "react-icons/bs";
+import { BsDribbble, BsGithub, BsInstagram, BsLinkedin, BsYoutube } from "react-icons/bs";
+import { XIcon } from "react-share";
 
 const SettingsUser = ({ user }) => {
   return (
@@ -74,16 +74,16 @@ const SettingsUser = ({ user }) => {
               <XIcon className="absolute left-3 rounded-full w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500" />
               <input
                 type="url"
-                name="x"
+                name="twitterUrl"
                 placeholder="X URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
             </div>
             <div className="relative w-full">
-              <LinkedinIcon className="absolute left-3 rounded-full w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500" />
+              <BsLinkedin className="absolute left-3 fill-slate-600 rounded-full w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500" />
               <input
                 type="url"
-                name="linkedIn"
+                name="linkedInUrl"
                 placeholder="linkedIn URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
@@ -92,7 +92,7 @@ const SettingsUser = ({ user }) => {
               <BsGithub className="absolute left-3 rounded-full w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500" />
               <input
                 type="url"
-                name="github"
+                name="githubUrl"
                 placeholder="github URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
@@ -101,8 +101,26 @@ const SettingsUser = ({ user }) => {
               <BsYoutube className="absolute left-3 rounded-full w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500" />
               <input
                 type="url"
-                name="youtube"
+                name="youtubeUrl"
                 placeholder="youtube channel URL..."
+                className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
+              />
+            </div>
+            <div className="relative w-full">
+              <BsDribbble className="absolute left-3 rounded-full w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500" />
+              <input
+                type="url"
+                name="dribbleUrl"
+                placeholder="dribble URL..."
+                className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
+              />
+            </div>
+            <div className="relative w-full">
+              <BsInstagram className="absolute left-3 rounded-full w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500" />
+              <input
+                type="url"
+                name="instagramUrl"
+                placeholder="instagram URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
             </div>
