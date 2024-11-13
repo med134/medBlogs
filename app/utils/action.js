@@ -377,10 +377,10 @@ export const editUserProfile = async (formData) => {
   const about = formData.get("about");
   const homeAddress = formData.get("homeAddress");
   const socialMedia = {
-    twitter: formData.get("x") || "", // Default to empty string if not provided
+    x: formData.get("x") || "", // Default to empty string if not provided
     linkedIn: formData.get("linkedIn") || "",
-    facebook: formData.get("github") || "",
-    instagram: formData.get("youtube") || "",
+    github: formData.get("github") || "",
+    youtube: formData.get("youtube") || "",
   };
   try {
     connect();
