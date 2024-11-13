@@ -2,7 +2,6 @@ import React from "react";
 import ProfileDashboard from "@/app/components/ProfileDashboard";
 import { getUserById } from "@/app/utils/action";
 
-
 export const metadata = {
   title: `medCode | Profile`,
   description: `your profile dashboard you can add more information about your works or contact page`,
@@ -54,8 +53,7 @@ export const metadata = {
 
 const page = async ({ params }) => {
   const { id } = await params;
-  const session = await getUserById(id);
-  const user = JSON.parse(JSON.stringify(session));
+  const user = await getUserById(id);
   return (
     <main className="w-full">
       <ProfileDashboard user={user} />

@@ -1,5 +1,25 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
+
+const socialMediaSchema = new Schema({
+  twitter: {
+    url: { type: String, required: false },
+    icon: { type: String, default: "https://res.cloudinary.com/djcnq7nmj/image/upload/v1731532173/twitter_pdfcvr.png" },
+  },
+  linkedIn: {
+    url: { type: String, required: false },
+    icon: { type: String, default: "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/linkedin_wc9g2d.png" },
+  },
+  github: {
+    url: { type: String, required: false },
+    icon: { type: String, default: "https://res.cloudinary.com/djcnq7nmj/image/upload/v1728326402/github_c2lbts.png"},
+  },
+  youtube: {
+    url: { type: String, required: false },
+    icon: { type: String, default:"" },
+  },
+});
+
 const userSchema = new Schema(
   {
     name: {
@@ -37,6 +57,7 @@ const userSchema = new Schema(
       type: String,
       required: false,
     },
+    socialMedia: { type: socialMediaSchema, required: false },
     isAdmin: {
       type: Boolean,
       default: false,

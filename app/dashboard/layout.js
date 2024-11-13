@@ -1,6 +1,5 @@
 import DashboardNav from "../components/DashboardNav";
 import MainSideBarDashboard from "../ui/sidebar/MainSideBarDashboard";
-import { auth } from "../utils/auth";
 export const metadata = {
   title: "Dashboard | medCode ",
   description: `Empower your online presence with a dashboard for effortless blog management. Seamlessly create, edit, and publish captivating content that engages your audience`,

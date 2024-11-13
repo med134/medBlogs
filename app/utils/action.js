@@ -376,6 +376,12 @@ export const editUserProfile = async (formData) => {
   const job = formData.get("job");
   const about = formData.get("about");
   const homeAddress = formData.get("homeAddress");
+  const socialMedia = {
+    twitter: formData.get("x") || "", // Default to empty string if not provided
+    linkedIn: formData.get("linkedIn") || "",
+    facebook: formData.get("github") || "",
+    instagram: formData.get("youtube") || "",
+  };
   try {
     connect();
     const updatedUser = await User.findByIdAndUpdate(
@@ -386,13 +392,13 @@ export const editUserProfile = async (formData) => {
         job,
         homeAddress,
         about,
+        socialMedia,
       },
-      { new: true } // Option to return the updated document
+      { new: true }
     );
     return updatedUser;
-    console.log("add user");
-    revalidatePath("/dashboard/settings");
   } catch (err) {
     console.log(err.message);
   }
+  redirect("/dashboard/profile");
 };

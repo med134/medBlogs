@@ -62,7 +62,7 @@ const AllCategoryPage = ({ post }) => {
                 </Link>
                 <div className="flex justify-between items-center">
                   <Link
-                    href={`/dashboard/profile/${item?._id}`}
+                    href={`/dashboard/profile/${item?.userId}`}
                     className="flex items-center justify-center py-3"
                   >
                     <Image

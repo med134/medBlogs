@@ -64,7 +64,7 @@ const page = async ({ searchParams }) => {
                   </Link>
                   <div className="flex justify-between items-center">
                     <Link
-                      href={`/dashboard/profile/${item?.userSlug}`}
+                      href={`/dashboard/profile/${item?.userId}`}
                       className="flex items-center justify-center py-3"
                     >
                       <Image

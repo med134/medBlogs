@@ -26,15 +26,15 @@ const ProfileDashboard = async ({ user }) => {
             {user.name}
           </h1>
           <div className="flex justify-center items-center">
-            <PiUserGear className="fill-green-700 w-12 font-bold" />
+            <PiUserGear className="fill-mainColor w-16 font-bold" />
             <span className="text-gray-600">
               {user?.isAdmin ? "Admin" : "User"}
             </span>
           </div>
-          <div className="mx-auto  w-4/5 pt-3 border-b-2 border-green-500 opacity-25" />
+          <div className="mx-auto  w-4/5 pt-3 border-b-2 border-mainColor opacity-25" />
           <div className="pt-4 text-base font-bold flex items-center justify-center">
             <svg
-              className="h-4 fill-current text-green-700 pr-4"
+              className="h-4 fill-current text-mainColor pr-4"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
             >
@@ -44,7 +44,7 @@ const ProfileDashboard = async ({ user }) => {
           </div>
           <div className="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center">
             <svg
-              className="h-4 fill-current text-green-700 pr-4"
+              className="h-4 fill-current text-mainColor pr-4"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
             >
@@ -55,7 +55,7 @@ const ProfileDashboard = async ({ user }) => {
               {user?.homeAddress || "Unknown"}
             </span>
           </div>
-          <p className="pt-8 text-sm text-center">
+          <p className="pt-8 text-sm text-center px-10 md:px-4">
             {user?.about ||
               "Totally optional short description about yourself, what you do and so on."}
           </p>
@@ -63,31 +63,20 @@ const ProfileDashboard = async ({ user }) => {
             {session.user.email === user.email ? (
               <Link
                 href={`/dashboard/settings/${user._id}`}
-                className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
+                className="bg-mainColor hover:bg-cyan-900 text-white font-bold py-2 px-4 rounded-full"
               >
                 Edit your profile
               </Link>
             ) : (
               <Link
                 href={`mailto:${user.email}`}
-                className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
+                className="bg-mainColor hover:bg-cyan-900 text-white font-bold py-2 px-4 rounded-full"
               >
                 Send message
               </Link>
             )}
           </div>
           <div className="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-between">
-            <a className="link" href="#" data-tippy-content="@facebook_handle">
-              <svg
-                className="h-6 fill-current text-gray-600 hover:text-green-700"
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Facebook</title>
-                <path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0" />
-              </svg>
-            </a>
             <a className="link" href="#" data-tippy-content="@twitter_handle">
               <svg
                 className="h-6 fill-current text-gray-600 hover:text-green-700"
@@ -110,17 +99,7 @@ const ProfileDashboard = async ({ user }) => {
                 <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
               </svg>
             </a>
-            <a className="link" href="#" data-tippy-content="@unsplash_handle">
-              <svg
-                className="h-6 fill-current text-gray-600 hover:text-green-700"
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Unsplash</title>
-                <path d="M7.5 6.75V0h9v6.75h-9zm9 3.75H24V24H0V10.5h7.5v6.75h9V10.5z" />
-              </svg>
-            </a>
+
             <a className="link" href="#" data-tippy-content="@dribble_handle">
               <svg
                 className="h-6 fill-current text-gray-600 hover:text-green-700"
