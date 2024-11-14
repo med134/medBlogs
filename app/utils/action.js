@@ -9,7 +9,6 @@ import Category from "../module/Category";
 import Posts from "../module/Post";
 import Email from "../module/Email";
 import Comments from "../module/Comments";
-import connect from "./ConnectDB";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
@@ -381,8 +380,9 @@ export const editUserProfile = async (formData) => {
   const githubUrl = formData.get("githubUrl");
   const youtubeUrl = formData.get("youtubeUrl");
   const dribbleUrl = formData.get("dribbleUrl");
+  const instagramUrl = formData.get("instagramUrl");
   try {
-    connect();
+    connectDb();
     const updatedUser = await User.findByIdAndUpdate(
       _id,
       {
@@ -396,12 +396,13 @@ export const editUserProfile = async (formData) => {
         githubUrl,
         youtubeUrl,
         dribbleUrl,
+        instagramUrl,
       },
       { new: true }
     );
-    return updatedUser;
+    return JSON.parse(JSON.stringify(updatedUser));
   } catch (err) {
     console.log(err.message);
   }
-  redirect("/dashboard/profile");
+  redirect(`/dashboard/profile/${_id}`);
 };

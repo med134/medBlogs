@@ -3,9 +3,14 @@ import { EditButton } from "./SearchButton";
 import Image from "next/image";
 import Form from "next/form";
 import { editUserProfile } from "../utils/action";
-import { BsDribbble, BsGithub, BsInstagram, BsLinkedin, BsYoutube } from "react-icons/bs";
-import { XIcon } from "react-share";
-
+import {
+  BsDribbble,
+  BsGithub,
+  BsInstagram,
+  BsLinkedin,
+  BsYoutube,
+} from "react-icons/bs";
+import { BiX } from "react-icons/bi";
 const SettingsUser = ({ user }) => {
   return (
     <div className="w-full rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
@@ -16,7 +21,7 @@ const SettingsUser = ({ user }) => {
         {/* Image for mobile view */}
         <Image
           className="block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
-          src={user?.imageUrl}
+          src={user.imageUrl}
           width={300}
           height={300}
           alt="user image"
@@ -30,17 +35,17 @@ const SettingsUser = ({ user }) => {
           <input name="id" value={user._id} hidden readOnly />
           <input name="name" value={user.name} hidden readOnly />
           <input name="email" value={user.email} hidden readOnly />
-          <div className="border-2 relative sm:mb-2">
+          <div className="relative sm:mb-2">
             <input
-              className="w-full placeholder:capitalize px-8 py-1.5 outline-mainColor"
+              className="w-full border-2 rounded-lg font-mono bg-gray-100 placeholder:capitalize px-8 py-1.5 outline-mainColor"
               type="text"
               placeholder="Your Job"
               name="job"
             />
           </div>
-          <div className="border-2 relative">
+          <div className="relative">
             <input
-              className="w-full placeholder:capitalize px-8 py-1.5 outline-mainColor"
+              className="w-full border-2 rounded-lg font-mono bg-gray-100 placeholder:capitalize px-8 py-1.5 outline-mainColor"
               type="text"
               placeholder="Country"
               name="homeAddress"
@@ -71,7 +76,7 @@ const SettingsUser = ({ user }) => {
           </label>
           <div className="flex justify-evenly flex-wrap mx-auto gap-4 max-w-lg p-4">
             <div className="relative w-full">
-              <XIcon className="absolute left-3 rounded-full w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500" />
+              <BiX className="absolute left-3 rounded-full w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500" />
               <input
                 type="url"
                 name="twitterUrl"
