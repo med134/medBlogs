@@ -9,7 +9,7 @@ import SkeltonCard from "@/app/components/SkeltonCard";
 
 export async function generateMetadata({ params }) {
   const { category } = await params;
-  const post = await getArticleByCategories(category);
+  const post = await getArticleByCategories((await params).category);
   const heading = `All Articles About ${category}`;
   return {
     title: heading,

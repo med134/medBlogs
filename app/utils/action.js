@@ -21,11 +21,10 @@ export const handelLogOut = async () => {
 export const LoginWithGoogle = async () => {
   await signIn("google");
 };
-export const sendMessage = async (previeusState, formData) => {
+export const sendMessage = async (formData) => {
   const name = formData.get("name");
   const email = formData.get("email");
   const message = formData.get("message");
-  console.log(name, email, message);
   try {
     connectDb();
     const newMessage = new Email({
@@ -34,7 +33,6 @@ export const sendMessage = async (previeusState, formData) => {
       message,
     });
     await newMessage.save();
-    console.log("Your message is send successfully");
     return "Your message is send successfully";
   } catch (err) {
     console.log(err.message);
@@ -206,15 +204,19 @@ export const getTemplates = async () => {
 // search params
 export const searchFunction = async (query) => {
   try {
-    connectDb();
-    const articles = await Article.find();
-    const filteredPosts = articles.filter((post) => {
-      const regex = new RegExp(`${query}`, "gi");
-      return post.title.match(regex);
+    await connectDb();
+    const filteredPosts = await Article.find({
+      $or: [
+        { title: { $regex: query, $options: "i" } }, // Search in title
+        { description: { $regex: query, $options: "i" } }, // Search in description
+      ],
     });
+    if (!filteredPosts.length) {
+      console.log("No posts found with the given query");
+    }
     return filteredPosts;
   } catch (err) {
-    console.log(err.message);
+    console.error("Error during search operation:", err.message);
     throw new Error("Failed to fetch posts!");
   }
 };

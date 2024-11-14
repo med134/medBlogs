@@ -33,7 +33,7 @@ const MainLink = ({ user }) => {
         <span
           className={`${limelight.className} text-3xl ml-2 text-dark dark:text-light lg:hidden`}
         >
-          medCode
+          medcode
         </span>
       </Link>
       <div className="flex items-center justify-evenly xl:ml-6 bg-transparent z-50">

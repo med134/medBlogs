@@ -15,9 +15,12 @@ export const viewport = {
 
 export const metadata = {
   metadataBase: new URL("https://www.medcode.dev"),
-  title: "Best Programming Blog & free components|medCode",
-  description: `Welcome to medCode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
+  title: "medcode | Best Programming Blog & free components",
+  description: `Welcome to medcode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components from medcode for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
   keywords: [
+    "medcode",
+    "medcode.dev",
+    "medcode programming",
     "programming",
     "freelance",
     "frontend developer",
@@ -29,10 +32,10 @@ export const metadata = {
   referrer: "origin-when-cross-origin",
   category: "technology",
   openGraph: {
-    title: "Best Programming Blog & components|medCode",
-    description: `Welcome to MedCode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
+    title: "medcode | Best Programming Blog & free components",
+    description: `Welcome to medcode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components from medcode for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
     url: "https://medcode.dev",
-    site_name: "MedCode Dev blog & Articles",
+    site_name: "medcode",
     images: [
       {
         url: "https://res.cloudinary.com/djcnq7nmj/image/upload/v1729700169/ogImage_nelsbz.png",

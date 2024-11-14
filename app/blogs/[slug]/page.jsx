@@ -63,7 +63,7 @@ export async function generateMetadata({ params }) {
 }
 const BlogPage = async ({ params }) => {
   const { slug } = await params;
-  const blog = await getPostsBySlug(slug);
+  const blog = await getPostsBySlug((await params).slug);
   const content = blog.content;
   const BlogId = JSON.parse(JSON.stringify(blog._id));
   const session = await auth();
