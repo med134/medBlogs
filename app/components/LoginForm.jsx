@@ -1,14 +1,10 @@
-"use client";
 import Form from "next/form";
 import { loginAuth } from "../utils/action";
 import { useActionState } from "react";
 
 const LoginForm = () => {
-  const [state, formAction] = useActionState(loginAuth, null);
-
   return (
-    <Form className="mt-4" action={formAction}>
-      {state?.message}
+    <Form className="mt-4" action={loginAuth}>
       <div className="flex justify-center items-center">
         <input
           className="w-full px-8 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
