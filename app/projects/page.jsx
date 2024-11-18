@@ -60,7 +60,8 @@ const page = () => {
       <main className="w-full sm:mb-6 flex flex-col items-center justify-center bg-light py-24 md:py-10  dark:text-light dark:bg-dark">
         <Layout className="pt-16 md:pt-10 sm:pt-6 xs:pt-8 xs:p-8">
           <h1 className="text-7xl text-dark font-sans md:text-5xl font-extrabold text-center py-10">
-            <AnimatedText text="Imagination Trumps Knowledge!" />
+            <AnimatedText
+            Text text="Imagination Trumps Knowledge!" />
           </h1>
           <div className="flex flex-col justify-center items-center">
             <div className="mb-6">

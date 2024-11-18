@@ -165,7 +165,7 @@ export const FeaturedProject = ({
             <Link
               href={preview}
               target="_blank"
-              className="ml-4 rounded-lg flex items-center group hover:bg-dark bg-light border text-dark border-dark p-2 px-6 text-lg font-semibold
+              className="ml-4 rounded-lg flex items-center group hover:bg-dark hover:text-light bg-light border text-dark border-dark p-2 px-6 text-lg font-semibold
               dark:bg-light dark:text-dark
               sm:px-4 sm:text-base xs:text-sm xs:ml-2
               "

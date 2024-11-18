@@ -9,6 +9,8 @@ import Category from "../module/Category";
 import Posts from "../module/Post";
 import Email from "../module/Email";
 import Comments from "../module/Comments";
+import bcrypt from "bcryptjs";
+import { z } from "zod";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
@@ -274,13 +276,15 @@ export const getArticleByCategories = async (category) => {
 
 export const addUser = async (formData) => {
   const { id, name, email, password } = Object.fromEntries(formData);
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
   try {
     connectDb();
     const newUser = new User({
       id,
       name,
       email,
-      password,
+      password: hashedPassword,
     });
     await newUser.save();
     console.log("user is save");
@@ -317,19 +321,25 @@ export const addArticle = async (formData) => {
     console.log(error);
   }
 };
+// login auth credentials
+export const loginAuth = async (formData) => {
+  const email = formData.get("email");
+  const password = formData.get("password");
+  console.log(email, password);
 
-export const login = async (formData) => {
-  const { name, password } = Object.fromEntries(formData);
   try {
-    await signIn("credentials", { name, password });
+    await signIn("credentials", { email, password });
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
+    if (err.message.includes("CredentialsSignin")) {
+      return { message: "Invalid username or password" };
+    }
     throw err;
   }
+  revalidatePath("/login")
 };
 export const handelDeleteBlog = async (formData) => {
   const _id = formData.get("id");
-  console.log("slug delete", _id);
   try {
     connectDb();
     await Article.findByIdAndDelete({ _id });

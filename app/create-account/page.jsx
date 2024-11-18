@@ -55,6 +55,7 @@ const Register = async () => {
                 <input
                   className="w-full px-8 ml-2 py-3 mt-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                   type="password"
+                  name="password"
                   placeholder="Password"
                   required
                 />

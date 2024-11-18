@@ -17,7 +17,6 @@ const SearchBar = ({ posts, firstSearch, queryOne }) => {
     setQuery(query);
   };
   useEffect(() => {}, [query]);
-
   const handleSearch = async (e) => {
     e.preventDefault();
     const articles = await searchFunction(query);

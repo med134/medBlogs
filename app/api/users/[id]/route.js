@@ -1,6 +1,5 @@
 import User from "@/app/module/User";
 import connect from "@/app/utils/ConnectDB";
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 

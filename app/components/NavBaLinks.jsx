@@ -22,7 +22,7 @@ const SmallLinksNavBar = dynamic(() => import("./SmallLinksNavBar"), {
 });
 
 const NavBaLinks = ({ user }) => {
-  const [mode, setMode] = useThemeSwitcher("dark");
+  const [mode, setMode] = useThemeSwitcher("light");
   const [isOpen, setIsOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const handelMode = () => {
