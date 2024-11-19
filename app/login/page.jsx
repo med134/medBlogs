@@ -3,20 +3,48 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 import TransitionEffect from "@/app/components/TransitionEffect";
-import {
-  handelLoginGithub,
-  LoginWithGoogle,
-  loginAuth,
-} from "@/app/utils/action";
+import { handelLoginGithub, LoginWithGoogle } from "@/app/utils/action";
 import Form from "next/form";
 import LoginForm from "../components/LoginForm";
 
+export const metadata = {
+  title: "medcode | Login",
+  description: `Welcome to medcode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components from medcode for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
+  keywords: [
+    "medcode",
+    "medcode.dev",
+    "medcode programming",
+    "programming",
+    "freelance",
+    "frontend developer",
+    "portfolio",
+    "make money online",
+  ],
+  applicationName: "medcode",
+  site_name: "medcode",
+  referrer: "origin-when-cross-origin",
+  category: "technology",
+  openGraph: {
+    title: "medcode | Login",
+    description: `Welcome to medcode Blog! Explore Programming Made Easy for Beginners and Experts. Discover Free Components from medcode for React.js, Next.js, Vue.js, and More. Join Our Community Today!`,
+    url: "https://medcode.dev/login",
+    site_name: "medcode",
+    images: [
+      {
+        url: "https://res.cloudinary.com/djcnq7nmj/image/upload/v1729700169/ogImage_nelsbz.png",
+        width: "1200",
+        height: "630",
+      },
+    ],
+    type: "website",
+  },
+};
 const Login = () => {
   return (
     <>
       <TransitionEffect />
-      <div className="flex w-full bg-white items-center justify-center dark:bg-dark py-32 p-16 md:block">
-        <div className="m-2 w-full rounded-2xl bg-gray-400 bg-cover bg-center text-white">
+      <div className="flex w-full bg-white items-center justify-center dark:bg-dark py-32 p-16 lg:flex lg:flex-col-reverse sm:p-8">
+        <div className="m-2 w-full rounded-2xl bg-gray-400 bg-cover bg-center text-white sm:hidden">
           <Image
             height={500}
             width={500}
@@ -28,7 +56,7 @@ const Login = () => {
             }
           />
         </div>
-        <div className="w-full sm:w-full">
+        <div className="w-full sm:w-full sm:py-16">
           <div className="p-8 xs:p-4">
             <h1 className="text-3xl font-black text-slate-700 dark:text-light">
               Login

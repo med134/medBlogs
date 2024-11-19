@@ -3,22 +3,20 @@ import { auth, signIn, signOut } from "./auth";
 import Article from "../module/Article";
 import User from "../module/User";
 import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
 import connectDb from "./ConnectDB";
 import Category from "../module/Category";
 import Posts from "../module/Post";
 import Email from "../module/Email";
 import Comments from "../module/Comments";
 import bcrypt from "bcryptjs";
-import { z } from "zod";
+import { revalidatePath } from "next/cache";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
 };
 export const handelLogOut = async () => {
   await signOut();
-  revalidatePath("/");
-  redirect("/login");
+  revalidatePath("/login");
 };
 export const LoginWithGoogle = async () => {
   await signIn("google");
@@ -322,21 +320,16 @@ export const addArticle = async (formData) => {
   }
 };
 // login auth credentials
-export const loginAuth = async (formData) => {
+export const loginAuth = async (prvState, formData) => {
   const email = formData.get("email");
   const password = formData.get("password");
-  console.log(email, password);
-
   try {
     await signIn("credentials", { email, password });
+    return "user login successfully";
   } catch (err) {
-    console.log(err.message);
-    if (err.message.includes("CredentialsSignin")) {
-      return { message: "Invalid username or password" };
-    }
-    throw err;
+    return "password or email is invalid, try again !";
   }
-  revalidatePath("/login")
+  revalidatePath("/");
 };
 export const handelDeleteBlog = async (formData) => {
   const _id = formData.get("id");

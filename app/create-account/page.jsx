@@ -10,7 +10,7 @@ const Register = async () => {
   return (
     <>
       <TransitionEffect />
-      <div className="flex w-full bg-white items-center justify-center dark:bg-dark py-32 p-16 md:block">
+      <div className="flex w-full bg-white items-center justify-center dark:bg-dark py-32 p-16 lg:flex lg:flex-col-reverse md:p-10">
         <div className="m-2 w-full rounded-2xl bg-gray-400 bg-cover bg-center text-white">
           <Image
             height={500}
@@ -23,9 +23,9 @@ const Register = async () => {
             }
           />
         </div>
-        <div className="w-full sm:w-full">
+        <div className="w-full sm:w-full md:mt-16">
           <div className="p-8 xs:p-4">
-            <h1 className="text-3xl font-black text-slate-700 dark:text-light">
+            <h1 className="text-3xl font-black text-slate-700 dark:text-light sm:text-2xl">
               Create Your Account
             </h1>
             <p className="mt-2 mb-5 text-base leading-tight text-gray-600 dark:text-light">
@@ -53,7 +53,7 @@ const Register = async () => {
                   required
                 />
                 <input
-                  className="w-full px-8 ml-2 py-3 mt-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                  className="w-full px-8 ml-2 sm:ml-0 py-3 mt-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                   type="password"
                   name="password"
                   placeholder="Password"
@@ -71,15 +71,15 @@ const Register = async () => {
             <h4 className="flex justify-center underline text-gray-500">
               Login with Google or Github
             </h4>
-            <div className="flex justify-around items-center">
+            <div className="flex justify-around items-center sm:flex md:flex-col">
               <form action={LoginWithGoogle}>
-                <button className="w-full mt-4 text-center px-6 py-2 border flex justify-center items-center gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
+                <button className="w-full mt-4 text-center px-5 py-2 border flex justify-center items-center gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
                   <FcGoogle className="h-6 w-6 " />
-                  <span className="dark:text-light">Login with Google</span>
+                  <span className="dark:text-light text-sm ">Login with Google</span>
                 </button>
               </form>
               <form action={handelLoginGithub}>
-                <button className="text-white w-full mt-4  bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex justify-center items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2">
+                <button className="text-white w-full mt-4 bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex justify-center items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2">
                   <svg
                     className="w-4 h-4 mr-2"
                     aria-hidden="true"

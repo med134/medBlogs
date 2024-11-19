@@ -19,7 +19,7 @@ export const authConfig = {
     },
     authorized({ auth, request }) {
       const user = auth?.user;
-     const EMAIL = "mohamed7dakir@gmail.com";
+      const EMAIL = "mohamed7dakir@gmail.com";
       const isOneBlog = request?.nextUrl?.pathname?.startsWith("/dashboard");
       const isOnLoginPage =
         request?.nextUrl?.pathname.startsWith("/login") ||
