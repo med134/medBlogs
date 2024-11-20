@@ -15,8 +15,13 @@ export const handelLoginGithub = async () => {
   await signIn("github");
 };
 export const handelLogOut = async () => {
-  await signOut();
-  revalidatePath("/login");
+  try {
+    await signOut();
+  } catch (err) {
+    console.log(err);
+  }
+  revalidatePath("/dashboard");
+  redirect("/login");
 };
 export const LoginWithGoogle = async () => {
   await signIn("google");
@@ -320,16 +325,17 @@ export const addArticle = async (formData) => {
   }
 };
 // login auth credentials
-export const loginAuth = async (prvState, formData) => {
-  const email = formData.get("email");
-  const password = formData.get("password");
+export const loginAuth = async (prevState, formData) => {
+  const { email, password } = Object.fromEntries(formData);
   try {
+    connectDb();
     await signIn("credentials", { email, password });
-    return "user login successfully";
+    console.log("user signIn successfully");
   } catch (err) {
-    return "password or email is invalid, try again !";
+    console.log(err);
+    return "password or email is invalid ,try again !";
   }
-  revalidatePath("/");
+  redirect("/dashboard");
 };
 export const handelDeleteBlog = async (formData) => {
   const _id = formData.get("id");
@@ -373,7 +379,7 @@ export const createComment = async (formData) => {
   }
   revalidatePath("/blogs");
 };
-export const editUserProfile = async (formData) => {
+export const editUserProfile = async (prevSettings, formData) => {
   const _id = formData.get("id");
   const name = formData.get("name");
   const email = formData.get("email");
@@ -386,6 +392,7 @@ export const editUserProfile = async (formData) => {
   const youtubeUrl = formData.get("youtubeUrl");
   const dribbleUrl = formData.get("dribbleUrl");
   const instagramUrl = formData.get("instagramUrl");
+
   try {
     connectDb();
     const updatedUser = await User.findByIdAndUpdate(
@@ -409,5 +416,6 @@ export const editUserProfile = async (formData) => {
   } catch (err) {
     console.log(err.message);
   }
-  redirect(`/dashboard/profile/${_id}`);
+  revalidatePath(`/dashboard/settings/${_id}`, "layout");
+  redirect(`/dashboard`);
 };

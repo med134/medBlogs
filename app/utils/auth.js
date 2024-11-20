@@ -5,27 +5,27 @@ import { connect } from "./ConnectMongo";
 import User from "@/app/module/User";
 import { authConfig } from "./auth.config";
 import bcrypt from "bcryptjs";
-import CredentialsProvider from "next-auth/providers/credentials";
+import Credentials from "next-auth/providers/credentials";
 
 const login = async (credentials) => {
+  let user = null;
   try {
     connect();
-    const user = await User.findOne({ email: credentials.email });
-
-    if (!user) return "wrong credentials";
-
-    const isPasswordCorrect = await bcrypt.compare(
-      credentials.password,
-      user.password
-    );
-
-    if (!isPasswordCorrect) return "wrong password";
-
-    return user;
+    user = await User.findOne({ email: credentials?.email });
+    if (!user) {
+      return "wrong credentials";
+    } else {
+      const isPasswordCorrect = await bcrypt.compare(
+        credentials?.password,
+        user.password
+      );
+      if (!isPasswordCorrect) return "wrong password";
+    }
   } catch (err) {
     console.log(err);
     throw new Error("Failed to login!");
   }
+  return user;
 };
 
 export const {
@@ -38,20 +38,22 @@ export const {
   providers: [
     GitHub,
     Google,
-    CredentialsProvider({
+    Credentials({
       async authorize(credentials) {
         try {
           const user = await login(credentials);
-          console.log("this is auth", user);
-          return user;
+          if (user) {
+            console.log("this is auth", user);
+            return user;
+          }
         } catch (err) {
-          return null;
+          console.log(err.message);
         }
       },
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({ user, profile }) {
       connect();
       try {
         const userAuth = await User.findOne({ email: profile.email });

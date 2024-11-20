@@ -6,6 +6,7 @@ import TransitionEffect from "@/app/components/TransitionEffect";
 import { handelLoginGithub, LoginWithGoogle } from "@/app/utils/action";
 import Form from "next/form";
 import LoginForm from "../components/LoginForm";
+import { auth } from "../utils/auth";
 
 export const metadata = {
   title: "medcode | Login",
@@ -39,7 +40,9 @@ export const metadata = {
     type: "website",
   },
 };
-const Login = () => {
+const Login = async () => {
+  const session = await auth();
+  console.log("user session", session);
   return (
     <>
       <TransitionEffect />
@@ -68,7 +71,7 @@ const Login = () => {
               </span>{" "}
               to publish blogs.
             </p>
-            <LoginForm />
+            <LoginForm session={session} />
             <div className="bg-gray-400 h-[1px] w-full mt-5 mb-5"></div>
             <h4 className="flex justify-center underline text-gray-500">
               Login with Google or Github

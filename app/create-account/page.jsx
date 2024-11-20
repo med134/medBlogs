@@ -71,11 +71,13 @@ const Register = async () => {
             <h4 className="flex justify-center underline text-gray-500">
               Login with Google or Github
             </h4>
-            <div className="flex justify-around items-center sm:flex md:flex-col">
+            <div className="flex-col">
               <form action={LoginWithGoogle}>
                 <button className="w-full mt-4 text-center px-5 py-2 border flex justify-center items-center gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
                   <FcGoogle className="h-6 w-6 " />
-                  <span className="dark:text-light text-sm ">Login with Google</span>
+                  <span className="dark:text-light text-sm ">
+                    Login with Google
+                  </span>
                 </button>
               </form>
               <form action={handelLoginGithub}>

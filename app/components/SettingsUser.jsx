@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { EditButton } from "./SearchButton";
 import Image from "next/image";
@@ -11,13 +12,34 @@ import {
   BsYoutube,
 } from "react-icons/bs";
 import { BiX } from "react-icons/bi";
+import { useActionState } from "react";
+import { useReducer } from 'react';
+
+
 const SettingsUser = ({ user }) => {
+  const initialState = [
+    {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      image: user.imageUrl,
+      about: user.about,
+      homeAddress: user.homeAddress,
+      job: user.job,
+      youtubeUrl: user.youtubeUrl,
+      githubUrl: user.githubUrl,
+      linkedInUrl: user.linkedInUrl,
+      dribbleUrl: user.dribbleUrl,
+      instagramUrl: user.instagramUrl,
+      twitterUrl: user.twitterUrl,
+    },
+  ];
+  const [message, action, isPending] = useActionState(editUserProfile, null);
+  console.log(user);
+  
   return (
     <div className="w-full rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
-      <Form
-        action={editUserProfile}
-        className="p-4 md:p-2 text-center lg:text-left"
-      >
+      <Form action={action} className="p-4 md:p-2 text-center lg:text-left">
         {/* Image for mobile view */}
         <Image
           className="block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
@@ -41,7 +63,7 @@ const SettingsUser = ({ user }) => {
               type="text"
               placeholder="Your Job"
               name="job"
-            />
+             />
           </div>
           <div className="relative">
             <input
@@ -131,6 +153,7 @@ const SettingsUser = ({ user }) => {
             </div>
           </div>
         </div>
+        {/* {message && <p className="text-red-500">{message}</p>} */}
         <EditButton />
       </Form>
     </div>
