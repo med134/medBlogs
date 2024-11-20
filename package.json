@@ -10,6 +10,12 @@
     "test": "jest",
     "test:watch": "jest --watch"
   },
+  "overrides": {
+    "next": {
+      "react": "^19.0.0-rc-a960b92c-20240819",
+      "react-dom": "^19.0.0-rc-a960b92c-20240819"
+    }
+  },
   "dependencies": {
     "@next/bundle-analyzer": "^14.1.4",
     "ace-builds": "^1.32.7",
