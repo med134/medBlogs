@@ -385,6 +385,7 @@ export const editUserProfile = async (prevSettings, formData) => {
   const email = formData.get("email");
   const job = formData.get("job");
   const about = formData.get("about");
+  const imageUrl = formData.get("imageUrl");
   const homeAddress = formData.get("homeAddress");
   const twitterUrl = formData.get("twitterUrl");
   const linkedInUrl = formData.get("linkedInUrl");
@@ -401,6 +402,7 @@ export const editUserProfile = async (prevSettings, formData) => {
         name,
         email,
         job,
+        imageUrl,
         homeAddress,
         about,
         twitterUrl,
@@ -412,10 +414,9 @@ export const editUserProfile = async (prevSettings, formData) => {
       },
       { new: true }
     );
-    return JSON.parse(JSON.stringify(updatedUser));
   } catch (err) {
     console.log(err.message);
   }
-  revalidatePath(`/dashboard/settings/${_id}`, "layout");
-  redirect(`/dashboard`);
+  revalidatePath("/dashboard/users");
+  redirect(`/dashboard/users/${_id}`);
 };

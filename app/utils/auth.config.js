@@ -26,7 +26,6 @@ export const authConfig = {
         request?.nextUrl?.pathname.startsWith("/create-account");
       const adminPages =
         request?.nextUrl?.pathname.startsWith("/dashboard/pending") ||
-        request?.nextUrl?.pathname.startsWith("/dashboard/users") ||
         request?.nextUrl?.pathname.startsWith("/dashboard/messages");
 
       if (adminPages && user?.email !== EMAIL) {

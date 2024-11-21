@@ -259,7 +259,7 @@ export const menuItems = [
     name: "Users",
     link: "/dashboard/users",
     icon: PiUsersThree,
-    isAdmin: true,
+    isAdmin: false,
   },
   {
     name: "Draft blog",

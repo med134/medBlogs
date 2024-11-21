@@ -3,8 +3,9 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import Image from "next/image";
 import Form from "next/form";
 import { deleteUser } from "../utils/action";
+import Link from "next/link";
 
-const UsersDashboard = ({ users }) => {
+const UsersDashboard = ({ users, isAdmin }) => {
   return (
     <div className="container mx-auto p-4 py-6 xs:p-2 xs:py-1">
       <h1 className="text-2xl font-bold mb-4">Admin & Users</h1>
@@ -18,7 +19,9 @@ const UsersDashboard = ({ users }) => {
                 </th>
                 <th className="px-5 py-3 sm:hidden">Email</th>
                 <th className="px-5 py-3 sm:hidden ">USER ROLE</th>
-                <th className="px-5 py-3 ">Actions</th>
+                <th className={`${!isAdmin ? "hidden" : "px-5 py-3 "}`}>
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -38,41 +41,42 @@ const UsersDashboard = ({ users }) => {
                       width={200}
                       className="h-10 w-10 rounded-full object-cover"
                     />
-                    <h2 className="text-sm font-semibold px-4 md:text-xs md:font-normal">
+                    <Link
+                      href={`/dashboard/users/${user._id}`}
+                      className="text-sm uppercase font-semibold px-4 md:text-xs md:font-normal hover:text-mainColor"
+                    >
                       {user.name}
-                    </h2>
+                    </Link>
                   </td>
                   <td className=" px-5 text-sm sm:hidden">
                     <p className="text-gray-600 px-4">{user.email}</p>
                   </td>
                   <td className="sm:hidden">
                     <p className="text-sm px-5">
-                      {user.name === "MOHAMMED DAKIR" ? (
-                        <span>Admin</span>
-                      ) : (
-                        <span>User</span>
-                      )}
+                      {user.isAdmin ? <span>Admin</span> : <span>User</span>}
                     </p>
                   </td>
-                  <td className="flex justify-start items-start space-x-2 p-2">
-                    <Form action={deleteUser} className="">
-                      <input
-                        type=""
-                        hidden
-                        name="id"
-                        id="id"
-                        value={user._id}
-                        readOnly
-                      />
-                      <button
-                        type="submit"
-                        className={`flex justify-around group px-2 py-1 items-center bg-red-500 rounded-md text-light`}
-                      >
-                        Delete
-                        <RiDeleteBin5Line className="ml-2 hover:font-semibold" />
-                      </button>
-                    </Form>
-                  </td>
+                  {isAdmin && (
+                    <td className="flex justify-start items-start space-x-2 p-2">
+                      <Form action={deleteUser} className="">
+                        <input
+                          type=""
+                          hidden
+                          name="id"
+                          id="id"
+                          value={user._id}
+                          readOnly
+                        />
+                        <button
+                          type="submit"
+                          className={`flex justify-around group px-2 py-1 items-center bg-red-500 rounded-md text-light`}
+                        >
+                          Delete
+                          <RiDeleteBin5Line className="ml-2 hover:font-semibold" />
+                        </button>
+                      </Form>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>

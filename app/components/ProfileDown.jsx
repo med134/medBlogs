@@ -39,7 +39,7 @@ const ProfileDown = ({ user }) => {
           <div className="py-1 rounded-md shadow-xs">
             <ul className="block py-2 z-[1000] min-w-full w-max rounded-lg max-h-96 overflow-auto dark:text-light">
               <Link
-                href={`/dashboard/profile/${user._id}`}
+                href={`/dashboard/users/${user._id}`}
                 className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer  dark:text-light"
               >
                 <svg

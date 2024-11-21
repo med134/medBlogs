@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { PiUserGear } from "react-icons/pi";
+import { FaUserAlt } from "react-icons/fa";
 import { auth } from "../utils/auth";
 
 const ProfileDashboard = async ({ user }) => {
@@ -26,7 +26,7 @@ const ProfileDashboard = async ({ user }) => {
             {user.name}
           </h1>
           <div className="flex justify-center items-center">
-            <PiUserGear className="fill-mainColor w-16 font-bold" />
+            <FaUserAlt className="fill-mainColor w-16 font-bold" />
             <span className="text-gray-600">
               {user?.isAdmin ? "Admin" : "User"}
             </span>
@@ -62,7 +62,7 @@ const ProfileDashboard = async ({ user }) => {
           <div className="pt-12 pb-8 text-center">
             {session.user.email === user.email ? (
               <Link
-                href={`/dashboard/settings/${user._id}`}
+                href={`/dashboard/users/settings/${user._id}`}
                 className="bg-mainColor hover:bg-cyan-900 text-white font-bold py-2 px-4 rounded-full"
               >
                 Edit your profile

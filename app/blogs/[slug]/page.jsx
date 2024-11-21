@@ -82,7 +82,7 @@ const BlogPage = async ({ params }) => {
             <div className="flex justify-start py-1">
               <div className="flex justify-start items-center dark:bg-dark">
                 <Link
-                  href={`/dashboard/profile/${blog.userId}`}
+                  href={`/dashboard/users/${blog.userId}`}
                     
                   className="text-blue-600 text-sm uppercase dark:text-light xs:text-xs"
                 >

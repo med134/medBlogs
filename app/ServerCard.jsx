@@ -50,7 +50,7 @@ const Card = async () => {
               {item.description.slice(0, 160)}...
             </p>
             <Link
-              href={`/dashboard/profile/${item.userId}`}
+              href={`/dashboard/users/${item.userId}`}
               className="flex items-center justify-start py-3"
             >
               <Image
