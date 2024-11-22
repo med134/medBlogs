@@ -326,16 +326,15 @@ export const addArticle = async (formData) => {
 };
 // login auth credentials
 export const loginAuth = async (prevState, formData) => {
-  const { email, password } = Object.fromEntries(formData);
   try {
-    connectDb();
-    await signIn("credentials", { email, password });
-    console.log("user signIn successfully");
+    await signIn("credentials", {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    });
   } catch (err) {
     console.log(err);
     return "password or email is invalid ,try again !";
   }
-  redirect("/dashboard");
 };
 export const handelDeleteBlog = async (formData) => {
   const _id = formData.get("id");

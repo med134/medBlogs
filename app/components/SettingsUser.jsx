@@ -20,6 +20,24 @@ import { MdOutlineWorkOutline, MdOutlineLocalLibrary } from "react-icons/md";
 const SettingsUser = ({ user }) => {
   const [message, action, isPending] = useActionState(editUserProfile, null);
   const [dataUrl, setDataUrl] = useState(user.imageUrl);
+  const [formData, setFormData] = useState({
+    job: user.job,
+    homeAddress: user.homeAddress,
+    about: user.about,
+    youtubeUrl: user.youtubeUrl,
+    githubUrl: user.githubUrl,
+    instagramUrl: user.instagramUrl,
+    linkedInUrl: user.linkedInUrl,
+    dribbleUrl: user.dribbleUrl,
+    twitterUrl: user.twitterUrl,
+  });
+
+  //onchange function
+  const handelChange = (key, value) => {
+    setFormData((prv) => {
+      return { ...prv, [key]: value };
+    });
+  };
   const readURL = async (event) => {
     const input = event.target;
     if (input.files && input.files[0]) {
@@ -86,6 +104,8 @@ const SettingsUser = ({ user }) => {
               type="text"
               placeholder="Your Job"
               name="job"
+              value={formData.job}
+              onChange={(e) => handelChange(e.target.name, e.target.value)}
             />
           </div>
           <div className="relative w-full">
@@ -95,6 +115,8 @@ const SettingsUser = ({ user }) => {
               type="text"
               placeholder="Country"
               name="homeAddress"
+              value={formData.homeAddress}
+              onChange={(e) => handelChange(e.target.name, e.target.value)}
             />
           </div>
         </div>
@@ -111,6 +133,8 @@ const SettingsUser = ({ user }) => {
             id="about"
             rows={5}
             maxLength={256}
+            value={formData.about}
+            onChange={(e) => handelChange(e.target.name, e.target.value)}
             placeholder="write somethings about you experience or skills to describe you self [Max 256 chars]"
             className="rounded-lg p-4 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm outline-mainColor"
           />

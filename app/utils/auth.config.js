@@ -6,7 +6,8 @@ export const authConfig = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        (token.id = user.id), (token.isAdmin = user.isAdmin);
+        token.id = user.id;
+        token.isAdmin = user.isAdmin;
       }
       return token;
     },
@@ -17,9 +18,11 @@ export const authConfig = {
       }
       return session;
     },
+
     authorized({ auth, request }) {
       const user = auth?.user;
-      const EMAIL = "mohamed7dakir@gmail.com";
+      console.log(auth);
+      const EMAIL = process.env.ADMIN_EMAIL;
       const isOneBlog = request?.nextUrl?.pathname?.startsWith("/dashboard");
       const isOnLoginPage =
         request?.nextUrl?.pathname.startsWith("/login") ||
@@ -29,7 +32,7 @@ export const authConfig = {
         request?.nextUrl?.pathname.startsWith("/dashboard/messages");
 
       if (adminPages && user?.email !== EMAIL) {
-        return Response.redirect(new URL("/dashboard", request.nextUrl));
+        return false;
       }
       if (isOneBlog && !user) {
         return Response.redirect(new URL("/login", request.nextUrl));

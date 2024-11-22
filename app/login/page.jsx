@@ -42,7 +42,7 @@ export const metadata = {
 };
 const Login = async () => {
   const session = await auth();
-  console.log("user session", session);
+  console.log("user from page login", session);
   return (
     <>
       <TransitionEffect />

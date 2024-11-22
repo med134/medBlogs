@@ -11,7 +11,7 @@ const Register = async () => {
     <>
       <TransitionEffect />
       <div className="flex w-full bg-white items-center justify-center dark:bg-dark py-32 p-16 lg:flex lg:flex-col-reverse md:p-10">
-        <div className="m-2 w-full rounded-2xl bg-gray-400 bg-cover bg-center text-white">
+        <div className="m-2 w-full rounded-2xl bg-gray-400 bg-cover bg-center text-white md:hidden">
           <Image
             height={500}
             width={500}

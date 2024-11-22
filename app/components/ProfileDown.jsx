@@ -73,7 +73,7 @@ const ProfileDown = ({ user }) => {
                 Dashboard
               </Link>
               <Link
-                href={`/dashboard/settings/${user._id}`}
+                href={`/dashboard/users/settings/${user._id}`}
                 className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer  dark:text-light"
               >
                 <IoSettingsOutline className="fill-dark w-6 h-6 mr-3" />
