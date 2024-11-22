@@ -7,7 +7,7 @@ const page = async () => {
   const AllUsers = await getAllUsers();
   const data = JSON.parse(JSON.stringify(AllUsers));
   const authUser = await auth();
-  const isAdmin = authUser.user.isAdmin;
+  const isAdmin = authUser.user.email;
   return (
     <div className="">
       <UsersDashboard users={data} isAdmin={isAdmin} />

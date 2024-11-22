@@ -7,15 +7,19 @@ export const authConfig = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.isAdmin = user.isAdmin;
+        token.name = user.name;
+        token.email = user.email;
       }
+      console.log("this is token", token);
       return token;
     },
     async session({ session, token }) {
       if (token) {
         session.user.id = token.id;
-        session.user.isAdmin = token.isAdmin;
+        session.user.name = token.name;
+        session.user.email = token.email;
       }
+      console.log("this is session", session);
       return session;
     },
 

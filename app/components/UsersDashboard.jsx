@@ -19,7 +19,13 @@ const UsersDashboard = ({ users, isAdmin }) => {
                 </th>
                 <th className="px-5 py-3 sm:hidden">Email</th>
                 <th className="px-5 py-3 sm:hidden ">USER ROLE</th>
-                <th className={`${!isAdmin ? "hidden" : "px-5 py-3 "}`}>
+                <th
+                  className={`${
+                    isAdmin == !process.env.ADMIN_EMAIL
+                      ? "hidden"
+                      : "px-5 py-3 "
+                  }`}
+                >
                   Actions
                 </th>
               </tr>
@@ -53,7 +59,11 @@ const UsersDashboard = ({ users, isAdmin }) => {
                   </td>
                   <td className="sm:hidden">
                     <p className="text-sm px-5">
-                      {user.isAdmin ? <span>Admin</span> : <span>User</span>}
+                      {user.email === process.env.ADMIN_EMAIL ? (
+                        <span>Admin</span>
+                      ) : (
+                        <span>User</span>
+                      )}
                     </p>
                   </td>
                   {isAdmin && (

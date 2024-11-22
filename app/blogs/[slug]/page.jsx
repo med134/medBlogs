@@ -4,13 +4,12 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import "@/app/globals.css";
 import { auth } from "@/app/utils/auth";
-const imageBlog = dynamic(() => import("@/public/images/postera.png"));
 import { getPostsBySlug, FormatDate } from "@/app/utils/action";
 import "jodit-react/examples/app.css";
 import Loading from "@/app/Loading";
 import SideBarLoading from "@/app/components/SideBarLoading";
-
-const ShareButtons = dynamic(() => import("@/app/components/ShareButtons"), {
+const imageBlog = dynamic(() => import("@/public/images/postera.png"));
+const ReactionBlog = dynamic(() => import("@/app/components/ReactionBlog"), {
   loading: () => <Loading />,
 });
 const Comments = dynamic(() => import("@/app/components/comments/comments"), {
@@ -83,7 +82,6 @@ const BlogPage = async ({ params }) => {
               <div className="flex justify-start items-center dark:bg-dark">
                 <Link
                   href={`/dashboard/users/${blog.userId}`}
-                    
                   className="text-blue-600 text-sm uppercase dark:text-light xs:text-xs"
                 >
                   {blog?.username}
@@ -117,7 +115,7 @@ const BlogPage = async ({ params }) => {
             className="py-4 w-full xs:min-w-full"
             dangerouslySetInnerHTML={{ __html: content }}
           />
-          <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
+          <ReactionBlog slug={slug} />
           <Comments postId={BlogId} userData={session} />
         </div>
       </div>

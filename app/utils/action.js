@@ -326,15 +326,19 @@ export const addArticle = async (formData) => {
 };
 // login auth credentials
 export const loginAuth = async (prevState, formData) => {
+  const email = formData.get("email");
+  const password = formData.get("password");
+  console.log(email, password);
   try {
     await signIn("credentials", {
-      email: formData.get("email"),
-      password: formData.get("password"),
+      email,
+      password,
     });
   } catch (err) {
     console.log(err);
     return "password or email is invalid ,try again !";
   }
+  redirect("/dashboard");
 };
 export const handelDeleteBlog = async (formData) => {
   const _id = formData.get("id");
@@ -418,4 +422,31 @@ export const editUserProfile = async (prevSettings, formData) => {
   }
   revalidatePath("/dashboard/users");
   redirect(`/dashboard/users/${_id}`);
+};
+
+export const reducer = async (state, action) => {
+  try {
+    switch (action.type) {
+      case "incremented_age": {
+        return {
+          name: state.name,
+          age: state.age + 1,
+        };
+      }
+      case "changed_name": {
+        return {
+          name: action.nextName,
+          age: state.age,
+        };
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const addDisLikes = async (formData) => {
+  try {
+  } catch (error) {
+    console.log(error);
+  }
 };
