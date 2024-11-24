@@ -21,9 +21,9 @@ const UsersDashboard = ({ users, isAdmin }) => {
                 <th className="px-5 py-3 sm:hidden ">USER ROLE</th>
                 <th
                   className={`${
-                    isAdmin == !process.env.ADMIN_EMAIL
-                      ? "hidden"
-                      : "px-5 py-3 "
+                    isAdmin === process.env.ADMIN_EMAIL
+                      ? "px-5 py-3"
+                      : " hidden"
                   }`}
                 >
                   Actions
@@ -66,7 +66,7 @@ const UsersDashboard = ({ users, isAdmin }) => {
                       )}
                     </p>
                   </td>
-                  {isAdmin && (
+                  {isAdmin === process.env.ADMIN_EMAIL && (
                     <td className="flex justify-start items-start space-x-2 p-2">
                       <Form action={deleteUser} className="">
                         <input
