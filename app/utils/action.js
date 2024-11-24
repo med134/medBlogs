@@ -453,8 +453,10 @@ export const incrementLike = async (_id) => {
       );
       return updatedDoc.numberOfLikes; // Return the updated numberOfLikes value
     } else {
+      connectDb();
       const newLikes = new Likes({ blogId: _id, numberOfLikes: 1 });
       await newLikes.save();
+      return newLikes.numberOfLikes;
     }
   } catch (error) {
     console.log(error);
