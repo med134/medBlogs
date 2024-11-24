@@ -6,13 +6,9 @@ const likesSchema = new Schema(
       type: String,
       required: true,
     },
-    username: {
-      type: String,
-      required: true,
-    },
     numberOfLikes: {
       type: Number,
-      default: 1,
+      required: true,
     },
   },
   { timestamps: true }

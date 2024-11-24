@@ -34,7 +34,7 @@ const SearchBar = ({ posts, firstSearch, queryOne }) => {
           placeholder="Search for components & templates..."
           value={query}
           onChange={(e) => onChangeHandle(e.target.value)}
-          className="bg-transparent w-full dark:text-light focus:outline-none font-semibold border-0 focus:ring-0 px-0 py-0"
+          className="bg-transparent w-full dark:text-light focus:outline-none font-semibold border-0 focus:ring-0 px-4 py-0"
           name="topic"
         />
          <button

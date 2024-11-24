@@ -67,14 +67,14 @@ const Card = async ({ params }) => {
   const myTitle =
     category === "all" ? `All Articles` : `All Articles About ${category}`;
   return (
-    <div className="bg-light dark:bg-dark w-full py-16 p-6">
+    <div className="bg-light dark:bg-dark w-full py-16 p-6 sm:p-2 sm:py-16">
       <h1 className="px-14 text-mainColor dark:text-light sm:text-xl text-3xl font-outFit font-bold uppercase mt-16 lg:mt-2 md:px-6 xs:pt-6">
         #{myTitle}
       </h1>
-      <div className="flex justify-around items-center px-16 pt-14 lg:px-4 md:flex md:flex-wrap md:justify-around md:items-center xs:grid xs:grid-cols-2 xs:gap-3  ">
+      <div className="flex justify-around items-center px-16 pt-14 lg:px-4 md:flex-wrap">
         {categoryHeader?.map((item) => (
           <Link
-            className={`${styles.category} text-sm md:mb-3 w-12 h-16 xl:w-12 xl:h-10 sm:ml-4 dark:text-light xs:w-full xs:px-16 xs:bg-mainColor xs:text-light `}
+            className={`${styles.category} text-sm md:mb-3 w-12 h-16 xl:h-10 sm:ml-2 dark:text-light xs:px-4 sm:w-8 sm:h-6 xs:bg-mainColor xs:text-light `}
             key={item._id}
             href={`/category/${item.value}`}
           >

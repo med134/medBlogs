@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import "@/app/globals.css";
 import { auth } from "@/app/utils/auth";
-import { getPostsBySlug, FormatDate } from "@/app/utils/action";
+import { getPostsBySlug, FormatDate, getLikes } from "@/app/utils/action";
 import "jodit-react/examples/app.css";
 import Loading from "@/app/Loading";
 import SideBarLoading from "@/app/components/SideBarLoading";
@@ -66,6 +66,8 @@ const BlogPage = async ({ params }) => {
   const content = blog.content;
   const BlogId = JSON.parse(JSON.stringify(blog._id));
   const session = await auth();
+  const likesPost = await getLikes(blog._id);
+  const totalLikes = JSON.parse(JSON.stringify(likesPost));
 
   return (
     <section className="p-16 py-40 w-full grid grid-cols-7 gap-10 xl:gap-8 lg:flex lg:flex-col sm:p-3 sm:py-28 dark:bg-dark">
@@ -115,7 +117,11 @@ const BlogPage = async ({ params }) => {
             className="py-4 w-full xs:min-w-full"
             dangerouslySetInnerHTML={{ __html: content }}
           />
-          <ReactionBlog slug={slug} />
+          <ReactionBlog
+            slug={slug}
+            totalLikes={totalLikes}
+            BlogId={BlogId}
+          />
           <Comments postId={BlogId} userData={session} />
         </div>
       </div>

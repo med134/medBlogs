@@ -10,7 +10,6 @@ export const authConfig = {
         token.name = user.name;
         token.email = user.email;
       }
-      console.log("this is token", token);
       return token;
     },
     async session({ session, token }) {
@@ -19,13 +18,11 @@ export const authConfig = {
         session.user.name = token.name;
         session.user.email = token.email;
       }
-      console.log("this is session", session);
       return session;
     },
 
     authorized({ auth, request }) {
       const user = auth?.user;
-      console.log(auth);
       const EMAIL = process.env.ADMIN_EMAIL;
       const isOneBlog = request?.nextUrl?.pathname?.startsWith("/dashboard");
       const isOnLoginPage =

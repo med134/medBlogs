@@ -1,32 +1,44 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { BiDislike } from "react-icons/bi";
 import ShareButtons from "./ShareButtons";
-import { useReducer } from "react";
-import { reducer } from "../utils/action";
+import { incrementLike } from "../utils/action";
 
-const ReactionBlog = ({ slug }) => {
-  const [state, dispatch] = useReducer(reducer, { likes: 42 });
+const ReactionBlog = ({ slug, totalLikes, BlogId }) => {
+  const numberOfLikes = totalLikes?.numberOfLikes;
+  const [likes, setLikes] = useState(numberOfLikes ? numberOfLikes : 1);
+  const [isClicked, setIsClicked] = useState(false);
+  console.log("client side", likes);
   return (
-    <div className="flex flex-col justify-start items-center">
-      <div className="flex">
-        <button
-          onClick={() => {
-            dispatch({ type: "incremented_likes" });
-          }}
-          className="py-1.5 px-3 hover:text-mainColor hover:scale-105 hover:shadow text-center border border-gray-300 rounded-md border-gray-400 h-8 text-sm flex items-center gap-1 lg:gap-2"
-        >
-          <AiOutlineLike />
-          <span>{state.likes}</span>
-        </button>
-        <button className="py-1.5 ml-2 px-3 hover:text-mainColor hover:scale-105 hover:shadow text-center border border-gray-300 rounded-md border-gray-400 h-8 text-sm flex items-center gap-1 lg:gap-2">
-          <BiDislike />
-          <span>34</span>
-        </button>
+    <>
+      <div className="flex flex-col justify-start items-center p-2 border mb-1 rounded-md">
+        <div className="flex">
+          <button
+            onClick={async () => {
+              if (!isClicked) {
+                const updatedLikes = await incrementLike(BlogId);
+                setLikes(updatedLikes);
+                setIsClicked(true);
+              }
+            }}
+            className={`${
+              isClicked ? "bg-mainColor" : "bg-transparent"
+            }py-2 px-10 hover:text-mainColor hover:scale-105 hover:shadow text-center border border-gray-300 rounded-md  h-8 text-sm flex items-center gap-1 lg:gap-2`}
+          >
+            <AiOutlineLike
+              className={`w-5 h-5 ${isClicked ? "fill-mainColor" : ""}`}
+            />
+            <span>{likes}</span>
+          </button>
+          <div className="py-2 ml-2 px-10 hover:text-mainColor hover:scale-105 hover:shadow text-center border border-gray-300 rounded-md h-8 text-sm flex items-center gap-1 lg:gap-2">
+            <BiDislike className="w-5 h-5" />
+            <span>34</span>
+          </div>
+        </div>
+        <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
       </div>
-      <ShareButtons url={`https://www.medcode.dev/blogs/${slug}`} />
-    </div>
+    </>
   );
 };
 

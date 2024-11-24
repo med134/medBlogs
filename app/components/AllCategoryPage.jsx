@@ -29,7 +29,7 @@ const AllCategoryPage = ({ post }) => {
   const totalPages = Math.ceil(post.length / perPage);
   return (
     <div className="">
-      <div className="grid justify-center grid-cols-3 gap-6 mt-8 md:block bg-light px-16 sm:px-6 dark:bg-dark">
+      <div className="grid justify-center grid-cols-3 gap-6 mt-8 md:block bg-light px-16 sm:px-3 dark:bg-dark">
         {currentBlog?.map((item) => (
           <div
             key={item._id}

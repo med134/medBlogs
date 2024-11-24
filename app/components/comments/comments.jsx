@@ -10,7 +10,7 @@ const Comments = async ({ postId, userData }) => {
   const comments = await getComments(postId);
   return (
     <div
-      className={`w-full bg-white  p-2 dark:bg-dark ${
+      className={`w-full py-2 bg-white  p-2 dark:bg-dark ${
         userData ? "border rounded-lg " : "border-none"
       }`}
     >
@@ -20,15 +20,20 @@ const Comments = async ({ postId, userData }) => {
       <div>
         {userData ? (
           <>
-            <Image
-              width={40}
-              height={40}
-              loading="lazy"
-              quality={40}
-              src={userData.user.image}
-              alt="photo_profile"
-              className="w-10 h-10 rounded-[50%] cursor-pointer"
-            />
+            <div className="flex items-center px-4">
+              <Image
+                width={40}
+                height={40}
+                loading="lazy"
+                quality={40}
+                src={userData.user.image}
+                alt="photo_profile"
+                className="w-10 h-10 rounded-[50%] cursor-pointer"
+              />
+              <span className="text-sm font-semibold text-gray-600 ml-2">
+                {userData.user.name}
+              </span>
+            </div>
             <Form
               className={`${styles.write} dark:bg-dark dark:text-light p-2`}
               action={createComment}
@@ -50,10 +55,11 @@ const Comments = async ({ postId, userData }) => {
                 value={userData.user.image}
                 readOnly
               />
-              <input
+              <textarea
                 placeholder="write a comment..."
                 required
-                className="bg-gray-100 rows-3 text-sm rounded border border-gray-400  leading-normal resize-none w-full h-20 sm:h-12 py-2 px-4 sm:px-1 font-medium placeholder-gray-700 focus:outline-none focus:bg-white dark:bg-dark dark:text-light dark:placeholder-light"
+                cols={6}
+                className="w-full rounded-lg p-4 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm outline-mainColor"
                 name="comment"
                 id="comment"
                 type="text"

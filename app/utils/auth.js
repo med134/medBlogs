@@ -28,7 +28,6 @@ export const {
             user.password
           );
           if (!isPass) return null;
-          console.log("this is user come from credentials", user);
           return user;
         } catch (error) {
           console.log(error);

@@ -10,6 +10,7 @@ import Email from "../module/Email";
 import Comments from "../module/Comments";
 import bcrypt from "bcryptjs";
 import { revalidatePath } from "next/cache";
+import Likes from "../module/Likes";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
@@ -424,29 +425,39 @@ export const editUserProfile = async (prevSettings, formData) => {
   redirect(`/dashboard/users/${_id}`);
 };
 
-export const reducer = async (state, action) => {
+// get Likes
+export const getLikes = async (_id) => {
   try {
-    switch (action.type) {
-      case "incremented_age": {
-        return {
-          name: state.name,
-          age: state.age + 1,
-        };
-      }
-      case "changed_name": {
-        return {
-          name: action.nextName,
-          age: state.age,
-        };
-      }
+    connectDb();
+    const likesPost = await Likes.findOne({ blogId: _id });
+    return likesPost;
+  } catch (error) {
+    console.log(error.message);
+    throw new Error("Failed to fetch likes!");
+  }
+};
+// update likes
+export const incrementLike = async (_id) => {
+  try {
+    connectDb();
+    const likesPost = await Likes.findOne({ blogId: _id });
+    if (likesPost) {
+      await Likes.updateOne(
+        { blogId: _id }, // Filter query
+        { $inc: { numberOfLikes: 1 } },
+        { new: true } // Update operation
+      );
+      const updatedDoc = await Likes.findOne(
+        { blogId: _id }, // Filter query to find the blog by _id
+        { numberOfLikes: 1, _id: 0 } // Projection: only return numberOfLikes
+      );
+      return updatedDoc.numberOfLikes; // Return the updated numberOfLikes value
+    } else {
+      const newLikes = new Likes({ blogId: _id, numberOfLikes: 1 });
+      await newLikes.save();
     }
   } catch (error) {
     console.log(error);
   }
-};
-export const addDisLikes = async (formData) => {
-  try {
-  } catch (error) {
-    console.log(error);
-  }
+  revalidatePath("/blogs");
 };
