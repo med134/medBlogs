@@ -6,7 +6,7 @@ const HomeDash = () => {
       <div className="flex col-span-1 flex-col px-2 py-2 bg-white border dark:border-light shadow rounded-lg overflow-hidden">
         <div className="flex flex-col items-center space-y-2">
           <div className="text-6xl font-bold tracking-tight leading-none text-blue-500">
-            29
+            27
           </div>
           <div className="text-lg font-medium text-blue-500">Total Blogs</div>
         </div>
@@ -24,7 +24,7 @@ const HomeDash = () => {
       <div className="flex flex-col px-2 py-2 col-span-1 bg-white shadow border dark:border-light rounded-lg overflow-hidden">
         <div className="flex flex-col items-center space-y-2">
           <div className="text-6xl font-bold tracking-tight leading-none text-red-500">
-            0
+            1
           </div>
           <div className="text-lg font-medium text-red-600">Draft Blog</div>
         </div>

@@ -16,7 +16,7 @@ const Cat = async () => {
               <div className="group flex justify-between items-center py-1 mt-3 sm:mt-0">
                 <Link
                   className="px-4 xs:px-0 font-semibold text-gray-700 dark:text-light group-hover:text-mainColor group-hover:font-bold"
-                  href={`/category/${item.value}`}
+                  href={`/search?query=${item.value}`}
                 >
                   {item.label}
                 </Link>

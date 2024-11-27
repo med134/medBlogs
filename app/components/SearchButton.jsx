@@ -6,7 +6,7 @@ export default function SearchButton({ className }) {
   const status = useFormStatus();
   return (
     <button
-      className={`${className} absolute inset-y-0 right-0 flex items-center px-4 text-gray-700 bg-gray-100 border border-gray-300 rounded-r-md hover:bg-gray-200 focus:outline-none focus:ring-mainColor focus:border-mainColor`}
+      className={`${className} absolute dark:text-light inset-y-0 right-0 flex items-center px-4 text-gray-700 bg-gray-100 border border-gray-300 rounded-r-md hover:bg-gray-200 focus:outline-none focus:ring-mainColor focus:border-mainColor`}
       type="submit"
     >
       {status.pending ? "Searching..." : "Search"}
@@ -30,7 +30,7 @@ export function PostButton({ className }) {
   const status = useFormStatus();
   return (
     <button
-      className="flex justify-around group px-6 xs:px-2 py-2 items-center hover:bg-cyan-500 bg-mainColor rounded-md text-light"
+      className="flex justify-around group dark:bg-dark dark:border dark:border-light dark:text-light px-6 xs:px-2 py-2 items-center hover:bg-cyan-500 bg-mainColor rounded-md text-light"
       type="submit"
     >
       {status.pending ? "Posting..." : "Post"}

@@ -5,7 +5,7 @@ const UserComments = ({ data }) => {
   return (
     <>
       {data?.map((item) => (
-        <div key={item._id} className="bg-white p-4 rounded-lg shadow">
+        <div key={item._id} className="bg-white p-4 rounded-lg shadow dark:bg-dark">
           <div className="flex items-center mb-2">
             <Image
               src={item.imageUser || "https://i.ibb.co/mSjZwpw/download.png"}
@@ -14,19 +14,19 @@ const UserComments = ({ data }) => {
               alt="User Avatar"
               className="w-10 h-10 rounded-full mr-3"
             />
-            <div>
-              <h3 className="font-semibold text-gray-600">{item.username}</h3>
-              <p className="text-sm text-gray-500">
+            <div className="dark:text-light">
+              <h3 className="font-semibold text-gray-600 dark:text-light">{item.username}</h3>
+              <p className="text-sm text-gray-500 dark:text-light">
                 {FormatDate(item.createdAt)}
               </p>
             </div>
           </div>
-          <p className="text-gray-700">{item.comment}</p>
+          <p className="text-gray-700 dark:text-light">{item.comment}</p>
           <div className="flex items-center mt-2">
-            <button className="text-gray-700 hover:text-blue-600 mr-2">
+            <button className="text-gray-700 hover:text-blue-600 mr-2 dark:text-light">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 inline"
+                className="h-5 w-5 inline dark:text-light"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >

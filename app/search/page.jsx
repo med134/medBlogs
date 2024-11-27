@@ -1,7 +1,6 @@
 import React from "react";
 import { getAllCategories, getPosts, searchFunction } from "../utils/action";
 import SearPage from "../components/SearchPage";
-import { getAllCat } from "../components/FetchData";
 
 const page = async ({ searchParams }) => {
   const { query } = await searchParams;

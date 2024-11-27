@@ -29,9 +29,9 @@ const SearPage = ({ posts, firstSearch, queryOne, cat }) => {
     <div className="grid grid-cols-6 gap-6 xl:gap-2 lg:flex lg:flex-col-reverse dark:bg-dark sm:p-2 w-[100%]">
       <div className="right-sideT col-span-4 w-full px-10 xl:px-2 mb-6">
         <div className="flex flex-col dark:text-light mb-4 pt-2 justify-start text-gray-800 px-10 xs:px-2">
-          <span className="text-xl sm:text-xl text-left font-semibold px-5 lg:px-3">
-            search results
-          </span>
+          <h1 className=" text-mainColor text-left px-5 dark:text-light text-xl font-outFit font-semibold uppercase">
+            #{query}, {selectedCategories}
+          </h1>
           {suggestions && (
             <div className="flex flex-col justify-center p-4 xl:p-1 gap-6 bg-light dark:bg-dark">
               {suggestions.map((item) => (
@@ -42,8 +42,8 @@ const SearPage = ({ posts, firstSearch, queryOne, cat }) => {
         </div>
       </div>
       <div className="left-sideT col-span-1 xl:w-72">
-        <h3 className="py-2 text-lg lg:text-sm text-left sm:mb-2 font-semibold dark:text-light text-gray-700">
-          Search & filter blogs
+        <h3 className="py-2 text-lg lg:text-sm text-left sm:mb-2 font-semibold dark:text-light text-mainColor">
+          #Search & filter blogs
         </h3>
         <form className="w-full lg:w-[500px] sm:w-[140px] xs:w-[350px] h-12 relative rounded-xl bg-gray-50 border focus-within:border-gray-300 xs:px-2 xs:py-1 dark:bg-dark dark:border-light dark:shadow-light">
           <input

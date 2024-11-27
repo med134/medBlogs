@@ -23,7 +23,6 @@ export const authConfig = {
 
     authorized({ auth, request }) {
       const user = auth?.user;
-      const EMAIL = process.env.ADMIN_EMAIL;
       const isOneBlog = request?.nextUrl?.pathname?.startsWith("/dashboard");
       const isOnLoginPage =
         request?.nextUrl?.pathname.startsWith("/login") ||
@@ -32,8 +31,8 @@ export const authConfig = {
         request?.nextUrl?.pathname.startsWith("/dashboard/pending") ||
         request?.nextUrl?.pathname.startsWith("/dashboard/messages");
 
-      if (adminPages && user?.email !== EMAIL) {
-        return false;
+      if (adminPages && user?.email !== "mohamed7dakir@gmail.com") {
+        return Response.redirect(new URL("/dashboard", request.nextUrl));
       }
       if (isOneBlog && !user) {
         return Response.redirect(new URL("/login", request.nextUrl));
