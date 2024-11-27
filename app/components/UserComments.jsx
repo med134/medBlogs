@@ -23,7 +23,7 @@ const UserComments = ({ data }) => {
           </div>
           <p className="text-gray-700">{item.comment}</p>
           <div className="flex items-center mt-2">
-            <button className="text-blue-500 hover:text-blue-600 mr-2">
+            <button className="text-gray-700 hover:text-blue-600 mr-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 inline"
@@ -34,7 +34,6 @@ const UserComments = ({ data }) => {
               </svg>
               Like
             </button>
-            <button className="text-gray-500 hover:text-gray-600">Reply</button>
           </div>
         </div>
       ))}

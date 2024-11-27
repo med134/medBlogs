@@ -222,6 +222,18 @@
   top: 110px;
 }
 
+@media only screen and (max-width: 1023px) {
+  .left-sideT {
+    top: 5px;
+    position: relative;
+    padding-left: 7%;
+    top: 1px;
+    width: 900px;
+    height: auto;
+    display: inline-block;
+  }
+}
+
 .sectionT {
   padding: 20px 0;
 }
@@ -238,7 +250,7 @@
 }
 
 /* sticky sidebar blogs page single */
-.myLeftSide{
+.myLeftSide {
   width: 350px;
   height: 980px;
   display: inline-block;
@@ -248,4 +260,3 @@
 .myRightSide {
   vertical-align: top;
 }
-

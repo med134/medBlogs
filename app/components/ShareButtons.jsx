@@ -13,12 +13,7 @@ import {
 const ShareButtons = ({ url, className }) => {
   return (
     <div className="flex flex-col items-center py-2">
-      <span className="font-semibold text-xl mb-1 text-gray-800 dark:text-light">
-        Share this post
-      </span>
-      <div
-        className={`flex justify-center items-center xs:pt-0${className}`}
-      >
+      <div className={`flex justify-center items-center xs:pt-0${className}`}>
         <span className="font-semibold text-sm text-dark dark:text-light sm:px-4 xs:mb-4"></span>
         <div className="ml-3">
           <FacebookShareButton

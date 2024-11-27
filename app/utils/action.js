@@ -52,7 +52,7 @@ export const getPosts = async () => {
     connectDb();
     const posts = await Article.find().sort({ createdAt: -1 });
     const publicPosts = posts?.filter((item) => item.status === "publish");
-    return publicPosts;
+    return JSON.parse(JSON.stringify(publicPosts));
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch posts!");
@@ -166,7 +166,7 @@ export const getAllCategories = async () => {
   try {
     connectDb();
     const categories = await Category.find().sort({ slug: 1 });
-    return categories;
+    return JSON.parse(JSON.stringify(categories));;
   } catch (err) {
     console.log(err.message);
     throw new Error("Failed to fetch categories!");
@@ -219,8 +219,9 @@ export const searchFunction = async (query) => {
     });
     if (!filteredPosts.length) {
       console.log("No posts found with the given query");
+      return [];
     }
-    return filteredPosts;
+    return JSON.parse(JSON.stringify(filteredPosts));
   } catch (err) {
     console.error("Error during search operation:", err.message);
     throw new Error("Failed to fetch posts!");

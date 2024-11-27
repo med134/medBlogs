@@ -275,6 +275,7 @@ export const menuItems = [
   },
 ];
 
+
 export const getProjects = async (slug) => {
   return ProjectFull.find((project) => project.slug === slug);
 };
