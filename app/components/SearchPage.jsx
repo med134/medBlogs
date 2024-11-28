@@ -3,21 +3,24 @@ import React, { useState } from "react";
 import CardBlg from "./CardBlg";
 import { IoSearchOutline } from "react-icons/io5";
 import Image from "next/image";
+import { searchFunction } from "../utils/action";
 
 const SearPage = ({ posts, firstSearch, queryOne, cat }) => {
   const [articles, setArticles] = useState(posts);
   const [suggestions, setSuggestions] = useState(firstSearch);
   const [query, setQuery] = useState(queryOne);
   const [selectedCategories, setSelectCategory] = useState("");
+
   //input onChange handler
   const onChangeHandle = async (query) => {
     const filteredPosts = articles.filter((post) => {
-      const regex = new RegExp(`${query}`, "gi");
+      const regex = new RegExp(`${query}`, "gi").toString();
       return post.title.match(regex) || post.description.match(regex);
     });
     setSuggestions(filteredPosts);
     setQuery(query);
   };
+
   // handel change category
   const handleCategoryChange = (cat) => {
     const filteredPosts = articles.filter((post) => post.category === cat);
@@ -29,7 +32,7 @@ const SearPage = ({ posts, firstSearch, queryOne, cat }) => {
     <div className="grid grid-cols-6 gap-6 xl:gap-2 lg:flex lg:flex-col-reverse dark:bg-dark sm:p-2 w-[100%]">
       <div className="right-sideT col-span-4 w-full px-10 xl:px-2 mb-6">
         <div className="flex flex-col dark:text-light mb-4 pt-2 justify-start text-gray-800 px-10 xs:px-2">
-          <h1 className=" text-mainColor text-left px-5 dark:text-light text-xl font-outFit font-semibold uppercase">
+          <h1 className=" text-mainColor text-left sm:mt-3 sm:text-sm px-5 dark:text-light text-xl font-outFit font-semibold uppercase">
             #{query}, {selectedCategories}
           </h1>
           {suggestions && (
@@ -45,7 +48,7 @@ const SearPage = ({ posts, firstSearch, queryOne, cat }) => {
         <h3 className="py-2 text-lg lg:text-sm text-left sm:mb-2 font-semibold dark:text-light text-mainColor">
           #Search & filter blogs
         </h3>
-        <form className="w-full lg:w-[500px] sm:w-[140px] xs:w-[350px] h-12 relative rounded-xl bg-gray-50 border focus-within:border-gray-300 xs:px-2 xs:py-1 dark:bg-dark dark:border-light dark:shadow-light">
+        <div className="w-full lg:w-[500px] sm:w-[140px] xs:w-[350px] h-12 relative rounded-xl bg-gray-50 border focus-within:border-gray-300 xs:px-2 xs:py-1 dark:bg-dark dark:border-light dark:shadow-light">
           <input
             type="text"
             placeholder="Search for articles..."
@@ -54,15 +57,15 @@ const SearPage = ({ posts, firstSearch, queryOne, cat }) => {
             className="bg-transparent w-full mt-2 dark:text-light focus:outline-none font-semibold border-0 focus:ring-0 px-4"
           />
           <button
-            type="submit"
-            name="search-button"
-            title="search-button"
-            aria-labelledby="search-button"
+            onClick={async () => {
+              const result = await searchFunction(query);
+              setSuggestions(result);
+            }}
             className=""
           >
             <IoSearchOutline className="absolute right-3 bottom-3 w-5 h-5 dark:text-light" />
           </button>
-        </form>
+        </div>
         <div className="px-5 flex flex-col justify-start items-start lg:px-1 lg:mb-4 w-full">
           <span className="dark:text-light py-2">filter by categories</span>
           <div className="w-full lg:grid lg:grid-cols-3 lg:gap-x-36 xs:grid-cols-2">
