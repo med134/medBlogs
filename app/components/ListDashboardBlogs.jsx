@@ -1,10 +1,10 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { BiSolidEdit } from "react-icons/bi";
 import Link from "next/link";
-import Form from "next/form";
 import ServerPagination from "./ServerPagination";
-import { DeleteButton } from "./SearchButton";
-import { handelDeleteBlog } from "../utils/action";
+import DeleteConfirmation from "./DeleteConfirmation";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 const FormatDate = (dateString) => {
   const options = { month: "long", day: "numeric" };
@@ -16,6 +16,16 @@ const FormatDate = (dateString) => {
 };
 
 const ListDashboardBlogs = ({ posts, totalPage, page }) => {
+  const [isOpen, setOpen] = useState(false);
+  const [blogIdDeleted, setBlogIdDeleted] = useState();
+  const handelOpen = () => {
+    setOpen(!isOpen);
+  };
+  const handelMoveToDelete = (id) => {
+    handelOpen();
+    setBlogIdDeleted(id);
+  };
+
   return (
     <div className="p-4 md:p-1 ">
       <h1 className="text-2xl font-bold mb-10 sm:mb-6">
@@ -60,26 +70,27 @@ const ListDashboardBlogs = ({ posts, totalPage, page }) => {
                   <span className="text-xs xs:hidden">Edit</span>
                   <BiSolidEdit className="ml-2" />
                 </Link>
-                <Form
-                  action={handelDeleteBlog}
+                <button
+                  onClick={() => handelMoveToDelete(blog._id)}
                   className="flex justify-around group px-4 py-2 xs:px-2 sm:mb-2 items-center hover:bg-red-400 bg-red-500 rounded-md text-light"
                 >
-                  <input
-                    type=""
-                    name="id"
-                    id="id"
-                    value={blog._id}
-                    hidden
-                    readOnly
-                  />
-                  <DeleteButton />
-                </Form>
+                  <span>delete</span>
+                  <RiDeleteBin5Line className="ml-1" />
+                </button>
               </td>
+              {isOpen && (
+                <td>
+                  <DeleteConfirmation
+                    blogId={blogIdDeleted}
+                    handelOpen={handelOpen}
+                  />
+                </td>
+              )}
             </tr>
           </tbody>
         ))}
       </table>
-      {posts?.length > 0 && (
+      {posts?.length > 4 && (
         <ServerPagination totalPages={totalPage} currentPage={page} />
       )}
     </div>

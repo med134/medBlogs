@@ -1,17 +1,15 @@
 "use client";
 import React from "react";
-import Form from "next/form";
 import { handelDeleteBlog } from "../utils/action";
 import { RiDeleteBin5Line, RiCloseFill } from "react-icons/ri";
-import { DeleteButton } from "./SearchButton";
 
-const DeleteConfirmation = ({ blogId, onClose }) => {
-  console.log("blog id 2",blogId);
+const DeleteConfirmation = ({ blogId, handelOpen }) => {
+  console.log("blog id modal", blogId);
   return (
     <div className="fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]">
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6 relative">
         <RiCloseFill
-          onClick={onClose}
+          onClick={handelOpen}
           className="fill-gray-400 hover:fill-red-500 float-right w-7 h-7 cursor-pointer"
         />
         <div className="my-8 text-center flex flex-col justify-end items-center">
@@ -24,16 +22,18 @@ const DeleteConfirmation = ({ blogId, onClose }) => {
           </p>
         </div>
         <div className="flex justify-around items-center">
-          <Form
-            action={handelDeleteBlog}
+          <button
+            onClick={async () => {
+              await handelDeleteBlog(blogId);
+              handelOpen();
+            }}
             className="w-full flex items-center justify-center cursor-pointer px-4 py-2 rounded-lg text-white text-sm tracking-wide bg-red-500 hover:bg-red-400 active:bg-red-500"
           >
-            <input type="" hidden name="id" id="id" value={blogId} readOnly />
-            <DeleteButton />
-          </Form>
+            <span>delete</span>
+          </button>
           <button
             type="button"
-            onClick={onClose}
+            onClick={handelOpen}
             className="w-full ml-2 cursor-pointer px-4 py-2 rounded-lg text-white text-sm tracking-wide bg-gray-500 hover:bg-gray-400 active:bg-gray-200"
           >
             Cancel

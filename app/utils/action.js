@@ -58,23 +58,6 @@ export const getPosts = async () => {
     throw new Error("Failed to fetch posts!");
   }
 };
-export const getPostsAdmin = async (page) => {
-  try {
-    connectDb();
-    const pageSizes = 4;
-    const pageNumber = page || 1;
-    const count = await Article.find({}).countDocuments();
-    const posts = await Article.find({})
-      .limit(pageSizes)
-      .skip((pageNumber - 1) * pageSizes)
-      .sort({ createdAt: -1 });
-    const totalPage = Math.ceil(count / pageSizes);
-    return { posts, totalPage };
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to fetch posts!");
-  }
-};
 
 export const getPostsHome = async () => {
   try {
@@ -166,7 +149,7 @@ export const getAllCategories = async () => {
   try {
     connectDb();
     const categories = await Category.find().sort({ slug: 1 });
-    return JSON.parse(JSON.stringify(categories));;
+    return JSON.parse(JSON.stringify(categories));
   } catch (err) {
     console.log(err.message);
     throw new Error("Failed to fetch categories!");
@@ -248,15 +231,39 @@ export const FormatDate = async (dateString) => {
   return formattedDate;
 };
 
-export const getArticlesByEmail = async (email) => {
+export const getArticlesByEmail = async (email, page) => {
   try {
-    connectDb(); // Connect to the database
+    connectDb();
+    const pageSizes = 4;
+    const pageNumber = page || 1;
+    const count = await Article.find({}).countDocuments();
     const query = email ? { email: { $regex: email, $options: "i" } } : {}; // Partial, case-insensitive match if email is provided
-    const articles = await Article.find(query).sort({ createdAt: -1 }); // Find and sort articles
-    return articles; // Return articles
+    const posts = await Article.find(query)
+      .limit(pageSizes)
+      .skip((pageNumber - 1) * pageSizes)
+      .sort({ createdAt: -1 });
+    const totalPage = Math.ceil(count / pageSizes);
+    return { posts, totalPage }; // Find and sort articles
   } catch (error) {
     console.log(error.message); // Log any errors
     throw new Error("Failed to fetch articles!"); // Throw a new error if something goes wrong
+  }
+};
+export const getPostsAdmin = async (page) => {
+  try {
+    connectDb();
+    const pageSizes = 4;
+    const pageNumber = page || 1;
+    const count = await Article.find({}).countDocuments();
+    const posts = await Article.find({})
+      .limit(pageSizes)
+      .skip((pageNumber - 1) * pageSizes)
+      .sort({ createdAt: -1 });
+    const totalPage = Math.ceil(count / pageSizes);
+    return { posts, totalPage };
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch posts!");
   }
 };
 
@@ -342,8 +349,7 @@ export const loginAuth = async (prevState, formData) => {
   }
   redirect("/dashboard");
 };
-export const handelDeleteBlog = async (formData) => {
-  const _id = formData.get("id");
+export const handelDeleteBlog = async (_id) => {
   try {
     connectDb();
     await Article.findByIdAndDelete({ _id });
@@ -353,6 +359,7 @@ export const handelDeleteBlog = async (formData) => {
   }
   revalidatePath("/dashboard/blogs");
 };
+
 export const getComments = async (blogId) => {
   try {
     connectDb();
