@@ -207,7 +207,6 @@ export const searchFunction = async (query) => {
     return JSON.parse(JSON.stringify(filteredPosts));
   } catch (err) {
     console.error("Error during search operation:", err.message);
-    throw new Error("Failed to fetch posts!");
   }
 };
 export const getTemplatesBySlug = async (slug) => {

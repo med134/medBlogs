@@ -12,13 +12,13 @@ const SearPage = ({ posts, firstSearch, queryOne, cat }) => {
   const [selectedCategories, setSelectCategory] = useState("");
 
   //input onChange handler
-  const onChangeHandle = async (query) => {
+  const onChangeHandle = (searchQuery) => {
+    setQuery(searchQuery);
     const filteredPosts = articles.filter((post) => {
-      const regex = new RegExp(`${query}`, "gi").toString();
+      const regex = new RegExp(`${searchQuery}`, "gi");
       return post.title.match(regex) || post.description.match(regex);
     });
     setSuggestions(filteredPosts);
-    setQuery(query);
   };
 
   // handel change category
@@ -48,7 +48,7 @@ const SearPage = ({ posts, firstSearch, queryOne, cat }) => {
         <h3 className="py-2 text-lg lg:text-sm text-left sm:mb-2 font-semibold dark:text-light text-mainColor">
           #Search & filter blogs
         </h3>
-        <div className="w-full lg:w-[500px] sm:w-[140px] xs:w-[350px] h-12 relative rounded-xl bg-gray-50 border focus-within:border-gray-300 xs:px-2 xs:py-1 dark:bg-dark dark:border-light dark:shadow-light">
+        <form className="w-full lg:w-[500px] sm:w-[140px] xs:w-[350px] h-12 relative rounded-xl bg-gray-50 border focus-within:border-gray-300 xs:px-2 xs:py-1 dark:bg-dark dark:border-light dark:shadow-light">
           <input
             type="text"
             placeholder="Search for articles..."
@@ -57,15 +57,15 @@ const SearPage = ({ posts, firstSearch, queryOne, cat }) => {
             className="bg-transparent w-full mt-2 dark:text-light focus:outline-none font-semibold border-0 focus:ring-0 px-4"
           />
           <button
+            type="button"
             onClick={async () => {
               const result = await searchFunction(query);
               setSuggestions(result);
             }}
-            className=""
           >
             <IoSearchOutline className="absolute right-3 bottom-3 w-5 h-5 dark:text-light" />
           </button>
-        </div>
+        </form>
         <div className="px-5 flex flex-col justify-start items-start lg:px-1 lg:mb-4 w-full">
           <span className="dark:text-light py-2">filter by categories</span>
           <div className="w-full lg:grid lg:grid-cols-3 lg:gap-x-36 xs:grid-cols-2">
