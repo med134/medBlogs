@@ -56,7 +56,7 @@ const ListDashboardBlogs = ({ posts, totalPage, page }) => {
                       {blog.title}
                     </h2>
                   </td>
-                  <td className="px-5 text-sm sm:hidden uppercase">
+                  <td className="px-5 text-xs sm:hidden uppercase">
                     <p className="px-4">{blog?.username}</p>
                   </td>
                   <td className=" px-5 text-sm">
@@ -106,7 +106,7 @@ const ListDashboardBlogs = ({ posts, totalPage, page }) => {
           </span>
           <Link
             href="/dashboard/add-articles"
-            className=" px-32 rounded-md text-dark bg-gray-200 py-2 flex justify-center items-center"
+            className=" px-32 sm:px-10 rounded-md text-dark bg-gray-200 py-2 flex justify-center items-center"
           >
             <CgFileAdd className="w-6 h-6" />
             <span className="ml-4 font-semibold">Create Blog</span>

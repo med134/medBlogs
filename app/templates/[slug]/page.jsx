@@ -79,10 +79,10 @@ const TemplateId = async ({ params }) => {
               height={50}
               quality={30}
               src="https://i.ibb.co/WVDZRxF/bussiness-man.png"
-              className="w-16 h-16  object-cover rounded-full"
+              className="w-16 h-16 sm:w-8 sm:h-8 object-cover rounded-full"
             />
             <div className="flex flex-col w-auto">
-              <span className="text-gray-600 dark:text-gray-200 font-bold uppercase text-sm">
+              <span className="text-gray-600 sm:text-xs dark:text-gray-200 font-bold uppercase text-sm">
                 {data?.username}
               </span>
               <a
@@ -97,8 +97,8 @@ const TemplateId = async ({ params }) => {
             </div>
           </div>
         </div>
-        <div className="p-2 mt-6 w-full h-full xs:mt-6">
-          <div className="flex justify-between items-center xs:flex-col-reverse xs:items-start">
+        <div className="p-2 mt-6 w-full h-full xs:mt-4">
+          <div className="flex justify-between items-center sm:flex-col-reverse sm:items-center">
             <ShareButtons
               url={`https://www.medcode.dev/templates/${slug}`}
               className={"justify-start items-start mb-1"}
@@ -108,12 +108,13 @@ const TemplateId = async ({ params }) => {
               target="_blank"
               className={`flex w-48 mb-2 cursor-pointer group select-none items-center justify-center rounded-md bg-mainColor text-sm px-6 py-1 text-light`}
             >
-              <span className="flex w-full items-center justify-between hover:translate-x-1 rounded py-1 text-center font-semibold">
+              <span className="flex sm:text-xs w-full items-center justify-between hover:translate-x-1 rounded py-1 text-center font-semibold">
                 Demo Preview
-                <VscPreview className="h-6 w-6 hover:translate-x-1 " />
+                <VscPreview className="h-6 w-6 sm:w-4 sm:h-4 hover:translate-x-1 " />
               </span>
             </Link>
           </div>
+          {/* <CodeEditor code2={data.code} /> */}
           <CodeEditor code2={data.code} />
         </div>
         <div className="w-full p-6 mb-16 xs:p-2">

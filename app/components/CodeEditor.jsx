@@ -15,8 +15,8 @@ import { LuScreenShare } from "react-icons/lu";
 
 function CodeEditor({ code2 }) {
   const [code, setCode] = useState(code2);
-  const [showCode, setShowCode] = useState(true);
-  const [showOutput, setShowOutput] = useState(false);
+  const [showCode, setShowCode] = useState(false);
+  const [showOutput, setShowOutput] = useState(true);
   const [copy, setCopy] = useState(false);
   const [selectedScreenSize, setSelectedScreenSize] = useState("lg");
   const editorRef = useRef(null);
@@ -138,7 +138,7 @@ function CodeEditor({ code2 }) {
           </div>
         )}
         {showOutput && (
-          <div className="p-4">
+          <div className="p-4 sm:w-[450px]">
             <div
               className={`border border-gray-500 p-4 ${
                 selectedScreenSize === "sm"

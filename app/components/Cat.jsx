@@ -13,7 +13,7 @@ const Cat = async () => {
           <li className="flex mx-1">
             <Link
               className="p-2 px-3 border-mainColor mb-1 rounded hover:border-dark font-medium dark:hover:text-mainColor border dark:border-light text-gray-800 dark:text-light"
-              href={`/category/${item.value}`}
+              href={`/search?query=${item.value}`}
             >
               {item?.label}
             </Link>
