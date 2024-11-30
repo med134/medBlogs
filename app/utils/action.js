@@ -470,3 +470,49 @@ export const incrementLike = async (_id) => {
   }
   revalidatePath("/blogs");
 };
+// edit article
+export const editArticles = async (prevSettings, formData) => {
+  const _id = formData.get("id");
+  const title = formData.get("title");
+  const tags = formData.get("tags");
+  const job = formData.get("job");
+  const description = formData.get("description");
+  const image = formData.get("image");
+  const status = formData.get("status");
+  const content = formData.get("content");
+  const category = formData.get("category");
+  const userId = formData.get("userId");
+  const username = formData.get("username");
+  const email = formData.get("email");
+  const slug = formData.get("slug");
+  const userImage = formData.get("userImage");
+
+  console.log(tags, title, slug);
+
+  try {
+    connectDb();
+    const updatedArticle = await Article.findByIdAndUpdate(
+      _id,
+      {
+        title,
+        tags,
+        image,
+        description,
+        slug,
+        category,
+        job,
+        status,
+        content,
+        username,
+        userId,
+        email,
+        userImage,
+      },
+      { new: true }
+    );
+  } catch (err) {
+    console.log(err.message);
+  }
+  revalidatePath("/dashboard/edit-articles");
+  redirect(`/dashboard/blogs`);
+};

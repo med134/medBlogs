@@ -7,6 +7,7 @@ import { auth } from "@/app/utils/auth";
 const Edit = async ({ params }) => {
   const { slug } = await params;
   const data = await getPostsBySlug(slug);
+  const article = JSON.parse(JSON.stringify(data));
   const session = await auth();
 
   return (
@@ -14,20 +15,7 @@ const Edit = async ({ params }) => {
       <h1 className="text-left py-6 text-2xl text-gray-800 font-semibold dark:text-light">
         Edit Your Article & Submit
       </h1>
-      <EditArticle
-        slug={slug}
-        title={data.title}
-        description={data.description}
-        image={data.image}
-        tags={data.tags}
-        job={data.job}
-        category={data.category}
-        content={data.content}
-        status={data.status}
-        userName={data.username}
-        UserEmail={data.email}
-        session={session}
-      />
+      <EditArticle article={article} session={session} />
     </Layout>
   );
 };
