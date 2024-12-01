@@ -75,7 +75,7 @@ const ResponsiveDashboardNavbar = ({ user }) => {
           {menuItems.map((link, index) => {
             const LinkIcon = link.icon;
             const isActive = path === link.link;
-            if (index < 4)
+            if (index < 5)
               return (
                 <div
                   key={link.name}

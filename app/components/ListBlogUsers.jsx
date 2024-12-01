@@ -38,7 +38,7 @@ const ListBlogUsers = ({ posts, totalPage, page }) => {
               <th className="px-4 py-3 sm:text-sm">title</th>
               <th className="px-4 py-3 sm:text-sm">writer</th>
               <th className="px-4 py-3 sm:text-sm">status</th>
-              <th className="px-4 py-3 sm:text-sm">Date publish</th>
+              <th className="px-4 py-3 sm:text-sm sm:hidden">Date publish</th>
               <th className="px-4 py-3 sm:text-sm">Actions</th>
             </tr>
           </thead>
@@ -65,10 +65,10 @@ const ListBlogUsers = ({ posts, totalPage, page }) => {
                     {post?.status}
                   </span>
                 </td>
-                <td className="px-4 py-3 text-sm border">
+                <td className="px-4 py-3 text-sm border sm:hidden">
                   {FormatDate(post?.createdAt)}
                 </td>
-                <td className="flex py-3 text-ms font-semibold border justify-evenly">
+                <td className="flex py-3 text-ms font-semibold justify-evenly">
                   <Link
                     href={`/dashboard/blogs/edit-articles/${post.slug}`}
                     className="px-3 py-2 xs:px-2 sm:mb-2 hover:text-blue-500 items-center bg-gray-100 rounded-md text-dark"
