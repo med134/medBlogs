@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const ServerPagination = ({ totalPages, currentPage }) => {
+const ServerPagination = ({ totalPage, currentPage }) => {
   return (
     <div
       aria-label="Page navigation"
@@ -18,7 +18,7 @@ const ServerPagination = ({ totalPages, currentPage }) => {
       >
         Previous
       </Link>
-      {Array.from({ length: totalPages }, (_, index) => (
+      {Array.from({ length: totalPage }, (_, index) => (
         <div key={index}>
           <Link
             href={`/dashboard/blogs/?page=${index + 1}`}
@@ -34,9 +34,9 @@ const ServerPagination = ({ totalPages, currentPage }) => {
       ))}
       <Link
         href={`/dashboard/blogs/?page=${currentPage + 1}`}
-        disabled={currentPage === totalPages ? true : false}
+        disabled={currentPage === totalPage ? true : false}
         className={`${
-          currentPage === totalPages
+          currentPage === totalPage
             ? "hidden"
             : " flex items-center justify-center dark:bg-dark dark:text-light px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"
         }

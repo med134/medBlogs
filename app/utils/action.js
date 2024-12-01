@@ -508,11 +508,12 @@ export const editArticles = async (prevSettings, formData) => {
         email,
         userImage,
       },
+
       { new: true }
     );
   } catch (err) {
     console.log(err.message);
   }
-  revalidatePath("/dashboard/edit-articles");
+  revalidatePath("/dashboard/blogs/edit-articles");
   redirect(`/dashboard/blogs`);
 };

@@ -2,6 +2,7 @@ import React from "react";
 import ListDashboardBlogs from "@/app/components/ListDashboardBlogs";
 import { auth } from "@/app/utils/auth";
 import { getArticlesByEmail, getPostsAdmin } from "@/app/utils/action";
+import ListBlogUsers from "@/app/components/ListBlogUsers";
 
 async function fetchData(page, email) {
   if (email === "mohamed7dakir@gmail.com") {
@@ -20,11 +21,19 @@ const Blogs = async ({ searchParams }) => {
   const posts = JSON.parse(JSON.stringify(postAdmin));
   return (
     <div className="w-full p-6 h-full md:p-1 xs:py-10">
-      <ListDashboardBlogs
-        posts={posts.posts}
-        totalPage={posts.totalPage}
-        page={currentPage}
-      />
+      {session.user.email === process.env.ADMIN_EMAIL ? (
+        <ListDashboardBlogs
+          posts={posts.posts}
+          totalPage={posts.totalPage}
+          page={currentPage || 1}
+        />
+      ) : (
+        <ListBlogUsers
+          posts={posts.posts}
+          totalPage={posts.totalPage}
+          page={currentPage || 1}
+        />
+      )}
     </div>
   );
 };

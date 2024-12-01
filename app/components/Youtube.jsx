@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { YoutubeIcons } from "./Icons";
 import SliderSkelton from "./SliderSkelton";
-const Youtube = ({ card }) => {
+const Youtube = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -14,44 +14,13 @@ const Youtube = ({ card }) => {
         setLoading(true);
 
         const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC1dm-Rczjp52egzJTL__s8A&maxResults=100&key=AIzaSyAuEMjkPWP_APLS7wgW4mLQiGF3W9y7bkE`
+          `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UC1dm-Rczjp52egzJTL__s8A&maxResults=25&playlisId="PLagVDc72dbJaDB9svynIgBSKDvJs6LKfP"&key=AIzaSyBI7fNLL0KemPYHgO8bvsCwAKL1OMNOwAA`
         );
-
         const data = await response.json();
-
-        if (data.items) {
-          const videoIds = data.items.map((video) => video.id.videoId);
-          const videoStatsUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoIds.join(
-            ","
-          )}&key=AIzaSyAuEMjkPWP_APLS7wgW4mLQiGF3W9y7bkE`;
-
-          const statsResponse = await fetch(videoStatsUrl);
-          const statsData = await statsResponse.json();
-
-          if (statsData.items) {
-            const videoData = data.items.map((video, index) => {
-              const statistics = statsData.items[index]?.statistics;
-              return {
-                id: video.id.videoId,
-                channelTitle: video.snippet.channelTitle,
-                title: video.snippet.title,
-                thumbnail: video.snippet.thumbnails.high.url,
-                publishedAt: video.snippet.publishedAt,
-                views: statistics ? statistics.viewCount : 0,
-              };
-            });
-
-            const sortedVideos = videoData.sort(
-              (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
-            );
-
-            setNews(sortedVideos);
-            setLoading(false);
-          }
-        }
+        console.log(data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
-        setLoading(false);
       }
     };
 
@@ -60,7 +29,7 @@ const Youtube = ({ card }) => {
 
   return (
     <>
-      <div className={`p-2 sm:block xs:pt-4`}>
+      <div className={`p-2 py-32 sm:block xs:pt-4`}>
         <span className="flex justify-start items-center sm:mb-2">
           <p className="text-xl font-semibold text-dark dark:text-light">
             Youtube Shorts
@@ -75,7 +44,7 @@ const Youtube = ({ card }) => {
               index < 1 && (
                 <article
                   key={video.id}
-                  className="flex flex-col w-full dark:bg-dark bg-light border-2 border-red-600 rounded-md sm:mb-2"
+                  className="flex flex-col w-44 dark:bg-dark bg-light border-2 border-red-600 rounded-md sm:mb-2"
                 >
                   <Link
                     href={`https://www.youtube.com/shorts/${video.id}`}
@@ -117,17 +86,6 @@ const Youtube = ({ card }) => {
           )
         )}
       </div>
-      {news.length > 0 && (
-        <Link
-          href="https://www.youtube.com/channel/UC1dm-Rczjp52egzJTL__s8A"
-          target="blank"
-          className="flex justify-center items-center xs:pb-6"
-        >
-          <span className="text-center text-xl sm:text-sm text-gray-700 dark:text-light hover:bg-red-600 rounded-md hover:text-light border border-gray-600 px-20 py-1 w-full dark:border-light">
-            show moore reels...
-          </span>
-        </Link>
-      )}
     </>
   );
 };
