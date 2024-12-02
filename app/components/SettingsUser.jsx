@@ -10,6 +10,7 @@ import {
   BsLinkedin,
   BsYoutube,
 } from "react-icons/bs";
+import { FaRegUser } from "react-icons/fa6";
 import { FaRegEdit } from "react-icons/fa";
 import { BiX } from "react-icons/bi";
 import { useActionState } from "react";
@@ -21,6 +22,7 @@ const SettingsUser = ({ user }) => {
   const [message, action, isPending] = useActionState(editUserProfile, null);
   const [dataUrl, setDataUrl] = useState(user.imageUrl);
   const [formData, setFormData] = useState({
+    name: user.name,
     job: user.job,
     homeAddress: user.homeAddress,
     about: user.about,
@@ -87,16 +89,24 @@ const SettingsUser = ({ user }) => {
           />
         </div>
 
-        <h1 className="text-3xl font-bold pt-8 lg:pt-3 sm:text-xl uppercase lg:text-center">
-          {user.name}
-        </h1>
+       
         <div className="mx-auto w-4/5 pt-3 border-b-2 border-mainColor opacity-25" />
         {/* Job and Country */}
         <div className="w-full py-6 flex flex-col items-center mx-auto gap-2 max-w-lg p-4">
           <input name="id" value={user._id} hidden readOnly />
-          <input name="name" value={user.name} hidden readOnly />
           <input name="email" value={user.email} hidden readOnly />
           <input type="text" name="imageUrl" value={dataUrl} hidden readOnly />
+          <div className="relative w-full">
+            <FaRegUser className="absolute left-3 rounded-full w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500" />
+            <input
+              className="w-full border-2 rounded-lg font-mono bg-gray-100 placeholder:capitalize px-12 py-1.5 outline-mainColor"
+              type="text"
+              placeholder="new name"
+              name="name"
+              value={formData.name}
+              onChange={(e) => handelChange(e.target.name, e.target.value)}
+            />
+          </div>
           <div className="relative w-full">
             <MdOutlineWorkOutline className="absolute left-3 rounded-full w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500" />
             <input
@@ -151,6 +161,7 @@ const SettingsUser = ({ user }) => {
                 type="url"
                 name="twitterUrl"
                 placeholder="X URL..."
+                value={formData?.twitterUrl}
                 className="w-full px-12 rounded-lg p-2 outline-mainColor bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
             </div>
@@ -159,6 +170,7 @@ const SettingsUser = ({ user }) => {
               <input
                 type="url"
                 name="linkedInUrl"
+                value={formData?.linkedInUrl}
                 placeholder="linkedIn URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
@@ -168,6 +180,7 @@ const SettingsUser = ({ user }) => {
               <input
                 type="url"
                 name="githubUrl"
+                value={formData?.githubUrl}
                 placeholder="github URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
@@ -177,6 +190,7 @@ const SettingsUser = ({ user }) => {
               <input
                 type="url"
                 name="youtubeUrl"
+                value={formData?.youtubeUrl}
                 placeholder="youtube channel URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
@@ -186,6 +200,7 @@ const SettingsUser = ({ user }) => {
               <input
                 type="url"
                 name="dribbleUrl"
+                value={formData?.dribbleUrl}
                 placeholder="dribble URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
@@ -194,6 +209,7 @@ const SettingsUser = ({ user }) => {
               <BsInstagram className="absolute left-3 rounded-full w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500" />
               <input
                 type="url"
+                value={formData?.instagramUrl}
                 name="instagramUrl"
                 placeholder="instagram URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"

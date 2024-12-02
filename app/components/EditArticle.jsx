@@ -7,10 +7,9 @@ import JoditEditor from "jodit-react";
 import imageCompression from "browser-image-compression";
 import { editArticles } from "../utils/action";
 import Image from "next/image";
+import SearchLoading from "./SearchLoading";
 
 export default function EditArticle({ article, session }) {
-  const SESSION_EMAIL = session.user.email;
-  const ADMIN_EMAIL = "mohamed7dakir@gmail.com";
   const [message, action, isPending] = useActionState(editArticles, null);
   const [dataUrl, setDataUrl] = useState(article.image || "");
   const config = useMemo(
@@ -238,6 +237,7 @@ export default function EditArticle({ article, session }) {
           onBlur={(newContent) => handelChange("content", newContent)} // Corrected
         />
       </div>
+      {isPending && <SearchLoading />}
       <div className="flex justify-start items-center">
         <button
           type="submit"
@@ -252,7 +252,7 @@ export default function EditArticle({ article, session }) {
           Cancel
         </Link>
       </div>
-      {message && <p className="text-sm text-green-600">{message}</p>}
+      {message && <p className="text-sm text-red-600">{message}</p>}
     </Form>
   );
 }

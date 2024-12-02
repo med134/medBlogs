@@ -51,7 +51,7 @@ const EditPending = ({ draftBlog }) => {
 
                     <td className="flex space-x-2 sm:space-x-0 p-2 sm:flex-col justify-center">
                       <Link
-                        href={`/dashboard/edit-articles/${blog.slug}`}
+                        href={`/dashboard/blogs/edit-articles/${blog.slug}`}
                         className="flex justify-around group px-4 py-2 xs:px-2 sm:mb-2 items-center hover:bg-blue-400 bg-blue-500 rounded-md text-light"
                       >
                         <span className="text-xs xs:hidden">Edit</span>

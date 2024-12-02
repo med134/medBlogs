@@ -277,7 +277,8 @@ export const getArticleByCategories = async (category) => {
         ? { category: { $regex: category, $options: "i" } }
         : {};
       const articles = await Article.find(query).sort({ createdAt: -1 });
-      return articles;
+      const publicPosts = articles?.filter((item) => item.status === "publish");
+      return publicPosts;
     }
   } catch (error) {
     console.log(error.message);
