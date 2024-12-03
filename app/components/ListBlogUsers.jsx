@@ -34,23 +34,23 @@ const ListBlogUsers = ({ posts, totalPage, page }) => {
         </h1>
         <table className="w-full">
           <thead>
-            <tr className="font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-              <th className="px-4 py-3 sm:text-sm">title</th>
-              <th className="px-4 py-3 sm:text-sm">writer</th>
-              <th className="px-4 py-3 sm:text-sm">status</th>
-              <th className="px-4 py-3 sm:text-sm sm:hidden">Date publish</th>
-              <th className="px-4 py-3 sm:text-sm">Actions</th>
+            <tr className="font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-gray-600">
+              <th className="px-4 py-3 md:text-sm">title</th>
+              <th className="px-4 py-3 md:text-sm sm:hidden">writer</th>
+              <th className="px-4 py-3 md:text-sm">status</th>
+              <th className="px-4 py-3 md:text-sm sm:hidden">Date publish</th>
+              <th className="px-4 py-3 md:text-sm">Actions</th>
             </tr>
           </thead>
           <tbody className="bg-white">
             {posts?.map((post) => (
               <tr key={post._id} className="text-gray-700">
                 <td className="px-4 py-3 border">
-                  <p className="font-semibold text-dark">
+                  <p className="font-semibold text-dark md:text-sm">
                     {post.title.slice(0, 40)}..
                   </p>
                 </td>
-                <td className="px-4 py-3 text-sm font-semibold border">
+                <td className="px-4 py-3 text-sm font-semibold border sm:hidden">
                   {post.username}
                 </td>
                 <td className="px-4 py-3 text-xs border">
@@ -68,16 +68,16 @@ const ListBlogUsers = ({ posts, totalPage, page }) => {
                 <td className="px-4 py-3 text-sm border sm:hidden">
                   {FormatDate(post?.createdAt)}
                 </td>
-                <td className="flex py-3 text-ms font-semibold justify-evenly">
+                <td className="flex py-5 md:py-2 text-sm border font-semibold justify-evenly md:flex md:flex-col md:justify-center md:items-center">
                   <Link
                     href={`/dashboard/blogs/edit-articles/${post.slug}`}
-                    className="px-3 py-2 xs:px-2 sm:mb-2 hover:text-blue-500 items-center bg-gray-100 rounded-md text-dark"
+                    className="px-3 py-2 xs:px-2 md:mb-2 hover:text-blue-500 bg-gray-100 rounded-md text-dark"
                   >
                     <BiSolidEdit className="ml-2 w-5 h-5" />
                   </Link>
                   <button
                     onClick={() => handelMoveToDelete(post._id)}
-                    className="px-3 py-2 bg-gray-100 xs:px-2 hover:text-red-500 sm:mb-2 items-center rounded-md text-dark"
+                    className="px-3 py-2 bg-gray-100 xs:px-2 hover:text-red-500 sm:mb-2 rounded-md text-dark"
                   >
                     <RiDeleteBin5Line className="ml-1 w-5 h-5" />
                   </button>

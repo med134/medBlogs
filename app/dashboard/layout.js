@@ -22,7 +22,7 @@ export const metadata = {
 };
 const DashboardLayout = async ({ children }) => {
   return (
-    <div className="flex">
+    <div className="flex w-full">
       <MainSideBarDashboard />
       <div className="flex-1">
         <DashboardNav />

@@ -65,7 +65,7 @@ export default function EditArticle({ article, session }) {
     }
   };
   return (
-    <Form action={action} className="flex flex-col gap-3">
+    <Form action={action} className="w-auto">
       <input name="id" value={article._id} hidden readOnly />
       <input name="slug" value={article.slug} hidden readOnly />
       <input name="userId" value={article.userId} hidden readOnly />
@@ -80,10 +80,10 @@ export default function EditArticle({ article, session }) {
         readOnly
       />
 
-      <div className="flex justify-between items-center">
-        <div className="p-4 border border-dark rounded-lg">
+      <div className="flex justify-around items-center md:block">
+        <div className="p-4 border border-dark rounded-lg w-1/2">
           <Image
-            className="block rounded-sm shadow-xl mx-auto h-32 w-full object-contain"
+            className="rounded-sm shadow-xl mx-auto h-32 object-cover"
             src={dataUrl || ""}
             width={300}
             height={300}
@@ -98,8 +98,8 @@ export default function EditArticle({ article, session }) {
             className="w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-2 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded"
           />
         </div>
-        <div className="grid grid-cols-2">
-          <div className="p-4">
+        <div className="grid grid-cols-2 md:block md:w-full">
+          <div className="p-4 sm:p-2">
             <label
               className="text-gray-600 font-bold mb-2 dark:text-light px-4"
               htmlFor="title"
@@ -116,7 +116,7 @@ export default function EditArticle({ article, session }) {
               onChange={(e) => handelChange(e.target.name, e.target.value)}
             />
           </div>
-          <div className="p-4">
+          <div className="p-4 sm:p-2">
             <label
               className="text-gray-600 font-bold mb-2 dark:text-light px-4"
               htmlFor="newTags"
@@ -134,7 +134,7 @@ export default function EditArticle({ article, session }) {
             />
           </div>
 
-          <div className="p-4">
+          <div className="p-4 sm:p-2">
             <label
               className="text-gray-600 font-bold mb-2 dark:text-light px-4"
               htmlFor="newDescription"
@@ -151,7 +151,7 @@ export default function EditArticle({ article, session }) {
               placeholder="Topic Description"
             />
           </div>
-          <div className="p-4">
+          <div className="p-4 sm:p-2">
             <label
               className="text-gray-600 font-bold mb-2 dark:text-light px-4"
               htmlFor="newCategory"
@@ -175,7 +175,7 @@ export default function EditArticle({ article, session }) {
             </select>
           </div>
 
-          <div className="p-4">
+          <div className="p-4 sm:p-2">
             <label className="text-gray-600 px-4 font-bold mb-2 dark:text-light">
               job
             </label>
@@ -222,23 +222,23 @@ export default function EditArticle({ article, session }) {
           </div>
         </div>
       </div>
+      <div className="md:p-2"> 
       <label
         className="text-gray-600 font-bold mb-1 dark:text-light"
         htmlFor="content"
       >
         content
       </label>
-      <div>
-        <JoditEditor
-          config={config}
-          tabIndex={1}
-          value={formArticle.content}
-          name="content"
-          onBlur={(newContent) => handelChange("content", newContent)} // Corrected
-        />
+      <JoditEditor
+        config={config}
+        tabIndex={1}
+        value={formArticle.content}
+        name="content"
+        onBlur={(newContent) => handelChange("content", newContent)} // Corrected
+      />
       </div>
       {isPending && <SearchLoading />}
-      <div className="flex justify-start items-center">
+      <div className="flex justify-start items-center mt-2">
         <button
           type="submit"
           className="bg-slate-600 font-bold text-white py-3 px-6 w-fit hover:bg-slate-400 rounded-lg"

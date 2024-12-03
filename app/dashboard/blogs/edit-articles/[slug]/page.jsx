@@ -11,12 +11,12 @@ const Edit = async ({ params }) => {
   const session = await auth();
 
   return (
-    <Layout className="p-6 lg:p-8 md:p-8 bg-white sm:p-8 xs:p-6  py-14 md:py-8">
-      <h1 className="text-left py-6 text-2xl text-gray-800 font-semibold dark:text-light">
+    <div className="p-6 md:p-1 bg-white">
+      <h1 className="text-left text-2xl text-gray-800 font-semibold py-8">
         Edit Your Article & Submit
       </h1>
       <EditArticle article={article} session={session} />
-    </Layout>
+    </div>
   );
 };
 export default Edit;

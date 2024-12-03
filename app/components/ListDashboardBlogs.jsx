@@ -72,14 +72,12 @@ const ListDashboardBlogs = ({ posts, totalPage, page }) => {
                       href={`/dashboard/blogs/edit-articles/${blog.slug}`}
                       className="flex justify-around group px-4 py-2 xs:px-2 sm:mb-2 items-center hover:bg-blue-400 bg-blue-500 rounded-md text-light"
                     >
-                      <span className="text-xs xs:hidden">Edit</span>
                       <BiSolidEdit className="ml-2" />
                     </Link>
                     <button
                       onClick={() => handelMoveToDelete(blog._id)}
                       className="flex justify-around group px-4 py-2 xs:px-2 sm:mb-2 items-center hover:bg-red-400 bg-red-500 rounded-md text-light"
                     >
-                      <span>delete</span>
                       <RiDeleteBin5Line className="ml-1" />
                     </button>
                   </td>
