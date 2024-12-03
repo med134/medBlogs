@@ -21,7 +21,7 @@ const Blogs = async ({ searchParams }) => {
   const posts = JSON.parse(JSON.stringify(postAdmin));
   return (
     <div className="w-full p-6 h-full md:p-1 xs:py-10">
-      {session.user.email === "process.env.ADMIN_EMAIL" ? (
+      {session.user.email === process.env.ADMIN_EMAIL ? (
         <ListDashboardBlogs
           posts={posts.posts}
           totalPage={posts.totalPage}
