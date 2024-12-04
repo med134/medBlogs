@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import { BiSolidEdit } from "react-icons/bi";
 import Link from "next/link";
-import ServerPagination from "./ServerPagination";
 import DeleteConfirmation from "./DeleteConfirmation";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { CgFileAdd } from "react-icons/cg";
+import Pagination from "./Pagination";
 
 const FormatDate = (dateString) => {
   const options = { month: "long", day: "numeric" };
@@ -16,7 +16,8 @@ const FormatDate = (dateString) => {
   return formattedDate;
 };
 
-const ListDashboardBlogs = ({ posts, totalPage, page }) => {
+const ListDashboardBlogs = ({ posts }) => {
+  const [currentPage, setCurrentPage] = useState(1);
   const [isOpen, setOpen] = useState(false);
   const [blogIdDeleted, setBlogIdDeleted] = useState();
   const handelOpen = () => {
@@ -26,6 +27,14 @@ const ListDashboardBlogs = ({ posts, totalPage, page }) => {
     handelOpen();
     setBlogIdDeleted(id);
   };
+  const handleMovePages = (page) => {
+    setCurrentPage(page);
+  };
+  const perPage = 4;
+  const indexOfLastBlog = currentPage * perPage;
+  const indexOfFirstBlog = indexOfLastBlog - perPage;
+  const currentBlog = posts.slice(indexOfFirstBlog, indexOfLastBlog);
+  const totalPages = Math.ceil(posts.length / perPage);
 
   return (
     <div className="p-4 md:p-1 ">
@@ -48,7 +57,7 @@ const ListDashboardBlogs = ({ posts, totalPage, page }) => {
                 <th className="px-5 py-3 ">Action</th>
               </tr>
             </thead>
-            {posts?.map((blog) => (
+            {currentBlog?.map((blog) => (
               <tbody key={blog.slug} className="w-full">
                 <tr className="p-2 px-4 py-5 w-full justify-between border border-gray-300 bg-gray-100">
                   <td className="p-2">
@@ -93,8 +102,12 @@ const ListDashboardBlogs = ({ posts, totalPage, page }) => {
               </tbody>
             ))}
           </table>
-          {posts?.length > 4 && (
-            <ServerPagination totalPages={totalPage} currentPage={page} />
+          {posts.length > 0 && (
+            <Pagination
+              totalPages={totalPages}
+              handleMovePages={handleMovePages}
+              currentPage={currentPage}
+            />
           )}
         </>
       ) : (

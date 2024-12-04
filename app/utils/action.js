@@ -243,8 +243,8 @@ export const getArticlesByEmail = async (email, page) => {
     connectDb();
     const pageSizes = 4;
     const pageNumber = page || 1;
-    const count = await Article.find({}).countDocuments();
     const query = email ? { email: { $regex: email, $options: "i" } } : {}; // Partial, case-insensitive match if email is provided
+    const count = await Article.find(query).countDocuments();
     const posts = await Article.find(query)
       .limit(pageSizes)
       .skip((pageNumber - 1) * pageSizes)
@@ -256,18 +256,11 @@ export const getArticlesByEmail = async (email, page) => {
     throw new Error("Failed to fetch articles!"); // Throw a new error if something goes wrong
   }
 };
-export const getPostsAdmin = async (page) => {
+export const getPostsAdmin = async () => {
   try {
     connectDb();
-    const pageSizes = 4;
-    const pageNumber = page || 1;
-    const count = await Article.find({}).countDocuments();
-    const posts = await Article.find({})
-      .limit(pageSizes)
-      .skip((pageNumber - 1) * pageSizes)
-      .sort({ createdAt: -1 });
-    const totalPage = Math.ceil(count / pageSizes);
-    return { posts, totalPage };
+    const posts = await Article.find().sort({ createdAt: -1 });
+    return JSON.parse(JSON.stringify(posts));
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch posts!");
