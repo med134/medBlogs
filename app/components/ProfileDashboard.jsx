@@ -6,7 +6,7 @@ import { getArticlesByEmail, getEmailSession } from "../utils/action";
 
 const ProfileDashboard = async ({ user }) => {
   const sessionEmail = await getEmailSession();
-  const nBArticle = await getArticlesByEmail(sessionEmail);
+  const nBArticle = await getArticlesByEmail(user.email);
   return (
     <div className="max-w-4xl flex items-center mx-auto my-16">
       {/*Main Col*/}
