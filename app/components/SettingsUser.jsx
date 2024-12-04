@@ -89,7 +89,6 @@ const SettingsUser = ({ user }) => {
           />
         </div>
 
-       
         <div className="mx-auto w-4/5 pt-3 border-b-2 border-mainColor opacity-25" />
         {/* Job and Country */}
         <div className="w-full py-6 flex flex-col items-center mx-auto gap-2 max-w-lg p-4">
@@ -162,6 +161,7 @@ const SettingsUser = ({ user }) => {
                 name="twitterUrl"
                 placeholder="X URL..."
                 value={formData?.twitterUrl}
+                onChange={(e) => handelChange(e.target.name, e.target.value)}
                 className="w-full px-12 rounded-lg p-2 outline-mainColor bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
             </div>
@@ -171,6 +171,7 @@ const SettingsUser = ({ user }) => {
                 type="url"
                 name="linkedInUrl"
                 value={formData?.linkedInUrl}
+                onChange={(e) => handelChange(e.target.name, e.target.value)}
                 placeholder="linkedIn URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
@@ -181,6 +182,7 @@ const SettingsUser = ({ user }) => {
                 type="url"
                 name="githubUrl"
                 value={formData?.githubUrl}
+                onChange={(e) => handelChange(e.target.name, e.target.value)}
                 placeholder="github URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
@@ -191,6 +193,7 @@ const SettingsUser = ({ user }) => {
                 type="url"
                 name="youtubeUrl"
                 value={formData?.youtubeUrl}
+                onChange={(e) => handelChange(e.target.name, e.target.value)}
                 placeholder="youtube channel URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
@@ -201,6 +204,7 @@ const SettingsUser = ({ user }) => {
                 type="url"
                 name="dribbleUrl"
                 value={formData?.dribbleUrl}
+                onChange={(e) => handelChange(e.target.name, e.target.value)}
                 placeholder="dribble URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"
               />
@@ -210,6 +214,7 @@ const SettingsUser = ({ user }) => {
               <input
                 type="url"
                 value={formData?.instagramUrl}
+                onChange={(e) => handelChange(e.target.name, e.target.value)}
                 name="instagramUrl"
                 placeholder="instagram URL..."
                 className="w-full px-12 rounded-lg p-2 bg-gray-100 border-2 border-solid border-black/10 font-mono font-medium text-sm"

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const ServerPagination = ({ totalPage, currentPage }) => {
+const UserPagination = ({ currentPage, totalPage }) => {
   return (
     <div
       aria-label="Page navigation"
@@ -14,14 +14,14 @@ const ServerPagination = ({ totalPage, currentPage }) => {
             ? "hidden"
             : " flex items-center justify-center dark:bg-dark dark:text-light px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"
         } 
-        `}
+            `}
       >
         Previous
       </Link>
       {Array.from({ length: totalPage }, (_, index) => (
         <div key={index}>
           <Link
-            href={`/dashboard/blogs/?page=${index + 1}`}
+            href={`/dashboard/users/?page=${index + 1}`}
             className={`flex items-center justify-center px-3 h-8 leading-tight border ${
               currentPage === index + 1
                 ? "bg-blue-500 text-white"
@@ -33,15 +33,15 @@ const ServerPagination = ({ totalPage, currentPage }) => {
         </div>
       ))}
       <Link
-        href={`/dashboard/blogs/?page=${currentPage + 1}`}
+        href={`/dashboard/users/?page=${currentPage + 1}`}
         disabled={currentPage === totalPage ? true : false}
         className={`${
           currentPage === totalPage
             ? "hidden"
             : " flex items-center justify-center dark:bg-dark dark:text-light px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"
         }
-           
-        `}
+               
+            `}
       >
         Next
       </Link>
@@ -49,4 +49,4 @@ const ServerPagination = ({ totalPage, currentPage }) => {
   );
 };
 
-export default ServerPagination;
+export default UserPagination;

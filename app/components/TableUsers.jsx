@@ -2,10 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FormatDate } from "../utils/action";
+import UserPagination from "./UserPagination";
 
-const TableUsers = ({ data }) => {
+const TableUsers = ({ users, page, totalPage }) => {
   return (
     <div className="w-full overflow-x-auto">
+      <h3 className="py-3 font-semibold text-2xl md:text-xl">Admin & Users</h3>
       <table className="w-full">
         <thead>
           <tr className="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
@@ -16,7 +18,7 @@ const TableUsers = ({ data }) => {
           </tr>
         </thead>
         <tbody className="bg-white">
-          {data?.map((user) => (
+          {users?.map((user) => (
             <tr key={user._id} className="text-gray-700">
               <td className="px-4 py-3 border">
                 <div className="flex items-center text-sm">
@@ -65,6 +67,12 @@ const TableUsers = ({ data }) => {
           ))}
         </tbody>
       </table>
+      {users?.length > 0 && (
+        <UserPagination
+          totalPage={totalPage}
+          currentPage={page}
+        />
+      )}
     </div>
   );
 };

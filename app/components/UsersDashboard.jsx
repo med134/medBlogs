@@ -4,8 +4,9 @@ import Image from "next/image";
 import Form from "next/form";
 import { deleteUser } from "../utils/action";
 import Link from "next/link";
+import UserPagination from "./UserPagination";
 
-const UsersDashboard = ({ users }) => {
+const UsersDashboard = ({ users, page, totalPage }) => {
   return (
     <div className="container mx-auto p-4 py-6 xs:p-2 xs:py-1">
       <h1 className="text-2xl font-bold mb-4">Admin & Users</h1>
@@ -83,6 +84,9 @@ const UsersDashboard = ({ users }) => {
           </table>
         </div>
       </div>
+      {users?.length > 0 && (
+        <UserPagination totalPage={totalPage} currentPage={page} />
+      )}
     </div>
   );
 };

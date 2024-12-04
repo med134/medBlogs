@@ -94,11 +94,19 @@ export const getDraftBlog = async () => {
   }
 };
 
-export const getAllUsers = async () => {
+export const getAllUsers = async (page) => {
   try {
     connectDb();
-    const users = await User.find();
-    return users;
+    const pageSizes = 4;
+    const pageNumber = page || 1;
+    const count = await User.find({}).countDocuments();
+    const AllUsers = await User.find({})
+      .limit(pageSizes)
+      .skip((pageNumber - 1) * pageSizes)
+      .sort({ createdAt: 1 });
+    const users = JSON.parse(JSON.stringify(AllUsers));
+    const totalPage = Math.ceil(count / pageSizes);
+    return { users, totalPage };
   } catch (err) {
     console.log(err.message);
     throw new Error("Failed to fetch users!");
@@ -512,9 +520,15 @@ export const editArticles = async (prevSettings, formData) => {
 
       { new: true }
     );
+    return { message: "your article is update successfully" };
   } catch (err) {
     console.log(err.message);
   }
   revalidatePath("/dashboard/blogs/edit-articles");
   redirect(`/dashboard/blogs`);
+};
+
+export const getEmailSession = async () => {
+  const session = await auth();
+  return session.user.email;
 };
