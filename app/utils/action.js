@@ -11,6 +11,7 @@ import Comments from "../module/Comments";
 import bcrypt from "bcryptjs";
 import { revalidatePath } from "next/cache";
 import Likes from "../module/Likes";
+import connect from "./ConnectDB";
 
 export const handelLoginGithub = async () => {
   await signIn("github");
@@ -340,14 +341,13 @@ export const loginAuth = async (prevState, formData) => {
   const password = formData.get("password");
   console.log(email, password);
   try {
-    await signIn("credentials", {
-      email,
-      password,
-    });
+    connect();
+    await signIn("credentials", { email, password });
   } catch (err) {
     console.log(err);
     return "password or email is invalid ,try again !";
   }
+  revalidatePath("/login");
   redirect("/dashboard");
 };
 export const handelDeleteBlog = async (_id) => {

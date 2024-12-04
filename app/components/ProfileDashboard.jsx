@@ -2,13 +2,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaUserAlt } from "react-icons/fa";
-import { auth } from "../utils/auth";
-import { GrArticle } from "react-icons/gr";
-import { getArticlesByEmail } from "../utils/action";
+import { getArticlesByEmail, getEmailSession } from "../utils/action";
 
 const ProfileDashboard = async ({ user }) => {
-  const session = await auth();
-  const nBArticle = await getArticlesByEmail();
+  const sessionEmail = await getEmailSession();
+  const nBArticle = await getArticlesByEmail(sessionEmail);
   return (
     <div className="max-w-4xl flex items-center mx-auto my-16">
       {/*Main Col*/}
@@ -70,7 +68,7 @@ const ProfileDashboard = async ({ user }) => {
               "Totally optional short description about yourself, what you do and so on."}
           </p>
           <div className="pt-12 pb-8 text-center">
-            {session?.user.email === user?.email ? (
+            {sessionEmail === user?.email ? (
               <Link
                 href={`/dashboard/users/settings/${user?._id}`}
                 className="bg-mainColor hover:bg-cyan-900 text-white font-bold py-2 px-4 rounded-full"

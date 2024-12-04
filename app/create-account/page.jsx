@@ -43,6 +43,7 @@ const Register = async () => {
                   type="text"
                   placeholder="full name"
                   name="name"
+                  maxLength={40}
                   required
                 />
                 <input

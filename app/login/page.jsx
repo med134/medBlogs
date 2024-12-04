@@ -41,8 +41,6 @@ export const metadata = {
   },
 };
 const Login = async () => {
-  const session = await auth();
-  console.log("user from page login", session);
   return (
     <>
       <TransitionEffect />
@@ -71,7 +69,7 @@ const Login = async () => {
               </span>{" "}
               to publish blogs.
             </p>
-            <LoginForm session={session} />
+            <LoginForm />
             <div className="bg-gray-400 h-[1px] w-full mt-5 mb-5"></div>
             <h4 className="flex justify-center underline text-gray-500">
               Login with Google or Github
