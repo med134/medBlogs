@@ -3,9 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaUserAlt } from "react-icons/fa";
 import { auth } from "../utils/auth";
+import { GrArticle } from "react-icons/gr";
+import { getArticlesByEmail } from "../utils/action";
 
 const ProfileDashboard = async ({ user }) => {
   const session = await auth();
+  const nBArticle = await getArticlesByEmail();
   return (
     <div className="max-w-4xl flex items-center mx-auto my-16">
       {/*Main Col*/}
@@ -23,13 +26,20 @@ const ProfileDashboard = async ({ user }) => {
             alt="user image"
           />
           <h1 className="text-3xl font-bold pt-8 lg:pt-0 uppercase flex justify-center sm:text-xl">
-            {user.name}
+            {user?.name}
           </h1>
           <div className="flex justify-center items-center">
-            <FaUserAlt className="fill-mainColor w-16 font-bold" />
-            <span className="text-gray-600">
-              {user?.isAdmin ? "Admin" : "User"}
-            </span>
+            <div className="flex items-center mr-2">
+              <FaUserAlt className="fill-mainColor w-16 font-bold" />
+              <span className="text-gray-600">
+                {user?.isAdmin ? "Admin" : "User"}
+              </span>
+            </div>
+            |
+            <div className="flex items-center ml-4 text-gray-600">
+              NB Articles:
+              <span className="ml-2 font-semibold">{nBArticle.count}</span>
+            </div>
           </div>
           <div className="mx-auto  w-4/5 pt-3 border-b-2 border-mainColor opacity-25" />
           <div className="pt-4 text-base font-bold flex items-center justify-center">
@@ -60,16 +70,16 @@ const ProfileDashboard = async ({ user }) => {
               "Totally optional short description about yourself, what you do and so on."}
           </p>
           <div className="pt-12 pb-8 text-center">
-            {session.user.email === user.email ? (
+            {session?.user.email === user?.email ? (
               <Link
-                href={`/dashboard/users/settings/${user._id}`}
+                href={`/dashboard/users/settings/${user?._id}`}
                 className="bg-mainColor hover:bg-cyan-900 text-white font-bold py-2 px-4 rounded-full"
               >
                 Edit your profile
               </Link>
             ) : (
               <Link
-                href={`mailto:${user.email}`}
+                href={`mailto:${user?.email}`}
                 className="bg-mainColor hover:bg-cyan-900 text-white font-bold py-2 px-4 rounded-full"
               >
                 Send message

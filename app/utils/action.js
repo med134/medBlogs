@@ -250,7 +250,7 @@ export const getArticlesByEmail = async (email, page) => {
       .skip((pageNumber - 1) * pageSizes)
       .sort({ createdAt: -1 });
     const totalPage = Math.ceil(count / pageSizes);
-    return { posts, totalPage }; // Find and sort articles
+    return { posts, totalPage, count }; // Find and sort articles
   } catch (error) {
     console.log(error.message); // Log any errors
     throw new Error("Failed to fetch articles!"); // Throw a new error if something goes wrong
