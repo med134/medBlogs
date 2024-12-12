@@ -1,22 +1,13 @@
 "use client";
 import { loginAuth } from "../utils/action";
-import { useActionState, useEffect } from "react";
-import Form from "next/form";
+import { useActionState } from "react";
 
 const LoginForm = () => {
-  const refreshPage = () => {
-    window.location.reload();
-  };
-  const [message, formAction, isPending] = useActionState(loginAuth, null);
-  useEffect(() => {
-    if (message) {
-      refreshPage();
-    }
-  }, [message]);
+  const [message, action, isPending] = useActionState(loginAuth, null);
 
   return (
     <>
-      <Form className="mt-4" action={formAction}>
+      <form className="mt-4" action={action}>
         {message && <p className="error text-red-500"> {message}</p>}
         <div className="flex justify-center items-center sm:flex sm:flex-col">
           <input
@@ -40,7 +31,7 @@ const LoginForm = () => {
         >
           <span className="text-light">{isPending ? "login..." : "Login"}</span>
         </button>
-      </Form>
+      </form>
     </>
   );
 };

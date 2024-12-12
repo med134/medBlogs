@@ -10,7 +10,7 @@ const Card = async () => {
       {posts.map((item) => (
         <section
           key={item._id}
-          className="w-auto p-4 flex justify-between bg-light items-start mb-3 border border-gray-500 dark:bg-dark  rounded-xl sm:flex-col-reverse"
+          className="w-auto p-4 flex justify-between dark:bg-dark dark:bg-opacity-80 bg-light items-start mb-3 border border-gray-500 rounded-xl sm:flex-col-reverse"
         >
           <div className="text-start">
             <span className="flex justify-start items-center py-2">

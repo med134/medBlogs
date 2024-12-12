@@ -19,18 +19,8 @@ export const {
     Google,
     Credentials({
       credentials: {
-        email: {
-          label: "Email",
-          name: "email",
-          type: "email",
-          placeholder: "Email",
-        },
-        password: {
-          label: "Password",
-          name: "password",
-          type: "password",
-          placeholder: "Password",
-        },
+        email: {},
+        password: {},
       },
       async authorize(credentials) {
         if (credentials === null) return null;
@@ -44,9 +34,11 @@ export const {
           );
 
           if (!isValidPassword) throw new Error("Wrong password");
+          console.log("user auth", userAuth);
           return userAuth;
         } catch (error) {
-          console.log(error);
+          console.log("this is credentials error22", error.message);
+          return null;
         }
       },
     }),
@@ -55,14 +47,16 @@ export const {
     async signIn({ user, profile }) {
       connect();
       try {
-        const userAuth = await User.findOne({ email: profile?.email });
-        if (!userAuth) {
+        const user = await User.findOne({ email: user?.email });
+        if (!user) {
           const newUser = new User({
-            name: profile?.name || user?.name,
+            name: profile?.name,
             email: profile?.email,
             imageUrl: profile?.avatar_url || profile?.picture,
           });
           await newUser.save();
+        } else {
+          return user;
         }
       } catch (err) {
         console.log("this is the error", err.message);
@@ -70,6 +64,6 @@ export const {
       }
       return true;
     },
-    ...authConfig.callbacks,
   },
+  ...authConfig.callbacks,
 });

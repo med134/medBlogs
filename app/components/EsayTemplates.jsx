@@ -13,7 +13,13 @@ const Easy = async () => {
   const templates = await getTemplates();
 
   return (
-    <section id="templates" className="bg-light dark:bg-dark py-8">
+    <section
+      style={{
+        backgroundImage: `url('https://res.cloudinary.com/djcnq7nmj/image/upload/v1734015580/dot-grid-removebg-preview_ncqgal.png')`,
+      }}
+      id="templates"
+      className="bg-light dark:bg-dark py-8"
+    >
       <span className="text-2xl underline dark:text-light xs:pt-6 font-bold flex justify-start items-center text-gray-800 font-slab px-12 xs:px-4 xs:text-xl pt-16 py-2">
         <AiTwotoneSound className="dark:text-light" />
         <p className="ml-2 sm:text-xl ">Recent Templates & components</p>

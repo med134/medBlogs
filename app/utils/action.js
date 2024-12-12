@@ -337,6 +337,7 @@ export const addArticle = async (formData) => {
 export const loginAuth = async (prevState, formData) => {
   const email = formData.get("email");
   const password = formData.get("password");
+  console.log(email, password);
   try {
     await signIn("credentials", { email, password });
   } catch (err) {

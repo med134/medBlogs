@@ -23,6 +23,8 @@ export const authConfig = {
     },
     authorized({ auth, request }) {
       const user = auth?.user;
+      console.log("user conf", user);
+
       const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/dashboard");
       const isLogIn = request.nextUrl?.pathname.startsWith("/login");
       if (isOnAdminPanel && !user) {

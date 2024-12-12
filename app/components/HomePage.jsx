@@ -27,7 +27,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="left-sideT col-span-1 xl:w-72 lg:px-10 xs:w-full">
-        <div className="">
+        <div className="mb-3">
           <h3 className="py-4 text-xl sm:mb-2 font-semibold dark:text-light">
             Follow Us
           </h3>
