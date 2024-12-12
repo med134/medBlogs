@@ -20,18 +20,18 @@ import { MdOutlineWorkOutline, MdOutlineLocalLibrary } from "react-icons/md";
 
 const SettingsUser = ({ user }) => {
   const [message, action, isPending] = useActionState(editUserProfile, null);
-  const [dataUrl, setDataUrl] = useState(user.imageUrl);
+  const [dataUrl, setDataUrl] = useState(user?.imageUrl);
   const [formData, setFormData] = useState({
-    name: user.name,
-    job: user.job,
-    homeAddress: user.homeAddress,
-    about: user.about,
-    youtubeUrl: user.youtubeUrl,
-    githubUrl: user.githubUrl,
-    instagramUrl: user.instagramUrl,
-    linkedInUrl: user.linkedInUrl,
-    dribbleUrl: user.dribbleUrl,
-    twitterUrl: user.twitterUrl,
+    name: user.name || "",
+    job: user.job || "",
+    homeAddress: user.homeAddress || "",
+    about: user.about || "",
+    youtubeUrl: user.youtubeUrl || "",
+    githubUrl: user.githubUrl || "",
+    instagramUrl: user.instagramUrl || "",
+    linkedInUrl: user.linkedInUrl || "",
+    dribbleUrl: user.dribbleUrl || "",
+    twitterUrl: user.twitterUrl || "",
   });
 
   //onchange function
@@ -53,7 +53,6 @@ const SettingsUser = ({ user }) => {
       try {
         // Compress the image file
         const compressedFile = await imageCompression(file, options);
-        // Convert the compressed file to base64 URL
         const reader = new FileReader();
         reader.onload = () => {
           const src = reader.result;
@@ -72,7 +71,7 @@ const SettingsUser = ({ user }) => {
         <div className="max-w-md mx-auto px-10 p-2 rounded-md flex flex-col justify-center items-center">
           <Image
             className="block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 object-cover"
-            src={dataUrl || ""}
+            src={dataUrl}
             width={300}
             height={300}
             alt="user image"

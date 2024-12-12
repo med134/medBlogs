@@ -3,13 +3,19 @@ import { getPosts, FormatDate } from "../utils/action";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
-import icon from "@/public/images/development-amico.webp"
+import icon from "@/public/images/development-amico.webp";
 
 const FirstView = async () => {
   const post = await getPosts();
 
   return (
-    <div id="home" className="py-32 xl:pb-1 bg-light dark:bg-dark">
+    <div
+      style={{
+        backgroundImage: `url('https://res.cloudinary.com/djcnq7nmj/image/upload/v1734015580/dot-grid-removebg-preview_ncqgal.png')`,
+      }}
+      id="home"
+      className="py-32 xl:pb-1 bg-light dark:bg-dark z-0"
+    >
       {post?.map((item, index) =>
         index < 1 ? (
           <div

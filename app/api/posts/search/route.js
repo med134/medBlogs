@@ -5,7 +5,6 @@ import Posts from "@/app/module/Post";
 export const GET = async (request) => {
   const url = new URL(request.url);
   const query = url.searchParams.get("query");
-  console.log("search query", query);
   try {
     await connect();
     const posts = await Posts.find();

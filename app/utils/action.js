@@ -3,7 +3,6 @@ import { auth, signIn, signOut } from "./auth";
 import Article from "../module/Article";
 import User from "../module/User";
 import { redirect } from "next/navigation";
-import connectDb from "./ConnectDB";
 import Category from "../module/Category";
 import Posts from "../module/Post";
 import Email from "../module/Email";
@@ -33,7 +32,7 @@ export const sendMessage = async (formData) => {
   const email = formData.get("email");
   const message = formData.get("message");
   try {
-    connectDb();
+    connect();
     const newMessage = new Email({
       name,
       email,
@@ -42,7 +41,6 @@ export const sendMessage = async (formData) => {
     await newMessage.save();
     return "Your message is send successfully";
   } catch (err) {
-    console.log(err.message);
     return "Something was error";
   }
   revalidatePath("/contact-us");
@@ -50,7 +48,7 @@ export const sendMessage = async (formData) => {
 
 export const getPosts = async () => {
   try {
-    connectDb();
+    connect();
     const posts = await Article.find().sort({ createdAt: -1 });
     const publicPosts = posts?.filter((item) => item.status === "publish");
     return JSON.parse(JSON.stringify(publicPosts));
@@ -62,7 +60,7 @@ export const getPosts = async () => {
 
 export const getPostsHome = async () => {
   try {
-    connectDb();
+    connect();
     const posts = await Article.find().sort({ createdAt: -1 });
     const publicPosts = posts?.filter(
       (item, index) => item.status === "publish" && index < 7 && index > 1
@@ -75,7 +73,7 @@ export const getPostsHome = async () => {
 };
 export const getMessages = async () => {
   try {
-    connectDb();
+    connect();
     const messages = await Email.find();
     return messages;
   } catch (err) {
@@ -85,7 +83,7 @@ export const getMessages = async () => {
 };
 export const getDraftBlog = async () => {
   try {
-    connectDb();
+    connect();
     const posts = await Article.find();
     const draftBlog = posts.filter((draft) => draft.status === "draft");
     return draftBlog;
@@ -97,7 +95,7 @@ export const getDraftBlog = async () => {
 
 export const getAllUsers = async (page) => {
   try {
-    connectDb();
+    connect();
     const pageSizes = 4;
     const pageNumber = page || 1;
     const count = await User.find({}).countDocuments();
@@ -115,9 +113,9 @@ export const getAllUsers = async (page) => {
 };
 export const getUserById = async (_id) => {
   try {
-    connectDb();
+    connect();
     const user = await User.findOne({ _id });
-    return user;
+    return JSON.parse(JSON.stringify(user));
   } catch (err) {
     console.log(err.message);
     throw new Error("Failed to fetch users!");
@@ -125,7 +123,7 @@ export const getUserById = async (_id) => {
 };
 export const getUserByEmail = async (email) => {
   try {
-    connectDb();
+    connect();
     const user = await User.findOne({ email });
     return user;
   } catch (err) {
@@ -145,7 +143,7 @@ export const getUserId = async () => {
 
 export const getPostsBySlug = async (slug) => {
   try {
-    connectDb();
+    connect();
     const posts = await Article.findOne({ slug });
     return posts;
   } catch (err) {
@@ -156,7 +154,7 @@ export const getPostsBySlug = async (slug) => {
 
 export const getAllCategories = async () => {
   try {
-    connectDb();
+    connect();
     const categories = await Category.find().sort({ slug: 1 });
     return JSON.parse(JSON.stringify(categories));
   } catch (err) {
@@ -167,7 +165,7 @@ export const getAllCategories = async () => {
 export const deleteUser = async (formData) => {
   const _id = formData.get("id");
   try {
-    connectDb();
+    connect();
     await User.findByIdAndDelete({ _id });
     console.log("deleted from db");
   } catch (err) {
@@ -179,7 +177,7 @@ export const deleteUser = async (formData) => {
 export const deleteMessage = async (formData) => {
   const _id = formData.get("id");
   try {
-    connectDb();
+    connect();
     await Email.findByIdAndDelete({ _id });
     console.log("deleted message from db");
   } catch (err) {
@@ -191,7 +189,7 @@ export const deleteMessage = async (formData) => {
 
 export const getTemplates = async () => {
   try {
-    connectDb();
+    connect();
     const posts = await Posts.find().sort({ createdAt: -1 });
     return posts;
   } catch (err) {
@@ -202,7 +200,7 @@ export const getTemplates = async () => {
 // search params
 export const searchFunction = async (query) => {
   try {
-    await connectDb();
+    await connect();
     const filteredPosts = await Article.find({
       $or: [
         { title: { $regex: query, $options: "i" } }, // Search in title
@@ -220,7 +218,7 @@ export const searchFunction = async (query) => {
 };
 export const getTemplatesBySlug = async (slug) => {
   try {
-    connectDb();
+    connect();
     const posts = await Posts.findOne({ slug });
     return posts;
   } catch (err) {
@@ -241,7 +239,7 @@ export const FormatDate = async (dateString) => {
 
 export const getArticlesByEmail = async (email, page) => {
   try {
-    connectDb();
+    connect();
     const pageSizes = 4;
     const pageNumber = page || 1;
     const query = email ? { email: { $regex: email, $options: "i" } } : {}; // Partial, case-insensitive match if email is provided
@@ -259,7 +257,7 @@ export const getArticlesByEmail = async (email, page) => {
 };
 export const getPostsAdmin = async () => {
   try {
-    connectDb();
+    connect();
     const posts = await Article.find().sort({ createdAt: -1 });
     return JSON.parse(JSON.stringify(posts));
   } catch (err) {
@@ -270,7 +268,7 @@ export const getPostsAdmin = async () => {
 
 export const getArticleByCategories = async (category) => {
   try {
-    connectDb();
+    connect();
     if (category === "all") {
       const articles = await Article.find().sort({ createdAt: -1 });
       return articles;
@@ -293,7 +291,7 @@ export const addUser = async (formData) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
   try {
-    connectDb();
+    connect();
     const newUser = new User({
       id,
       name,
@@ -314,7 +312,7 @@ export const addArticle = async (formData) => {
   const { title, tags, description, image, category, slug, job, content } =
     Object.fromEntries(formData);
   try {
-    connectDb();
+    connect();
     const newArticle = new Article({
       title,
       tags,
@@ -339,20 +337,16 @@ export const addArticle = async (formData) => {
 export const loginAuth = async (prevState, formData) => {
   const email = formData.get("email");
   const password = formData.get("password");
-  console.log(email, password);
   try {
-    connect();
     await signIn("credentials", { email, password });
   } catch (err) {
     console.log(err);
     return "password or email is invalid ,try again !";
   }
-  revalidatePath("/login");
-  redirect("/dashboard");
 };
 export const handelDeleteBlog = async (_id) => {
   try {
-    connectDb();
+    connect();
     await Article.findByIdAndDelete({ _id });
     console.log("article deleted successfully");
   } catch (err) {
@@ -363,7 +357,7 @@ export const handelDeleteBlog = async (_id) => {
 
 export const getComments = async (blogId) => {
   try {
-    connectDb();
+    connect();
     const query = blogId ? { blogId: { $regex: blogId, $options: "i" } } : {};
     const comment = await Comments.find(query).sort({ createdAt: -1 });
     return comment;
@@ -378,7 +372,7 @@ export const createComment = async (formData) => {
   const imageUser = formData.get("imageUser");
   const comment = formData.get("comment");
   try {
-    connectDb();
+    connect();
     const newComment = new Comments({
       blogId,
       username,
@@ -386,7 +380,6 @@ export const createComment = async (formData) => {
       comment,
     });
     await newComment.save();
-    console.log("newComment is created");
   } catch (error) {
     console.log(error);
   }
@@ -406,9 +399,12 @@ export const editUserProfile = async (prevSettings, formData) => {
   const youtubeUrl = formData.get("youtubeUrl");
   const dribbleUrl = formData.get("dribbleUrl");
   const instagramUrl = formData.get("instagramUrl");
+  /*   const password = formData.get("password");
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt); */
 
   try {
-    connectDb();
+    connect();
     const updatedUser = await User.findByIdAndUpdate(
       _id,
       {
@@ -437,7 +433,7 @@ export const editUserProfile = async (prevSettings, formData) => {
 // get Likes
 export const getLikes = async (_id) => {
   try {
-    connectDb();
+    connect();
     const likesPost = await Likes.findOne({ blogId: _id });
     return likesPost;
   } catch (error) {
@@ -448,7 +444,7 @@ export const getLikes = async (_id) => {
 // update likes
 export const incrementLike = async (_id) => {
   try {
-    connectDb();
+    connect();
     const likesPost = await Likes.findOne({ blogId: _id });
     if (likesPost) {
       await Likes.updateOne(
@@ -462,7 +458,7 @@ export const incrementLike = async (_id) => {
       );
       return updatedDoc.numberOfLikes; // Return the updated numberOfLikes value
     } else {
-      connectDb();
+      connect();
       const newLikes = new Likes({ blogId: _id, numberOfLikes: 1 });
       await newLikes.save();
       return newLikes.numberOfLikes;
@@ -492,7 +488,7 @@ export const editArticles = async (prevSettings, formData) => {
   console.log(tags, title, slug);
 
   try {
-    connectDb();
+    connect();
     const updatedArticle = await Article.findByIdAndUpdate(
       _id,
       {
@@ -524,4 +520,26 @@ export const editArticles = async (prevSettings, formData) => {
 export const getEmailSession = async () => {
   const session = await auth();
   return session.user.email;
+};
+
+export const addPassword = async (prevSettings, formData) => {
+  const _id = formData.get("id");
+  const password = formData.get("password");
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  try {
+    connect();
+    const updatedUser = await User.findByIdAndUpdate(
+      _id,
+      {
+        password: hashedPassword,
+      },
+      { new: true }
+    );
+  } catch (err) {
+    console.log(err.message);
+  }
+  revalidatePath("/dashboard/users");
+  redirect(`/dashboard/users/${_id}`);
 };

@@ -7,27 +7,6 @@ import { authConfig } from "./auth.config";
 import bcrypt from "bcryptjs";
 import Credentials from "next-auth/providers/credentials";
 
-const login = async (credentials) => {
-  try {
-    connect();
-    const user = await User.findOne({ email: credentials.email });
-
-    if (!user) throw new Error("Wrong credentials!");
-
-    const isPasswordCorrect = await bcrypt.compare(
-      credentials.password,
-      user.password
-    );
-
-    if (!isPasswordCorrect) throw new Error("Wrong credentials!");
-
-    return user;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to login!");
-  }
-};
-
 export const {
   handlers: { GET, POST },
   auth,
@@ -39,13 +18,35 @@ export const {
     GitHub,
     Google,
     Credentials({
+      credentials: {
+        email: {
+          label: "Email",
+          name: "email",
+          type: "email",
+          placeholder: "Email",
+        },
+        password: {
+          label: "Password",
+          name: "password",
+          type: "password",
+          placeholder: "Password",
+        },
+      },
       async authorize(credentials) {
+        if (credentials === null) return null;
         try {
-          const user = await login(credentials);
-          console.log(user)
-          return user;
-        } catch (err) {
-          return null;
+          const userAuth = await User.findOne({ email: credentials.email });
+          if (!userAuth) throw new Error("Wrong email!");
+
+          const isValidPassword = await bcrypt.compare(
+            credentials.password,
+            userAuth.password
+          );
+
+          if (!isValidPassword) throw new Error("Wrong password");
+          return userAuth;
+        } catch (error) {
+          console.log(error);
         }
       },
     }),

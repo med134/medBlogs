@@ -1,5 +1,5 @@
 export const authConfig = {
-  page: {
+  pages: {
     signIn: "/login",
   },
   providers: [],
@@ -18,26 +18,17 @@ export const authConfig = {
         session.user.name = token.name;
         session.user.email = token.email;
       }
+
       return session;
     },
-
     authorized({ auth, request }) {
       const user = auth?.user;
-      const isOneBlog = request?.nextUrl?.pathname?.startsWith("/dashboard");
-      const isOnLoginPage =
-        request?.nextUrl?.pathname.startsWith("/login") ||
-        request?.nextUrl?.pathname.startsWith("/create-account");
-      const adminPages =
-        request?.nextUrl?.pathname.startsWith("/dashboard/pending") ||
-        request?.nextUrl?.pathname.startsWith("/dashboard/messages");
-
-      if (adminPages && user?.email !== "mohamed7dakir@gmail.com") {
-        return Response.redirect(new URL("/dashboard", request.nextUrl));
-      }
-      if (isOneBlog && !user) {
+      const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/dashboard");
+      const isLogIn = request.nextUrl?.pathname.startsWith("/login");
+      if (isOnAdminPanel && !user) {
         return Response.redirect(new URL("/login", request.nextUrl));
       }
-      if (isOnLoginPage && user) {
+      if (isLogIn && user) {
         return Response.redirect(new URL("/dashboard", request.nextUrl));
       }
       return true;

@@ -8,7 +8,7 @@ const ServerPagination = ({ totalPages, currentPage }) => {
       className="flex justify-center flex-wrap mt-16"
     >
       <Link
-        href={`/dashboard/blogs=${currentPage - 1}`}
+        href={`/dashboard/blogs?page=${currentPage - 1}`}
         className={`${
           currentPage === 1
             ? "hidden"
@@ -21,7 +21,7 @@ const ServerPagination = ({ totalPages, currentPage }) => {
       {Array.from({ length: totalPages }, (_, index) => (
         <div key={index}>
           <Link
-            href={`/dashboard/blogs/?page=${index + 1}`}
+            href={`/dashboard/blogs?page=${index + 1}`}
             className={`flex items-center justify-center px-3 h-8 leading-tight border ${
               currentPage === index + 1
                 ? "bg-blue-500 text-white"
@@ -33,7 +33,7 @@ const ServerPagination = ({ totalPages, currentPage }) => {
         </div>
       ))}
       <Link
-        href={`/dashboard/blogs/?page=${currentPage + 1}`}
+        href={`/dashboard/blogs?page=${currentPage + 1}`}
         disabled={currentPage === totalPages ? true : false}
         className={`${
           currentPage === totalPages

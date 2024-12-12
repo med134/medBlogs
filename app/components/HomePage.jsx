@@ -11,7 +11,12 @@ const Cat = dynamic(() => import("../MainSide"), {
 
 const HomePage = () => {
   return (
-    <div className="grid grid-cols-6 gap-6 xl:gap-2 lg:block dark:bg-dark sm:p-2">
+    <div
+      style={{
+        backgroundImage: `url('https://res.cloudinary.com/djcnq7nmj/image/upload/v1734015580/dot-grid-removebg-preview_ncqgal.png')`,
+      }}
+      className="grid grid-cols-6 gap-6 xl:gap-2 lg:block dark:bg-dark sm:p-2"
+    >
       <div className="right-sideT col-span-4 w-full px-10 xs:px-2 mb-6">
         <div className="text-2xl underline dark:text-light mb-4 pt-2 font-bold flex justify-start items-center text-gray-800 font-slab px-5 xs:px-2">
           <AiTwotoneSound className="dark:text-light" />
