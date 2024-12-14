@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import { inter } from "./components/Fonts";
 import NextTopLoader from "nextjs-toploader";
 import CookieBanner from "./components/Cookies";
+import { ClerkProvider } from "@clerk/nextjs";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 export const viewport = {
   themeColor: [
@@ -62,17 +63,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <Suspense fallback={null}>
-        <GoogleAnalytics GA_MEASUREMENT_ID="G-J4KQVRLWEN" />
-      </Suspense>
-      <body className={`${inter.className}`} suppressHydrationWarning={true}>
-        <NavBar />
-        {children}
-        <NextTopLoader zIndex={99} showSpinner={false} />
-        <Footer />
-        <CookieBanner />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <Suspense fallback={null}>
+          <GoogleAnalytics GA_MEASUREMENT_ID="G-J4KQVRLWEN" />
+        </Suspense>
+        <body className={`${inter.className}`} suppressHydrationWarning={true}>
+          <NavBar />
+          {children}
+          <NextTopLoader zIndex={99} showSpinner={false} />
+          <Footer />
+          <CookieBanner />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

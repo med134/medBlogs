@@ -1,10 +1,9 @@
 import React from "react";
 import DashSide from "./DashSide";
-import { auth } from "@/app/utils/auth";
+import { auth } from "@/auth";
 
 const MainSideBarDashboard = async () => {
-  const user = await auth();
-  const session = JSON.parse(JSON.stringify(user));
+  const session = await auth();
   return <DashSide session={session} />;
 };
 

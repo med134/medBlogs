@@ -1,7 +1,7 @@
 import React from "react";
 import UsersDashboard from "@/app/components/UsersDashboard";
 import { getAllUsers } from "@/app/utils/action";
-import { auth } from "@/app/utils/auth";
+import { auth } from "@/auth";
 import TableUsers from "@/app/components/TableUsers";
 
 const page = async ({ searchParams }) => {

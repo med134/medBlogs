@@ -3,7 +3,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import "@/app/globals.css";
-import { auth } from "@/app/utils/auth";
+import { auth } from "@/auth";
 import { getPostsBySlug, FormatDate, getLikes } from "@/app/utils/action";
 import "jodit-react/examples/app.css";
 import Loading from "@/app/Loading";
@@ -117,11 +117,7 @@ const BlogPage = async ({ params }) => {
             className="py-4 w-full xs:min-w-full"
             dangerouslySetInnerHTML={{ __html: content }}
           />
-          <ReactionBlog
-            slug={slug}
-            totalLikes={totalLikes}
-            BlogId={BlogId}
-          />
+          <ReactionBlog slug={slug} totalLikes={totalLikes} BlogId={BlogId} />
           <Comments postId={BlogId} userData={session} />
         </div>
       </div>

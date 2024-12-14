@@ -1,1 +1,1 @@
-export { POST, GET } from "@/app/utils/auth";
+export { POST, GET } from "@/auth";

@@ -11,7 +11,7 @@ import { handelLogOut } from "../utils/action";
 import dynamic from "next/dynamic";
 const ProfileDown = dynamic(() => import("./ProfileDown"), { ssr: false });
 
-const ResponsiveDashboardNavbar = ({ user }) => {
+const ResponsiveDashboardNavbar = ({ user, session }) => {
   const [isOpen, setIsOpen] = useState(false);
   const path = usePathname();
   const handelOpen = () => {
@@ -56,17 +56,16 @@ const ResponsiveDashboardNavbar = ({ user }) => {
         <MdSpaceDashboard className="fill-mainColor w-10 h-10" />
         <span className="text-mainColor ml-3">Admin Panel</span>
       </div>
-      <div>
-        {" "}
-        <div className="flex justify-start items-center px-4 cursor-pointer">
-          <div className="flex mr-6 items-center md:ml-4 xs:ml-0 xs:mr-0">
-            <span className="text-xs text-gray-500 mr-2">Hi, {user.name}</span>{" "}
-            <ProfileDown user={user} />
-          </div>
-          <Link href="/" className="ml-3 lg:hidden">
-            <RxExit className="w-8 h-8 fill-mainColor" />
-          </Link>
+      <div className="flex justify-start items-center px-4 cursor-pointer">
+        <div className="flex mr-6 items-center md:ml-4 xs:ml-0 xs:mr-0">
+          <span className="text-xs text-gray-500 mr-2">
+            Hi, {user ? user.name : session.user?.name}
+          </span>
+          <ProfileDown user={user} />
         </div>
+        <Link href="/" className="ml-3 lg:hidden">
+          <RxExit className="w-8 h-8 fill-mainColor" />
+        </Link>
       </div>
       {isOpen && (
         <div

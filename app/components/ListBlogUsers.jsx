@@ -15,7 +15,7 @@ const FormatDate = (dateString) => {
   );
   return formattedDate;
 };
-const ListBlogUsers = ({ posts, totalPage, page }) => {
+const ListBlogUsers = ({ posts, totalPage, page, session }) => {
   const [isOpen, setOpen] = useState(false);
   const [blogIdDeleted, setBlogIdDeleted] = useState();
   const handelOpen = () => {
@@ -25,6 +25,7 @@ const ListBlogUsers = ({ posts, totalPage, page }) => {
     handelOpen();
     setBlogIdDeleted(id);
   };
+  console.log(totalPage);
   return (
     <>
       {" "}
@@ -101,7 +102,11 @@ const ListBlogUsers = ({ posts, totalPage, page }) => {
             </table>
           </>
         ) : (
-          <div className="flex flex-col justify-center items-center">
+          <div
+            className={`${
+              !session ? "hidden" : "flex flex-col justify-center items-center"
+            }`}
+          >
             <span className="text-3xl font-semibold py-6 text-mainColor">
               Not blogs yet
             </span>

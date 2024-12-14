@@ -9,6 +9,7 @@ export const authConfig = {
         token.id = user.id;
         token.name = user.name;
         token.email = user.email;
+        token.image = user.imageUrl;
       }
       return token;
     },
@@ -17,13 +18,12 @@ export const authConfig = {
         session.user.id = token.id;
         session.user.name = token.name;
         session.user.email = token.email;
+        session.user.image = token.image;
       }
-
       return session;
     },
     authorized({ auth, request }) {
       const user = auth?.user;
-      console.log("user conf", user);
 
       const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/dashboard");
       const isLogIn = request.nextUrl?.pathname.startsWith("/login");

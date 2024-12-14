@@ -1,7 +1,8 @@
 import React from "react";
 
 import AddNewPost from "@/app/components/AddNewPost";
-import { auth } from "@/app/utils/auth";
+import { auth } from "@/auth";
+import { getUserId } from "@/app/utils/action";
 export const metadata = {
   title: "Dashboard Add templates & components | medCode",
   description: `Elevate Your Web Development with Free Tailwind CSS Templates & Components & code source Our meticulously designed frontend dashboard`,
@@ -45,9 +46,10 @@ export const metadata = {
 
 export default async function page() {
   const session = await auth();
+  const user = await getUserId()
   return (
     <div className="w-full py-4 md:py-2 sm:pt-2">
-      <AddNewPost session={session}/>
+      <AddNewPost session={session} user={user} />
     </div>
   );
 }

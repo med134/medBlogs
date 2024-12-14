@@ -6,7 +6,6 @@ import TransitionEffect from "@/app/components/TransitionEffect";
 import { handelLoginGithub, LoginWithGoogle } from "@/app/utils/action";
 import Form from "next/form";
 import LoginForm from "../components/LoginForm";
-import { auth } from "../utils/auth";
 
 export const metadata = {
   title: "medcode | Login",
@@ -53,7 +52,7 @@ const Login = async () => {
             className="w-full h-full object-fill rounded-2xl"
             alt="image_login"
             src={
-              "https://i.ibb.co/9VFgfg0/organic-flat-blog-post-illustration.jpg"
+              "https://res.cloudinary.com/djcnq7nmj/image/upload/v1734038714/organic-flat-blog-post-illustration_1_zuen40.png"
             }
           />
         </div>
@@ -74,12 +73,12 @@ const Login = async () => {
             <h4 className="flex justify-center underline text-gray-500">
               Login with Google or Github
             </h4>
-            <Form action={LoginWithGoogle}>
+            <form action={LoginWithGoogle}>
               <button className="w-full mt-4 text-center px-6 py-2 border flex justify-center items-center gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
                 <FcGoogle className="h-6 w-6 " />
                 <span className="dark:text-light">Login with Google</span>
               </button>
-            </Form>
+            </form>
             <Form action={handelLoginGithub}>
               <button className="text-white w-full mt-4  bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex justify-center items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2">
                 <svg

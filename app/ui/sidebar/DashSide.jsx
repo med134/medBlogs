@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { handelLogOut } from "@/app/utils/action";
 import { menuItems } from "@/app/components/ProjectArrays";
 
-
 const SideBar = ({ session }) => {
   const path = usePathname();
   const filteredMenuItems = menuItems.filter((item) => {

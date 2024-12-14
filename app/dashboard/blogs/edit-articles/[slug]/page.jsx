@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "@/app/components/Layout";
 import EditArticle from "@/app/components/EditArticle";
 import { getPostsBySlug } from "@/app/utils/action";
-import { auth } from "@/app/utils/auth";
+import { auth } from "@/auth";
 
 const Edit = async ({ params }) => {
   const { slug } = await params;
