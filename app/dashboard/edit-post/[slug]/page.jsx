@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "@/app/components/Layout";
-import PageNotFound from "@/app/not-found";
 import EditPost from "@/app/components/EditPost";
 
 async function getData(slug) {
@@ -8,7 +7,7 @@ async function getData(slug) {
     cache: "no-store",
   });
   if (!res.ok) {
-    return <PageNotFound />;
+    return null;
   }
   return res.json();
 }
