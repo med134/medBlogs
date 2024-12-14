@@ -40,6 +40,10 @@
     "url": "/dashboard/add-templates"
   },
   {
+    "name": "dashboard complete profile",
+    "url": "/dashboard/complete-profile"
+  },
+  {
     "name": "Privacy Policy",
     "url": "/privacy-policy"
   },
