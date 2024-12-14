@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useActionState } from "react";
 import { completeAccount } from "../utils/action";
 import Form from "next/form";
 
@@ -7,6 +7,7 @@ const CompleteUser = ({ user }) => {
   const [confirmationPass, setConfirmationPass] = useState("");
   const [password, setPassword] = useState("");
   const [isMatch, setIsMatch] = useState(true);
+  const [message, action, isPending] = useActionState(completeAccount, null);
 
   const handleConfirmPassword = (e) => {
     const value = e.target.value;
@@ -17,17 +18,16 @@ const CompleteUser = ({ user }) => {
   return (
     <div className="max-w-4xl mx-auto bg-white shadow-[0_2px_13px_-6px_rgba(0,0,0,0.4)] sm:p-8 p-4 rounded-md">
       <div className="my-8 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
-        <h4 className="mx-4 text-center text-mainColor font-semibold text-2xl">
-          Create your account
+        <h4 className="mx-4 text-center font-mono text-mainColor font-semibold text-2xl">
+          Complete Create your account
         </h4>
       </div>
-      <Form action={completeAccount} className="">
+      {message && <p className="text-red-500">{message}</p>}
+      <Form action={action} className="">
         <div className="grid grid-cols-2 md:grid-cols-2 gap-8">
           <input hidden readOnly value={user?.user.email} name="email" />
           <div>
-            <label className="text-gray-800 text-sm mb-2 block">
-              username
-            </label>
+            <label className="text-gray-800 text-sm mb-2 block">username</label>
             <input
               name="name"
               type="text"
@@ -98,7 +98,7 @@ const CompleteUser = ({ user }) => {
               : "bg-mainColor hover:bg-cyan-600"
           }`}
         >
-          submit
+          {isPending ? "user is creating" : "Create user"}
         </button>
       </Form>
     </div>

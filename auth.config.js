@@ -26,7 +26,9 @@ export const authConfig = {
       const user = auth?.user;
 
       const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/dashboard");
-      const isLogIn = request.nextUrl?.pathname.startsWith("/login");
+      const isLogIn = request.nextUrl?.pathname.startsWith(
+        "/login" || "create-account"
+      );
       if (isOnAdminPanel && !user) {
         return Response.redirect(new URL("/login", request.nextUrl));
       }

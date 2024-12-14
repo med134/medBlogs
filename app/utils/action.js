@@ -135,7 +135,7 @@ export const getUserId = async () => {
   const session = await auth();
   if (session) {
     const user = getUserByEmail(session?.user?.email);
-    return user
+    return user;
   } else {
     return null;
   }
@@ -334,18 +334,15 @@ export const addArticle = async (formData) => {
   }
 };
 // login auth credentials
-export const loginAuth = async (prevState, formData) => {
-  const rawFormData = {
-    email: formData.get("email"),
-    password: formData.get("password"),
-  };
+export const loginAuth = async (prvState, formData) => {
+  const { email, password } = Object.fromEntries(formData);
   try {
-    await signIn("credentials", rawFormData);
+    await signIn("credentials", { email, password });
+    redirect(`/dashboard`);
   } catch (err) {
     console.log(err);
-    return "password or email is invalid ,try again !";
+    return "Invalid email or password";
   }
-  revalidatePath("/");
 };
 export const handelDeleteBlog = async (_id) => {
   try {
@@ -547,7 +544,7 @@ export const addPassword = async (prevSettings, formData) => {
   redirect(`/dashboard/users/${_id}`);
 };
 
-export const completeAccount = async (formData) => {
+export const completeAccount = async (prvState, formData) => {
   const { id, name, email, password, homeAddress, about } =
     Object.fromEntries(formData);
   const salt = await bcrypt.genSalt(10);
@@ -566,6 +563,7 @@ export const completeAccount = async (formData) => {
     console.log("user is save");
   } catch (error) {
     console.log(error);
+    return "something went wrong !";
   }
   revalidatePath("/dashboard/complete-profile");
   redirect("/dashboard");

@@ -13,7 +13,7 @@ const limelight = Limelight({
   display: "swap",
 });
 
-const MainLink = ({ user }) => {
+const MainLink = ({ user, session }) => {
   return (
     <div
       className={`w-full px-24 flex justify-between items-center font-semibold xl:px-6 lg:hidden`}
@@ -58,7 +58,7 @@ const MainLink = ({ user }) => {
           className="mx-4 uppercase dark:text-light"
           target="_blank"
         />
-        {user ? (
+        {user || session ? (
           <>
             <CustomLink
               key="dashboard"

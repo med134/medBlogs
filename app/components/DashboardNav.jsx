@@ -8,7 +8,6 @@ async function DashboardNav() {
   const userId = await getUserId();
   const user = JSON.parse(JSON.stringify(userId));
 
-  console.log("this is user database", user);
   return <ResponsiveDashboardNavbar user={user} session={session} />;
 }
 

@@ -31,7 +31,7 @@ export const {
             credentials.password,
             user.password
           );
-          if (!isPass) return null;
+          if (!isPass) return "password is not correct";
           return user;
         } catch (error) {
           console.log(error);

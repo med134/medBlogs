@@ -21,7 +21,7 @@ const SmallLinksNavBar = dynamic(() => import("./SmallLinksNavBar"), {
   ssr: false,
 });
 
-const NavBaLinks = ({ user }) => {
+const NavBaLinks = ({ user, session }) => {
   const [mode, setMode] = useThemeSwitcher("light");
   const [isOpen, setIsOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
@@ -54,10 +54,7 @@ const NavBaLinks = ({ user }) => {
     >
       <div className="hidden lg:flex lg:justify-stretch  text-sm text-gray-500 rounded-lg  dark:text-gray-400 ">
         <div className="left-2">
-          <Link
-            href="/"
-            className="cursor-pointer"
-          >
+          <Link href="/" className="cursor-pointer">
             <Image
               src={med}
               alt="website-logo"
@@ -79,9 +76,15 @@ const NavBaLinks = ({ user }) => {
           >
             <span className="sr-only">Open main menu</span>
             {isOpen ? (
-              <FiX className="w-7 h-7 text-dark dark:text-light" onClick={handleClick} />
+              <FiX
+                className="w-7 h-7 text-dark dark:text-light"
+                onClick={handleClick}
+              />
             ) : (
-              <RiMenu5Fill className="w-7 h-7 text-dark dark:text-light" onClick={handleClick} />
+              <RiMenu5Fill
+                className="w-7 h-7 text-dark dark:text-light"
+                onClick={handleClick}
+              />
             )}
           </button>
           <button
@@ -104,7 +107,7 @@ ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
           </button>
         </div>
       </div>
-      <MainLink user={user} />
+      <MainLink user={user} session={session} />
       <button
         name="theme-button"
         aria-label="change-theme"

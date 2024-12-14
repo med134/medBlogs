@@ -1,16 +1,10 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaUserAlt } from "react-icons/fa";
-import WarningBar from "./WarningBar";
-import PasswordModal from "./PasswordModal";
+import { FaRegEdit } from "react-icons/fa";
 
 const ProfileDashboard = ({ user, nBArticle, sessionEmail }) => {
-  const [isOpen, setOpen] = useState(false);
-  const handelOpen = () => {
-    setOpen(!isOpen);
-  };
   return (
     <div className="max-w-4xl flex items-center mx-auto my-16">
       {/*Main Col*/}
@@ -18,13 +12,15 @@ const ProfileDashboard = ({ user, nBArticle, sessionEmail }) => {
         id="profile"
         className="w-full relative rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 sm:mx-3"
       >
-        {!user.password && (
-          <div onClick={handelOpen} className="cursor-pointer">
-            <WarningBar />
-          </div>
+        {sessionEmail === user?.email && (
+          <Link
+            href={`/dashboard/users/settings/${user?._id}`}
+            className="bg-mainColor hover:bg-cyan-900 absolute right-4 top-2 text-white p-4 rounded-full"
+          >
+            <FaRegEdit className="text-light w-5 h-5 text-center" />
+          </Link>
         )}
-        {isOpen && <PasswordModal user={user} handelOpen={handelOpen} />}
-        <div className="p-4 text-center lg:text-left">
+        <div className="p-4 text-center lg:text-left ">
           {/* Image for mobile view*/}
           <Image
             className="block rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover lg:mb-3 bg-center"
@@ -84,9 +80,10 @@ const ProfileDashboard = ({ user, nBArticle, sessionEmail }) => {
             {sessionEmail === user?.email ? (
               <Link
                 href={`/dashboard/users/settings/${user?._id}`}
-                className="bg-mainColor hover:bg-cyan-900 text-white font-bold py-2 px-4 rounded-full"
+                className="bg-mainColor hover:bg-cyan-900 inline-flex items-center justify-center text-white font-bold py-2 px-4 rounded-full"
               >
-                Edit your profile
+                <span>Edit your profile</span>
+                <FaRegEdit className="text-light ml-3 w-5 h-5" />
               </Link>
             ) : (
               <Link

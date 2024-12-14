@@ -3,7 +3,11 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 import TransitionEffect from "@/app/components/TransitionEffect";
-import { handelLoginGithub, LoginWithGoogle } from "@/app/utils/action";
+import {
+  getUserId,
+  handelLoginGithub,
+  LoginWithGoogle,
+} from "@/app/utils/action";
 import Form from "next/form";
 import LoginForm from "../components/LoginForm";
 
