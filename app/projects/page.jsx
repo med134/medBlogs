@@ -69,7 +69,7 @@ const page = () => {
                 if (index === 0)
                   return (
                     <FeaturedProject
-                      key={item.id}
+                      key={item.id}j
                       type={item.type}
                       title={item.title}
                       summary={item.summary}

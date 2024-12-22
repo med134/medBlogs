@@ -8,7 +8,6 @@ import {
 import { RxDashboard } from "react-icons/rx";
 import { PiUsersThree } from "react-icons/pi";
 import { RiArticleLine } from "react-icons/ri";
-import { LuLogOut } from "react-icons/lu";
 import { MdPendingActions } from "react-icons/md";
 import { LuLayoutTemplate } from "react-icons/lu";
 import { MdOutlineMail } from "react-icons/md";
@@ -16,6 +15,19 @@ import { CgFileAdd } from "react-icons/cg";
 import { FaYoutube, FaDev } from "react-icons/fa";
 
 export const ProjectFull = [
+  {
+    id: 0,
+    slug: "fantastic-car-rental-website",
+    title: "Fantastic Full-stack Car Rental Website",
+    livePreview: "https://location-vl-18rt.vercel.app/",
+    image:
+      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1734887265/2024-12-22_17_36_16___Gemoo_Snap_xcoppr.png",
+    type: "Website App",
+    isFree: false,
+    technology: "NEXT.JS 15.1 , TAILWIND CSS",
+    summary:
+      "Fantastic Value Car Rental — No matter where you are or need to go, Presonto has the right car rental for you. Get out...",
+  },
   {
     id: 1,
     slug: "free-tailwindcss-nextjs-templates",
@@ -64,16 +76,16 @@ export const ProjectFull = [
 export const miniProject = [
   {
     id: 1,
-    title: "Modern Ecommerce website",
-    slug: "modern-ecommerce-websites",
-    preview: "https://med-stores.vercel.app/",
+    title: "Next.js Blogging Website with Sanity",
+    slug: "nextjs-blogging-website-sanity",
+    preview: "https://stote-ecommerce-nextjs-gezn.vercel.app/",
     image:
-      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1726591107/project1_dtuuhw.png",
-    type: "store web app",
+      "https://res.cloudinary.com/djcnq7nmj/image/upload/v1726591108/project3_rgvbve.png",
+    type: "Blogging web app",
     isFree: true,
-    technology: "REACT.JS , TAILWIND CSS",
+    technology: "Next.js 14 , TAILWIND CSS",
     summary:
-      "an innovative and user-friendly e-commerce store that offers a wide range of trendy and fashionable clothing for men and women. Our store aims to provide customers with a seamless online shopping experience using typeScript with Next.js and tailwind css",
+      "a modern blogging platform powered by Next.js. Our website offers a seamless reading experience, combining performance and flexibility",
 
     /* gitHub: "https://github.com/med134/stote-ecommerce-nextjs", */
   },
@@ -274,7 +286,6 @@ export const menuItems = [
     isAdmin: true,
   },
 ];
-
 
 export const getProjects = async (slug) => {
   return ProjectFull.find((project) => project.slug === slug);

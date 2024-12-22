@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
+
 export async function generateMetadata({ params }) {
   const project = await getProjects(params.slug);
   const miniProject = await getProjectsMini(params.slug);
@@ -45,15 +46,15 @@ const page = async ({ params }) => {
   const miniProject = await getProjectsMini(slug);
   return (
     <div className="w-full rounded-lg bg-light p-10 flex flex-col justify-center items-center dark:bg-dark sm:p-6">
-      <div className="bg bg-white dark:bg-dark shadow dark:shadow-light mt-28 rounded-lg p-10 max-w-4xl sm:p-3 sm:mt-16">
+      <div className="bg  bg-white text-center dark:bg-dark shadow dark:shadow-light mt-28 rounded-lg p-10 max-w-4xl sm:p-3 sm:mt-16">
         <div className="flex justify-center items-center w-full">
           {/* Image Placeholder */}
           <Image
             src={project?.image || miniProject.image}
             alt={project?.title || miniProject?.title}
-            className="rounded-lg shadow-lg w-full h-96"
-            width={500}
-            height={500}
+            className="rounded-lg shadow-lg w-full h-96 object-cover"
+            width={1280}
+            height={700}
             loading="lazy"
           />
         </div>
@@ -93,7 +94,7 @@ const page = async ({ params }) => {
             <div className="text-gray-700 text-left mt-4 text-xl font-semibold dark:text-light">
               Contact me for code source
             </div>
-            <div className="w-full flex justify-around items-start mt-2 sm:mb-2">
+            <div className="w-full flex justify-center items-start mt-2 sm:mb-2">
               <a
                 href={"whatsapp://send?text=Hello!&phone=+212600462196"}
                 target={"_blank"}
