@@ -484,9 +484,6 @@ export const editArticles = async (prevSettings, formData) => {
   const email = formData.get("email");
   const slug = formData.get("slug");
   const userImage = formData.get("userImage");
-
-  console.log(tags, title, slug);
-
   try {
     connect();
     const updatedArticle = await Article.findByIdAndUpdate(
@@ -509,11 +506,9 @@ export const editArticles = async (prevSettings, formData) => {
 
       { new: true }
     );
-    return { message: "your article is update successfully" };
   } catch (err) {
     console.log(err.message);
   }
-  revalidatePath("/dashboard/blogs/edit-articles");
   redirect(`/dashboard/blogs`);
 };
 
