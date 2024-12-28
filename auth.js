@@ -13,7 +13,6 @@ export const {
   signIn,
   signOut,
 } = NextAuth({
-  ...authConfig,
   providers: [
     GitHub,
     Google,
@@ -40,5 +39,12 @@ export const {
       },
     }),
   ],
-  ...authConfig.callbacks,
+  pages: {
+    signIn: "/login",
+  },
+  callbacks: {
+    authorized: async ({ auth }) => {
+      return !!auth;
+    },
+  },
 });

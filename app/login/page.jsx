@@ -3,13 +3,11 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import Image from "next/image";
 import TransitionEffect from "@/app/components/TransitionEffect";
-import {
-  getUserId,
-  handelLoginGithub,
-  LoginWithGoogle,
-} from "@/app/utils/action";
+import { handelLoginGithub, LoginWithGoogle } from "@/app/utils/action";
 import Form from "next/form";
 import LoginForm from "../components/LoginForm";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "medcode | Login",
@@ -44,6 +42,11 @@ export const metadata = {
   },
 };
 const Login = async () => {
+  const session = await auth();
+  if (session) {
+    redirect("/");
+    return null;
+  }
   return (
     <>
       <TransitionEffect />

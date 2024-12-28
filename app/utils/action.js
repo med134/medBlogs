@@ -338,7 +338,6 @@ export const loginAuth = async (prvState, formData) => {
   const { email, password } = Object.fromEntries(formData);
   try {
     await signIn("credentials", { email, password });
-    redirect(`/dashboard`);
   } catch (err) {
     console.log(err);
     return "Invalid email or password";
