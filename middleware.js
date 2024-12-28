@@ -5,11 +5,3 @@ export const config = {
   matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };
 
-export default auth((req) => {
-  console.log("come from auth", req.auth);
-  if (req.auth && req.nextUrl.pathname === "/login") {
-    const newUrl = new URL("/dashboard", req.nextUrl.origin);
-    return NextResponse.redirect(newUrl);
-  }
-  return NextResponse.next();
-});
