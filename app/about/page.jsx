@@ -58,7 +58,7 @@ const page = () => {
               <p className="font-lexend text-xl">
                 Hi, I&apos;m med, a web developer and UI/UX designer with a
                 passion for creating beautiful, functional, and user-centered
-                digital experiences. With 3 years of experience in the field. I
+                digital experiences. With 4 years of experience in the field. I
                 am always looking for new and innovative ways to bring my
                 clients&apos; visions to life.
               </p>
