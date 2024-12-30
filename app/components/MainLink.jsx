@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { CustomLink } from "./CustomLinks";
-import med from "@/public/images/logo-med-removebg-preview.webp";
+import med from "../../public/images/logo.png";
 import ProfileDown from "./ProfileDown";
 import { Limelight } from "next/font/google";
 import Link from "next/link";

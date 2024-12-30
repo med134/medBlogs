@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import profilePic from "@/public/images/med.jpg";
+import profilePic from "../../public/images/med.jpg"
 import { ContactMenu } from "../components/ProjectArrays";
 import Loading from "../Loading";
 const Skills = dynamic(() => import("../components/Skills"), {

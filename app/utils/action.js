@@ -1,5 +1,5 @@
 "use server";
-import { auth, signIn, signOut } from "@/auth";
+import { auth, signIn, signOut } from "../../auth";
 import Article from "../module/Article";
 import User from "../module/User";
 import { redirect } from "next/navigation";

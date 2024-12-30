@@ -1,4 +1,4 @@
-import { NotFoundIcon } from "./Icons";
+import NotFoundIcon from "./NotFoundIcon";
 
 const NotFoundModel = ({ onClose }) => {
   return (

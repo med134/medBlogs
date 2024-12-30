@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import BlogImage from "@/public/images/postera.png";
+import BlogImage from "../public/images/postera.png";
 import { FormatDate, getPostsHome } from "./utils/action";
 const Card = async () => {
   const posts = await getPostsHome();

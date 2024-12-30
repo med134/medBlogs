@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/public/images/logo.png";
+import logo from "../../public/images/logo.png";
 import { AiFillYoutube } from "react-icons/ai";
 import { GithubIcon, LinkedInIcon } from "./Icons";
 import { BsInstagram } from "react-icons/bs";

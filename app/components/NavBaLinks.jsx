@@ -5,7 +5,7 @@ import { MoonIcon, SunIcon } from "./Icons";
 import { Limelight } from "next/font/google";
 import dynamic from "next/dynamic";
 import useThemeSwitcher from "./hooks/useThemeSwitcher";
-import med from "@/public/images/logo-med-removebg-preview.webp";
+import med from "../../public/images/logo-med-removebg-preview.webp";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RiMenu5Fill } from "react-icons/ri";

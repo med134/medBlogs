@@ -3,7 +3,7 @@ import { getPosts, FormatDate } from "../utils/action";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
-import icon from "@/public/images/development-amico.webp";
+import icon from "../../public/images/development-amico.webp";
 
 const FirstView = async () => {
   const post = await getPosts();
